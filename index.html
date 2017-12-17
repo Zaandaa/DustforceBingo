@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js"></script>
+
+<script type="text/javascript" src="js/constants.js"></script>
+<script type="text/javascript" src="js/chance.js"></script>
+<script type="text/javascript" src="js/goal.js"></script>
+<script type="text/javascript" src="js/bingo.js"></script>
+
+<div>
+	<div>
+		Generate seed
+		options
+		<button id="generate_button" type="button" onclick="generateSeed()">Generate</button>
+	</div>
+	<div>
+		Seed: <input id="seed" type="textbox"></input>
+		<button id="copy_button" type="button">Copy</button>
+	</div>
+</div>
+
+<div>
+	<button id="make_board_button" type="button" onclick="makeBoard()">Make Board</button>
+	<button id="update_button" type="button" onclick="updateBoardTable()">Update</button>
+</div>
+
+
+<div id="bingo_table_div">
+	Bingo table div
+</div>
