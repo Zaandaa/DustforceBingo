@@ -21,8 +21,18 @@ time preference? short vs long
 
 */
 
+
+
+// var replays = require("src/replays.js");
+// replays(checkReplay);
+
+
+// define these somewhere
 var rules = {};
+var levelsValid = levels.slice(0,64);
+
 var goals = [];
+var players = [];
 var size = 3;
 
 
@@ -37,6 +47,11 @@ function generateSeed() {
 
 function loadSeed() {
 	;
+}
+
+function copySeed() {
+	$("#seed").select();
+	document.execCommand("copy");
 }
 
 function makeBoard() {
@@ -68,6 +83,22 @@ function getReplays() {
 }
 
 function checkReplay(replay) {
+
+	// validate
+	if (!replay.meta.validated) {
+		return false;
+	}
+
+	// in users
+	if ($.inArray(replay.meta.username, players) == -1) {
+		return false;
+	}
+
+	// in levels
+	if ($.inArray(replay.meta.levelname(), levelsValid) == -1) {
+		return false;
+	}
+
 	var success = false;
 	for (var i = 0; i < goals.length; i++) {
 		// if (lockout && goals[i].isAchieved()) {

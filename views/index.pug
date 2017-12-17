@@ -1,5 +1,83 @@
 extends layout
 
+block js
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js")
+
+	script(src="js/constants.js")
+	script(src="js/chance.js")
+	script(src="js/goal.js")
+	script(src="js/bingo.js")
+
 block content
-  h1= title
-  p Welcome to #{title}
+	h1= title
+	p Welcome to #{title}
+
+	div
+		div
+			div
+				h4 Bingo Rules
+
+				p Save file:
+				<select id="save">
+					<option value="newgame">New Game</option>
+					<option value="newgameplus">New Game+</option>
+				</select>
+
+				br
+
+				<input id="lockout" type="checkbox" checked /> Lockout
+				br
+				br
+
+				p Win condition:
+				br
+
+				<input id="bingo_check" type="checkbox" checked /> Achieve Bingos:
+				<select id="bingo_count">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				br
+
+				<input id="majority" type="checkbox" checked /> Achieve majority of goals
+				br
+
+				<input id="total_check" type="checkbox" /> First to total goals: <input id="total_count" type="textbox"></input>
+				br
+
+
+			div
+				h4 Advanced Goal Options
+
+				<button id="show_button" type="button" onclick="showAdvanced()">Show</button>
+				<br>
+
+				<div id="goals_advanced_div">
+					<input id="characters" type="checkbox" checked /> Require characters<br>
+					<input id="apples" type="checkbox" checked /> Include apples<br>
+					<input id="difficults" type="checkbox" /> Include difficults<br>
+					<input id="nodash" type="checkbox" /> No dash<br>
+					<input id="nojump" type="checkbox" /> No jump<br>
+					<input id="nodirection" type="checkbox" /> No direction<br>
+
+			div
+				<h2>Generate seed</h2>
+				<button id="generate_button" type="button" onclick="generateSeed()">Generate</button>
+
+		div
+			p Seed:
+			<input id="seed" type="textbox"></input>
+			<button id="copy_button" type="button" onclick="copySeed()">Copy</button>
+
+	br
+
+	div
+		<button id="make_board_button" type="button" onclick="makeBoard()">Make Board</button>
+		<button id="update_button" type="button" onclick="updateBoardTable()">Reveal</button>
+
+
+	div#bingo_table_div

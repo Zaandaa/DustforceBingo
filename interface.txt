@@ -9,9 +9,11 @@ start()
 send_replay(replay)
 get_board(json_payload)
 reveal()
+finish()
 
 Session:
 
 start_timer(timespan)
 can_start(bool)
 update_board(json_payload)
+finish()
