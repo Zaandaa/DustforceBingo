@@ -4,8 +4,8 @@ var seedChars = "1234567890qwertyuiopasdfghjklzxcvbnm";
 
 var characters = ["Dustman", "Dustgirl", "Dustkid", "Dustworth"];
 var hubs = ["Forest", "Mansion", "City", "Laboratory"];
-var keytypes = ["Wood", "Silver", "Gold", "Ruby"];
-var leveltypes = ["Open", "Wood", "Silver", "Gold"];
+var keys = ["Wood", "Silver", "Gold", "Ruby"];
+var levelTypes = ["Open", "Wood", "Silver", "Gold"];
 
 var levels = [
 	"Downhill",
@@ -86,14 +86,18 @@ var levels = [
 ]
 
 function getHub(i) {
-	switch (i) {
-		case 0: return "Forest";
-		case 16: return "Mansion";
-		case 32: return "City";
-		case 48: return "Laboratory";
-		case 64: return "Difficult";
-		case 72: return "Tutorial";
-		default: return null;
+	if (i < 16) {
+		return "Forest";
+	} else if (i < 32) {
+		return "Mansion";
+	} else if (i < 48) {
+		return "City";
+	} else if (i < 64) {
+		return "Laboratory";
+	} else if (i < 72) {
+		return "Difficult";
+	} else {
+		return "Tutorial";
 	}
 }
 
@@ -101,10 +105,12 @@ function getKey(i) {
 	if (i >= 64) {
 		return null;
 	}
-	switch (i / 4 % 4) {
-		case 0: return null;
-		case 1: return "Wood";
-		case 2: return "Silver";
-		case 3: return "Gold";
+	return keys[Math.floor(i / 4) % 4];
+}
+
+function getLevelType(i) {
+	if (i >= 64) {
+		return null;
 	}
+	return levelTypes[Math.floor(i / 4) % 4];
 }
