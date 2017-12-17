@@ -1,0 +1,17 @@
+Bingo:
+
+#ctor()
+add_player(id, render_name)
+remove_player(id)
+ready(id)
+unready(id)
+start()
+send_replay(replay)
+get_board(json_payload)
+reveal()
+
+Session:
+
+start_timer(timespan)
+can_start(bool)
+update_board(json_payload)
