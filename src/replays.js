@@ -14,6 +14,7 @@ function create_parse(lambda) {
 					var msg = JSON.parse(data.substr(0, sep_pos));
 					lambda(msg);
 				}
+				sep_pos = data.indexOf("\x1e");
 			}
 		}
 		if (this.readyState == 4) {
