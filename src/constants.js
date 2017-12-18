@@ -1,7 +1,4 @@
 
-var maxSeedLength = 5;
-var seedChars = "1234567890qwertyuiopasdfghjklzxcvbnm";
-
 var characters = ["Dustman", "Dustgirl", "Dustkid", "Dustworth"];
 var hubs = ["Forest", "Mansion", "City", "Laboratory"];
 var keys = ["Wood", "Silver", "Gold", "Ruby"];

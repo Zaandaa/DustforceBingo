@@ -1,19 +1,19 @@
 Bingo:
 
-#ctor()
-add_player(id, render_name)
-remove_player(id)
+#ctor(session, json)
+addPlayer(id, render_name)
+removePlayer(id)
 ready(id)
 unready(id)
+checkReplay(replay)
+getBoardData() return json
 start()
-send_replay(replay)
-get_board(json_payload)
 reveal()
 finish()
 
 Session:
 
-start_timer(timespan)
-can_start(bool)
-update_board(json_payload)
+startTimer()
+canStart(bool)
+updateBoard(json_payload)
 finish()

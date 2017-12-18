@@ -151,20 +151,40 @@ var Goal = function(goalCondition, goalString) {
 
 	this.toString = function() {
 		return this.goalString;
+	};
+
+	this.getBoardData = function() {
+		return {title: this.goalString, achieved: this.achieved.toString()};
 	}
 
 	this.isAchieved = function() {
 		return this.achieved.length > 0;
-	}
+	};
 
 	this.addAchiever = function(a) {
 		this.achieved.push(a);
-	}
+	};
 
 	this.compareReplay = function(replay) {
 		// check if replay meets condition
+
+		if (this.goalCondition[0] == "level") {
+			if (this.goalCondition[1] == replay.meta.levelname) {
+				if (this.goalCondition[2] == "Beat") {
+					return true;
+				} else if (this.goalCondition[2] == "SS" && score_completion and score_finesse) {
+					return true;
+				} // else if apple check
+			}
+		} else {
+			// tally this level to player progress first
+			// compare player progress to goal
+		}
+
 		return false;
-	}
+	};
 
 	return this;
 };
+
+module.exports = Goal;
