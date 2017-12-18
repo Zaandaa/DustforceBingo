@@ -27,10 +27,10 @@ time preference? short vs long
 // replays(checkReplay);
 
 
-var Bingo = function(seed, ruleset) {
-	this.seed = seed;
-	this.ruleset = ruleset;
-	this.size = 3; // ruleset.size
+var Bingo = function(session, ruleset) {
+	this.session = session;
+	this.ruleset = JSON.parse(ruleset);
+
 	this.levelsValid = levels.slice(0,64); // use ruleset
 
 	this.active = false;
@@ -54,7 +54,7 @@ var Bingo = function(seed, ruleset) {
 			if (players[p].getReady())
 				count++;
 		}
-		// session.can_start(count > 1)
+		this.session.canStart(count > 1)
 	}
 
 	this.ready = function(id) {
@@ -80,39 +80,45 @@ var Bingo = function(seed, ruleset) {
 
 	this.start = function() {
 		// create goals
-		this.makeBoard();
+		for (var i = 0; i < this.ruleset.size ** 2; i++) {
+			this.goals.push(makeGoal());
+		}
 
 		// remove not ready players
-		
+		var playersToRemove = [];
+		for (var p in this.players) {
+			if (!this.players[p].getReady()) {
+				playersToRemove.push(p);
+			}
+		}
+		for (var i = 0; i < playersToRemove.length; i++) {
+			delete this.players[playersToRemove[i]];
+		}
 
-		// does this call session.start_timer()?
+		// does this call this.session.startTimer()?
 	};
 
-	this.send_replay = function(replay) {
+	this.checkReplay = function(replay) {
 		if (!this.active)
 			return false;
 
 		// validate
-		if (!replay.meta.validated) {
-			return true; // doesn't handle early exit
-		}
+		if (!replay.meta.validated)
+			return false; // doesn't handle early exit
 
 		// in players
-		if (!(replay.meta.user in this.players)) {
-			return true;
-		}
+		if (!(replay.meta.user in this.players))
+			return false;
 
 		// in levels
-		if ($.inArray(replay.meta.levelname, this.levelsValid) == -1) {
+		if ($.inArray(replay.meta.levelname, this.levelsValid) == -1)
 			return false;
-		}
 
 		var success = false;
 		for (var i = 0; i < goals.length; i++) {
-			// if (lockout && goals[i].isAchieved()) {
-				// continue;
-			// }
-			if (goals[i].compareReplay(replay)) {
+			if (this.ruleset.lockout && goals[i].isAchieved()) {
+				continue;
+			} else if (goals[i].compareReplay(replay)) {
 				this.goals[i].achieve(replay.meta.username);
 				this.players[replay.meta.user].achieveGoal(i);
 				success = true;
@@ -121,7 +127,7 @@ var Bingo = function(seed, ruleset) {
 
 		if (success) {
 			this.checkWinStatus(replay.meta.user);
-			// session.updateBoard(this.getBoardData());
+			this.session.updateBoard(this.getBoardData());
 		}
 		return true;
 	};
@@ -129,7 +135,7 @@ var Bingo = function(seed, ruleset) {
 	this.getBoardData = function() {
 		var boardData = {};
 
-		boardData.size = this.size;
+		boardData.size = this.ruleset.size;
 		boardData.winner = this.winner;
 
 		boardData.players = {};
@@ -151,11 +157,11 @@ var Bingo = function(seed, ruleset) {
 
 	this.finish = function() {
 		this.active = false;
-		// session.finish();
+		this.session.finish();
 	};
 
 
 	return this;
-}
+};
 
 module.exports = Bingo;
