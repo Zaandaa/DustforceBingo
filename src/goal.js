@@ -151,15 +151,19 @@ var Goal = function(goalCondition, goalString) {
 
 	this.toString = function() {
 		return this.goalString;
+	};
+
+	this.getBoardData = function() {
+		return {title: this.goalString, achieved: this.achieved.toString()};
 	}
 
 	this.isAchieved = function() {
 		return this.achieved.length > 0;
-	}
+	};
 
 	this.addAchiever = function(a) {
 		this.achieved.push(a);
-	}
+	};
 
 	this.compareReplay = function(replay) {
 		// check if replay meets condition
@@ -178,7 +182,9 @@ var Goal = function(goalCondition, goalString) {
 		}
 
 		return false;
-	}
+	};
 
 	return this;
 };
+
+module.exports = Goal;
