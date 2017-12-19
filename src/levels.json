@@ -3,51 +3,56 @@
 		gimmicks: {
 			apples: {
 				accessor: "apples",
-				format: "hitting {count} apples"
+				format: "apple",
+				plural: "s"
 			},
-			lowdust: {
-
-				accessor: "tags.collected",
-				format: "collect less than {count} dust"
+			lowpercent: {
+				accessor: "",
+				format: "<= {count} dust",
+				plural: ""
 			},
 			lowdash: {
 				accessor: "input_dash",
-				format: "dashing less than {count} times"
+				format: "<= {count} dash",
+				plural: "es"
 			},
 			lowjump: {
-				accessor: "apples",
-				format: "{type} {level} while hitting {count} apples."
+				accessor: "input_jumps",
+				format: "<= {count} jump",
+				plural: "s"
 			},
 			lowattack: {
-				accessor: "apples",
-				format: "{type} {level} while hitting {count} apples."
+				accessor: "",
+				format: "<= {count} attack"
+				plural: "s"
 			},
 			lowdirection: {
-				accessor: "apples",
-				format: "dashing less than {count} times"
+				accessor: "input_directions",
+				format: "<= {count} direction"
+				plural: "s"
 			},
-		}
+		},
 		hubs: [
 			"Forest",
-			"Mansion"
+			"Mansion",
+			"City",
+			"Laboratory"
 		]
 	},
-	levels : {
-		downhill: {
-			pretty: "Fields",
+	levels: {
+		"Fields": {
 			hub: "Forest",
 			type: "Open",
 			key: "Wood",
-			
 			gimmicks: {
 				apples: [
 					{
-						type: "beat",
+						type: "Beat",
 						difficulty: 0,
 						count: 1
 					},
 					{
-						type: "beat",
+						type: "Beat",
 						difficulty: 0,
 						count: 5
 					},
@@ -61,7 +66,8 @@
 						difficulty: 0,
 						count: 5
 					}
-				]
+				],
+				
 			}
 		}
 	}

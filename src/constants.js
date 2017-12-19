@@ -4,6 +4,9 @@ var hubs = ["Forest", "Mansion", "City", "Laboratory"];
 var keys = ["Wood", "Silver", "Gold", "Ruby"];
 var levelTypes = ["Open", "Wood", "Silver", "Gold"];
 
+
+// var levels = require("levels.json");
+
 var levels = [
 	"Downhill",
 	"Shaded Grove",

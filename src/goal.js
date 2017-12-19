@@ -16,7 +16,7 @@ no/low dash/jump/direction (need to know if possible for 0 or minimum possible)
 
 goal object?
 toString
-condition
+goalData
 achieved
 who achieved
 
@@ -24,14 +24,14 @@ who achieved
 
 
 function makeGoal() {
-	var newCondition = makeGoalCondition();
-	var newGoalString = makeGoalString(newCondition);
+	var newGoalData = makeGoalData();
+	var newGoalString = makeGoalString(newGoalData);
 	while (checkGoalExists(newGoalString)) {
-		newCondition = makeGoalCondition();
-		newGoalString = makeGoalString(newCondition);
+		newGoalData = makeGoalData();
+		newGoalString = makeGoalString(newGoalData);
 	}
 
-	return new Goal(newCondition, newGoalString);
+	return new Goal(newGoalData, newGoalString);
 }
 
 function checkGoalExists(goalString) {
@@ -43,100 +43,102 @@ function checkGoalExists(goalString) {
 	return false;
 }
 
-function makeGoalCondition() {
+function makeGoalData() {
 
-	var condition = [];
+	var goalData = {};
 	var r;
 
 	// type
 	r = Math.random();
 	if (r < chances[mode].level.chance) {
-		condition.push("level");
+		goalData.type = "level";
 
-		condition.push(levels[Math.floor(Math.random() * 64)]);
+		goalData.level = Object.keys(levels.levels)[Math.floor(Math.random() * 64)];
 
 		r = Math.random();
 		if (r < chances[mode].level.beat) {
-			condition.push("Beat");
+			goalData.objective = "Beat";
 		} else if (r < chances[mode].level.ss) {
-			condition.push("SS");
+			goalData.objective = "SS";
 		}
 
 		r = Math.random();
 		if (r < chances[mode].level.character) {
-			condition.push(characters[Math.floor(Math.random() * characters.length)]);
+			goalData.character = characters[Math.floor(Math.random() * characters.length)];
 		}
 
-		r = Math.random();
-		if (r < chances[mode].level.apple) {
-			condition.push("apple");
+		if (!goalData.character) {
+			r = Math.random();
+			if (r < chances[mode].level.gimmick) {
+				goalData.gimmicks["apple"];
+			}
 		}
 
 	} else { // < chances[mode].total.chance
-		condition.push("total");
+		goalData.push("total");
 
 		r = Math.random();
 		if (r < chances[mode].total.beat.chance) {
-			condition.push("Beat");
-			condition.push(Math.floor(Math.random() * chances[mode].total.beat.range) + chances[mode].total.beat.minimum);
+			goalData.push("Beat");
+			goalData.push(Math.floor(Math.random() * chances[mode].total.beat.range) + chances[mode].total.beat.minimum);
 		} else if (r < chances[mode].total.ss.chance) {
-			condition.push("SS");
-			condition.push(Math.floor(Math.random() * chances[mode].total.ss.range) + chances[mode].total.ss.minimum);
+			goalData.push("SS");
+			goalData.push(Math.floor(Math.random() * chances[mode].total.ss.range) + chances[mode].total.ss.minimum);
 		//} else if (r < chances[mode].total.keys.chance) {
-			// condition.push("keys");
-			// condition.push(Math.floor(Math.random() * chances[mode].total.keys.range) + chances[mode].total.keys.minimum);
+			// goalData.push("keys");
+			// goalData.push(Math.floor(Math.random() * chances[mode].total.keys.range) + chances[mode].total.keys.minimum);
 		// } else if (r < chances[mode].total.apple.chance) {
-			// condition.push("apple");
-			// condition.push(Math.floor(Math.random() * chances[mode].total.apple.range) + chances[mode].total.apple.minimum);
+			// goalData.push("apple");
+			// goalData.push(Math.floor(Math.random() * chances[mode].total.apple.range) + chances[mode].total.apple.minimum);
 		}
 
 		r = Math.random();
 		if (r < chances[mode].total.hub) {
-			condition.push(hubs[Math.floor(Math.random() * hubs.length)]);
-			condition[2] = Math.ceil(condition[2] / 4);
+			goalData.push(hubs[Math.floor(Math.random() * hubs.length)]);
+			goalData[2] = Math.ceil(goalData[2] / 4);
 		}
 
 		r = Math.random();
 		if (r < chances[mode].total.character) {
-			condition.push(characters[Math.floor(Math.random() * characters.length)]);
+			goalData.push(characters[Math.floor(Math.random() * characters.length)]);
 		}
 
 		// r = Math.random();
 		// if (r < chances[mode].total.leveltype) {
-			// condition.push(hubs[Math.floor(Math.random() * leveltypes.length)]);
-			// condition[2] = Math.ceil(condition[2] / 4);
+			// goalData.push(hubs[Math.floor(Math.random() * leveltypes.length)]);
+			// goalData[2] = Math.ceil(goalData[2] / 4);
 		// }
 
 	}
 
-	return condition;
+	return goalData;
 
 }
 
-function makeGoalString(condition) {
+function makeGoalString(goalData) {
 	var str = "";
 
-	if (condition[0] == "level") {
-		str = condition[2] + " " + condition[1]; // SS or beat + level
+	if (goalData[0] == "level") {
+		str = goalData[2] + " " + goalData[1]; // SS or beat + level
 		// extras
-		for (var i = 3; i < condition.length; i++) {
-			if (condition[i] == "apple") {
+		for (var i = 3; i < goalData.length; i++) {
+			if (goalData[i] == "apple") {
 				str += " with apple(s)";
-			} else if ($.inArray(condition[i], characters) > -1) {
-				str += " as " + condition[i];
+			} else if ($.inArray(goalData[i], characters) > -1) {
+				str += " as " + goalData[i];
 			}
 		}
-	} else if (condition[0] == "total") {
-		switch (condition[1]) {
+	} else if (goalData[0] == "total") {
+		switch (goalData[1]) {
 			case "Beat":
-			case "SS": str = condition[1] + " " + condition[2].toString() + " level" + (condition[2] > 1 ? "s" : ""); break;
-			case "apple": str = "Hit " + condition[2].toString() + " apple" + (condition[2] > 1 ? "s" : ""); break;
+			case "SS": str = goalData[1] + " " + goalData[2].toString() + " level" + (goalData[2] > 1 ? "s" : ""); break;
+			case "apple": str = "Hit " + goalData[2].toString() + " apple" + (goalData[2] > 1 ? "s" : ""); break;
 		}
-		for (var i = 3; i < condition.length; i++) {
-			if ($.inArray(condition[i], hubs) > -1) {
-				str += " in " + condition[i];
-			} else if ($.inArray(condition[i], characters) > -1) {
-				str += " as " + condition[i];
+		for (var i = 3; i < goalData.length; i++) {
+			if ($.inArray(goalData[i], hubs) > -1) {
+				str += " in " + goalData[i];
+			} else if ($.inArray(goalData[i], characters) > -1) {
+				str += " as " + goalData[i];
 			}
 		}
 	}
@@ -144,8 +146,8 @@ function makeGoalString(condition) {
 	return str;
 }
 
-var Goal = function(goalCondition, goalString) {
-	this.goalCondition = goalCondition;
+var Goal = function(goalData, goalString) {
+	this.goalData = goalData;
 	this.goalString = goalString;
 	this.achieved = [];
 
@@ -155,7 +157,7 @@ var Goal = function(goalCondition, goalString) {
 
 	this.getBoardData = function() {
 		return {title: this.goalString, achieved: this.achieved.toString()};
-	}
+	};
 
 	this.isAchieved = function() {
 		return this.achieved.length > 0;
@@ -165,20 +167,33 @@ var Goal = function(goalCondition, goalString) {
 		this.achieved.push(a);
 	};
 
-	this.compareReplay = function(replay) {
-		// check if replay meets condition
+	this.compareReplay = function(replay, player) {
+		// check if replay meets goalData
 
-		if (this.goalCondition[0] == "level") {
-			if (this.goalCondition[1] == replay.meta.levelname) {
-				if (this.goalCondition[2] == "Beat") {
-					return true;
-				} else if (this.goalCondition[2] == "SS" && score_completion and score_finesse) {
-					return true;
-				} // else if apple check
+		if (this.goalData.type == "level") {
+			if (this.goalData.level == replay.meta.levelname) {
+				if (this.goalData.objective == "SS" && (replay.meta.score_completion != 5 || replay.meta.score_finesse != 5))
+					return false;
+				if (this.goalData.character && this.goalData.character != characters[replay.meta.character])
+					return false;
+
+				for (var g in this.goalData.gimmicks) {
+					if (!meetGoalGimmick(replay, g, this.goalData.gimmicks[g]))
+						return false;
+				}
+
+				return true;
 			}
 		} else {
-			// tally this level to player progress first
-			// compare player progress to goal
+			// total, check against player.countObjective(kwargs)
+
+			// >= beat, ss, apples, keys
+			if (player.countObjective(goalData) >= this.goalData.total) {
+				return true;
+			}
+
+			// <= low gimmicks (unused)
+
 		}
 
 		return false;

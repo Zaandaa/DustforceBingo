@@ -1,15 +1,18 @@
+
 var Player = function(id, name) {
 	this.id = id;
 	this.name = name;
 	this.color = "FFFFFF";
 	this.ready = false;
 
-	this.levelProgress = {
-		// dictionary of levels
-		// needs key points, apples, other info
-	}
-
 	this.goalsAchieved = []; // list of ids of goals achieved
+	this.levelProgress = {}; // dictionary of levels beaten
+	this.keyProgress = {
+		"Forest": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
+		"Mansion": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
+		"City": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
+		"Laboratory": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
+	};
 
 	this.toString = function() {
 		return this.name;
@@ -32,22 +35,89 @@ var Player = function(id, name) {
 	};
 
 	this.addProgress = function(replay) {
-		// this.levelProgress[replay.meta.levelname] = score;
-		// this.levelProgress[$.inArray(replay.meta.levelname, levels)] = score;
+		if (replay.meta.levelname in this.levelProgress) {
+			// score + keys
+			if (this.levelProgress[replay.meta.levelname].completion < replay.meta.score_completion) {
+				this.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_completion - this.levelProgress[replay.meta.levelname].completion;
+				this.levelProgress[replay.meta.levelname].completion = replay.meta.score_completion;
+			}
+			if (this.levelProgress[replay.meta.levelname].finesse < replay.meta.score_finesse) {
+				this.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_finesse - this.levelProgress[replay.meta.levelname].finesse;
+				this.levelProgress[replay.meta.levelname].finesse = replay.meta.score_finesse;
+			}
+			// if char not in chars, add char to chars
+			if ($.inArray(characters[replay.meta.character], this.levelProgress[replay.meta.levelname].characters) == -1) {
+				this.levelProgress[replay.meta.levelname].characters.push(characters[replay.meta.character]);
+			}
+			// better gimmicks
+			for (var g in meta.gimmicks) {
+				this.levelProgress[replay.meta.levelname].gimmicks[g] = betterGimmick(g, accessGimmick(replay, g), this.levelProgress[replay.meta.levelname].gimmicks[g]);
+			}
+		} else {
+			this.levelProgress[replay.meta.levelname] = {
+				completion: replay.meta.score_completion,
+				finesse: replay.meta.score_finesse,
+				chars: [characters[replay.meta.character]],
+				gimmicks = {}
+			}
+			this.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] = replay.meta.score_completion + replay.meta.score_finesse;
+
+			for (var g in meta.gimmicks) {
+				this.levelProgress[replay.meta.levelname].gimmicks[g] = accessGimmick(replay, g);
+			};
+		}
 	};
 
-
-	this.countKeys = function(type, hub) {
-		if (!hub)
-			hub = "All";
+	this.countObjective = function(goalData) {
+		if (!goalData.count)
+			return // don't know what to count, assume goalData correct otherwise
 
 		var count = 0;
 
-		// semi hardcoded loop through progress
+		if (goalData.count == "Beat") {
+			// goalData.character, goalData.hub, goalData.type
+			for (var l in this.levelProgress) {
+				if (goalData.hub && levels[l].hub != goalData.hub)
+					continue;
+				if (goalData.type && levels[l].type != goalData.type)
+					continue;
+				if (goalData.character && $.inArray(goalData.character, levels[l].character) != -1)
+					continue;
+				count++;
+			}
+		} else if (goalData.count == "SS") {
+			// goalData.character, goalData.hub, goalData.type
+			for (var l in this.levelProgress) {
+				if (goalData.hub && levels[l].hub != goalData.hub)
+					continue;
+				if (goalData.type && levels[l].type != goalData.type)
+					continue;
+				if (goalData.character && $.inArray(goalData.character, levels[l].character) != -1)
+					continue;
+				if (this.levelProgress[l].completion < 5 || this.levelProgress[i].finesse < 5)
+					continue;
+				count++;
+			}
+		} else if (goalData.count == "keys") {
+			// goalData.hub, goalData.type
+			if (goalData.hub) {
+				count = this.keyProgress[hub][type];
+			} else {
+				count += this.keyProgress["Forest"][type];
+				count += this.keyProgress["Mansion"][type];
+				count += this.keyProgress["City"][type];
+				count += this.keyProgress["Laboratory"][type];
+			}
+		} else if (goalData.count in meta.gimmicks) {
+			for (var l in this.levelProgress) {
+				if (this.levelProgress[l].gimmicks[goalData.count] > -1) {
+					count += this.levelProgress[l].gimmicks[goalData.count];
+				}
+			}
+		}
 
 		return count;
-	}
-}
+	};
 
 	return this;
 };

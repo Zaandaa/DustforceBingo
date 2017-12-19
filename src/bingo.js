@@ -39,6 +39,12 @@ var Bingo = function(session, ruleset) {
 	this.goals = [];
 	this.players = {};
 
+	// create goals
+	for (var i = 0; i < this.ruleset.size ** 2; i++) {
+		this.goals.push(makeGoal());
+	}
+
+
 	this.add_player = function(id, name) {
 		this.players[id] = new Player(id, name);
 	};
@@ -55,7 +61,7 @@ var Bingo = function(session, ruleset) {
 				count++;
 		}
 		this.session.canStart(count > 1)
-	}
+	};
 
 	this.ready = function(id) {
 		this.players[id].setReady(true);
@@ -79,10 +85,7 @@ var Bingo = function(session, ruleset) {
 	};
 
 	this.start = function() {
-		// create goals
-		for (var i = 0; i < this.ruleset.size ** 2; i++) {
-			this.goals.push(makeGoal());
-		}
+		this.active = true;
 
 		// remove not ready players
 		var playersToRemove = [];
@@ -94,8 +97,6 @@ var Bingo = function(session, ruleset) {
 		for (var i = 0; i < playersToRemove.length; i++) {
 			delete this.players[playersToRemove[i]];
 		}
-
-		// does this call this.session.startTimer()?
 	};
 
 	this.checkReplay = function(replay) {
@@ -114,11 +115,13 @@ var Bingo = function(session, ruleset) {
 		if ($.inArray(replay.meta.levelname, this.levelsValid) == -1)
 			return false;
 
+		this.players[replay.meta.user].addProgress(replay);
+
 		var success = false;
 		for (var i = 0; i < goals.length; i++) {
 			if (this.ruleset.lockout && goals[i].isAchieved()) {
 				continue;
-			} else if (goals[i].compareReplay(replay)) {
+			} else if (goals[i].compareReplay(replay, this.players[replay.meta.user])) {
 				this.goals[i].achieve(replay.meta.username);
 				this.players[replay.meta.user].achieveGoal(i);
 				success = true;
@@ -149,10 +152,6 @@ var Bingo = function(session, ruleset) {
 		}
 
 		return JSON.stringify(boardData);
-	}
-
-	this.reveal = function() {
-		this.active = true;
 	};
 
 	this.finish = function() {
