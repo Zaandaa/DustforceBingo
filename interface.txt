@@ -8,12 +8,9 @@ unready(id)
 checkReplay(replay)
 getBoardData() return json
 start()
-reveal()
-finish()
 
 Session:
 
-startTimer()
 canStart(bool)
 updateBoard(json_payload)
 finish()

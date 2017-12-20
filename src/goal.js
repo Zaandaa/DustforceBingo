@@ -1,3 +1,5 @@
+var seedrandom = require('seedrandom');
+
 /*
 card types
 
@@ -22,8 +24,8 @@ who achieved
 
 */
 
-
 function makeGoals(ruleset) {
+	seedrandom(ruleset.seed);
 	var goals = [];
 	var goalDatas = [];
 	var r;

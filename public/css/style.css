@@ -1,6 +1,14 @@
+.uppercase {
+	font: 64px 'Caracteres L1', Helvetica, Arial, sans-serif;
+}
+
+.lowercase {
+	font:24pt 'Proxima Nova', Helvetica, Arial, sans-serif;
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Proxima Nova', Helvetica, Arial, sans-serif;
 }
 
 a {

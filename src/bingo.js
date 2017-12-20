@@ -1,3 +1,5 @@
+var goals = require('./goals');
+
 /*
 
 options:
@@ -30,7 +32,7 @@ time preference? short vs long
 var Bingo = function(session, ruleset) {
 	var self = this;
 	self.session = session;
-	self.ruleset = JSON.parse(ruleset);
+	self.ruleset = ruleset;
 
 	self.active = false;
 	self.winner = "";
