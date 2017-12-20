@@ -24,7 +24,9 @@ who achieved
 
 */
 
-function makeGoals(ruleset) {
+var extern = {}
+
+extern.makeGoals = function(ruleset) {
 	seedrandom(ruleset.seed);
 	var goals = [];
 	var goalDatas = [];
@@ -33,7 +35,7 @@ function makeGoals(ruleset) {
 	var levelGoalDatas = makeLevelGoalDatas(ruleset);
 	var usedTotalGoalStrings = [];
 
-	for (var i = 0; i < ruleset.size ** 2; i++) {
+	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
 		r = Math.random();
 		if (r < chances[ruleset.savefile].level.chance) {
 			// pick from levelGoalDatas
@@ -77,14 +79,14 @@ function makeLevelGoalDatas(ruleset) {
 
 		["Beat", "BS", "SS"].forEach(function(o) {
 
-			if (o == "BS" && !ruleset.somepercent) { // somepercent
-				continue;
+			if (o == "BS" && !ruleset.somepercent) // somepercent
+				return;
 			if (l == "Yotta Difficult" && (o == "SS" || o == "BS") && ruleset.noYotta)
-				continue;
+				return;
 
 			var d = getLevelDifficulty(levels[l], o);
 			if (d < ruleset.minDifficulty || d > ruleset.maxDifficulty)
-				continue;
+				return;
 			validGoalDatas.push({type: "level", objective: o, difficulty: d});
 			totalDifficulty += d;
 
@@ -95,16 +97,16 @@ function makeLevelGoalDatas(ruleset) {
 
 		});
 
-		meta.gimmicks.forEach(function(g) {
-			break;
+		Object.keys(levels.gimmicks).forEach(function(g) {
+			return;
 			if (!ruleset[g])
-				continue;
+				return;
 
 			var g_count = Object.keys(levels.levels[l].gimmicks[g]).length;
 			levels.levels[l].gimmicks[g].forEach(function(gg) {
 				if (gg.difficulty < ruleset.minDifficulty || gg.difficulty > ruleset.maxDifficulty)
-					continue;
-				validGoalDatas.push({type: "level", objective: gg.type, difficulty: gg.difficulty / gCount, gimmick: g});
+					return;
+				validGoalDatas.push({type: "level", objective: gg.type, difficulty: gg.difficulty / gCount, gimmicks: [g]});
 				totalDifficulty += gg.difficulty / gCount;
 			});
 		});
@@ -146,7 +148,7 @@ function makeTotalGoalData() {
 		if (goalData.hub && levels.hubs[goalData.hub].keys) {
 			r = Math.random();
 			if (r < chances[mode].total.leveltype) {
-				goalData.leveltype = (hubs[Math.floor(Math.random() * leveltypes.length)];
+				goalData.leveltype = hubs[Math.floor(Math.random() * leveltypes.length)];
 			}
 		}
 	}
@@ -243,4 +245,4 @@ var Goal = function(goalData, goalString) {
 	return self;
 };
 
-module.exports = Goal;
+module.exports = extern;

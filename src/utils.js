@@ -46,7 +46,7 @@ function accessGimmick(replay, gimmick) {
 			return replay.meta.input_lights + 3 * replay.meta.input_heavies;
 		}
 	} else {
-		return replay.meta[meta.gimmicks[gimmick].accessor];
+		return replay.meta[levels.gimmicks[gimmick].accessor];
 	}
 }
 

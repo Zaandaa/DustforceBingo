@@ -1,4 +1,4 @@
-var goals = require('./goals');
+var goal = require('./goal');
 
 /*
 
@@ -38,7 +38,7 @@ var Bingo = function(session, ruleset) {
 	self.winner = "";
 
 	self.players = {};
-	self.goals = makeGoals(ruleset);
+	self.goals = goal.makeGoals(ruleset);
 
 
 	self.add_player = function(id, name) {
