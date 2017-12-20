@@ -15,16 +15,22 @@ function verify(fields, data) {
 var params = [
 	"save", 
 	"size", 
-	"bingo_type", 
+	"lockout", 
 	"bingo_count", 
 	"bingo_count_type", 
+	"difficulty", 
+	"length", 
 	"characters", 
 	"apples", 
+	"tutorials", 
 	"difficults", 
 	"yottass", 
 	"lowdash", 
 	"lowjump", 
-	"lowdirection"
+	"lowattack", 
+	"lowdirection", 
+	"lowpercent", 
+	"somepercent"
 ];
 
 /* GET home page. */

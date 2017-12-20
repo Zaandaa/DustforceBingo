@@ -19,11 +19,9 @@ block content
 					option(value="3") 3 by 3
 					option(value="5") 5 by 5
 			div 
-				div Bingo Type:
-				select#bingo_type.session
-					option(value="lockout") Lockout
-					option(value="traditional") Traditional
-				
+				div
+					input#lockout.session(type="checkbox" checked)
+					label(for="lockout") Lockout
 			div
 				div First to:
 				select#bingo_count.session
@@ -40,25 +38,35 @@ block content
 
 			div#goals_advanced
 				div
-					div Allow goals to require characters
 					input#characters.session(   type="checkbox" checked)
+					label(for="characters") Allow goals to require characters
 				div
-					div Include apples
-					input#apples.session(       type="checkbox" checked) 
+					input#apples.session(       type="checkbox" checked)
+					label(for="apples") Include apples
 				div
-					div Include difficults
 					input#difficults.session(   type="checkbox") 
-					div Including Yotta SS? 
+					label(for="difficults") Include difficults
+				div
 					input#yottass.session(      type="checkbox") 
+					label(for="yottass") Include Yotta SS 
 				div 
-					div Low dash
 					input#lowdash.session(      type="checkbox")
+					label(for="lowdash") Low dash
 				div 
-					div Low jump
 					input#lowjump.session(      type="checkbox")
+					label(for="lowjump") Low jump
 				div 
-					div Low direction
+					input#lowattack.session(    type="checkbox")
+					label(for="lowattack") Low attack
+				div 
 					input#lowdirection.session( type="checkbox") 
+					label(for="lowdirection") Low direction
+				div 
+					input#lowpercent.session(   type="checkbox")
+					label(for="lowpercent") Low percent
+				div 
+					input#somepercent.session(   type="checkbox")
+					label(for="somepercent") Some percent
 
 		div
 			h2 Generate seed

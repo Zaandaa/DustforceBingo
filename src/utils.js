@@ -23,11 +23,11 @@ function generateGoalTotal(goalData, ruleset) {
 	var multiplier = Math.random();
 
 	// calculate total based on stuff, using multiplier
-	var total = Math.floor(multiplier * chances[ruleset.savefile].total[countType.toLowerCase()].range) + chances[ruleset.savefile].total[countType.toLowerCase()].minimum;
+	var total = Math.floor(multiplier * chances[ruleset.save].total[countType.toLowerCase()].range) + chances[ruleset.save].total[countType.toLowerCase()].minimum;
 
 	if hub
 		if (goalData.hub == "Difficult" || goalData.hub == "Tutorial")
-			total = Math.ceil(multiplier * (levels.hubs[goalData.hub].levels - (ruleset.noYotta && goalData.count == "SS" ? 1 : 0)));
+			total = Math.ceil(multiplier * (levels.hubs[goalData.hub].levels - (!ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
 		else
 			total = Math.ceil(goalData.total / 4);
 

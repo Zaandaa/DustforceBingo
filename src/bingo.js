@@ -110,9 +110,9 @@ var Bingo = function(session, ruleset) {
 		// in levels
 		if (!levels.levels[replay.meta.levelname])
 			return false;
-		if (levels.levels[replay.meta.levelname].hub == "Tutorial" && !self.ruleset.includeTutorials)
+		if (levels.levels[replay.meta.levelname].hub == "Tutorial" && !self.ruleset.tutorials)
 			return false;
-		if (levels.levels[replay.meta.levelname].hub == "Difficult" && !self.ruleset.includeDifficults)
+		if (levels.levels[replay.meta.levelname].hub == "Difficult" && !self.ruleset.difficults)
 			return false;
 
 		self.players[replay.meta.user].addProgress(replay);
