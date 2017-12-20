@@ -1,74 +1,78 @@
 
 var Player = function(id, name) {
-	this.id = id;
-	this.name = name;
-	this.color = "FFFFFF";
-	this.ready = false;
+	var self = this;
+	self.id = id;
+	self.name = name;
+	self.color = "FFFFFF";
+	self.ready = false;
 
-	this.goalsAchieved = []; // list of ids of goals achieved
-	this.levelProgress = {}; // dictionary of levels beaten
-	this.keyProgress = {
+	self.goalsAchieved = []; // list of ids of goals achieved
+	self.levelProgress = {}; // dictionary of levels beaten
+	self.keyProgress = {
 		"Forest": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
 		"Mansion": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
 		"City": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
 		"Laboratory": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
 	};
 
-	this.toString = function() {
-		return this.name;
+	self.toString = function() {
+		return self.name;
 	};
 
-	this.getBoardData = function() {
-		return {name: this.name, color: this.color, goals: this.goalsAchieved.length};
+	self.getBoardData = function() {
+		return {name: self.name, color: self.color, goals: self.goalsAchieved.length};
 	};
 
-	this.getReady = function() {
-		return this.ready;
+	self.getReady = function() {
+		return self.ready;
 	};
 
-	this.setReady = function(r) {
-		this.ready = r;
+	self.setReady = function(r) {
+		self.ready = r;
 	};
 
-	this.achieveGoal = function(id) {
-		return this.goalsAchieved.push(id);
+	self.achieveGoal = function(id) {
+		return self.goalsAchieved.push(id);
 	};
 
-	this.addProgress = function(replay) {
-		if (replay.meta.levelname in this.levelProgress) {
+	self.addProgress = function(replay) {
+		if (replay.meta.levelname in self.levelProgress) {
 			// score + keys
-			if (this.levelProgress[replay.meta.levelname].completion < replay.meta.score_completion) {
-				this.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_completion - this.levelProgress[replay.meta.levelname].completion;
-				this.levelProgress[replay.meta.levelname].completion = replay.meta.score_completion;
+			if (self.levelProgress[replay.meta.levelname].completion < replay.meta.score_completion) {
+				if ($.inArray(levels["levels"][replay.meta.levelname].hub, hubs) != -1)
+					self.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_completion - self.levelProgress[replay.meta.levelname].completion;
+				self.levelProgress[replay.meta.levelname].completion = replay.meta.score_completion;
 			}
-			if (this.levelProgress[replay.meta.levelname].finesse < replay.meta.score_finesse) {
-				this.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_finesse - this.levelProgress[replay.meta.levelname].finesse;
-				this.levelProgress[replay.meta.levelname].finesse = replay.meta.score_finesse;
+			if (self.levelProgress[replay.meta.levelname].finesse < replay.meta.score_finesse) {
+				if ($.inArray(levels["levels"][replay.meta.levelname].hub, hubs) != -1)
+					self.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_finesse - self.levelProgress[replay.meta.levelname].finesse;
+				self.levelProgress[replay.meta.levelname].finesse = replay.meta.score_finesse;
 			}
 			// if char not in chars, add char to chars
-			if ($.inArray(characters[replay.meta.character], this.levelProgress[replay.meta.levelname].characters) == -1) {
-				this.levelProgress[replay.meta.levelname].characters.push(characters[replay.meta.character]);
+			if ($.inArray(characters[replay.meta.character], self.levelProgress[replay.meta.levelname].characters) == -1) {
+				self.levelProgress[replay.meta.levelname].characters.push(characters[replay.meta.character]);
 			}
 			// better gimmicks
 			for (var g in meta.gimmicks) {
-				this.levelProgress[replay.meta.levelname].gimmicks[g] = betterGimmick(g, accessGimmick(replay, g), this.levelProgress[replay.meta.levelname].gimmicks[g]);
+				self.levelProgress[replay.meta.levelname].gimmicks[g] = betterGimmick(g, accessGimmick(replay, g), self.levelProgress[replay.meta.levelname].gimmicks[g]);
 			}
 		} else {
-			this.levelProgress[replay.meta.levelname] = {
+			self.levelProgress[replay.meta.levelname] = {
 				completion: replay.meta.score_completion,
 				finesse: replay.meta.score_finesse,
 				chars: [characters[replay.meta.character]],
 				gimmicks = {}
 			}
-			this.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] = replay.meta.score_completion + replay.meta.score_finesse;
+			if ($.inArray(levels["levels"][replay.meta.levelname].hub, hubs) != -1)
+				self.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] = replay.meta.score_completion + replay.meta.score_finesse;
 
 			for (var g in meta.gimmicks) {
-				this.levelProgress[replay.meta.levelname].gimmicks[g] = accessGimmick(replay, g);
+				self.levelProgress[replay.meta.levelname].gimmicks[g] = accessGimmick(replay, g);
 			};
 		}
 	};
 
-	this.countObjective = function(goalData) {
+	self.countObjective = function(goalData) {
 		if (!goalData.count)
 			return // don't know what to count, assume goalData correct otherwise
 
@@ -76,7 +80,7 @@ var Player = function(id, name) {
 
 		if (goalData.count == "Beat") {
 			// goalData.character, goalData.hub, goalData.type
-			for (var l in this.levelProgress) {
+			for (var l in self.levelProgress) {
 				if (goalData.hub && levels[l].hub != goalData.hub)
 					continue;
 				if (goalData.type && levels[l].type != goalData.type)
@@ -87,31 +91,31 @@ var Player = function(id, name) {
 			}
 		} else if (goalData.count == "SS") {
 			// goalData.character, goalData.hub, goalData.type
-			for (var l in this.levelProgress) {
+			for (var l in self.levelProgress) {
 				if (goalData.hub && levels[l].hub != goalData.hub)
 					continue;
-				if (goalData.type && levels[l].type != goalData.type)
+				if (goalData.type && levels[l].type != goalData.leveltype)
 					continue;
 				if (goalData.character && $.inArray(goalData.character, levels[l].character) != -1)
 					continue;
-				if (this.levelProgress[l].completion < 5 || this.levelProgress[i].finesse < 5)
+				if (self.levelProgress[l].completion < 5 || self.levelProgress[i].finesse < 5)
 					continue;
 				count++;
 			}
 		} else if (goalData.count == "keys") {
 			// goalData.hub, goalData.type
 			if (goalData.hub) {
-				count = this.keyProgress[hub][type];
+				count = self.keyProgress[hub][type];
 			} else {
-				count += this.keyProgress["Forest"][type];
-				count += this.keyProgress["Mansion"][type];
-				count += this.keyProgress["City"][type];
-				count += this.keyProgress["Laboratory"][type];
+				count += self.keyProgress["Forest"][type];
+				count += self.keyProgress["Mansion"][type];
+				count += self.keyProgress["City"][type];
+				count += self.keyProgress["Laboratory"][type];
 			}
 		} else if (goalData.count in meta.gimmicks) {
-			for (var l in this.levelProgress) {
-				if (this.levelProgress[l].gimmicks[goalData.count] > -1) {
-					count += this.levelProgress[l].gimmicks[goalData.count];
+			for (var l in self.levelProgress) {
+				if (self.levelProgress[l].gimmicks[goalData.count] > -1) {
+					count += self.levelProgress[l].gimmicks[goalData.count];
 				}
 			}
 		}
@@ -119,7 +123,7 @@ var Player = function(id, name) {
 		return count;
 	};
 
-	return this;
+	return self;
 };
 
 module.exports = Player;

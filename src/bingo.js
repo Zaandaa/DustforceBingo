@@ -28,139 +28,137 @@ time preference? short vs long
 
 
 var Bingo = function(session, ruleset) {
-	this.session = session;
-	this.ruleset = JSON.parse(ruleset);
+	var self = this;
+	self.session = session;
+	self.ruleset = JSON.parse(ruleset);
 
-	this.levelsValid = levels.slice(0,64); // use ruleset
+	self.active = false;
+	self.winner = "";
 
-	this.active = false;
-	this.winner = "";
-
-	this.goals = [];
-	this.players = {};
-
-	// create goals
-	for (var i = 0; i < this.ruleset.size ** 2; i++) {
-		this.goals.push(makeGoal());
-	}
+	self.players = {};
+	self.goals = makeGoals(ruleset);
 
 
-	this.add_player = function(id, name) {
-		this.players[id] = new Player(id, name);
+	self.add_player = function(id, name) {
+		self.players[id] = new Player(id, name);
 	};
 
-	this.remove_player = function(id) {
-		delete this.players[id];
-		this.checkPlayersReady();
+	self.remove_player = function(id) {
+		delete self.players[id];
+		self.checkPlayersReady();
 	};
 
-	this.checkPlayersReady = function() {
+	self.checkPlayersReady = function() {
 		var count = 0;
 		for (var p in players) {
 			if (players[p].getReady())
 				count++;
 		}
-		this.session.canStart(count > 1)
+		self.session.canStart(count > 1)
 	};
 
-	this.ready = function(id) {
-		this.players[id].setReady(true);
-		this.checkPlayersReady();
+	self.ready = function(id) {
+		self.players[id].setReady(true);
+		self.checkPlayersReady();
 	};
 
-	this.unready = function(id) {
-		this.players[id].setReady(false);
-		this.checkPlayersReady();
+	self.unready = function(id) {
+		self.players[id].setReady(false);
+		self.checkPlayersReady();
 	};
 
-	this.checkWinStatus = function(id) {
+	self.checkWinStatus = function(id) {
 		var isWinner = false;
 
 		// check players[id].goalsAchieved to match a win condition
 
 		if (isWinner) {
-			this.winner = this.players[id].toString();
-			this.finish();
+			self.winner = self.players[id].toString();
+			self.finish();
 		}
 	};
 
-	this.start = function() {
-		this.active = true;
+	self.start = function() {
+		self.active = true;
 
 		// remove not ready players
 		var playersToRemove = [];
-		for (var p in this.players) {
-			if (!this.players[p].getReady()) {
+		for (var p in self.players) {
+			if (!self.players[p].getReady()) {
 				playersToRemove.push(p);
 			}
 		}
 		for (var i = 0; i < playersToRemove.length; i++) {
-			delete this.players[playersToRemove[i]];
+			delete self.players[playersToRemove[i]];
 		}
 	};
 
-	this.checkReplay = function(replay) {
-		if (!this.active)
+	self.checkReplay = function(replay) {
+		if (!self.active)
 			return false;
 
 		// validate
-		if (!replay.meta.validated)
+		if (replay.meta.validated < 1)
 			return false; // doesn't handle early exit
 
 		// in players
-		if (!(replay.meta.user in this.players))
+		if (!(replay.meta.user in self.players))
 			return false;
 
 		// in levels
-		if ($.inArray(replay.meta.levelname, this.levelsValid) == -1)
+		if (!levels.levels[replay.meta.levelname])
+			return false;
+		if (levels.levels[replay.meta.levelname].hub == "Tutorial" && !self.ruleset.includeTutorials)
+			return false;
+		if (levels.levels[replay.meta.levelname].hub == "Difficult" && !self.ruleset.includeDifficults)
 			return false;
 
-		this.players[replay.meta.user].addProgress(replay);
+		self.players[replay.meta.user].addProgress(replay);
 
 		var success = false;
 		for (var i = 0; i < goals.length; i++) {
-			if (this.ruleset.lockout && goals[i].isAchieved()) {
+			if (self.ruleset.lockout && goals[i].isAchieved()) {
 				continue;
-			} else if (goals[i].compareReplay(replay, this.players[replay.meta.user])) {
-				this.goals[i].achieve(replay.meta.username);
-				this.players[replay.meta.user].achieveGoal(i);
+			} else if (goals[i].compareReplay(replay, self.players[replay.meta.user])) {
+				self.goals[i].achieve(replay.meta.username);
+				self.players[replay.meta.user].achieveGoal(i);
 				success = true;
 			}
 		}
 
 		if (success) {
-			this.checkWinStatus(replay.meta.user);
-			this.session.updateBoard(this.getBoardData());
+			self.checkWinStatus(replay.meta.user);
+			self.session.updateBoard(self.getBoardData());
 		}
 		return true;
 	};
 
-	this.getBoardData = function() {
+	self.getBoardData = function() {
 		var boardData = {};
 
-		boardData.size = this.ruleset.size;
-		boardData.winner = this.winner;
+		boardData.size = self.ruleset.size;
+		boardData.winner = self.winner;
 
 		boardData.players = {};
-		for (var id in this.players) {
-			boardData.players[id] = this.players[id].getBoardData();
+		for (var id in self.players) {
+			boardData.players[id] = self.players[id].getBoardData();
 		}
 
 		boardData.goals = {};
-		for (var i = 0; i < this.goals.length; i++) {
-			boardData.goals[i] = this.goals[i].getBoardData();
+		for (var i = 0; i < self.goals.length; i++) {
+			boardData.goals[i] = self.goals[i].getBoardData();
 		}
 
 		return JSON.stringify(boardData);
 	};
 
-	this.finish = function() {
-		this.active = false;
-		this.session.finish();
+	self.finish = function() {
+		self.active = false;
+		self.session.finish();
 	};
 
 
-	return this;
+	return self;
 };
 
 module.exports = Bingo;

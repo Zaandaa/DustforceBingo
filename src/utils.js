@@ -1,4 +1,40 @@
 
+function getLevelDifficulty(level, objective) {
+	var d = objective == "Beat" ? 5 : 3;
+
+	switch (levels.levels[level].type) {
+		case "Tutorial":
+		case "Open": 
+		case "Wood": d++;
+		case "Silver": d++;
+		case "Gold": d++;
+	}
+	return d;
+}
+
+function generateGoalTotal(goalData, ruleset) {
+	// pick good total number range based on goalData and ruleset length/difficulty
+	return 2;
+
+	/*/ pick range for multiplier based on stuff
+	
+
+	// calculate multiplier
+	var multiplier = Math.random();
+
+	// calculate total based on stuff, using multiplier
+	var total = Math.floor(multiplier * chances[ruleset.savefile].total[countType.toLowerCase()].range) + chances[ruleset.savefile].total[countType.toLowerCase()].minimum;
+
+	if hub
+		if (goalData.hub == "Difficult" || goalData.hub == "Tutorial")
+			total = Math.ceil(multiplier * (levels.hubs[goalData.hub].levels - (ruleset.noYotta && goalData.count == "SS" ? 1 : 0)));
+		else
+			total = Math.ceil(goalData.total / 4);
+
+	return total;*/
+}
+
+
 
 function accessGimmick(replay, gimmick) {
 	if (gimmick == "lowpercent") {

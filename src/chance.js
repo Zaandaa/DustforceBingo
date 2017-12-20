@@ -1,5 +1,5 @@
 /*
-newgame+
+newgameplus
 newgame
 
 
@@ -26,7 +26,7 @@ hub specific (none or hub)
 */
 
 
-var mode = "newgame"; // newgame+
+var mode = "newgame"; // newgameplus
 
 var chances = {
 	newgame: {

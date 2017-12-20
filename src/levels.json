@@ -1,6120 +1,1637 @@
 {
-	meta: {
-		gimmicks: {
-			apples: {
-				accessor: "apples",
-				format: "apple",
-				plural: "s"
-			},
-			lowpercent: {
-				accessor: "",
-				format: "<= {count} dust",
-				plural: ""
-			},
-			lowdash: {
-				accessor: "input_dash",
-				format: "<= {count} dash",
-				plural: "es"
-			},
-			lowjump: {
-				accessor: "input_jumps",
-				format: "<= {count} jump",
-				plural: "s"
-			},
-			lowattack: {
-				accessor: "",
-				format: "<= {count} attack"
-				plural: "s"
-			},
-			lowdirection: {
-				accessor: "input_directions",
-				format: "<= {count} direction"
-				plural: "s"
-			},
+	gimmicks: {
+		apples: {
+			accessor: "apples",
+			format: "{count} apple",
+			plural: "s"
 		},
-		hubs: [
-			"Forest",
-			"Mansion",
-			"City",
-			"Laboratory"
-		]
+		lowpercent: {
+			accessor: "",
+			format: "<= {count} dust",
+			plural: ""
+		},
+		lowdash: {
+			accessor: "input_dashes",
+			format: "<= {count} dash",
+			plural: "es"
+		},
+		lowjump: {
+			accessor: "input_jumps",
+			format: "<= {count} jump",
+			plural: "s"
+		},
+		lowattack: {
+			accessor: "",
+			format: "<= {count} attack"
+			plural: "s"
+		},
+		lowdirection: {
+			accessor: "input_directions",
+			format: "<= {count} direction"
+			plural: "s"
+		},
 	},
-	levels: 	{  
-		'Beginner Tutorial':{  
-			hub:'Tutorial',
-			type:'Tutorial',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Combat Tutorial':{  
-			hub:'Tutorial',
-			type:'Tutorial',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Advanced Tutorial':{  
-			hub:'Tutorial',
-			type:'Tutorial',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Downhill:{  
-			hub:'Forest',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Shaded Grove':{  
-			hub:'Forest',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Dahlia:{  
-			hub:'Forest',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Fields:{  
-			hub:'Forest',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Valley:{  
-			hub:'Forest',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Firefly Forest':{  
-			hub:'Forest',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Tunnels:{  
-			hub:'Forest',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Dusk Run':{  
-			hub:'Forest',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Overgrown Temple':{  
-			hub:'Forest',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Ascent:{  
-			hub:'Forest',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Summit:{  
-			hub:'Forest',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Grass Cave':{  
-			hub:'Forest',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Wild Den':{  
-			hub:'Forest',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Ruins:{  
-			hub:'Forest',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Ancient Garden':{  
-			hub:'Forest',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Night Temple':{  
-			hub:'Forest',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Atrium:{  
-			hub:'Mansion',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Secret Passage':{  
-			hub:'Mansion',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Alcoves:{  
-			hub:'Mansion',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Mezzanine:{  
-			hub:'Mansion',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Caverns:{  
-			hub:'Mansion',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Cliffside Caves':{  
-			hub:'Mansion',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Library:{  
-			hub:'Mansion',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Courtyard:{  
-			hub:'Mansion',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Archive:{  
-			hub:'Mansion',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Knight Hall':{  
-			hub:'Mansion',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Store Room':{  
-			hub:'Mansion',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Ramparts:{  
-			hub:'Mansion',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Moon Temple':{  
-			hub:'Mansion',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Observatory:{  
-			hub:'Mansion',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Ghost Parapets':{  
-			hub:'Mansion',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Tower:{  
-			hub:'Mansion',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Vacant Lot':{  
-			hub:'City',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Landfill:{  
-			hub:'City',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Development:{  
-			hub:'City',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Abandoned Carpark':{  
-			hub:'City',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Park:{  
-			hub:'City',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Construction Site':{  
-			hub:'City',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Apartments:{  
-			hub:'City',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Warehouse:{  
-			hub:'City',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Forgotten Tunnel':{  
-			hub:'City',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Basement:{  
-			hub:'City',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Scaffolding:{  
-			hub:'City',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Rooftops:{  
-			hub:'City',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Clocktower:{  
-			hub:'City',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Concrete Temple':{  
-			hub:'City',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Alleyway:{  
-			hub:'City',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Hideout:{  
-			hub:'City',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Control:{  
-			hub:'Laboratory',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Ferrofluid:{  
-			hub:'Laboratory',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Titan:{  
-			hub:'Laboratory',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Satellite Debris':{  
-			hub:'Laboratory',
-			type:'Open',
-			key:'Wood',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Vats:{  
-			hub:'Laboratory',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Server Room':{  
-			hub:'Laboratory',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Security:{  
-			hub:'Laboratory',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Research:{  
-			hub:'Laboratory',
-			type:'Wood',
-			key:'Silver',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Wiring:{  
-			hub:'Laboratory',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Containment:{  
-			hub:'Laboratory',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Power Room':{  
-			hub:'Laboratory',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Access:{  
-			hub:'Laboratory',
-			type:'Silver',
-			key:'Gold',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Backup Shift':{  
-			hub:'Laboratory',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Core Temple':{  
-			hub:'Laboratory',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Abyss:{  
-			hub:'Laboratory',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		Dome:{  
-			hub:'Laboratory',
-			type:'Gold',
-			key:'Ruby',
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Kilo Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Mega Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Giga Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Tera Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Peta Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Exa Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Zetta Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		},
-		'Yotta Difficult':{  
-			hub:'Difficult',
-			type:'Difficult',
-			key:null,
-			gimmicks:{  
-				apples:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdash:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowjump:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowdirection:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowattack:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					},
-					{  
-						type:'SS',
-						difficulty:0,
-						count:0
-					}
-				],
-				lowpercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				],
-				somepercent:[  
-					{  
-						type:'Beat',
-						difficulty:0,
-						count:0
-					}
-				]
-			}
-		}
-	}
+	hubs: {
+		Forest: {
+			levels: 16,
+			keys: true,
+		},
+		Mansion: {
+			levels: 16,
+			keys: true,
+		},
+		City: {
+			levels: 16,
+			keys: true,
+		},
+		Laboratory: {
+			levels: 16,
+			keys: true,
+		},
+		Tutorial: {
+			levels: 3,
+			keys: false,
+		},
+		Difficult: {
+			levels: 8,
+			keys: false,
+		},
+	},
+	levels: {
+  'Beginner Tutorial':
+   { hub: 'Tutorial',
+     type: 'Tutorial',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Combat Tutorial':
+   { hub: 'Tutorial',
+     type: 'Tutorial',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Advanced Tutorial':
+   { hub: 'Tutorial',
+     type: 'Tutorial',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Downhill:
+   { hub: 'Forest',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Shaded Grove':
+   { hub: 'Forest',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Dahlia:
+   { hub: 'Forest',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Fields:
+   { hub: 'Forest',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Valley:
+   { hub: 'Forest',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Firefly Forest':
+   { hub: 'Forest',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Tunnels:
+   { hub: 'Forest',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Dusk Run':
+   { hub: 'Forest',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Overgrown Temple':
+   { hub: 'Forest',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Ascent:
+   { hub: 'Forest',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Summit:
+   { hub: 'Forest',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Grass Cave':
+   { hub: 'Forest',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Wild Den':
+   { hub: 'Forest',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Ruins:
+   { hub: 'Forest',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Ancient Garden':
+   { hub: 'Forest',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Night Temple':
+   { hub: 'Forest',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Atrium:
+   { hub: 'Mansion',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Secret Passage':
+   { hub: 'Mansion',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Alcoves:
+   { hub: 'Mansion',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Mezzanine:
+   { hub: 'Mansion',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Caverns:
+   { hub: 'Mansion',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Cliffside Caves':
+   { hub: 'Mansion',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Library:
+   { hub: 'Mansion',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Courtyard:
+   { hub: 'Mansion',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Archive:
+   { hub: 'Mansion',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Knight Hall':
+   { hub: 'Mansion',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Store Room':
+   { hub: 'Mansion',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Ramparts:
+   { hub: 'Mansion',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Moon Temple':
+   { hub: 'Mansion',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Observatory:
+   { hub: 'Mansion',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Ghost Parapets':
+   { hub: 'Mansion',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Tower:
+   { hub: 'Mansion',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Vacant Lot':
+   { hub: 'City',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Landfill:
+   { hub: 'City',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Development:
+   { hub: 'City',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Abandoned Carpark':
+   { hub: 'City',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Park:
+   { hub: 'City',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Construction Site':
+   { hub: 'City',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Apartments:
+   { hub: 'City',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Warehouse:
+   { hub: 'City',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Forgotten Tunnel':
+   { hub: 'City',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Basement:
+   { hub: 'City',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Scaffolding:
+   { hub: 'City',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Rooftops:
+   { hub: 'City',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Clocktower:
+   { hub: 'City',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Concrete Temple':
+   { hub: 'City',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Alleyway:
+   { hub: 'City',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Hideout:
+   { hub: 'City',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Control:
+   { hub: 'Laboratory',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Ferrofluid:
+   { hub: 'Laboratory',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Titan:
+   { hub: 'Laboratory',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Satellite Debris':
+   { hub: 'Laboratory',
+     type: 'Open',
+     key: 'Wood',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Vats:
+   { hub: 'Laboratory',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Server Room':
+   { hub: 'Laboratory',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Security:
+   { hub: 'Laboratory',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Research:
+   { hub: 'Laboratory',
+     type: 'Wood',
+     key: 'Silver',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Wiring:
+   { hub: 'Laboratory',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Containment:
+   { hub: 'Laboratory',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Power Room':
+   { hub: 'Laboratory',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Access:
+   { hub: 'Laboratory',
+     type: 'Silver',
+     key: 'Gold',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Backup Shift':
+   { hub: 'Laboratory',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Core Temple':
+   { hub: 'Laboratory',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Abyss:
+   { hub: 'Laboratory',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  Dome:
+   { hub: 'Laboratory',
+     type: 'Gold',
+     key: 'Ruby',
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Kilo Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Mega Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Giga Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Tera Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Peta Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Exa Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Zetta Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } },
+  'Yotta Difficult':
+   { hub: 'Difficult',
+     type: 'Difficult',
+     key: null,
+     gimmicks:
+      { apples:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdash:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowjump:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowdirection:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowattack:
+         [ { type: 'Beat', difficulty: 0, count: 0 },
+           { type: 'SS', difficulty: 0, count: 0 } ],
+        lowpercent: [ { type: 'Beat', difficulty: 0, count: 0 } ] } } }
 }
 

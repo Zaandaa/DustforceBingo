@@ -13,7 +13,6 @@ var gimmicks = [
 	"lowdirection",
 	"lowattack",
 	"lowpercent",
-	"somepercent"
 ];
 
 var cantss = [

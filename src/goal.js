@@ -3,7 +3,7 @@ card types
 
 type: single (level), total (keys, levels beaten, levels SSed, apples)
 single: level, "SS" or "Beat", from hub (else any), as char, "apple"
-total: x, "Beat" or "SS" or "key" or "apple", from hub (else any), as char (else any), level types
+total: x, "Beat" or "SS" or "key" or "apples", from hub (else any), as char (else any), level types
 
 
 beat/ss/other level (as char) (with any/all apples)
@@ -23,162 +23,201 @@ who achieved
 */
 
 
-function makeGoal() {
-	var newGoalData = makeGoalData();
-	var newGoalString = makeGoalString(newGoalData);
-	while (checkGoalExists(newGoalString)) {
-		newGoalData = makeGoalData();
-		newGoalString = makeGoalString(newGoalData);
-	}
-
-	return new Goal(newGoalData, newGoalString);
-}
-
-function checkGoalExists(goalString) {
-	for (var i = 0; i < goals.length; i++) {
-		if (goals[i].toString() == goalString) {
-			return true;
-		}
-	}
-	return false;
-}
-
-function makeGoalData() {
-
-	var goalData = {};
+function makeGoals(ruleset) {
+	var goals = [];
+	var goalDatas = [];
 	var r;
 
-	// type
-	r = Math.random();
-	if (r < chances[mode].level.chance) {
-		goalData.type = "level";
+	var levelGoalDatas = makeLevelGoalDatas(ruleset);
+	var usedTotalGoalStrings = [];
 
-		goalData.level = Object.keys(levels.levels)[Math.floor(Math.random() * 64)];
-
+	for (var i = 0; i < ruleset.size ** 2; i++) {
 		r = Math.random();
-		if (r < chances[mode].level.beat) {
-			goalData.objective = "Beat";
-		} else if (r < chances[mode].level.ss) {
-			goalData.objective = "SS";
-		}
-
-		r = Math.random();
-		if (r < chances[mode].level.character) {
-			goalData.character = characters[Math.floor(Math.random() * characters.length)];
-		}
-
-		if (!goalData.character) {
-			r = Math.random();
-			if (r < chances[mode].level.gimmick) {
-				goalData.gimmicks["apple"];
+		if (r < chances[ruleset.savefile].level.chance) {
+			// pick from levelGoalDatas
+			r = Math.random() * levelGoalDatas.total;
+			var count = 0;
+			for (var g = 0; g < levelGoalDatas.data.length; g++) {
+				count += levelGoalDatas.data[g].difficulty;
+				if (count > r) {
+					levelGoalDatas.total -= levelGoalDatas.data[g].difficulty;
+					goals.push(new Goal(levelGoalDatas.data[g]));
+					levelGoalDatas.data.remove(g);
+					break;
+				}
 			}
+		} else { // total
+			var newData = makeTotalGoalData();
+			var newString = makeGoalString(newData);
+			while ($.inArray(gdString, usedTotalGoalStrings) != -1) {
+				newData = makeTotalGoalData();
+				newString = makeGoalString(newData);
+			}
+
+			usedTotalGoalStrings.push(newString);
+			goals.push(new Goal(newData));
 		}
-
-	} else { // < chances[mode].total.chance
-		goalData.push("total");
-
-		r = Math.random();
-		if (r < chances[mode].total.beat.chance) {
-			goalData.push("Beat");
-			goalData.push(Math.floor(Math.random() * chances[mode].total.beat.range) + chances[mode].total.beat.minimum);
-		} else if (r < chances[mode].total.ss.chance) {
-			goalData.push("SS");
-			goalData.push(Math.floor(Math.random() * chances[mode].total.ss.range) + chances[mode].total.ss.minimum);
-		//} else if (r < chances[mode].total.keys.chance) {
-			// goalData.push("keys");
-			// goalData.push(Math.floor(Math.random() * chances[mode].total.keys.range) + chances[mode].total.keys.minimum);
-		// } else if (r < chances[mode].total.apple.chance) {
-			// goalData.push("apple");
-			// goalData.push(Math.floor(Math.random() * chances[mode].total.apple.range) + chances[mode].total.apple.minimum);
-		}
-
-		r = Math.random();
-		if (r < chances[mode].total.hub) {
-			goalData.push(hubs[Math.floor(Math.random() * hubs.length)]);
-			goalData[2] = Math.ceil(goalData[2] / 4);
-		}
-
-		r = Math.random();
-		if (r < chances[mode].total.character) {
-			goalData.push(characters[Math.floor(Math.random() * characters.length)]);
-		}
-
-		// r = Math.random();
-		// if (r < chances[mode].total.leveltype) {
-			// goalData.push(hubs[Math.floor(Math.random() * leveltypes.length)]);
-			// goalData[2] = Math.ceil(goalData[2] / 4);
-		// }
-
 	}
 
-	return goalData;
+	return goals;
+}
 
+function makeLevelGoalDatas(ruleset) {
+	var validGoalDatas = [];
+	var totalDifficulty = 0;
+
+	for (var l in levels) {
+
+		if (!ruleset.includeTutorials && levels.levels[l].hub == "Tutorial")
+			continue;
+		if (!ruleset.includeDifficults && levels.levels[l].hub == "Difficult")
+			continue;
+
+		["Beat", "BS", "SS"].forEach(function(o) {
+
+			if (o == "BS" && !ruleset.somepercent) { // somepercent
+				continue;
+			if (l == "Yotta Difficult" && (o == "SS" || o == "BS") && ruleset.noYotta)
+				continue;
+
+			var d = getLevelDifficulty(levels[l], o);
+			if (d < ruleset.minDifficulty || d > ruleset.maxDifficulty)
+				continue;
+			validGoalDatas.push({type: "level", objective: o, difficulty: d});
+			totalDifficulty += d;
+
+			characters.forEach(function(c) {
+				validGoalDatas.push({type: "level", objective: o, difficulty: d, character: c})
+				totalDifficulty += d;
+			});
+
+		});
+
+		meta.gimmicks.forEach(function(g) {
+			break;
+			if (!ruleset[g])
+				continue;
+
+			var g_count = Object.keys(levels.levels[l].gimmicks[g]).length;
+			levels.levels[l].gimmicks[g].forEach(function(gg) {
+				if (gg.difficulty < ruleset.minDifficulty || gg.difficulty > ruleset.maxDifficulty)
+					continue;
+				validGoalDatas.push({type: "level", objective: gg.type, difficulty: gg.difficulty / gCount, gimmick: g});
+				totalDifficulty += gg.difficulty / gCount;
+			});
+		});
+	}
+
+	return {data: validGoalDatas, total: totalDifficulty};
+}
+
+function makeTotalGoalData() {
+	var goalData = {type: "total"};
+	var r;
+
+	r = Math.random();
+	if (r < chances[mode].total.beat.chance)
+		goalData.count = "Beat";
+	else if (r < chances[mode].total.ss.chance)
+		goalData.count = "SS";
+	else if (r < chances[mode].total.apples.chance)
+		goalData.count = "apples";
+	else if (r < chances[mode].total.keys.chance)
+		goalData.count = "keys";
+
+	r = Math.random();
+	if (r < chances[mode].total.hub) {
+		goalData.hub = levels.hubs.keys()[Math.floor(Math.random() * 6)];
+		while (goalData.count == "keys" && !levels.hubs[goalData.hub].keys || goalData.hub == "Tutorial" && !ruleset.includeTutorials || goalData.hub == "Difficult" && (!ruleset.includeDifficults || ruleset.mode == "newgame" && (ruleset.length > 0.5 || ruleset.minDifficulty < 4))) {
+			goalData.hub = levels.hubs.keys()[Math.floor(Math.random() * 6)];
+		}
+	}
+
+	if (goalData.count == "Beat") {
+		r = Math.random();
+		if (r < chances[mode].total.character) {
+			goalData.character = characters[Math.floor(Math.random() * characters.length)];
+		}
+	}
+
+	if (goalData.count == "Beat" || goalData.count == "SS") {
+		if (goalData.hub && levels.hubs[goalData.hub].keys) {
+			r = Math.random();
+			if (r < chances[mode].total.leveltype) {
+				goalData.leveltype = (hubs[Math.floor(Math.random() * leveltypes.length)];
+			}
+		}
+	}
+
+	goalData.total = generateGoalTotal(goalData, ruleset);
+
+	return goalData;
 }
 
 function makeGoalString(goalData) {
 	var str = "";
 
-	if (goalData[0] == "level") {
-		str = goalData[2] + " " + goalData[1]; // SS or beat + level
-		// extras
-		for (var i = 3; i < goalData.length; i++) {
-			if (goalData[i] == "apple") {
-				str += " with apple(s)";
-			} else if ($.inArray(goalData[i], characters) > -1) {
-				str += " as " + goalData[i];
-			}
-		}
-	} else if (goalData[0] == "total") {
-		switch (goalData[1]) {
+	if (goalData.type == "level") {
+		str = goalData.objective + " " + goalData.level;
+
+		if (goalData.character)
+			str += " as " + goalData.character;
+
+		goalData.gimmicks.forEach(function(g) {
+			str += " with " + g.total.toString() + g.format + (g.total != 1 ? g.plural : "")
+		});
+
+	} else if (goalData.type == "total") {
+		switch (goalData.count) {
 			case "Beat":
-			case "SS": str = goalData[1] + " " + goalData[2].toString() + " level" + (goalData[2] > 1 ? "s" : ""); break;
-			case "apple": str = "Hit " + goalData[2].toString() + " apple" + (goalData[2] > 1 ? "s" : ""); break;
+			case "SS": str = goalData.count + " " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : ""); break;
+			case "apples": str = "Hit " + goalData.total.toString() + " apple" + (goalData.total > 1 ? "s" : ""); break;
+			case "keys": str = "Get " + goalData.total.toString() + " key" + (goalData.total > 1 ? "s" : ""); break;
 		}
-		for (var i = 3; i < goalData.length; i++) {
-			if ($.inArray(goalData[i], hubs) > -1) {
-				str += " in " + goalData[i];
-			} else if ($.inArray(goalData[i], characters) > -1) {
-				str += " as " + goalData[i];
-			}
-		}
+
+		if (goalData.hub)
+			str += " in " + goalData.hub;
+		if (goalData.character)
+			str += " as " + goalData.character;
 	}
 
 	return str;
 }
 
 var Goal = function(goalData, goalString) {
-	this.goalData = goalData;
-	this.goalString = goalString;
-	this.achieved = [];
+	var self = this;
+	self.goalData = goalData;
+	self.goalString = goalString;
+	self.achieved = [];
 
-	this.toString = function() {
-		return this.goalString;
+	self.toString = function() {
+		return self.goalString;
 	};
 
-	this.getBoardData = function() {
-		return {title: this.goalString, achieved: this.achieved.toString()};
+	self.getBoardData = function() {
+		return {title: self.goalString, achieved: self.achieved.toString()};
 	};
 
-	this.isAchieved = function() {
-		return this.achieved.length > 0;
+	self.isAchieved = function() {
+		return self.achieved.length > 0;
 	};
 
-	this.addAchiever = function(a) {
-		this.achieved.push(a);
+	self.addAchiever = function(a) {
+		self.achieved.push(a);
 	};
 
-	this.compareReplay = function(replay, player) {
+	self.compareReplay = function(replay, player) {
 		// check if replay meets goalData
 
-		if (this.goalData.type == "level") {
-			if (this.goalData.level == replay.meta.levelname) {
-				if (this.goalData.objective == "SS" && (replay.meta.score_completion != 5 || replay.meta.score_finesse != 5))
+		if (self.goalData.type == "level") {
+			if (self.goalData.level == replay.meta.levelname) {
+				if (self.goalData.objective == "SS" && (replay.meta.score_completion != 5 || replay.meta.score_finesse != 5))
 					return false;
-				if (this.goalData.character && this.goalData.character != characters[replay.meta.character])
+				if (self.goalData.character && self.goalData.character != characters[replay.meta.character])
 					return false;
 
-				for (var g in this.goalData.gimmicks) {
-					if (!meetGoalGimmick(replay, g, this.goalData.gimmicks[g]))
+				for (var g in self.goalData.gimmicks) {
+					if (!meetGoalGimmick(replay, g, self.goalData.gimmicks[g]))
 						return false;
 				}
 
@@ -188,7 +227,7 @@ var Goal = function(goalData, goalString) {
 			// total, check against player.countObjective(kwargs)
 
 			// >= beat, ss, apples, keys
-			if (player.countObjective(goalData) >= this.goalData.total) {
+			if (player.countObjective(goalData) >= self.goalData.total) {
 				return true;
 			}
 
@@ -199,7 +238,7 @@ var Goal = function(goalData, goalString) {
 		return false;
 	};
 
-	return this;
+	return self;
 };
 
 module.exports = Goal;
