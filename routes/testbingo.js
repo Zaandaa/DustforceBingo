@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// var Bingo = require('../src/bingo');
+var Bingo = require('../src/bingo');
 
 var seedChars = "1234567890qwertyuiopasdfghjklzxcvbnm";
 var seedLength = 8;
@@ -31,7 +31,7 @@ var rules = {
 	somepercent: true
 };
 
-// var bingo = new Bingo(null, rules);
+var bingo = new Bingo(null, rules);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

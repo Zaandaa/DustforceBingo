@@ -4,6 +4,8 @@ var seedrandom = require('seedrandom');
 
 var levels = require("./levels");
 var utils = require("./utils");
+var constants = require('./constants');
+var chance = require('./chance');
 
 /*
 card types
@@ -42,7 +44,7 @@ extern.makeGoals = function(ruleset) {
 
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
 		r = Math.random();
-		if (r < chances[ruleset.save].level.chance) {
+		if (r < chance[ruleset.save].level.chance) {
 			// pick from levelGoalDatas
 			r = Math.random() * levelGoalDatas.total;
 			var count = 0;
@@ -51,14 +53,14 @@ extern.makeGoals = function(ruleset) {
 				if (count > r) {
 					levelGoalDatas.total -= levelGoalDatas.data[g].difficulty;
 					goals.push(new Goal(levelGoalDatas.data[g]));
-					levelGoalDatas.data.remove(g);
+					levelGoalDatas.data.splice(g, 1);
 					break;
 				}
 			}
 		} else { // total
 			var newData = makeTotalGoalData(ruleset);
 			var newString = makeGoalString(newData);
-			while ($.inArray(gdString, usedTotalGoalStrings) != -1) {
+			while ($.inArray(newString, usedTotalGoalStrings) != -1) {
 				newData = makeTotalGoalData();
 				newString = makeGoalString(newData);
 			}
@@ -76,7 +78,6 @@ function makeLevelGoalDatas(ruleset) {
 	var totalDifficulty = 0;
 
 	for (var l in levels.levels) {
-
 		if (!ruleset.tutorials && levels.levels[l].hub == "Tutorial")
 			continue;
 		if (!ruleset.difficults && levels.levels[l].hub == "Difficult")
@@ -89,14 +90,14 @@ function makeLevelGoalDatas(ruleset) {
 			if (l == "Yotta Difficult" && (o == "SS" || o == "BS") && !ruleset.yottass)
 				return;
 
-			var d = utils.getLevelDifficulty(levels[l], o);
-			if (d < ruleset.minDifficulty || d > ruleset.maxDifficulty)
+			var d = utils.getLevelDifficulty(l, o);
+			if (d < ruleset.difficulty)
 				return;
 			validGoalDatas.push({type: "level", objective: o, difficulty: d});
 			totalDifficulty += d;
 
 			if (ruleset.characters) {
-				characters.forEach(function(c) {
+				constants.characters.forEach(function(c) {
 					validGoalDatas.push({type: "level", objective: o, difficulty: d, character: c})
 					totalDifficulty += d;
 				});
@@ -110,7 +111,7 @@ function makeLevelGoalDatas(ruleset) {
 
 			var g_count = Object.keys(levels.levels[l].gimmicks[g]).length;
 			levels.levels[l].gimmicks[g].forEach(function(gg) {
-				if (gg.difficulty < ruleset.minDifficulty || gg.difficulty > ruleset.maxDifficulty)
+				if (gg.difficulty < ruleset.difficulty)
 					return;
 				validGoalDatas.push({type: "level", objective: gg.type, difficulty: gg.difficulty / gCount, gimmicks: [g]});
 				totalDifficulty += gg.difficulty / gCount;
@@ -126,40 +127,40 @@ function makeTotalGoalData(ruleset) {
 	var r;
 
 	r = Math.random();
-	if (r < chances[mode].total.beat.chance)
+	if (r < chance[ruleset.save].total.beat.chance)
 		goalData.count = "Beat";
-	else if (r < chances[mode].total.ss.chance)
+	else if (r < chance[ruleset.save].total.ss.chance)
 		goalData.count = "SS";
-	else if (r < chances[mode].total.apples.chance)
+	else if (r < chance[ruleset.save].total.apples.chance)
 		goalData.count = "apples";
-	else if (r < chances[mode].total.keys.chance)
+	else if (r < chance[ruleset.save].total.keys.chance)
 		goalData.count = "keys";
 
 	r = Math.random();
-	if (r < chances[mode].total.hub) {
-		goalData.hub = levels.hubs.keys()[Math.floor(Math.random() * 6)];
-		while (goalData.count == "keys" && !levels.hubs[goalData.hub].keys || goalData.hub == "Tutorial" && !ruleset.tutorials || goalData.hub == "Difficult" && (!ruleset.difficults || ruleset.mode == "newgame" && (ruleset.length > 0.5 || ruleset.minDifficulty < 4))) {
-			goalData.hub = levels.hubs.keys()[Math.floor(Math.random() * 6)];
+	if (r < chance[ruleset.save].total.hub) {
+		goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
+		while (goalData.count == "keys" && !levels.hubs[goalData.hub].keys || goalData.hub == "Tutorial" && !ruleset.tutorials || goalData.hub == "Difficult" && (!ruleset.difficults || ruleset.mode == "newgame" && (ruleset.length > 0.5 || ruleset.difficulty < 4))) {
+			goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
 		}
 	}
 
 	if (goalData.count == "Beat" && ruleset.characters) {
 		r = Math.random();
-		if (r < chances[mode].total.character) {
-			goalData.character = characters[Math.floor(Math.random() * characters.length)];
+		if (r < chance[ruleset.save].total.character) {
+			goalData.character = constants.characters[Math.floor(Math.random() * constants.characters.length)];
 		}
 	}
 
 	if (goalData.count == "Beat" || goalData.count == "SS") {
 		if (goalData.hub && levels.hubs[goalData.hub].keys) {
 			r = Math.random();
-			if (r < chances[mode].total.leveltype) {
-				goalData.leveltype = hubs[Math.floor(Math.random() * leveltypes.length)];
+			if (r < chance[ruleset.save].total.leveltype) {
+				goalData.leveltype = constants.hubs[Math.floor(Math.random() * leveltypes.length)];
 			}
 		}
 	}
 
-	goalData.total = generateGoalTotal(goalData, ruleset);
+	goalData.total = utils.generateGoalTotal(goalData, ruleset);
 
 	return goalData;
 }
@@ -223,7 +224,7 @@ var Goal = function(goalData, goalString) {
 			if (self.goalData.level == replay.meta.levelname) {
 				if (self.goalData.objective == "SS" && (replay.meta.score_completion != 5 || replay.meta.score_finesse != 5))
 					return false;
-				if (self.goalData.character && self.goalData.character != characters[replay.meta.character])
+				if (self.goalData.character && self.goalData.character != constants.characters[replay.meta.character])
 					return false;
 
 				for (var g in self.goalData.gimmicks) {

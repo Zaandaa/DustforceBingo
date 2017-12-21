@@ -25,10 +25,7 @@ hub specific (none or hub)
 
 */
 
-
-var mode = "newgame"; // newgameplus
-
-var chances = {
+var chance = {
 	newgame: {
 		level: {
 			chance: 0.5,
@@ -100,3 +97,5 @@ var chances = {
 		}
 	}
 };
+
+module.exports = chance;

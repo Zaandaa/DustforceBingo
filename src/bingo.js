@@ -2,11 +2,8 @@ var $ = require('jQuery');
 var getJSON = require('get-json');
 var goal = require('./goal');
 
-var levels = require("./levels");
-var characters = ["Dustman", "Dustgirl", "Dustkid", "Dustworth"];
-var hubs = ["Forest", "Mansion", "City", "Laboratory"];
-var keys = ["Wood", "Silver", "Gold", "Ruby"];
-var levelTypes = ["Open", "Wood", "Silver", "Gold"];
+var levels = require('./levels');
+var constants = require('./constants');
 
 /*
 

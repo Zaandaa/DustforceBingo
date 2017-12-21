@@ -1,6 +1,21 @@
+var getJSON = require('get-json');
+
 var levels = require("./levels");
 
 var extern = {}
+
+
+extern.getHub = function(level) {
+	return levels.levels[level].hub;
+}
+
+extern.getKey = function(level) {
+	return levels.levels[level].key;
+}
+
+extern.getLevelType = function(level) {
+	return levels.levels[level].type;
+}
 
 extern.getLevelDifficulty = function(level, objective) {
 	var d = objective == "Beat" ? 5 : 3;
