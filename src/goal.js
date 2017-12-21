@@ -60,7 +60,7 @@ extern.makeGoals = function(ruleset) {
 			var newData = makeTotalGoalData(ruleset);
 			var newString = makeGoalString(newData);
 			while (usedTotalGoalStrings.indexOf(newString) != -1) {
-				newData = makeTotalGoalData();
+				newData = makeTotalGoalData(ruleset);
 				newString = makeGoalString(newData);
 			}
 
@@ -82,9 +82,9 @@ function makeLevelGoalDatas(ruleset) {
 		if (!ruleset.difficults && levels.levels[l].hub == "Difficult")
 			continue;
 
-		["Beat", "BS", "SS"].forEach(function(o) {
+		["Beat", "SS", "B%", "BS"].forEach(function(o) {
 
-			if (o == "BS" && !ruleset.somepercent) // somepercent
+			if ((o == "B%" || o == "BS") && !ruleset.somepercent) // somepercent
 				return;
 			if (l == "Yotta Difficult" && (o == "SS" || o == "BS") && !ruleset.yottass)
 				return;
@@ -92,12 +92,12 @@ function makeLevelGoalDatas(ruleset) {
 			var d = utils.getLevelDifficulty(l, o);
 			if (d < ruleset.difficulty)
 				return;
-			validGoalDatas.push({type: "level", objective: o, difficulty: d});
+			validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d});
 			totalDifficulty += d;
 
 			if (ruleset.characters) {
 				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", objective: o, difficulty: d, character: c})
+					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d, character: c})
 					totalDifficulty += d;
 				});
 			}
@@ -112,7 +112,7 @@ function makeLevelGoalDatas(ruleset) {
 			levels.levels[l].gimmicks[g].forEach(function(gg) {
 				if (gg.difficulty < ruleset.difficulty)
 					return;
-				validGoalDatas.push({type: "level", objective: gg.type, difficulty: gg.difficulty / gCount, gimmicks: [g]});
+				validGoalDatas.push({type: "level", level: l, objective: gg.type, difficulty: gg.difficulty / gCount, gimmicks: [g]});
 				totalDifficulty += gg.difficulty / gCount;
 			});
 		});
@@ -173,9 +173,11 @@ function makeGoalString(goalData) {
 		if (goalData.character)
 			str += " as " + goalData.character;
 
-		goalData.gimmicks.forEach(function(g) {
-			str += " with " + g.total.toString() + g.format + (g.total != 1 ? g.plural : "")
-		});
+		if (goalData.gimmicks) {
+			goalData.gimmicks.forEach(function(g) {
+				str += " with " + g.total.toString() + g.format + (g.total != 1 ? g.plural : "")
+			});
+		}
 
 	} else if (goalData.type == "total") {
 		switch (goalData.count) {
@@ -194,10 +196,10 @@ function makeGoalString(goalData) {
 	return str;
 }
 
-var Goal = function(goalData, goalString) {
+var Goal = function(goalData) {
 	var self = this;
 	self.goalData = goalData;
-	self.goalString = goalString;
+	self.goalString = makeGoalString(goalData);
 	self.achieved = [];
 
 	self.toString = function() {

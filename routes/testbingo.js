@@ -12,7 +12,7 @@ for (var i = 0; i < seedLength; i++) {
 var rules = {
 	seed: seed,
 	save: "newgame",
-	size: 3,
+	size: 5,
 	lockout: true,
 	bingo_count: 1,
 	bingo_count_type: "bingo",
@@ -35,7 +35,6 @@ var bingo = new Bingo(null, rules);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log("test");
   res.render('testbingo', { title: 'Test', boardData: bingo.getBoardData() });
 });
 
