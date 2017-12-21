@@ -130,5 +130,4 @@ levels.forEach(function(level) {
 	
 	out[l] = x;
 });
-
-console.log(require('util').inspect(out, false, 10)); 
+console.log(JSON.stringify(out, null, 4)); 

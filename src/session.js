@@ -102,7 +102,6 @@ extern.getSession = function(id) {
 seedrandom();
 function Session(bingo_args) {
 	var self = this;
-	console.log(bingo_args);
 	
 // PRIVATE:
 
@@ -117,6 +116,7 @@ function Session(bingo_args) {
 		for (var i = 0; i < seedLength; i++) {
 			seed += seedChars.charAt(Math.floor(Math.random() * seedChars.length));
 		}
+		return seed;
 	}
 
 	self.id = generateSeed();
@@ -187,18 +187,20 @@ function Session(bingo_args) {
 	};
 	
 	self.getBoardData = function() {
-		return self.bingo.getBoardData()
+		return bingo.getBoardData()
 	}
 	
 // CTOR:
 
 	rooms[self.id] = self;
+	
+	return self;
 }
 
 // EXTERN
 
 extern.newSession = function() {
-	return new (Function.prototype.bind.apply(Session, arguments));
+	return Reflect.construct(Session, arguments);
 }
 
 module.exports = extern;
