@@ -8,6 +8,7 @@ var seed = "";
 for (var i = 0; i < seedLength; i++) {
 	seed += seedChars.charAt(Math.floor(Math.random() * seedChars.length));
 }
+// seed = "custom";
 
 var rules = {
 	seed: seed,
