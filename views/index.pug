@@ -18,6 +18,19 @@ block content
 				select#size.session
 					option(value="3") 3 by 3
 					option(value="5") 5 by 5
+			div
+				div Difficulty:
+				select#difficulty.session
+					option(value="4") Easy
+					option(value="3" selected) Normal
+					option(value="2") Hard
+					option(value="1") Very hard
+			div
+				div Length:
+				select#length.session
+					option(value="3") Fast
+					option(value="2" selected) Normal
+					option(value="1") Any
 			div 
 				div
 					input#lockout.session(type="checkbox" checked)
