@@ -31,7 +31,7 @@ var rules = {
 	somepercent: true
 };
 
-var bingo = new Bingo(null, rules);
+// var bingo = new Bingo(null, rules);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

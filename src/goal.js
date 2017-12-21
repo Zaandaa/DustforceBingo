@@ -1,4 +1,3 @@
-var $ = require('jQuery');
 var getJSON = require('get-json');
 var seedrandom = require('seedrandom');
 
@@ -60,7 +59,7 @@ extern.makeGoals = function(ruleset) {
 		} else { // total
 			var newData = makeTotalGoalData(ruleset);
 			var newString = makeGoalString(newData);
-			while ($.inArray(newString, usedTotalGoalStrings) != -1) {
+			while (usedTotalGoalStrings.indexOf(newString) != -1) {
 				newData = makeTotalGoalData();
 				newString = makeGoalString(newData);
 			}

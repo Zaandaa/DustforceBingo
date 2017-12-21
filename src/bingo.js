@@ -1,4 +1,3 @@
-var $ = require('jQuery');
 var getJSON = require('get-json');
 var goal = require('./goal');
 
@@ -33,6 +32,41 @@ time preference? short vs long
 // var replays = require("src/replays.js");
 // replays(checkReplay);
 
+function cachePossibleBingos(ruleset) {
+	var sets = [];
+	var cells;
+	for (var i = 0; i < ruleset.size; i++) {
+		// column i
+		cells = [];
+		for (var c = 0; c < ruleset.size; c++) {
+			cells.push(c * ruleset.size + i);
+		}
+		sets.push(cells);
+
+		// row i
+		cells = [];
+		for (var c = 0; c < ruleset.size; c++) {
+			cells.push(i * ruleset.size + c);
+		}
+		sets.push(cells);
+	}
+
+	// diagonals
+	cells = [];
+	for (var i = 0; i < ruleset.size; i++) {
+		cells.push(ruleset.size * i + i);
+	}
+	sets.push(cells);
+
+	// diagonal tr-bl
+	cells = [];
+	for (var i = 0; i < ruleset.size; i++) {
+		cells.push((ruleset.size - i) * (i + 1));
+	}
+	sets.push(cells);
+
+	return sets;
+};
 
 var Bingo = function(session, ruleset) {
 	console.log(ruleset);
@@ -45,43 +79,7 @@ var Bingo = function(session, ruleset) {
 
 	self.players = {};
 	self.goals = goal.makeGoals(ruleset);
-	self.possibleBingos = self.cachePossibleBingos();
-
-	self.cachePossibleBingos = function() {
-		var sets = [];
-		var cells;
-		for (var i = 0; i < ruleset.size; i++) {
-			// column i
-			cells = [];
-			for (var c = 0; c < ruleset.size; c++) {
-				cells.push(c * ruleset.size + i);
-			}
-			sets.push(cells);
-
-			// row i
-			cells = [];
-			for (var c = 0; c < ruleset.size; c++) {
-				cells.push(i * ruleset.size + c);
-			}
-			sets.push(cells);
-		}
-
-		// diagonals
-		cells = [];
-		for (var i = 0; i < ruleset.size; i++) {
-			cells.push(ruleset.size * i + i);
-		}
-		sets.push(cells);
-
-		// diagonal tr-bl
-		cells = [];
-		for (var i = 0; i < ruleset.size; i++) {
-			cells.push((ruleset.size - i) * (i + 1));
-		}
-		sets.push(cells);
-
-		return sets;
-	};
+	self.possibleBingos = cachePossibleBingos(ruleset);
 
 
 	self.add_player = function(id, name) {
@@ -117,7 +115,7 @@ var Bingo = function(session, ruleset) {
 		for (var b in self.possibleBingos) {
 			var hasBingo = true;
 			for (var c in self.possibleBingos[b]) {
-				if (!$.inArray(c, self.players[id].goalsAchieved)) {
+				if (self.players[id].goalsAchieved.indexOf(c) != -1) {
 					hasBingo = false;
 					break;
 				}
@@ -133,7 +131,7 @@ var Bingo = function(session, ruleset) {
 		for (var b in self.possibleBingos) {
 			var blocked = false;
 			for (var c in self.possibleBingos[b]) {
-				if (self.goals[c].isAchieved() || !$.inArray(c, self.players[id].goalsAchieved)) {
+				if (self.goals[c].isAchieved() || self.players[id].goalsAchieved.indexOf(c) != -1) {
 					blocked = true;
 					break;
 				}
