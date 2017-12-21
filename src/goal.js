@@ -1,4 +1,9 @@
+var $ = require('jQuery');
+var getJSON = require('get-json');
 var seedrandom = require('seedrandom');
+
+var levels = require("./levels");
+var utils = require("./utils");
 
 /*
 card types
@@ -70,7 +75,7 @@ function makeLevelGoalDatas(ruleset) {
 	var validGoalDatas = [];
 	var totalDifficulty = 0;
 
-	for (var l in levels) {
+	for (var l in levels.levels) {
 
 		if (!ruleset.tutorials && levels.levels[l].hub == "Tutorial")
 			continue;
@@ -84,7 +89,7 @@ function makeLevelGoalDatas(ruleset) {
 			if (l == "Yotta Difficult" && (o == "SS" || o == "BS") && !ruleset.yottass)
 				return;
 
-			var d = getLevelDifficulty(levels[l], o);
+			var d = utils.getLevelDifficulty(levels[l], o);
 			if (d < ruleset.minDifficulty || d > ruleset.maxDifficulty)
 				return;
 			validGoalDatas.push({type: "level", objective: o, difficulty: d});

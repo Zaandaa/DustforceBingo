@@ -1,3 +1,7 @@
+var $ = require('jQuery');
+var getJSON = require('get-json');
+
+var levels = require('./levels');
 
 var Player = function(id, name) {
 	var self = this;
@@ -39,13 +43,13 @@ var Player = function(id, name) {
 		if (replay.meta.levelname in self.levelProgress) {
 			// score + keys
 			if (self.levelProgress[replay.meta.levelname].completion < replay.meta.score_completion) {
-				if ($.inArray(levels["levels"][replay.meta.levelname].hub, hubs) != -1)
-					self.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_completion - self.levelProgress[replay.meta.levelname].completion;
+				if ($.inArray(levels.levels[replay.meta.levelname].hub, hubs) != -1)
+					self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] += replay.meta.score_completion - self.levelProgress[replay.meta.levelname].completion;
 				self.levelProgress[replay.meta.levelname].completion = replay.meta.score_completion;
 			}
 			if (self.levelProgress[replay.meta.levelname].finesse < replay.meta.score_finesse) {
-				if ($.inArray(levels["levels"][replay.meta.levelname].hub, hubs) != -1)
-					self.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] += replay.meta.score_finesse - self.levelProgress[replay.meta.levelname].finesse;
+				if ($.inArray(levels.levels[replay.meta.levelname].hub, hubs) != -1)
+					self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] += replay.meta.score_finesse - self.levelProgress[replay.meta.levelname].finesse;
 				self.levelProgress[replay.meta.levelname].finesse = replay.meta.score_finesse;
 			}
 			// if char not in chars, add char to chars
@@ -63,8 +67,8 @@ var Player = function(id, name) {
 				chars: [characters[replay.meta.character]],
 				gimmicks = {}
 			}
-			if ($.inArray(levels["levels"][replay.meta.levelname].hub, hubs) != -1)
-				self.keyProgress[levels["levels"][replay.meta.levelname].hub][levels["levels"][replay.meta.levelname].key] = replay.meta.score_completion + replay.meta.score_finesse;
+			if ($.inArray(levels.levels[replay.meta.levelname].hub, hubs) != -1)
+				self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] = replay.meta.score_completion + replay.meta.score_finesse;
 
 			for (var g in meta.gimmicks) {
 				self.levelProgress[replay.meta.levelname].gimmicks[g] = accessGimmick(replay, g);

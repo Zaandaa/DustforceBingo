@@ -1,5 +1,8 @@
+var levels = require("./levels");
 
-function getLevelDifficulty(level, objective) {
+var extern = {}
+
+extern.getLevelDifficulty = function(level, objective) {
 	var d = objective == "Beat" ? 5 : 3;
 
 	switch (levels.levels[level].type) {
@@ -12,7 +15,7 @@ function getLevelDifficulty(level, objective) {
 	return d;
 }
 
-function generateGoalTotal(goalData, ruleset) {
+extern.generateGoalTotal = function(goalData, ruleset) {
 	// pick good total number range based on goalData and ruleset length/difficulty
 	return 2;
 
@@ -36,7 +39,7 @@ function generateGoalTotal(goalData, ruleset) {
 
 
 
-function accessGimmick(replay, gimmick) {
+extern.accessGimmick = function(replay, gimmick) {
 	if (gimmick == "lowpercent") {
 		return replay.meta.tags.collected;
 	} else if (gimmick == "lowattack") {
@@ -50,7 +53,7 @@ function accessGimmick(replay, gimmick) {
 	}
 }
 
-function betterGimmick(gimmick, g1, g2) {
+extern.betterGimmick = function(gimmick, g1, g2) {
 	if (gimmick == "apples") {
 		return Math.max(g1, g2);
 	} else {
@@ -65,16 +68,18 @@ function betterGimmick(gimmick, g1, g2) {
 	}
 }
 
-function meetGoalGimmick(replay, gimmick, goalRequirement) {
+extern.meetGoalGimmick = function(replay, gimmick, goalRequirement) {
 	if (gimmick == "apples") {
-		return accessGimmick(replay, gimmick) >= goalRequirement;
+		return extern.accessGimmick(replay, gimmick) >= goalRequirement;
 	} else if (gimmick == "lowattack") {
 		if (replay.meta.input_super > 0) {
 			return false;
 		} else {
-			return accessGimmick(replay, gimmick) <= goalRequirement;
+			return extern.accessGimmick(replay, gimmick) <= goalRequirement;
 		}
 	} else {
-		return accessGimmick(replay, gimmick) <= goalRequirement;
+		return extern.accessGimmick(replay, gimmick) <= goalRequirement;
 	}
 }
+
+module.exports = extern;
