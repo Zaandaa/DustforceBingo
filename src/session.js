@@ -102,14 +102,14 @@ extern.getSession = function(id) {
 seedrandom();
 function Session(bingo_args) {
 	var self = this;
+	console.log(bingo_args);
 	
 // PRIVATE:
 
 	var start = false;
 	var canStart = false;
 	var sockets = {};
-	var bingo = new Bingo(self, bingo_args);
-	
+
 	var seedChars = "1234567890qwertyuiopasdfghjklzxcvbnm";
 	var seedLength = 8;
 	function generateSeed() {
@@ -118,7 +118,14 @@ function Session(bingo_args) {
 			seed += seedChars.charAt(Math.floor(Math.random() * seedChars.length));
 		}
 	}
-	
+
+	self.id = generateSeed();
+	while(self.id in rooms)
+		self.id = generateSeed();
+	bingo_args.seed = self.id;
+
+	var bingo = new Bingo(self, bingo_args);
+
 	function emitAll(res, mes) {
 		for (id in sockets) {
 			sockets[id].emit(res, mes);
@@ -185,10 +192,6 @@ function Session(bingo_args) {
 	
 // CTOR:
 
-	self.id = generateSeed();
-	while(self.id in rooms)
-		self.id = generateSeed();
-	
 	rooms[self.id] = self;
 }
 
