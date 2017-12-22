@@ -119,6 +119,7 @@ levels.forEach(function(level) {
 		hub: h,
 		type: t,
 		key: keyfromtype[t],
+		charselect: t != "Tutorial",
 		gimmicks: []
 	}
 	

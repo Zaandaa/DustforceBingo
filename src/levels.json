@@ -33,35 +33,42 @@
 	},
 	"hubs": {
 		"Forest": {
-			"levels": "16",
-			"keys": "true"
+			"levels": 16,
+			"keys": true,
+			"charselect": true
 		},
 		"Mansion": {
-			"levels": "16",
-			"keys": "true"
+			"levels": 16,
+			"keys": true,
+			"charselect": true
 		},
 		"City": {
-			"levels": "16",
-			"keys": "true"
+			"levels": 16,
+			"keys": true,
+			"charselect": true
 		},
 		"Laboratory": {
-			"levels": "16",
-			"keys": "true"
+			"levels": 16,
+			"keys": true,
+			"charselect": true
 		},
 		"Tutorial": {
-			"levels": "3",
-			"keys": "false"
+			"levels": 3,
+			"keys": false,
+			"charselect": false
 		},
 		"Difficult": {
-			"levels": "8",
-			"keys": "false"
+			"levels": 8,
+			"keys": false,
+			"charselect": true
 		}
 	},
 	"levels": 	{
-    "Beginner Tutorial": {
+		"Beginner Tutorial": {
 			"hub": "Tutorial",
 			"type": "Tutorial",
 			"key": null,
+			"charselect": false,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -135,6 +142,7 @@
 			"hub": "Tutorial",
 			"type": "Tutorial",
 			"key": null,
+			"charselect": false,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -208,6 +216,7 @@
 			"hub": "Tutorial",
 			"type": "Tutorial",
 			"key": null,
+			"charselect": false,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -281,6 +290,7 @@
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -354,6 +364,7 @@
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -427,6 +438,7 @@
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -500,6 +512,7 @@
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -573,6 +586,7 @@
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -646,6 +660,7 @@
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -719,6 +734,7 @@
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -792,6 +808,7 @@
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -865,6 +882,7 @@
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -938,6 +956,7 @@
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1011,6 +1030,7 @@
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1084,6 +1104,7 @@
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1157,6 +1178,7 @@
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1230,6 +1252,7 @@
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1303,6 +1326,7 @@
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1376,6 +1400,7 @@
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1449,6 +1474,7 @@
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1522,6 +1548,7 @@
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1595,6 +1622,7 @@
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1668,6 +1696,7 @@
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1741,6 +1770,7 @@
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1814,6 +1844,7 @@
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1887,6 +1918,7 @@
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -1960,6 +1992,7 @@
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2033,6 +2066,7 @@
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2106,6 +2140,7 @@
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2179,6 +2214,7 @@
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2252,6 +2288,7 @@
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2325,6 +2362,7 @@
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2398,6 +2436,7 @@
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2471,6 +2510,7 @@
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2544,6 +2584,7 @@
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2617,6 +2658,7 @@
 			"hub": "City",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2690,6 +2732,7 @@
 			"hub": "City",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2763,6 +2806,7 @@
 			"hub": "City",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2836,6 +2880,7 @@
 			"hub": "City",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2909,6 +2954,7 @@
 			"hub": "City",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -2982,6 +3028,7 @@
 			"hub": "City",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3055,6 +3102,7 @@
 			"hub": "City",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3128,6 +3176,7 @@
 			"hub": "City",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3201,6 +3250,7 @@
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3274,6 +3324,7 @@
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3347,6 +3398,7 @@
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3420,6 +3472,7 @@
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3493,6 +3546,7 @@
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3566,6 +3620,7 @@
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3639,6 +3694,7 @@
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3712,6 +3768,7 @@
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3785,6 +3842,7 @@
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3858,6 +3916,7 @@
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -3931,6 +3990,7 @@
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4004,6 +4064,7 @@
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4077,6 +4138,7 @@
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4150,6 +4212,7 @@
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4223,6 +4286,7 @@
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4296,6 +4360,7 @@
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4369,6 +4434,7 @@
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4442,6 +4508,7 @@
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4515,6 +4582,7 @@
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4588,6 +4656,7 @@
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4661,6 +4730,7 @@
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4734,6 +4804,7 @@
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4807,6 +4878,7 @@
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4880,6 +4952,7 @@
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -4953,6 +5026,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -5026,6 +5100,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -5099,6 +5174,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -5172,6 +5248,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -5245,6 +5322,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -5318,6 +5396,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -5391,6 +5470,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
@@ -5464,6 +5544,7 @@
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
+			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",

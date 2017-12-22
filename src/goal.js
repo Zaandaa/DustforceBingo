@@ -95,7 +95,7 @@ function makeLevelGoalDatas(ruleset) {
 			validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d});
 			totalDifficulty += d;
 
-			if (ruleset.characters) {
+			if (ruleset.characters && levels.levels[l].charselect) {
 				constants.characters.forEach(function(c) {
 					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d, character: c})
 					totalDifficulty += d;
@@ -138,7 +138,7 @@ function makeTotalGoalData(ruleset) {
 		}
 	}
 
-	if (goalData.count == "Beat" && ruleset.characters) {
+	if (goalData.count == "Beat" && ruleset.characters && !(goalData.hub && !levels.hubs[goalData.hub].charselect)) {
 		r = Math.random();
 		if (r < chance[ruleset.save].total.character) {
 			goalData.character = constants.characters[Math.floor(Math.random() * constants.characters.length)];
