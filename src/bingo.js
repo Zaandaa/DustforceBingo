@@ -273,41 +273,42 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
-	self.checkReplay = function(replay) {
+	self.sendReplay = function(replay) {
 		if (!self.active)
 			return false;
 
 		// validate
-		if (replay.meta.validated < 1)
+		if (replay.validated < 1)
 			return false; // doesn't handle early exit
 
 		// in players
-		if (!(replay.meta.user in self.players))
+		if (!(replay.user in self.players))
 			return false;
 
 		// in levels
-		if (!levels.levels[replay.meta.levelname])
+		if (!levels.levels[replay.levelname])
 			return false;
-		if (levels.levels[replay.meta.levelname].hub == "Tutorial" && !self.ruleset.tutorials)
+		if (levels.levels[replay.levelname].hub == "Tutorial" && !self.ruleset.tutorials)
 			return false;
-		if (levels.levels[replay.meta.levelname].hub == "Difficult" && !self.ruleset.difficults)
+		if (levels.levels[replay.levelname].hub == "Difficult" && !self.ruleset.difficults)
 			return false;
 
-		self.players[replay.meta.user].addProgress(replay);
+		self.players[replay.user].addProgress(replay);
 
 		var success = false;
-		for (var i = 0; i < goals.length; i++) {
-			if (self.ruleset.lockout && goals[i].isAchieved() || self.players[replay.meta.user].goalsAchieved.includes(i)) {
+		for (var i = 0; i < self.goals.length; i++) {
+			if (self.ruleset.lockout && self.goals[i].isAchieved() || self.players[replay.user].goalsAchieved.includes(i)) {
 				continue;
-			} else if (goals[i].compareReplay(replay, self.players[replay.meta.user])) {
-				self.goals[i].addAchiever(replay.meta.username);
-				self.players[replay.meta.user].achieveGoal(i);
+			} else if (self.goals[i].compareReplay(replay, self.players[replay.user])) {
+				self.goals[i].addAchiever(replay.username);
+				self.players[replay.user].achieveGoal(i);
 				success = true;
+				console.log("GOAL ACHIEVED", i, replay.username);
 			}
 		}
 
 		if (success) {
-			self.checkWinStatus(replay.meta.user);
+			self.checkWinStatus(replay.user);
 			self.session.updateBoard(self.getBoardData());
 			self.checkFinished();
 		}

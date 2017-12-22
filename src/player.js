@@ -1,6 +1,7 @@
 var getJSON = require('get-json');
 
 var levels = require('./levels');
+var utils = require('./utils');
 var constants = require('./constants');
 
 var Player = function(id, name) {
@@ -46,39 +47,39 @@ var Player = function(id, name) {
 	};
 
 	self.addProgress = function(replay) {
-		if (replay.meta.levelname in self.levelProgress) {
+		if (replay.levelname in self.levelProgress) {
 			// score + keys
-			if (self.levelProgress[replay.meta.levelname].completion < replay.meta.score_completion) {
-				if (constants.hubs.includes(levels.levels[replay.meta.levelname].hub))
-					self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] += replay.meta.score_completion - self.levelProgress[replay.meta.levelname].completion;
-				self.levelProgress[replay.meta.levelname].completion = replay.meta.score_completion;
+			if (self.levelProgress[replay.levelname].completion < replay.score_completion) {
+				if (constants.hubs.includes(levels.levels[replay.levelname].hub))
+					self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_completion - self.levelProgress[replay.levelname].completion;
+				self.levelProgress[replay.levelname].completion = replay.score_completion;
 			}
-			if (self.levelProgress[replay.meta.levelname].finesse < replay.meta.score_finesse) {
-				if (constants.hubs.includes(levels.levels[replay.meta.levelname].hubs))
-					self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] += replay.meta.score_finesse - self.levelProgress[replay.meta.levelname].finesse;
-				self.levelProgress[replay.meta.levelname].finesse = replay.meta.score_finesse;
+			if (self.levelProgress[replay.levelname].finesse < replay.score_finesse) {
+				if (constants.hubs.includes(levels.levels[replay.levelname].hubs))
+					self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_finesse - self.levelProgress[replay.levelname].finesse;
+				self.levelProgress[replay.levelname].finesse = replay.score_finesse;
 			}
 			// if char not in chars, add char to chars
-			if (!self.levelProgress[replay.meta.levelname].characters.includes(constants.characters[replay.meta.character])) {
-				self.levelProgress[replay.meta.levelname].characters.push(constants.characters[replay.meta.character]);
+			if (!self.levelProgress[replay.levelname].characters.includes(constants.characters[replay.character])) {
+				self.levelProgress[replay.levelname].characters.push(constants.characters[replay.character]);
 			}
 			// better gimmicks
 			for (var g in levels.gimmicks) {
-				self.levelProgress[replay.meta.levelname].gimmicks[g] = utils.betterGimmick(g, utils.accessGimmick(replay, g), self.levelProgress[replay.meta.levelname].gimmicks[g]);
+				self.levelProgress[replay.levelname].gimmicks[g] = utils.betterGimmick(g, utils.accessGimmick(replay, g), self.levelProgress[replay.levelname].gimmicks[g]);
 			}
 		} else {
-			self.levelProgress[replay.meta.levelname] = {
-				completion: replay.meta.score_completion,
-				finesse: replay.meta.score_finesse,
-				chars: [constants.characters[replay.meta.character]],
+			self.levelProgress[replay.levelname] = {
+				completion: replay.score_completion,
+				finesse: replay.score_finesse,
+				chars: [constants.characters[replay.character]],
 				gimmicks: {}
 			}
-			if (constants.hubs.includes(levels.levels[replay.meta.levelname].hub))
-				self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] = replay.meta.score_completion + replay.meta.score_finesse;
+			if (constants.hubs.includes(levels.levels[replay.levelname].hub))
+				self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] = replay.score_completion + replay.score_finesse;
 
 			for (var g in levels.gimmicks) {
-				self.levelProgress[replay.meta.levelname].gimmicks[g] = utils.accessGimmick(replay, g.type);
-			};
+				self.levelProgress[replay.levelname].gimmicks[g] = utils.accessGimmick(replay, g);
+			}
 		}
 	};
 
@@ -102,9 +103,9 @@ var Player = function(id, name) {
 		} else if (goalData.count == "SS") {
 			// goalData.character, goalData.hub, goalData.type
 			for (var l in self.levelProgress) {
-				if (goalData.hub && levels[l].hub != goalData.hub)
+				if (goalData.hub && levels.levels[l].hub != goalData.hub)
 					continue;
-				if (goalData.type && levels[l].type != goalData.leveltype)
+				if (goalData.type && levels.levels[l].type != goalData.leveltype)
 					continue;
 				if (goalData.character && self.levelProgress[l].chars.includes(goalData.character))
 					continue;
@@ -115,14 +116,15 @@ var Player = function(id, name) {
 		} else if (goalData.count == "keys") {
 			// goalData.hub, goalData.type
 			if (goalData.hub) {
-				count = self.keyProgress[hub][type];
+				count = self.keyProgress[goalData.hub][goalData.keytype] / 10;
 			} else {
-				count += self.keyProgress["Forest"][type];
-				count += self.keyProgress["Mansion"][type];
-				count += self.keyProgress["City"][type];
-				count += self.keyProgress["Laboratory"][type];
+				count += self.keyProgress["Forest"][goalData.keytype];
+				count += self.keyProgress["Mansion"][goalData.keytype];
+				count += self.keyProgress["City"][goalData.keytype];
+				count += self.keyProgress["Laboratory"][goalData.keytype];
+				count /= 10;
 			}
-		} else if (goalData.count in meta.gimmicks) {
+		} else if (goalData.count in levels.gimmicks) {
 			for (var l in self.levelProgress) {
 				if (self.levelProgress[l].gimmicks[goalData.count] > -1) {
 					count += self.levelProgress[l].gimmicks[goalData.count];

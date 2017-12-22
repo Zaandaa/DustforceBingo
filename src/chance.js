@@ -28,72 +28,64 @@ hub specific (none or hub)
 var chance = {
 	newgame: {
 		level: {
-			chance: 0.5,
-			beat: 0.5,
-			ss: 1,
-			character: 0.5,
-			apple: 0,
+			chance: 0.6,
 		},
 		total: {
 			chance: 1,
 			beat: {
-				chance: 0.5,
+				chance: 0.3,
 				minimum: 4,
 				range: 60,
 			},
 			ss: {
-				chance: 1,
+				chance: 0.6,
 				minimum: 4,
 				range: 60,
 			},
 			keys: {
-				chance: 0,
+				chance: 0.9,
 				minimum: 1,
 				range: 15,
 			},
-			apple: {
-				chance: 0,
+			apples: {
+				chance: 1,
 				minimum: 2,
 				range: 48,
 			},
 			hub: 0.5,
 			character: 0.5,
-			leveltype: 0,
+			leveltype: 0.5,
 		}
 	},
 	newgameplus: {
 		level: {
-			chance: 0.5,
-			beat: 0.5,
-			ss: 1,
-			character: 0.5,
-			apple: 0,
+			chance: 0.6,
 		},
 		total: {
 			chance: 1,
 			beat: {
-				chance: 0.5,
+				chance: 0.3,
 				minimum: 4,
 				range: 60,
 			},
 			ss: {
-				chance: 1,
+				chance: 0.6,
 				minimum: 4,
 				range: 60,
 			},
 			keys: {
-				chance: 0,
+				chance: 0.9,
 				minimum: 1,
 				range: 15,
 			},
-			apple: {
-				chance: 0,
+			apples: {
+				chance: 1,
 				minimum: 2,
 				range: 48,
 			},
 			hub: 0.5,
 			character: 0.5,
-			leveltype: 0,
+			leveltype: 0.5,
 		}
 	}
 };

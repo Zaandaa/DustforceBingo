@@ -127,8 +127,10 @@ function makeTotalGoalData(ruleset) {
 		goalData.count = "SS";
 	else if (r < chance[ruleset.save].total.apples.chance)
 		goalData.count = "apples";
-	else if (r < chance[ruleset.save].total.keys.chance)
+	else if (r < chance[ruleset.save].total.keys.chance) {
 		goalData.count = "keys";
+		goalData.keytype = constants.keys[Math.floor(Math.random() * 4)];
+	}
 
 	r = Math.random();
 	if (r < chance[ruleset.save].total.hub) {
@@ -149,7 +151,7 @@ function makeTotalGoalData(ruleset) {
 		if (goalData.hub && levels.hubs[goalData.hub].keys) {
 			r = Math.random();
 			if (r < chance[ruleset.save].total.leveltype) {
-				goalData.leveltype = constants.hubs[Math.floor(Math.random() * leveltypes.length)];
+				goalData.leveltype = constants.hubs[Math.floor(Math.random() * constants.levelTypes.length)];
 			}
 		}
 	}
@@ -179,7 +181,7 @@ function makeGoalString(goalData) {
 			case "Beat":
 			case "SS": str = goalData.count + " " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : ""); break;
 			case "apples": str = "Hit " + goalData.total.toString() + " apple" + (goalData.total > 1 ? "s" : ""); break;
-			case "keys": str = "Get " + goalData.total.toString() + " key" + (goalData.total > 1 ? "s" : ""); break;
+			case "keys": str = "Get " + goalData.total.toString() + " " + goalData.keytype + " key" + (goalData.total > 1 ? "s" : ""); break;
 		}
 
 		if (goalData.hub)
@@ -217,15 +219,15 @@ var Goal = function(goalData) {
 		// check if replay meets goalData
 
 		if (self.goalData.type == "level") {
-			if (self.goalData.level == replay.meta.levelname) {
-				if (self.goalData.objective == "SS" && (replay.meta.score_completion != 5 || replay.meta.score_finesse != 5))
+			if (self.goalData.level == replay.levelname) {
+				if (self.goalData.objective == "SS" && (replay.score_completion != 5 || replay.score_finesse != 5))
 					return false;
-				if (self.goalData.character && self.goalData.character != constants.characters[replay.meta.character])
+				if (self.goalData.character && self.goalData.character != constants.characters[replay.character])
 					return false;
 
-				if (self.goalData.objective == "B%" && replay.meta.score_completion != 3)
+				if (self.goalData.objective == "B%" && replay.score_completion != 3)
 					return false;
-				if (self.goalData.objective == "BS" && (replay.meta.score_completion != 3 || replay.meta.score_finesse != 5))
+				if (self.goalData.objective == "BS" && (replay.score_completion != 3 || replay.score_finesse != 5))
 					return false;
 
 				for (var g in self.goalData.gimmicks) {

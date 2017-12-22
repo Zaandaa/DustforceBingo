@@ -1,6 +1,8 @@
 var getJSON = require('get-json');
 
 var levels = require("./levels");
+var constants = require('./constants');
+var chance = require('./chance');
 
 var extern = {}
 
@@ -31,45 +33,43 @@ extern.getLevelDifficulty = function(level, objective) {
 }
 
 extern.generateGoalTotal = function(goalData, ruleset) {
-	// pick good total number range based on goalData and ruleset length/difficulty
-	return 2;
+	// pick good total number range based on goalData, length, difficulty
+	var multiplier = Math.random();
 
-	/*/ pick range for multiplier based on stuff
-	var l = (5 - ruleset.length) * 0.25;
-	var d = ruleset.difficulty * 0.25;
-
-	if (goalData.
-	Math.min(1, 1 + length - goalData.leveltype);
-
-	// calculate multiplier
-	var r = Math.random();
-	var multiplier;
+	if (goalData.leveltype) {
+		multiplier *= Math.min(4, 8 - constants.levelTypes.indexOf(goalData.leveltype) - ruleset.difficulty) * 0.25;
+		multiplier *= Math.min(4, 9 - constants.levelTypes.indexOf(goalData.leveltype) - 2 * ruleset.length) * 0.25;
+	} else if (goalData.keytype) {
+		multiplier *= Math.min(4, 8 - constants.keys.indexOf(goalData.keytype) - ruleset.difficulty) * 0.25;
+		multiplier *= Math.min(4, 9 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.length) * 0.25;
+	}
 
 	// calculate total based on stuff, using multiplier
-	var total = Math.floor(multiplier * chances[ruleset.save].total[countType.toLowerCase()].range) + chances[ruleset.save].total[countType.toLowerCase()].minimum;
+	var total = Math.floor(multiplier * chance[ruleset.save].total[goalData.count.toLowerCase()].range) + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum;
 
-	if hub
+	if (goalData.hub) {
 		if (goalData.hub == "Difficult" || goalData.hub == "Tutorial")
 			total = Math.ceil(multiplier * (levels.hubs[goalData.hub].levels - (!ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
 		else
-			total = Math.ceil(goalData.total / 4);
+			total = Math.ceil(total / 4);
+	}
 
-	return total;*/
+	return total;
 }
 
 
 
 extern.accessGimmick = function(replay, gimmick) {
 	if (gimmick == "lowpercent") {
-		return replay.meta.tags.collected;
+		return replay.tag.collected;
 	} else if (gimmick == "lowattack") {
-		if (replay.meta.input_super > 0) {
+		if (replay.input_super > 0) {
 			return -1; // invalid
 		} else {
-			return replay.meta.input_lights + 3 * replay.meta.input_heavies;
+			return replay.input_lights + 3 * replay.input_heavies;
 		}
 	} else {
-		return replay.meta[levels.gimmicks[gimmick].accessor];
+		return replay[levels.gimmicks[gimmick].accessor];
 	}
 }
 
@@ -92,7 +92,7 @@ extern.meetGoalGimmick = function(replay, gimmick) {
 	if (gimmick.type == "apples") {
 		return extern.accessGimmick(replay, gimmick.type) >= gimmick.count;
 	} else if (gimmick.type == "lowattack") {
-		if (replay.meta.input_super > 0) {
+		if (replay.input_super > 0) {
 			return false;
 		} else {
 			return extern.accessGimmick(replay, gimmick.type) <= gimmick.count;
