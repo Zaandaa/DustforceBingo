@@ -96,12 +96,14 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.checkPlayersReady = function() {
-		var count = 0;
+		var ready = false;
 		for (var p in self.players) {
-			if (self.players[p].getReady())
-				count++;
+			if (self.players[p].getReady()) {
+				ready = true;
+				break;
+			}
 		}
-		self.session.canStart(count > 1)
+		self.session.canStart(ready);
 	};
 
 	self.ready = function(id) {
@@ -231,6 +233,16 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.start = function() {
+		var ready = false;
+		for (var p in self.players) {
+			if (self.players[p].getReady()) {
+				ready = true;
+				break;
+			}
+		}
+		if (!ready)
+			return;
+
 		self.active = true;
 
 		// remove not ready players
