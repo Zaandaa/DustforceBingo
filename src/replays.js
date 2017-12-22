@@ -1,36 +1,56 @@
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+var http = require('http');
 
-var raw_data = ""
+var seperator = '\u001e';
 
-function create_parse(lambda) {
-	var data="", pos = 0;
-	return function () {
-		console.log("readystatechange within XHR", this.readyState);
-		if (this.readyState > 2) { // sent was called
-			var orig_sz = data.length;
-			data += this.responseText.substring(pos);
-			pos = this.responseText.length;
-			var sep_pos = data.indexOf("\x1e", orig_sz);
-			while (sep_pos != -1) {
-				if (sep_pos > 0) {
-					var msg = JSON.parse(data.substr(0, sep_pos));
-					lambda(msg);
-				}
-				data = data.substr(sep_pos + 1);
-				sep_pos = data.indexOf("\x1e");
-			}
-		}
-		if (this.readyState == 4) {
-			start(lambda)
-		}
+// bound by [timeout, 2*timeout)
+function keepAlive(timeout, onTimeout) {
+	var count;
+	function check() {
+		var countCopy = count;
+		setTimeout(timeout, function() {
+			if(countCopy == count)
+				onTimeout();
+			else
+				check();
+		})
+	} check();
+	return function() {
+		count+=1;
+	}
+}
+
+function createParser(lambda, updated) {
+	var data="";
+	return function (chunk) {
+		console.log("recieved chunk", chunk);
+		updated();
+		data += chunk;
+		var items = data.split(seperator);
+		data = items.pop();
+		
+		items.forEach(function(i) {
+			if (i == "") 
+				return;
+			lambda(JSON.parse(i));
+		});
 	}
 }
 	
 function start(lambda) {
-	var req = new XMLHttpRequest();
-	req.onreadystatechange = create_parse(lambda);
-	req.open("GET", "http://www.dustkid.com/backend/events.php", true);
-	req.send(null);
+	http.get("http://dustkid.com/backend/events.php?time_token=" 
+			+ new Date().getTime().toString().slice(0, -3), 
+		function (res) {
+			res.setEncoding('utf8');
+			var updated = keepAlive(10000, function() {
+				res.abort();
+				start(lambda);
+			});
+			res.on('data', createParser(lambda, updated));
+			res.on('error', function(e) {
+				throw new Error(e);
+			});
+		}
+	);
 }
 
 module.exports = start;
