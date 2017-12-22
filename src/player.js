@@ -19,6 +19,12 @@ var Player = function(id, name) {
 		"Laboratory": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
 	};
 
+	// used by bingo for lockout forced win checking
+	self.bingos = 0;
+	self.maxBingos = 0;
+	self.maxGoals = 0;
+	self.canWin = true;
+
 	self.toString = function() {
 		return self.name;
 	};
