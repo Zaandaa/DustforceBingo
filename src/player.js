@@ -43,35 +43,35 @@ var Player = function(id, name) {
 		if (replay.meta.levelname in self.levelProgress) {
 			// score + keys
 			if (self.levelProgress[replay.meta.levelname].completion < replay.meta.score_completion) {
-				if (constants.hubs.indexOf(levels.levels[replay.meta.levelname].hub) != -1)
+				if (constants.hubs.includes(levels.levels[replay.meta.levelname].hub))
 					self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] += replay.meta.score_completion - self.levelProgress[replay.meta.levelname].completion;
 				self.levelProgress[replay.meta.levelname].completion = replay.meta.score_completion;
 			}
 			if (self.levelProgress[replay.meta.levelname].finesse < replay.meta.score_finesse) {
-				if (constants.hubs.indexOf(levels.levels[replay.meta.levelname].hubs) != -1)
+				if (constants.hubs.includes(levels.levels[replay.meta.levelname].hubs))
 					self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] += replay.meta.score_finesse - self.levelProgress[replay.meta.levelname].finesse;
 				self.levelProgress[replay.meta.levelname].finesse = replay.meta.score_finesse;
 			}
 			// if char not in chars, add char to chars
-			if (self.levelProgress[replay.meta.levelname].characters.indexOf(constants.characters[replay.meta.character]) == -1) {
+			if (!self.levelProgress[replay.meta.levelname].characters.includes(constants.characters[replay.meta.character])) {
 				self.levelProgress[replay.meta.levelname].characters.push(constants.characters[replay.meta.character]);
 			}
 			// better gimmicks
-			for (var g in meta.gimmicks) {
-				self.levelProgress[replay.meta.levelname].gimmicks[g] = betterGimmick(g, accessGimmick(replay, g), self.levelProgress[replay.meta.levelname].gimmicks[g]);
+			for (var g in levels.gimmicks) {
+				self.levelProgress[replay.meta.levelname].gimmicks[g] = utils.betterGimmick(g, utils.accessGimmick(replay, g), self.levelProgress[replay.meta.levelname].gimmicks[g]);
 			}
 		} else {
 			self.levelProgress[replay.meta.levelname] = {
 				completion: replay.meta.score_completion,
 				finesse: replay.meta.score_finesse,
 				chars: [constants.characters[replay.meta.character]],
-				gimmicks = {}
+				gimmicks: {}
 			}
-			if (constants.hubs.indexOf(levels.levels[replay.meta.levelname].hub) != -1)
+			if (constants.hubs.includes(levels.levels[replay.meta.levelname].hub))
 				self.keyProgress[levels.levels[replay.meta.levelname].hub][levels.levels[replay.meta.levelname].key] = replay.meta.score_completion + replay.meta.score_finesse;
 
-			for (var g in meta.gimmicks) {
-				self.levelProgress[replay.meta.levelname].gimmicks[g] = accessGimmick(replay, g);
+			for (var g in levels.gimmicks) {
+				self.levelProgress[replay.meta.levelname].gimmicks[g] = utils.accessGimmick(replay, g.type);
 			};
 		}
 	};
@@ -89,7 +89,7 @@ var Player = function(id, name) {
 					continue;
 				if (goalData.type && levels.levels[l].type != goalData.type)
 					continue;
-				if (goalData.character && self.levelProgress[l].chars.indexOf(goalData.character) != -1)
+				if (goalData.character && self.levelProgress[l].chars.includes(goalData.character))
 					continue;
 				count++;
 			}
@@ -100,7 +100,7 @@ var Player = function(id, name) {
 					continue;
 				if (goalData.type && levels[l].type != goalData.leveltype)
 					continue;
-				if (goalData.character && self.levelProgress[l].chars.indexOf(goalData.character) != -1)
+				if (goalData.character && self.levelProgress[l].chars.includes(goalData.character))
 					continue;
 				if (self.levelProgress[l].completion < 5 || self.levelProgress[i].finesse < 5)
 					continue;

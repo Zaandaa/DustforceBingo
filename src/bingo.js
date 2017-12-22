@@ -1,5 +1,6 @@
 var getJSON = require('get-json');
 var goal = require('./goal');
+var Player = require('./player');
 
 var levels = require('./levels');
 var constants = require('./constants');
@@ -61,7 +62,7 @@ function cachePossibleBingos(ruleset) {
 	// diagonal tr-bl
 	cells = [];
 	for (var i = 0; i < ruleset.size; i++) {
-		cells.push((ruleset.size - i) * (i + 1));
+		cells.push(ruleset.size * (i + 1) - i - 1);
 	}
 	sets.push(cells);
 
@@ -69,7 +70,7 @@ function cachePossibleBingos(ruleset) {
 };
 
 var Bingo = function(session, ruleset) {
-	console.log(ruleset);
+	// console.log(ruleset);
 	var self = this;
 	self.session = session;
 	self.ruleset = ruleset;
@@ -83,31 +84,38 @@ var Bingo = function(session, ruleset) {
 
 
 	self.add_player = function(id, name) {
-		self.players[id] = new Player(id, name);
+		if (!self.active)
+			self.players[id] = new Player(id, name);
 	};
 
 	self.remove_player = function(id) {
-		delete self.players[id];
-		self.checkPlayersReady();
+		if (!self.active) {
+			delete self.players[id];
+			self.checkPlayersReady();
+		}
 	};
 
 	self.checkPlayersReady = function() {
 		var count = 0;
-		for (var p in players) {
-			if (players[p].getReady())
+		for (var p in self.players) {
+			if (self.players[p].getReady())
 				count++;
 		}
 		self.session.canStart(count > 1)
 	};
 
 	self.ready = function(id) {
-		self.players[id].setReady(true);
-		self.checkPlayersReady();
+		if (!self.active) {
+			self.players[id].setReady(true);
+			self.checkPlayersReady();
+		}
 	};
 
 	self.unready = function(id) {
-		self.players[id].setReady(false);
-		self.checkPlayersReady();
+		if (!self.active) {
+			self.players[id].setReady(false);
+			self.checkPlayersReady();
+		}
 	};
 
 	self.playerCountBingo = function(id) {
@@ -115,7 +123,7 @@ var Bingo = function(session, ruleset) {
 		for (var b in self.possibleBingos) {
 			var hasBingo = true;
 			for (var c in self.possibleBingos[b]) {
-				if (self.players[id].goalsAchieved.indexOf(c) != -1) {
+				if (!self.players[id].goalsAchieved.includes(self.possibleBingos[b][c])) {
 					hasBingo = false;
 					break;
 				}
@@ -126,12 +134,15 @@ var Bingo = function(session, ruleset) {
 		return bingoCount;
 	};
 
-	self.playerPossibleBingo = function(id) {
+	self.playerMaxBingo = function(id) {
+		if (!ruleset.lockout)
+			return self.possibleBingos.length;
+
 		var bingoCount = 0;
 		for (var b in self.possibleBingos) {
 			var blocked = false;
 			for (var c in self.possibleBingos[b]) {
-				if (self.goals[c].isAchieved() || self.players[id].goalsAchieved.indexOf(c) != -1) {
+				if (self.goals[self.possibleBingos[b][c]].isAchieved() && !self.players[id].goalsAchieved.includes(self.possibleBingos[b][c])) {
 					blocked = true;
 					break;
 				}
@@ -142,18 +153,10 @@ var Bingo = function(session, ruleset) {
 		return bingoCount;
 	};
 
-	self.isBingoCountPossible = function() {
-		if (!ruleset.lockout)
-			return true;
-
-		return false;
-		// return true if any player can achieve ruleset.bingo_count
-	};
-
 	self.countGoalsAchieved = function() {
 		var goalsAchieved = 0;
 		for (var g in self.goals) {
-			if (g.isAchieved())
+			if (self.goals[g].isAchieved())
 				goalsAchieved++;
 		}
 		return goalsAchieved;
@@ -163,34 +166,101 @@ var Bingo = function(session, ruleset) {
 		var isWinner = false;
 
 		if (self.ruleset.bingo_count_type == "bingo") {
-			if (playerCountBingo(id) >= self.ruleset.bingo_count) {
+			if (self.playerCountBingo(id) >= self.ruleset.bingo_count) {
 				self.winner = self.players[id].toString();
-			} else if (!self.isBingoCountPossible()) {
-				// tiebreak winner = most bingos then most goals
-				// force win if tied bingos possible: 1st > 2nd + remaining
+			} else {
+				// resolve winner: most bingos then most goals
 				var goalsRemaining = self.goals.length - self.countGoalsAchieved();
-				var topPlayer = 0;
-				var pg1 = 0;
-				var pg2 = 0;
+				var topPlayersBingos = [];
+				var pTopBingos1 = 0;
+				var pTopBingos2 = 0;
+				var pMaxBingos1 = 0;
+				var pMaxBingos2 = 0;
 				for (var p in self.players) {
-					if (self.players[p].goalsAchieved.length > pg1) {
-						pg2 = pg1;
-						pg1 = self.players[p].goalsAchieved.length;
-					} else if (self.players[p].goalsAchieved.length > pg2) {
-						pg2 = self.players[p].goalsAchieved.length;
+					var b = self.playerCountBingo(p);
+					if (b > pTopBingos1) {
+						topPlayersBingos = [self.players[p].toString()];
+						pTopBingos2 = pTopBingos1;
+						pTopBingos1 = b;
+					} else if (b == pTopBingos1) {
+						topPlayersBingos.push(self.players[p].toString());
+						pTopBingos2 = b;
+					} else if (b > pTopBingos2) {
+						pTopBingos2 = b;
+					}
+
+					var m = self.playerMaxBingo(p);
+					if (m > pMaxBingos1) {
+						pMaxBingos2 = pMaxBingos1;
+						pMaxBingos1 = m;
+					} else if (m > pMaxBingos2) {
+						pMaxBingos2 = m;
 					}
 				}
-				if (goalsRemaining < pg1 - pg2) { // impossible for another player to win
-					self.winner = self.players[topPlayer].toString();
+
+				// check forced win
+				if (pTopBingos1 > pMaxBingos2 && pMaxBingos2 < ruleset.bingo_count) {
+					self.winner = topPlayersBingos.join(" ");
+				}
+
+				// check forced bingo count tie
+				if (pTopBingos1 == pTopBingos2 && pTopBingos1 == pMaxBingos1) { 
+					var topPlayersGoals = [];
+					var pTopGoals1 = 0;
+					var pTopGoals2 = 0;
+					for (var p in self.players) {
+						if (!topPlayersBingos.includes(self.players[p].toString()))
+							continue;
+
+						if (self.players[p].goalsAchieved.length > pTopGoals1) {
+							topPlayersGoals = [self.players[p].toString()];
+							pTopGoals2 = pTopGoals1;
+							pTopGoals1 = self.players[p].goalsAchieved.length;
+						} else if (self.players[p].goalsAchieved.length == pTopGoals1) {
+							topPlayersGoals.push(self.players[p].toString());
+							pTopGoals2 = self.players[p].goalsAchieved.length;
+						} else if (self.players[p].goalsAchieved.length > pTopGoals2) {
+							pTopGoals2 = self.players[p].goalsAchieved.length;
+						}
+					}
+
+					if (goalsRemaining < pTopGoals1 - pTopGoals2) { // impossible for another player to win
+						self.winner = topPlayersGoals.join(" ");
+					} else if (goalsRemaining == 0) {
+						self.winner = topPlayersGoals.join(" ");
+					}
 				}
 			}
 		} else { // count player goals
 			if (self.players[id].goalsAchieved.length >= self.ruleset.bingo_count) {
 				self.winner = self.players[id].toString();
+			} else if (ruleset.lockout) {
+				// check if someone forces win
+				var goalsRemaining = self.goals.length - self.countGoalsAchieved();
+				var topPlayersGoals = [];
+				var pTopGoals1 = 0;
+				var pTopGoals2 = 0;
+				for (var p in self.players) {
+					if (self.players[p].goalsAchieved.length > pTopGoals1) {
+						topPlayersGoals = [self.players[p].toString()];
+						pTopGoals2 = pTopGoals1;
+						pTopGoals1 = self.players[p].goalsAchieved.length;
+					} else if (self.players[p].goalsAchieved.length == pTopGoals1) {
+						topPlayersGoals.push(self.players[p].toString());
+						pTopGoals2 = self.players[p].goalsAchieved.length;
+					} else if (self.players[p].goalsAchieved.length > pTopGoals2) {
+						pTopGoals2 = self.players[p].goalsAchieved.length;
+					}
+				}
+				if (goalsRemaining < pTopGoals1 - pTopGoals2) { // impossible for another player to win
+					self.winner = topPlayersGoals.join(" ");
+				} else if (goalsRemaining == 0) {
+					self.winner = topPlayersGoals.join(" ");
+				}
 			}
 		}
 
-		if (self.winner) {
+		if (self.winner != "") {
 			self.finish();
 		}
 	};
@@ -234,10 +304,10 @@ var Bingo = function(session, ruleset) {
 
 		var success = false;
 		for (var i = 0; i < goals.length; i++) {
-			if (self.ruleset.lockout && goals[i].isAchieved()) {
+			if (self.ruleset.lockout && goals[i].isAchieved() || self.players[replay.meta.user].goalsAchieved.includes(i)) {
 				continue;
 			} else if (goals[i].compareReplay(replay, self.players[replay.meta.user])) {
-				self.goals[i].achieve(replay.meta.username);
+				self.goals[i].addAchiever(replay.meta.username);
 				self.players[replay.meta.user].achieveGoal(i);
 				success = true;
 			}

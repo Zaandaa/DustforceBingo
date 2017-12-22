@@ -1,6 +1,7 @@
-function base_gimmick(t) {
+function base_gimmick(t, o) {
 	return {
 		type: t,
+		objective: o,
 		difficulty: 0,
 		count: 0
 	}
@@ -118,14 +119,13 @@ levels.forEach(function(level) {
 		hub: h,
 		type: t,
 		key: keyfromtype[t],
-		gimmicks: {}
+		gimmicks: []
 	}
 	
 	gimmicks.forEach(function(g) {
-		x.gimmicks[g] = [];
-		x.gimmicks[g].push(new base_gimmick("Beat"));
+		x.gimmicks.push(new base_gimmick(g, "Beat"));
 		if(!cantss.includes(g))
-			x.gimmicks[g].push(new base_gimmick("SS"));
+			x.gimmicks.push(new base_gimmick(g, "SS"));
 	})
 	
 	out[l] = x;

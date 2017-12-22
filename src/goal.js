@@ -59,7 +59,7 @@ extern.makeGoals = function(ruleset) {
 		} else { // total
 			var newData = makeTotalGoalData(ruleset);
 			var newString = makeGoalString(newData);
-			while (usedTotalGoalStrings.indexOf(newString) != -1) {
+			while (usedTotalGoalStrings.includes(newString)) {
 				newData = makeTotalGoalData(ruleset);
 				newString = makeGoalString(newData);
 			}
@@ -103,18 +103,13 @@ function makeLevelGoalDatas(ruleset) {
 			}
 		});
 
-		Object.keys(levels.gimmicks).forEach(function(g) {
-			return;
-			if (!ruleset[g])
+		levels.levels[l].gimmicks.forEach(function(g) {
+			if (!ruleset[g.type])
 				return;
-
-			var g_count = Object.keys(levels.levels[l].gimmicks[g]).length;
-			levels.levels[l].gimmicks[g].forEach(function(gg) {
-				if (gg.difficulty < ruleset.difficulty)
-					return;
-				validGoalDatas.push({type: "level", level: l, objective: gg.type, difficulty: gg.difficulty / gCount, gimmicks: [g]});
-				totalDifficulty += gg.difficulty / gCount;
-			});
+			if (g.difficulty < ruleset.difficulty)
+				return;
+			validGoalDatas.push({type: "level", level: l, objective: g.type, difficulty: g.difficulty, gimmicks: [g]});
+			totalDifficulty += g.difficulty;
 		});
 	}
 
@@ -175,7 +170,7 @@ function makeGoalString(goalData) {
 
 		if (goalData.gimmicks) {
 			goalData.gimmicks.forEach(function(g) {
-				str += " with " + g.total.toString() + g.format + (g.total != 1 ? g.plural : "")
+				str += " with " + levels.gimmicks[g.type].format.replace("{count}", g.count) + (g.count != 1 ? levels.gimmicks[g.type].plural : "");
 			});
 		}
 
@@ -228,8 +223,13 @@ var Goal = function(goalData) {
 				if (self.goalData.character && self.goalData.character != constants.characters[replay.meta.character])
 					return false;
 
+				if (self.goalData.objective == "B%" && replay.meta.score_completion != 3)
+					return false;
+				if (self.goalData.objective == "BS" && (replay.meta.score_completion != 3 || replay.meta.score_finesse != 5))
+					return false;
+
 				for (var g in self.goalData.gimmicks) {
-					if (!meetGoalGimmick(replay, g, self.goalData.gimmicks[g]))
+					if (!utils.meetGoalGimmick(replay, self.goalData.gimmicks[g]))
 						return false;
 				}
 

@@ -83,17 +83,17 @@ extern.betterGimmick = function(gimmick, g1, g2) {
 	}
 }
 
-extern.meetGoalGimmick = function(replay, gimmick, goalRequirement) {
-	if (gimmick == "apples") {
-		return extern.accessGimmick(replay, gimmick) >= goalRequirement;
-	} else if (gimmick == "lowattack") {
+extern.meetGoalGimmick = function(replay, gimmick) {
+	if (gimmick.type == "apples") {
+		return extern.accessGimmick(replay, gimmick.type) >= gimmick.count;
+	} else if (gimmick.type == "lowattack") {
 		if (replay.meta.input_super > 0) {
 			return false;
 		} else {
-			return extern.accessGimmick(replay, gimmick) <= goalRequirement;
+			return extern.accessGimmick(replay, gimmick.type) <= gimmick.count;
 		}
 	} else {
-		return extern.accessGimmick(replay, gimmick) <= goalRequirement;
+		return extern.accessGimmick(replay, gimmick.type) <= gimmick.count;
 	}
 }
 
