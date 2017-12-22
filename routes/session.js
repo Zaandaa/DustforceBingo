@@ -1,6 +1,4 @@
 var express = require('express');
-var session = require('../src/session');
-var router = express.Router();
 
 function verify(fields, data) {
 	var b = true;
@@ -33,21 +31,34 @@ var params = [
 	"somepercent"
 ];
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	if(verify(params, req.query)) {
-		console.log(req.query);
-		var s = session.newSession(req.query)
-		res.redirect('/' + s.id);
-	}
-});
+function build(io) {
+	var session = require('../src/session')(io);
+	var router = express.Router();
 
-router.get('/:id', function(req, res, next) {
-	if(!session.getSession(req.param.id)) {
-		return;
-	}
-	var s = session.getSession(req.param.id)
-	res.render('session', { board: s });
-});
+	router.get('/', function(req, res, next) {
+		if(verify(params, req.query)) {
+			var s = session.newSession(req.query);
+			console.log(s);
+			res.redirect('/session/' + s.id);
+		} else {
+			var err = new Error('Not Found');
+			err.status = 404;
+			next(err);
+		}
+	});
 
-module.exports = router;
+	router.get('/:id', function(req, res, next) {
+		console.log(`getting room ${req.params.id}`);
+		if(!session.getSession(req.params.id)) {
+			var err = new Error('Not Found');
+			err.status = 404;
+			next(err);
+			return;
+		}
+		var s = session.getSession(req.params.id)
+		res.render('session', { session: s });
+	});
+	return router;
+}
+
+module.exports = build;

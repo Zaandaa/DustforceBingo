@@ -1,6 +1,5 @@
-
-function updateBoardTable(boardJson) {
-	$("#bingo_table_div").empty();
+function updateBoardTable(boardJson, target) {
+	target.empty();
 
 	boardData = JSON.parse(boardJson);
 
@@ -16,5 +15,5 @@ function updateBoardTable(boardJson) {
 		table.append(row);
 	}
 
-	$("#bingo_table_div").append(table);
+	target.append(table);
 }

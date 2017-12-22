@@ -3,13 +3,17 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var http = require("http");
+var socket = require("socket.io");
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var session = require('./routes/session');
-var testbingo = require('./routes/testbingo');
-
 var app = express();
+var server = http.createServer(app);
+var io = socket(server);
+
+var index = require('./routes/index');
+var session = require('./routes/session')(io);
+var testbingo = require('./routes/testbingo');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('socket', express.static(path.join(__dirname, 'node_modules\socket.io-client\dist')));
+app.use('/socket', express.static(path.join(__dirname, 'node_modules', 'socket.io-client', 'dist')));
 
 app.use('/', index);
 app.use('/session', session);
@@ -46,4 +50,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = server;

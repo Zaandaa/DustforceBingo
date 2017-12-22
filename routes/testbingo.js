@@ -44,10 +44,10 @@ var fakeSession = {
 var bingo = new Bingo(fakeSession, rules);
 
 // add players
-bingo.add_player(10,"--"); bingo.ready(10);
-bingo.add_player(11,"OO"); bingo.ready(11);
+bingo.addPlayer(10,"--"); bingo.ready(10);
+bingo.addPlayer(11,"OO"); bingo.ready(11);
 // bingo.add_player(1.5,"P1.5"); // not ready, should get removed
-bingo.add_player(22,"||"); bingo.ready(22);
+bingo.addPlayer(22,"||"); bingo.ready(22);
 bingo.start();
 
 var count = 0;

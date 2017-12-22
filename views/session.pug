@@ -1,9 +1,18 @@
 extends layout
 
 block js
-	script(src="socket/socket.io.js")
-	script(src="js/session.js")
+	script= "const sessionId = \'" + session.id + "';"
+	script(src="../socket/socket.io.min.js")
+	script(src="../js/board.js")
+	script(src="../js/session.js")
 
 block content
-	div= session
+	div 
+		div Username
+		input#username 
 	
+		button#join Join
+		
+		button#ready ready
+		
+		button#start start
