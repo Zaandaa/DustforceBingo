@@ -245,6 +245,20 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
+	self.checkFinished = function() {
+		if (self.countGoalsAchieved() == self.goals.length) {
+			if (self.ruleset.lockout) {
+				self.finish();
+			} else {
+				for (var p in self.players) {
+					if (self.players[p].goalsAchieved.length == self.goals.length)
+						return;
+				}
+				self.finish();
+			}
+		}
+	};
+
 	self.checkReplay = function(replay) {
 		if (!self.active)
 			return false;
@@ -281,6 +295,7 @@ var Bingo = function(session, ruleset) {
 		if (success) {
 			self.checkWinStatus(replay.meta.user);
 			self.session.updateBoard(self.getBoardData());
+			self.checkFinished();
 		}
 		return true;
 	};
