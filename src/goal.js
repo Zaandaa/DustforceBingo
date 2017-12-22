@@ -133,7 +133,7 @@ function makeTotalGoalData(ruleset) {
 	r = Math.random();
 	if (r < chance[ruleset.save].total.hub) {
 		goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
-		while (goalData.count == "keys" && !levels.hubs[goalData.hub].keys || goalData.hub == "Tutorial" && !ruleset.tutorials || goalData.hub == "Difficult" && (!ruleset.difficults || ruleset.mode == "newgame" && (ruleset.length > 0.5 || ruleset.difficulty < 4))) {
+		while (goalData.count == "keys" && !levels.hubs[goalData.hub].keys || goalData.hub == "Tutorial" && !ruleset.tutorials || goalData.hub == "Difficult" && (!ruleset.difficults || ruleset.mode == "newgame" && (ruleset.length == 1 || ruleset.difficulty < 3))) {
 			goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
 		}
 	}

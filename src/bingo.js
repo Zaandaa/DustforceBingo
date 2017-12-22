@@ -255,6 +255,8 @@ var Bingo = function(session, ruleset) {
 		for (var i = 0; i < playersToRemove.length; i++) {
 			delete self.players[playersToRemove[i]];
 		}
+
+		self.session.updateBoard(self.getBoardData());
 	};
 
 	self.checkFinished = function() {

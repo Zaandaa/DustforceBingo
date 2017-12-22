@@ -35,10 +35,15 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 	return 2;
 
 	/*/ pick range for multiplier based on stuff
-	
+	var l = (5 - ruleset.length) * 0.25;
+	var d = ruleset.difficulty * 0.25;
+
+	if (goalData.
+	Math.min(1, 1 + length - goalData.leveltype);
 
 	// calculate multiplier
-	var multiplier = Math.random();
+	var r = Math.random();
+	var multiplier;
 
 	// calculate total based on stuff, using multiplier
 	var total = Math.floor(multiplier * chances[ruleset.save].total[countType.toLowerCase()].range) + chances[ruleset.save].total[countType.toLowerCase()].minimum;
