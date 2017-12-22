@@ -83,12 +83,12 @@ var Bingo = function(session, ruleset) {
 	self.possibleBingos = cachePossibleBingos(ruleset);
 
 
-	self.add_player = function(id, name) {
+	self.addPlayer = function(id, name) {
 		if (!self.active)
 			self.players[id] = new Player(id, name);
 	};
 
-	self.remove_player = function(id) {
+	self.removePlayer = function(id) {
 		if (!self.active) {
 			delete self.players[id];
 			self.checkPlayersReady();
