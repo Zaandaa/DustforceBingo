@@ -5,7 +5,7 @@ function updateBoardTable(boardJson, target) {
 
 	var table = $("<table></table>").addClass("bingo_table");
 
-	for (var i = 0; i < boardData.size * boardData.size; i++) {
+	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<tr></tr>");
 		for (var j = 0; j < boardData.size; j++) {
 			var cell = $("<td></td>");

@@ -6,13 +6,21 @@ var replays = require("./replays");
 
 function build(io) {
 	var extern = {};
-
+	
 /*
  * Connections
  */
+
  
 // INTERNAL:
 	var rooms = {};
+ 
+	replays(function(r) {
+		console.log(r);
+		for(s in rooms) {
+			rooms[s].recieveReplay(r);
+		}
+	})
  
 	function Error(socket, res, message) {
 		socket.emit(res, {
@@ -147,16 +155,18 @@ function build(io) {
 		function startTimer(timespan) {
 			if (!canStart || start) return;
 			start = true;
-			bingo.start();
 			
-			emitAll(this, 'startingTimer', timespan);
+			console.log("side a", canStart, start);
+			emitAll('startingTimer', { time: timespan });
+			console.log("side b", canStart, start);
 			
-			setTimeout(timespan, function() {
+			setTimeout(function() {
+				console.log("starting", start);
 				if(!start) {
 					emitAll(this, 'timerInterrupted');
 				};
-				bingo.reveal();
-			});
+				bingo.start();
+			}, timespan);
 		};
 
 // PUBLIC:
@@ -173,11 +183,11 @@ function build(io) {
 			})
 			
 			socket.on('unready', function() {
-				bingo.ready(socket.custom.id);
+				bingo.unready(socket.custom.id);
 			});
 			
 			socket.on('start', function() {
-				startTimer(5000);
+				startTimer(100);
 			});
 			
 			socket.on('unstart', function() {
@@ -202,6 +212,10 @@ function build(io) {
 		
 		self.getBoardData = function() {
 			return bingo.getBoardData()
+		}
+		
+		self.recieveReplay = function(r) {
+			bingo.sendReplay(r);
 		}
 		
 // CTOR:

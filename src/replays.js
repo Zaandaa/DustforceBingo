@@ -3,7 +3,9 @@ var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 var raw_data = ""
 
 function create_parse(lambda) {
+	var data="", pos = 0;
 	return function () {
+		console.log("readystatechange within XHR", this.readyState);
 		if (this.readyState > 2) { // sent was called
 			var orig_sz = data.length;
 			data += this.responseText.substring(pos);
@@ -14,6 +16,7 @@ function create_parse(lambda) {
 					var msg = JSON.parse(data.substr(0, sep_pos));
 					lambda(msg);
 				}
+				data = data.substr(sep_pos + 1);
 				sep_pos = data.indexOf("\x1e");
 			}
 		}
@@ -26,7 +29,7 @@ function create_parse(lambda) {
 function start(lambda) {
 	var req = new XMLHttpRequest();
 	req.onreadystatechange = create_parse(lambda);
-	req.open("GET", "/backend/events.php", true);
+	req.open("GET", "http://www.dustkid.com/backend/events.php", true);
 	req.send(null);
 }
 

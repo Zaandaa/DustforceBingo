@@ -105,20 +105,21 @@ $(document).on('ready', function() {
 	
 	$('#ready')
 	.disable()
-	.flop("Ready", "Unready")
 	.emitter(function() {
 		return $(this).text() == "Ready" ? 'ready' : 'unready';
-	}).enableOn('connectionResponse', function(res) {
+	}).flop("Ready", "Unready")
+	.enableOn('connectionResponse', function(res) {
 		return !res.err;
 	}).disableOn('startingTimer')
 	.enableOn('timerInterrupted');
 	
 	$('#start')
 	.disable()
-	.flop("Start", "Unstart")
 	.emitter(function() {
 		return $(this).text() == "Start" ? "start" : "unstart";
-	}).enableOn('updateStart', function(res) {
+	})
+	.flop("Start", "Unstart")
+	.enableOn('updateStart', function(res) {
 		return res;
 	}).disableOn('board');
 	
@@ -141,7 +142,8 @@ $(document).on('ready', function() {
 	});
 	
 	socket.on('board', function(data) {
-		
+		console.log("got board", data);
+		updateBoardTable(data, $('#board'));
 	});
 	
 	socket.on('finish', function(data) {
