@@ -7,12 +7,12 @@ function keepAlive(timeout, onTimeout) {
 	var count;
 	function check() {
 		var countCopy = count;
-		setTimeout(timeout, function() {
+		setTimeout(function() {
 			if(countCopy == count)
 				onTimeout();
 			else
 				check();
-		})
+		}, timeout)
 	} check();
 	return function() {
 		count+=1;
@@ -22,7 +22,6 @@ function keepAlive(timeout, onTimeout) {
 function createParser(lambda, updated) {
 	var data="";
 	return function (chunk) {
-		console.log("recieved chunk", chunk);
 		updated();
 		data += chunk;
 		var items = data.split(seperator);
@@ -41,7 +40,7 @@ function start(lambda) {
 			+ new Date().getTime().toString().slice(0, -3), 
 		function (res) {
 			res.setEncoding('utf8');
-			var updated = keepAlive(10000, function() {
+			var updated = keepAlive(30000, function() {
 				res.abort();
 				start(lambda);
 			});
