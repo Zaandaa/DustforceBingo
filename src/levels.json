@@ -35,31 +35,37 @@
 		"Forest": {
 			"levels": 16,
 			"keys": true,
+			"apples": true,
 			"charselect": true
 		},
 		"Mansion": {
 			"levels": 16,
 			"keys": true,
+			"apples": true,
 			"charselect": true
 		},
 		"City": {
 			"levels": 16,
 			"keys": true,
+			"apples": true,
 			"charselect": true
 		},
 		"Laboratory": {
 			"levels": 16,
 			"keys": true,
+			"apples": true,
 			"charselect": true
 		},
 		"Tutorial": {
 			"levels": 3,
 			"keys": false,
+			"apples": false,
 			"charselect": false
 		},
 		"Difficult": {
 			"levels": 8,
 			"keys": false,
+			"apples": false,
 			"charselect": true
 		}
 	},

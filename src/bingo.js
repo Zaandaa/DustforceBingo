@@ -70,10 +70,16 @@ function cachePossibleBingos(ruleset) {
 };
 
 var Bingo = function(session, ruleset) {
-	// console.log(ruleset);
+	// console.log("RULES", ruleset);
 	var self = this;
 	self.session = session;
 	self.ruleset = ruleset;
+	for (var r in self.ruleset) {
+		if (self.ruleset[r] == "true")
+			self.ruleset[r] = true;
+		if (self.ruleset[r] == "false")
+			self.ruleset[r] = false;
+	}
 
 	self.active = false;
 	self.winner = "";

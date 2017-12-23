@@ -19,16 +19,22 @@ extern.getLevelType = function(level) {
 	return levels.levels[level].type;
 }
 
-extern.getLevelDifficulty = function(level, objective) {
-	var d = objective == "Beat" ? 5 : 3;
+extern.getLevelDifficulty = function(level, objective, save) {
+	var d;
 
 	switch (levels.levels[level].type) {
 		case "Tutorial":
-		case "Open": 
-		case "Wood": d++;
-		case "Silver": d++;
-		case "Gold": d++;
+		case "Open": d = 8; break;
+		case "Wood": d = 7; break;
+		case "Silver": d = 6; break;
+		case "Gold": d = 5; break;
+		case "Difficult": d = 3; break;
 	}
+	if (objective == "SS" || objective == "BS")
+		d--;
+	if (save == "newgame")
+		d--;
+
 	return d;
 }
 
@@ -42,6 +48,9 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 	} else if (goalData.keytype) {
 		multiplier *= Math.min(4, 8 - constants.keys.indexOf(goalData.keytype) - ruleset.difficulty) * 0.25;
 		multiplier *= Math.min(4, 9 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.length) * 0.25;
+	} else {
+		// default
+		multiplier *= 1.25 - ruleset.length * 0.25;
 	}
 
 	// calculate total based on stuff, using multiplier

@@ -97,8 +97,8 @@ function makeLevelGoalDatas(ruleset) {
 
 			if (ruleset.characters && levels.levels[l].charselect) {
 				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d, character: c})
-					totalDifficulty += d;
+					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 4, character: c})
+					totalDifficulty += d / 4;
 				});
 			}
 		});
@@ -125,18 +125,29 @@ function makeTotalGoalData(ruleset) {
 		goalData.count = "Beat";
 	else if (r < chance[ruleset.save].total.ss.chance)
 		goalData.count = "SS";
-	else if (r < chance[ruleset.save].total.apples.chance)
-		goalData.count = "apples";
 	else if (r < chance[ruleset.save].total.keys.chance) {
 		goalData.count = "keys";
 		goalData.keytype = constants.keys[Math.floor(Math.random() * 4)];
 	}
+	else if (r < chance[ruleset.save].total.apples.chance && ruleset.apples)
+		goalData.count = "apples";
+	else
+		goalData.count = "Beat";
+
 
 	r = Math.random();
 	if (r < chance[ruleset.save].total.hub) {
 		goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
-		while (goalData.count == "keys" && !levels.hubs[goalData.hub].keys || goalData.hub == "Tutorial" && !ruleset.tutorials || goalData.hub == "Difficult" && (!ruleset.difficults || ruleset.mode == "newgame" && (ruleset.length == 1 || ruleset.difficulty < 3))) {
-			goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
+		while (true) {
+			var hubNeedsKeys = goalData.count == "keys" && !levels.hubs[goalData.hub].keys;
+			var hubNeedsApples = goalData.count == "apples" && !levels.hubs[goalData.hub].apples;
+			var hubTutorial = goalData.hub == "Tutorial" && !ruleset.tutorials;
+			var hubDifficult = goalData.hub == "Difficult" && !ruleset.difficults;
+			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || (ruleset.mode == "newgame" && ruleset.length == 1 && ruleset.difficulty == 1));
+			if (hubNeedsKeys || hubNeedsApples || hubTutorial || hubDifficult || tooHard)
+				goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
+			else
+				break;
 		}
 	}
 
@@ -151,7 +162,7 @@ function makeTotalGoalData(ruleset) {
 		if (goalData.hub && levels.hubs[goalData.hub].keys) {
 			r = Math.random();
 			if (r < chance[ruleset.save].total.leveltype) {
-				goalData.leveltype = constants.hubs[Math.floor(Math.random() * constants.levelTypes.length)];
+				goalData.leveltype = constants.levelTypes[Math.floor(Math.random() * constants.levelTypes.length)];
 			}
 		}
 	}
