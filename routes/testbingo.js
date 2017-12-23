@@ -19,8 +19,8 @@ var rules = {
 	lockout: true,
 	bingo_count: 2,
 	bingo_count_type: "bingo",
-	difficulty: 4,
-	length: 3,
+	difficulty: 1, // 4 easy, 1 hard
+	length: 1, // 3 fast, 1 any
 	characters: true,
 	apples: true,
 	tutorials: true,

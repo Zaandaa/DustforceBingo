@@ -125,8 +125,14 @@ var Player = function(id, name) {
 				count /= 10;
 			}
 		} else if (goalData.count in levels.gimmicks) {
+			var levelCount = 0;
 			for (var l in self.levelProgress) {
 				if (self.levelProgress[l].gimmicks[goalData.count] > -1) {
+					if (goalData.hub && levels.levels[l].hub != goalData.hub)
+						continue;
+					if (goalData.leveltype && levels.levels[l].leveltype != goalData.leveltype)
+						continue;
+					levelCount++;
 					count += self.levelProgress[l].gimmicks[goalData.count];
 				}
 			}

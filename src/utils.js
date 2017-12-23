@@ -40,29 +40,35 @@ extern.getLevelDifficulty = function(level, objective, save) {
 
 extern.generateGoalTotal = function(goalData, ruleset) {
 	// pick good total number range based on goalData, length, difficulty
-	var multiplier = Math.random();
+	var multiplier = 1;
 
 	if (goalData.leveltype) {
 		multiplier *= 0.25;
-		multiplier *= Math.min(4, 8 - constants.levelTypes.indexOf(goalData.leveltype) - ruleset.difficulty) * 0.25;
-		multiplier *= Math.min(4, 9 - constants.levelTypes.indexOf(goalData.leveltype) - 2 * ruleset.length) * 0.25;
+		multiplier *= Math.min(4, 12 - constants.levelTypes.indexOf(goalData.leveltype) - 2 * ruleset.difficulty) * 0.25;
+		multiplier *= Math.min(4, 10 - constants.levelTypes.indexOf(goalData.leveltype) - 2 * ruleset.length) * 0.25;
 	} else if (goalData.keytype) {
 		multiplier *= 0.25;
-		multiplier *= Math.min(4, 8 - constants.keys.indexOf(goalData.keytype) - ruleset.difficulty) * 0.25;
-		multiplier *= Math.min(4, 9 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.length) * 0.25;
+		multiplier *= Math.min(4, 12 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.difficulty) * 0.25;
+		multiplier *= Math.min(4, 10 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.length) * 0.25;
 	} else {
 		// default
 		multiplier *= 1.4 - ruleset.length * 0.4;
+		if (goalData.character)
+			multiplier *= 0.5;
 	}
 
-	if (goalData.hub && (goalData.hub != "Difficult" && goalData.hub != "Tutorial"))
+	if (goalData.hub && (goalData.hub != "Difficult" && goalData.hub != "Tutorial")) {
 		multiplier *= 0.25;
+	}
 
 	var total;
 	if (goalData.hub && (goalData.hub == "Difficult" || goalData.hub == "Tutorial"))
-		total = Math.ceil(multiplier * (levels.hubs[goalData.hub].levels - (goalData.hub == "Difficult" && !ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
+		total = Math.ceil(multiplier * Math.random() * (levels.hubs[goalData.hub].levels - (goalData.hub == "Difficult" && !ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
 	else
-		total = Math.floor(multiplier * chance[ruleset.save].total[goalData.count.toLowerCase()].range) + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum;
+		total = Math.ceil(multiplier * (Math.random() * chance[ruleset.save].total[goalData.count.toLowerCase()].range + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum));
+
+	if (total < 1)
+		total = 1;
 
 	return total;
 }

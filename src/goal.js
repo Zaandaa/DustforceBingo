@@ -143,7 +143,7 @@ function makeTotalGoalData(ruleset) {
 			var hubNeedsApples = goalData.count == "apples" && !levels.hubs[goalData.hub].apples;
 			var hubTutorial = goalData.hub == "Tutorial" && !ruleset.tutorials;
 			var hubDifficult = goalData.hub == "Difficult" && !ruleset.difficults;
-			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || (ruleset.mode == "newgame" && ruleset.length == 1 && ruleset.difficulty == 1));
+			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || !(ruleset.mode == "newgame" && ruleset.length == 1 && ruleset.difficulty == 1));
 			if (hubNeedsKeys || hubNeedsApples || hubTutorial || hubDifficult || tooHard)
 				goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
 			else
