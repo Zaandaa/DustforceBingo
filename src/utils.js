@@ -43,25 +43,26 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 	var multiplier = Math.random();
 
 	if (goalData.leveltype) {
+		multiplier *= 0.25;
 		multiplier *= Math.min(4, 8 - constants.levelTypes.indexOf(goalData.leveltype) - ruleset.difficulty) * 0.25;
 		multiplier *= Math.min(4, 9 - constants.levelTypes.indexOf(goalData.leveltype) - 2 * ruleset.length) * 0.25;
 	} else if (goalData.keytype) {
+		multiplier *= 0.25;
 		multiplier *= Math.min(4, 8 - constants.keys.indexOf(goalData.keytype) - ruleset.difficulty) * 0.25;
 		multiplier *= Math.min(4, 9 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.length) * 0.25;
 	} else {
 		// default
-		multiplier *= 1.25 - ruleset.length * 0.25;
+		multiplier *= 1.4 - ruleset.length * 0.4;
 	}
 
-	// calculate total based on stuff, using multiplier
-	var total = Math.floor(multiplier * chance[ruleset.save].total[goalData.count.toLowerCase()].range) + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum;
+	if (goalData.hub && (goalData.hub != "Difficult" && goalData.hub != "Tutorial"))
+		multiplier *= 0.25;
 
-	if (goalData.hub) {
-		if (goalData.hub == "Difficult" || goalData.hub == "Tutorial")
-			total = Math.ceil(multiplier * (levels.hubs[goalData.hub].levels - (!ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
-		else
-			total = Math.ceil(total / 4);
-	}
+	var total;
+	if (goalData.hub && (goalData.hub == "Difficult" || goalData.hub == "Tutorial"))
+		total = Math.ceil(multiplier * (levels.hubs[goalData.hub].levels - (goalData.hub == "Difficult" && !ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
+	else
+		total = Math.floor(multiplier * chance[ruleset.save].total[goalData.count.toLowerCase()].range) + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum;
 
 	return total;
 }

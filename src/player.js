@@ -59,7 +59,7 @@ var Player = function(id, name) {
 					self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_finesse - self.levelProgress[replay.levelname].finesse;
 				self.levelProgress[replay.levelname].finesse = replay.score_finesse;
 			}
-			// if char not in chars, add char to chars
+			// if character not in characters, add character to characters
 			if (!self.levelProgress[replay.levelname].characters.includes(constants.characters[replay.character])) {
 				self.levelProgress[replay.levelname].characters.push(constants.characters[replay.character]);
 			}
@@ -71,11 +71,11 @@ var Player = function(id, name) {
 			self.levelProgress[replay.levelname] = {
 				completion: replay.score_completion,
 				finesse: replay.score_finesse,
-				chars: [constants.characters[replay.character]],
+				characters: [constants.characters[replay.character]],
 				gimmicks: {}
 			}
 			if (constants.hubs.includes(levels.levels[replay.levelname].hub))
-				self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] = replay.score_completion + replay.score_finesse;
+				self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_completion + replay.score_finesse;
 
 			for (var g in levels.gimmicks) {
 				self.levelProgress[replay.levelname].gimmicks[g] = utils.accessGimmick(replay, g);
@@ -90,31 +90,31 @@ var Player = function(id, name) {
 		var count = 0;
 
 		if (goalData.count == "Beat") {
-			// goalData.character, goalData.hub, goalData.type
+			// goalData.character, goalData.hub, goalData.leveltype
 			for (var l in self.levelProgress) {
 				if (goalData.hub && levels.levels[l].hub != goalData.hub)
 					continue;
-				if (goalData.type && levels.levels[l].type != goalData.type)
+				if (goalData.leveltype && levels.levels[l].type != goalData.leveltype)
 					continue;
-				if (goalData.character && self.levelProgress[l].chars.includes(goalData.character))
+				if (goalData.character && self.levelProgress[l].characters.includes(goalData.character))
 					continue;
 				count++;
 			}
 		} else if (goalData.count == "SS") {
-			// goalData.character, goalData.hub, goalData.type
+			// goalData.character, goalData.hub, goalData.leveltype
 			for (var l in self.levelProgress) {
 				if (goalData.hub && levels.levels[l].hub != goalData.hub)
 					continue;
-				if (goalData.type && levels.levels[l].type != goalData.leveltype)
+				if (goalData.leveltype && levels.levels[l].leveltype != goalData.leveltype)
 					continue;
-				if (goalData.character && self.levelProgress[l].chars.includes(goalData.character))
+				if (goalData.character && self.levelProgress[l].characters.includes(goalData.character))
 					continue;
-				if (self.levelProgress[l].completion < 5 || self.levelProgress[i].finesse < 5)
+				if (self.levelProgress[l].completion < 5 || self.levelProgress[l].finesse < 5)
 					continue;
 				count++;
 			}
 		} else if (goalData.count == "keys") {
-			// goalData.hub, goalData.type
+			// goalData.hub, goalData.keytype
 			if (goalData.hub) {
 				count = self.keyProgress[goalData.hub][goalData.keytype] / 10;
 			} else {

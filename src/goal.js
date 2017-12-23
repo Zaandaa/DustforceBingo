@@ -215,7 +215,7 @@ var Goal = function(goalData) {
 	};
 
 	self.getBoardData = function() {
-		return {title: self.goalString, achieved: self.achieved.toString()};
+		return {title: self.goalString, achieved: self.achieved};
 	};
 
 	self.isAchieved = function() {

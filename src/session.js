@@ -16,7 +16,7 @@ function build(io) {
 	var rooms = {};
  
 	replays(function(r) {
-		console.log(r);
+		console.log("Replay: " + r.username);
 		for(s in rooms) {
 			rooms[s].recieveReplay(r);
 		}
