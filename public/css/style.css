@@ -35,3 +35,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+.icon{
+	height:24px;
+	width:32px;
+	padding-left:4px;
+	padding-right:4px;
+}
+
+.character{
+	height:24px;
+	width:32px;
+}
