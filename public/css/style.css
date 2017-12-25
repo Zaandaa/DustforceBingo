@@ -1,14 +1,35 @@
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/Proxima Nova Reg.woff') format('woff'),
+	   url('/fonts/Proxima Nova Reg.svg#font') format('svg'),
+	   url('/fonts/Proxima Nova Reg.ttf') format('truetype'),
+	   url('/fonts/Proxima Nova Reg.eot'),
+	   url('/fonts/Proxima Nova Reg.eot?#iefix') format('embedded-opentype');
+}
+@font-face {
+  font-family: 'Caracteres L1';
+  src: url('/fonts/Caracteres-L1.ttf.woff') format('woff'),
+       url('/fonts/Caracteres-L1.ttf.svg#Caracteres-L1') format('svg'),
+	   url('/fonts/Caracteres-L1.ttf.eot'),
+	   url('/fonts/Caracteres-L1.ttf.eot?#iefix') format('embedded-opentype');
+       
+}
+
+
 .uppercase {
-	font: 64px 'Caracteres L1', Helvetica, Arial, sans-serif;
+	font-size: 64px;
+	font-family: 'Caracteres L1', Helvetica, Arial, sans-serif;
 }
 
 .lowercase {
-	font:24pt 'Proxima Nova', Helvetica, Arial, sans-serif;
+	font-size:18px;
+	font-family:'Proxima Nova', Helvetica, Arial, sans-serif;
 }
 
 body {
   padding: 50px;
-  font: 14px 'Proxima Nova', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-family: 'Proxima Nova', Helvetica, Arial, sans-serif;
 }
 
 a {

@@ -1,89 +1,100 @@
 extends layout
 
 block js
-	script(src="js/index.js")
+	script(src="/js/index.js")
 
 block content
+	h4.uppercase BINGO RULES
 	div.row
-		div
-			h4.uppercase BINGO RULES
-
-			div
+		div.col-md-8
+			div.form-group
+				div.checkbox
+					label
+						input#lockout.session(type="checkbox" checked)
+						div Lockout
+			div.form-group
 				div Save file:
-				select#save.session
+				select#save.session.form-control
 					option(value="newgame") NG
 					option(value="newgameplus") NG+
-			div
+			div.form-group
 				div Size:
-				select#size.session
+				select#size.session.form-control
 					option(value="3") 3 by 3
 					option(value="5") 5 by 5
-			div
+			div.form-group
 				div Difficulty:
-				select#difficulty.session
+				select#difficulty.session.form-control
 					option(value="4") Easy
 					option(value="3" selected) Normal
 					option(value="2") Hard
 					option(value="1") Very hard
-			div
+			div.form-group
 				div Length:
-				select#length.session
+				select#length.session.form-control
 					option(value="3") Fast
 					option(value="2" selected) Normal
 					option(value="1") Any
-			div 
-				div
-					input#lockout.session(type="checkbox" checked)
-					label(for="lockout") Lockout
-			div
+			div.form-group
 				div First to:
-				select#bingo_count.session
+				select#bingo_count.session.form-control
 					each val, i in Array(25)
 						option(value=i+1 class='option' + (i+1))= i+1
-				select#bingo_count_type.session
+				select#bingo_count_type.session.form-control
 					option(value="bingo") Bingos
 					option(value="card") Cards
 
-		div
+		div.col-md-4
 			h4 Advanced Goal Options
 
-			button#show_adv.btn.btn-lg(data-toggle="collapse" data-target="#goals_advanced_div") Show
+			button#show_adv.btn(data-toggle="collapse" data-target="#goals_advanced_div") Show
 
 			div#goals_advanced_div.collapse
-				ul
-					li
+				div.checkbox
+					label
 						input#characters.session(   type="checkbox" checked)
-						label(for="characters") Allow goals to require characters
-					li
+						div Allow goals to require characters
+				div.checkbox
+					label
 						input#apples.session(       type="checkbox" checked)
-						label(for="apples") Include apples
-					li
+						div Include apples
+				div.checkbox
+					label
 						input#tutorials.session(    type="checkbox") 
-						label(for="tutorials") Include tutorials
-					li
+						div Include tutorials
+				div.checkbox
+					label
 						input#difficults.session(   type="checkbox") 
-						label(for="difficults") Include difficults
-					li
+						div Include difficults
+				div.checkbox
+					label
 						input#yottass.session(      type="checkbox") 
-						label(for="yottass") Include Yotta SS 
-					li
+						div Include Yotta SS 
+				div.checkbox
+					label
 						input#lowdash.session(      type="checkbox")
-						label(for="lowdash") Low dash
-					li
+						div Low dash
+				div.checkbox
+					label
 						input#lowjump.session(      type="checkbox")
-						label(for="lowjump") Low jump
-					li
+						div Low jump
+				div.checkbox
+					label
 						input#lowattack.session(    type="checkbox")
-						label(for="lowattack") Low attack
-					li
+						div Low attack
+				div.checkbox
+					label
 						input#lowdirection.session( type="checkbox") 
-						label(for="lowdirection") Low direction
-					li
+						div Low direction
+				div.checkbox
+					label
 						input#lowpercent.session(   type="checkbox")
-						label(for="lowpercent") Low percent
-					li
+						div Low percent
+				div.checkbox
+					label
 						input#somepercent.session(  type="checkbox")
-						label(for="somepercent") Some percent
-
+						div Some percent
 	div.row
-		button#generate.btn.btn-primary.btn-lg.btn-block Generate seed
+		div.col-md-2
+		div.col-md-6
+			button#generate.btn.btn-primary.btn-lg.btn-block Generate seed
