@@ -18,7 +18,7 @@ function build(io) {
 	replays(function(r) {
 		console.log("Replay: " + r.username);
 		for(s in rooms) {
-			rooms[s].recieveReplay(r);
+			rooms[s].receiveReplay(r);
 		}
 	})
  
@@ -86,13 +86,13 @@ function build(io) {
 				
 				socket.custom.username = username;
 				socket.custom.id = id;
-				rooms[data.session].addSocket(socket);
-				
-				socket.emit('connectionResponse', {
-					err: false,
-					message: `Added ${data.username}`
+				rooms[data.session].addSocket(socket, function(err, message) {
+					socket.emit('connectionResponse', {
+						err: err,
+						message: message
+					});
 				});
-			})
+			});
 		});	
 		
 		socket.on('view', function(data) {
@@ -104,7 +104,7 @@ function build(io) {
 			
 			socket.emit('viewResponse', {
 				err: false,
-				board: rooms[data.session].board.get_board()
+				board: rooms[data.session].board.getBoardData()
 			});
 		});
 		
@@ -171,11 +171,24 @@ function build(io) {
 
 // PUBLIC:
 		
-		self.addSocket = function (socket)
+		self.addSocket = function (socket, lambda)
 		{
+			if (bingo.active || bingo.finished)
+				return lambda(true, 'Session already started');
+			if (socket.custom.id in sockets)
+				return lambda(true, 'User already exists in session');
+
 			sockets[socket.custom.id] = socket;
+			
 			socket.on('disconnect', function() {
-				bingo.removePlayer(socket.custom.id);
+				if (bingo.removePlayer(socket.custom.id))
+					delete sockets[socket.custom.id];
+			});
+
+			socket.on('remove', function() {
+				if (bingo.removePlayer(socket.custom.id))
+					delete sockets[socket.custom.id];
+				socket.emit('removed');
 			});
 			
 			socket.on('ready', function() {
@@ -193,8 +206,9 @@ function build(io) {
 			socket.on('unstart', function() {
 				start = false;
 			});
-			
+
 			bingo.addPlayer(socket.custom.id, socket.custom.username);
+			return lambda(false, `Added ${socket.custom.username}`);
 		}
 		
 		self.canStart = function(state) {
@@ -206,6 +220,10 @@ function build(io) {
 			emitAll('board', json);
 		};
 		
+		self.updatePlayers = function(json) {
+			emitAll('players', json);
+		};
+		
 		self.finish = function() {
 			emitAll('finish');
 		};
@@ -214,7 +232,7 @@ function build(io) {
 			return bingo.getBoardData()
 		}
 		
-		self.recieveReplay = function(r) {
+		self.receiveReplay = function(r) {
 			bingo.sendReplay(r);
 		}
 		

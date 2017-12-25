@@ -31,7 +31,7 @@ var Player = function(id, name) {
 	};
 
 	self.getBoardData = function() {
-		return {name: self.name, color: self.color, goals: self.goalsAchieved.length};
+		return {name: self.name, ready: self.ready, color: self.color, goals: self.goalsAchieved.length};
 	};
 
 	self.getReady = function() {

@@ -20,3 +20,30 @@ function updateBoardTable(boardJson, target) {
 
 	target.append(table);
 }
+
+function updatePlayersTable(playersJson, target) {
+	target.empty();
+
+	playerData = JSON.parse(playersJson);
+
+	var table = $("<table></table>").addClass("players_table").addClass("table").addClass("table-sm");
+
+	// head
+	var thead = $("<thead></thead>").addClass("th-light");
+	thead.append($("<tr><th>Player</th><th>Ready</th></tr>"));
+	table.append(thead);
+
+	for (var i = 0; i < playerData.players.length; i++) {
+		var row = $("<tr></tr>");
+		var cell1 = $("<td></td>");
+		cell1.append(playerData.players[i].name);
+		row.append(cell1);
+
+		var cell2 = $("<td></td>");
+		cell2.append(playerData.players[i].ready.toString());
+		row.append(cell2);
+		table.append(row);
+	}
+
+	target.append(table);
+}

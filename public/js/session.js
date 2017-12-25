@@ -7,6 +7,8 @@ $(document).on('ready', function() {
 	function resolve(t, l, a) {
 		if(typeof l === 'function')
 			return l.bind(t)(a);
+		else if (typeof l === typeof undefined)
+			return true;
 		else
 			return l;
 	}	
@@ -62,6 +64,19 @@ $(document).on('ready', function() {
 		});
 	};
 	
+	// setOn
+	//
+	// Sets state (for dual value buttons)
+	//  - n: signal name from socket
+	//  - v: value to set
+	$.fn.setOn = function(n, v) {
+		var t = this;
+		socket.on(n, function(p) {
+			$(t).text(v);
+		});
+		return $(this);
+	};
+	
 	// EnableOn
 	//
 	// enables button on signal from socket
@@ -72,7 +87,6 @@ $(document).on('ready', function() {
 	$.fn.enableOn = function(n, l) {
 		var t = this;
 		socket.on(n, function(p) {
-			console.log("got", n);
 			if(resolve(t, l, p))
 				$(t).enable();
 		});
@@ -84,24 +98,38 @@ $(document).on('ready', function() {
 	$.fn.disableOn = function(n, l) {
 		var t = this;
 		socket.on(n, function(p) {
-			if(resolve(t, l, p))
+			if(resolve(t, l, p)) {
 				$(t).disable();
+			}
 		});
 		return $(this);
 	};
+
+	$('#username')
+	.enableOn('removed')
+	.disableOn('connectionResponse', function(res) {
+		return !res.err;
+	})
+	.disableOn('board');
 	
 	$('#join')
-	.emitter('init', function() {
+	.emitter(function() {
+		if ($(this).text() == "Join") {
+			$(this).disable();
+			return "init";
+		}
+		return "remove";
+	}, function() {
 		return {
 			username: $('#username').val(),
 			session: sessionId
 		};
-	}).enableOn('start')
-	.on('click', function() {
-		$(this).disable();
-	}).enableOn('connectionResponse', function(res) {
-		return res.err;
-	});
+	})
+	.flop("Join", "Remove")
+	.setOn('removed', 'Join')
+	.disableOn('startingTimer')
+	.enableOn('timerInterrupted')
+	.disableOn('board');
 	
 	$('#ready')
 	.disable()
@@ -111,7 +139,10 @@ $(document).on('ready', function() {
 	.enableOn('connectionResponse', function(res) {
 		return !res.err;
 	}).disableOn('startingTimer')
-	.enableOn('timerInterrupted');
+	.enableOn('timerInterrupted')
+	.setOn('removed', 'Ready')
+	.disableOn('removed')
+	.disableOn('board');
 	
 	$('#start')
 	.disable()
@@ -121,15 +152,20 @@ $(document).on('ready', function() {
 	.flop("Start", "Unstart")
 	.enableOn('updateStart', function(res) {
 		return res;
+	}).disableOn('updateStart', function(res) {
+		return !res;
 	}).disableOn('board');
 	
 	// SOCKETS:
 	
 	socket.on('connectionResponse', function(data) {
+		$("#join").enable();
 		if(data.err) {
 			alert(data.message);
+			$("#join").text("Join");
 		} else {
 			console.log(data.message);
+			$("#join").text("Remove");
 		}
 	});
 	
@@ -141,9 +177,23 @@ $(document).on('ready', function() {
 		
 	});
 	
+	socket.on('timerInterrupted', function(data) {
+
+	});
+	
+	socket.on('removed', function(data) {
+		$(".collapse").collapse('hide');
+	});
+	
 	socket.on('board', function(data) {
-		console.log("got board", data);
+		// console.log("got board", data);
 		updateBoardTable(data, $('#board'));
+	});
+	
+	socket.on('players', function(data) {
+		// console.log("got players", data);
+		updatePlayersTable(data, $('#players_table'));
+		$(".collapse").collapse('show');
 	});
 	
 	socket.on('finish', function(data) {

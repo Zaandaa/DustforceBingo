@@ -35,7 +35,6 @@ var extern = {}
 extern.makeGoals = function(ruleset) {
 	seedrandom(ruleset.seed);
 	var goals = [];
-	var goalDatas = [];
 	var r;
 
 	var levelGoalDatas = makeLevelGoalDatas(ruleset);
@@ -43,20 +42,46 @@ extern.makeGoals = function(ruleset) {
 
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
 		r = Math.random();
+		var success = false;
 		if (r < chance[ruleset.save].level.chance) {
 			// pick from levelGoalDatas
 			r = Math.random() * levelGoalDatas.total;
+			var chosen = false;
 			var count = 0;
+			var levelIndex = 0;
+			var currentLevel = "";
+			var goalsThisLevel = 0;
+			var totalLevelDiff = 0;
 			for (var g = 0; g < levelGoalDatas.data.length; g++) {
-				count += levelGoalDatas.data[g].difficulty;
-				if (count > r) {
-					levelGoalDatas.total -= levelGoalDatas.data[g].difficulty;
-					goals.push(new Goal(levelGoalDatas.data[g]));
-					levelGoalDatas.data.splice(g, 1);
-					break;
+				if (!chosen) {
+					count += levelGoalDatas.data[g].difficulty;
+
+					if (levelGoalDatas.data[g].level != currentLevel) {
+						currentLevel = levelGoalDatas.data[g].level;
+						levelIndex = g;
+					}
+
+					if (count > r) {
+						chosen = true;
+						goals.push(new Goal(levelGoalDatas.data[g]));
+						g = levelIndex - 1;
+						continue;
+					}
+				} else {
+					// remove all of chosen level
+					if (levelGoalDatas.data[g].level != currentLevel) {
+						levelGoalDatas.total -= totalLevelDiff;
+						levelGoalDatas.data.splice(levelIndex, goalsThisLevel);
+						success = true;
+						break;
+					} else {
+						goalsThisLevel++;
+						totalLevelDiff += levelGoalDatas.data[g].difficulty;
+					}
 				}
 			}
-		} else { // total
+		}
+		if (!success && r < chance[ruleset.save].total.chance) {
 			var newData = makeTotalGoalData(ruleset);
 			var newString = makeGoalString(newData);
 			while (usedTotalGoalStrings.includes(newString)) {

@@ -37,7 +37,8 @@ var rules = {
 // simplified session for testing
 var fakeSession = {
 	canStart: function(a) {},
-	updateBoard: function() {},
+	updateBoard: function(a) {},
+	updatePlayers: function(a) {},
 	finish: function() {}
 }
 
@@ -46,7 +47,8 @@ var bingo = new Bingo(fakeSession, rules);
 // add players
 bingo.addPlayer(10,"--"); bingo.ready(10);
 bingo.addPlayer(11,"OO"); bingo.ready(11);
-// bingo.add_player(1.5,"P1.5"); // not ready, should get removed
+bingo.addPlayer(1.5,"P1.5"); // not ready, should get removed
+bingo.addPlayer(12,"P2.5"); bingo.removePlayer(12); // remove
 bingo.addPlayer(22,"||"); bingo.ready(22);
 bingo.start();
 

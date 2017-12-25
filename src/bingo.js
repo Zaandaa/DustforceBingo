@@ -82,6 +82,7 @@ var Bingo = function(session, ruleset) {
 	}
 
 	self.active = false;
+	self.finished = false;
 	self.winner = "";
 
 	self.players = {};
@@ -90,15 +91,22 @@ var Bingo = function(session, ruleset) {
 
 
 	self.addPlayer = function(id, name) {
-		if (!self.active)
+		if (!self.active && !(id in self.players)) {
 			self.players[id] = new Player(id, name);
+			self.session.updatePlayers(self.getPlayerData());
+			return true;
+		}
+		return false;
 	};
 
 	self.removePlayer = function(id) {
-		if (!self.active) {
+		if (!self.active && id in self.players) {
 			delete self.players[id];
 			self.checkPlayersReady();
+			self.session.updatePlayers(self.getPlayerData());
+			return true;
 		}
+		return false;
 	};
 
 	self.checkPlayersReady = function() {
@@ -113,16 +121,18 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.ready = function(id) {
-		if (!self.active) {
+		if (!self.active && id in self.players) {
 			self.players[id].setReady(true);
 			self.checkPlayersReady();
+			self.session.updatePlayers(self.getPlayerData());
 		}
 	};
 
 	self.unready = function(id) {
-		if (!self.active) {
+		if (!self.active && id in self.players) {
 			self.players[id].setReady(false);
 			self.checkPlayersReady();
+			self.session.updatePlayers(self.getPlayerData());
 		}
 	};
 
@@ -263,6 +273,7 @@ var Bingo = function(session, ruleset) {
 		}
 
 		self.session.updateBoard(self.getBoardData());
+		self.session.updatePlayers(self.getPlayerData());
 	};
 
 	self.checkFinished = function() {
@@ -340,8 +351,20 @@ var Bingo = function(session, ruleset) {
 		return JSON.stringify(boardData);
 	};
 
+	self.getPlayerData = function() {
+		var playerData = {};
+
+		playerData.players = [];
+		for (var id in self.players) {
+			playerData.players.push(self.players[id].getBoardData());
+		}
+
+		return JSON.stringify(playerData);
+	};
+
 	self.finish = function() {
 		self.active = false;
+		self.finished = true;
 		self.session.finish();
 	};
 

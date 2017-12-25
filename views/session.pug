@@ -7,14 +7,38 @@ block js
 	script(src="../js/session.js")
 
 block content
-	div 
-		div Username
-		input#username 
-	
-		button#join Join
-		
-		button#ready ready
-		
-		button#start start
-		
-		div#board
+	div#user_div
+		button#spectate.btn.btn-primary Spectate
+
+		div#user_buttons_div
+			input#username(placeholder="Username")
+			button#join.btn.btn-primary Join
+			button#ready.btn.btn-primary Ready
+
+	div#board
+		button#start.btn.btn-primary.btn-lg.btn-block start
+		div#countdown_div
+
+	div#player_list_div.collapse
+		table#players_table.table.table-sm
+			thead.thead-light
+				tr
+					th Player
+					th Status
+
+	div#rules_div
+		div
+			h4 Rules
+			ul
+				li Save file type here
+				li Win condition here
+				li Lockout on/off
+				li Enabled options here
+		div
+			h4 General rules
+			ul
+				li Requires dustmod or dustkid integration
+				li Goals automatically complete using replays
+				li Reset save file or enter Nexus when timer starts (tbd)
+				li Don't early exit (invalid replays)
+				li Click cells to label privately
