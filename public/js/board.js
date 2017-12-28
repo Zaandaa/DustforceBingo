@@ -3,7 +3,7 @@ function updateBoardTable(boardJson, target) {
 
 	boardData = JSON.parse(boardJson);
 
-	var table = $("<table></table>").addClass("bingo_table");
+	var table = $("<table></table>").addClass("bingo_table").addClass("table").addClass("table-dark").addClass("table-bordered");
 
 	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<tr></tr>");
@@ -13,6 +13,7 @@ function updateBoardTable(boardJson, target) {
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				cell.append("<br><b>" + boardData.goals[i * boardData.size + j].achieved[a] + "</b>");
 			}
+			cell.click(toggleLabel);
 			row.append(cell);
 		}
 		table.append(row);
@@ -26,10 +27,10 @@ function updatePlayersTable(playersJson, target) {
 
 	playerData = JSON.parse(playersJson);
 
-	var table = $("<table></table>").addClass("players_table").addClass("table").addClass("table-sm");
+	var table = $("<table></table>").addClass("table").addClass("table-dark");
 
 	// head
-	var thead = $("<thead></thead>").addClass("th-light");
+	var thead = $("<thead></thead>");
 	thead.append($("<tr><th>Player</th><th>Ready</th></tr>"));
 	table.append(thead);
 
@@ -46,4 +47,12 @@ function updatePlayersTable(playersJson, target) {
 	}
 
 	target.append(table);
+}
+
+function toggleLabel() {
+	console.log($(this).hasClass("bingo_label"));
+	if ($(this).hasClass("bingo_label"))
+		$(this).removeClass("bingo_label");
+	else
+		$(this).addClass("bingo_label");
 }

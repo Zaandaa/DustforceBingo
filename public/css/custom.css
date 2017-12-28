@@ -1,0 +1,8 @@
+.table-dark,
+.table-dark > th,
+.table-dark > td {
+	background-color: #222222;
+	color: #eeeeee;
+	text-align: center;
+	vertical-align: center;
+}

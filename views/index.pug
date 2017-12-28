@@ -5,14 +5,20 @@ block js
 
 block content
 	div.row
-		div
-			h4.uppercase BINGO RULES
+		h2 Dustforce Bingo
+
+	div.row
+		div.col
+			include rules.pug
+
+		div.col
+			h4 Options
 
 			div
 				div Save file:
 				select#save.session
-					option(value="newgame") NG
-					option(value="newgameplus") NG+
+					option(value="newgame") New Game
+					option(value="newgameplus") New Game+
 			div
 				div Size:
 				select#size.session
@@ -31,10 +37,9 @@ block content
 					option(value="3") Fast
 					option(value="2" selected) Normal
 					option(value="1") Any
-			div 
-				div
-					input#lockout.session(type="checkbox" checked)
-					label(for="lockout") Lockout
+			div
+				input#lockout.session(type="checkbox" checked)
+				label(for="lockout") Lockout
 			div
 				div First to:
 				select#bingo_count.session
@@ -44,46 +49,46 @@ block content
 					option(value="bingo") Bingos
 					option(value="card") Cards
 
-		div
-			h4 Advanced Goal Options
+			div
+				h4 Advanced Goal Options
 
-			button#show_adv.btn.btn-lg(data-toggle="collapse" data-target="#goals_advanced_div") Show
+				button#show_adv.btn.btn-lg(data-toggle="collapse" data-target="#goals_advanced_div") Show
 
-			div#goals_advanced_div.collapse
-				ul
-					li
-						input#characters.session(   type="checkbox" checked)
-						label(for="characters") Allow goals to require characters
-					li
-						input#apples.session(       type="checkbox" checked)
-						label(for="apples") Include apples
-					li
-						input#tutorials.session(    type="checkbox") 
-						label(for="tutorials") Include tutorials
-					li
-						input#difficults.session(   type="checkbox") 
-						label(for="difficults") Include difficults
-					li
-						input#yottass.session(      type="checkbox") 
-						label(for="yottass") Include Yotta SS 
-					li
-						input#lowdash.session(      type="checkbox")
-						label(for="lowdash") Low dash
-					li
-						input#lowjump.session(      type="checkbox")
-						label(for="lowjump") Low jump
-					li
-						input#lowattack.session(    type="checkbox")
-						label(for="lowattack") Low attack
-					li
-						input#lowdirection.session( type="checkbox") 
-						label(for="lowdirection") Low direction
-					li
-						input#lowpercent.session(   type="checkbox")
-						label(for="lowpercent") Low percent
-					li
-						input#somepercent.session(  type="checkbox")
-						label(for="somepercent") Some percent
+				div#goals_advanced_div.collapse
+					ul
+						li
+							input#characters.session(   type="checkbox" checked)
+							label(for="characters") Allow goals to require characters
+						li
+							input#apples.session(       type="checkbox" checked)
+							label(for="apples") Include apples
+						li
+							input#tutorials.session(    type="checkbox") 
+							label(for="tutorials") Include tutorials
+						li
+							input#difficults.session(   type="checkbox") 
+							label(for="difficults") Include difficults
+						li
+							input#yottass.session(      type="checkbox") 
+							label(for="yottass") Include Yotta SS 
+						li
+							input#lowdash.session(      type="checkbox")
+							label(for="lowdash") Low dash
+						li
+							input#lowjump.session(      type="checkbox")
+							label(for="lowjump") Low jump
+						li
+							input#lowattack.session(    type="checkbox")
+							label(for="lowattack") Low attack
+						li
+							input#lowdirection.session( type="checkbox") 
+							label(for="lowdirection") Low direction
+						li
+							input#lowpercent.session(   type="checkbox")
+							label(for="lowpercent") Low percent
+						li
+							input#somepercent.session(  type="checkbox")
+							label(for="somepercent") Some percent
 
 	div.row
 		button#generate.btn.btn-primary.btn-lg.btn-block Generate seed

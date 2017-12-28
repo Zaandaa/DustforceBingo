@@ -187,12 +187,12 @@ $(document).on('ready', function() {
 	
 	socket.on('board', function(data) {
 		// console.log("got board", data);
-		updateBoardTable(data, $('#board'));
+		updateBoardTable(data, $('#board_div'));
 	});
 	
 	socket.on('players', function(data) {
 		// console.log("got players", data);
-		updatePlayersTable(data, $('#players_table'));
+		updatePlayersTable(data, $('#players_table_div'));
 		$(".collapse").collapse('show');
 	});
 	
