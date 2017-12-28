@@ -1,94 +1,128 @@
 extends layout
 
 block js
-	script(src="js/index.js")
+	script(src="/js/index.js")
 
 block content
 	div.row
 		h2 Dustforce Bingo
 
 	div.row
-		div.col
+		div.col-md-4
 			include rules.pug
 
-		div.col
+		div.col-md-8
 			h4 Options
 
-			div
+			div.form-group
 				div Save file:
-				select#save.session
+				select#save.session.form-control
 					option(value="newgame") New Game
 					option(value="newgameplus") New Game+
-			div
+
+			div.form-group
 				div Size:
-				select#size.session
+				select#size.session.form-control
 					option(value="3") 3 by 3
 					option(value="5") 5 by 5
-			div
+			div.form-group
 				div Difficulty:
-				select#difficulty.session
+				select#difficulty.session.form-control
 					option(value="4") Easy
 					option(value="3" selected) Normal
 					option(value="2") Hard
 					option(value="1") Very hard
-			div
+			div.form-group
 				div Length:
-				select#length.session
+				select#length.session.form-control
 					option(value="3") Fast
 					option(value="2" selected) Normal
 					option(value="1") Any
-			div
+
+			div.form-group
 				input#lockout.session(type="checkbox" checked)
 				label(for="lockout") Lockout
-			div
+
+			div.form-group
 				div First to:
-				select#bingo_count.session
+				select#bingo_count.session.form-control
 					each val, i in Array(25)
 						option(value=i+1 class='option' + (i+1))= i+1
-				select#bingo_count_type.session
+				select#bingo_count_type.session.form-control
 					option(value="bingo") Bingos
 					option(value="card") Cards
 
 			div
 				h4 Advanced Goal Options
 
-				button#show_adv.btn.btn-lg(data-toggle="collapse" data-target="#goals_advanced_div") Show
+				button#show_adv.btn(data-toggle="collapse" data-target="#goals_advanced_div") Show
 
 				div#goals_advanced_div.collapse
-					ul
-						li
-							input#characters.session(   type="checkbox" checked)
-							label(for="characters") Allow goals to require characters
-						li
-							input#apples.session(       type="checkbox" checked)
-							label(for="apples") Include apples
-						li
-							input#tutorials.session(    type="checkbox") 
-							label(for="tutorials") Include tutorials
-						li
-							input#difficults.session(   type="checkbox") 
-							label(for="difficults") Include difficults
-						li
-							input#yottass.session(      type="checkbox") 
-							label(for="yottass") Include Yotta SS 
-						li
-							input#lowdash.session(      type="checkbox")
-							label(for="lowdash") Low dash
-						li
-							input#lowjump.session(      type="checkbox")
-							label(for="lowjump") Low jump
-						li
-							input#lowattack.session(    type="checkbox")
-							label(for="lowattack") Low attack
-						li
-							input#lowdirection.session( type="checkbox") 
-							label(for="lowdirection") Low direction
-						li
-							input#lowpercent.session(   type="checkbox")
-							label(for="lowpercent") Low percent
-						li
-							input#somepercent.session(  type="checkbox")
-							label(for="somepercent") Some percent
+					table.options_table.table.table-dark.table-sm
+						tr
+							td
+								div.checkbox
+									label
+										input#characters.session(   type="checkbox" checked)
+										<img class="icon" src="http://dustkid.com/static/iconAll.png" /> Allow goals to require characters 
+							td
+								div.checkbox
+									label
+										input#lowdash.session(      type="checkbox")
+										<img class="icon" src="http://dustkid.com/static/iconNoDash.png" /> Low dash 
+						tr
+							td
+								div.checkbox
+									label
+										input#apples.session(       type="checkbox" checked)
+										<img class="icon" src="http://dustkid.com/static/iconApple.png" /> Include apples 
+							td
+								div.checkbox
+									label
+										input#lowjump.session(      type="checkbox")
+										<img class="icon" src="http://dustkid.com/static/iconNoJump.png" /> Low jump 
+						tr
+							td
+								div.checkbox
+									label
+										input#tutorials.session(    type="checkbox") 
+										<img class="character" src="http://dustkid.com/static/iconDustman.png" />  Include tutorials 
+							td
+								div.checkbox
+									label
+										input#lowattack.session(    type="checkbox")
+										<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" /> Low attack 
+						tr
+							td
+								div.checkbox
+									label
+										input#difficults.session(   type="checkbox") 
+										<img class="icon" src="/img/iconDonger.png" /> Include difficults 
+							td
+								div.checkbox
+									label
+										input#lowdirection.session( type="checkbox") 
+										<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" /> Low direction
+						tr
+							td
+								div.checkbox
+									label
+										input#yottass.session(      type="checkbox") 
+										<img class="icon" src="/img/iconDonger.png" /> Include Yotta SS 
+							td
+								div.checkbox
+									label
+										input#lowpercent.session(   type="checkbox")
+										<img class="icon" src="/img/iconLow.png" /> Low percent
+						tr
+							td
+							td
+								div.checkbox
+									label
+										input#somepercent.session(  type="checkbox")
+										<img class="icon" src="http://dustkid.com/static/iconSome.png" /> Some percent 
 
 	div.row
-		button#generate.btn.btn-primary.btn-lg.btn-block Generate seed
+		div.col-md-2
+		div.col-md-6
+			button#generate.btn.btn-primary.btn-lg.btn-block Generate seed
