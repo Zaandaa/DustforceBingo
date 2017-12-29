@@ -277,7 +277,7 @@ var Goal = function(goalData) {
 			// total, check against player.countObjective(kwargs)
 
 			// >= beat, ss, apples, keys
-			if (player.countObjective(goalData) >= self.goalData.total) {
+			if (player.countObjective(self.goalData) >= self.goalData.total) {
 				return true;
 			}
 
