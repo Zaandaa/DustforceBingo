@@ -89,11 +89,9 @@ var Player = function(id, name) {
 
 		var count = 0;
 
-		console.log(goalData)
 		if (goalData.count == "Beat") {
 			// goalData.character, goalData.hub, goalData.leveltype
 			for (var l in self.levelProgress) {
-				console.log(self.levelProgress[l])
 				if (goalData.hub && levels.levels[l].hub != goalData.hub)
 					continue;
 				if (goalData.leveltype && levels.levels[l].type != goalData.leveltype)
@@ -101,7 +99,6 @@ var Player = function(id, name) {
 				if (goalData.character && !self.levelProgress[l].characters.includes(goalData.character))
 					continue;
 				count++;
-				console.log(count)
 			}
 		} else if (goalData.count == "SS") {
 			// goalData.character, goalData.hub, goalData.leveltype
