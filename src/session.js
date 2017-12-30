@@ -84,21 +84,6 @@ function build(io) {
 				});
 			});
 		});
-		
-		socket.on('view', function(data) {
-			if (!verify(['session'], data, socket, 'viewResponse'))
-				return;
-			
-			if (!data.session in rooms) 
-				return Error(socket, 'viewResponse', `Session ${data.session} does not exist`);
-			
-			socket.emit('viewResponse', {
-				err: false,
-				board: rooms[data.session].board.getBoardData()
-			});
-		});
-		
-		socket.emit('start');
 	})
 
 	extern.getSession = function(id) {
@@ -169,7 +154,7 @@ function build(io) {
 			socket.on('disconnect', function() {
 				if (socket.custom.id)
 					bingo.removePlayer(socket.custom.id);
-				delete sockets.splice(sockets.indexOf(socket), 1);
+				sockets.splice(sockets.indexOf(socket), 1);
 				delete socket;
 			});
 
