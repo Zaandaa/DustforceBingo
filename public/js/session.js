@@ -179,10 +179,6 @@ $(document).on('ready', function() {
 		}
 	});
 	
-	socket.on('viewResponse', function(data) {
-		
-	});
-	
 	socket.on('updateStart', function(data) {
 		
 	});
