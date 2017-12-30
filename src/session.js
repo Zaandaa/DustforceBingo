@@ -74,26 +74,16 @@ function build(io) {
 	io.on('connection', function(socket) {
 		socket.custom = {};
 		socket.on('init', function(data) {
-			if (!verify(['username', 'session'], data, socket, 'connectionResponse'))
-				return;
-			
 			if (!data.session in rooms) 
 				return Error(socket, 'connectionResponse', `Session ${data.session} does not exist`);
-			
-			getUserInfo(data.username, function(err, username, id) {
-				if(err) 
-					return Error(socket, 'connectionResponse', username);
-				
-				socket.custom.username = username;
-				socket.custom.id = id;
-				rooms[data.session].addSocket(socket, function(err, message) {
-					socket.emit('connectionResponse', {
-						err: err,
-						message: message
-					});
+
+			rooms[data.session].addSocket(socket, function(err, message) {
+				socket.emit('connectionResponse', {
+					err: err,
+					message: message
 				});
 			});
-		});	
+		});
 		
 		socket.on('view', function(data) {
 			if (!verify(['session'], data, socket, 'viewResponse'))
@@ -127,7 +117,7 @@ function build(io) {
 
 		var start = false;
 		var canStart = false;
-		var sockets = {};
+		var sockets = [];
 
 		var seedChars = "1234567890qwertyuiopasdfghjklzxcvbnm";
 		var seedLength = 8;
@@ -173,21 +163,44 @@ function build(io) {
 		
 		self.addSocket = function (socket, lambda)
 		{
-			if (bingo.active || bingo.finished)
-				return lambda(true, 'Session already started');
-			if (socket.custom.id in sockets)
-				return lambda(true, 'User already exists in session');
 
-			sockets[socket.custom.id] = socket;
+			sockets.push(socket);
 			
 			socket.on('disconnect', function() {
-				if (bingo.removePlayer(socket.custom.id))
-					delete sockets[socket.custom.id];
+				if (socket.custom.id)
+					bingo.removePlayer(socket.custom.id);
+				delete sockets.splice(sockets.indexOf(socket), 1);
+				delete socket;
+			});
+
+			socket.on('join', function(data) {
+				if (!verify(['username', 'session'], data, socket, 'joinResponse'))
+					return;
+
+				if (bingo.active || bingo.finished)
+					return Error(socket, 'joinResponse', 'Session already started');
+
+				getUserInfo(data.username, function(err, username, id) {
+					if (err) 
+						return Error(socket, 'joinResponse', username);
+
+					if (id in bingo.players)
+						return Error(socket,  'joinResponse', 'User already exists in session');
+
+					socket.custom.username = username;
+					socket.custom.id = id;
+					if (bingo.addPlayer(socket.custom.id, socket.custom.username)) {
+						socket.emit('joinResponse', {
+							err: false,
+							message: `Joined ${socket.custom.username}`
+						});
+					}
+				});
 			});
 
 			socket.on('remove', function() {
 				if (bingo.removePlayer(socket.custom.id))
-					delete sockets[socket.custom.id];
+					delete socket.custom.id;
 				socket.emit('removed');
 			});
 			
@@ -207,9 +220,12 @@ function build(io) {
 				start = false;
 			});
 
-			bingo.addPlayer(socket.custom.id, socket.custom.username);
-			return lambda(false, `Added ${socket.custom.username}`);
-		}
+			if (bingo.active || bingo.finished) {
+				socket.emit('board', self.getBoardData());
+			}
+			socket.emit("players", self.getPlayerData());
+			return lambda(false, 'Added socket');
+		};
 		
 		self.canStart = function(state) {
 			canStart = state;
@@ -230,11 +246,15 @@ function build(io) {
 		
 		self.getBoardData = function() {
 			return bingo.getBoardData()
-		}
+		};
+		
+		self.getPlayerData = function() {
+			return bingo.getPlayerData()
+		};
 		
 		self.receiveReplay = function(r) {
 			bingo.sendReplay(r);
-		}
+		};
 		
 // CTOR:
 

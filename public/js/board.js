@@ -50,7 +50,6 @@ function updatePlayersTable(playersJson, target) {
 }
 
 function toggleLabel() {
-	console.log($(this).hasClass("bingo_label"));
 	if ($(this).hasClass("bingo_label"))
 		$(this).removeClass("bingo_label");
 	else

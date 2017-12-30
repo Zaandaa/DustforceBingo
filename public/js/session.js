@@ -1,7 +1,8 @@
 var socket = io();
 
 $(document).on('ready', function() {
-	
+	socket.emit('init', {session: sessionId});
+
 	// ELEMENTS:
 	
 	function resolve(t, l, a) {
@@ -107,7 +108,7 @@ $(document).on('ready', function() {
 
 	$('#username')
 	.enableOn('removed')
-	.disableOn('connectionResponse', function(res) {
+	.disableOn('joinResponse', function(res) {
 		return !res.err;
 	})
 	.disableOn('board');
@@ -116,7 +117,7 @@ $(document).on('ready', function() {
 	.emitter(function() {
 		if ($(this).text() == "Join") {
 			$(this).disable();
-			return "init";
+			return "join";
 		}
 		return "remove";
 	}, function() {
@@ -136,7 +137,7 @@ $(document).on('ready', function() {
 	.emitter(function() {
 		return $(this).text() == "Ready" ? 'ready' : 'unready';
 	}).flop("Ready", "Unready")
-	.enableOn('connectionResponse', function(res) {
+	.enableOn('joinResponse', function(res) {
 		return !res.err;
 	}).disableOn('startingTimer')
 	.enableOn('timerInterrupted')
@@ -159,6 +160,15 @@ $(document).on('ready', function() {
 	// SOCKETS:
 	
 	socket.on('connectionResponse', function(data) {
+		if(data.err) {
+			alert(data.message);
+		} else {
+			console.log(data.message);
+		}
+	});
+	
+	
+	socket.on('joinResponse', function(data) {
 		$("#join").enable();
 		if(data.err) {
 			alert(data.message);
@@ -182,7 +192,7 @@ $(document).on('ready', function() {
 	});
 	
 	socket.on('removed', function(data) {
-		$(".collapse").collapse('hide');
+
 	});
 	
 	socket.on('board', function(data) {
@@ -193,7 +203,7 @@ $(document).on('ready', function() {
 	socket.on('players', function(data) {
 		// console.log("got players", data);
 		updatePlayersTable(data, $('#players_table_div'));
-		$(".collapse").collapse('show');
+		// $(".collapse").collapse('show');
 	});
 	
 	socket.on('finish', function(data) {
