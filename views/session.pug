@@ -7,17 +7,19 @@ block js
 	script(src="/js/session.js")
 
 block content
-	div#user_div
-		div#user_buttons_div
+	div#user_div.row
+		div#user_buttons_div.col
 			input#username(placeholder="Username")
 			button#join.btn.btn-primary Join
 			button#ready.btn.btn-primary Ready
 
-	div#board_div
-		button#start.btn.btn-primary.btn-lg.btn-block start
-		div#countdown_div
+	div#main_div.row
 
-	div#players_table_div
+		div#players_table_div.col-md-4
+
+		div#board_div.col-md-8
+			button#start.btn.btn-primary.btn-lg.btn-block start
+			div#countdown_div
 
 	div
 		h4 Rules

@@ -4,15 +4,18 @@ function updateBoardTable(boardJson, target) {
 	boardData = JSON.parse(boardJson);
 
 	var table = $("<table></table>").addClass("bingo_table").addClass("table").addClass("table-dark").addClass("table-bordered");
+	table.attr('id', 'bingo_table');
 
 	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<tr></tr>");
 		for (var j = 0; j < boardData.size; j++) {
 			var cell = $("<td></td>");
-			cell.append(boardData.goals[i * boardData.size + j].title);
+			cell.append("<div class='row'>" + boardData.goals[i * boardData.size + j].title + "</div>");
+			cell.append("<div class='row'>");
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
-				cell.append("<br><b>" + boardData.goals[i * boardData.size + j].achieved[a] + "</b>");
+				cell.append("<b>" + boardData.goals[i * boardData.size + j].achieved[a] + "</b> ");
 			}
+			cell.append("</div>");
 			cell.click(toggleLabel);
 			row.append(cell);
 		}
@@ -28,6 +31,7 @@ function updatePlayersTable(playersJson, target) {
 	playerData = JSON.parse(playersJson);
 
 	var table = $("<table></table>").addClass("table").addClass("table-dark");
+	table.attr('id', 'players_table');
 
 	// head
 	var thead = $("<thead></thead>");
@@ -54,4 +58,12 @@ function toggleLabel() {
 		$(this).removeClass("bingo_label");
 	else
 		$(this).addClass("bingo_label");
+}
+
+function hideStartButton() {
+	if ($('#start').length && !$('#bingo_table').length) {
+		$('#bingo_table_div').empty();
+		var element = $("<h2>Starting...</h2>")
+		$('#bingo_table_div').append(element);
+	}
 }

@@ -1,9 +1,4 @@
-$(document).on('ready', function() {
-	$('#goals_advanced').hide();
-	$('#show_adv').on('click', function() {
-		$('#goals_advanced').show();
-	});
-	
+$(document).on('ready', function() {	
 	var $size = $('#size'),
 	    $bingo_count_type = $('#bingo_count_type'),
 		$bingo_count = $("#bingo_count");

@@ -129,7 +129,7 @@ $(document).on('ready', function() {
 	.flop("Join", "Remove")
 	.setOn('removed', 'Join')
 	.disableOn('startingTimer')
-	.enableOn('timerInterrupted')
+	// .enableOn('timerInterrupted')
 	.disableOn('board');
 	
 	$('#ready')
@@ -140,7 +140,7 @@ $(document).on('ready', function() {
 	.enableOn('joinResponse', function(res) {
 		return !res.err;
 	}).disableOn('startingTimer')
-	.enableOn('timerInterrupted')
+	// .enableOn('timerInterrupted')
 	.setOn('removed', 'Ready')
 	.disableOn('removed')
 	.disableOn('board');
@@ -148,9 +148,9 @@ $(document).on('ready', function() {
 	$('#start')
 	.disable()
 	.emitter(function() {
-		return $(this).text() == "Start" ? "start" : "unstart";
+		$(this).disable();
+		return "start";
 	})
-	.flop("Start", "Unstart")
 	.enableOn('updateStart', function(res) {
 		return res;
 	}).disableOn('updateStart', function(res) {
@@ -181,6 +181,10 @@ $(document).on('ready', function() {
 	
 	socket.on('updateStart', function(data) {
 		
+	});
+	
+	socket.on('startingTimer', function(data) {
+		removeStartButton();
 	});
 	
 	socket.on('timerInterrupted', function(data) {

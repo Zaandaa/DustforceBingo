@@ -131,15 +131,15 @@ function build(io) {
 			if (!canStart || start) return;
 			start = true;
 			
-			console.log("side a", canStart, start);
-			emitAll('startingTimer', { time: timespan });
-			console.log("side b", canStart, start);
+			// console.log("side a", canStart, start);
+			// emitAll('startingTimer', { time: timespan });
+			// console.log("side b", canStart, start);
 			
 			setTimeout(function() {
-				console.log("starting", start);
-				if(!start) {
-					emitAll(this, 'timerInterrupted');
-				};
+				// console.log("starting", start);
+				// if(!start) {
+					// emitAll(this, 'timerInterrupted');
+				// };
 				bingo.start();
 			}, timespan);
 		};
@@ -198,11 +198,11 @@ function build(io) {
 			});
 			
 			socket.on('start', function() {
-				startTimer(100);
+				startTimer(1000);
 			});
 			
 			socket.on('unstart', function() {
-				start = false;
+				// start = false;
 			});
 
 			if (bingo.active || bingo.finished) {
