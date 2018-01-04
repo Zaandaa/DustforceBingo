@@ -97,6 +97,7 @@ function build(io) {
 	seedrandom();
 	function Session(bingo_args) {
 		var self = this;
+		self.bingo_args = bingo_args;
 		
 // PRIVATE:
 

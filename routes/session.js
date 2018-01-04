@@ -56,7 +56,12 @@ function build(io) {
 			return;
 		}
 		var s = session.getSession(req.params.id)
-		res.render('session', { session: s });
+		res.render('session', {
+			session: s,
+			wincondition: s.bingo_args.bingo_count + " " + s.bingo_args.bingo_count_type + (s.bingo_args.bingo_count > 1 ? "s" : ""),
+			save: s.bingo_args.save == "newgame" ? "New Game" : "New Game+",
+			lockout: s.bingo_args.lockout ? "on" : "off",
+		});
 	});
 	return router;
 }
