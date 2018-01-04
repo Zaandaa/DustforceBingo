@@ -3,24 +3,28 @@ function updateBoardTable(boardJson, target) {
 
 	boardData = JSON.parse(boardJson);
 
-	var table = $("<table></table>").addClass("bingo_table").addClass("table").addClass("table-dark").addClass("table-bordered");
-	table.attr('id', 'bingo_table');
+	var table = $("<div></div>").addClass("bingo_table");//.addClass("table").addClass("table-dark").addClass("table-bordered");
+	table.attr('id', 'bingo_div');
+
+	var col_width = (boardData.size == 5) ? 2 : 4;
 
 	for (var i = 0; i < boardData.size; i++) {
-		var row = $("<tr></tr>");
+		var row = $("<div class='row'></div>");
 		for (var j = 0; j < boardData.size; j++) {
-			var cell = $("<td></td>");
-			cell.append("<div class='row'>" + boardData.goals[i * boardData.size + j].title + "</div>");
-			cell.append("<div class='row'>");
+			var cell = $("<div></div>").addClass("bingo_table_cell").addClass("col-md-" + col_width);
+			cell.append("<div>" + boardData.goals[i * boardData.size + j].title + "</div>");
+			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
-				cell.append("<b>" + boardData.goals[i * boardData.size + j].achieved[a] + "</b> ");
+				achievers += "<b>" + boardData.goals[i * boardData.size + j].achieved[a] + "</b> ";
 			}
-			cell.append("</div>");
+			cell.append("<div>" + achievers + "</div>");
 			cell.click(toggleLabel);
 			row.append(cell);
 		}
 		table.append(row);
 	}
+
+	var winner = $("<h2>Winner: " + boardData.winner + "</h2>");
 
 	target.append(table);
 }
@@ -60,10 +64,10 @@ function toggleLabel() {
 		$(this).addClass("bingo_label");
 }
 
-function hideStartButton() {
-	if ($('#start').length && !$('#bingo_table').length) {
-		$('#bingo_table_div').empty();
+function removeStartButton() {
+	if ($('#start').length && !$('#bingo_div').length) {
+		$('#board_div').empty();
 		var element = $("<h2>Starting...</h2>")
-		$('#bingo_table_div').append(element);
+		$('#board_div').append(element);
 	}
 }

@@ -43,25 +43,31 @@ a {
 	border: 0;
 }
 
+
+.bingo_table_cell {
+	background-color: #222222;
+	color: #eeeeee;
+	text-align: center;
+	vertical-align: center;
+	padding: 10px;
+	border: 1px solid white;
+}
+.bingo_table_cell:hover {
+	background-color: #555555;
+	cursor: default;
+}
 .bingo_label {
 	background-color: #444444;
 	font-weight: bold;
 }
-.bingo_table td {
-	text-align: center;
-	vertical-align: center;
-}
-.bingo_table td:hover {
-	background-color: #555555;
-	cursor: default;
-}
+
 .players_table th,
 .players_table td {
 	text-align: left;
 	vertical-align: center;
 }
 
-.icon{
+.icon {
 	height:24px;
 	width:32px;
 	padding-left:4px;

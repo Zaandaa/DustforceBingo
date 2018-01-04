@@ -1,5 +1,4 @@
 function goToSeed() {
-	alert($("#nav_seed").val());
 	var seed = $("#nav_seed").val();
 	if (seed.match(/\w+/) && seed.length == 8) {
 		window.location = "/session/" + seed;

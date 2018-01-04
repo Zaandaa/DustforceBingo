@@ -132,7 +132,7 @@ function build(io) {
 			start = true;
 			
 			// console.log("side a", canStart, start);
-			// emitAll('startingTimer', { time: timespan });
+			emitAll('startingTimer', { time: timespan });
 			// console.log("side b", canStart, start);
 			
 			setTimeout(function() {
