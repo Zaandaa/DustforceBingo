@@ -47,6 +47,6 @@ $(document).on('ready', function() {
 			if(!($(this).attr('id') in payload))
 				payload[$(this).attr('id')] = $(this).val();
 		});	
-		window.location.replace("session?" + $.param(payload)) 
+		window.location = "session?" + $.param(payload) 
 	});
 });
