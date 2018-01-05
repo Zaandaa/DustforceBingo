@@ -117,6 +117,7 @@ $(document).on('ready', function() {
 	.emitter(function() {
 		if ($(this).text() == "Join") {
 			$(this).disable();
+			$("#connecting").collapse('show');
 			return "join";
 		}
 		return "remove";
@@ -180,6 +181,7 @@ $(document).on('ready', function() {
 	
 	socket.on('joinResponse', function(data) {
 		$("#join").enable();
+		$("#connecting").collapse('hide');
 		if(data.err) {
 			alert(data.message);
 			$("#join").text("Join");
