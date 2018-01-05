@@ -61,8 +61,8 @@ function build(io) {
 			size: s.bingo_args.size,
 			wincondition: s.bingo_args.bingo_count + " " + s.bingo_args.bingo_count_type + (s.bingo_args.bingo_count > 1 ? "s" : ""),
 			save: s.bingo_args.save,
-			difficulty: s.bingo_args.difficulty,
-			length: s.bingo_args.length,
+			difficulty: s.bingo_args.difficulty_raw,
+			length: s.bingo_args.length_raw,
 			lockout: s.bingo_args.lockout ? "on" : "off",
 		});
 	});
