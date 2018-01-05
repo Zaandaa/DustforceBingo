@@ -50,7 +50,9 @@ a {
 	text-align: center;
 	vertical-align: center;
 	padding: 10px;
-	border: 1px solid white;
+	border: 1px solid gray;
+	border-radius: 2px;
+	margin: 2px;
 }
 .bingo_table_cell:hover {
 	background-color: #555555;
@@ -59,6 +61,7 @@ a {
 .bingo_label {
 	background-color: #444444;
 	font-weight: bold;
+	border-color: white;
 }
 
 .players_table th,

@@ -6,7 +6,7 @@ function updateBoardTable(boardJson, target) {
 	var table = $("<div></div>").addClass("bingo_table");//.addClass("table").addClass("table-dark").addClass("table-bordered");
 	table.attr('id', 'bingo_div');
 
-	var col_width = (boardData.size == 5) ? 2 : 4;
+	var col_width = (boardData.size == 5) ? 2 : 3;
 
 	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<div class='row'></div>");
