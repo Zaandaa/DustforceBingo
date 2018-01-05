@@ -32,7 +32,7 @@ extern.getLevelDifficulty = function(level, objective, save) {
 	}
 	if (objective == "SS" || objective == "BS")
 		d--;
-	if (save == "newgame")
+	if (save == "New Game")
 		d--;
 
 	return d;
@@ -44,17 +44,17 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 
 	if (goalData.leveltype) {
 		multiplier *= 0.25;
-		multiplier *= Math.min(4, 12 - constants.levelTypes.indexOf(goalData.leveltype) - 2 * ruleset.difficulty) * 0.25;
-		multiplier *= Math.min(4, 10 - constants.levelTypes.indexOf(goalData.leveltype) - 2 * ruleset.length) * 0.25;
+		multiplier *= Math.min(4, 6 - constants.levelTypes.indexOf(goalData.leveltype) * .5 - ruleset.difficulty) * 0.25;
+		multiplier *= Math.min(4, 6 - constants.levelTypes.indexOf(goalData.leveltype) * .5 - ruleset.length) * 0.25;
 	} else if (goalData.keytype) {
 		multiplier *= 0.25;
-		multiplier *= Math.min(4, 12 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.difficulty) * 0.25;
-		multiplier *= Math.min(4, 10 - constants.keys.indexOf(goalData.keytype) - 2 * ruleset.length) * 0.25;
+		multiplier *= Math.min(4, 6 - constants.keys.indexOf(goalData.keytype) * .5 - ruleset.difficulty) * 0.25;
+		multiplier *= Math.min(4, 6 - constants.keys.indexOf(goalData.keytype) * .5 - ruleset.length) * 0.25;
 	} else {
 		// default
-		multiplier *= 1.4 - ruleset.length * 0.4;
+		multiplier *= 1.3 - ruleset.length * 0.3;
 		if (goalData.character)
-			multiplier *= 0.5;
+			multiplier *= 0.4;
 	}
 
 	if (goalData.hub && (goalData.hub != "Difficult" && goalData.hub != "Tutorial")) {

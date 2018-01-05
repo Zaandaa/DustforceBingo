@@ -74,11 +74,25 @@ var Bingo = function(session, ruleset) {
 	var self = this;
 	self.session = session;
 	self.ruleset = ruleset;
+
+	// translate ruleset
 	for (var r in self.ruleset) {
 		if (self.ruleset[r] == "true")
 			self.ruleset[r] = true;
 		if (self.ruleset[r] == "false")
 			self.ruleset[r] = false;
+	}
+	switch (self.ruleset.difficulty_raw) {
+		case "Easy": self.ruleset.difficulty = 4; break;
+		case "Normal": self.ruleset.difficulty = 3; break;
+		case "Hard": self.ruleset.difficulty = 2; break;
+		case "Very Hard": self.ruleset.difficulty = 1; break;
+	}
+	switch (self.ruleset.length_raw) {
+		case "Fast": self.ruleset.length = 4; break;
+		case "Normal": self.ruleset.length = 3; break;
+		case "Long": self.ruleset.length = 2; break;
+		case "Full Game": self.ruleset.length = 1; break;
 	}
 
 	self.active = false;

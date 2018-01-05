@@ -5,9 +5,6 @@ block js
 
 block content
 	div.row
-		h2 Dustforce Bingo
-
-	div.row
 		div.col-md-4
 			include rules.pug
 
@@ -17,8 +14,8 @@ block content
 			div.form-group
 				div Save file:
 				select#save.session.form-control
-					option(value="newgame") New Game
-					option(value="newgameplus") New Game+
+					option(value="New Game") New Game
+					option(value="New Game +") New Game+
 
 			div.form-group
 				div Size:
@@ -27,17 +24,18 @@ block content
 					option(value="5") 5 by 5
 			div.form-group
 				div Difficulty:
-				select#difficulty.session.form-control
-					option(value="4") Easy
-					option(value="3" selected) Normal
-					option(value="2") Hard
-					option(value="1") Very hard
+				select#difficulty_raw.session.form-control
+					option(value="Easy") Easy
+					option(value="Normal" selected) Normal
+					option(value="Hard") Hard
+					option(value="Very Hard") Very Hard
 			div.form-group
 				div Length:
-				select#length.session.form-control
-					option(value="3") Fast
-					option(value="2" selected) Normal
-					option(value="1") Any
+				select#length_raw.session.form-control
+					option(value="Fast") Fast
+					option(value="Normal" selected) Normal
+					option(value="Long") Long
+					option(value="Full Game") Full Game
 
 			div.form-group
 				input#lockout.session(type="checkbox" checked)

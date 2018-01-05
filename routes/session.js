@@ -16,8 +16,8 @@ var params = [
 	"lockout", 
 	"bingo_count", 
 	"bingo_count_type", 
-	"difficulty", 
-	"length", 
+	"difficulty_raw", 
+	"length_raw", 
 	"characters", 
 	"apples", 
 	"tutorials", 
@@ -58,8 +58,11 @@ function build(io) {
 		var s = session.getSession(req.params.id)
 		res.render('session', {
 			session: s,
+			size: s.bingo_args.size,
 			wincondition: s.bingo_args.bingo_count + " " + s.bingo_args.bingo_count_type + (s.bingo_args.bingo_count > 1 ? "s" : ""),
-			save: s.bingo_args.save == "newgame" ? "New Game" : "New Game+",
+			save: s.bingo_args.save,
+			difficulty: s.bingo_args.difficulty,
+			length: s.bingo_args.length,
 			lockout: s.bingo_args.lockout ? "on" : "off",
 		});
 	});

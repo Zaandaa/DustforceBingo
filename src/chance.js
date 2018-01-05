@@ -26,7 +26,7 @@ hub specific (none or hub)
 */
 
 var chance = {
-	newgame: {
+	"New Game": {
 		level: {
 			chance: 0.6,
 		},
@@ -57,7 +57,7 @@ var chance = {
 			leveltype: 0.5,
 		}
 	},
-	newgameplus: {
+	"New Game +": {
 		level: {
 			chance: 0.6,
 		},
