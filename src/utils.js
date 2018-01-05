@@ -52,7 +52,8 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 		multiplier *= Math.min(4, 6 - constants.keys.indexOf(goalData.keytype) * .5 - ruleset.length) * 0.25;
 	} else {
 		// default
-		multiplier *= 1.3 - ruleset.length * 0.3;
+		multiplier *= 1 - (ruleset.length - 1) * (goalData.count != "Beat" || ruleset.save == "New Game" ? 0.25 : 0.2);
+		multiplier *= 1 - (ruleset.difficulty - 1) * (goalData.count != "Beat" || ruleset.save == "New Game" ? 0.2 : 0.15);
 		if (goalData.character)
 			multiplier *= 0.4;
 	}

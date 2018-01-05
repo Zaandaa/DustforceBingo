@@ -28,7 +28,7 @@ hub specific (none or hub)
 var chance = {
 	"New Game": {
 		level: {
-			chance: 0.6,
+			chance: 0.4,
 		},
 		total: {
 			chance: 1,
@@ -52,14 +52,14 @@ var chance = {
 				minimum: 2,
 				range: 48,
 			},
-			hub: 0.5,
-			character: 0.5,
-			leveltype: 0.5,
+			hub: 0.4,
+			character: 0.4,
+			leveltype: 0.4,
 		}
 	},
 	"New Game +": {
 		level: {
-			chance: 0.6,
+			chance: 0.4,
 		},
 		total: {
 			chance: 1,
@@ -83,9 +83,9 @@ var chance = {
 				minimum: 2,
 				range: 48,
 			},
-			hub: 0.5,
-			character: 0.5,
-			leveltype: 0.5,
+			hub: 0.4,
+			character: 0.4,
+			leveltype: 0.4,
 		}
 	}
 };
