@@ -115,12 +115,12 @@ function makeLevelGoalDatas(ruleset) {
 				return;
 
 			var d = utils.getLevelDifficulty(l, o);
-			if (d < ruleset.difficulty)
+			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
 			validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d});
 			totalDifficulty += d;
 
-			if (ruleset.characters && levels.levels[l].charselect) {
+			if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty) {
 				constants.characters.forEach(function(c) {
 					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 4, character: c})
 					totalDifficulty += d / 4;

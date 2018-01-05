@@ -9,20 +9,22 @@ function updateBoardTable(boardJson, target) {
 	var table = $("<div></div>").addClass("bingo_table");//.addClass("table").addClass("table-dark").addClass("table-bordered");
 	table.attr('id', 'bingo_div');
 
-	var col_width = (boardData.size == 5) ? 2 : 3;
+	var col_width = (boardData.size == 5) ? 2 : 4;
 
 	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<div class='row'></div>");
 		for (var j = 0; j < boardData.size; j++) {
-			var cell = $("<div></div>").addClass("bingo_table_cell").addClass("col-md-" + col_width);
-			cell.append("<div>" + boardData.goals[i * boardData.size + j].title + "</div>");
+			var cell = $("<div></div>").addClass("bingo_table_cell").addClass("col-" + col_width);
+			var innerCell = $("<div></div>").addClass("bingo_table_inner_cell");
+			innerCell.append("<div>" + boardData.goals[i * boardData.size + j].title + "</div>");
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
 				achievers += "<b style='color: " + boardData.players[achiever].color + "'>" + boardData.players[achiever].name[0] + "</b> ";
 			}
-			cell.append("<div>" + achievers + "</div>");
-			cell.click(toggleLabel);
+			innerCell.append("<div>" + achievers + "</div>");
+			innerCell.click(toggleLabel);
+			cell.append(innerCell);
 			row.append(cell);
 		}
 		table.append(row);

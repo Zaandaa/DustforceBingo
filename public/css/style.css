@@ -45,6 +45,9 @@ a {
 
 
 .bingo_table_cell {
+	padding: 2px;
+}
+.bingo_table_inner_cell {
 	background-color: #222222;
 	color: #eeeeee;
 	text-align: center;
@@ -53,8 +56,9 @@ a {
 	border: 1px solid gray;
 	border-radius: 2px;
 	margin: 2px;
+	min-height: 80px;
 }
-.bingo_table_cell:hover {
+.bingo_table_inner_cell:hover {
 	background-color: #555555;
 	cursor: default;
 }

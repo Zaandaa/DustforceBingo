@@ -94,6 +94,7 @@ var Bingo = function(session, ruleset) {
 		case "Long": self.ruleset.length = 2; break;
 		case "Full Game": self.ruleset.length = 1; break;
 	}
+	self.ruleset.maxEasy = self.ruleset.difficulty + 4;
 
 	self.active = false;
 	self.finished = false;
@@ -390,6 +391,25 @@ var Bingo = function(session, ruleset) {
 		self.session.finish();
 	};
 
+	self.cleanup = function() {
+		self.active = false;
+		self.finished = true;
+
+		for (var id in self.players) {
+			delete self.players[id];
+		}
+		delete self.players;
+
+		for (var g in self.goals) {
+			delete self.goals[g];
+		}
+		delete self.goals;
+
+		delete self.ruleset;
+		delete self.session;
+
+		delete self;
+	}
 
 	return self;
 };

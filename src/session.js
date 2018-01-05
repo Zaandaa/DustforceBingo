@@ -146,6 +146,21 @@ function build(io) {
 			}, timespan);
 		};
 
+		function cleanup() {
+			// delete references
+			for (var s in sockets) {
+				// sockets[s].destroy(); // not a function?
+				delete sockets[s];
+			}
+			delete sockets;
+
+			bingo.cleanup();
+			delete bingo;
+
+			delete rooms[self.id];
+			delete self;
+		}
+
 // PUBLIC:
 		
 		self.addSocket = function (socket, lambda)
