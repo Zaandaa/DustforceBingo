@@ -103,6 +103,7 @@ function build(io) {
 
 		var start = false;
 		var canStart = false;
+		var finished = false;
 		var sockets = [];
 
 		var seedChars = "1234567890qwertyuiopasdfghjklzxcvbnm";
@@ -198,6 +199,10 @@ function build(io) {
 				bingo.unready(socket.custom.id);
 			});
 			
+			socket.on('color', function(data) {
+				bingo.changePlayerColor(socket.custom.id, data.color);
+			})
+			
 			socket.on('start', function() {
 				startTimer(1000);
 			});
@@ -227,6 +232,7 @@ function build(io) {
 		};
 		
 		self.finish = function() {
+			finished = true;
 			emitAll('finish');
 		};
 		

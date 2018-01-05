@@ -1,4 +1,7 @@
+var bingoStarted = false;
+
 function updateBoardTable(boardJson, target) {
+	bingoStarted = true;
 	target.empty();
 
 	boardData = JSON.parse(boardJson);
@@ -15,7 +18,8 @@ function updateBoardTable(boardJson, target) {
 			cell.append("<div>" + boardData.goals[i * boardData.size + j].title + "</div>");
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
-				achievers += "<b>" + boardData.goals[i * boardData.size + j].achieved[a] + "</b> ";
+				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
+				achievers += "<b style='color: " + boardData.players[achiever].color + "'>" + boardData.players[achiever].name[0] + "</b> ";
 			}
 			cell.append("<div>" + achievers + "</div>");
 			cell.click(toggleLabel);
@@ -25,6 +29,9 @@ function updateBoardTable(boardJson, target) {
 	}
 
 	var winner = $("<h2>Winner: " + boardData.winner + "</h2>");
+	if (boardData.winner != "") {
+		target.append(winner);
+	}
 
 	target.append(table);
 }
@@ -39,18 +46,34 @@ function updatePlayersTable(playersJson, target) {
 
 	// head
 	var thead = $("<thead></thead>");
-	thead.append($("<tr><th>Player</th><th>Ready</th></tr>"));
+	var row = $("<tr></tr>");
+	row.append($("<th>Player</th>"));
+	row.append($("<th>Color</th>"));
+	if (bingoStarted)
+		row.append($("<th>Goals</th>"));
+	else
+		row.append($("<th>Ready</th>"));
+	thead.append(row);
 	table.append(thead);
 
 	for (var i = 0; i < playerData.players.length; i++) {
 		var row = $("<tr></tr>");
+
 		var cell1 = $("<td></td>");
 		cell1.append(playerData.players[i].name);
 		row.append(cell1);
 
 		var cell2 = $("<td></td>");
-		cell2.append(playerData.players[i].ready.toString());
+		cell2.append(playerData.players[i].color.toString());
 		row.append(cell2);
+
+		var cell3 = $("<td></td>");
+		if (bingoStarted)
+			cell3.append(playerData.players[i].goals.toString());
+		else
+			cell3.append(playerData.players[i].ready.toString());
+		row.append(cell3);
+
 		table.append(row);
 	}
 

@@ -145,6 +145,16 @@ $(document).on('ready', function() {
 	.disableOn('removed')
 	.disableOn('board');
 	
+	$('#color')
+	.disable()
+	.emitter('color', function() {
+		return {
+			color: $(this).val()
+		};
+	}).enableOn('joinResponse', function(res) {
+		return !res.err;
+	}).disableOn('removed');
+	
 	$('#start')
 	.disable()
 	.emitter(function() {

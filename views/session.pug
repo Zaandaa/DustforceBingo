@@ -10,8 +10,21 @@ block content
 	div#user_div.row
 		div#user_buttons_div.col
 			input#username(placeholder="Username")
-			button#join.btn.btn-primary Join
-			button#ready.btn.btn-primary Ready
+			button#join.btn.btn-primary.btn-sm Join
+			button#ready.btn.btn-primary.btn-sm Ready
+			select#color
+				option(value="blue") Blue
+				option(value="indigo") Indigo
+				option(value="purple") Purple
+				option(value="pink") Pink
+				option(value="red") Red
+				option(value="orange") Orange
+				option(value="yellow") Yellow
+				option(value="green") Green
+				option(value="teal") Teal
+				option(value="cyan") Cyan
+				option(value="white" selected) White 
+				option(value="gray") Gray
 
 	div#main_div.row
 
@@ -23,8 +36,8 @@ block content
 	div
 		h4 Rules
 		ul
-			li Save file type: #{save}
 			li Win condition: #{wincondition}
 			li Lockout: #{lockout}
+			li Save file: #{save}
 
 		include rules.pug

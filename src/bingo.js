@@ -136,6 +136,13 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
+	self.changePlayerColor = function(id, color) {
+		if (id in self.players) {
+			if (self.players[id].changeColor(color))
+				self.session.updatePlayers(self.getPlayerData());
+		}
+	};
+
 	self.playerCountBingo = function(id) {
 		var bingoCount = 0;
 		for (var b in self.possibleBingos) {
@@ -317,7 +324,7 @@ var Bingo = function(session, ruleset) {
 			if (self.ruleset.lockout && self.goals[i].isAchieved() || self.players[replay.user].goalsAchieved.includes(i)) {
 				continue;
 			} else if (self.goals[i].compareReplay(replay, self.players[replay.user])) {
-				self.goals[i].addAchiever(replay.username);
+				self.goals[i].addAchiever(replay.user);
 				self.players[replay.user].achieveGoal(i);
 				success = true;
 				console.log("GOAL ACHIEVED", i, replay.username);
@@ -327,6 +334,7 @@ var Bingo = function(session, ruleset) {
 		if (success) {
 			self.checkWinStatus(replay.user);
 			self.session.updateBoard(self.getBoardData());
+			self.session.updatePlayers(self.getPlayerData());
 			self.checkFinished();
 		}
 		return true;

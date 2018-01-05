@@ -8,7 +8,7 @@ var Player = function(id, name) {
 	var self = this;
 	self.id = id;
 	self.name = name;
-	self.color = "FFFFFF";
+	self.color = "white";
 	self.ready = false;
 
 	self.goalsAchieved = []; // list of ids of goals achieved
@@ -40,6 +40,14 @@ var Player = function(id, name) {
 
 	self.setReady = function(r) {
 		self.ready = r;
+	};
+
+	self.changeColor = function(c) {
+		if (c != self.color) {
+			self.color = c;
+			return true;
+		}
+		return false;
 	};
 
 	self.achieveGoal = function(id) {
