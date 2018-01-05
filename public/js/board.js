@@ -28,12 +28,12 @@ function updateBoardTable(boardJson, target) {
 		table.append(row);
 	}
 
+	target.append(table);
+
 	var winner = $("<h2>Winner: " + boardData.winner + "</h2>");
 	if (boardData.winner != "") {
 		target.append(winner);
 	}
-
-	target.append(table);
 }
 
 function updatePlayersTable(playersJson, target) {
