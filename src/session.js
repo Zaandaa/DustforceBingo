@@ -252,11 +252,15 @@ function build(io) {
 		};
 		
 		self.getBoardData = function() {
-			return bingo.getBoardData()
+			return bingo.getBoardData();
 		};
 		
 		self.getPlayerData = function() {
-			return bingo.getPlayerData()
+			return bingo.getPlayerData();
+		};
+		
+		self.getBingoGoalOptions = function() {
+			return bingo.getGoalOptions();
 		};
 		
 		self.receiveReplay = function(r) {

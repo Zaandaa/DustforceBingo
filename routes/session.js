@@ -64,6 +64,7 @@ function build(io) {
 			difficulty: s.bingo_args.difficulty_raw,
 			length: s.bingo_args.length_raw,
 			lockout: s.bingo_args.lockout ? "on" : "off",
+			options: s.getBingoGoalOptions()
 		});
 	});
 	return router;

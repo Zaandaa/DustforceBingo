@@ -385,6 +385,15 @@ var Bingo = function(session, ruleset) {
 		return JSON.stringify(playerData);
 	};
 
+	self.getGoalOptions = function() {
+		options = []
+		for (var o in constants.optionNames) {
+			if (self.ruleset[o])
+				options.push(constants.optionNames[o]);
+		}
+		return options.join(", ");
+	}
+
 	self.finish = function() {
 		self.active = false;
 		self.finished = true;
