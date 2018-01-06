@@ -10,29 +10,23 @@ block content
 	div#user_div.row
 		div.col
 			input#username(placeholder="Username")
-			button#join.btn.btn-primary.btn-sm Join
-			button#ready.btn.btn-primary.btn-sm Ready
-			select#color
-				option(value="blue") Blue
-				option(value="indigo") Indigo
-				option(value="purple") Purple
-				option(value="pink") Pink
-				option(value="red") Red
-				option(value="orange") Orange
-				option(value="yellow") Yellow
-				option(value="green") Green
-				option(value="teal") Teal
-				option(value="cyan") Cyan
-				option(value="white" selected) White 
-				option(value="gray") Gray
-			h6#connecting.collapse Connecting to dustkid.com...
+			button#join.btn.btn-sm Join
+			button#ready.btn.btn-sm Ready
+			div#color_div
+				div#color_label Color
+				div#color_align
+					button#color.btn(value="white", style="background-color:var(--white)")
+					div#color_container.collapse
+						each val in ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Gray", "White"]
+							div.btn.colorpicker(value= val.toLowerCase(), style= "background-color:var(--" + val.toLowerCase() + ");")
+		h6#connecting.collapse Connecting to dustkid.com...
 
 	div#main_div.row
 
 		div#players_table_div.col-md-4
 
 		div#board_div.col-md-8
-			button#start.btn.btn-primary.btn-lg.btn-block Start
+			button#start.btn.btn-lg.btn-block Start
 
 	div
 		h4 Rules

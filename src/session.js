@@ -172,6 +172,7 @@ function build(io) {
 				if (socket.custom.id)
 					bingo.removePlayer(socket.custom.id);
 				sockets.splice(sockets.indexOf(socket), 1);
+				socket.disconnect(0);
 				delete socket;
 			});
 

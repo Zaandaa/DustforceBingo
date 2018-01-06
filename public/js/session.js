@@ -146,15 +146,79 @@ $(document).on('ready', function() {
 	.disableOn('removed')
 	.disableOn('board');
 	
-	$('#color')
+	var $color = $('#color');
+	$color
+	.on('click', function() {
+		$('#color_container').show();
+		
+		var $container = $('#color_container'),
+			bounds = {};
+		    bounds.top  = $container.offset().top;
+			bounds.left = $container.offset().left;
+			bounds.bottom = bounds.top  + $container.height();
+			bounds.right  = bounds.left + $container.width();
+		
+		var oldColor = $color.attr("style"),
+		    oldVal   = $color.attr("value");
+		
+		var colors = [];
+		
+		$('.colorpicker').each(function() {
+			var obj = {},
+			    $this = $(this);
+			obj.top  = $this.offset().top;
+			obj.left = $this.offset().left;
+			obj.bottom = obj.top  + $this.outerHeight();
+			obj.right  = obj.left + $this.outerWidth();
+			obj.target = $this;
+			
+			colors.push(obj);
+		});
+		
+		function inBounds(e, b) {
+			return e.pageY >= b.top && e.pageY <= b.bottom && e.pageX <= b.right && e.pageX >= b.left
+		}
+		
+		var preventFirst = true;
+		
+		$(document).on('mousemove', function(e) {
+			if (inBounds(e, bounds)) {
+				$.each(colors, function() {
+					if (inBounds(e, this)) {
+						$color.attr("style", this.target.attr("style"));
+					}
+				});
+			}
+		})
+		.on('click', function(e) {
+			if(preventFirst) {
+				preventFirst = false;
+				return;
+			}
+			if (inBounds(e, bounds)) {
+				$.each(colors, function() {
+					if (inBounds(e, this)) {
+						$color.attr("style", this.target.attr("style"));
+						$color.attr("value", this.target.attr("value"));
+					}
+				});
+				
+				socket.emit('color', { color : $color.attr("value") });
+			} else {
+				$color.attr("style", oldColor);
+				$color.attr("value", oldVal);
+			}
+			
+			$('#color_container').hide();
+			$(document).unbind('mousemove click');
+		});
+	})
 	.disable()
-	.emitter('color', function() {
-		return {
-			color: $(this).val()
-		};
-	}).enableOn('joinResponse', function(res) {
+	.enableOn('joinResponse', function(res) {
 		return !res.err;
 	}).disableOn('removed');
+	
+	
 	
 	$('#start')
 	.disable()

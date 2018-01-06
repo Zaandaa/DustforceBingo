@@ -41,7 +41,7 @@ function start(lambda) {
 		function (res) {
 			res.setEncoding('utf8');
 			var updated = keepAlive(30000, function() {
-				res.abort();
+				res.destroy();
 				start(lambda);
 			});
 			res.on('data', createParser(lambda, updated));
