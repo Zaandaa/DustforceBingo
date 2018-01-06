@@ -266,11 +266,16 @@ function build(io) {
 		self.receiveReplay = function(r) {
 			bingo.sendReplay(r);
 		};
+
+		self.endSession = function() {
+			console.log("endSession", self.id);
+			cleanup();
+		}
 		
 // CTOR:
 
 		rooms[self.id] = self;
-		
+		setTimeout(self.endSession, 86400000);
 		return self;
 	}
 
