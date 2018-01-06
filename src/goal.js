@@ -176,7 +176,7 @@ function makeTotalGoalData(ruleset) {
 		}
 	}
 
-	if (goalData.count == "Beat" && ruleset.characters && !(goalData.hub && !levels.hubs[goalData.hub].charselect)) {
+	if (goalData.count != "keys" && ruleset.characters && !(goalData.hub && !levels.hubs[goalData.hub].charselect)) {
 		r = Math.random();
 		if (r < chance[ruleset.save].total.character) {
 			goalData.character = constants.characters[Math.floor(Math.random() * constants.characters.length)];
