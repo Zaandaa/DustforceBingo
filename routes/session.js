@@ -23,6 +23,7 @@ var params = [
 	"tutorials", 
 	"difficults", 
 	"yottass", 
+	"sfinesse", 
 	"lowdash", 
 	"lowjump", 
 	"lowattack", 

@@ -1,10 +1,33 @@
-function base_gimmick(t, o) {
+var utils = require('./utils');
+
+function base_gimmick(level, t, o) {
 	return {
 		type: t,
 		objective: o,
-		difficulty: 0,
-		count: 0
+		difficulty: getDifficulty(level, t, o),
+		count: getCount(level, t, o),
+		character: ""
 	}
+}
+
+function getDifficulty(level, t, o) {
+	var d = 0;
+
+	if (t == "sfinesse")
+		d = utils.getLevelDifficulty(level, o, "New Game") - 1;
+
+	return d;
+}
+
+function getCount(level, t, o) {
+	var count = 0;
+
+	// if (t == "apples")
+		// count = 1;
+	if (t == "sfinesse")
+		count = 5;
+
+	return count;
 }
 
 var gimmicks = [
@@ -14,11 +37,13 @@ var gimmicks = [
 	"lowdirection",
 	"lowattack",
 	"lowpercent",
+	"sfinesse",
 ];
 
 var cantss = [
 	"lowpercent",
-	"somepercent"
+	"somepercent",
+	"sfinesse"
 ];
 
 var levels = [
@@ -124,9 +149,9 @@ levels.forEach(function(level) {
 	}
 	
 	gimmicks.forEach(function(g) {
-		x.gimmicks.push(new base_gimmick(g, "Beat"));
+		x.gimmicks.push(new base_gimmick(l, g, "Beat"));
 		if(!cantss.includes(g))
-			x.gimmicks.push(new base_gimmick(g, "SS"));
+			x.gimmicks.push(new base_gimmick(l, g, "SS"));
 	})
 	
 	out[l] = x;

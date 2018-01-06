@@ -28,11 +28,13 @@ extern.getLevelDifficulty = function(level, objective, save) {
 		case "Wood": d = 7; break;
 		case "Silver": d = 6; break;
 		case "Gold": d = 5; break;
-		case "Difficult": d = 3; break;
+		case "Difficult": d = 4; break;
 	}
 	if (objective == "SS" || objective == "BS")
 		d--;
 	if (save == "New Game")
+		d--;
+	if (levels.levels[level].type == "Difficult" && (objective == "SS" || save == "New Game"))
 		d--;
 
 	return d;
@@ -94,7 +96,7 @@ extern.accessGimmick = function(replay, gimmick) {
 }
 
 extern.betterGimmick = function(gimmick, g1, g2) {
-	if (gimmick == "apples") {
+	if (gimmick == "apples" || gimmick == "sfinesse") {
 		return Math.max(g1, g2);
 	} else {
 		// ignore invalid negatives
@@ -109,7 +111,7 @@ extern.betterGimmick = function(gimmick, g1, g2) {
 }
 
 extern.meetGoalGimmick = function(replay, gimmick) {
-	if (gimmick.type == "apples") {
+	if (gimmick.type == "apples" || gimmick.type == "sfinesse") {
 		return extern.accessGimmick(replay, gimmick.type) >= gimmick.count;
 	} else if (gimmick.type == "lowattack") {
 		if (replay.input_super > 0) {
