@@ -133,7 +133,9 @@ function makeLevelGoalDatas(ruleset) {
 				return;
 			if (g.difficulty < ruleset.difficulty)
 				return;
-			validGoalDatas.push({type: "level", level: l, objective: g.objective, difficulty: g.difficulty, gimmicks: [g]});
+			if (!ruleset.characters && g.character)
+				return;
+			validGoalDatas.push({type: "level", level: l, objective: g.objective, difficulty: g.difficulty, character: g.character, gimmicks: [g]});
 			totalDifficulty += g.difficulty;
 		});
 	}
