@@ -57,6 +57,7 @@ a {
 	border-radius: 2px;
 	margin: 1px;
 	min-height: 80px;
+	height: 100%;
 }
 .bingo_table_inner_cell:hover {
 	background-color: #555555;
