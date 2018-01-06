@@ -1,15 +1,15 @@
 var bingoStarted = false;
 
-function updateBoardTable(boardJson, target) {
+function updateBoardTable(boardJson, target, includePopoutLink) {
 	bingoStarted = true;
 	target.empty();
 
 	boardData = JSON.parse(boardJson);
 
-	var table = $("<div></div>").addClass("bingo_table");//.addClass("table").addClass("table-dark").addClass("table-bordered");
+	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
 
-	var col_width = (boardData.size == 5) ? 2 : 4;
+	var col_width = (boardData.size == 5) ? "fifth" : "4";
 
 	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<div class='row'></div>");
@@ -35,6 +35,12 @@ function updateBoardTable(boardJson, target) {
 	var winner = $("<h2>Winner: " + boardData.winner + "</h2>");
 	if (boardData.winner != "") {
 		target.append(winner);
+	}
+
+	if (includePopoutLink) {
+		var popoutButton = $("<button>Popout Board</button>").addClass("btn").addClass("btn-sm").addClass("btn-primary");
+		popoutButton.click(popoutBoard);
+		target.append(popoutButton);
 	}
 }
 
@@ -95,4 +101,8 @@ function removeStartButton() {
 		var element = $("<h2>Starting...</h2>")
 		$('#board_div').append(element);
 	}
+}
+
+function popoutBoard() {
+	window.open(window.location.href + '/popout', '_blank', 'width=600,height=400');
 }

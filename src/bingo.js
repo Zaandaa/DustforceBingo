@@ -358,17 +358,19 @@ var Bingo = function(session, ruleset) {
 	self.getBoardData = function() {
 		var boardData = {};
 
-		boardData.size = self.ruleset.size;
-		boardData.winner = self.winner;
+		if (self.active || self.finished) {
+			boardData.size = self.ruleset.size;
+			boardData.winner = self.winner;
 
-		boardData.players = {};
-		for (var id in self.players) {
-			boardData.players[id] = self.players[id].getBoardData();
-		}
+			boardData.players = {};
+			for (var id in self.players) {
+				boardData.players[id] = self.players[id].getBoardData();
+			}
 
-		boardData.goals = {};
-		for (var i = 0; i < self.goals.length; i++) {
-			boardData.goals[i] = self.goals[i].getBoardData();
+			boardData.goals = {};
+			for (var i = 0; i < self.goals.length; i++) {
+				boardData.goals[i] = self.goals[i].getBoardData();
+			}
 		}
 
 		return JSON.stringify(boardData);

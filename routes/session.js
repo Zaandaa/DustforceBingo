@@ -67,6 +67,20 @@ function build(io) {
 			options: s.getBingoGoalOptions()
 		});
 	});
+
+	router.get('/:id/popout', function(req, res, next) {
+		console.log(`getting room ${req.params.id}`);
+		if(!session.getSession(req.params.id)) {
+			var err = new Error('Not Found');
+			err.status = 404;
+			next(err);
+			return;
+		}
+		var s = session.getSession(req.params.id)
+		res.render('popout', {
+			session: s
+		});
+	});
 	return router;
 }
 

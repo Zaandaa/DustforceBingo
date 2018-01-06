@@ -28,3 +28,10 @@
 	background-color: #222222;
 	color: #eeeeee;
 }
+
+.col-fifth {
+    position: relative;
+    min-height: 1px;
+    width: 20%;
+    float: left;
+}
