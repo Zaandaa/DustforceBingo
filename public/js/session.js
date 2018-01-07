@@ -1,5 +1,11 @@
 var socket = io();
 
+function joinEmitted() {
+	$('#username').disable();
+	$('#join').disable();
+	$('#connecting').collapse('show');
+}
+
 $(document).on('ready', function() {
 	socket.emit('init', {session: sessionId});
 
@@ -118,12 +124,22 @@ $(document).on('ready', function() {
 		return !res.err;
 	})
 	.disableOn('board');
+
+	$('#username_form').submit(function(e) {
+		joinEmitted();
+		e.preventDefault();
+		if ($('#join').text() == "Join") {
+			socket.emit('join', {
+				username: $('#username').val(),
+				session: sessionId
+			});
+		}
+	});
 	
 	$('#join')
 	.emitter(function() {
 		if ($(this).text() == "Join") {
-			$(this).disable();
-			$("#connecting").collapse('show');
+			joinEmitted();
 			return "join";
 		}
 		return "remove";
