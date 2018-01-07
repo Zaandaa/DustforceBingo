@@ -183,6 +183,9 @@ function build(io) {
 				if (bingo.active || bingo.finished)
 					return Error(socket, 'joinResponse', 'Session already started');
 
+				if (Object.keys(bingo.players).length >= 10)
+					return Error(socket,  'joinResponse', 'Cannot accept more than 10 players');
+
 				getUserInfo(data.username, function(err, username, id) {
 					if (err) 
 						return Error(socket, 'joinResponse', username);
@@ -190,9 +193,9 @@ function build(io) {
 					if (id in bingo.players)
 						return Error(socket,  'joinResponse', 'User already exists in session');
 
-					socket.custom.username = username;
-					socket.custom.id = id;
-					if (bingo.addPlayer(socket.custom.id, socket.custom.username)) {
+					if (bingo.addPlayer(id, username)) {
+						socket.custom.username = username;
+						socket.custom.id = id;
 						socket.emit('joinResponse', {
 							err: false,
 							message: `Joined ${socket.custom.username}`

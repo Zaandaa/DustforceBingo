@@ -106,7 +106,7 @@ var Bingo = function(session, ruleset) {
 
 
 	self.addPlayer = function(id, name) {
-		if (!self.active && !(id in self.players)) {
+		if (!self.active && !(id in self.players) && Object.keys(self.players).length < 10) {
 			self.players[id] = new Player(id, name);
 			self.session.updatePlayers(self.getPlayerData());
 			return true;
