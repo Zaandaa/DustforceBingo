@@ -72,14 +72,17 @@ function updatePlayersTable(playersJson, target) {
 		row.append(cell1);
 
 		var cell2 = $("<td></td>");
-		cell2.append(playerData.players[i].color.toString());
+		var inner = $("<div class='color-circle' style='background-color:var(--" + playerData.players[i].color.toString() + ")'></div>")
+		cell2.append(inner);
 		row.append(cell2);
 
 		var cell3 = $("<td></td>");
-		if (bingoStarted)
+		if (bingoStarted) {
 			cell3.append(playerData.players[i].goals.toString());
-		else
-			cell3.append(playerData.players[i].ready.toString());
+		} else {
+			var inner = $("<img class='ready-container' src='/img/ready_" + playerData.players[i].ready.toString() + ".png' />")
+			cell3.append(inner);
+		}
 		row.append(cell3);
 
 		table.append(row);

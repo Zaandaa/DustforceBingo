@@ -20,6 +20,11 @@
 	font-family: 'Caracteres L1', Helvetica, Arial, sans-serif;
 }
 
+.impact {
+	font-size: 20px;
+	font-family: 'Caracteres L1', Helvetica, Arial, sans-serif;
+}
+
 .lowercase {
 	font-size:18px;
 	font-family:'Proxima Nova', Helvetica, Arial, sans-serif;
@@ -74,6 +79,17 @@ select {
 	border: 0;
 }
 
+.color-circle {
+	display:inline-block;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+}
+
+.ready-container {
+	width: 25px;
+	height: 25px;
+}
 
 .bingo_table_cell {
 	padding: 2px;
@@ -151,4 +167,11 @@ select {
 	background-color: var(--darkblue);
 	padding: .1rem .4rem;
 	z-index: 1;
+}
+
+.alert-text {
+	display:inline-block;
+	width: inherit;
+	padding-left: 100px;
+	padding-right: 100px;
 }

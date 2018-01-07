@@ -28,3 +28,8 @@
     width: 20%;
     float: left;
 }
+
+.alert {
+	position: absolute;
+	z-index: 100;
+}

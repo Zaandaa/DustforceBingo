@@ -105,7 +105,13 @@ $(document).on('ready', function() {
 		});
 		return $(this);
 	};
-
+	
+	$(".alert").hide();
+	$(".close").on("click", function() {
+		$(".alert").hide();
+		$("#connecting").collapse('hide');
+	})
+	
 	$('#username')
 	.enableOn('removed')
 	.disableOn('joinResponse', function(res) {
@@ -236,7 +242,8 @@ $(document).on('ready', function() {
 	
 	socket.on('connectionResponse', function(data) {
 		if(data.err) {
-			alert(data.message);
+			$(".alert-text").text(data.message);
+			$(".alert-danger").fadeIn(200);
 		} else {
 			console.log(data.message);
 		}
@@ -247,7 +254,8 @@ $(document).on('ready', function() {
 		$("#join").enable();
 		$("#connecting").collapse('hide');
 		if(data.err) {
-			alert(data.message);
+			$(".alert-text").text(data.message);
+			$(".alert-danger").fadeIn(200);
 			$("#join").text("Join");
 		} else {
 			console.log(data.message);

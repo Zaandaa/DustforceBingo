@@ -7,6 +7,10 @@ block js
 	script(src="/js/session.js")
 
 block content
+	div.alert.alert-danger(role="alert")
+		div.alert-text
+		button.close(type="button", aria-label="Close")
+			span(aria-hidden="true") &times;
 	div#user_div.row
 		div.col
 			input#username(placeholder="Username")
@@ -29,7 +33,7 @@ block content
 			button#start.btn.btn-lg.btn-block Start
 
 	div
-		h4 Rules
+		h4.impact Rules
 		ul
 			li #{save}, #{length}, #{difficulty}
 			li #{size} by #{size}, first to #{wincondition}
