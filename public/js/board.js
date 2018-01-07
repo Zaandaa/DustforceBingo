@@ -1,6 +1,6 @@
 var bingoStarted = false;
 
-function updateBoardTable(boardJson, target, includePopoutLink) {
+function updateBoardTable(boardJson, target, includeBottom) {
 	bingoStarted = true;
 	target.empty();
 
@@ -26,26 +26,6 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 					"style='background-color: var(--" + boardData.players[achiever].color 
 					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
 					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
-				achievers += "<div class='color-circle-small' " + 
-					"style='background-color: var(--" + boardData.players[achiever].color 
-					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
-					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
-				achievers += "<div class='color-circle-small' " + 
-					"style='background-color: var(--" + boardData.players[achiever].color 
-					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
-					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
-				achievers += "<div class='color-circle-small' " + 
-					"style='background-color: var(--" + boardData.players[achiever].color 
-					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
-					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
-				achievers += "<div class='color-circle-small' " + 
-					"style='background-color: var(--" + boardData.players[achiever].color 
-					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
-					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
-				achievers += "<div class='color-circle-small' " + 
-					"style='background-color: var(--" + boardData.players[achiever].color 
-					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
-					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
 			}
 			innerCell.append("<div class='goal_achievers_container'><div class='goal_achievers'>" + achievers + "</div></div>");
 			innerCell.click(toggleLabel);
@@ -58,12 +38,12 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 
 	target.append(table);
 
-	var winner = $("<h2>Winner: " + boardData.winner + "</h2>");
-	if (boardData.winner != "") {
-		target.append(winner);
-	}
+	if (includeBottom) {
+		var winner = "<h2>Winner: " + boardData.winner + "</h2>";
+		if (boardData.winner != "") {
+			target.append(winner);
+		}
 
-	if (includePopoutLink) {
 		var popoutButton = $("<div></div>").addClass("float-right");
 		popoutButton.append($("<a id='popout'>Popout Board</a>"));
 		popoutButton.click(popoutBoard);

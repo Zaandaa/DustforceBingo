@@ -40,3 +40,7 @@
 	position: absolute;
 	z-index: 100;
 }
+
+.popover .arrow {
+	visibility: hidden;
+}
