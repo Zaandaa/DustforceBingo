@@ -23,6 +23,7 @@ var params = [
 	"tutorials", 
 	"difficults", 
 	"yottass", 
+	"sfinesse", 
 	"lowdash", 
 	"lowjump", 
 	"lowattack", 
@@ -65,6 +66,20 @@ function build(io) {
 			length: s.bingo_args.length_raw,
 			lockout: s.bingo_args.lockout ? "on" : "off",
 			options: s.getBingoGoalOptions()
+		});
+	});
+
+	router.get('/:id/popout', function(req, res, next) {
+		console.log(`getting room ${req.params.id}`);
+		if(!session.getSession(req.params.id)) {
+			var err = new Error('Not Found');
+			err.status = 404;
+			next(err);
+			return;
+		}
+		var s = session.getSession(req.params.id)
+		res.render('popout', {
+			session: s
 		});
 	});
 	return router;

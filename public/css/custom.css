@@ -21,3 +21,10 @@
 	background-color: var(--black);
 	color: var(--white);
 }
+
+.col-fifth {
+    position: relative;
+    min-height: 1px;
+    width: 20%;
+    float: left;
+}

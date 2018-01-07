@@ -273,7 +273,7 @@ $(document).on('ready', function() {
 	
 	socket.on('board', function(data) {
 		// console.log("got board", data);
-		updateBoardTable(data, $('#board_div'));
+		updateBoardTable(data, $('#board_div'), true);
 	});
 	
 	socket.on('players', function(data) {

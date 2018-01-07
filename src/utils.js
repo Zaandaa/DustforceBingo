@@ -28,11 +28,13 @@ extern.getLevelDifficulty = function(level, objective, save) {
 		case "Wood": d = 7; break;
 		case "Silver": d = 6; break;
 		case "Gold": d = 5; break;
-		case "Difficult": d = 3; break;
+		case "Difficult": d = 4; break;
 	}
 	if (objective == "SS" || objective == "BS")
 		d--;
 	if (save == "New Game")
+		d--;
+	if (levels.levels[level].type == "Difficult" && (objective == "SS" || save == "New Game"))
 		d--;
 
 	return d;
@@ -41,13 +43,14 @@ extern.getLevelDifficulty = function(level, objective, save) {
 extern.generateGoalTotal = function(goalData, ruleset) {
 	// pick good total number range based on goalData, length, difficulty
 	var multiplier = 1;
+	var maxR = 1;
+	var minR = Math.max(0, 0.6 - ruleset.length * 0.2);
 
 	if (goalData.leveltype) {
 		multiplier *= 0.25;
 		multiplier *= Math.min(4, 6 - constants.levelTypes.indexOf(goalData.leveltype) * .5 - ruleset.difficulty) * 0.25;
 		multiplier *= Math.min(4, 6 - constants.levelTypes.indexOf(goalData.leveltype) * .5 - ruleset.length) * 0.25;
 	} else if (goalData.keytype) {
-		multiplier *= 0.25;
 		multiplier *= Math.min(4, 6 - constants.keys.indexOf(goalData.keytype) * .5 - ruleset.difficulty) * 0.25;
 		multiplier *= Math.min(4, 6 - constants.keys.indexOf(goalData.keytype) * .5 - ruleset.length) * 0.25;
 	} else {
@@ -62,11 +65,13 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 		multiplier *= 0.25;
 	}
 
-	var total;
+	var r = minR + Math.random() * (maxR - minR);
+
+	var total = 1;
 	if (goalData.hub && (goalData.hub == "Difficult" || goalData.hub == "Tutorial"))
-		total = Math.ceil(multiplier * Math.random() * (levels.hubs[goalData.hub].levels - (goalData.hub == "Difficult" && !ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
+		total = Math.ceil(multiplier * r * (levels.hubs[goalData.hub].levels - (goalData.hub == "Difficult" && !ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
 	else
-		total = Math.ceil(multiplier * (Math.random() * chance[ruleset.save].total[goalData.count.toLowerCase()].range + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum));
+		total = Math.ceil(multiplier * (r * chance[ruleset.save].total[goalData.count.toLowerCase()].range + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum));
 
 	if (total < 1)
 		total = 1;
@@ -91,7 +96,7 @@ extern.accessGimmick = function(replay, gimmick) {
 }
 
 extern.betterGimmick = function(gimmick, g1, g2) {
-	if (gimmick == "apples") {
+	if (gimmick == "apples" || gimmick == "sfinesse") {
 		return Math.max(g1, g2);
 	} else {
 		// ignore invalid negatives
@@ -106,7 +111,7 @@ extern.betterGimmick = function(gimmick, g1, g2) {
 }
 
 extern.meetGoalGimmick = function(replay, gimmick) {
-	if (gimmick.type == "apples") {
+	if (gimmick.type == "apples" || gimmick.type == "sfinesse") {
 		return extern.accessGimmick(replay, gimmick.type) >= gimmick.count;
 	} else if (gimmick.type == "lowattack") {
 		if (replay.input_super > 0) {

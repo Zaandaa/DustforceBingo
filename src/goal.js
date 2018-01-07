@@ -133,7 +133,9 @@ function makeLevelGoalDatas(ruleset) {
 				return;
 			if (g.difficulty < ruleset.difficulty)
 				return;
-			validGoalDatas.push({type: "level", level: l, objective: g.type, difficulty: g.difficulty, gimmicks: [g]});
+			if (!ruleset.characters && g.character)
+				return;
+			validGoalDatas.push({type: "level", level: l, objective: g.objective, difficulty: g.difficulty, character: g.character, gimmicks: [g]});
 			totalDifficulty += g.difficulty;
 		});
 	}
@@ -176,7 +178,7 @@ function makeTotalGoalData(ruleset) {
 		}
 	}
 
-	if (goalData.count == "Beat" && ruleset.characters && !(goalData.hub && !levels.hubs[goalData.hub].charselect)) {
+	if (goalData.count != "keys" && ruleset.characters && !(goalData.hub && !levels.hubs[goalData.hub].charselect)) {
 		r = Math.random();
 		if (r < chance[ruleset.save].total.character) {
 			goalData.character = constants.characters[Math.floor(Math.random() * constants.characters.length)];
