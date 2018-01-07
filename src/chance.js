@@ -28,7 +28,8 @@ hub specific (none or hub)
 var chance = {
 	"New Game": {
 		level: {
-			chance: 0.4,
+			chance: 0.2,
+			length_bonus: 0.1,
 		},
 		total: {
 			chance: 1,
@@ -59,7 +60,8 @@ var chance = {
 	},
 	"New Game +": {
 		level: {
-			chance: 0.4,
+			chance: 0.2,
+			length_bonus: 0.1,
 		},
 		total: {
 			chance: 1,

@@ -43,7 +43,7 @@ extern.makeGoals = function(ruleset) {
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
 		r = Math.random();
 		var success = false;
-		if (r < chance[ruleset.save].level.chance) {
+		if (r < chance[ruleset.save].level.chance + ruleset.length * chance[ruleset.save].level.length_bonus) {
 			// pick from levelGoalDatas
 			r = Math.random() * levelGoalDatas.total;
 			var chosen = false;
