@@ -79,7 +79,8 @@ function build(io) {
 		}
 		var s = session.getSession(req.params.id)
 		res.render('popout', {
-			session: s
+			session: s,
+			size: s.bingo_args.size
 		});
 	});
 	return router;

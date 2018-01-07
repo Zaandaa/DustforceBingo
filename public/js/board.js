@@ -17,7 +17,8 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 			var col = $("<div></div>").addClass("col-" + col_width);
 			var cell = $("<div></div>").addClass("bingo_table_cell");
 			var innerCell = $("<div></div>").addClass("bingo_table_inner_cell");
-			innerCell.append("<div>" + boardData.goals[i * boardData.size + j].title + "</div>");
+			innerCell.append("<div class='goal_text'>" + boardData.goals[i * boardData.size + j].title + "</div>");
+
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
@@ -25,8 +26,28 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 					"style='background-color: var(--" + boardData.players[achiever].color 
 					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
 					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
+				achievers += "<div class='color-circle-small' " + 
+					"style='background-color: var(--" + boardData.players[achiever].color 
+					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
+					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
+				achievers += "<div class='color-circle-small' " + 
+					"style='background-color: var(--" + boardData.players[achiever].color 
+					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
+					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
+				achievers += "<div class='color-circle-small' " + 
+					"style='background-color: var(--" + boardData.players[achiever].color 
+					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
+					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
+				achievers += "<div class='color-circle-small' " + 
+					"style='background-color: var(--" + boardData.players[achiever].color 
+					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
+					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
+				achievers += "<div class='color-circle-small' " + 
+					"style='background-color: var(--" + boardData.players[achiever].color 
+					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
+					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
 			}
-			innerCell.append("<div>" + achievers + "</div>");
+			innerCell.append("<div class='goal_achievers_container'><div class='goal_achievers'>" + achievers + "</div></div>");
 			innerCell.click(toggleLabel);
 			cell.append(innerCell);
 			col.append(cell);
@@ -113,5 +134,5 @@ function removeStartButton() {
 }
 
 function popoutBoard() {
-	window.open(window.location.href + '/popout', '_blank', 'width=600,height=400');
+	window.open(window.location.href + '/popout', '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
 }

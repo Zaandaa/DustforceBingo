@@ -2,6 +2,7 @@ extends layout
 
 block js
 	script= "const sessionId = \'" + session.id + "';"
+	script= "const bingoSize = \'" + size + "';"
 	script(src="/socket/socket.io.min.js")
 	script(src="/js/board.js")
 	script(src="/js/session.js")
@@ -45,7 +46,7 @@ block content
 
 			div
 				each val, i in sizeArray
-					div.row
+					div.row.margin_zero
 						div.col
 							div.fake_bingo_cell
 								if i == (size - 1) / 2

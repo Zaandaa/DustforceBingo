@@ -7,11 +7,12 @@ html
 		link(rel='stylesheet', href='/css/style.css')
 		link(rel='stylesheet', href='/css/custom.css')
 
-	body
-		div#board_div
+	body(style="padding: 0px; margin: 0px")
+
+		div#board_div.popout_container
 			- var sizeArray = new Array(parseInt(size) || 1)
 			- var colClass = "col-" +  (size == 5 ? "fifth" : "third")
-			div.bingo_behind
+			div.popout_bingo_behind
 				each val, i in sizeArray
 					div.row.margin_zero
 						each val, j in sizeArray
@@ -21,9 +22,9 @@ html
 
 			div
 				each val, i in sizeArray
-					div.row
-						div.col
-							div.fake_bingo_cell
+					div.row.margin_zero
+						div.col(style="padding: 0px; margin: auto")
+							div.popout_fake_bingo_cell
 								if i == (size - 1) / 2
 									div#fake_center
 										h4(style="text-align: center; margin: auto") Waiting to receive board...

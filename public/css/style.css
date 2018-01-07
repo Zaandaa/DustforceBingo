@@ -97,6 +97,7 @@ select {
 	border-radius: 50%;
 	width: 20px;
 	height: 20px;
+	margin-bottom: 3px;
 }
 
 .ready-container {
@@ -106,8 +107,7 @@ select {
 
 .bingo_table {
 	min-width: 700px;
-	margin-left: -15px;
-	margin-right: -15px;
+	margin: 0px;
 }
 .bingo_table_cell {
 	height: 100%;
@@ -117,8 +117,7 @@ select {
 	background-color: var(--dark);
 	color: var(--white);
 	text-align: center;
-	vertical-align: center;
-	padding: 10px;
+	padding: 8px;
 	border: 1px solid gray;
 	border-radius: 2px;
 	margin: 2px;
@@ -134,13 +133,38 @@ select {
 	font-weight: bold;
 	border-color: white;
 }
+
+.goal_text {
+	position: relative;
+	top: 32px;
+	margin: auto;
+	transform: translateY(-50%);
+}
+.goal_achievers_container {
+	position: absolute;
+	left: 0px;
+	bottom: 2px;
+	height: 48px;
+	width: 100%;
+	padding: 4px;
+}
+.goal_achievers {
+	position: relative;
+	top: 18px;
+	margin: auto;
+	transform: translateY(-50%);
+}
+
 .bingo_behind {
 	z-index: -1;
 	position: absolute;
 	width: inherit;
+	min-width: 700px;
 	min-height: inherit;
 	margin-left: -15px;
 	margin-right: -15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 .fake_bingo_cell {
 	padding: 10px;
@@ -149,7 +173,26 @@ select {
 	margin: 4px;
 }
 .margin_zero {
-	margin: 0;
+	margin: 0px;
+}
+.popout_container {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+.popout_bingo_behind {
+	z-index: -1;
+	position: absolute;
+	width: inherit;
+	min-width: 700px;
+	min-height: inherit;
+	margin: 0px;
+}
+.popout_fake_bingo_cell {
+	padding: 10px;
+	padding-top: 44px;
+	min-height: 120px;
+	margin: 4px;
 }
 
 .players_table th,
