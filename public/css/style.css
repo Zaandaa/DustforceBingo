@@ -130,8 +130,10 @@ select {
 }
 .bingo_label {
 	background-color: var(--gray);
-	font-weight: bold;
 	border-color: white;
+}
+.bingo_label .goal_text {
+	font-weight: bold;
 }
 
 .goal_text {
