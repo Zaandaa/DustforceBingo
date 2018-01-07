@@ -28,6 +28,13 @@
     width: 20%;
     float: left;
 }
+.col-third {
+    position: relative;
+    min-height: 1px;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    float: left;
+}
 
 .alert {
 	position: absolute;

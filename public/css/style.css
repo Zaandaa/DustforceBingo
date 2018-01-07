@@ -43,6 +43,11 @@ a, a:hover, a:visited, a:link {
 	text-decoration:  none;
 }
 
+#popout {
+	color: var(--blue);
+	cursor: pointer;
+}
+
 input, #color, #color_div {
 	padding: .25rem .5rem;
     vertical-align: middle;
@@ -70,6 +75,7 @@ select {
 }
 
 #user_div {
+	min-width: 400px;
 	margin-bottom: 1rem;
 }
 
@@ -91,8 +97,14 @@ select {
 	height: 25px;
 }
 
+.bingo_table {
+	min-width: 700px;
+	margin-left: -15px;
+	margin-right: -15px;
+}
 .bingo_table_cell {
-	padding: 2px;
+	height: 100%;
+	padding-bottom: 4px;
 }
 .bingo_table_inner_cell {
 	background-color: var(--dark);
@@ -102,8 +114,8 @@ select {
 	padding: 10px;
 	border: 1px solid gray;
 	border-radius: 2px;
-	margin: 1px;
-	min-height: 80px;
+	margin: 2px;
+	min-height: 120px;
 	height: 100%;
 }
 .bingo_table_inner_cell:hover {
@@ -114,6 +126,23 @@ select {
 	background-color: var(--gray);
 	font-weight: bold;
 	border-color: white;
+}
+.bingo_behind {
+	z-index: -1;
+	position: absolute;
+	width: inherit;
+	min-height: inherit;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.fake_bingo_cell {
+	padding: 10px;
+	padding-top: 36px;
+	min-height: 120px;
+	margin: 4px;
+}
+.margin_zero {
+	margin: 0;
 }
 
 .players_table th,
@@ -151,7 +180,7 @@ select {
 
 #color_label {
 	display:inline-block;
-	padding:0em .5em;
+	padding:0em .25em;
 }
 
 #color {

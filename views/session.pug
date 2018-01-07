@@ -11,26 +11,49 @@ block content
 		div.alert-text
 		button.close(type="button", aria-label="Close")
 			span(aria-hidden="true") &times;
-	div#user_div.row
-		div.col
-			input#username(placeholder="Username")
-			button#join.btn.btn-sm Join
-			button#ready.btn.btn-sm Ready
-			div#color_div
-				div#color_label Color
-				div#color_align
-					button#color.btn(value="white", style="background-color:var(--white)")
-					div#color_container.collapse
-						each val in ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Gray", "White"]
-							div.btn.colorpicker(value= val.toLowerCase(), style= "background-color:var(--" + val.toLowerCase() + ");")
-		h6#connecting.collapse Connecting to dustkid.com...
 
 	div#main_div.row
 
-		div#players_table_div.col-md-4
+		div.col-xl-4
+			div#user_div.row
+				div.col
+					input#username(placeholder="Username")
+					button#join.btn.btn-sm Join
+					button#ready.btn.btn-sm Ready
+					div#color_div
+						div#color_label Color
+						div#color_align
+							button#color.btn(value="white", style="background-color:var(--white)")
+							div#color_container.collapse
+								each val in ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Gray", "White"]
+									div.btn.colorpicker(value= val.toLowerCase(), style= "background-color:var(--" + val.toLowerCase() + ");")
+				h6#connecting.collapse Connecting to dustkid.com...
+			
+			div.row
+				div#players_table_div.col
 
-		div#board_div.col-md-8
-			button#start.btn.btn-lg.btn-block Start
+		div#board_div.col-xl-8
+			- var sizeArray = new Array(parseInt(size) || 1)
+			- var colClass = "col-" +  (size == 5 ? "fifth" : "third")
+			div.bingo_behind
+				each val, i in sizeArray
+					div.row.margin_zero
+						each val, j in sizeArray
+							div(class=colClass)
+								div.bingo_table_cell
+									div.bingo_table_inner_cell
+
+			div
+				each val, i in sizeArray
+					div.row
+						div.col
+							div.fake_bingo_cell
+								if i == (size - 1) / 2
+									div#fake_center
+										button#start.btn.btn-lg.btn-block(style="margin: auto") Start
+
+			div.float-right
+				a#popout(onclick="popoutBoard()") Popout Board
 
 	div
 		h4.impact Rules

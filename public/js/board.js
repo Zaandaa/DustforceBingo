@@ -9,12 +9,13 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
 
-	var col_width = (boardData.size == 5) ? "fifth" : "4";
+	var col_width = (boardData.size == 5) ? "fifth" : "third";
 
 	for (var i = 0; i < boardData.size; i++) {
-		var row = $("<div class='row'></div>");
+		var row = $("<div class='row margin_zero'></div>");
 		for (var j = 0; j < boardData.size; j++) {
-			var cell = $("<div></div>").addClass("bingo_table_cell").addClass("col-" + col_width);
+			var col = $("<div></div>").addClass("col-" + col_width);
+			var cell = $("<div></div>").addClass("bingo_table_cell");
 			var innerCell = $("<div></div>").addClass("bingo_table_inner_cell");
 			innerCell.append("<div>" + boardData.goals[i * boardData.size + j].title + "</div>");
 			var achievers = "";
@@ -25,7 +26,8 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 			innerCell.append("<div>" + achievers + "</div>");
 			innerCell.click(toggleLabel);
 			cell.append(innerCell);
-			row.append(cell);
+			col.append(cell);
+			row.append(col);
 		}
 		table.append(row);
 	}
@@ -38,7 +40,8 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 	}
 
 	if (includePopoutLink) {
-		var popoutButton = $("<button>Popout Board</button>").addClass("btn").addClass("btn-sm").addClass("btn-primary");
+		var popoutButton = $("<div></div>").addClass("float-right");
+		popoutButton.append($("<a id='popout'>Popout Board</a>"));
 		popoutButton.click(popoutBoard);
 		target.append(popoutButton);
 	}
@@ -100,9 +103,9 @@ function toggleLabel() {
 
 function removeStartButton() {
 	if ($('#start').length && !$('#bingo_div').length) {
-		$('#board_div').empty();
-		var element = $("<h2>Starting...</h2>")
-		$('#board_div').append(element);
+		$('#fake_center').empty();
+		var element = $("<h2 style='text-align: center; margin: auto'>Starting...</h2>")
+		$('#fake_center').append(element);
 	}
 }
 
