@@ -92,6 +92,13 @@ select {
 	height: 25px;
 }
 
+.color-circle-small {
+	display:inline-block;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+}
+
 .ready-container {
 	width: 25px;
 	height: 25px;
