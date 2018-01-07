@@ -42,13 +42,13 @@ block content
 				label(for="lockout") Lockout
 
 			div.form-group.row
-				div.col-md-8
+				div.col-12
 					div First to:
-				div.col-md-5
+				div.col-sm-5
 					select#bingo_count.session.form-control
 						each val, i in Array(25)
 							option(value=i+1 class='option' + (i+1))= i+1
-				div.col-md-7
+				div.col-sm-7
 					select#bingo_count_type.session.form-control
 						option(value="bingo") Bingos
 						option(value="card") Cards

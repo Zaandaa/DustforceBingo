@@ -258,14 +258,17 @@ var Goal = function(goalData) {
 
 		if (self.goalData.type == "level") {
 			if (self.goalData.level == replay.levelname) {
-				if (self.goalData.objective == "SS" && (replay.score_completion != 5 || replay.score_finesse != 5))
+				var score = utils.getReplayScore(replay);
+				if (self.goalData.objective == "SS" && score != "SS")
 					return false;
 				if (self.goalData.character && self.goalData.character != constants.characters[replay.character])
 					return false;
 
-				if (self.goalData.objective == "B%" && replay.score_completion != 3)
+				if (self.goalData.objective == "D%" && score[0] != "D")
 					return false;
-				if (self.goalData.objective == "BS" && (replay.score_completion != 3 || replay.score_finesse != 5))
+				if (self.goalData.objective == "B%" && score[0] != "B")
+					return false;
+				if (self.goalData.objective == "BS" && score != "BS")
 					return false;
 
 				for (var g in self.goalData.gimmicks) {
