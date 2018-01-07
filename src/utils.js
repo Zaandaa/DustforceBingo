@@ -79,7 +79,24 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 	return total;
 }
 
-
+extern.getReplayScore = function(replay) {
+	var score = "";
+	switch (replay.score_completion) {
+		case 1: score += "D"; break;
+		case 2: score += "C"; break;
+		case 3: score += "B"; break;
+		case 4: score += "A"; break;
+		case 5: score += "S"; break;
+	}
+	switch (replay.score_finesse) {
+		case 1: score += "D"; break;
+		case 2: score += "C"; break;
+		case 3: score += "B"; break;
+		case 4: score += "A"; break;
+		case 5: score += "S"; break;
+	}
+	return score;
+}
 
 extern.accessGimmick = function(replay, gimmick) {
 	if (gimmick == "lowpercent") {

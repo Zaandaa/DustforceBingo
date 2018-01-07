@@ -57,7 +57,7 @@ var Player = function(id, name) {
 	};
 
 	self.addProgress = function(replay) {
-		self.allCompletes.push({level: replay.levelname, completion: replay.score_completion, finesse: replay.score_finesse, character: constants.characters[replay.character]});
+		self.allCompletes.push({level: replay.levelname, score: utils.getReplayScore(replay), character: constants.characters[replay.character]});
 
 		// allProgress and keyProgress
 		if (replay.levelname in self.allProgress) {
