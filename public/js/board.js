@@ -20,7 +20,10 @@ function updateBoardTable(boardJson, target, includePopoutLink) {
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
-				achievers += "<b style='color: " + boardData.players[achiever].color + "'>" + boardData.players[achiever].name[0] + "</b> ";
+				achievers += "<div class='color-circle-small' " + 
+					"style='background-color: var(--" + boardData.players[achiever].color 
+					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
+					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
 			}
 			innerCell.append("<div>" + achievers + "</div>");
 			innerCell.click(toggleLabel);
