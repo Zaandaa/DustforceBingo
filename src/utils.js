@@ -30,11 +30,11 @@ extern.getLevelDifficulty = function(level, objective, save) {
 		case "Gold": d = 5; break;
 		case "Difficult": d = 4; break;
 	}
-	if (objective == "SS" || objective == "BS")
+	if (objective != "Beat")
 		d--;
+	if (levels.levels[level].type == "Difficult" && objective == "SS")
+		d = 2;
 	if (save == "New Game")
-		d--;
-	if (levels.levels[level].type == "Difficult" && (objective == "SS" || save == "New Game"))
 		d--;
 
 	return d;

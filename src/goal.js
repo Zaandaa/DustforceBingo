@@ -109,12 +109,14 @@ function makeLevelGoalDatas(ruleset) {
 
 		["Beat", "SS", "B%", "BS"].forEach(function(o) {
 
-			if ((o == "B%" || o == "BS") && !ruleset.somepercent) // somepercent
+			if ((o == "B%" || o == "BS") && !ruleset.somepercent)
 				return;
-			if (l == "Yotta Difficult" && (o == "SS" || o == "BS") && !ruleset.yottass)
+			if (levels.levels[l].type == "Difficult" && ruleset.save == "New Game" && ruleset.length > 1)
+				return; // no difficults in new game unless full game length
+			if (l == "Yotta Difficult" && (o == "SS") && !ruleset.yottass)
 				return;
 
-			var d = utils.getLevelDifficulty(l, o);
+			var d = utils.getLevelDifficulty(l, o, ruleset.save);
 			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
 			validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d});
@@ -170,7 +172,7 @@ function makeTotalGoalData(ruleset) {
 			var hubNeedsApples = goalData.count == "apples" && !levels.hubs[goalData.hub].apples;
 			var hubTutorial = goalData.hub == "Tutorial" && !ruleset.tutorials;
 			var hubDifficult = goalData.hub == "Difficult" && !ruleset.difficults;
-			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty == 1));
+			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2));
 			if (hubNeedsKeys || hubNeedsApples || hubTutorial || hubDifficult || tooHard)
 				goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
 			else
