@@ -76,6 +76,7 @@
 	},
 	"levels": {
 		"Beginner Tutorial": {
+			"id": "newtutorial1",
 			"hub": "Tutorial",
 			"type": "Tutorial",
 			"key": null,
@@ -85,77 +86,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Combat Tutorial": {
+			"id": "newtutorial2",
 			"hub": "Tutorial",
 			"type": "Tutorial",
 			"key": null,
@@ -165,77 +179,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Advanced Tutorial": {
+			"id": "newtutorial3",
 			"hub": "Tutorial",
 			"type": "Tutorial",
 			"key": null,
@@ -245,77 +272,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Downhill": {
+			"id": "downhill",
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
@@ -325,77 +365,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Shaded Grove": {
+			"id": "shadedgrove",
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
@@ -405,77 +458,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Dahlia": {
+			"id": "dahlia",
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
@@ -485,77 +551,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Fields": {
+			"id": "fields",
 			"hub": "Forest",
 			"type": "Open",
 			"key": "Wood",
@@ -565,77 +644,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Valley": {
+			"id": "momentum",
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
@@ -645,77 +737,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Firefly Forest": {
+			"id": "fireflyforest",
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
@@ -725,77 +830,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Tunnels": {
+			"id": "tunnels",
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
@@ -805,77 +923,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Dusk Run": {
+			"id": "momentum2",
 			"hub": "Forest",
 			"type": "Wood",
 			"key": "Silver",
@@ -885,77 +1016,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Overgrown Temple": {
+			"id": "suntemple",
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
@@ -965,77 +1109,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Ascent": {
+			"id": "ascent",
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
@@ -1045,77 +1202,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Summit": {
+			"id": "summit",
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
@@ -1125,77 +1295,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Grass Cave": {
+			"id": "grasscave",
 			"hub": "Forest",
 			"type": "Silver",
 			"key": "Gold",
@@ -1205,77 +1388,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Wild Den": {
+			"id": "den",
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
@@ -1285,77 +1481,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Ruins": {
+			"id": "autumnforest",
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
@@ -1365,77 +1574,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Ancient Garden": {
+			"id": "garden",
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
@@ -1445,77 +1667,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Night Temple": {
+			"id": "hyperdifficult",
 			"hub": "Forest",
 			"type": "Gold",
 			"key": "Ruby",
@@ -1525,77 +1760,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Atrium": {
+			"id": "atrium",
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
@@ -1605,77 +1853,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Secret Passage": {
+			"id": "secretpassage",
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
@@ -1685,77 +1946,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Alcoves": {
+			"id": "alcoves",
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
@@ -1765,77 +2039,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Mezzanine": {
+			"id": "mezzanine",
 			"hub": "Mansion",
 			"type": "Open",
 			"key": "Wood",
@@ -1845,77 +2132,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Caverns": {
+			"id": "cave",
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
@@ -1925,77 +2225,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Cliffside Caves": {
+			"id": "cliffsidecaves",
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
@@ -2005,77 +2318,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Library": {
+			"id": "library",
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
@@ -2085,77 +2411,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Courtyard": {
+			"id": "courtyard",
 			"hub": "Mansion",
 			"type": "Wood",
 			"key": "Silver",
@@ -2165,77 +2504,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Archive": {
+			"id": "precarious",
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
@@ -2245,77 +2597,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Knight Hall": {
+			"id": "treasureroom",
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
@@ -2325,77 +2690,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Store Room": {
+			"id": "arena",
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
@@ -2405,77 +2783,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Ramparts": {
+			"id": "ramparts",
 			"hub": "Mansion",
 			"type": "Silver",
 			"key": "Gold",
@@ -2485,77 +2876,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Moon Temple": {
+			"id": "moontemple",
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
@@ -2565,77 +2969,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Observatory": {
+			"id": "observatory",
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
@@ -2645,77 +3062,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Ghost Parapets": {
+			"id": "parapets",
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
@@ -2725,77 +3155,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Tower": {
+			"id": "brimstone",
 			"hub": "Mansion",
 			"type": "Gold",
 			"key": "Ruby",
@@ -2805,77 +3248,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Vacant Lot": {
+			"id": "vacantlot",
 			"hub": "City",
 			"type": "Open",
 			"key": "Wood",
@@ -2885,157 +3341,182 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Landfill": {
-			"hub": "City",
-			"type": "Open",
-			"key": "Wood",
+			"id": "Open",
+			"hub": "",
+			"type": "City",
 			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Development": {
+			"id": "development",
 			"hub": "City",
 			"type": "Open",
 			"key": "Wood",
@@ -3045,77 +3526,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Abandoned Carpark": {
+			"id": "abandoned",
 			"hub": "City",
 			"type": "Open",
 			"key": "Wood",
@@ -3125,77 +3619,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Park": {
+			"id": "park",
 			"hub": "City",
 			"type": "Wood",
 			"key": "Silver",
@@ -3205,77 +3712,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Construction Site": {
+			"id": "boxes",
 			"hub": "City",
 			"type": "Wood",
 			"key": "Silver",
@@ -3285,77 +3805,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Apartments": {
+			"id": "chemworld",
 			"hub": "City",
 			"type": "Wood",
 			"key": "Silver",
@@ -3365,157 +3898,182 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Warehouse": {
-			"hub": "City",
-			"type": "Wood",
-			"key": "Silver",
+			"id": "Wood",
+			"hub": "",
+			"type": "City",
 			"charselect": true,
 			"gimmicks": [
 				{
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Forgotten Tunnel": {
+			"id": "tunnel",
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
@@ -3525,77 +4083,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Basement": {
+			"id": "basement",
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
@@ -3605,77 +4176,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Scaffolding": {
+			"id": "scaffold",
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
@@ -3685,77 +4269,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Rooftops": {
+			"id": "cityrun",
 			"hub": "City",
 			"type": "Silver",
 			"key": "Gold",
@@ -3765,77 +4362,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Clocktower": {
+			"id": "clocktower",
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
@@ -3845,77 +4455,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Concrete Temple": {
+			"id": "concretetemple",
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
@@ -3925,77 +4548,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Alleyway": {
+			"id": "alley",
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
@@ -4005,77 +4641,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Hideout": {
+			"id": "hideout",
 			"hub": "City",
 			"type": "Gold",
 			"key": "Ruby",
@@ -4085,77 +4734,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Control": {
+			"id": "control",
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
@@ -4165,77 +4827,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Ferrofluid": {
+			"id": "ferrofluid",
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
@@ -4245,77 +4920,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Titan": {
+			"id": "titan",
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
@@ -4325,77 +5013,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Satellite Debris": {
+			"id": "satellite",
 			"hub": "Laboratory",
 			"type": "Open",
 			"key": "Wood",
@@ -4405,77 +5106,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 6,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Vats": {
+			"id": "vat",
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
@@ -4485,77 +5199,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Server Room": {
+			"id": "venom",
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
@@ -4565,77 +5292,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Security": {
+			"id": "security",
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
@@ -4645,77 +5385,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Research": {
+			"id": "mary",
 			"hub": "Laboratory",
 			"type": "Wood",
 			"key": "Silver",
@@ -4725,77 +5478,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 5,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Wiring": {
+			"id": "wiringfixed",
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
@@ -4805,77 +5571,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Containment": {
+			"id": "containment",
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
@@ -4885,77 +5664,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Power Room": {
+			"id": "orb",
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
@@ -4965,77 +5757,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Access": {
+			"id": "pod",
 			"hub": "Laboratory",
 			"type": "Silver",
 			"key": "Gold",
@@ -5045,77 +5850,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 4,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Backup Shift": {
+			"id": "mary2",
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
@@ -5125,77 +5943,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Core Temple": {
+			"id": "coretemple",
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
@@ -5205,77 +6036,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Abyss": {
+			"id": "abyss",
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
@@ -5285,77 +6129,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Dome": {
+			"id": "dome",
 			"hub": "Laboratory",
 			"type": "Gold",
 			"key": "Ruby",
@@ -5365,77 +6222,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
 					"difficulty": 3,
-					"count": 5
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Kilo Difficult": {
+			"id": "kilodifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -5445,77 +6315,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Mega Difficult": {
+			"id": "megadifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -5525,77 +6408,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Giga Difficult": {
+			"id": "gigadifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -5605,77 +6501,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Tera Difficult": {
+			"id": "teradifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -5685,77 +6594,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Peta Difficult": {
+			"id": "petadifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -5765,77 +6687,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Exa Difficult": {
+			"id": "exadifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -5845,77 +6780,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Zetta Difficult": {
+			"id": "zettadifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -5925,77 +6873,90 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		},
 		"Yotta Difficult": {
+			"id": "yottadifficult",
 			"hub": "Difficult",
 			"type": "Difficult",
 			"key": null,
@@ -6005,73 +6966,85 @@
 					"type": "apples",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "apples",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdash",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowjump",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowdirection",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowattack",
 					"objective": "SS",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "lowpercent",
 					"objective": "Beat",
 					"difficulty": 0,
-					"count": 0
+					"count": 0,
+					"character": ""
 				},
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 1,
-					"count": 5
+					"difficulty": 2,
+					"count": 5,
+					"character": ""
 				}
 			]
 		}

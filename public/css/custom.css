@@ -36,6 +36,7 @@
     float: left;
 }
 
-.popover .arrow {
-	visibility: hidden;
+.alert {
+	position: absolute;
+	z-index: 100;
 }
