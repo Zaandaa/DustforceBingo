@@ -14,12 +14,6 @@ block content
 					h4 Bingo Options
 
 					div.form-group
-						div Save file:
-						select#save.session.form-control
-							option(value="New Game") New Game
-							option(value="New Game +") New Game +
-
-					div.form-group
 						div Size:
 						select#size.session.form-control
 							option(value="3") 3 by 3
@@ -38,6 +32,15 @@ block content
 							option(value="Normal" selected) Normal
 							option(value="Long") Long
 							option(value="Full Game") Full Game
+
+					div.form-group
+						div Save file:
+							div.tt_question
+								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys.")
+									div(style="position: relative; top: -1px") ?
+						select#save.session.form-control
+							option(value="New Game") New Game
+							option(value="New Game +") New Game +
 
 					div.form-group
 						input#lockout.session(type="checkbox" checked)
@@ -62,7 +65,10 @@ block content
 						div.checkbox
 							label
 								input#characters.session(   type="checkbox" checked)
-								<img class="icon" src="http://dustkid.com/static/iconAll.png" /> Allow goals to require characters
+								<img class="icon" src="http://dustkid.com/static/iconAll.png" /> Allow required characters
+							div.tt_question
+								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Goals can require you to play a specific character")
+									div(style="position: relative; top: -1px") ?
 						div.checkbox
 							label
 								input#apples.session(       type="checkbox" checked)
@@ -86,27 +92,37 @@ block content
 						div.checkbox
 							label
 								input#somepercent.session(  type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconSome.png" /> Include Some percent
+								<img class="icon" src="http://dustkid.com/static/iconSome.png" /> Include some percent
+							div.tt_question
+								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Beat level with B completion")
+									div(style="position: relative; top: -1px") ?
+
 						div.checkbox
 							label
 								input#lowpercent.session(   type="checkbox")
-								<img class="icon" src="/img/iconLow.png" /> Include Low percent
+								<img class="icon" src="/img/iconLow.png" /> Include low percent
+							div.tt_question
+								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Collect at most the required dust count")
+									div(style="position: relative; top: -1px") ?
 						div.checkbox
 							label
 								input#lowdash.session(      type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconNoDash.png" /> Include Low dash
+								<img class="icon" src="http://dustkid.com/static/iconNoDash.png" /> Include low dash
 						div.checkbox
 							label
 								input#lowjump.session(      type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconNoJump.png" /> Include Low jump
+								<img class="icon" src="http://dustkid.com/static/iconNoJump.png" /> Include low jump
 						div.checkbox
 							label
 								input#lowattack.session(    type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" /> Include Low attack
+								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" /> Include low attack
+							div.tt_question
+								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Use fewest attacks possible (light: 1, heavy: 3, no supers)")
+									div(style="position: relative; top: -1px") ?
 						div.checkbox
 							label
 								input#lowdirection.session( type="checkbox") 
-								<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" /> Include Low direction
+								<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" /> Include low direction
 		
 
 			div.row

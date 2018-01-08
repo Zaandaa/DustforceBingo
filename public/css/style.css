@@ -116,6 +116,15 @@ select {
 	margin-bottom: 3px;
 }
 
+.color-circle-tooltip {
+	display:inline-block;
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	color: var(--white);
+	background-color: var(--blue);
+}
+
 .ready-container {
 	width: 25px;
 	height: 25px;
@@ -302,7 +311,15 @@ select {
 	}
 }
 
-
 .close:hover {
 	background-color: inherit;
+}
+
+.tt_question {
+	cursor: default;
+	display: inline-block;
+	padding-left: 8px;
+	font-size: 12px;
+	text-align: center;
+	font-weight: bold;
 }
