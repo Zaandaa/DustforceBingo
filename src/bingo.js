@@ -255,7 +255,7 @@ var Bingo = function(session, ruleset) {
 				self.winner = self.players[id].toString();
 			}
 		}
-		if (self.winner == "" && self.ruleset.lockout) {
+		if (self.winner == "" && self.ruleset.lockout && Object.keys(self.players).length > 1) {
 			self.setPlayersCanWin();
 			var goalsRemaining = self.goals.length - self.countGoalsAchieved();
 
