@@ -3424,9 +3424,10 @@
 			]
 		},
 		"Landfill": {
-			"id": "Open",
-			"hub": "",
-			"type": "City",
+			"id": "sprawl",
+			"hub": "City",
+			"type": "Open",
+			"key": "Wood",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -3509,7 +3510,7 @@
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 6,
+					"difficulty": null,
 					"count": 5,
 					"character": ""
 				}
@@ -3981,9 +3982,10 @@
 			]
 		},
 		"Warehouse": {
-			"id": "Wood",
-			"hub": "",
-			"type": "City",
+			"id": "factory",
+			"hub": "City",
+			"type": "Wood",
+			"key": "Silver",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -4066,7 +4068,7 @@
 				{
 					"type": "sfinesse",
 					"objective": "Beat",
-					"difficulty": 5,
+					"difficulty": null,
 					"count": 5,
 					"character": ""
 				}
