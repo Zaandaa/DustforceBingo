@@ -31,6 +31,7 @@
 }
 
 body {
+	min-width: 700px;
 	padding: 50px;
 	color: var(--white);
 	background-color: var(--darkblue);
@@ -270,6 +271,7 @@ select {
 }
 
 .floater {
+	min-width: 700px;
 	position:absolute;
 	left:50%;
 }
