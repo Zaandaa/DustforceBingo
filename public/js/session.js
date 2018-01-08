@@ -1,14 +1,14 @@
 var socket = io();
 
-function joinEmitted() {
-	$('#username').disable();
-	$('#join').disable();
-	$('#connecting').collapse('show');
-}
-
 $(document).on('ready', function() {
 	socket.emit('init', {session: sessionId});
 
+	function joinEmitted() {
+		$('#username').disable();
+		$('#join').disable();
+		$('.alert-info').show();
+	}
+	
 	// ELEMENTS:
 	
 	function resolve(t, l, a) {
@@ -111,12 +111,29 @@ $(document).on('ready', function() {
 		});
 		return $(this);
 	};
+
+	// Alert 
+	// 
+	// fades in for n, then fades after h milliseconds for m milliseconds
+	//
+	// - n: lenght of fade in
+	// - h: delay until autohide
+	// - m: length of fade out
+	$.fn.alert = function(n, h, m) {
+		$('.alert').hide();
+		var $this = $(this);
+		$this.fadeIn(n);
+		setTimeout(function() {
+			$this.fadeOut(m);
+		}, h);
+	}
 	
 	$(".alert").hide();
 	$(".close").on("click", function() {
 		$(".alert").hide();
-		$("#connecting").collapse('hide');
 	})
+	
+	// USERNAME
 	
 	$('#username')
 	.enableOn('removed')
@@ -125,6 +142,8 @@ $(document).on('ready', function() {
 	})
 	.disableOn('board');
 
+	// USERNAME FORM
+	
 	$('#username_form').submit(function(e) {
 		joinEmitted();
 		e.preventDefault();
@@ -135,6 +154,8 @@ $(document).on('ready', function() {
 			});
 		}
 	});
+	
+	// JOIN
 	
 	$('#join')
 	.emitter(function() {
@@ -155,6 +176,8 @@ $(document).on('ready', function() {
 	// .enableOn('timerInterrupted')
 	.disableOn('board');
 	
+	// READY
+	
 	$('#ready')
 	.disable()
 	.emitter(function() {
@@ -167,6 +190,8 @@ $(document).on('ready', function() {
 	.setOn('removed', 'Ready')
 	.disableOn('removed')
 	.disableOn('board');
+	
+	// COLOR
 	
 	var $color = $('#color');
 	$color
@@ -240,7 +265,7 @@ $(document).on('ready', function() {
 		return !res.err;
 	}).disableOn('removed');
 	
-	
+	// START
 	
 	$('#start')
 	.disable()
@@ -258,8 +283,8 @@ $(document).on('ready', function() {
 	
 	socket.on('connectionResponse', function(data) {
 		if(data.err) {
-			$(".alert-text").text(data.message);
-			$(".alert-danger").fadeIn(200);
+			$(".alert-danger .alert-text").html(data.message);
+			$(".alert-danger").alert(200, 2000, 100);
 		} else {
 			console.log(data.message);
 		}
@@ -268,13 +293,14 @@ $(document).on('ready', function() {
 	
 	socket.on('joinResponse', function(data) {
 		$("#join").enable();
-		$("#connecting").collapse('hide');
 		if(data.err) {
-			$(".alert-text").text(data.message);
-			$(".alert-danger").fadeIn(200);
+			$(".alert-danger .alert-text").html(data.message);
+			$(".alert-danger").alert(200, 2000, 100);
 			$("#join").text("Join");
+			$("#username").enable();
 		} else {
 			console.log(data.message);
+			$(".alert-success").alert(200, 600, 100);
 			$("#join").text("Remove");
 		}
 	});

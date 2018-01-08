@@ -54,7 +54,7 @@ function build(io) {
 			try {
 				json = JSON.parse(body)
 			} catch(e) {
-				return lambda(true, `Could not resolve on dustkid! (Try using your user id if there are multiple users with username ${name})`);
+				return lambda(true, `<strong>Could not resolve on dustkid!</strong> Try using your user id.`);
 			}
 			
 			for (level in json.ranks_scores) {
@@ -65,7 +65,7 @@ function build(io) {
 				return lambda(false, json.ranks_times[level].username, json.ranks_times[level].user)
 			}
 			
-			lambda(true, 'This user has never completed a level (lol), could not find data about them')
+			lambda(true, '<strong>This user has never completed a level</strong> Could not load user ${name}.')
 		});
 	}
 

@@ -8,11 +8,23 @@ block js
 	script(src="/js/session.js")
 
 block content
-	div.alert.alert-danger(role="alert")
-		div.alert-text
-		button.close(type="button", aria-label="Close")
-			span(aria-hidden="true") &times;
+	
+	div.floater
+		div.alert.alert-danger(role="alert")
+			div.alert-text
+			button.close(type="button", aria-label="Close")
+				span(aria-hidden="true") &times;
 
+	div.floater
+		div.alert.alert-info(role="alert") 
+			div.alert-text Connecting to dustkid.com...
+			
+	div.floater
+		div.alert.alert-success(role="alert") 
+			div.alert-text Connected!
+			button.close(type="button", aria-label="Close")
+				span(aria-hidden="true") &times;
+			
 	div#main_div.row
 
 		div.col-xl-4
@@ -29,7 +41,6 @@ block content
 							div#color_container.collapse
 								each val in ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Gray", "White"]
 									div.btn.colorpicker(value= val.toLowerCase(), style= "background-color:var(--" + val.toLowerCase() + ");")
-				h6#connecting.collapse Connecting to dustkid.com...
 			
 			div.row
 				div#players_table_div.col
