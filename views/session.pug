@@ -34,6 +34,17 @@ block content
 			div.row
 				div#players_table_div.col
 
+			div
+				h4.impact Rules
+				ul
+					li #{save}, #{length}, #{difficulty}
+					li #{size} by #{size}, first to #{wincondition}
+					li Lockout: #{lockout}
+					li Goal options: #{options}
+					li Players start at the Nexus door
+					li Level tomes and level editor are banned
+					li Don't early exit (causes invalid replays)
+
 		div#board_div.col-xl-8
 			- var sizeArray = new Array(parseInt(size) || 1)
 			- var colClass = "col-" +  (size == 5 ? "fifth" : "third")
@@ -58,14 +69,4 @@ block content
 				a#popout(onclick="popoutBoard()") Popout Board
 
 	div
-		h4.impact Rules
-		ul
-			li #{save}, #{length}, #{difficulty}
-			li #{size} by #{size}, first to #{wincondition}
-			li Lockout: #{lockout}
-			li Goal options: #{options}
-			li Players start at the Nexus door
-			li Level tomes and level editor are banned
-			li Don't early exit (causes invalid replays)
-
 		include rules.pug
