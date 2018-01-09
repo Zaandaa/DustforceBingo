@@ -8,7 +8,7 @@ block content
 		div.col-md-4
 			include how.pug
 
-		div.col-md-8
+		div.col-md-8.noselect
 			div.row
 				div.col-md-6
 					h4 Bingo Options
@@ -43,8 +43,8 @@ block content
 							option(value="New Game +") New Game +
 
 					div.form-group
-						input#lockout.session(type="checkbox" checked)
-						label(for="lockout")
+						label
+							input#lockout.session(type="checkbox" checked)
 							<img id="check_lockout" class="checkbox_img icon" src="/img/ready_true.png" /> Lockout
 
 					div.form-group.row
@@ -133,7 +133,7 @@ block content
 							label
 								input#lowdirection.session( type="checkbox") 
 								<img id="check_lowdirection" class="checkbox_img icon" src="/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" /> Include low direction
+								<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" /> Low direction
 		
 
 			div.row

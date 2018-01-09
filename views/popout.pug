@@ -7,11 +7,12 @@ html
 		link(rel='stylesheet', href='/css/style.css')
 		link(rel='stylesheet', href='/css/custom.css')
 
-	body(padding: 0px; margin: 0px")
+- var sizeArray = new Array(parseInt(size) || 1)
+- var colClass = "col-" + (size == 5 ? "fifth" : "third")
 
-		div#board_div.popout_container
-			- var sizeArray = new Array(parseInt(size) || 1)
-			- var colClass = "col-" +  (size == 5 ? "fifth" : "third")
+	body(style="padding: 0px; margin: 0px")
+
+		div#board_div.popout_container.noselect
 			div.popout_bingo_behind
 				each val, i in sizeArray
 					div.row.margin_zero

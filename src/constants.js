@@ -6,10 +6,10 @@ extern.levelTypes = ["Open", "Wood", "Silver", "Gold"];
 extern.objectives = ["Beat", "SS", "S finesse", "S complete", "B complete", "D complete"];
 
 extern.optionNames = {
-	"characters": "allow required characters",
+	"characters": "characters",
 	"apples": "apples",
-	"tutorials": "include tutorials",
-	"difficults": "include difficults",
+	"tutorials": "tutorials",
+	"difficults": "difficults",
 	"yottass": "Yotta SS",
 	"sfinesse": "S finesse",
 	"scomplete": "S completion",

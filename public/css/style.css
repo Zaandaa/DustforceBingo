@@ -283,7 +283,7 @@ select {
 	margin-top:-100px;
 	position:absolute;
 	left:50%;
-	min-width: 700px;
+	min-width: 500px;
 }
 
 .alert {
@@ -327,4 +327,13 @@ select {
 
 input[type=checkbox] {
 	display: none;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
