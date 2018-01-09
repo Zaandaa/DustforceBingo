@@ -335,9 +335,16 @@ input[type=checkbox] {
 	padding-left: 2px;
 	margin-bottom: 4px;
 	min-width: 180px;
+	vertical-align: middle;
 }
 .checkbox > label:hover {
 	background-color: var(--midblue);
+}
+.checkbox > label > p {
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 0px;
+	margin-left: 4px;
 }
 
 .noselect {
