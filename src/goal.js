@@ -107,9 +107,9 @@ function makeLevelGoalDatas(ruleset) {
 		if (!ruleset.difficults && levels.levels[l].hub == "Difficult")
 			continue;
 
-		["Beat", "SS", "B%", "BS"].forEach(function(o) {
+		constants.objectives.forEach(function(o) {
 
-			if ((o == "B%" || o == "BS") && !ruleset.somepercent)
+			if (o == "B complete" && !ruleset.bcomplete)
 				return;
 			if (levels.levels[l].type == "Difficult" && ruleset.save == "New Game" && ruleset.length > 1)
 				return; // no difficults in new game unless full game length
@@ -263,14 +263,17 @@ var Goal = function(goalData) {
 				var score = utils.getReplayScore(replay);
 				if (self.goalData.objective == "SS" && score != "SS")
 					return false;
-				if (self.goalData.character && self.goalData.character != constants.characters[replay.character])
+
+				if (self.goalData.objective == "S finesse" && score[1] != "S")
+					return false;
+				if (self.goalData.objective == "S complete" && score[0] != "S")
+					return false;
+				if (self.goalData.objective == "B complete" && score[0] != "B")
+					return false;
+				if (self.goalData.objective == "D complete" && score[0] != "D")
 					return false;
 
-				if (self.goalData.objective == "D%" && score[0] != "D")
-					return false;
-				if (self.goalData.objective == "B%" && score[0] != "B")
-					return false;
-				if (self.goalData.objective == "BS" && score != "BS")
+				if (self.goalData.character && self.goalData.character != constants.characters[replay.character])
 					return false;
 
 				for (var g in self.goalData.gimmicks) {

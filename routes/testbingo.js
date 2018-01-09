@@ -26,12 +26,14 @@ var rules = {
 	tutorials: true,
 	difficults: true,
 	yottass: true,
+	sfinesse: true,
+	scomplete: true,
+	bcomplete: true,
+	dcomplete: true,
 	lowdash: true,
 	lowjump: true,
 	lowattack: true,
-	lowdirection: true,
-	lowpercent: true,
-	somepercent: true
+	lowdirection: true
 };
 
 // simplified session for testing

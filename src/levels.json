@@ -5,11 +5,6 @@
 			"format": "{count} apple",
 			"plural": "s"
 		},
-		"lowpercent": {
-			"accessor": "",
-			"format": "<= {count} dust",
-			"plural": ""
-		},
 		"lowdash": {
 			"accessor": "input_dashes",
 			"format": "<= {count} dash",
@@ -29,11 +24,6 @@
 			"accessor": "input_directions",
 			"format": "<= {count} direction",
 			"plural": "s"
-		},
-		"sfinesse": {
-			"accessor": "score_finesse",
-			"format": "S finesse",
-			"plural": ""
 		}
 	},
 	"hubs": {
@@ -151,20 +141,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -243,20 +219,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -337,20 +299,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -429,20 +377,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -523,20 +457,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -615,20 +535,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -709,20 +615,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -801,20 +693,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -895,20 +773,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -987,20 +851,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -1081,20 +931,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -1173,20 +1009,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -1267,20 +1089,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -1359,20 +1167,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -1453,20 +1247,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -1545,20 +1325,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -1639,20 +1405,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -1731,20 +1483,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -1825,20 +1563,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -1917,20 +1641,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -2011,20 +1721,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -2103,20 +1799,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -2197,20 +1879,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -2289,20 +1957,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -2383,20 +2037,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -2475,20 +2115,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -2569,20 +2195,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -2661,20 +2273,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -2755,20 +2353,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -2847,20 +2431,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -2941,20 +2511,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -3033,20 +2589,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -3127,20 +2669,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -3219,20 +2747,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -3313,20 +2827,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -3405,20 +2905,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -3499,20 +2985,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": null,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -3591,20 +3063,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -3685,20 +3143,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -3777,20 +3221,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -3871,20 +3301,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -3963,20 +3379,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -4057,20 +3459,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": null,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -4149,20 +3537,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -4243,20 +3617,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -4335,20 +3695,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -4429,20 +3775,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -4521,20 +3853,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -4615,20 +3933,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -4707,20 +4011,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -4801,20 +4091,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -4893,20 +4169,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -4987,20 +4249,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -5079,20 +4327,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -5173,20 +4407,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 6,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -5265,20 +4485,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -5359,20 +4565,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -5451,20 +4643,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -5545,20 +4723,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 5,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -5637,20 +4801,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -5731,20 +4881,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -5823,20 +4959,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -5917,20 +5039,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 4,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -6009,20 +5117,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -6103,20 +5197,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -6195,20 +5275,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -6289,20 +5355,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 3,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -6381,20 +5433,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -6475,20 +5513,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -6567,20 +5591,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -6661,20 +5671,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -6753,20 +5749,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
 					"character": ""
 				}
 			]
@@ -6847,20 +5829,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -6940,20 +5908,6 @@
 					"difficulty": 0,
 					"count": 0,
 					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
-					"character": ""
 				}
 			]
 		},
@@ -7032,20 +5986,6 @@
 					"objective": "SS",
 					"difficulty": 0,
 					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "lowpercent",
-					"objective": "Beat",
-					"difficulty": 0,
-					"count": 0,
-					"character": ""
-				},
-				{
-					"type": "sfinesse",
-					"objective": "Beat",
-					"difficulty": 2,
-					"count": 5,
 					"character": ""
 				}
 			]

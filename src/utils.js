@@ -99,9 +99,7 @@ extern.getReplayScore = function(replay) {
 }
 
 extern.accessGimmick = function(replay, gimmick) {
-	if (gimmick == "lowpercent") {
-		return replay.tag.collected;
-	} else if (gimmick == "lowattack") {
+	if (gimmick == "lowattack") {
 		if (replay.input_super > 0) {
 			return -1; // invalid
 		} else {
@@ -113,7 +111,7 @@ extern.accessGimmick = function(replay, gimmick) {
 }
 
 extern.betterGimmick = function(gimmick, g1, g2) {
-	if (gimmick == "apples" || gimmick == "sfinesse") {
+	if (gimmick == "apples") {
 		return Math.max(g1, g2);
 	} else {
 		// ignore invalid negatives
@@ -128,7 +126,7 @@ extern.betterGimmick = function(gimmick, g1, g2) {
 }
 
 extern.meetGoalGimmick = function(replay, gimmick) {
-	if (gimmick.type == "apples" || gimmick.type == "sfinesse") {
+	if (gimmick.type == "apples") {
 		return extern.accessGimmick(replay, gimmick.type) >= gimmick.count;
 	} else if (gimmick.type == "lowattack") {
 		if (replay.input_super > 0) {

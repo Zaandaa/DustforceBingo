@@ -24,12 +24,13 @@ var params = [
 	"difficults", 
 	"yottass", 
 	"sfinesse", 
+	"scomplete",
+	"bcomplete",
+	"dcomplete",
 	"lowdash", 
 	"lowjump", 
 	"lowattack", 
-	"lowdirection", 
-	"lowpercent", 
-	"somepercent"
+	"lowdirection"
 ];
 
 function build(io) {

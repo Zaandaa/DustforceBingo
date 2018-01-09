@@ -13,8 +13,8 @@ function base_gimmick(level, t, o) {
 function getDifficulty(level, t, o) {
 	var d = 0;
 
-	if (t == "sfinesse")
-		d = utils.getLevelDifficulty(level, o, "New Game") - 1;
+	// if (t == "apples")
+		// d = utils.getLevelDifficulty(level, o, "New Game") - 1;
 
 	return d;
 }
@@ -24,8 +24,6 @@ function getCount(level, t, o) {
 
 	// if (t == "apples")
 		// count = 1;
-	if (t == "sfinesse")
-		count = 5;
 
 	return count;
 }
@@ -41,8 +39,6 @@ var gimmicks = [
 	"lowjump",
 	"lowdirection",
 	"lowattack",
-	"lowpercent",
-	"sfinesse",
 ];
 
 var gimmickLeaderboards = {
@@ -50,14 +46,11 @@ var gimmickLeaderboards = {
 	"lowdash":"nodash",
 	"lowjump":"nojump",
 	"lowdirection":"nodirection",
-	"lowattack":"noattack",
-	"lowpercent":"low",
-	"sfinesse": ""
+	"lowattack":"noattack"
 }
 
 var cantss = [
-	"lowpercent",
-	"sfinesse"
+	//
 ];
 
 var levels = [
