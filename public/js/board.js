@@ -62,7 +62,7 @@ function updatePlayersTable(playersJson, target) {
 	// head
 	var thead = $("<thead></thead>");
 	var row = $("<tr></tr>");
-	row.append($("<th>Player</th>"));
+	row.append($("<th style='width: 50%'>Player</th>"));
 	row.append($("<th>Color</th>"));
 	if (bingoStarted)
 		row.append($("<th>Goals</th>"));

@@ -143,7 +143,7 @@ select {
 	color: var(--white);
 	text-align: center;
 	padding: 8px;
-	border: 1px solid gray;
+	border: 1px solid var(--gray);
 	border-radius: 2px;
 	margin: 2px;
 	min-height: 120px;
@@ -155,7 +155,7 @@ select {
 }
 .bingo_label {
 	background-color: var(--gray);
-	border-color: white;
+	border-color: var(--white);
 }
 .bingo_label .goal_text {
 	font-weight: bold;
@@ -327,6 +327,17 @@ select {
 
 input[type=checkbox] {
 	display: none;
+}
+
+.checkbox > label {
+	border: 1px solid var(--gray);
+	padding: 4px;
+	padding-left: 2px;
+	margin-bottom: 4px;
+	min-width: 180px;
+}
+.checkbox > label:hover {
+	background-color: var(--midblue);
 }
 
 .noselect {

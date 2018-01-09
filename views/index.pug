@@ -42,8 +42,8 @@ block content
 							option(value="New Game") New Game
 							option(value="New Game +") New Game +
 
-					div.form-group
-						label
+					div.form-group.checkbox
+						label(style="min-width: 100px")
 							input#lockout.session(type="checkbox" checked)
 							<img id="check_lockout" class="checkbox_img icon" src="/img/ready_true.png" /> Lockout
 
@@ -111,17 +111,17 @@ block content
 								input#dcomplete.session(   type="checkbox")
 								<img id="check_dcomplete" class="checkbox_img icon" src="/img/ready_false.png" />
 								<img class="icon" src="/img/iconLow.png" /> D completion
-						div.checkbox
+						div.checkbox.invisible
 							label
 								input#lowdash.session(      type="checkbox")
 								<img id="check_lowdash" class="checkbox_img icon" src="/img/ready_false.png" />
 								<img class="icon" src="http://dustkid.com/static/iconNoDash.png" /> Low dash
-						div.checkbox
+						div.checkbox.invisible
 							label
 								input#lowjump.session(      type="checkbox")
 								<img id="check_lowjump" class="checkbox_img icon" src="/img/ready_false.png" />
 								<img class="icon" src="http://dustkid.com/static/iconNoJump.png" /> Low jump
-						div.checkbox
+						div.checkbox.invisible
 							label
 								input#lowattack.session(    type="checkbox")
 								<img id="check_lowattack" class="checkbox_img icon" src="/img/ready_false.png" />
@@ -129,7 +129,7 @@ block content
 							div.tt_question
 								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Use fewest attacks possible (light: 1, heavy: 3, no supers)")
 									div(style="position: relative; top: -1px") ?
-						div.checkbox
+						div.checkbox.invisible
 							label
 								input#lowdirection.session( type="checkbox") 
 								<img id="check_lowdirection" class="checkbox_img icon" src="/img/ready_false.png" />
