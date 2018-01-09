@@ -1,3 +1,8 @@
+function changeCheckImage() {
+	var id = $(this).attr('id');
+	$('#check_' + id).attr('src', '/img/ready_' + ($(this).prop('checked') ? 'true' : 'false') + '.png');
+}
+
 $(document).on('ready', function() {	
 	var $size = $('#size'),
 	    $bingo_count_type = $('#bingo_count_type'),
@@ -27,6 +32,7 @@ $(document).on('ready', function() {
 		$bingo_count.val("1");
 	}		
 	
+	$('input[type=checkbox]').on('change', changeCheckImage)
 	$size.on('change', validateNumber);
 	$bingo_count_type.on('change', validateNumber);
 	

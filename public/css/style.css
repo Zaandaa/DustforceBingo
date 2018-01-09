@@ -323,3 +323,7 @@ select {
 	text-align: center;
 	font-weight: bold;
 }
+
+input[type=checkbox] {
+	display: none;
+}

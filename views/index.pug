@@ -44,7 +44,8 @@ block content
 
 					div.form-group
 						input#lockout.session(type="checkbox" checked)
-						label(for="lockout") Lockout
+						label(for="lockout")
+							<img id="check_lockout" class="checkbox_img icon" src="/img/ready_true.png" /> Lockout
 
 					div.form-group.row
 						div.col-12
@@ -65,60 +66,73 @@ block content
 						div.checkbox
 							label
 								input#characters.session(   type="checkbox" checked)
-								<img class="icon" src="http://dustkid.com/static/iconAll.png" /> Allow required characters
+								<img id="check_characters" class="checkbox_img icon" src="/img/ready_true.png" />
+								<img class="icon" src="http://dustkid.com/static/iconAll.png" /> Characters
 							div.tt_question
 								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Goals can require you to play a specific character")
 									div(style="position: relative; top: -1px") ?
 						div.checkbox
 							label
 								input#apples.session(       type="checkbox" checked)
-								<img class="icon" src="http://dustkid.com/static/iconApple.png" /> Include apples
+								<img id="check_apples" class="checkbox_img icon" src="/img/ready_true.png" />
+								<img class="icon" src="http://dustkid.com/static/iconApple.png" /> Apples
 						div.checkbox
 							label
 								input#tutorials.session(    type="checkbox") 
-								<img class="character" src="http://dustkid.com/static/iconDustman.png" /> Include tutorials
+								<img id="check_tutorials" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="character" src="http://dustkid.com/static/iconDustman.png" /> Tutorials
 						div.checkbox
 							label
 								input#difficults.session(   type="checkbox") 
-								<img class="icon" src="/img/iconDonger.png" /> Include difficults
+								<img id="check_difficults" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="/img/iconDonger.png" /> Difficults
 						div.checkbox
 							label
 								input#yottass.session(      type="checkbox") 
-								<img class="icon" src="/img/iconDonger.png" /> Include Yotta SS
+								<img id="check_yottass" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="/img/iconDonger.png" /> Yotta SS
 						div.checkbox
 							label
 								input#sfinesse.session(     type="checkbox")
-								<img class="icon" src="/img/iconS.png" /> Include S finesse
+								<img id="check_sfinesse" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="/img/iconS.png" /> S finesse
 						div.checkbox
 							label
 								input#scomplete.session(     type="checkbox")
-								<img class="icon" src="/img/iconS.png" /> Include S completion
+								<img id="check_scomplete" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="/img/iconS.png" /> S completion
 						div.checkbox
 							label
 								input#bcomplete.session(  type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconSome.png" /> Include B completion
+								<img id="check_bcomplete" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="http://dustkid.com/static/iconSome.png" /> B completion
 						div.checkbox
 							label
 								input#dcomplete.session(   type="checkbox")
-								<img class="icon" src="/img/iconLow.png" /> Include D completion
+								<img id="check_dcomplete" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="/img/iconLow.png" /> D completion
 						div.checkbox
 							label
 								input#lowdash.session(      type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconNoDash.png" /> Include low dash
+								<img id="check_lowdash" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="http://dustkid.com/static/iconNoDash.png" /> Low dash
 						div.checkbox
 							label
 								input#lowjump.session(      type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconNoJump.png" /> Include low jump
+								<img id="check_lowjump" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="http://dustkid.com/static/iconNoJump.png" /> Low jump
 						div.checkbox
 							label
 								input#lowattack.session(    type="checkbox")
-								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" /> Include low attack
+								<img id="check_lowattack" class="checkbox_img icon" src="/img/ready_false.png" />
+								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" /> Low attack
 							div.tt_question
 								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Use fewest attacks possible (light: 1, heavy: 3, no supers)")
 									div(style="position: relative; top: -1px") ?
 						div.checkbox
 							label
 								input#lowdirection.session( type="checkbox") 
+								<img id="check_lowdirection" class="checkbox_img icon" src="/img/ready_false.png" />
 								<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" /> Include low direction
 		
 
