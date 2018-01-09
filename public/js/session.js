@@ -202,8 +202,8 @@ $(document).on('ready', function() {
 			bounds = {};
 		    bounds.top  = $container.offset().top;
 			bounds.left = $container.offset().left;
-			bounds.bottom = bounds.top  + $container.height();
-			bounds.right  = bounds.left + $container.width();
+			bounds.bottom = bounds.top  + $container.outerHeight();
+			bounds.right  = bounds.left + $container.outerWidth();
 		
 		var oldColor = $color.attr("style"),
 		    oldVal   = $color.attr("value");
