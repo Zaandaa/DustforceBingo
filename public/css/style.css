@@ -280,22 +280,23 @@ select {
 }
 
 .floater {
-	min-width: 700px;
+	margin-top:-100px;
 	position:absolute;
 	left:50%;
+	min-width: 700px;
 }
 
 .alert {
 	position: relative;
 	left: -50%;
 	z-index: 100;
+	min-width: inherit;
+	text-align:center;
 }
 
 .alert-text {
 	display:inline-block;
 	width: inherit;
-	padding-left: 100px;
-	padding-right: 100px;
 }
 
 @media (max-width: 1200px) {
