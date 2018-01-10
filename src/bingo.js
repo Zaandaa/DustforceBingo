@@ -245,7 +245,7 @@ var Bingo = function(session, ruleset) {
 			// force end
 			for (var p in self.players) {
 				var winner = possibleWinners.includes[p]
-				if (!self.players[p].finishTime > 0)
+				if (self.players[p].finishTime == 0)
 					self.players[p].finish(Date.now() - self.startTime, winner);
 				if (winner)
 					self.session.playerFinish(p);
@@ -259,6 +259,9 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.checkPlayerFinished = function(id) {
+		if (self.players[id].finishTime > 0)
+			return; // already done
+
 		if (self.ruleset.bingo_count_type == "bingo") {
 			if (self.playerCountBingo(id) >= self.ruleset.bingo_count) {
 				self.players[id].finish(Date.now() - self.startTime, !self.isWon);
