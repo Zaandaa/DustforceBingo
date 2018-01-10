@@ -105,6 +105,20 @@ var Bingo = function(session, ruleset) {
 	self.goals = goal.makeGoals(ruleset);
 	self.possibleBingos = cachePossibleBingos(ruleset);
 
+	self.getStatus = function() {
+		var s;
+		if (self.isWon)
+			s = "Complete";
+		else if (self.active)
+			s = "In progress";
+		else
+			s = "Open";
+
+		return {
+			status: s,
+			players: Object.keys(self.players).length,
+		}
+	}
 
 	self.addPlayer = function(id, name) {
 		if (!self.active && !(id in self.players) && Object.keys(self.players).length < 10) {

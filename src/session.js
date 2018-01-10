@@ -275,6 +275,12 @@ function build(io) {
 			bingo.sendReplay(r);
 		};
 
+		self.getStatus = function() {
+			var status = self.bingo.getStatus();
+			status.id = self.id;
+			return status;
+		}
+
 		self.endSession = function() {
 			console.log("endSession", self.id);
 			cleanup();
