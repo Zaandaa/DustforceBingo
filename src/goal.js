@@ -6,30 +6,6 @@ var utils = require("./utils");
 var constants = require('./constants');
 var chance = require('./chance');
 
-/*
-goal types
-
-type: single (level), total (keys, levels beaten, levels SSed, apples)
-single: level, "SS" or "Beat", from hub (else any), as char, "apple"
-total: x, "Beat" or "SS" or "key" or "apples", from hub (else any), as char (else any), level types
-
-
-beat/ss/other level (as char) (with any/all apples)
-obtain x keys
-beat x hub keys vs beat x hub key levels?
-beat/ss x levels (as char)
-beat/ss x hub levels (as char)
-hit x apples in hub/total
-no/low dash/jump/direction (need to know if possible for 0 or minimum possible)
-
-goal object?
-toString
-goalData
-achieved
-who achieved
-
-*/
-
 var extern = {}
 
 extern.makeGoals = function(ruleset) {

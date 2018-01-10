@@ -5,34 +5,6 @@ var Player = require('./player');
 var levels = require('./levels');
 var constants = require('./constants');
 
-/*
-
-options:
-
-bingo rules
-size dropdown: 3x3, 5x5
-checkbox on lockout
-win condition checks?:
-first to x
-majority (default)
-checkbox bingo (dropdown 1 to 5)
-
-save file: newgame, newgameplus
-checkbox on allow requiring characters
-checkbox off include difficults (long if new game)
-checkbox off include tutorials (maybe always exclude)
-checkbox on include apples
-
-time preference? short vs long
-
-
-*/
-
-
-// move somewhere
-// var replays = require("src/replays.js");
-// replays(checkReplay);
-
 function cachePossibleBingos(ruleset) {
 	var sets = [];
 	var cells;
@@ -374,7 +346,7 @@ var Bingo = function(session, ruleset) {
 				self.goals[i].addAchiever(replay.user);
 				self.players[replay.user].achieveGoal(i);
 				success = true;
-				console.log("GOAL ACHIEVED", i, replay.username);
+				// console.log("GOAL ACHIEVED", i, replay.username);
 			}
 		}
 
