@@ -44,7 +44,7 @@ function build(io) {
 
 	function getUserInfo(name, lambda) {
 		var url = `http://www.dustkid.com/json/profile/${name.toLowerCase()}`;
-		console.log("going to", url);
+		// console.log("going to", url);
 		request(url, function(error, response, body) {
 			if (error || response == undefined ) {
 				return lambda(true, `Could not connect to dustkid!`);
@@ -288,6 +288,7 @@ function build(io) {
 		
 // CTOR:
 
+		console.log("new Session", self.id);
 		rooms[self.id] = self;
 		setTimeout(self.endSession, 86400000);
 		return self;

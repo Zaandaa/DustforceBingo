@@ -40,7 +40,7 @@ function build(io) {
 	router.get('/', function(req, res, next) {
 		if(verify(params, req.query)) {
 			var s = session.newSession(req.query);
-			console.log(s);
+			// console.log(s);
 			res.redirect('/session/' + s.id);
 		} else {
 			var err = new Error('Not Found');
@@ -50,7 +50,7 @@ function build(io) {
 	});
 
 	router.get('/:id', function(req, res, next) {
-		console.log(`getting room ${req.params.id}`);
+		// console.log(`getting room ${req.params.id}`);
 		if(!session.getSession(req.params.id)) {
 			var err = new Error('Not Found');
 			err.status = 404;
@@ -71,7 +71,7 @@ function build(io) {
 	});
 
 	router.get('/:id/popout', function(req, res, next) {
-		console.log(`getting room ${req.params.id}`);
+		// console.log(`getting room ${req.params.id}`);
 		if(!session.getSession(req.params.id)) {
 			var err = new Error('Not Found');
 			err.status = 404;

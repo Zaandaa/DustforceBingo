@@ -123,5 +123,5 @@ function removeStartButton() {
 }
 
 function popoutBoard() {
-	window.open(window.location.href + '/popout', '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
+	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout', '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
 }

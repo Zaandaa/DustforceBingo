@@ -42,7 +42,7 @@ $(document).on('ready', function() {
 		return this.on('click', function() {
 			var name = resolve(this, n),
 				obj = resolve(this, l);
-			console.log(name, obj);
+			// console.log(name, obj);
 			if (typeof obj === typeof undefined)
 				socket.emit(name);
 			else
@@ -286,7 +286,7 @@ $(document).on('ready', function() {
 			$(".alert-danger .alert-text").html(data.message);
 			$(".alert-danger").alert(200, 2000, 100);
 		} else {
-			console.log(data.message);
+			// console.log(data.message);
 		}
 	});
 	
@@ -299,7 +299,7 @@ $(document).on('ready', function() {
 			$("#join").text("Join");
 			$("#username").enable();
 		} else {
-			console.log(data.message);
+			// console.log(data.message);
 			$(".alert-success").alert(200, 600, 100);
 			$("#join").text("Remove");
 		}
