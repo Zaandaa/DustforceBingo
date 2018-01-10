@@ -1,4 +1,5 @@
 var bingoStarted = false;
+var bingoLabels = [];
 
 function updateBoardTable(boardJson, target, includeBottom) {
 	bingoStarted = true;
@@ -16,7 +17,7 @@ function updateBoardTable(boardJson, target, includeBottom) {
 		for (var j = 0; j < boardData.size; j++) {
 			var col = $("<div></div>").addClass("col-" + col_width);
 			var cell = $("<div></div>").addClass("bingo_table_cell");
-			var innerCell = $("<div></div>").addClass("bingo_table_inner_cell");
+			var innerCell = $("<div id='goal_" + i + "_" + j + "'></div>").addClass("bingo_table_inner_cell");
 			innerCell.append("<div class='goal_text'>" + boardData.goals[i * boardData.size + j].title + "</div>");
 			
 			var achievers = "";
@@ -31,6 +32,8 @@ function updateBoardTable(boardJson, target, includeBottom) {
 			}
 			innerCell.append("<div class='goal_achievers_container'><div class='goal_achievers'>" + achievers + "</div></div>");
 			innerCell.click(toggleLabel);
+			if (bingoLabels.includes("goal_" + i + "_" + j))
+				innerCell.addClass("bingo_label");
 			cell.append(innerCell);
 			col.append(cell);
 			row.append(col);
@@ -89,7 +92,7 @@ function updatePlayersTable(playersJson, target) {
 				var h = time.getUTCHours();
 				var m = time.getMinutes();
 				var s = time.getSeconds();
-				cell3.append((h > 0 ? h + ":" : "") + m + ":" + s);
+				cell3.append((h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
 			}
 		} else {
 			var inner = $("<img class='ready-container' src='/img/ready_" + playerData.players[i].ready.toString() + ".png' />")
@@ -108,10 +111,13 @@ function playerFinish(data) {
 }
 
 function toggleLabel() {
-	if ($(this).hasClass("bingo_label"))
+	if ($(this).hasClass("bingo_label")) {
 		$(this).removeClass("bingo_label");
-	else
+		bingoLabels.splice(bingoLabels.indexOf($(this).attr("id")), 1);
+	} else {
 		$(this).addClass("bingo_label");
+		bingoLabels.push($(this).attr("id"));
+	}
 }
 
 function removeStartButton() {

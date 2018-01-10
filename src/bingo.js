@@ -230,8 +230,12 @@ var Bingo = function(session, ruleset) {
 	}
 
 	self.checkLockout = function(id) {
-		var goalsRemaining = self.goals.length - self.countGoalsAchieved();
 		self.setPlayersCanWin();
+
+		if (Object.keys(self.players).length == 1)
+			return;
+
+		var goalsRemaining = self.goals.length - self.countGoalsAchieved();
 
 		var possibleWinners = [];
 		if (!self.isWon) {

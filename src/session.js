@@ -223,7 +223,7 @@ function build(io) {
 			})
 			
 			socket.on('start', function() {
-				startTimer(1000);
+				startTimer(3000);
 			});
 			
 			socket.on('unstart', function() {
