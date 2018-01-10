@@ -18,11 +18,11 @@ $(document).on('ready', function() {
 		var max = 0;
 		if(size == "3" && type == "bingo")
 			max = 8;
-		if(size == "3" && type == "card")
+		if(size == "3" && type == "goal")
 			max = 9;
 		if(size == "5" && type == "bingo")
 			max = 12;
-		if(size == "5" && type == "card")
+		if(size == "5" && type == "goal")
 			max = 25;
 			
 		for(var i = max; i < 25; i++) {

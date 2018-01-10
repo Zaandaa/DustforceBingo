@@ -19,10 +19,10 @@ var Player = function(id, name) {
 	self.allProgress = {}; // dictionary of levels beaten
 	self.charProgress = {"Dustman": {}, "Dustgirl": {}, "Dustkid": {}, "Dustworth": {}}; // dictionary of levels beaten
 	self.keyProgress = {
-		"Forest": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
-		"Mansion": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
-		"City": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
-		"Laboratory": {"Wood": 0, "Silver": 0, "Gold": 0, "Ruby": 0},
+		"Forest": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
+		"Mansion": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
+		"City": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
+		"Laboratory": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
 	};
 
 	// used by bingo for lockout forced win checking

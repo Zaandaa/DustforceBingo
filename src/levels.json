@@ -1254,7 +1254,7 @@
 			"id": "den",
 			"hub": "Forest",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -1333,7 +1333,7 @@
 			"id": "autumnforest",
 			"hub": "Forest",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -1412,7 +1412,7 @@
 			"id": "garden",
 			"hub": "Forest",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -1491,7 +1491,7 @@
 			"id": "hyperdifficult",
 			"hub": "Forest",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -2518,7 +2518,7 @@
 			"id": "moontemple",
 			"hub": "Mansion",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -2597,7 +2597,7 @@
 			"id": "observatory",
 			"hub": "Mansion",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -2676,7 +2676,7 @@
 			"id": "parapets",
 			"hub": "Mansion",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -2755,7 +2755,7 @@
 			"id": "brimstone",
 			"hub": "Mansion",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -3782,7 +3782,7 @@
 			"id": "clocktower",
 			"hub": "City",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -3861,7 +3861,7 @@
 			"id": "concretetemple",
 			"hub": "City",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -3940,7 +3940,7 @@
 			"id": "alley",
 			"hub": "City",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -4019,7 +4019,7 @@
 			"id": "hideout",
 			"hub": "City",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -5046,7 +5046,7 @@
 			"id": "mary2",
 			"hub": "Laboratory",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -5125,7 +5125,7 @@
 			"id": "coretemple",
 			"hub": "Laboratory",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -5204,7 +5204,7 @@
 			"id": "abyss",
 			"hub": "Laboratory",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{
@@ -5283,7 +5283,7 @@
 			"id": "dome",
 			"hub": "Laboratory",
 			"type": "Gold",
-			"key": "Ruby",
+			"key": "Red",
 			"charselect": true,
 			"gimmicks": [
 				{

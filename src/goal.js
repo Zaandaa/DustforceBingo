@@ -7,7 +7,7 @@ var constants = require('./constants');
 var chance = require('./chance');
 
 /*
-card types
+goal types
 
 type: single (level), total (keys, levels beaten, levels SSed, apples)
 single: level, "SS" or "Beat", from hub (else any), as char, "apple"

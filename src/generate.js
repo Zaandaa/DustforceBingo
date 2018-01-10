@@ -136,7 +136,7 @@ var keyfromtype = {
 	"Open":"Wood",
 	"Wood":"Silver",
 	"Silver":"Gold",
-	"Gold":"Ruby",
+	"Gold":"Red",
 	"Difficult":null
 }	
 
