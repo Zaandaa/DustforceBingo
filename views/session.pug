@@ -32,7 +32,7 @@ block content
 			div#user_div.row
 				div.col
 					form#username_form.form_inline
-						input#username.form-inline(placeholder="Username")
+						input#username.form-inline(placeholder="Dustkid name/id#")
 					button#join.btn.btn-sm Join
 					button#ready.btn.btn-sm Ready
 					div#color_div
@@ -42,9 +42,12 @@ block content
 							div#color_container.collapse
 								each val in ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Gray", "White"]
 									div.btn.colorpicker(value= val.toLowerCase(), style= "background-color:var(--" + val.toLowerCase() + ");")
-			
+
 			div.row
 				div#players_table_div.col
+
+			div
+				p #[a(href='') Copy this link] to invite more players
 
 			div
 				h4.impact Rules
