@@ -329,7 +329,11 @@ $(document).on('ready', function() {
 	socket.on('players', function(data) {
 		// console.log("got players", data);
 		updatePlayersTable(data, $('#players_table_div'));
-		// $(".collapse").collapse('show');
+	});
+	
+	socket.on('playerfinish', function(data) {
+		// console.log("got playerfinish", data);
+		playerFinish(data);
 	});
 	
 	socket.on('finish', function(data) {

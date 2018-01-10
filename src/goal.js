@@ -109,8 +109,15 @@ function makeLevelGoalDatas(ruleset) {
 
 		constants.objectives.forEach(function(o) {
 
+			if (o == "S finesse" && !ruleset.sfinesse)
+				return;
+			if (o == "S complete" && !ruleset.scomplete)
+				return;
 			if (o == "B complete" && !ruleset.bcomplete)
 				return;
+			if (o == "D complete" && !ruleset.dcomplete)
+				return;
+
 			if (levels.levels[l].type == "Difficult" && ruleset.save == "New Game" && ruleset.length > 1)
 				return; // no difficults in new game unless full game length
 			if (l == "Yotta Difficult" && (o == "SS") && !ruleset.yottass)

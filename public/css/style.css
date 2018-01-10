@@ -144,7 +144,7 @@ select {
 	text-align: center;
 	padding: 8px;
 	border: 1px solid var(--gray);
-	border-radius: 2px;
+	border-radius: 4px;
 	margin: 2px;
 	min-height: 120px;
 	height: 100%;
@@ -227,6 +227,37 @@ select {
 	text-align: left;
 	vertical-align: center;
 }
+.player_finished {
+	font-weight: bold;
+}
+.player_winner {
+	font-weight: bold;
+}
+
+@-webkit-keyframes fade {
+  0%   { background-color: var(--gray); }
+  100% { background-color: inherit; }
+}
+@-moz-keyframes fade {
+  0%   { background-color: var(--gray); }
+  100% { background-color: inherit; }
+}
+@-o-keyframes fade {
+  0%   { background-color: var(--gray); }
+  100% { background-color: inherit; }
+}
+@keyframes fade {
+  0%   { background-color: var(--gray); }
+  100% { background-color: inherit; }
+}
+
+.player_finish_animation {
+	-webkit-animation: fade 2s ease-out; 
+	-moz-animation: fade 2s ease-out; 
+	-o-animation: fade 2s ease-out; 
+	animation: fadeIt 2s ease-out; 
+}
+
 
 .icon {
 	height:24px;
@@ -331,6 +362,7 @@ input[type=checkbox] {
 
 .checkbox > label {
 	border: 1px solid var(--gray);
+	border-radius: 4px;
 	padding: 4px;
 	padding-left: 2px;
 	margin-bottom: 4px;

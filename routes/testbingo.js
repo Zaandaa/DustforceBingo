@@ -41,6 +41,7 @@ var fakeSession = {
 	canStart: function(a) {},
 	updateBoard: function(a) {},
 	updatePlayers: function(a) {},
+	playerFinish: function(a) {},
 	finish: function() {}
 }
 
@@ -86,7 +87,7 @@ var moves = [ // move "pairs": player, goal
 	null // lazy comma c/p
 ];
 
-while (bingo.winner == "" && count != maxCount) {
+while (!bingo.isWon && count != maxCount) {
 	var p = Math.floor(Math.random() * Object.keys(bingo.players).length);
 	var g = Math.floor(Math.random() * rules.size * rules.size);
 	if (moves[count]) {
@@ -109,7 +110,9 @@ while (bingo.winner == "" && count != maxCount) {
 	// console.log("add");
 	bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].toString());
 	// console.log("checkwin");
-	bingo.checkWinStatus(Object.keys(bingo.players)[p]);
+	bingo.checkPlayerFinished(Object.keys(bingo.players)[p]);
+	if (rules.lockout)
+		bingo.checkLockout();
 
 	// console board
 	if (consoleLogTest) {

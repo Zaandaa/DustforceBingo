@@ -39,11 +39,6 @@ function updateBoardTable(boardJson, target, includeBottom) {
 	target.append(table);
 
 	if (includeBottom) {
-		var winner = "<h2>Winner: " + boardData.winner + "</h2>";
-		if (boardData.winner != "") {
-			target.append(winner);
-		}
-
 		var popoutButton = $("<div></div>").addClass("float-right");
 		popoutButton.append($("<a id='popout'>Popout Board</a>"));
 		popoutButton.click(popoutBoard);
@@ -63,16 +58,18 @@ function updatePlayersTable(playersJson, target) {
 	var thead = $("<thead></thead>");
 	var row = $("<tr></tr>");
 	row.append($("<th style='width: 50%'>Player</th>"));
-	row.append($("<th>Color</th>"));
-	if (bingoStarted)
-		row.append($("<th>Goals</th>"));
-	else
-		row.append($("<th>Ready</th>"));
+	row.append($("<th style='width: 20%'>Color</th>"));
+	row.append($("<th>" + (bingoStarted ? "" : "Ready") + "</th>"));
 	thead.append(row);
 	table.append(thead);
 
 	for (var i = 0; i < playerData.players.length; i++) {
-		var row = $("<tr></tr>");
+		var row = $("<tr id='tr_" + playerData.players[i].id + "'></tr>");
+
+		if (playerData.players[i].finishTime > 0)
+			row.addClass('player_finished');
+		if (playerData.players[i].isWinner)
+			row.addClass('player_winner');
 
 		var cell1 = $("<td></td>");
 		cell1.append(playerData.players[i].name);
@@ -85,7 +82,8 @@ function updatePlayersTable(playersJson, target) {
 
 		var cell3 = $("<td></td>");
 		if (bingoStarted) {
-			cell3.append(playerData.players[i].goals.toString());
+			if (playerData.players[i].finishTime > 0)
+				cell3.append(playerData.players[i].finishTime);
 		} else {
 			var inner = $("<img class='ready-container' src='/img/ready_" + playerData.players[i].ready.toString() + ".png' />")
 			cell3.append(inner);
@@ -96,6 +94,10 @@ function updatePlayersTable(playersJson, target) {
 	}
 
 	target.append(table);
+}
+
+function playerFinish(data) {
+	$("#tr_" + data.playerId).addClass('player_finish_animation');
 }
 
 function toggleLabel() {

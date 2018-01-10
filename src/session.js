@@ -250,6 +250,10 @@ function build(io) {
 			emitAll('players', json);
 		};
 		
+		self.playerFinish = function(id) {
+			emitAll('playerfinish', JSON.stringify({'player': id}));
+		};
+		
 		self.finish = function() {
 			finished = true;
 			emitAll('finish');
