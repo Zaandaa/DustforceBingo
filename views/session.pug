@@ -3,6 +3,7 @@ extends layout
 block js
 	script= "const sessionId = \'" + session.id + "';"
 	script= "const bingoSize = \'" + size + "';"
+	script= "const lockout = '" + lockout + "' == 'on';"
 	script(src="/socket/socket.io.min.js")
 	script(src="/js/board.js")
 	script(src="/js/session.js")

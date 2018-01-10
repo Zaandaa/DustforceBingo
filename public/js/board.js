@@ -18,10 +18,12 @@ function updateBoardTable(boardJson, target, includeBottom) {
 			var cell = $("<div></div>").addClass("bingo_table_cell");
 			var innerCell = $("<div></div>").addClass("bingo_table_inner_cell");
 			innerCell.append("<div class='goal_text'>" + boardData.goals[i * boardData.size + j].title + "</div>");
-
+			
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
+				if (lockout) 
+					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 
 					"style='background-color: var(--" + boardData.players[achiever].color 
 					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 

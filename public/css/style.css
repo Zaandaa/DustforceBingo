@@ -158,11 +158,11 @@ select {
 	height: 100%;
 }
 .bingo_table_inner_cell:hover {
-	background-color: #555555;
+	background-color: var(--graydark);
 	cursor: default;
 }
 .bingo_label {
-	background-color: var(--gray);
+	background-color: var(--grayish);
 	border-color: var(--white);
 }
 .bingo_label .goal_text {
