@@ -7,10 +7,11 @@ html
 		link(rel='stylesheet', href='/css/style.css')
 		link(rel='stylesheet', href='/css/custom.css')
 	body
-		nav.navbar
-			a.navlink.uppercase(href="/") DUSTFORCE BINGO
-
 		div.container-fluid
+			div.row
+				div.col
+					a.uppercase(href="/") DUSTFORCE BINGO
+
 			block content
 
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
