@@ -82,8 +82,13 @@ function updatePlayersTable(playersJson, target) {
 
 		var cell3 = $("<td></td>");
 		if (bingoStarted) {
-			if (playerData.players[i].finishTime > 0)
-				cell3.append(playerData.players[i].finishTime);
+			if (playerData.players[i].finishTime > 0) {
+				var time = new Date(playerData.players[i].finishTime);
+				var h = time.getUTCHours();
+				var m = time.getMinutes();
+				var s = time.getSeconds();
+				cell3.append((h > 0 ? h + ":" : "") + m + ":" + s);
+			}
 		} else {
 			var inner = $("<img class='ready-container' src='/img/ready_" + playerData.players[i].ready.toString() + ".png' />")
 			cell3.append(inner);
@@ -97,7 +102,7 @@ function updatePlayersTable(playersJson, target) {
 }
 
 function playerFinish(data) {
-	$("#tr_" + data.playerId).addClass('player_finish_animation');
+	$("#tr_" + data.player).addClass('player_finish_animation');
 }
 
 function toggleLabel() {
