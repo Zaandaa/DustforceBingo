@@ -295,12 +295,12 @@ $(document).on('ready', function() {
 		$("#join").enable();
 		if(data.err) {
 			$(".alert-danger .alert-text").html(data.message);
-			$(".alert-danger").alert(200, 2000, 100);
+			$(".alert-danger").alert(200, 5000, 100);
 			$("#join").text("Join");
 			$("#username").enable();
 		} else {
 			// console.log(data.message);
-			$(".alert-success").alert(200, 600, 100);
+			$(".alert-success").alert(200, 1000, 100);
 			$("#join").text("Remove");
 		}
 	});

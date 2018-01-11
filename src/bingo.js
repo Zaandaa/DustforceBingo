@@ -86,9 +86,14 @@ var Bingo = function(session, ruleset) {
 		else
 			s = "Open";
 
+		var playerNames = [];
+		for (var p in self.players) {
+			playerNames.push(self.players[p].name);
+		}
+
 		return {
 			status: s,
-			players: Object.keys(self.players).length,
+			players: playerNames,
 		}
 	}
 
