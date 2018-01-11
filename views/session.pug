@@ -11,17 +11,17 @@ block js
 block content
 	
 	div.floater
-		div.alert.alert-danger(role="alert")
+		div.alert.alert-danger(role="alert", style="display:none;")
 			div.alert-text
 			button.close(type="button", aria-label="Close")
 				span(aria-hidden="true") &times;
 
 	div.floater
-		div.alert.alert-info(role="alert") 
+		div.alert.alert-info(role="alert", style="display:none;") 
 			div.alert-text Connecting to dustkid.com...
 			
 	div.floater
-		div.alert.alert-success(role="alert") 
+		div.alert.alert-success(role="alert", style="display:none;") 
 			div.alert-text Connected!
 			button.close(type="button", aria-label="Close")
 				span(aria-hidden="true") &times;

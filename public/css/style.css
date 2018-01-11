@@ -411,3 +411,7 @@ input[type=checkbox] {
 pre {
 	color: white;
 } 
+
+#session_container {
+	overflow:hidden;
+}
