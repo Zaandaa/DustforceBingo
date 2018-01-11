@@ -13,12 +13,12 @@ function build(io) {
 
  
 // INTERNAL:
-	var rooms = {};
+	extern.rooms = {};
  
 	replays(function(r) {
 		console.log("Replay: " + r.username);
-		for(s in rooms) {
-			rooms[s].receiveReplay(r);
+		for(s in extern.rooms) {
+			extern.rooms[s].receiveReplay(r);
 		}
 	})
  
@@ -74,10 +74,10 @@ function build(io) {
 	io.on('connection', function(socket) {
 		socket.custom = {};
 		socket.on('init', function(data) {
-			if (!data.session in rooms) 
+			if (!data.session in extern.rooms) 
 				return Error(socket, 'connectionResponse', `Session ${data.session} does not exist`);
 
-			rooms[data.session].addSocket(socket, function(err, message) {
+			extern.rooms[data.session].addSocket(socket, function(err, message) {
 				socket.emit('connectionResponse', {
 					err: err,
 					message: message
@@ -87,7 +87,7 @@ function build(io) {
 	})
 
 	extern.getSession = function(id) {
-		return rooms[id];
+		return extern.rooms[id];
 	}
 
 /*
@@ -117,7 +117,7 @@ function build(io) {
 		}
 
 		self.id = generateSeed();
-		while(self.id in rooms)
+		while(self.id in extern.rooms)
 			self.id = generateSeed();
 		bingo_args.seed = self.id;
 
@@ -157,7 +157,7 @@ function build(io) {
 			bingo.cleanup();
 			delete bingo;
 
-			delete rooms[self.id];
+			delete extern.rooms[self.id];
 			delete self;
 		}
 
@@ -274,12 +274,12 @@ function build(io) {
 		self.receiveReplay = function(r) {
 			bingo.sendReplay(r);
 		};
-
-		self.getStatus = function() {
-			var status = self.bingo.getStatus();
+		
+		self.getSessionJson = function() {
+			var status = bingo.getStatus();
 			status.id = self.id;
 			return status;
-		}
+		};
 
 		self.endSession = function() {
 			console.log("endSession", self.id);
@@ -289,7 +289,7 @@ function build(io) {
 // CTOR:
 
 		console.log("new Session", self.id);
-		rooms[self.id] = self;
+		extern.rooms[self.id] = self;
 		setTimeout(self.endSession, 86400000);
 		return self;
 	}

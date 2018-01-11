@@ -49,6 +49,13 @@ function build(io) {
 		}
 	});
 
+	router.get('/json', function(req, res, next) {
+		var a = [];
+		for (id in session.rooms)
+			a.push(session.rooms[id].getSessionJson());
+		res.send(JSON.stringify(a));
+	});
+	
 	router.get('/:id', function(req, res, next) {
 		// console.log(`getting room ${req.params.id}`);
 		if(!session.getSession(req.params.id)) {
@@ -84,6 +91,7 @@ function build(io) {
 			size: s.bingo_args.size
 		});
 	});
+	
 	return router;
 }
 
