@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+console.log("Starting dustforce-bingo")
+
+console.log("PORT =", process.env.PORT || '3000')
+console.log("USE_HTTPS =", process.env.USE_HTTPS || 'false')
+console.log("DEBUG =", process.env.DEBUG || 'false')
+
 /**
  * Module dependencies.
  */
