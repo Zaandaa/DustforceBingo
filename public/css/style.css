@@ -73,6 +73,10 @@ body {
 	.btn-sm {
 		margin-left:10px;
 	}
+	
+	.bingo_table {
+		font-size:12px;
+	} 
 }
 
 @media (max-width: 800px) {
@@ -182,6 +186,7 @@ select {
 	height: 100%;
 	padding-bottom: 4px;
 }
+
 .bingo_table_inner_cell {
 	background-color: var(--dark);
 	color: var(--white);
@@ -203,6 +208,12 @@ select {
 }
 .bingo_label .goal_text {
 	font-weight: bold;
+}
+
+@media (max-width: 1199px) {
+	.bingo_table_inner_cell {
+		border: 2px solid var(--gray);
+	}
 }
 
 .goal_text {
