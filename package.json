@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "forever start bin/www",
-    "start-dev": "nodemon ./bin/www --config nodemon.config",
-	"stop": "forever stopall"
+    "start": "node bin/www",
+    "start-dev": "nodemon ./bin/www --config nodemon.config"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
