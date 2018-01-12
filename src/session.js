@@ -74,7 +74,7 @@ function build(io) {
 	io.on('connection', function(socket) {
 		socket.custom = {};
 		socket.on('init', function(data) {
-			if (!data.session in extern.rooms) 
+			if (!(data.session in extern.rooms)) 
 				return Error(socket, 'connectionResponse', `Session ${data.session} does not exist`);
 
 			extern.rooms[data.session].addSocket(socket, function(err, message) {
