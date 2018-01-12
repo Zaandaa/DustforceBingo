@@ -3,7 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var http = process.env.USE_HTTPS || false ? require("https") : require("http");
+var http = require("http");
 var socket = require("socket.io");
 var bodyParser = require('body-parser');
 
