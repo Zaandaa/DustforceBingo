@@ -3,17 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www --config nodemon.config"
+    "start": "forever start bin/www",
+    "start-dev": "nodemon ./bin/www --config nodemon.config",
+	"stop": "forever stopall"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "forever": "^0.15.3",
     "get-json": "^1.0.0",
     "htmlparser": "^1.7.7",
     "morgan": "~1.9.0",
-    "nodemon": "^1.14.7",
     "pug": "2.0.0-beta11",
     "request": "^2.83.0",
     "seedrandom": "^2.4.3",
