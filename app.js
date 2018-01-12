@@ -19,6 +19,11 @@ var testbingo = require('./routes/testbingo');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(function(req, res, next) {
+	console.log("got request!");
+	next();
+});
+
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
