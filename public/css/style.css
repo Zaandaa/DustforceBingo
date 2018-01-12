@@ -39,6 +39,42 @@ body {
 	font-family: 'Proxima Nova', Helvetica, Arial, sans-serif;
 }
 
+@media (max-width: 1199px) {
+	.uppercase {
+		font-size:85px;
+	}
+	
+	.impact {
+		font-size:38px;
+	}
+	
+	.lowercase {
+		font-size:30px;
+	}
+	
+	body {
+		font-size:24px;
+	}
+	
+	select.form-control, input.form-inline {
+		height:calc(4rem + 2px);
+		font-size:24px;
+	}
+	
+	.btn-sm {
+		height:4rem;
+		font-size:24px;
+	}
+	
+	.tt_question {
+		font-size: 18px;
+	}
+	
+	.btn-sm {
+		margin-left:10px;
+	}
+}
+
 @media (max-width: 800px) {
 	body {
 		margin:auto;
@@ -304,7 +340,6 @@ select {
 	height: 100%;
 	margin: 0em 0em 0em .4rem;
 	display: inline-block;
-	width: 11px;
 	padding: 0em 12px;
 }
 
@@ -315,8 +350,29 @@ select {
 	z-index: 1;
 }
 
+@media (max-width: 1199px) {
+	#color_label {
+		font-size:24px;
+	}
+	
+	#color {
+		padding: 0em 24px;
+	}
+	
+	.colorpicker {
+		padding: 24px 24px;
+		margin-top:12px
+	}
+}
+
 #username {
 	width:140px;
+}
+
+@media (max-width: 1199px) {
+	#username {
+		width:280px;
+	}
 }
 
 .floater {
@@ -339,7 +395,7 @@ select {
 	width: inherit;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.floater {
 		position:absolute;
 		left:0%;
