@@ -145,7 +145,7 @@ select {
 
 .options_table td {
 	text-align: left;
-	vertical-align: center;
+	vertical-align: middle;
 	border: 0;
 }
 
@@ -154,6 +154,7 @@ select {
 	border-radius: 50%;
 	width: 25px;
 	height: 25px;
+	vertical-align:middle;
 }
 
 .color-circle-small {
@@ -176,6 +177,7 @@ select {
 .ready-container {
 	width: 25px;
 	height: 25px;
+	vertical-align:middle;
 }
 
 .bingo_table {
@@ -481,4 +483,8 @@ pre {
 
 #session_container {
 	overflow:hidden;
+}
+
+.id-info {
+	text-align:left;
 }
