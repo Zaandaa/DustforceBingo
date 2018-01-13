@@ -488,3 +488,14 @@ pre {
 .id-info {
 	text-align:left;
 }
+
+.id-info > a {
+	vertical-align:middle;
+    line-height: 30px;
+}
+
+@media (max-width: 1199px) {
+	.id-info > a {
+		line-height: 60px;
+	}
+}	

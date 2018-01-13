@@ -341,7 +341,7 @@ $(document).on('ready', function() {
 		var $chooser = $('.chooser');
 		$chooser.html("");
 		data.forEach(function(player) {
-			var row = $("<div class='row'/>");
+			var row = $("<div class='row mt-2'/>");
 			
 			var padder = $("<div class='col-3'/>");
 			var ref = $("<div class='col-3 id-info'/>");
