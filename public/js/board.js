@@ -1,11 +1,14 @@
 var bingoStarted = false;
 var bingoLabels = [];
+var isPlayer = false;
 
 function updateBoardTable(boardJson, target, includeBottom) {
 	bingoStarted = true;
+	$("#temp_board_div").attr("style", "display: none");
 	target.empty();
 
 	boardData = JSON.parse(boardJson);
+	isPlayer = boardData.isPlayer;
 
 	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
@@ -44,8 +47,15 @@ function updateBoardTable(boardJson, target, includeBottom) {
 	target.append(table);
 
 	if (includeBottom) {
-		var popoutButton = $("<div></div>").addClass("float-right");
-		popoutButton.append($("<a id='popout'>Popout Board</a>"));
+		if (isPlayer && (!boardData.firstGoal || boardData.state == "Complete")) {
+			var resetButton = $("<div style='display: inline-block'></div>").addClass("float-left");
+			resetButton.append($("<a id='resettext' style='color: var(--blue); cursor: pointer'>Vote for new board</a>"));
+			resetButton.click(function() { $("#reset").click() });
+			target.append(resetButton);
+		}
+
+		var popoutButton = $("<div style='display: inline-block'></div>").addClass("float-right");
+		popoutButton.append($("<a id='popout' style='color: var(--blue); cursor: pointer'>Popout</a>"));
 		popoutButton.click(popoutBoard);
 		target.append(popoutButton);
 	}
@@ -92,7 +102,10 @@ function updatePlayersTable(playersJson, target) {
 				var h = time.getUTCHours();
 				var m = time.getMinutes();
 				var s = time.getSeconds();
-				cell3.append((h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
+				cell3.append(playerData.players[i].place + ": " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
+			}
+			if (playerData.players[i].reset) {
+				cell3.append(" voted");
 			}
 		} else {
 			var inner = $("<img class='ready-container' src='/img/ready_" + playerData.players[i].ready.toString() + ".png' />")
@@ -121,11 +134,31 @@ function toggleLabel() {
 }
 
 function removeStartButton() {
-	if ($('#start').length && !$('#bingo_div').length) {
-		$('#fake_center').empty();
-		var element = $("<h2 style='text-align: center; margin: auto'>Starting...</h2>")
-		$('#fake_center').append(element);
+	$('#start').attr("style", "display: none");
+	$('#starting').attr("style", "");
+}
+
+function showStartButton() {
+	$('#start').attr("style", "");
+	$('#starting').attr("style", "display: none");
+}
+
+function resetBingo() {
+	bingoStarted = false;
+	bingoLabels = [];
+	$("#temp_board_div").attr("style", "");
+	$("#board_div").empty();
+
+	showStartButton();
+	$("#join").enable();
+	$("#ready").text("Ready");
+	if (!isPlayer) {
+		$("#username").enable();
+		$("#join").text("Join");
+	} else {
+		$("#ready").enable();
 	}
+	isPlayer = false;
 }
 
 function popoutBoard() {

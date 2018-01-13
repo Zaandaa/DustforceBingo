@@ -10,9 +10,11 @@ var Player = function(id, name) {
 	self.name = name;
 	self.color = "white";
 	self.ready = false;
+	self.reset = false;
 
 	self.finishTime = 0;
 	self.isWinner = false;
+	self.place = 0;
 
 	self.goalsAchieved = []; // list of ids of goals achieved
 	self.allCompletes = []; // all completes {levelname, completion, finesse, character}
@@ -36,7 +38,7 @@ var Player = function(id, name) {
 	};
 
 	self.getBoardData = function() {
-		return {id: self.id, name: self.name, ready: self.ready, color: self.color, finishTime: self.finishTime, isWinner: self.isWinner, goals: self.goalsAchieved.length, bingos: self.bingos};
+		return {id: self.id, name: self.name, ready: self.ready, reset: self.reset, color: self.color, finishTime: self.finishTime, isWinner: self.isWinner, place: self.place, goals: self.goalsAchieved.length, bingos: self.bingos};
 	};
 
 	self.getReady = function() {
@@ -47,6 +49,10 @@ var Player = function(id, name) {
 		self.ready = r;
 	};
 
+	self.voteReset = function(r) {
+		self.reset = self.ready ? r : false;
+	};
+
 	self.changeColor = function(c) {
 		if (c != self.color) {
 			self.color = c;
@@ -55,9 +61,10 @@ var Player = function(id, name) {
 		return false;
 	};
 
-	self.finish = function(t, w) {
+	self.finish = function(t, w, p) {
 		self.finishTime = t;
 		self.isWinner = w;
+		self.place = p;
 	}
 
 	self.achieveGoal = function(id) {
