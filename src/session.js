@@ -168,9 +168,20 @@ function build(io) {
 
 		var bingo = new Bingo(self, bingo_args);
 
+		function isPlayer(socket) {
+			return socket.custom !== undefined && socket.custom.id !== undefined
+		}
+		
 		function emitAll(res, mes) {
 			for (id in sockets) {
 				sockets[id].emit(res, mes);
+			}
+		}
+		
+		function emitPlayers(res, mes) {
+			for (id in sockets) {
+				if (isPlayer(sockets[id]))
+					sockets[id].emit(res, mes);
 			}
 		}
 		
@@ -208,13 +219,11 @@ function build(io) {
 
 // PUBLIC:
 		
-		self.addSocket = function (socket, lambda)
-		{
-
+		self.addSocket = function (socket, lambda) {
 			sockets.push(socket);
 			
 			socket.on('disconnect', function() {
-				if (socket.custom.id)
+				if (isPlayer(socket))
 					bingo.removePlayer(socket.custom.id);
 				sockets.splice(sockets.indexOf(socket), 1);
 				socket.disconnect(0);
@@ -274,24 +283,34 @@ function build(io) {
 			});
 			
 			socket.on('remove', function() {
-				if (bingo.removePlayer(socket.custom.id))
+				if (isPlayer(socket) && bingo.removePlayer(socket.custom.id))
 					delete socket.custom.id;
 				socket.emit('removed');
 			});
 			
 			socket.on('ready', function() {
+				console.log(socket.custom, isPlayer(socket))
+				if (!isPlayer(socket))
+					return;
 				bingo.ready(socket.custom.id);
 			})
 			
 			socket.on('unready', function() {
+				if (!isPlayer(socket))
+					return;
 				bingo.unready(socket.custom.id);
 			});
 			
 			socket.on('color', function(data) {
+				if (!isPlayer(socket))
+					return;
 				bingo.changePlayerColor(socket.custom.id, data.color);
 			})
 			
 			socket.on('start', function() {
+				console.log(socket.custom, isPlayer(socket));
+				if (!isPlayer(socket))
+					return;
 				startTimer(3000);
 			});
 			
@@ -308,7 +327,7 @@ function build(io) {
 		
 		self.canStart = function(state) {
 			canStart = state;
-			emitAll('updateStart', state);
+			emitPlayers('updateStart', state);
 		};
 		
 		self.updateBoard = function(json) {
