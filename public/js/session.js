@@ -336,7 +336,36 @@ $(document).on('ready', function() {
 		playerFinish(data);
 	});
 	
-	socket.on('finish', function(data) {
+	socket.on('multiple', function(data) {
+		
+		var $chooser = $('.chooser');
+		$chooser.html("");
+		data.forEach(function(player) {
+			var row = $("<div class='row mt-2'/>");
+			
+			var padder = $("<div class='col-3'/>");
+			var ref = $("<div class='col-3 id-info'/>");
+			var me = $("<div class='col-3'/>");
+			var button = $("<button class='btn btn-sm' type='button' aria-label='Close'>This is me!</button>")
+			
+			ref.html("<a href='http://dustkid.com/profile/" + player.id + "/" + player.name 
+				+ "' target='_blank'>ID: " + player.id + "</a>");
+				
+			me.append(button);
+			row.append(padder);
+			row.append(ref);
+			row.append(me);
+			$chooser.append(row);
+			
+			button.on('click', function() {
+				socket.emit('multichoose', player.id);
+			});
+		});
+		$('.alert').hide();
+		$('.multiple').show();
+	});
+	
+	socket.on('finish', function(data) { 
 		
 	});
 	

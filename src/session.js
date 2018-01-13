@@ -47,7 +47,7 @@ function build(io) {
 		try {
 			return JSON.parse(body)
 		} catch(e) {
-			lambda(true, '<strong>Something went wrong :(</strong> I bet it was TMC\'s fault.');
+			lambda(true, false, '<strong>Something went wrong :(</strong> I bet it was TMC\'s fault.');
 			return undefined;
 		}
 	}
@@ -55,7 +55,7 @@ function build(io) {
 	function requestWrapper(url, lambda, callback) {
 		request(url, function(error, response, body) {
 			if (error || response == undefined ) {
-				return lambda(true, '<strong>Hitbox server error</strong> Hitbox appears to be down');
+				return lambda(true, false, '<strong>Hitbox server error</strong> Hitbox appears to be down');
 			}
 			
 			var json;
@@ -79,21 +79,17 @@ function build(io) {
 		requestWrapper(url, lambda, function(json) {
 			if (json.length == 0) {
 				if (number == NaN) 
-					return lambda(true, `<strong>User ${name} not found!</strong>`);
+					return lambda(true, false, `<strong>User ${name} not found!</strong>`);
 				var url = 'http://df.hitboxteam.com/backend6/userSearch.php' + querystring.stringify({
 					'user_id':name
 				});
 				requestWrapper(url, lambda, function(json) {
 					if (json.length == 0) 
-						return lambda(true, `<strong>Username or id ${name} not found!</strong>`);
+						return lambda(true, false, `<strong>Username or id ${name} not found!</strong>`);
 					
 					return success(json)
 				});
 			} else {
-				//REMOVE LATER
-				if(json.length > 1)
-					return lambda(true, `<strong>Multiple users with name ${name}!</strong> Try using your user id.`);
-				
 				return success(json)
 			}
 		});
@@ -102,20 +98,19 @@ function build(io) {
 	function getUserInfo(name, lambda) {
 		getUserJson(name, lambda, function(json) {
 			if(json.length > 1) {
-				// ADD HERE LATER
-				return;
+				return lambda(false, true, json);
 			}
 			
 			var user = json[0];
 			if (user === undefined) {
-				return lambda(true, '<strong>Internal server error</strong> Please contact @TMC or @Zaandaa they\'re dumb');
+				return lambda(true, false, '<strong>Internal server error</strong> Please contact @TMC or @Zaandaa they\'re dumb');
 			}
 			
 			if (!("name" in user) || !("id" in user)) {
-				return lambda(true, '<strong>Hitbox server error</strong> Hitbox appears to be down');
+				return lambda(true, false, '<strong>Hitbox server error</strong> Hitbox appears to be down');
 			}	
 			
-			lambda(true, user.name, user.id);
+			lambda(false, false, user.name, user.id);
 		});
 	}
 	
@@ -173,9 +168,20 @@ function build(io) {
 
 		var bingo = new Bingo(self, bingo_args);
 
+		function isPlayer(socket) {
+			return socket.custom !== undefined && socket.custom.id !== undefined
+		}
+		
 		function emitAll(res, mes) {
 			for (id in sockets) {
 				sockets[id].emit(res, mes);
+			}
+		}
+		
+		function emitPlayers(res, mes) {
+			for (id in sockets) {
+				if (isPlayer(sockets[id]))
+					sockets[id].emit(res, mes);
 			}
 		}
 		
@@ -213,13 +219,11 @@ function build(io) {
 
 // PUBLIC:
 		
-		self.addSocket = function (socket, lambda)
-		{
-
+		self.addSocket = function (socket, lambda) {
 			sockets.push(socket);
 			
 			socket.on('disconnect', function() {
-				if (socket.custom.id)
+				if (isPlayer(socket))
 					bingo.removePlayer(socket.custom.id);
 				sockets.splice(sockets.indexOf(socket), 1);
 				socket.disconnect(0);
@@ -236,15 +240,24 @@ function build(io) {
 				if (Object.keys(bingo.players).length >= 10)
 					return Error(socket,  'joinResponse', 'Cannot accept more than 10 players');
 
-				getUserInfo(data.username, function(err, username, id) {
+				getUserInfo(data.username, function(err, multi, data, id) {
 					if (err) 
-						return Error(socket, 'joinResponse', username);
+						return Error(socket, 'joinResponse', data);
 
+					if (multi) {
+						socket.emit('multiple', data);
+						socket.custom.multiple = {}
+						data.forEach(function(player) {
+							socket.custom.multiple[player.id] = player;
+						})
+						return;
+					}
+						
 					if (id in bingo.players)
 						return Error(socket,  'joinResponse', 'User already exists in session');
 
-					if (bingo.addPlayer(id, username)) {
-						socket.custom.username = username;
+					if (bingo.addPlayer(id, data)) {
+						socket.custom.username = data;
 						socket.custom.id = id;
 						socket.emit('joinResponse', {
 							err: false,
@@ -254,17 +267,37 @@ function build(io) {
 				});
 			});
 
+			socket.on('multichoose', function(id) {
+				if(!(id in socket.custom.multiple)) {
+					Error(socket, 'multiResponse', '<strong>Invalid operation!</strong> Ignoring input.');
+				}
+				
+				if (bingo.addPlayer(id, socket.custom.multiple[id].name)) {
+					socket.custom.username = socket.custom.multiple[id].name;
+					socket.custom.id = id;
+					socket.emit('joinResponse', {
+						err: false,
+						message: `Joined ${socket.custom.username}`
+					});
+				}
+			});
+			
 			socket.on('remove', function() {
-				if (bingo.removePlayer(socket.custom.id))
+				if (isPlayer(socket) && bingo.removePlayer(socket.custom.id))
 					delete socket.custom.id;
 				socket.emit('removed');
 			});
 			
 			socket.on('ready', function() {
+				console.log(socket.custom, isPlayer(socket))
+				if (!isPlayer(socket))
+					return;
 				bingo.ready(socket.custom.id);
 			})
 			
 			socket.on('unready', function() {
+				if (!isPlayer(socket))
+					return;
 				bingo.unready(socket.custom.id);
 			});
 			
@@ -273,10 +306,15 @@ function build(io) {
 			});
 			
 			socket.on('color', function(data) {
+				if (!isPlayer(socket))
+					return;
 				bingo.changePlayerColor(socket.custom.id, data.color);
 			})
 			
 			socket.on('start', function() {
+				console.log(socket.custom, isPlayer(socket));
+				if (!isPlayer(socket))
+					return;
 				startTimer(3000);
 			});
 			
@@ -293,7 +331,7 @@ function build(io) {
 		
 		self.canStart = function(state) {
 			canStart = state;
-			emitAll('updateStart', state);
+			emitPlayers('updateStart', state);
 		};
 		
 		self.updateBoard = function(json) {
