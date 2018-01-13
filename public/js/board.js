@@ -102,7 +102,13 @@ function updatePlayersTable(playersJson, target) {
 				var h = time.getUTCHours();
 				var m = time.getMinutes();
 				var s = time.getSeconds();
-				cell3.append(playerData.players[i].place + ": " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
+				var placeEnding = "th";
+				switch (playerData.players[i].place) {
+					case 1: placeEnding = "st"; break;
+					case 2: placeEnding = "nd"; break;
+					case 3: placeEnding = "rd"; break;
+				}
+				cell3.append(playerData.players[i].place + placeEnding " - " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
 			}
 			if (playerData.players[i].reset) {
 				cell3.append(" voted");
