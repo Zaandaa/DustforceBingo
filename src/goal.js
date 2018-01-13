@@ -1,5 +1,6 @@
 var getJSON = require('get-json');
 var seedrandom = require('seedrandom');
+var shuffle = require('./shuffle');
 
 var levels = require("./levels");
 var utils = require("./utils");
@@ -9,7 +10,7 @@ var chance = require('./chance');
 var extern = {}
 
 extern.makeGoals = function(ruleset) {
-	seedrandom(ruleset.seed);
+	seedrandom();
 	var goals = [];
 	var r;
 
@@ -70,6 +71,7 @@ extern.makeGoals = function(ruleset) {
 		}
 	}
 
+	shuffle.shuffle(goals);
 	return goals;
 }
 

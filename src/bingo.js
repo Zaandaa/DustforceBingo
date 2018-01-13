@@ -333,7 +333,7 @@ var Bingo = function(session, ruleset) {
 			return false;
 
 		// validate
-		if (replay.validated < 1)
+		if (replay.validated < 1 && replay.validated != -3)
 			return false; // doesn't handle early exit
 
 		// in players

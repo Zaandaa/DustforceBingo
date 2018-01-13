@@ -4,7 +4,8 @@ var levels = require("./levels");
 var constants = require('./constants');
 var chance = require('./chance');
 
-var extern = {}
+var extern = {};
+var alternateRng = false;
 
 
 extern.getHub = function(level) {
@@ -48,24 +49,33 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 
 	if (goalData.leveltype) {
 		multiplier *= 0.25;
-		multiplier *= Math.min(4, 6 - constants.levelTypes.indexOf(goalData.leveltype) * .5 - ruleset.difficulty) * 0.25;
-		multiplier *= Math.min(4, 6 - constants.levelTypes.indexOf(goalData.leveltype) * .5 - ruleset.length) * 0.25;
+		var d = Math.min(1, (6 - constants.levelTypes.indexOf(goalData.leveltype) * 0.5 - ruleset.difficulty) * 0.25);
+		var l = Math.min(1, (6 - constants.levelTypes.indexOf(goalData.leveltype) * 0.5 - ruleset.length) * 0.25);
+		multiplier *= d * l;
+		minR = Math.max(minR, d - 0.5, l - 0.5);
+		if (!goalData.hub)
+			multiplier *= Math.min(0.8, (16 - ruleset.difficulty - 2 * ruleset.length) * 0.1);
 	} else if (goalData.keytype) {
-		multiplier *= Math.min(4, 6 - constants.keys.indexOf(goalData.keytype) * .5 - ruleset.difficulty) * 0.25;
-		multiplier *= Math.min(4, 6 - constants.keys.indexOf(goalData.keytype) * .5 - ruleset.length) * 0.25;
+		var d = Math.min(1, (6 - constants.keys.indexOf(goalData.keytype) * 0.5 - ruleset.difficulty) * 0.25);
+		var l = Math.min(1, (6 - constants.keys.indexOf(goalData.keytype) * 0.5 - ruleset.length) * 0.25);
+		multiplier *= d * l;
+		minR = Math.max(minR, d - 0.5, l - 0.5);
+		if (!goalData.hub)
+			multiplier *= Math.min(0.8, (16 - ruleset.difficulty - 2 * ruleset.length) * 0.1);
 	} else {
 		// default
 		multiplier *= 1 - (ruleset.length - 1) * (goalData.count != "Beat" || ruleset.save == "New Game" ? 0.25 : 0.2);
 		multiplier *= 1 - (ruleset.difficulty - 1) * (goalData.count != "Beat" || ruleset.save == "New Game" ? 0.2 : 0.15);
 		if (goalData.character)
-			multiplier *= 0.4;
+			multiplier *= 0.5 + 0.1 * (4 - ruleset.difficulty);
 	}
 
 	if (goalData.hub && (goalData.hub != "Difficult" && goalData.hub != "Tutorial")) {
 		multiplier *= 0.25;
 	}
 
-	var r = minR + Math.random() * (maxR - minR);
+	var rng = Math.random() * 0.5 + (alternateRng ? 0.5 : 0);
+	var r = minR + rng * (maxR - minR);
 
 	var total = 1;
 	if (goalData.hub && (goalData.hub == "Difficult" || goalData.hub == "Tutorial"))
@@ -76,6 +86,7 @@ extern.generateGoalTotal = function(goalData, ruleset) {
 	if (total < 1)
 		total = 1;
 
+	alternateRng = !alternateRng;
 	return total;
 }
 

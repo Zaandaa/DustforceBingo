@@ -17,11 +17,11 @@ $(document).on('ready', function() {
 			
 		var max = 0;
 		if(size == "3" && type == "bingo")
-			max = 8;
+			max = 6;
 		if(size == "3" && type == "goal")
 			max = 9;
 		if(size == "5" && type == "bingo")
-			max = 12;
+			max = 10;
 		if(size == "5" && type == "goal")
 			max = 25;
 			
