@@ -12,7 +12,7 @@ html
 
 	body(style="padding: 0px; margin: 0px")
 
-		div#board_div.popout_container.noselect
+		div#temp_board_div.popout_container.noselect
 			div.popout_bingo_behind
 				each val, i in sizeArray
 					div.row.margin_zero
@@ -29,6 +29,9 @@ html
 								if i == (size - 1) / 2
 									div#fake_center
 										h4(style="text-align: center; margin: auto") Waiting to receive board...
+
+
+		div#board_div.popout_container.noselect(style="display: none")
 
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")

@@ -39,6 +39,7 @@ var rules = {
 // simplified session for testing
 var fakeSession = {
 	canStart: function(a) {},
+	removedPlayerOnStart: function(a) {},
 	updateBoard: function(a) {},
 	updatePlayers: function(a) {},
 	playerFinish: function(a) {},
@@ -137,7 +138,7 @@ while (!bingo.isWon && count != maxCount) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('testbingo', { title: 'Test', boardData: bingo.getBoardData() });
+  res.render('testbingo', { title: 'Test', boardData: JSON.stringify(bingo.getBoardData()) });
 });
 
 module.exports = router;

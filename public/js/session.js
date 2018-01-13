@@ -57,16 +57,16 @@ $(document).on('ready', function() {
 	//  - n2: second name
 	//  -  f: (optional) delegate which returns if to flop
 	$.fn.flop = function(n1, n2, f) {
-		var state = false;
+		// var state = false;
 		$(this).text(n1);
 		return this.on('click', function() {
-			var t = state ? n1 : n2
+			var t = $(this).text() == n2 ? n1 : n2
 			var d = true;
 			if(typeof f === 'function')
 				d = f(t);
 			if(d) {				
 				$(this).text(t);
-				state = !state;
+				// state = !state;
 			}
 		});
 	};
@@ -190,6 +190,15 @@ $(document).on('ready', function() {
 	.setOn('removed', 'Ready')
 	.disableOn('removed')
 	.disableOn('board');
+	
+	// VOTE RESET
+	
+	$('#reset')
+	.disable()
+	.emitter('voteReset')
+	.enableOn('joinResponse', function(res) {
+		return !res.err;
+	}).disableOn('removed');
 	
 	// COLOR
 	

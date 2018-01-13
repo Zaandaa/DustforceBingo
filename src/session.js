@@ -169,7 +169,7 @@ function build(io) {
 		var bingo = new Bingo(self, bingo_args);
 
 		function isPlayer(socket) {
-			return socket.custom !== undefined && socket.custom.id !== undefined
+			return socket !== undefined && socket.custom !== undefined && socket.custom.id !== undefined && socket.custom.id in bingo.players
 		}
 		
 		function emitAll(res, mes) {
@@ -289,7 +289,6 @@ function build(io) {
 			});
 			
 			socket.on('ready', function() {
-				console.log(socket.custom, isPlayer(socket))
 				if (!isPlayer(socket))
 					return;
 				bingo.ready(socket.custom.id);
@@ -301,7 +300,7 @@ function build(io) {
 				bingo.unready(socket.custom.id);
 			});
 			
-			socket.on('votereset', function() {
+			socket.on('voteReset', function() {
 				bingo.voteReset(socket.custom.id);
 			});
 			
@@ -312,7 +311,6 @@ function build(io) {
 			})
 			
 			socket.on('start', function() {
-				console.log(socket.custom, isPlayer(socket));
 				if (!isPlayer(socket))
 					return;
 				startTimer(3000);
@@ -323,7 +321,7 @@ function build(io) {
 			});
 
 			if (bingo.active || bingo.finished) {
-				socket.emit('board', self.getBoardData());
+				socket.emit('board', self.getBoardData(socket));
 			}
 			socket.emit("players", self.getPlayerData());
 			return lambda(false, 'Added socket');
@@ -334,12 +332,25 @@ function build(io) {
 			emitPlayers('updateStart', state);
 		};
 		
-		self.updateBoard = function(json) {
-			emitAll('board', json);
+		self.removedPlayerOnStart = function(p) {
+			for (id in sockets) {
+				if (sockets[id].custom !== undefined && sockets[id].custom.id !== undefined && sockets[id].custom.id == p) {
+					delete sockets[id].custom.id;
+					break;
+				}
+			}
 		};
 		
-		self.updatePlayers = function(json) {
-			emitAll('players', json);
+		self.updateBoard = function() {
+			var bd = JSON.parse(self.getBoardData());
+			for (id in sockets) {
+				bd.isPlayer = isPlayer(sockets[id]);
+				sockets[id].emit('board', JSON.stringify(bd));
+			}
+		};
+		
+		self.updatePlayers = function() {
+			emitAll('players', self.getPlayerData());
 		};
 		
 		self.playerFinish = function(id) {
@@ -355,17 +366,34 @@ function build(io) {
 			emitAll('reset');
 			start = false;
 			canStart = false;
-			finsihed = false;
-			self.updateBoard(self.getBoardData());
-			self.updatePlayers(self.getBoardData());
+			finished = false;
+
+			// remove players without sockets (avoids blocked rejoin)
+			var playersToRemove = [];
+			for (var p in bingo.players) {
+				var playerExists = false;
+				for (id in sockets) {
+					if (isPlayer(sockets[id]) && sockets[id].custom.id == p) {
+						playerExists = true;
+						break;
+					}
+				}
+				if (!playerExists)
+					playersToRemove.push(p);
+			}
+			for (var p in playersToRemove) {
+				bingo.removePlayer(p);
+			}
 		};
 		
-		self.getBoardData = function() {
-			return bingo.getBoardData();
+		self.getBoardData = function(socket) {
+			data = bingo.getBoardData();
+			data.isPlayer = isPlayer(socket);
+			return JSON.stringify(data);
 		};
 		
 		self.getPlayerData = function() {
-			return bingo.getPlayerData();
+			return JSON.stringify(bingo.getPlayerData());
 		};
 		
 		self.getBingoGoalOptions = function() {

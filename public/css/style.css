@@ -92,11 +92,6 @@ a, a:hover, a:visited, a:link {
 	text-decoration:  none;
 }
 
-#popout {
-	color: var(--blue);
-	cursor: pointer;
-}
-
 .form_inline {
 	display:inline-block;
 }
@@ -180,6 +175,11 @@ select {
 	vertical-align:middle;
 }
 
+#starting {
+	text-align: center;
+	margin: auto;
+}
+
 .bingo_table {
 	min-width: 700px;
 	margin: 0px;
@@ -242,7 +242,7 @@ select {
 .bingo_behind {
 	z-index: -1;
 	position: absolute;
-	width: inherit;
+	width: 100%;
 	min-width: 700px;
 	min-height: inherit;
 	margin-left: -15px;
