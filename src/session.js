@@ -268,6 +268,10 @@ function build(io) {
 				bingo.unready(socket.custom.id);
 			});
 			
+			socket.on('votereset', function() {
+				bingo.voteReset(socket.custom.id);
+			});
+			
 			socket.on('color', function(data) {
 				bingo.changePlayerColor(socket.custom.id, data.color);
 			})
@@ -307,6 +311,15 @@ function build(io) {
 		self.finish = function() {
 			finished = true;
 			emitAll('finish');
+		};
+		
+		self.resetBingo = function() {
+			emitAll('reset');
+			start = false;
+			canStart = false;
+			finsihed = false;
+			self.updateBoard(self.getBoardData());
+			self.updatePlayers(self.getBoardData());
 		};
 		
 		self.getBoardData = function() {

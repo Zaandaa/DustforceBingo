@@ -339,4 +339,8 @@ $(document).on('ready', function() {
 	socket.on('finish', function(data) {
 		
 	});
+	
+	socket.on('reset', function(data) {
+		resetBingo();
+	});
 });

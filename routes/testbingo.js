@@ -42,6 +42,7 @@ var fakeSession = {
 	updateBoard: function(a) {},
 	updatePlayers: function(a) {},
 	playerFinish: function(a) {},
+	resetBingo: function() {},
 	finish: function() {}
 }
 
@@ -54,6 +55,9 @@ bingo.addPlayer(1.5,"P1.5"); // not ready, should get removed
 bingo.addPlayer(12,"P2.5"); bingo.removePlayer(12); // remove
 bingo.addPlayer(22,"||"); bingo.ready(22);
 bingo.start();
+// bingo.voteReset(11);
+// bingo.voteReset(22);
+// bingo.resetBingo();
 
 var count = 0;
 var maxCount = -1; // -1 infinite
@@ -127,6 +131,8 @@ while (!bingo.isWon && count != maxCount) {
 		console.log("");
 	}
 }
+
+// bingo.resetBingo();
 
 
 /* GET home page. */

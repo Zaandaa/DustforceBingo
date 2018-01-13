@@ -128,6 +128,11 @@ function removeStartButton() {
 	}
 }
 
+function resetBingo() {
+	bingoStarted = false;
+	bingoLabels = [];
+}
+
 function popoutBoard() {
 	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout', '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
 }

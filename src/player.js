@@ -10,6 +10,7 @@ var Player = function(id, name) {
 	self.name = name;
 	self.color = "white";
 	self.ready = false;
+	self.reset = false;
 
 	self.finishTime = 0;
 	self.isWinner = false;
@@ -36,7 +37,7 @@ var Player = function(id, name) {
 	};
 
 	self.getBoardData = function() {
-		return {id: self.id, name: self.name, ready: self.ready, color: self.color, finishTime: self.finishTime, isWinner: self.isWinner, goals: self.goalsAchieved.length, bingos: self.bingos};
+		return {id: self.id, name: self.name, ready: self.ready, reset: self.reset, color: self.color, finishTime: self.finishTime, isWinner: self.isWinner, goals: self.goalsAchieved.length, bingos: self.bingos};
 	};
 
 	self.getReady = function() {
@@ -45,6 +46,10 @@ var Player = function(id, name) {
 
 	self.setReady = function(r) {
 		self.ready = r;
+	};
+
+	self.voteReset = function(r) {
+		self.reset = self.ready ? r : false;
 	};
 
 	self.changeColor = function(c) {
