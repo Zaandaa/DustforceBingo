@@ -43,7 +43,7 @@ function build(io) {
 	}
 
 	function getUserInfo(name, lambda) {
-		var url = `http://www.dustkid.com/json/profile/${name.toLowerCase()}`;
+		var url = `http://www.dustkid.com/json/profile/${name.toLowerCase()}/`;
 		// console.log("going to", url);
 		request(url, function(error, response, body) {
 			if (error || response == undefined ) {
