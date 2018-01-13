@@ -1,5 +1,6 @@
 var request = require("request");
 var socket = require("socket.io");
+var querystring = require('querystring')
 var seedrandom = require('seedrandom');
 var Bingo = require("./bingo");
 var replays = require("./replays");
@@ -42,33 +43,82 @@ function build(io) {
 		return b;
 	}
 
-	function getUserInfo(name, lambda) {
-		var url = `http://www.dustkid.com/json/profile/${name.toLowerCase()}`;
-		// console.log("going to", url);
+	function tryParse(body, lambda) {
+		try {
+			return JSON.parse(body)
+		} catch(e) {
+			lambda(true, '<strong>Something went wrong :(</strong> I bet it was TMC\'s fault.');
+			return undefined;
+		}
+	}
+	
+	function requestWrapper(url, lambda, callback) {
 		request(url, function(error, response, body) {
 			if (error || response == undefined ) {
-				return lambda(true, `Could not connect to dustkid!`);
+				return lambda(true, '<strong>Hitbox server error</strong> Hitbox appears to be down');
 			}
 			
 			var json;
 			try {
 				json = JSON.parse(body)
 			} catch(e) {
-				return lambda(true, `<strong>Could not resolve on dustkid!</strong> Try using your user id.`);
+				return lambda(true, '<strong>Something went wrong :(</strong> I bet it was TMC\'s fault.');
 			}
 			
-			for (level in json.ranks_scores) {
-				return lambda(false, json.ranks_scores[level].username, json.ranks_scores[level].user)
+			callback(json);
+		});
+	}
+	
+	function getUserJson(name, lambda, success) {
+		var number = parseInt(name) 
+		
+		var url = 'http://df.hitboxteam.com/backend6/userSearch.php?' + querystring.stringify({
+			'q':name
+		});
+		
+		requestWrapper(url, lambda, function(json) {
+			if (json.length == 0) {
+				if (number == NaN) 
+					return lambda(true, `<strong>User ${name} not found!</strong>`);
+				var url = 'http://df.hitboxteam.com/backend6/userSearch.php' + querystring.stringify({
+					'user_id':name
+				});
+				requestWrapper(url, lambda, function(json) {
+					if (json.length == 0) 
+						return lambda(true, `<strong>Username or id ${name} not found!</strong>`);
+					
+					return success(json)
+				});
+			} else {
+				//REMOVE LATER
+				if(json.length > 1)
+					return lambda(true, `<strong>Multiple users with name ${name}!</strong> Try using your user id.`);
+				
+				return success(json)
 			}
-			
-			for (level in json.ranks_times) {
-				return lambda(false, json.ranks_times[level].username, json.ranks_times[level].user)
-			}
-			
-			lambda(true, '<strong>This user has never completed a level</strong> Could not load user ${name}.')
 		});
 	}
 
+	function getUserInfo(name, lambda) {
+		getUserJson(name, lambda, function(json) {
+			if(json.length > 1) {
+				// ADD HERE LATER
+				return;
+			}
+			
+			var user = json[0];
+			if (user === undefined) {
+				return lambda(true, '<strong>Internal server error</strong> Please contact @TMC or @Zaandaa they\'re dumb');
+			}
+			
+			if (!("name" in user) || !("id" in user)) {
+				return lambda(true, '<strong>Hitbox server error</strong> Hitbox appears to be down');
+			}	
+			
+			lambda(true, user.name, user.id);
+		});
+	}
+	
 // PUBLIC:
 
 	io.on('connection', function(socket) {
