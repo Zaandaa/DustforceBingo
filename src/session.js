@@ -79,10 +79,10 @@ function build(io) {
 		
 		requestWrapper(url, lambda, function(json) {
 			if (json.length == 0) {
-				if (number == NaN) 
+				if (isNaN(number)) 
 					return lambda(true, false, `<strong>User ${name} not found!</strong>`);
-				var url = 'http://df.hitboxteam.com/backend6/userSearch.php' + querystring.stringify({
-					'user_id':name
+				var url = 'http://df.hitboxteam.com/backend6/userSearch.php?' + querystring.stringify({
+					'userid':name
 				});
 				requestWrapper(url, lambda, function(json) {
 					if (json.length == 0) 
