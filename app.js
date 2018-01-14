@@ -23,7 +23,7 @@ app.set('view engine', 'pug');
 
 console.log(ENVIRONMENT);
 
-var base = ENVIRONMENT == 'dev' ? '/bingo' : '/';
+var base = ENVIRONMENT == 'dev' ? '/bingo/' : '/';
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -31,10 +31,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(base, express.static(path.join(__dirname, 'public')));
-app.use(base + '/socket', express.static(path.join(__dirname, 'node_modules', 'socket.io-client', 'dist')));
+app.use(base + 'socket', express.static(path.join(__dirname, 'node_modules', 'socket.io-client', 'dist')));
 app.use(base, index);
-app.use(base + '/session', session);
-app.use(base + '/testbingo', testbingo);
+app.use(base + 'session', session);
+app.use(base + 'testbingo', testbingo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
