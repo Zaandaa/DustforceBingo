@@ -251,10 +251,10 @@ var keyfromtype = {
 
 var gimmickAccessor = {
 	"apples":"apples",
-	"lowdash":,
-	"lowjump",
-	"lowdirection",
-	"lowattack"
+	"lowdash":"input_dashes",
+	"lowjump":"input_dashes",
+	"lowdirection":"input_dashes",
+	"lowattack":""
 }
 
 var out = {}
@@ -280,7 +280,7 @@ levels.forEach(function(level) {
 			getTop50(l, g, c, function(top50) {
 				if(top50.length == 0) 
 					return;
-				
+				for(
 			}
 		});
 	})
