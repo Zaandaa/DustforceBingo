@@ -108,7 +108,7 @@ function updatePlayersTable(playersJson, target) {
 					case 2: placeEnding = "nd"; break;
 					case 3: placeEnding = "rd"; break;
 				}
-				cell3.append(playerData.players[i].place + placeEnding " - " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
+				cell3.append(playerData.players[i].place + placeEnding + " - " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
 			}
 			if (playerData.players[i].reset) {
 				cell3.append(" voted");
