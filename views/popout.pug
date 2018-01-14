@@ -4,8 +4,8 @@ html
 		title Dustforce Bingo
 
 		link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
-		link(rel='stylesheet', href='/css/style.css')
-		link(rel='stylesheet', href='/css/custom.css')
+		link(rel='stylesheet', href='/bingo/css/style.css')
+		link(rel='stylesheet', href='/bingo/css/custom.css')
 
 - var sizeArray = new Array(parseInt(size) || 1)
 - var colClass = "col-" + (size == 5 ? "fifth" : "third")
@@ -40,6 +40,6 @@ html
 		script= "const sessionId = \'" + session.id + "';"
 		script= "const bingoSize = \'" + size + "';"
 		script= "const lockout = '" + lockout + "' == 'on';"
-		script(src="/socket/socket.io.min.js")
-		script(src="/js/board.js")
-		script(src="/js/popout.js")
+		script(src="/bingo/socket/socket.io.min.js")
+		script(src="/bingo/js/board.js")
+		script(src="/bingo/js/popout.js")

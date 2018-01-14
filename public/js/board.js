@@ -114,7 +114,7 @@ function updatePlayersTable(playersJson, target) {
 				cell3.append(" voted");
 			}
 		} else {
-			var inner = $("<img class='ready-container' src='/img/ready_" + playerData.players[i].ready.toString() + ".png' />")
+			var inner = $("<img class='ready-container' src='/bingo/img/ready_" + playerData.players[i].ready.toString() + ".png' />")
 			cell3.append(inner);
 		}
 		row.append(cell3);

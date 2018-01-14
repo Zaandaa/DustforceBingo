@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('/fonts/Proxima Nova Reg.woff') format('woff'),
-	   url('/fonts/Proxima Nova Reg.svg#font') format('svg'),
-	   url('/fonts/Proxima Nova Reg.ttf') format('truetype'),
-	   url('/fonts/Proxima Nova Reg.eot'),
-	   url('/fonts/Proxima Nova Reg.eot?#iefix') format('embedded-opentype');
+  src: url('/bingo/fonts/Proxima Nova Reg.woff') format('woff'),
+	   url('/bingo/fonts/Proxima Nova Reg.svg#font') format('svg'),
+	   url('/bingo/fonts/Proxima Nova Reg.ttf') format('truetype'),
+	   url('/bingo/fonts/Proxima Nova Reg.eot'),
+	   url('/bingo/fonts/Proxima Nova Reg.eot?#iefix') format('embedded-opentype');
 }
 @font-face {
   font-family: 'Caracteres L1';
-  src: url('/fonts/Caracteres-L1.ttf.woff') format('woff'),
-       url('/fonts/Caracteres-L1.ttf.svg#Caracteres-L1') format('svg'),
-	   url('/fonts/Caracteres-L1.ttf.eot'),
-	   url('/fonts/Caracteres-L1.ttf.eot?#iefix') format('embedded-opentype');
+  src: url('/bingo/fonts/Caracteres-L1.ttf.woff') format('woff'),
+       url('/bingo/fonts/Caracteres-L1.ttf.svg#Caracteres-L1') format('svg'),
+	   url('/bingo/fonts/Caracteres-L1.ttf.eot'),
+	   url('/bingo/fonts/Caracteres-L1.ttf.eot?#iefix') format('embedded-opentype');
        
 }
 

@@ -1,3 +1,4 @@
+var getJSON = require('get-json');
 var utils = require('./utils');
 
 function base_gimmick(level, t, o) {
@@ -28,9 +29,28 @@ function getCount(level, t, o) {
 	return count;
 }
 
-function getRecordsJson(g) {
-	// url = "dustkid.com/json/records/" + gimmickLeaderboards[g];
-	// get json here
+function getTop50(l, g, c, x) {
+	url = "dustkid.com/json/level/" + leaderboards["levels"][l] + "/" 
+			+ leaderboards["gimmicks"][g];
+	
+	getJSON(url, function(error, response) {
+		if (error) throw new Error(error);
+		
+		var rs = response.result[leaderboards["completions"][c];
+		
+		if(c == "SS") {
+			for(var i = rs.length; i--; i > -1) {
+				if(!isSS(rs[i]))
+					rs.splice(i, 1);
+			}
+		}
+		
+		x(rs);
+	});
+}
+
+function isSS(r) {
+	return r.score_completion == 5 && r.score_finesse == 5;
 }
 
 var gimmicks = [
@@ -38,98 +58,187 @@ var gimmicks = [
 	"lowdash",
 	"lowjump",
 	"lowdirection",
-	"lowattack",
+	"lowattack"
 ];
 
-var gimmickLeaderboards = {
-	"apples": "apple",
-	"lowdash":"nodash",
-	"lowjump":"nojump",
-	"lowdirection":"nodirection",
-	"lowattack":"noattack"
-}
+var completions = [
+	"Beat",
+	"SS"
+];
 
 var cantss = [
 	//
 ];
 
 var levels = [
-	"Beginner Tutorial	Tutorial	Tutorial	newtutorial1",
-	"Combat Tutorial	Tutorial	Tutorial	newtutorial2",
-	"Advanced Tutorial	Tutorial	Tutorial	newtutorial3",
-	"Downhill	Forest	Open	downhill",
-	"Shaded Grove	Forest	Open	shadedgrove",
-	"Dahlia	Forest	Open	dahlia",
-	"Fields	Forest	Open	fields",
-	"Valley	Forest	Wood	momentum",
-	"Firefly Forest	Forest	Wood	fireflyforest",
-	"Tunnels	Forest	Wood	tunnels",
-	"Dusk Run	Forest	Wood	momentum2",
-	"Overgrown Temple	Forest	Silver	suntemple",
-	"Ascent	Forest	Silver	ascent",
-	"Summit	Forest	Silver	summit",
-	"Grass Cave	Forest	Silver	grasscave",
-	"Wild Den	Forest	Gold	den",
-	"Ruins	Forest	Gold	autumnforest",
-	"Ancient Garden	Forest	Gold	garden",
-	"Night Temple	Forest	Gold	hyperdifficult",
-	"Atrium	Mansion	Open	atrium",
-	"Secret Passage	Mansion	Open	secretpassage",
-	"Alcoves	Mansion	Open	alcoves",
-	"Mezzanine	Mansion	Open	mezzanine",
-	"Caverns	Mansion	Wood	cave",
-	"Cliffside Caves	Mansion	Wood	cliffsidecaves",
-	"Library	Mansion	Wood	library",
-	"Courtyard	Mansion	Wood	courtyard",
-	"Archive	Mansion	Silver	precarious",
-	"Knight Hall	Mansion	Silver	treasureroom",
-	"Store Room	Mansion	Silver	arena",
-	"Ramparts	Mansion	Silver	ramparts",
-	"Moon Temple	Mansion	Gold	moontemple",
-	"Observatory	Mansion	Gold	observatory",
-	"Ghost Parapets	Mansion	Gold	parapets",
-	"Tower	Mansion	Gold	brimstone",
-	"Vacant Lot	City	Open	vacantlot",
-	"Landfill	City	Open	sprawl",
-	"Development	City	Open	development",
-	"Abandoned Carpark	City	Open	abandoned",
-	"Park	City	Wood	park",
-	"Construction Site	City	Wood	boxes",
-	"Apartments	City	Wood	chemworld",
-	"Warehouse	City	Wood	factory",
-	"Forgotten Tunnel	City	Silver	tunnel",
-	"Basement	City	Silver	basement",
-	"Scaffolding	City	Silver	scaffold",
-	"Rooftops	City	Silver	cityrun",
-	"Clocktower	City	Gold	clocktower",
-	"Concrete Temple	City	Gold	concretetemple",
-	"Alleyway	City	Gold	alley",
-	"Hideout	City	Gold	hideout",
-	"Control	Laboratory	Open	control",
-	"Ferrofluid	Laboratory	Open	ferrofluid",
-	"Titan	Laboratory	Open	titan",
-	"Satellite Debris	Laboratory	Open	satellite",
-	"Vats	Laboratory	Wood	vat",
-	"Server Room	Laboratory	Wood	venom",
-	"Security	Laboratory	Wood	security",
-	"Research	Laboratory	Wood	mary",
-	"Wiring	Laboratory	Silver	wiringfixed",
-	"Containment	Laboratory	Silver	containment",
-	"Power Room	Laboratory	Silver	orb",
-	"Access	Laboratory	Silver	pod",
-	"Backup Shift	Laboratory	Gold	mary2",
-	"Core Temple	Laboratory	Gold	coretemple",
-	"Abyss	Laboratory	Gold	abyss",
-	"Dome	Laboratory	Gold	dome",
-	"Kilo Difficult	Difficult	Difficult	kilodifficult",
-	"Mega Difficult	Difficult	Difficult	megadifficult",
-	"Giga Difficult	Difficult	Difficult	gigadifficult",
-	"Tera Difficult	Difficult	Difficult	teradifficult",
-	"Peta Difficult	Difficult	Difficult	petadifficult",
-	"Exa Difficult	Difficult	Difficult	exadifficult",
-	"Zetta Difficult	Difficult	Difficult	zettadifficult",
-	"Yotta Difficult	Difficult	Difficult	yottadifficult"
+	"Beginner Tutorial	Tutorial	Tutorial",
+	"Combat Tutorial	Tutorial	Tutorial",
+	"Advanced Tutorial	Tutorial	Tutorial",
+	"Downhill	Forest	Open",
+	"Shaded Grove	Forest	Open",
+	"Dahlia	Forest	Open",
+	"Fields	Forest	Open",
+	"Valley	Forest	Wood",
+	"Firefly Forest	Forest	Wood",
+	"Tunnels	Forest	Wood",
+	"Dusk Run	Forest	Wood",
+	"Overgrown Temple	Forest	Silver",
+	"Ascent	Forest	Silver",
+	"Summit	Forest	Silver",
+	"Grass Cave	Forest	Silver",
+	"Wild Den	Forest	Gold",
+	"Ruins	Forest	Gold",
+	"Ancient Garden	Forest	Gold",
+	"Night Temple	Forest	Gold",
+	"Atrium	Mansion	Open",
+	"Secret Passage	Mansion	Open",
+	"Alcoves	Mansion	Open",
+	"Mezzanine	Mansion	Open",
+	"Caverns	Mansion	Wood",
+	"Cliffside Caves	Mansion	Wood",
+	"Library	Mansion	Wood",
+	"Courtyard	Mansion	Wood",
+	"Archive	Mansion	Silver",
+	"Knight Hall	Mansion	Silver",
+	"Store Room	Mansion	Silver",
+	"Ramparts	Mansion	Silver",
+	"Moon Temple	Mansion	Gold",
+	"Observatory	Mansion	Gold",
+	"Ghost Parapets	Mansion	Gold",
+	"Tower	Mansion	Gold",
+	"Vacant Lot	City	Open",
+	"Landfill	City	Open",
+	"Development	City	Open",
+	"Abandoned Carpark	City	Open",
+	"Park	City	Wood",
+	"Construction Site	City	Wood",
+	"Apartments	City	Wood",
+	"Warehouse	City	Wood",
+	"Forgotten Tunnel	City	Silver",
+	"Basement	City	Silver",
+	"Scaffolding	City	Silver",
+	"Rooftops	City	Silver",
+	"Clocktower	City	Gold",
+	"Concrete Temple	City	Gold",
+	"Alleyway	City	Gold",
+	"Hideout	City	Gold",
+	"Control	Laboratory	Open",
+	"Ferrofluid	Laboratory	Open",
+	"Titan	Laboratory	Open",
+	"Satellite Debris	Laboratory	Open",
+	"Vats	Laboratory	Wood",
+	"Server Room	Laboratory	Wood",
+	"Security	Laboratory	Wood",
+	"Research	Laboratory	Wood",
+	"Wiring	Laboratory	Silver",
+	"Containment	Laboratory	Silver",
+	"Power Room	Laboratory	Silver",
+	"Access	Laboratory	Silver",
+	"Backup Shift	Laboratory	Gold",
+	"Core Temple	Laboratory	Gold",
+	"Abyss	Laboratory	Gold",
+	"Dome	Laboratory	Gold",
+	"Kilo Difficult	Difficult	Difficult",
+	"Mega Difficult	Difficult	Difficult",
+	"Giga Difficult	Difficult	Difficult",
+	"Tera Difficult	Difficult	Difficult",
+	"Peta Difficult	Difficult	Difficult",
+	"Exa Difficult	Difficult	Difficult",
+	"Zetta Difficult	Difficult	Difficult",
+	"Yotta Difficult	Difficult	Difficult"
 ]
+
+var leaderboards = {
+	"gimmicks":{
+		// internal:external
+		"apples": "apple",
+		"lowdash":"nodash",
+		"lowjump":"nojump",
+		"lowdirection":"nodirection",
+		"lowattack":"noattack"
+	},
+	"completions":{
+		"Beat":"times",
+		"SS":"scores"
+	},
+	"level":{
+		"Beginner Tutorial": "newtutorial1",
+		"Combat Tutorial": "newtutorial2",
+		"Advanced Tutorial": "newtutorial3",
+		"Downhill": "downhill",
+		"Shaded Grove": "shadedgrove",
+		"Dahlia": "dahlia",
+		"Fields": "fields",
+		"Valley": "momentum",
+		"Firefly Forest": "fireflyforest",
+		"Tunnels": "tunnels",
+		"Dusk Run": "momentum2",
+		"Overgrown Temple": "suntemple",
+		"Ascent": "ascent",
+		"Summit": "summit",
+		"Grass Cave": "grasscave",
+		"Wild Den": "den",
+		"Ruins": "autumnforest",
+		"Ancient Garden": "garden",
+		"Night Temple": "hyperdifficult",
+		"Atrium": "atrium",
+		"Secret Passage": "secretpassage",
+		"Alcoves": "alcoves",
+		"Mezzanine": "mezzanine",
+		"Caverns": "cave",
+		"Cliffside Caves": "cliffsidecaves",
+		"Library": "library",
+		"Courtyard": "courtyard",
+		"Archive": "precarious",
+		"Knight Hall": "treasureroom",
+		"Store Room": "arena",
+		"Ramparts": "ramparts",
+		"Moon Temple": "moontemple",
+		"Observatory": "observatory",
+		"Ghost Parapets": "parapets",
+		"Tower": "brimstone",
+		"Vacant Lot": "vacantlot",
+		"Landfill": "sprawl",
+		"Development": "development",
+		"Abandoned Carpark": "abandoned",
+		"Park": "park",
+		"Construction Site": "boxes",
+		"Apartments": "chemworld",
+		"Warehouse": "factory",
+		"Forgotten Tunnel": "tunnel",
+		"Basement": "basement",
+		"Scaffolding": "scaffold",
+		"Rooftops": "cityrun",
+		"Clocktower": "clocktower",
+		"Concrete Temple": "concretetemple",
+		"Alleyway": "alley",
+		"Hideout": "hideout",
+		"Control": "control",
+		"Ferrofluid": "ferrofluid",
+		"Titan": "titan",
+		"Satellite Debris": "satellite",
+		"Vats": "vat",
+		"Server Room": "venom",
+		"Security": "security",
+		"Research": "mary",
+		"Wiring": "wiringfixed",
+		"Containment": "containment",
+		"Power Room": "orb",
+		"Access": "pod",
+		"Backup Shift": "mary2",
+		"Core Temple": "coretemple",
+		"Abyss": "abyss",
+		"Dome": "dome",
+		"Kilo Difficult": "kilodifficult",
+		"Mega Difficult": "megadifficult",
+		"Giga Difficult": "gigadifficult",
+		"Tera Difficult": "teradifficult",
+		"Peta Difficult": "petadifficult",
+		"Exa Difficult": "exadifficult",
+		"Zetta Difficult": "zettadifficult",
+		"Yotta Difficult": "yottadifficult"
+	}
+}
 
 var keyfromtype = {
 	"Tutorial":null,
@@ -140,13 +249,22 @@ var keyfromtype = {
 	"Difficult":null
 }	
 
+var gimmickAccessor = {
+	"apples":"apples",
+	"lowdash":,
+	"lowjump",
+	"lowdirection",
+	"lowattack"
+}
+
 var out = {}
+
 levels.forEach(function(level) {
 	var a = level.split('\t'),
 		l = a[0],
 		h = a[1],
 		t = a[2],
-		i = a[3];
+		i = leaderboards["levels"][l];
 		
 	var x = {
 		id: i,
@@ -156,11 +274,15 @@ levels.forEach(function(level) {
 		charselect: t != "Tutorial",
 		gimmicks: []
 	}
-	
+
 	gimmicks.forEach(function(g) {
-		x.gimmicks.push(new base_gimmick(l, g, "Beat"));
-		if(!cantss.includes(g))
-			x.gimmicks.push(new base_gimmick(l, g, "SS"));
+		completions.forEach(function(c) {
+			getTop50(l, g, c, function(top50) {
+				if(top50.length == 0) 
+					return;
+				
+			}
+		});
 	})
 	
 	out[l] = x;

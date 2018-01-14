@@ -1,6 +1,6 @@
 function changeCheckImage() {
 	var id = $(this).attr('id');
-	$('#check_' + id).attr('src', '/img/ready_' + ($(this).prop('checked') ? 'true' : 'false') + '.png');
+	$('#check_' + id).attr('src', '/bingo/img/ready_' + ($(this).prop('checked') ? 'true' : 'false') + '.png');
 }
 
 $(document).on('ready', function() {	
@@ -48,6 +48,6 @@ $(document).on('ready', function() {
 			if(!($(this).attr('id') in payload))
 				payload[$(this).attr('id')] = $(this).val();
 		});	
-		window.location = "session?" + $.param(payload) 
+		window.location = "/bingo/session?" + $.param(payload) 
 	});
 });

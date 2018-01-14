@@ -41,7 +41,7 @@ function build(io) {
 		if(verify(params, req.query)) {
 			var s = session.newSession(req.query);
 			// console.log(s);
-			res.redirect('/session/' + s.id);
+			res.redirect('/bingo/session/' + s.id);
 		} else {
 			var err = new Error('Not Found');
 			err.status = 404;
