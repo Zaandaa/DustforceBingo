@@ -4,7 +4,7 @@ var seperator = '\u001e';
 
 // bound by [timeout, 2*timeout)
 function keepAlive(timeout, onTimeout) {
-	var count;
+	var count = 0;
 	function check() {
 		var countCopy = count;
 		setTimeout(function() {
