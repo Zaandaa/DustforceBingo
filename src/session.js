@@ -73,7 +73,8 @@ function build(io) {
 		var number = parseInt(name) 
 		
 		var url = 'http://df.hitboxteam.com/backend6/userSearch.php?' + querystring.stringify({
-			'q':name
+			'q':name,
+			'max':50,
 		});
 		
 		requestWrapper(url, lambda, function(json) {
