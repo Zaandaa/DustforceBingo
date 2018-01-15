@@ -1,8 +1,9 @@
 var getJSON = require('get-json');
 var utils = require('./utils');
 
-function main(levels) {
-	var out;
+function main(levels, callback) {
+	var out = {};
+	var queries = 10 //levels.length * gimmicks.length * characters.length * completions.length;
 	levels.forEach(function(level) {
 		var a = level.split('\t'),
 			l = a[0],
@@ -18,7 +19,7 @@ function main(levels) {
 			charselect: t != "Tutorial",
 			gimmicks: []
 		}
-
+		
 		gimmicks.forEach(function(g) {
 			characters.forEach(function(c) {
 				getTop50(l, g, c, function(top50) {
@@ -26,10 +27,10 @@ function main(levels) {
 						var leaderboard = getLeaderboard(top50, o);
 						if(leaderboard.length == 0) 
 							return;
-						hist = getHist(leaderboard);
+						hist = getHist(leaderboard, g);
 						diffs = getDifficulty(hist, g);
 						diffs.forEach(function(d) {
-							x.gimmicks.append({
+							x.gimmicks.push({
 								type: g,
 								objective: o,
 								difficulty: d.difficulty,
@@ -37,14 +38,16 @@ function main(levels) {
 								character: c
 							});
 						});
+						out[l] = x;	
+						queries --;
+						console.log(queries.toString(), "queries remain,", "finished", l, g, o, "with", (c.length == 0 ? "Anyone" : c));
+						if (queries == 0)
+							callback(out);
 					});
 				});
 			});
 		});
-		
-		out[l] = x;	
 	});
-	return out;
 }
 
 function getDifficulty(hist, gimmick) {
@@ -59,11 +62,13 @@ function getDifficulty(hist, gimmick) {
 		if(done)
 			return;
 		
-		out.append({
+		out.push({
 			difficulty: (50 - h.rank) * 0.16,
 			value: h.value
 		});
-	})
+	});
+	
+	return out;
 }
 
 var control = 10;
@@ -76,11 +81,15 @@ function getTop50(l, g, c, x) {
 	if (url[url.length - 1] == "/")
 		url = url.substring(0, url.length - 1)
 	
-	console.log("Getting leaderboard for", url);
-	
 	if(stopper) {
-		x({})
+		x({
+			"times":{},
+			"scores":{}
+		})
+		return;
 	}
+	
+	console.log("Getting leaderboard for", url);
 	
 	control -= 1;
 	if (control == 0) {
@@ -90,9 +99,8 @@ function getTop50(l, g, c, x) {
 	}	
 	
 	getJSON(url, function(error, response) {
-		if (error) throw new Error(error);
-		
-		x(response.result);
+		if (error) throw new Error(error);		
+		x(response);
 	});
 	
 }
@@ -105,12 +113,12 @@ function wait(ms) {
     }
 }
 
-function getLeaderboard(top50, t) {
-	var rs = top50[leaderboards["completions"][t]];
+function getLeaderboard(top50, o) {
+	var rs = Object.values(top50[leaderboards["completions"][o]]);
 	
 	for(var i = rs.length; i--; i > -1) {
 		rs[i].rank = i;
-		if(c == "SS" && !isSS(rs[i]))
+		if(o == "SS" && !isSS(rs[i]))
 			rs.splice(i, 1);
 	}
 	
@@ -133,7 +141,7 @@ function getHist(rs, g) {
 		if (cur.value == v) {
 			cur.count += 1;
 		} else {
-			out.append(cur);
+			out.push(cur);
 			cur = {
 				rank: r.rank,
 				count: 1,
@@ -142,14 +150,14 @@ function getHist(rs, g) {
 		}
 	});
 	
-	out.append(cur);
+	out.push(cur);
 	return out;
 }
 
 function access(r, g) {
 	if(g == "lowattack")
-		return r.meta.input_super ? (3 * r.meta.input_heavies + r.meta.input_lights) : -1;
-	return r.meta[gimmickAccessor[g]];
+		return r.input_super ? (3 * r.input_heavies + r.input_lights) : -1;
+	return r[gimmickAccessor[g]];
 }
 
 var gimmicks = [
@@ -367,4 +375,6 @@ var gimmickAccessor = {
 	"lowattack":""
 }
 
-console.log(JSON.stringify(main(levels), null, 4)); 
+main(levels, function(output) { 
+	console.log(JSON.stringify(output, null, 4)); 
+});
