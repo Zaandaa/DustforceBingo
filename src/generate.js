@@ -1,56 +1,155 @@
 var getJSON = require('get-json');
 var utils = require('./utils');
 
-function base_gimmick(level, t, o) {
-	return {
-		type: t,
-		objective: o,
-		difficulty: getDifficulty(level, t, o),
-		count: getCount(level, t, o),
-		character: ""
-	}
+function main(levels) {
+	var out;
+	levels.forEach(function(level) {
+		var a = level.split('\t'),
+			l = a[0],
+			h = a[1],
+			t = a[2],
+			i = leaderboards["levels"][l];
+			
+		var x = {
+			id: i,
+			hub: h,
+			type: t,
+			key: keyfromtype[t],
+			charselect: t != "Tutorial",
+			gimmicks: []
+		}
+
+		gimmicks.forEach(function(g) {
+			characters.forEach(function(c) {
+				getTop50(l, g, c, function(top50) {
+					completions.forEach(function(o) {
+						var leaderboard = getLeaderboard(top50, o);
+						if(leaderboard.length == 0) 
+							return;
+						hist = getHist(leaderboard);
+						diffs = getDifficulty(hist, g);
+						diffs.forEach(function(d) {
+							x.gimmicks.append({
+								type: g,
+								objective: o,
+								difficulty: d.difficulty,
+								count: d.value,
+								character: c
+							});
+						});
+					});
+				});
+			});
+		});
+		
+		out[l] = x;	
+	});
+	return out;
 }
 
-function getDifficulty(level, t, o) {
-	var d = 0;
-
-	// if (t == "apples")
-		// d = utils.getLevelDifficulty(level, o, "New Game") - 1;
-
-	return d;
+function getDifficulty(hist, gimmick) {
+	var out = [];
+	
+	previous = hist[0].value;
+	done = false;
+	hist.forEach(function(h) {
+		if(Math.abs(h.value - previous) > h.value)
+			done = true;
+		
+		if(done)
+			return;
+		
+		out.append({
+			difficulty: (50 - h.rank) * 0.16,
+			value: h.value
+		});
+	})
 }
 
-function getCount(level, t, o) {
-	var count = 0;
-
-	// if (t == "apples")
-		// count = 1;
-
-	return count;
-}
+var control = 10;
+var stopper = false;
 
 function getTop50(l, g, c, x) {
-	url = "dustkid.com/json/level/" + leaderboards["levels"][l] + "/" 
-			+ leaderboards["gimmicks"][g];
+	url = "http://dustkid.com/json/level/" + leaderboards["levels"][l] + "/" 
+			+ leaderboards["gimmicks"][g] + "/" + leaderboards["characters"][c];
+			
+	if (url[url.length - 1] == "/")
+		url = url.substring(0, url.length - 1)
+	
+	console.log("Getting leaderboard for", url);
+	
+	if(stopper) {
+		x({})
+	}
+	
+	control -= 1;
+	if (control == 0) {
+		wait(250);
+		control = 10;
+		stopper = true;
+	}	
 	
 	getJSON(url, function(error, response) {
 		if (error) throw new Error(error);
 		
-		var rs = response.result[leaderboards["completions"][c];
-		
-		if(c == "SS") {
-			for(var i = rs.length; i--; i > -1) {
-				if(!isSS(rs[i]))
-					rs.splice(i, 1);
-			}
-		}
-		
-		x(rs);
+		x(response.result);
 	});
+	
+}
+
+function wait(ms) {
+    var start = Date.now(),
+        now = start;
+    while (now - start < ms) {
+      now = Date.now();
+    }
+}
+
+function getLeaderboard(top50, t) {
+	var rs = top50[leaderboards["completions"][t]];
+	
+	for(var i = rs.length; i--; i > -1) {
+		rs[i].rank = i;
+		if(c == "SS" && !isSS(rs[i]))
+			rs.splice(i, 1);
+	}
+	
+	return rs;
 }
 
 function isSS(r) {
 	return r.score_completion == 5 && r.score_finesse == 5;
+}
+
+function getHist(rs, g) {
+	var out = []
+	var cur = {
+		rank: rs[0].rank,
+		count: 0,
+		value:access(rs[0], g)
+	};
+	rs.forEach(function(r) {
+		var v = access(r, g);
+		if (cur.value == v) {
+			cur.count += 1;
+		} else {
+			out.append(cur);
+			cur = {
+				rank: r.rank,
+				count: 1,
+				value: v
+			}
+		}
+	});
+	
+	out.append(cur);
+	return out;
+}
+
+function access(r, g) {
+	if(g == "lowattack")
+		return r.meta.input_super ? (3 * r.meta.input_heavies + r.meta.input_lights) : -1;
+	return r.meta[gimmickAccessor[g]];
 }
 
 var gimmicks = [
@@ -66,9 +165,13 @@ var completions = [
 	"SS"
 ];
 
-var cantss = [
-	//
-];
+var characters = [
+	"Dustman", 
+	"Dustgirl", 
+	"Dustkid", 
+	"Dustworth",
+	""
+]
 
 var levels = [
 	"Beginner Tutorial	Tutorial	Tutorial",
@@ -161,7 +264,14 @@ var leaderboards = {
 		"Beat":"times",
 		"SS":"scores"
 	},
-	"level":{
+	"characters": {
+		"Dustman":"man",
+		"Dustgirl":"girl",
+		"Dustkid":"kid",
+		"Dustworth":"worth",
+		"":""
+	},
+	"levels":{
 		"Beginner Tutorial": "newtutorial1",
 		"Combat Tutorial": "newtutorial2",
 		"Advanced Tutorial": "newtutorial3",
@@ -257,34 +367,4 @@ var gimmickAccessor = {
 	"lowattack":""
 }
 
-var out = {}
-
-levels.forEach(function(level) {
-	var a = level.split('\t'),
-		l = a[0],
-		h = a[1],
-		t = a[2],
-		i = leaderboards["levels"][l];
-		
-	var x = {
-		id: i,
-		hub: h,
-		type: t,
-		key: keyfromtype[t],
-		charselect: t != "Tutorial",
-		gimmicks: []
-	}
-
-	gimmicks.forEach(function(g) {
-		completions.forEach(function(c) {
-			getTop50(l, g, c, function(top50) {
-				if(top50.length == 0) 
-					return;
-				for(
-			}
-		});
-	})
-	
-	out[l] = x;
-});
-console.log(JSON.stringify(out, null, 4)); 
+console.log(JSON.stringify(main(levels), null, 4)); 
