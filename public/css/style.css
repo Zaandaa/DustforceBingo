@@ -32,10 +32,10 @@
 
 body {
 	min-width: 780px;
-	padding: 30px;
+	margin: 8px;
 	color: var(--white);
-	background-color: var(--darkblue);
-	font-size: 14px;
+	background-color: var(--darkpurple);
+	font-size: 15px;
 	font-family: 'Proxima Nova', Helvetica, Arial, sans-serif;
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 a, a:hover, a:visited, a:link {
-	color: var(--blue);
+	color: var(--linkpurple);
 	text-decoration:  none;
 }
 
@@ -121,12 +121,12 @@ input, #color {
 }
 
 button {
-	background-color: var(--midblue);
+	background-color: var(--midpurple);
 	color: var(--white);
 }
 
 button:hover:enabled {
-	background-color: var(--blue);
+	background-color: var(--purple);
 }
 
 select {
@@ -358,7 +358,7 @@ select {
 
 #color_container {
 	position:absolute;
-	background-color: var(--darkblue);
+	background-color: var(--darkpurple);
 	padding: .1rem .4rem;
 	z-index: 1;
 }
@@ -454,7 +454,7 @@ input[type=checkbox] {
 	width:100%;
 }
 .checkbox > label:hover {
-	background-color: var(--midblue);
+	background-color: var(--midpurple);
 }
 .checkbox > label > p {
 	display: inline-block;
@@ -499,3 +499,30 @@ pre {
 		line-height: 60px;
 	}
 }	
+
+.mainkid {
+	height: 150px;
+	vertical-align: middle;
+	width:200px;
+	margin-bottom:50px;
+}
+
+.title {
+	position: absolute;
+    left: 220px;
+    top: 30px;
+	color:var(--white) !important;
+}
+
+#kidbg {
+    background: url(http://dustkid.com/static/kid.png) no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    opacity: 0.05;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+}

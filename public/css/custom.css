@@ -1,9 +1,11 @@
 :root {
 	--darkblue: #1F355E;
-	--midblue: #3F63BB;
+	--midpurple: #7F63BB;
 	--blue: #819AD3;
     --indigo: #6610f2;
-    --purple: #A66999;
+    --purple: #A075C9;
+	--linkpurple:#A4A4EE;
+	--darkpurple: #271A30;
     --pink: #DFBFBF;
     --red: #FD625E;
     --orange: #FE9666;
@@ -16,12 +18,23 @@
 	--black: #1F271B;
 }
 
-.table-dark,
-.table-dark > th,
-.table-dark > td {
-	background-color: var(--black);
-	color: var(--white);
+.table-dark {
+	overflow:hidden;
+    border-radius: 4px;
+	border: 1px solid var(--gray) !important;
 }
+
+.table-dark,
+.table-dark th,
+.table-dark td {
+	background-color: var(--dark);
+	color: var(--white);
+	border:0px;
+}
+
+.table-dark tr {
+}
+
 
 .col-fifth {
     position: relative;

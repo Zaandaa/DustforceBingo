@@ -7,11 +7,13 @@ html
 		link(rel='stylesheet', href='/bingo/css/style.css')
 		link(rel='stylesheet', href='/bingo/css/custom.css')
 	body
+		div#kidbg
 		div.container-fluid
-			div.row
+			div.row 
 				div.col
-					a.uppercase(href="/bingo/") DUSTFORCE BINGO
-
+					a(href="/")
+						img(class="mainkid" src="http://df.hitboxteam.com/static/logo.png")
+					a.uppercase.title(href="/bingo/") dustforce BINGO
 			block content
 
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
