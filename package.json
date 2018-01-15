@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "forever start bin/www",
-    "test": "set ENVIRONMENT=dev;nodemon ./bin/www --config nodemon.config",
+    "test": "set ENVIRONMENT=dev&& nodemon ./bin/www --config nodemon.config",
 	"stop": "forever stop bin/www"
   },
   "dependencies": {

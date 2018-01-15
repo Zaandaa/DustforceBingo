@@ -1,4 +1,6 @@
-var socket = io();
+var socket = io(window.location.origin, {
+	path: '/bingo/socket.io'
+});
 
 $(document).on('ready', function() {
 	socket.emit('init', {session: sessionId});

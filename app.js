@@ -7,23 +7,24 @@ var http = require("http");
 var socket = require("socket.io");
 var bodyParser = require('body-parser');
 
+var ENVIRONMENT = process.env.ENVIRONMENT || 'prod';
+var base = ENVIRONMENT == 'dev' ? '/bingo/' : '/';
+
 var app = express();
 var server = http.createServer(app);
-var io = socket(server);
+var io = socket(server, {
+	path: base + "socket.io"
+});
 
 var index = require('./routes/index');
 var session = require('./routes/session')(io);
 var testbingo = require('./routes/testbingo');
 
-var ENVIRONMENT = process.env.ENVIRONMENT || 'prod';
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-console.log(ENVIRONMENT);
-
-var base = ENVIRONMENT == 'dev' ? '/bingo/' : '/';
+console.log("Environment:", ENVIRONMENT);
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
