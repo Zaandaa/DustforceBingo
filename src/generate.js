@@ -3,13 +3,14 @@ var utils = require('./utils');
 
 function pre(callback) {
 	var records = {}
-	var queries = characters.length + 1;
+	var queries = characters.length;
 	characters.forEach(function(c) {
-		url = "http://dustkid.com/json/records/" + leaderboards["character"][c];
+		url = "http://dustkid.com/json/records/" + leaderboards["characters"][c];
 		getJSON(url, function(error, response) {
 			if (error) throw new Error(error);
 			records[c == "" ? "Any" : c] = response;
 			queries--;
+			console.log("Pre:", queries, "queries remain, finished", c);
 			if(queries == 0) {
 				callback(records);
 			}
@@ -19,7 +20,7 @@ function pre(callback) {
 
 function main(levels, records, callback) {
 	var out = {};
-	var queries = 10 //levels.length * gimmicks.length * completions.length;
+	var queries = levels.length * gimmicks.length * completions.length;
 	levels.forEach(function(level) {
 		var a = level.split('\t'),
 			l = a[0],
@@ -27,8 +28,8 @@ function main(levels, records, callback) {
 			t = a[2],
 			i = leaderboards["levels"][l];
 			
-		var beatrecord = records["Any"]["times"][leaderboards["levels"][l]];
-		var scorerecord = records["Any"]["scores"][leaderboards["levels"][l]];
+		var beatrecord = records["Any"]["Times"][leaderboards["levels"][l]];
+		var scorerecord = records["Any"]["Scores"][leaderboards["levels"][l]];
 			
 		var x = {
 			id: i,
@@ -36,11 +37,12 @@ function main(levels, records, callback) {
 			type: t,
 			key: keyfromtype[t],
 			nosuper: {
-				Beat: beatrecord.input_super > 0
+				Beat: beatrecord.input_super > 0,
 				SS: scorerecord.input_super > 0
 			},
 			sfinesse: beatrecord.score_finesse != 5,
-			dcomplete: beatrecord.score_completion != 1
+			dcomplete: beatrecord.score_completion != 1,
+			genocide: beatrecord.tag.genocide != "1",
 			charselect: t != "Tutorial",
 			gimmicks: []
 		}
@@ -50,8 +52,11 @@ function main(levels, records, callback) {
 				getTop50(l, g, function(top50) {
 					completions.forEach(function(o) {
 						var leaderboard = getLeaderboard(top50, o, g);
-						if(leaderboard.length == 0) 
+						if(leaderboard.length == 0) {
+							queries --;
+							console.log("Main:", queries, "queries remain,", "emtpy", l, g, o);
 							return;
+						}
 						hist = getHist(leaderboard, g);
 						diffs = getDifficulty(hist, g);
 						diffs.forEach(function(d) {
@@ -65,7 +70,7 @@ function main(levels, records, callback) {
 						});
 						out[l] = x;	
 						queries --;
-						console.log(queries.toString(), "queries remain,", "finished", l, g, o);
+						console.log("Main:", queries, "queries remain,", "finished", l, g, o);
 						if (queries == 0)
 							callback(out);
 					});
@@ -94,7 +99,7 @@ const inputMinProbablyIntended = {
 function getLastThreshold(g, total) {
 	for (i in difficultyThresholds[g]) {
 		if (difficultyThresholds[g][i] >= total)
-			return i;
+			return parseInt(i);
 	}
 	return 7;
 }
@@ -124,33 +129,38 @@ function getDifficulty(hist, g) {
 }
 
 var control = 10;
-var stopper = false;
-
+var request = 0;
 function getTop50(l, g, x) {
 	url = "http://dustkid.com/json/level/" + leaderboards["levels"][l] + "/" + leaderboards["gimmicks"][g];
 
-	if(stopper) {
-		x({
-			"times":{},
-			"scores":{}
-		})
-		return;
-	}
-	
-	console.log("Getting leaderboard for", url);
+	// if(stopper) {
+		// x({
+			// "times":{},
+			// "scores":{}
+		// })
+		// return;
+	// }
+	request++;
+	var rno = request;
+	console.log("Request", request, url);
 	
 	control -= 1;
 	if (control == 0) {
 		wait(250);
 		control = 10;
-		stopper = true;
 	}	
 	
-	getJSON(url, function(error, response) {
-		if (error) throw new Error(error);		
-		x(response);
-	});
-	
+	function retry () {
+		getJSON(url, function(error, response) {			
+			if ((error && error.code == 'ECONNRESET') || (response === undefined)) {
+				retry();
+			} else if(error) {
+				throw error;
+			} else {
+				x(response);
+			}
+		});
+	} retry();
 }
 
 function wait(ms) {
@@ -168,9 +178,9 @@ function getLeaderboard(top50, o, g) {
 		rs[i].rank = i;
 		if(o == "SS" && !isSS(rs[i]))
 			rs.splice(i, 1);
-		if(rs[i].time > 180000)
+		else if(rs[i].time > 180000)
 			rs.splice(i, 1);
-		if(g != "apples" && access(rs[i], g) > inputMinProbablyIntended[g])
+		else if(g != "apples" && access(rs[i], g) > inputMinProbablyIntended[g])
 			rs.splice(i, 1);
 	}
 	
@@ -431,4 +441,6 @@ pre(function(records) {
 	main(levels, records, function(output) { 
 		console.log(JSON.stringify(output, null, 4)); 
 	});
-})
+});
+
+wait(1000);
