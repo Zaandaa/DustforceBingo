@@ -372,12 +372,12 @@ var Bingo = function(session, ruleset) {
 				// return false;
 			// if (replay.validated == -8 && !ruleset.boss)
 				// return false;
-			// if (replay.validated == -9 && !ruleset.unload)
-				// return false;
+			if (replay.validated == -9 && !ruleset.unload)
+				return false;
 			// if (replay.validated == -10 && !ruleset.someplugin)
 				// return false;
-			// else
-			return false;
+			else
+				return false;
 		}
 
 		// in players

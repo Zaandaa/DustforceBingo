@@ -109,11 +109,11 @@ function getDifficulty(hist, g) {
 	
 	previous = hist[0].value;
 	done = false;
-	currentDifficulty = 0;
+	lastDifficulty = 0;
 
 	hist.forEach(function(h) {
 		d = getLastThreshold(g, h.rank + h.count);
-		if (d > 6)
+		if (d > 6 || d == lastDifficulty)
 			done = true;
 
 		if(done)
@@ -123,6 +123,7 @@ function getDifficulty(hist, g) {
 			difficulty: d + 1,
 			value: h.value
 		});
+		lastDifficulty = d;
 	});
 	
 	return out;

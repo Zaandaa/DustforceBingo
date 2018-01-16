@@ -120,10 +120,10 @@ function makeLevelGoalDatas(ruleset) {
 				});
 			}
 
-			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
-				validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 2, nosuper: true});
-				totalDifficulty += d / 2;
-			}
+			// if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
+				// validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 2, nosuper: true});
+				// totalDifficulty += d / 2;
+			// }
 
 		});
 
@@ -266,12 +266,12 @@ var Goal = function(goalData) {
 				// return false;
 			// if (replay.validated == -8 && !self.goalData.boss)
 				// return false;
-			// if (replay.validated == -9 && !(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
-				// return false;
+			if (replay.validated == -9 && !(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
+				return false;
 			// if (replay.validated == -10 && !self.goalData.someplugin)
 				// return false;
-			// else
-			return false;
+			else
+				return false;
 		}
 
 		if (self.goalData.type == "level") {
