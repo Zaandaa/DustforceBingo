@@ -20,6 +20,7 @@ var params = [
 	"length_raw", 
 	"beat", 
 	"ss", 
+	"keys", 
 	"characters", 
 	"apples", 
 	"tutorials", 

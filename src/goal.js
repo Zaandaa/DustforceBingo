@@ -167,6 +167,8 @@ function makeTotalGoalData(ruleset) {
 				continue;
 			goalData.count = "SS";
 		} else if (r < chance[ruleset.save].total.keys.chance) {
+			if (!ruleset.keys)
+				continue;
 			goalData.count = "keys";
 			goalData.keytype = constants.keys[Math.floor(Math.random() * 4)];
 		} else if (r < chance[ruleset.save].total.apples.chance) {
