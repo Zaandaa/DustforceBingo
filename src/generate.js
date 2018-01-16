@@ -12,7 +12,11 @@ function pre(callback) {
 			queries--;
 			//console.log("Pre:", queries, "queries remain, finished", c);
 			if(queries == 0) {
-				callback(records);
+				getJSON("http://dustkid.com/json/records/unload/all", function(error, response) {
+					if (error) throw new Error(error);
+					records["unload"] = response;
+					callback(records);
+				});
 			}
 		});
 	});
@@ -21,6 +25,8 @@ function pre(callback) {
 function main(levels, records, callback) {
 	var out = {};
 	var queries = levels.length * gimmicks.length * completions.length;
+	var unloads = records["unload"]["Unload%"];
+	var oobs = records["unload"]["OOB%"];
 	levels.forEach(function(level) {
 		var a = level.split('\t'),
 			l = a[0],
@@ -28,8 +34,8 @@ function main(levels, records, callback) {
 			t = a[2],
 			i = leaderboards["levels"][l];
 			
-		var beatrecord = records["Any"]["Times"][leaderboards["levels"][l]];
-		var scorerecord = records["Any"]["Scores"][leaderboards["levels"][l]];
+		var beatrecord = records["Any"]["Times"][i];
+		var scorerecord = records["Any"]["Scores"][i];
 			
 		var x = {
 			id: i,
@@ -43,6 +49,8 @@ function main(levels, records, callback) {
 			sfinesse: beatrecord.score_finesse != 5,
 			dcomplete: beatrecord.score_completion != 1,
 			genocide: beatrecord.tag.genocide != "1",
+			unload: unloads[i] !== undefined,
+			oob: oobs[i] !== undefined,
 			charselect: t != "Tutorial",
 			gimmicks: []
 		}
