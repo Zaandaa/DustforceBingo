@@ -10,7 +10,7 @@ function pre(callback) {
 			if (error) throw new Error(error);
 			records[c == "" ? "Any" : c] = response;
 			queries--;
-			console.log("Pre:", queries, "queries remain, finished", c);
+			//console.log("Pre:", queries, "queries remain, finished", c);
 			if(queries == 0) {
 				callback(records);
 			}
@@ -55,22 +55,22 @@ function main(levels, records, callback) {
 						if(leaderboard.length == 0) {
 							queries --;
 							console.log("Main:", queries, "queries remain,", "emtpy", l, g, o);
-							return;
-						}
-						hist = getHist(leaderboard, g);
-						diffs = getDifficulty(hist, g);
-						diffs.forEach(function(d) {
-							x.gimmicks.push({
-								type: g,
-								objective: o,
-								difficulty: d.difficulty,
-								count: d.value,
-								character: g == "apple"
+						} else {
+							hist = getHist(leaderboard, g);
+							diffs = getDifficulty(hist, g);
+							diffs.forEach(function(d) {
+								x.gimmicks.push({
+									type: g,
+									objective: o,
+									difficulty: d.difficulty,
+									count: d.value,
+									character: g == "apple"
+								});
 							});
-						});
-						out[l] = x;	
-						queries --;
-						console.log("Main:", queries, "queries remain,", "finished", l, g, o);
+							out[l] = x;	
+							queries --;
+							console.log("Main:", queries, "queries remain,", "finished", l, g, o);
+						}
 						if (queries == 0)
 							callback(out);
 					});
@@ -92,7 +92,7 @@ const inputMinProbablyIntended = {
 	"apples": 0,
 	"lowdash":1,
 	"lowjump":10,
-	"lowdirection":20,
+	"lowdirection":10,
 	"lowattack":30
 };
 
@@ -148,6 +148,7 @@ function getTop50(l, g, x) {
 	if (control == 0) {
 		wait(250);
 		control = 10;
+		stopper = true;
 	}	
 	
 	function retry () {
@@ -173,6 +174,10 @@ function wait(ms) {
 
 function getLeaderboard(top50, o, g) {
 	var rs = Object.values(top50[leaderboards["completions"][o]]);
+	
+	rs.sort(function(a, b) {
+		return access(a, g) - access(b, g);
+	});
 	
 	for(var i = rs.length; i--; i > -1) {
 		rs[i].rank = i;
@@ -432,8 +437,8 @@ var keyfromtype = {
 var gimmickAccessor = {
 	"apples":"apples",
 	"lowdash":"input_dashes",
-	"lowjump":"input_dashes",
-	"lowdirection":"input_dashes",
+	"lowjump":"input_jumps",
+	"lowdirection":"input_directions",
 	"lowattack":""
 }
 
