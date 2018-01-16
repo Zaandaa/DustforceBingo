@@ -115,7 +115,7 @@ function makeLevelGoalDatas(ruleset) {
 
 			if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty) {
 				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 4, character: c})
+					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 4, character: c});
 					totalDifficulty += d / 4;
 				});
 			}
@@ -132,10 +132,15 @@ function makeLevelGoalDatas(ruleset) {
 				return;
 			if (g.difficulty < ruleset.difficulty)
 				return;
-			if (!ruleset.characters && g.character)
-				return;
-			validGoalDatas.push({type: "level", level: l, objective: g.objective, difficulty: g.difficulty, character: g.character, gimmicks: [g]});
+			validGoalDatas.push({type: "level", level: l, objective: g.objective, difficulty: g.difficulty, gimmicks: [g]});
 			totalDifficulty += g.difficulty;
+
+			if (ruleset.characters && g.character && levels.levels[l].charselect && g.difficulty / 2 >= ruleset.difficulty) {
+				constants.characters.forEach(function(c) {
+					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: g.difficulty / 4, character: c, gimmicks: [g]});
+					totalDifficulty += d / 4;
+				});
+			}
 		});
 	}
 
