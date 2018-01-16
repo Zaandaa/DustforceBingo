@@ -87,6 +87,10 @@ function makeLevelGoalDatas(ruleset) {
 
 		constants.objectives.forEach(function(o) {
 
+			if (o == "Beat" && !ruleset.beat)
+				return;
+			if (o == "SS" && !ruleset.ss)
+				return;
 			if (o == "S finesse" && (!ruleset.sfinesse || !levels.levels[l].sfinesse))
 				return;
 			if (o == "S complete" && !ruleset.scomplete)
