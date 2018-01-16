@@ -111,13 +111,13 @@ function makeLevelGoalDatas(ruleset) {
 			if (l == "Yotta Difficult" && (o == "SS") && !ruleset.yottass)
 				return;
 
-			var d = utils.getLevelDifficulty(l, o, ruleset.save);
+			var d = (o == "Unload" || o == "OOB") ? 1 : utils.getLevelDifficulty(l, o, ruleset.save);
 			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
 			validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d});
 			totalDifficulty += d;
 
-			if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty) {
+			if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty && o != "Unload" && o != "OOB") {
 				constants.characters.forEach(function(c) {
 					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 4, character: c});
 					totalDifficulty += d / 4;
@@ -161,9 +161,9 @@ function makeTotalGoalData(ruleset) {
 		r = Math.random();
 
 		if (!ruleset.beat)
-			r += chance[ruleset.save].total.beat.chance
+			r += chance[ruleset.save].total.beat.chance;
 		if (!ruleset.ss)
-			r += chance[ruleset.save].total.ss.chance
+			r += chance[ruleset.save].total.ss.chance;
 
 		if (r < chance[ruleset.save].total.beat.chance)
 			goalData.count = "Beat";
@@ -191,7 +191,7 @@ function makeTotalGoalData(ruleset) {
 		goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
 		while (true) {
 			var hubNeedsKeys = goalData.count == "keys" && !levels.hubs[goalData.hub].keys;
-			var hubNeedsApples = goalData.count.substr(0, 6) == "apples" && !levels.hubs[goalData.hub].apples;
+			var hubNeedsApples = goalData.count == "apples" && !levels.hubs[goalData.hub].apples;
 			var hubTutorial = goalData.hub == "Tutorial" && !ruleset.tutorials;
 			var hubDifficult = goalData.hub == "Difficult" && !ruleset.difficults;
 			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2));
