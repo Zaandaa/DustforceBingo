@@ -367,8 +367,18 @@ var Bingo = function(session, ruleset) {
 			return false;
 
 		// validate
-		if (replay.validated < 1 && replay.validated != -3)
-			return false; // doesn't handle early exit
+		if (replay.validated < 1 && replay.validated != -3) {
+			// if (replay.validated == -7 && !ruleset.minecraft)
+				// return false;
+			// if (replay.validated == -8 && !ruleset.boss)
+				// return false;
+			// if (replay.validated == -9 && !ruleset.unload)
+				// return false;
+			// if (replay.validated == -10 && !ruleset.someplugin)
+				// return false;
+			// else
+			return false;
+		}
 
 		// in players
 		if (!(replay.user in self.players))

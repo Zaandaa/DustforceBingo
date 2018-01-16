@@ -87,13 +87,19 @@ function makeLevelGoalDatas(ruleset) {
 
 		constants.objectives.forEach(function(o) {
 
-			if (o == "S finesse" && !ruleset.sfinesse)
+			if (o == "S finesse" && (!ruleset.sfinesse || !levels.levels[l].sfinesse))
 				return;
 			if (o == "S complete" && !ruleset.scomplete)
 				return;
 			if (o == "B complete" && !ruleset.bcomplete)
 				return;
-			if (o == "D complete" && !ruleset.dcomplete)
+			if (o == "D complete" && (!ruleset.dcomplete || !levels.levels[l].dcomplete))
+				return;
+			if (o == "Genocide" && (!ruleset.genocide || !levels.levels[l].genocide))
+				return;
+			if (o == "Unload" && (!ruleset.unload || !levels.levels[l].unload))
+				return;
+			if (o == "OOB" && (!ruleset.unload || !levels.levels[l].oob))
 				return;
 
 			if (levels.levels[l].type == "Difficult" && ruleset.save == "New Game" && ruleset.length > 1)
@@ -113,6 +119,12 @@ function makeLevelGoalDatas(ruleset) {
 					totalDifficulty += d / 4;
 				});
 			}
+
+			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
+				validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 2, nosuper: true});
+				totalDifficulty += d / 2;
+			}
+
 		});
 
 		levels.levels[l].gimmicks.forEach(function(g) {
@@ -242,6 +254,18 @@ var Goal = function(goalData) {
 
 	self.compareReplay = function(replay, player) {
 		// check if replay meets goalData
+		if (replay.validated < 1 && replay.validated != -3) {
+			// if (replay.validated == -7 && !self.goalData.minecraft)
+				// return false;
+			// if (replay.validated == -8 && !self.goalData.boss)
+				// return false;
+			// if (replay.validated == -9 && !(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
+				// return false;
+			// if (replay.validated == -10 && !self.goalData.someplugin)
+				// return false;
+			// else
+			return false;
+		}
 
 		if (self.goalData.type == "level") {
 			if (self.goalData.level == replay.levelname) {
@@ -258,9 +282,17 @@ var Goal = function(goalData) {
 				if (self.goalData.objective == "D complete" && score[0] != "D")
 					return false;
 
-
+				if (self.goalData.objective == "Genocide" && replay.tag !== undefined && replay.tag.genocide !== undefined && replay.tag.genocide == 1)
+					return false;
+				if (self.goalData.objective == "Unload" && replay.tag !== undefined && replay.tag.reason !== undefined && replay.tag.reason == "unload")
+					return false;
+				if (self.goalData.objective == "OOB" && replay.tag !== undefined && replay.tag.reason !== undefined && replay.tag.reason == "oob")
+					return false;
 
 				if (self.goalData.character && self.goalData.character != constants.characters[replay.character])
+					return false;
+
+				if (self.goalData.nosuper && replay.input_super > 0)
 					return false;
 
 				for (var g in self.goalData.gimmicks) {
