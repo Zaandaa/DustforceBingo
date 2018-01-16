@@ -196,6 +196,10 @@ function getLeaderboard(top50, o, g) {
 			rs.splice(i, 1);
 		else if(g != "apples" && access(rs[i], g) > inputMinProbablyIntended[g])
 			rs.splice(i, 1);
+		else if(g == "apples" && access(rs[i], g) == 0)
+			rs.splice(i, 1);
+		else if(access(rs[i], g) < 0)
+			rs.splice(i, 1);
 	}
 	
 	return rs;
