@@ -15,12 +15,14 @@ for (var i = 0; i < seedLength; i++) {
 var rules = {
 	seed: seed,
 	save: "New Game",
-	size: 11,
+	size: 13,
 	lockout: true,
 	bingo_count: 2,
 	bingo_count_type: "bingo",
 	difficulty: 1, // 4 easy, 1 hard
 	length: 1, // 4 fast, 1 any
+	beat: true,
+	ss: true,
 	characters: true,
 	apples: true,
 	tutorials: true,
@@ -50,7 +52,11 @@ var fakeSession = {
 	finish: function() {}
 }
 
+if (consoleLogTest)
+	console.log("Making test bingo")
 var bingo = new Bingo(fakeSession, rules);
+if (consoleLogTest)
+	console.log("Done")
 
 // add players
 bingo.addPlayer(10,"--"); bingo.ready(10);
@@ -95,49 +101,51 @@ var moves = [ // move "pairs": player, goal
 	null // lazy comma c/p
 ];
 
-while (!bingo.isWon && count != maxCount) {
-	var p = Math.floor(Math.random() * Object.keys(bingo.players).length);
-	var g = Math.floor(Math.random() * rules.size * rules.size);
-	if (moves[count]) {
-		p = moves[count][0];
-		g = moves[count][1];
-	}
-	count++;
-	// console.log(p.toString() + " " + g.toString());
+// while (!bingo.isWon && count != maxCount) {
+	// var p = Math.floor(Math.random() * Object.keys(bingo.players).length);
+	// var g = Math.floor(Math.random() * rules.size * rules.size);
+	// if (moves[count]) {
+		// p = moves[count][0];
+		// g = moves[count][1];
+	// }
+	// count++;
+	// // console.log(p.toString() + " " + g.toString());
 
-	if (rules.lockout && bingo.goals[g].isAchieved())
-		continue;
-	if (bingo.players[Object.keys(bingo.players)[p]].goalsAchieved.includes(g))
-		continue;
+	// if (rules.lockout && bingo.goals[g].isAchieved())
+		// continue;
+	// if (bingo.players[Object.keys(bingo.players)[p]].goalsAchieved.includes(g))
+		// continue;
 
-	if (consoleLogTest)
-		console.log(p.toString() + " " + g.toString());
+	// if (consoleLogTest)
+		// console.log(p.toString() + " " + g.toString());
 
-	// console.log("achieve");
-	bingo.players[Object.keys(bingo.players)[p]].achieveGoal(g);
-	// console.log("add");
-	bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].toString());
-	// console.log("checkwin");
-	bingo.checkPlayerFinished(Object.keys(bingo.players)[p]);
-	if (rules.lockout)
-		bingo.checkLockout();
+	// // console.log("achieve");
+	// bingo.players[Object.keys(bingo.players)[p]].achieveGoal(g);
+	// // console.log("add");
+	// bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].toString());
+	// // console.log("checkwin");
+	// bingo.checkPlayerFinished(Object.keys(bingo.players)[p]);
+	// if (rules.lockout)
+		// bingo.checkLockout();
 
-	// console board
-	if (consoleLogTest) {
-		console.log("winner: " + bingo.winner);
-		for (var r = 0; r < rules.size; r++) {
-			var line = "";
-			for (var c = 0; c < rules.size; c++) {
-				line += " " + (bingo.goals[r * rules.size + c].isAchieved() ? bingo.goals[r * rules.size + c].achieved[0] : "  ");
-			}
-			console.log(line);
-		}
-		console.log("");
-	}
-}
+	// // console board
+	// if (consoleLogTest) {
+		// console.log("winner: " + bingo.winner);
+		// for (var r = 0; r < rules.size; r++) {
+			// var line = "";
+			// for (var c = 0; c < rules.size; c++) {
+				// line += " " + (bingo.goals[r * rules.size + c].isAchieved() ? bingo.goals[r * rules.size + c].achieved[0] : "  ");
+			// }
+			// console.log(line);
+		// }
+		// console.log("");
+	// }
+// }
 
 // bingo.resetBingo();
 
+if (consoleLogTest)
+	console.log("Test bingo completed simulation")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

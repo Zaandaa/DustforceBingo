@@ -317,11 +317,11 @@ var Goal = function(goalData) {
 				if (self.goalData.objective == "D complete" && score[0] != "D")
 					return false;
 
-				if (self.goalData.objective == "Genocide" && replay.tag !== undefined && replay.tag.genocide !== undefined && replay.tag.genocide == 1)
+				if (self.goalData.objective == "Genocide" && replay.tag !== undefined && replay.tag.genocide !== undefined && replay.tag.genocide != "1")
 					return false;
-				if (self.goalData.objective == "Unload" && replay.tag !== undefined && replay.tag.reason !== undefined && replay.tag.reason == "unload")
+				if (self.goalData.objective == "Unload" && replay.tag !== undefined && replay.tag.reason !== undefined && replay.tag.reason != "unload")
 					return false;
-				if (self.goalData.objective == "OOB" && replay.tag !== undefined && replay.tag.reason !== undefined && replay.tag.reason == "oob")
+				if (self.goalData.objective == "OOB" && replay.tag !== undefined && replay.tag.reason !== undefined && replay.tag.reason != "oob")
 					return false;
 
 				if (self.goalData.character && self.goalData.character != constants.characters[replay.character])

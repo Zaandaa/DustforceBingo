@@ -7,22 +7,22 @@
 		},
 		"lowdash": {
 			"accessor": "input_dashes",
-			"format": "<= {count} dash",
+			"format": "{count} or fewer dash",
 			"plural": "es"
 		},
 		"lowjump": {
 			"accessor": "input_jumps",
-			"format": "<= {count} jump",
+			"format": "{count} or fewer jump",
 			"plural": "s"
 		},
 		"lowattack": {
 			"accessor": "",
-			"format": "<= {count} attack",
+			"format": "{count} or fewer attack",
 			"plural": "s"
 		},
 		"lowdirection": {
 			"accessor": "input_directions",
-			"format": "<= {count} direction",
+			"format": "{count} or fewer direction",
 			"plural": "s"
 		}
 	},
