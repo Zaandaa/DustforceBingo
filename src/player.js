@@ -72,6 +72,9 @@ var Player = function(id, name) {
 	};
 
 	self.addProgress = function(replay) {
+		if (replay.validated < 1 && replay.validated != -3)
+			return;
+
 		self.allCompletes.push({level: replay.levelname, score: utils.getReplayScore(replay), character: constants.characters[replay.character]});
 
 		// allProgress and keyProgress
