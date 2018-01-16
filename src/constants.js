@@ -15,6 +15,7 @@ extern.optionNames = {
 	"scomplete": "S completion",
 	"bcomplete": "B completion",
 	"dcomplete": "D completion",
+	"nosuper": "without using super"
 	"lowdash": "low dash",
 	"lowjump": "low jump",
 	"lowattack": "low attack",

@@ -1,9 +1,25 @@
 var getJSON = require('get-json');
 var utils = require('./utils');
 
-function main(levels, callback) {
+function pre(callback) {
+	var records = {}
+	var queries = characters.length + 1;
+	characters.forEach(function(c) {
+		url = "http://dustkid.com/json/records/" + leaderboards["character"][c];
+		getJSON(url, function(error, response) {
+			if (error) throw new Error(error);
+			records[c == "" ? "Any" : c] = response;
+			queries--;
+			if(queries == 0) {
+				callback(records);
+			}
+		});
+	});
+}
+
+function main(levels, records, callback) {
 	var out = {};
-	var queries = 10 //levels.length * gimmicks.length * characters.length * completions.length;
+	var queries = 10 //levels.length * gimmicks.length * completions.length;
 	levels.forEach(function(level) {
 		var a = level.split('\t'),
 			l = a[0],
@@ -11,11 +27,20 @@ function main(levels, callback) {
 			t = a[2],
 			i = leaderboards["levels"][l];
 			
+		var beatrecord = records["Any"]["times"][leaderboards["levels"][l]];
+		var scorerecord = records["Any"]["scores"][leaderboards["levels"][l]];
+			
 		var x = {
 			id: i,
 			hub: h,
 			type: t,
 			key: keyfromtype[t],
+			nosuper: {
+				Beat: beatrecord.input_super > 0
+				SS: scorerecord.input_super > 0
+			},
+			sfinesse: beatrecord.score_finesse != 5,
+			dcomplete: beatrecord.score_completion != 1
 			charselect: t != "Tutorial",
 			gimmicks: []
 		}
@@ -402,6 +427,8 @@ var gimmickAccessor = {
 	"lowattack":""
 }
 
-main(levels, function(output) { 
-	console.log(JSON.stringify(output, null, 4)); 
-});
+pre(function(records) {
+	main(levels, records, function(output) { 
+		console.log(JSON.stringify(output, null, 4)); 
+	});
+})
