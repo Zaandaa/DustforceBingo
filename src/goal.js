@@ -225,6 +225,8 @@ function makeGoalString(goalData) {
 			str += " in " + goalData.hub;
 		if (goalData.character)
 			str += " as " + goalData.character;
+		if (goalData.nosuper)
+			str += " without super";
 	}
 
 	return str;
