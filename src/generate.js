@@ -21,10 +21,10 @@ function main(levels, callback) {
 		}
 		
 		gimmicks.forEach(function(g) {
-			characters.forEach(function(c) {
-				getTop50(l, g, c, function(top50) {
+			// characters.forEach(function(c) {
+				getTop50(l, g, function(top50) {
 					completions.forEach(function(o) {
-						var leaderboard = getLeaderboard(top50, o);
+						var leaderboard = getLeaderboard(top50, o, g);
 						if(leaderboard.length == 0) 
 							return;
 						hist = getHist(leaderboard, g);
@@ -35,35 +35,62 @@ function main(levels, callback) {
 								objective: o,
 								difficulty: d.difficulty,
 								count: d.value,
-								character: c
+								character: g == "apple"
 							});
 						});
 						out[l] = x;	
 						queries --;
-						console.log(queries.toString(), "queries remain,", "finished", l, g, o, "with", (c.length == 0 ? "Anyone" : c));
+						console.log(queries.toString(), "queries remain,", "finished", l, g, o);
 						if (queries == 0)
 							callback(out);
 					});
 				});
-			});
+			// });
 		});
 	});
 }
 
-function getDifficulty(hist, gimmick) {
+
+const difficultyThresholds = { // total achieved per difficulty tier
+	"apples": [2, 5, 10, 20, 30, 40, 50],
+	"lowdash": [2, 5, 10, 20, 30, 40, 50],
+	"lowjump": [1, 2, 5, 10, 20, 30, 40],
+	"lowdirection": [0, 1, 2, 5, 10, 20, 30],
+	"lowattack": [0, 0, 1, 2, 5, 10, 20],
+}
+const inputMinProbablyIntended = {
+	"apples": 0,
+	"lowdash":1,
+	"lowjump":10,
+	"lowdirection":20,
+	"lowattack":30
+};
+
+function getLastThreshold(g, total) {
+	for (i in difficultyThresholds[g]) {
+		if (difficultyThresholds[g][i] >= total)
+			return i;
+	}
+	return 7;
+}
+
+function getDifficulty(hist, g) {
 	var out = [];
 	
 	previous = hist[0].value;
 	done = false;
+	currentDifficulty = 0;
+
 	hist.forEach(function(h) {
-		if(Math.abs(h.value - previous) > h.value)
+		d = getLastThreshold(g, h.rank + h.count);
+		if (d > 6)
 			done = true;
-		
+
 		if(done)
 			return;
-		
+
 		out.push({
-			difficulty: (50 - h.rank) * 0.16,
+			difficulty: d + 1,
 			value: h.value
 		});
 	});
@@ -74,13 +101,9 @@ function getDifficulty(hist, gimmick) {
 var control = 10;
 var stopper = false;
 
-function getTop50(l, g, c, x) {
-	url = "http://dustkid.com/json/level/" + leaderboards["levels"][l] + "/" 
-			+ leaderboards["gimmicks"][g] + "/" + leaderboards["characters"][c];
-			
-	if (url[url.length - 1] == "/")
-		url = url.substring(0, url.length - 1)
-	
+function getTop50(l, g, x) {
+	url = "http://dustkid.com/json/level/" + leaderboards["levels"][l] + "/" + leaderboards["gimmicks"][g];
+
 	if(stopper) {
 		x({
 			"times":{},
@@ -113,12 +136,16 @@ function wait(ms) {
     }
 }
 
-function getLeaderboard(top50, o) {
+function getLeaderboard(top50, o, g) {
 	var rs = Object.values(top50[leaderboards["completions"][o]]);
 	
 	for(var i = rs.length; i--; i > -1) {
 		rs[i].rank = i;
 		if(o == "SS" && !isSS(rs[i]))
+			rs.splice(i, 1);
+		if(rs[i].time > 180000)
+			rs.splice(i, 1);
+		if(g != "apples" && access(rs[i], g) > inputMinProbablyIntended[g])
 			rs.splice(i, 1);
 	}
 	
