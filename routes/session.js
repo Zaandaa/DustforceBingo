@@ -18,6 +18,8 @@ var params = [
 	"bingo_count_type", 
 	"difficulty_raw", 
 	"length_raw", 
+	"beat", 
+	"ss", 
 	"characters", 
 	"apples", 
 	"tutorials", 

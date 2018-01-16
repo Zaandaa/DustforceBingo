@@ -6,6 +6,8 @@ extern.levelTypes = ["Open", "Wood", "Silver", "Gold"];
 extern.objectives = ["Beat", "SS", "S finesse", "S complete", "B complete", "D complete", "Genocide", "Unload", "OOB"];
 
 extern.optionNames = {
+	"beat": "beat levels",
+	"ss": "SS levels",
 	"characters": "characters",
 	"apples": "apples",
 	"tutorials": "tutorials",
@@ -16,6 +18,8 @@ extern.optionNames = {
 	"bcomplete": "B completion",
 	"dcomplete": "D completion",
 	"nosuper": "without using super",
+	"genocide": "genocide",
+	"unload": "unload",
 	"lowdash": "low dash",
 	"lowjump": "low jump",
 	"lowattack": "low attack",

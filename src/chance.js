@@ -28,7 +28,7 @@ hub specific (none or hub)
 var chance = {
 	"New Game": {
 		level: {
-			chance: 0.2,
+			chance: 0.3,
 			length_bonus: 0.1,
 		},
 		total: {
@@ -44,23 +44,23 @@ var chance = {
 				range: 60,
 			},
 			keys: {
-				chance: 0.9,
+				chance: 0.8,
 				minimum: 1,
 				range: 15,
 			},
 			apples: {
 				chance: 1,
 				minimum: 2,
-				range: 48,
+				range: 23,
 			},
-			hub: 0.4,
-			character: 0.4,
-			leveltype: 0.4,
+			hub: 0.75,
+			character: 0.7,
+			leveltype: 0.5,
 		}
 	},
 	"New Game +": {
 		level: {
-			chance: 0.2,
+			chance: 0.3,
 			length_bonus: 0.1,
 		},
 		total: {
@@ -76,18 +76,18 @@ var chance = {
 				range: 60,
 			},
 			keys: {
-				chance: 0.9,
+				chance: 0.8,
 				minimum: 1,
 				range: 15,
 			},
 			apples: {
 				chance: 1,
 				minimum: 2,
-				range: 48,
+				range: 23,
 			},
-			hub: 0.4,
-			character: 0.4,
-			leveltype: 0.4,
+			hub: 0.75,
+			character: 0.7,
+			leveltype: 0.5,
 		}
 	}
 };

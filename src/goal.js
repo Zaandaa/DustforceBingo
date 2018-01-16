@@ -120,10 +120,10 @@ function makeLevelGoalDatas(ruleset) {
 				});
 			}
 
-			// if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
-				// validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 2, nosuper: true});
-				// totalDifficulty += d / 2;
-			// }
+			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
+				validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 2, nosuper: true});
+				totalDifficulty += d / 2;
+			}
 
 		});
 
@@ -151,27 +151,43 @@ function makeTotalGoalData(ruleset) {
 	var goalData = {type: "total"};
 	var r;
 
-	r = Math.random();
-	if (r < chance[ruleset.save].total.beat.chance)
-		goalData.count = "Beat";
-	else if (r < chance[ruleset.save].total.ss.chance)
-		goalData.count = "SS";
-	else if (r < chance[ruleset.save].total.keys.chance) {
-		goalData.count = "keys";
-		goalData.keytype = constants.keys[Math.floor(Math.random() * 4)];
-	}
-	else if (r < chance[ruleset.save].total.apples.chance && ruleset.apples)
-		goalData.count = "apples";
-	else
-		goalData.count = "Beat";
+	var makeType = true;
+	while (makeType) {
+		makeType = false;
+		r = Math.random();
 
+		if (!ruleset.beat)
+			r += chance[ruleset.save].total.beat.chance
+		if (!ruleset.ss)
+			r += chance[ruleset.save].total.ss.chance
+
+		if (r < chance[ruleset.save].total.beat.chance)
+			goalData.count = "Beat";
+		else if (r < chance[ruleset.save].total.ss.chance)
+			goalData.count = "SS";
+		else if (r < chance[ruleset.save].total.keys.chance) {
+			goalData.count = "keys";
+			goalData.keytype = constants.keys[Math.floor(Math.random() * 4)];
+		}
+		else if (r < chance[ruleset.save].total.apples.chance && ruleset.apples) {
+			goalData.count = "apples";
+			r = Math.random();
+			if (r < 0.3)
+				goalData.appleType = "Beat";
+			else if (r < 0.6)
+				goalData.appleType = "SS";
+			else
+				goalData.appleType = "count";
+		} else
+			makeType = true;
+	}
 
 	r = Math.random();
 	if (r < chance[ruleset.save].total.hub) {
 		goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
 		while (true) {
 			var hubNeedsKeys = goalData.count == "keys" && !levels.hubs[goalData.hub].keys;
-			var hubNeedsApples = goalData.count == "apples" && !levels.hubs[goalData.hub].apples;
+			var hubNeedsApples = goalData.count.substr(0, 6) == "apples" && !levels.hubs[goalData.hub].apples;
 			var hubTutorial = goalData.hub == "Tutorial" && !ruleset.tutorials;
 			var hubDifficult = goalData.hub == "Difficult" && !ruleset.difficults;
 			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2));
@@ -190,7 +206,7 @@ function makeTotalGoalData(ruleset) {
 	}
 
 	if (goalData.count == "Beat" || goalData.count == "SS") {
-		if (goalData.hub && levels.hubs[goalData.hub].keys) {
+		if (!goalData.hub || (goalData.hub && levels.hubs[goalData.hub].keys)) {
 			r = Math.random();
 			if (r < chance[ruleset.save].total.leveltype) {
 				goalData.leveltype = constants.levelTypes[Math.floor(Math.random() * constants.levelTypes.length)];
@@ -222,7 +238,15 @@ function makeGoalString(goalData) {
 		switch (goalData.count) {
 			case "Beat":
 			case "SS": str = goalData.count + " " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : ""); break;
-			case "apples": str = "Hit " + goalData.total.toString() + " apple" + (goalData.total > 1 ? "s" : ""); break;
+			case "apples": {
+				if (goalData.appleType == "Beat")
+					str = "Hit an apple in and beat " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+				else if (goalData.appleType == "SS")
+					str = "Hit an apple in and SS " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+				else // "count"
+					str = "Hit " + goalData.total.toString() + " apple" + (goalData.total > 1 ? "s" : "");
+				break;
+			}
 			case "keys": str = "Get " + goalData.total.toString() + " " + goalData.keytype + " key" + (goalData.total > 1 ? "s" : ""); break;
 		}
 

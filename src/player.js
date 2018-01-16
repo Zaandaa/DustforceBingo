@@ -75,7 +75,7 @@ var Player = function(id, name) {
 		if (replay.validated < 1 && replay.validated != -3)
 			return;
 
-		self.allCompletes.push({level: replay.levelname, score: utils.getReplayScore(replay), character: constants.characters[replay.character]});
+		self.allCompletes.push({level: replay.levelname, score: utils.getReplayScore(replay), character: constants.characters[replay.character], apples: replay.apples});
 
 		// allProgress and keyProgress
 		if (replay.levelname in self.allProgress) {
@@ -186,7 +186,45 @@ var Player = function(id, name) {
 				count += self.keyProgress["Laboratory"][goalData.keytype];
 				count /= 10;
 			}
-		} else if (goalData.count in levels.gimmicks) {
+		} else if (goalData.count == "apples") {
+			var levelCount = 0;
+			if (goalData.appleType == "SS") {
+				var levelsUsed = [];
+				for (var level in self.allCompletes) {
+					if (self.allCompletes[level].level in levelsUsed)
+						continue;
+					if (self.allCompletes[level].score != "SS")
+						continue;
+
+					if (goalData.hub && levels.levels[self.allCompletes[level].level].hub != goalData.hub)
+						continue;
+					if (goalData.leveltype && levels.levels[self.allCompletes[level].level].type != goalData.leveltype)
+						continue;
+					if (goalData.character && self.allCompletes[level].character != goalData.character)
+						continue;
+
+					count++;
+				}
+			} else {
+				for (var l in self.allProgress) {
+					if (self.allProgress[l].gimmicks[goalData.count] > -1) {
+						if (goalData.hub && levels.levels[l].hub != goalData.hub)
+							continue;
+						if (goalData.leveltype && levels.levels[l].type != goalData.leveltype)
+							continue;
+						if (goalData.character && !(l in self.charProgress[goalData.character]))
+							continue;
+						if (goalData.character && self.charProgress[goalData.character][l].gimmicks[goalData.count] < 1)
+							continue;
+
+						levelCount++;
+						count += goalData.character ? self.charProgress[goalData.character][l].gimmicks[goalData.count] : self.allProgress[l].gimmicks[goalData.count];
+					}
+				}
+				if (goalData.appleType == "Beat")
+					count = levelCount;
+			}
+		} /*else if (goalData.count in levels.gimmicks) {
 			var levelCount = 0;
 			for (var l in self.allProgress) {
 				if (self.allProgress[l].gimmicks[goalData.count] > -1) {
@@ -203,7 +241,7 @@ var Player = function(id, name) {
 					count += goalData.character ? self.charProgress[goalData.character][l].gimmicks[goalData.count] : self.allProgress[l].gimmicks[goalData.count];
 				}
 			}
-		}
+		}*/
 
 		return count;
 	};
