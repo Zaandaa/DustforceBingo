@@ -155,25 +155,23 @@ function makeTotalGoalData(ruleset) {
 	var goalData = {type: "total"};
 	var r;
 
-	var makeType = true;
-	while (makeType) {
-		makeType = false;
+	while (true) {
 		r = Math.random();
 
-		if (!ruleset.beat)
-			r += chance[ruleset.save].total.beat.chance;
-		if (!ruleset.ss)
-			r += chance[ruleset.save].total.ss.chance;
-
-		if (r < chance[ruleset.save].total.beat.chance)
+		if (r < chance[ruleset.save].total.beat.chance) {
+			if (!ruleset.beat)
+				continue;
 			goalData.count = "Beat";
-		else if (r < chance[ruleset.save].total.ss.chance)
+		} else if (r < chance[ruleset.save].total.ss.chance) {
+			if (!ruleset.ss)
+				continue;
 			goalData.count = "SS";
-		else if (r < chance[ruleset.save].total.keys.chance) {
+		} else if (r < chance[ruleset.save].total.keys.chance) {
 			goalData.count = "keys";
 			goalData.keytype = constants.keys[Math.floor(Math.random() * 4)];
-		}
-		else if (r < chance[ruleset.save].total.apples.chance && ruleset.apples) {
+		} else if (r < chance[ruleset.save].total.apples.chance) {
+			if (!ruleset.apples)
+				continue;
 			goalData.count = "apples";
 			r = Math.random();
 			if (r < 0.3)
@@ -182,8 +180,8 @@ function makeTotalGoalData(ruleset) {
 				goalData.appleType = "SS";
 			else
 				goalData.appleType = "count";
-		} else
-			makeType = true;
+		}
+		break;
 	}
 
 	r = Math.random();
@@ -290,15 +288,19 @@ var Goal = function(goalData) {
 	self.compareReplay = function(replay, player) {
 		// check if replay meets goalData
 		if (replay.validated < 1 && replay.validated != -3) {
-			// if (replay.validated == -7 && !self.goalData.minecraft)
-				// return false;
-			// if (replay.validated == -8 && !self.goalData.boss)
-				// return false;
-			if (replay.validated == -9 && !(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
-				return false;
-			// if (replay.validated == -10 && !self.goalData.someplugin)
-				// return false;
-			else
+			if (replay.validated == -7) {
+				if (!self.goalData.minecraft)
+					return false;
+			} else if (replay.validated == -8) {
+				if (!self.goalData.boss)
+					return false;
+			} else if (replay.validated == -9) {
+				if (!(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
+					return false;
+			} else if (replay.validated == -10) {
+				if (!self.goalData.someplugin)
+					return false;
+			} else
 				return false;
 		}
 
