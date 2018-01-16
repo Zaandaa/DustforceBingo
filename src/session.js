@@ -4,6 +4,7 @@ var querystring = require('querystring')
 var seedrandom = require('seedrandom');
 var Bingo = require("./bingo");
 var replays = require("./replays");
+var util = require("./utils");
 
 function build(io) {
 	var extern = {};
@@ -14,10 +15,11 @@ function build(io) {
 
  
 // INTERNAL:
+
 	extern.rooms = {};
  
 	replays(function(r) {
-		console.log("Replay: " + r.username);
+		console.log("Replay: " + util.getReplayScore(r) + util.pad("left", r.levelname, 19) + " " + util.pad("left", r.username, 20));
 		for(s in extern.rooms) {
 			extern.rooms[s].receiveReplay(r);
 		}

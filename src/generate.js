@@ -156,7 +156,7 @@ function getHist(rs, g) {
 
 function access(r, g) {
 	if(g == "lowattack")
-		return r.input_super ? (3 * r.input_heavies + r.input_lights) : -1;
+		return r.input_super ? -1 : (3 * r.input_heavies + r.input_lights);
 	return r[gimmickAccessor[g]];
 }
 

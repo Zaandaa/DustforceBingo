@@ -150,4 +150,14 @@ extern.meetGoalGimmick = function(replay, gimmick) {
 	}
 }
 
+
+extern.pad = function (direction, string, length) {
+	if(string.length >= length)
+		return string;
+
+	var padding = new Array(length - string.length + 1).join(" ");
+	
+	return direction == "left" ? padding + string : string + padding;
+}
+
 module.exports = extern;
