@@ -246,7 +246,7 @@ var Goal = function(goalData) {
 		if (self.goalData.type == "level") {
 			if (self.goalData.level == replay.levelname) {
 				var score = utils.getReplayScore(replay);
-				if (self.goalData.objective == "SS" && score != "SS")
+				if (self.goalData.objective.length == 2 && score != self.goalData.objective)
 					return false;
 
 				if (self.goalData.objective == "S finesse" && score[1] != "S")
@@ -257,6 +257,8 @@ var Goal = function(goalData) {
 					return false;
 				if (self.goalData.objective == "D complete" && score[0] != "D")
 					return false;
+
+
 
 				if (self.goalData.character && self.goalData.character != constants.characters[replay.character])
 					return false;
