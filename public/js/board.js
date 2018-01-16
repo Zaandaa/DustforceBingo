@@ -26,7 +26,7 @@ function updateBoardTable(boardJson, target, includeBottom) {
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
-				if (lockout) 
+				if (lockout || player == boardData.players[achiever].name) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
 										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 

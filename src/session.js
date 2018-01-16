@@ -264,7 +264,9 @@ function build(io) {
 						socket.custom.id = id;
 						socket.emit('joinResponse', {
 							err: false,
-							message: `Joined ${socket.custom.username}`
+							message: `Joined ${socket.custom.username}`,
+							username: socket.custom.username,
+							id: socket.custom.id
 						});
 					}
 				});
