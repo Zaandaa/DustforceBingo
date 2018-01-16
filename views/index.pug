@@ -67,129 +67,132 @@ block content
 					h4 Advanced Goal Options
 
 					div#goals_advanced_div
-						div.checkbox
-							label
-								input#beat.session(       type="checkbox" checked)
-								<img id="check_beat" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-								<img class="icon" src="http://dustkid.com/static/iconApple.png" />
-								p Beat levels
-						div.checkbox
-							label
-								input#ss.session(       type="checkbox" checked)
-								<img id="check_ss" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-								<img class="icon" src="http://dustkid.com/static/iconApple.png" />
-								p SS levels
-						div.checkbox
-							label
-								input#characters.session(   type="checkbox" checked)
-								<img id="check_characters" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-								<img class="icon" src="http://dustkid.com/static/iconAll.png" />
-								p Characters
-							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Goals can require you to play a specific character")
-									div(style="position: relative; top: -1px") ?
-						div.checkbox
-							label
-								input#apples.session(       type="checkbox" checked)
-								<img id="check_apples" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-								<img class="icon" src="http://dustkid.com/static/iconApple.png" />
-								p Apples
-						div.checkbox
-							label
-								input#tutorials.session(    type="checkbox") 
-								<img id="check_tutorials" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="character" src="http://dustkid.com/static/iconDustman.png" />
-								p Tutorials
-						div.checkbox
-							label
-								input#difficults.session(   type="checkbox") 
-								<img id="check_difficults" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="/bingo/img/iconDonger.png" />
-								p Difficults
-						div.checkbox
-							label
-								input#yottass.session(      type="checkbox") 
-								<img id="check_yottass" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="/bingo/img/iconDonger.png" />
-								p Yotta SS
-						div.checkbox
-							label
-								input#sfinesse.session(     type="checkbox")
-								<img id="check_sfinesse" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="/bingo/img/iconS.png" />
-								p S finesse
-						div.checkbox
-							label
-								input#scomplete.session(     type="checkbox")
-								<img id="check_scomplete" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="/bingo/img/iconS.png" />
-								p S completion
-						div.checkbox
-							label
-								input#bcomplete.session(     type="checkbox")
-								<img id="check_bcomplete" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconSome.png" />
-								p B completion
-						div.checkbox
-							label
-								input#dcomplete.session(     type="checkbox")
-								<img id="check_dcomplete" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="/bingo/img/iconLow.png" />
-								p D completion
-						div.checkbox
-							label
-								input#nosuper.session(       type="checkbox")
-								<img id="check_nosuper" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
-								p Restricted supers
-							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Some level goals can forbid supers")
-									div(style="position: relative; top: -1px") ?
-						div.checkbox
-							label
-								input#genocide.session(      type="checkbox")
-								<img id="check_genocide" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
-								p Genocide
-							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Kill all enemies on specific levels")
-									div(style="position: relative; top: -1px") ?
-						div.checkbox
-							label
-								input#unload.session(        type="checkbox")
-								<img id="check_unload" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
-								p Unload
-							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Specific level goals can require unload or out of bounds (Dustmod > Mods > Enable Unload%)")
-									div(style="position: relative; top: -1px") ?
-						div.checkbox
-							label
-								input#lowdash.session(       type="checkbox")
-								<img id="check_lowdash" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoDash.png" />
-								p Low dash
-						div.checkbox
-							label
-								input#lowjump.session(       type="checkbox")
-								<img id="check_lowjump" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoJump.png" />
-								p Low jump
-						div.checkbox
-							label
-								input#lowattack.session(     type="checkbox")
-								<img id="check_lowattack" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
-								p Low attack
-							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Use fewest attacks possible (light: 1, heavy: 3, no supers)")
-									div(style="position: relative; top: -1px") ?
-						div.checkbox
-							label
-								input#lowdirection.session(  type="checkbox") 
-								<img id="check_lowdirection" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-								<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" />
-								p Low direction
+						div.row 
+							div.col-xl-6.first
+								div.checkbox
+									label
+										input#beat.session(       type="checkbox" checked)
+										<img id="check_beat" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										<img class="icon" src="http://dustkid.com/static/iconVacuum.png" />
+										p Beat levels
+								div.checkbox
+									label
+										input#ss.session(       type="checkbox" checked)
+										<img id="check_ss" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										<img class="icon" src="http://dustkid.com/static/iconVacuum.png" />
+										p SS levels
+								div.checkbox
+									label
+										input#characters.session(   type="checkbox" checked)
+										<img id="check_characters" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										<img class="icon" src="http://dustkid.com/static/iconAll.png" />
+										p Characters
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Goals can require you to play a specific character")
+											div(style="position: relative; top: -1px") ?
+								div.checkbox
+									label
+										input#apples.session(       type="checkbox" checked)
+										<img id="check_apples" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										<img class="icon" src="http://dustkid.com/static/iconApple.png" />
+										p Apples
+								div.checkbox
+									label
+										input#tutorials.session(    type="checkbox") 
+										<img id="check_tutorials" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="character" src="http://dustkid.com/static/iconDustman.png" />
+										p Tutorials
+								div.checkbox
+									label
+										input#difficults.session(   type="checkbox") 
+										<img id="check_difficults" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="/bingo/img/iconDonger.png" />
+										p Difficults
+								div.checkbox
+									label
+										input#yottass.session(      type="checkbox") 
+										<img id="check_yottass" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="/bingo/img/iconDonger.png" />
+										p Yotta SS
+								div.checkbox
+									label
+										input#sfinesse.session(     type="checkbox")
+										<img id="check_sfinesse" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="/bingo/img/iconS.png" />
+										p S finesse
+								div.checkbox
+									label
+										input#scomplete.session(     type="checkbox")
+										<img id="check_scomplete" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="/bingo/img/iconS.png" />
+										p S completion
+							div.col-xl-6.second
+								div.checkbox
+									label
+										input#bcomplete.session(     type="checkbox")
+										<img id="check_bcomplete" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/iconSome.png" />
+										p B completion
+								div.checkbox
+									label
+										input#dcomplete.session(     type="checkbox")
+										<img id="check_dcomplete" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="/bingo/img/iconLow.png" />
+										p D completion
+								div.checkbox
+									label
+										input#nosuper.session(       type="checkbox")
+										<img id="check_nosuper" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
+										p Restrict supers
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Some level goals can forbid supers")
+											div(style="position: relative; top: -1px") ?
+								div.checkbox
+									label
+										input#genocide.session(      type="checkbox")
+										<img id="check_genocide" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/iconGenocide.png" />
+										p Genocide
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Kill all enemies on specific levels")
+											div(style="position: relative; top: -1px") ?
+								div.checkbox
+									label
+										input#unload.session(        type="checkbox")
+										<img id="check_unload" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/icon404.png" />
+										p Unload
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Specific level goals can require unload or out of bounds (Dustmod > Mods > Enable Unload%)")
+											div(style="position: relative; top: -1px") ?
+								div.checkbox
+									label
+										input#lowdash.session(       type="checkbox")
+										<img id="check_lowdash" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/iconNoDash.png" />
+										p Low dash
+								div.checkbox
+									label
+										input#lowjump.session(       type="checkbox")
+										<img id="check_lowjump" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/iconNoJump.png" />
+										p Low jump
+								div.checkbox
+									label
+										input#lowattack.session(     type="checkbox")
+										<img id="check_lowattack" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
+										p Low attack
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Use fewest attacks possible (light: 1, heavy: 3, no supers)")
+											div(style="position: relative; top: -1px") ?
+								div.checkbox
+									label
+										input#lowdirection.session(  type="checkbox") 
+										<img id="check_lowdirection" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										<img class="icon" src="http://dustkid.com/static/iconNoDirection.png" />
+										p Low direction
 		
 
 			div.row
