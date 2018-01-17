@@ -242,9 +242,9 @@ function makeGoalString(goalData) {
 			case "SS": str = goalData.count + " " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : ""); break;
 			case "apples": {
 				if (goalData.appleType == "Beat")
-					str = "Hit an apple in and beat " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+					str = "Hit an apple and beat " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
 				else if (goalData.appleType == "SS")
-					str = "Hit an apple in and SS " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+					str = "Hit an apple and SS " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
 				else // "count"
 					str = "Hit " + goalData.total.toString() + " apple" + (goalData.total > 1 ? "s" : "");
 				break;
