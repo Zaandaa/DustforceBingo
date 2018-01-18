@@ -4,7 +4,8 @@ function changeCheckImage() {
 }
 
 $(document).on('ready', function() {
-	if (error !== undefined) {
+	console.log(error);
+	if (error == "nobingo") {
 		$(".alert-danger .alert-text").html("<strong>Bingo error!</strong> Too few parameters!");
 		$(".alert-danger").alert(200, 2000, 100);
 	}

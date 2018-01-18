@@ -1,7 +1,7 @@
 extends layout
 
 block js
-	script= "const error = " + error + ";"
+	script= "const error = \'" + error + "';"
 	script(src="/bingo/js/index.js")
 
 block content
