@@ -26,7 +26,7 @@ function updateBoardTable(boardJson, target, includeBottom) {
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
-				if (lockout || player == boardData.players[achiever].name) 
+				if (lockout || player == boardData.players[achiever].id) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
 										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 
@@ -169,5 +169,6 @@ function resetBingo() {
 }
 
 function popoutBoard() {
-	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout', '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
+	var addPlayerQuery = "?player=" + player;
+	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout' + (player ? addPlayerQuery : ""), '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
 }

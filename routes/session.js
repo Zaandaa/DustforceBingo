@@ -95,9 +95,12 @@ function build(io) {
 			return;
 		}
 		var s = session.getSession(req.params.id)
+		var player = req.query.player;
 		res.render('popout', {
 			session: s,
-			size: s.bingo_args.size
+			size: s.bingo_args.size,
+			lockout: s.bingo_args.lockout ? "on" : "off",
+			player: player
 		});
 	});
 	

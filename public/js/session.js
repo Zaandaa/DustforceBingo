@@ -191,7 +191,7 @@ $(document).on('ready', function() {
 			$("#join").text("Join");
 			$("#username").enable();
 		} else {
-			player = data.username;
+			player = data.id;
 			$(".alert-success").alert(200, 1000, 100);
 			$("#join").text("Remove");
 		}
