@@ -30,6 +30,8 @@ block content
 	div.floater
 		div.alert.alert-warning.multiple(style="display:none;")
 			div.alert-text <strong>Multiple users found!</strong> Select which one is you!
+			button.close(type="button" aria-label="Close" onclick="resetJoin()")
+				span(aria-hidden="true") ×
 			div.chooser
 			
 			

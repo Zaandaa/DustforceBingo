@@ -1,13 +1,16 @@
 var bingoStarted = false;
 var bingoLabels = [];
 var isPlayer = false;
+var playerHover = undefined;
+var savedBoardData = {};
+var savedPlayerData = {};
 
-function updateBoardTable(boardJson, target, includeBottom) {
+function updateBoardTable(boardData, target, includeBottom) {
 	bingoStarted = true;
 	$("#temp_board_div").attr("style", "display: none");
 	target.empty();
 
-	boardData = JSON.parse(boardJson);
+	savedBoardData = boardData;
 	isPlayer = boardData.isPlayer;
 
 	var table = $("<div></div>").addClass("bingo_table");
@@ -26,7 +29,7 @@ function updateBoardTable(boardJson, target, includeBottom) {
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
-				if (lockout || player == boardData.players[achiever].id) 
+				if (lockout || player == boardData.players[achiever].id || playerHover == boardData.players[achiever].id) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
 										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 
@@ -66,6 +69,7 @@ function updatePlayersTable(playersJson, target) {
 	target.empty();
 
 	playerData = JSON.parse(playersJson);
+	savedPlayerData = playerData;
 
 	var table = $("<div class='players_table'></div>");
 
@@ -122,7 +126,8 @@ function updatePlayersTable(playersJson, target) {
 			cell3.append(inner);
 		}
 		row.append(cell3);
-
+		row.mouseover(setPlayerHover);
+		row.mouseout(endPlayerHover);
 		table.append(row);
 	}
 
@@ -131,6 +136,22 @@ function updatePlayersTable(playersJson, target) {
 
 function playerFinish(data) {
 	$("#tr_" + data.player).addClass('player_finish_animation');
+}
+
+function setPlayerHover() {
+	var id = $(this).attr("id").substring(3);
+	if (bingoStarted && id != playerHover && id != player) {
+		playerHover = id;
+		updateBoardTable(savedBoardData, $('#board_div'), true);
+	}
+}
+
+function endPlayerHover() {
+	var id = $(this).attr("id").substring(3);
+	if (bingoStarted && playerHover && playerHover == id) {
+		playerHover = undefined;
+		updateBoardTable(savedBoardData, $('#board_div'), true);
+	}
 }
 
 function toggleLabel() {

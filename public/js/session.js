@@ -2,6 +2,12 @@ var socket = io(window.location.origin, {
 	path: '/bingo/socket.io'
 });
 
+function resetJoin() {
+	$('#username').enable();
+	$('#join').enable();
+	$('#join').text("Join");
+}
+
 $(document).on('ready', function() {
 	socket.emit('init', {session: sessionId});
 
@@ -169,7 +175,8 @@ $(document).on('ready', function() {
 		return res;
 	}).disableOn('updateStart', function(res) {
 		return !res;
-	}).disableOn('board');
+	}).disableOn('board')
+	.disableOn('removed');
 	
 	// SOCKETS:
 	
@@ -215,7 +222,7 @@ $(document).on('ready', function() {
 	
 	socket.on('board', function(data) {
 		// console.log("got board", data);
-		updateBoardTable(data, $('#board_div'), true);
+		updateBoardTable(JSON.parse(data), $('#board_div'), true);
 	});
 	
 	socket.on('players', function(data) {

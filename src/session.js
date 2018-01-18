@@ -239,6 +239,8 @@ function build(io) {
 			socket.on('join', function(data) {
 				if (!verify(['username', 'session'], data, socket, 'joinResponse'))
 					return;
+				if (data.username == "")
+					return Error(socket,  'joinResponse', 'Username/id required');
 
 				if (bingo.active || bingo.finished)
 					return Error(socket, 'joinResponse', 'Session already started');
