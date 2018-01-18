@@ -20,7 +20,7 @@ var chance = {
 			},
 			apples: {
 				minimum: 2,
-				range: 23,
+				range: 28,
 			},
 		}
 	},
@@ -45,7 +45,7 @@ var chance = {
 			},
 			apples: {
 				minimum: 2,
-				range: 23,
+				range: 28,
 			},
 		}
 	}

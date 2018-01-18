@@ -31,7 +31,7 @@ extern.makeGoals = function(ruleset) {
 		totalObjectiveWeightTotal: 0,
 		levelWeightsInObjective: {},
 		totalWeightsInObjective: {},
-		totalLastLow: false
+		totalAlternate: Math.random() < 0.5
 	};
 	for (var o in constants.levelObjectives) {
 		usedGoalStats.levelObjectives[constants.levelObjectives[o]] = 0;
@@ -239,15 +239,14 @@ function makeTotalGoalDatas(ruleset) {
 
 							// goalData
 							var gd = {type: "total", count: o, total: currentTotal, hub: h, leveltype: l, character: c, weight: 1};
-
+							var gds = makeGoalString(gd);
+							if (usedTotalStrings.includes(gds))
+								return;
 							if (!utils.checkTotalDifficultyLength(gd, ruleset))
 								return;
 
-							var gds = makeGoalString(gd);
-							if (!usedTotalStrings.includes(gds)) {
-								validGoalDatas.push(gd);
-								usedTotalStrings.push(gds);
-							}
+							validGoalDatas.push(gd);
+							usedTotalStrings.push(gds);
 						});
 					});
 				});
@@ -276,15 +275,14 @@ function makeTotalGoalDatas(ruleset) {
 
 							// goalData
 							var gd = {type: "total", count: o, total: currentTotal, hub: h, leveltype: l, character: c, weight: 1};
-
+							var gds = makeGoalString(gd);
+							if (usedTotalStrings.includes(gds))
+								return;
 							if (!utils.checkTotalDifficultyLength(gd, ruleset))
 								return;
 
-							var gds = makeGoalString(gd);
-							if (!usedTotalStrings.includes(gds)) {
-								validGoalDatas.push(gd);
-								usedTotalStrings.push(gds);
-							}
+							validGoalDatas.push(gd);
+							usedTotalStrings.push(gds);
 						});
 					});
 				});
@@ -305,15 +303,14 @@ function makeTotalGoalDatas(ruleset) {
 
 						// goalData
 						var gd = {type: "total", count: o, total: currentTotal, keytype: k, hub: h, weight: 1};
-
+						var gds = makeGoalString(gd);
+						if (usedTotalStrings.includes(gds))
+							return;
 						if (!utils.checkTotalDifficultyLength(gd, ruleset))
 							return;
 
-						var gds = makeGoalString(gd);
-						if (!usedTotalStrings.includes(gds)) {
-							validGoalDatas.push(gd);
-							usedTotalStrings.push(gds);
-						}
+						validGoalDatas.push(gd);
+						usedTotalStrings.push(gds);
 					});
 				});
 			} else if (o == "apples") {
@@ -335,15 +332,14 @@ function makeTotalGoalDatas(ruleset) {
 
 							// goalData
 							var gd = {type: "total", count: o, total: currentTotal, appleType: a, character: c, hub: h, weight: 1};
-
+							var gds = makeGoalString(gd);
+							if (usedTotalStrings.includes(gds))
+								return;
 							if (!utils.checkTotalDifficultyLength(gd, ruleset))
 								return;
 
-							var gds = makeGoalString(gd);
-							if (!usedTotalStrings.includes(gds)) {
-								validGoalDatas.push(gd);
-								usedTotalStrings.push(gds);
-							}
+							validGoalDatas.push(gd);
+							usedTotalStrings.push(gds);
 						});
 					});
 				});
@@ -418,8 +414,10 @@ function chooseTotalGoalData(totalGoalDatas, usedGoalStats) {
 
 	// choose goalData within objective
 	var filteredDatas = totalGoalDatas.filter(gd => gd.count == o);
-	r = Math.random() * usedGoalStats.totalWeightsInObjective[o];
-	count = 0;
+	r = Math.random() * 0.5 + usedGoalStats.totalAlternate ? 0.5 : 0;
+	r *= usedGoalStats.totalWeightsInObjective[o];
+	usedGoalStats.totalAlternate = !usedGoalStats.totalAlternate;
+	count = 0; 
 	for (var i = 0; i < filteredDatas.length; i++) {
 		count += filteredDatas[i].weight;
 		if (count > r) {

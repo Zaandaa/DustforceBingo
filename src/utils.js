@@ -43,8 +43,7 @@ extern.getLevelDifficulty = function(level, objective, save) {
 
 extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 	// return false if total is too easy/hard/short/long
-	var baseMin;
-	var baseMax;
+	var baseMin, baseRange, baseMax;
 
 	// special hubs
 	if (goalData.hub == "Difficult") {
@@ -69,8 +68,8 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 				baseMin++;
 			}
 			if (!goalData.hub) {
-				baseMax *= 4;
-				baseMin *= 2;
+				baseMax *= 2 + 0.5 * (4 - ruleset.length);
+				baseMin *= 1 + 0.5 * (4 - ruleset.length);
 			}
 		} else {
 			if (constants.levelTypes.indexOf(goalData.leveltype) < 2) {
@@ -78,43 +77,45 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 				baseMin++;
 			}
 			if (!goalData.hub) {
-				baseMax *= 4;
-				baseMin *= 2;
+				baseMax *= 2 + 0.5 * (4 - ruleset.length);
+				baseMin *= 1 + 0.5 * (4 - ruleset.length);
 			}
 			if (goalData.character) {
 				baseMax *= 0.75;
-				baseMin *= 0.5;
+				baseMin *= 0.75;
 			}
 		}
-		return baseMin <= goalData.total <= baseMax;
+		return baseMin <= goalData.total && goalData.total <= baseMax;
 	}
 
 	// remaining easy types (apples/beat/ss)
 	baseMin = chance[ruleset.save].total[goalData.count].minimum;
-	baseMax = baseMin + chance[ruleset.save].total[goalData.count].range;
+	baseRange = chance[ruleset.save].total[goalData.count].range;
+	baseMax = baseMin + baseRange;
 
-	// base difficulty + length checks
-	var ratio = (goalData.total - baseMin) / (baseMax - baseMin);
+	// up baseMin for long lengths
+	baseMin += baseRange * Math.max(0, 0.375 - ruleset.length * 0.125);
 
-	var lengthMinRatioAllowed = Math.max(0, 0.6 - ruleset.length * 0.2);
-	var lengthMaxRatioAllowed = 1.3 - ruleset.length * 0.3;
-	if (ratio < lengthMinRatioAllowed || ratio > lengthMaxRatioAllowed)
-		return false;
+	// don't alter apple numbers because of character as much
+	var charAppleModifier = goalData.count == "apples" ? 0.5 : 1;
+	var noHubMax = (goalData.count == "SS" || goalData.appleType == "SS") ? 0.75 : 0.875;
 
-	// last modifiers
 	if (goalData.hub) {
-		baseMax *= 0.13 + (12 - ruleset.difficulty - 2 * ruleset.length) * 0.01;
-		baseMin *= 0.13 + (12 - ruleset.difficulty - 2 * ruleset.length) * 0.01;
+		baseMax *= 0.25 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.0075;
+		baseMin *= 0.25 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.0075;
 	} else {
-		baseMax *= Math.min(0.8, (16 - ruleset.difficulty - 2 * ruleset.length) * 0.1);
-		baseMin *= Math.min(0.8, (16 - ruleset.difficulty - 2 * ruleset.length) * 0.1);
+		baseMax *= noHubMax - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
+		baseMin *= noHubMax - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
 	}
 	if (goalData.character) {
-		baseMax *= 0.5 + 0.1 * (4 - ruleset.difficulty);
-		baseMin *= 0.5 + 0.1 * (4 - ruleset.difficulty);
+		baseMax *= 1 - (1.5 * (ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075 * charAppleModifier;
+		baseMin *= 1 - (1.5 * (ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075 * charAppleModifier;
+	} else {
+		baseMax *= 1 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
+		baseMin *= 1 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
 	}
 
-	return baseMin <= goalData.total <= baseMax;
+	return baseMin <= goalData.total && goalData.total <= baseMax;
 }
 
 extern.getReplayScore = function(replay) {
