@@ -67,36 +67,39 @@ function updatePlayersTable(playersJson, target) {
 
 	playerData = JSON.parse(playersJson);
 
-	var table = $("<table></table>").addClass("table").addClass("table-dark");
-	table.attr('id', 'players_table');
+	var table = $("<div class='players_table'></div>");
 
 	// head
-	var thead = $("<thead></thead>");
-	var row = $("<tr></tr>");
-	row.append($("<th style='width: 50%'>Player</th>"));
-	row.append($("<th style='width: 20%'>Color</th>"));
-	row.append($("<th>" + (bingoStarted ? "" : "Ready") + "</th>"));
-	thead.append(row);
-	table.append(thead);
+	var top = $("<div></div>").addClass("row").addClass("player_row").addClass("header_row");
+
+	top.append($("<div class='col col_player'>Player</div>"));
+	top.append($("<div class='col col_color'>Color</div>"));
+	top.append($("<div class='col col_extra'>" + (bingoStarted ? "" : "Ready") + "</div>"));
+	table.append(top);
+
+	var alt = true;
 
 	for (var i = 0; i < playerData.players.length; i++) {
-		var row = $("<tr id='tr_" + playerData.players[i].id + "'></tr>");
+		var row = $("<div id='tr_" + playerData.players[i].id + "'></div>").addClass("row").addClass("player_row");
+		if (alt)
+			row.addClass("player_row_alt");
+		alt = !alt;
 
 		if (playerData.players[i].finishTime > 0)
 			row.addClass('player_finished');
 		if (playerData.players[i].isWinner)
 			row.addClass('player_winner');
 
-		var cell1 = $("<td></td>");
+		var cell1 = $("<div class='col col_player'></div>");
 		cell1.append(playerData.players[i].name);
 		row.append(cell1);
 
-		var cell2 = $("<td></td>");
+		var cell2 = $("<div class='col col_color'></div>");
 		var inner = $("<div class='color-circle' style='background-color:var(--" + playerData.players[i].color.toString() + ")'></div>")
 		cell2.append(inner);
 		row.append(cell2);
 
-		var cell3 = $("<td></td>");
+		var cell3 = $("<div class='col col_extra'></div>");
 		if (bingoStarted) {
 			if (playerData.players[i].finishTime > 0) {
 				var time = new Date(playerData.players[i].finishTime);

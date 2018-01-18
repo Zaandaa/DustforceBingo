@@ -441,6 +441,8 @@ function makeGoalString(goalData) {
 
 		if (goalData.character)
 			str += " as " + goalData.character;
+		if (goalData.nosuper)
+			str += " without super";
 
 		if (goalData.gimmicks) {
 			goalData.gimmicks.forEach(function(g) {
@@ -468,8 +470,6 @@ function makeGoalString(goalData) {
 			str += " in " + goalData.hub;
 		if (goalData.character)
 			str += " as " + goalData.character;
-		if (goalData.nosuper)
-			str += " without super";
 	}
 
 	return str;

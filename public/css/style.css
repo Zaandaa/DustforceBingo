@@ -279,11 +279,54 @@ select {
 	margin: 4px;
 }
 
-.players_table th,
-.players_table td {
-	text-align: left;
-	vertical-align: center;
+.players_table .col {
+	padding-left: 4px;
+	padding-right: 4px;
 }
+.col_player {
+	position: relative;
+	min-height: 1px;
+	float: left;
+	flex: 0 0 50%;
+	width: 50%;
+}
+.col_color {
+	position: relative;
+	min-height: 1px;
+	float: left;
+	flex: 0 0 15%;
+	width: 15%;
+}
+.col_extra {
+	position: relative;
+	min-height: 1px;
+	float: left;
+	flex: 0 0 35%;
+	width: 35%;
+}
+
+.players_table {
+	background-color: var(--dark);
+	border-radius: 4px;
+	font-size: 14px;
+}
+.header_row {
+	font-size: 16px;
+}
+.player_row {
+	width: inherit;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 10px;
+	text-align: left;
+	vertical-align: middle;
+}
+.player_row_alt {
+	background-color: var(--graydark);
+}
+
 .player_finished {
 	font-weight: bold;
 }
