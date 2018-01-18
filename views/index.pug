@@ -1,9 +1,16 @@
 extends layout
 
 block js
+	script= "const error = " + error + ";"
 	script(src="/bingo/js/index.js")
 
 block content
+	div.floater
+		div.alert.alert-danger(role="alert", style="display:none;")
+			div.alert-text
+			button.close(type="button", aria-label="Close")
+				span(aria-hidden="true") &times;
+
 	div.row
 		div.col-xl-4
 			div
@@ -64,7 +71,7 @@ block content
 								option(value="goal") Goals
 
 				div.col-xl-6
-					h4 Advanced Goal Options
+					h4 Goal Options
 
 					div#goals_advanced_div
 						div.checkbox
@@ -149,7 +156,7 @@ block content
 								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
 								p Restricted supers
 							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Some level goals can forbid supers")
+								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Some beat and SS level goals can forbid supers")
 									div(style="position: relative; top: -1px") ?
 						div.checkbox
 							label
@@ -167,7 +174,7 @@ block content
 								<img class="icon" src="http://dustkid.com/static/iconNoAttack.png" />
 								p Unload
 							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Specific level goals can require unload or out of bounds (Dustmod > Mods > Enable Unload%)")
+								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="(Very Hard) Goals can require unload or out of bounds (Dustmod > Mods > Enable Unload%)")
 									div(style="position: relative; top: -1px") ?
 						div.checkbox
 							label

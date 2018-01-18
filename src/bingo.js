@@ -74,10 +74,15 @@ var Bingo = function(session, ruleset) {
 	self.isWon = false;
 	self.finished = false;
 	self.playersDone = 0;
+	self.error = false;
 
 	self.players = {};
 	self.goals = goal.makeGoals(ruleset);
 	self.possibleBingos = cachePossibleBingos(ruleset);
+
+	self.error = self.goals.length < self.ruleset.size * self.ruleset.size;
+	if (self.error)
+		return self;
 
 	self.getState = function() {
 		var s;

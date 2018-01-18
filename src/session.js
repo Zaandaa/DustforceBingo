@@ -170,6 +170,9 @@ function build(io) {
 		bingo_args.seed = self.id;
 
 		var bingo = new Bingo(self, bingo_args);
+		self.error = bingo.error;
+		if (self.error)
+			return;
 
 		function isPlayer(socket) {
 			return socket !== undefined && socket.custom !== undefined && socket.custom.id !== undefined && socket.custom.id in bingo.players

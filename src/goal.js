@@ -15,69 +15,118 @@ extern.makeGoals = function(ruleset) {
 	var r;
 
 	var levelGoalDatas = makeLevelGoalDatas(ruleset);
-	var usedTotalGoalStrings = [];
+	var totalGoalDatas = makeTotalGoalDatas(ruleset);
+
+	var usedGoalStats = {
+		levels: 0,
+		totals: 0,
+		characters: {"Dustman": 0, "Dustgirl": 0, "Dustkid": 0, "Dustworth": 0, undefined: 0},
+		hubs: {"Tutorial": 0, "Forest": 0, "Mansion": 0, "City": 0, "Laboratory": 0, "Difficult": 0, undefined: 0},
+		leveltypes: {"Tutorial": 0, "Open": 0, "Wood": 0, "Silver": 0, "Gold": 0, "Difficult": 0},
+		levelObjectives: {},
+		totalObjectives: {},
+		levelObjectiveWeights: {},
+		totalObjectiveWeights: {},
+		levelObjectiveWeightTotal: 0,
+		totalObjectiveWeightTotal: 0,
+		levelWeightsInObjective: {},
+		totalWeightsInObjective: {},
+		totalLastLow: false
+	};
+	for (var o in constants.levelObjectives) {
+		usedGoalStats.levelObjectives[constants.levelObjectives[o]] = 0;
+		usedGoalStats.levelObjectiveWeights[constants.levelObjectives[o]] = 0;
+		usedGoalStats.levelWeightsInObjective[constants.levelObjectives[o]] = 0;
+	}
+	for (var o in constants.totalObjectives) {
+		usedGoalStats.totalObjectives[constants.totalObjectives[o]] = 0;
+		usedGoalStats.totalObjectiveWeights[constants.totalObjectives[o]] = 0;
+		usedGoalStats.totalWeightsInObjective[constants.totalObjectives[o]] = 0;
+	}
+	for (var g in levels.gimmicks) {
+		usedGoalStats.levelObjectives[g] = 0;
+		usedGoalStats.levelObjectiveWeights[g] = 0;
+	}
 
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
+		reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas);
+
 		r = Math.random();
-		var success = false;
-		if (r < chance[ruleset.save].level.chance + ruleset.length * chance[ruleset.save].level.length_bonus) {
-			// pick from levelGoalDatas
-			r = Math.random() * levelGoalDatas.total;
-			var chosen = false;
-			var count = 0;
-			var levelIndex = 0;
-			var currentLevel = "";
-			var goalsThisLevel = 0;
-			var totalLevelDiff = 0;
-			for (var g = 0; g < levelGoalDatas.data.length; g++) {
-				if (!chosen) {
-					count += levelGoalDatas.data[g].difficulty;
-
-					if (levelGoalDatas.data[g].level != currentLevel) {
-						currentLevel = levelGoalDatas.data[g].level;
-						levelIndex = g;
-					}
-
-					if (count > r) {
-						chosen = true;
-						goals.push(new Goal(levelGoalDatas.data[g]));
-						g = levelIndex - 1;
-						continue;
-					}
-				} else {
-					// remove all of chosen level
-					if (levelGoalDatas.data[g].level != currentLevel) {
-						levelGoalDatas.total -= totalLevelDiff;
-						levelGoalDatas.data.splice(levelIndex, goalsThisLevel);
-						success = true;
-						break;
-					} else {
-						goalsThisLevel++;
-						totalLevelDiff += levelGoalDatas.data[g].difficulty;
-					}
-				}
-			}
-		}
-		if (!success && r < chance[ruleset.save].total.chance) {
-			var newData = makeTotalGoalData(ruleset);
-			var newString = makeGoalString(newData);
-			while (usedTotalGoalStrings.includes(newString)) {
-				newData = makeTotalGoalData(ruleset);
-				newString = makeGoalString(newData);
-			}
-
-			usedTotalGoalStrings.push(newString);
-			goals.push(new Goal(newData));
-		}
+		if (levelGoalDatas.length > 0 && (r < chance[ruleset.save].level.chance + ruleset.length * chance[ruleset.save].level.length_bonus || totalGoalDatas.length == 0))
+			goals.push(new Goal(chooseLevelGoalData(levelGoalDatas, usedGoalStats)));
+		else if (totalGoalDatas.length > 0)
+			goals.push(new Goal(chooseTotalGoalData(totalGoalDatas, usedGoalStats)));
+		else
+			break;
 	}
 
 	shuffle.shuffle(goals);
 	return goals;
 }
 
+function updateUsedGoalStats(usedGoalStats, goalData) {
+	usedGoalStats.characters[goalData.character]++;
+	usedGoalStats.hubs[goalData.hub]++;
+
+	if (goalData.leveltype)
+		usedGoalStats.leveltypes[goalData.leveltype]++;
+
+	o = goalData.gtype || goalData.objective;
+
+	if (goalData.type == "level") {
+		usedGoalStats.levels++;
+		usedGoalStats.levelObjectives[o]++;
+	} else { // total
+		usedGoalStats.totals++;
+		usedGoalStats.totalObjectives[o]++;
+	}
+}
+
+function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
+	usedGoalStats.levelObjectiveWeightTotal = 0;
+	for (var o in usedGoalStats.levelObjectives) {
+		usedGoalStats.levelWeightsInObjective[o] = 0;
+		usedGoalStats.levelObjectiveWeights[o] = 0;
+		var filteredDatas = levelGoalDatas.filter(gd => gd.gtype ? gd.gtype == o : gd.objective == o);
+		if (filteredDatas.length == 0)
+			continue;
+		usedGoalStats.levelObjectiveWeights[o] = 1 / Math.pow(4, usedGoalStats.levelObjectives[o]);
+		usedGoalStats.levelObjectiveWeightTotal += usedGoalStats.levelObjectiveWeights[o];
+
+		for (var gd in filteredDatas) {
+			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 0));
+			if (filteredDatas[gd].character)
+				w *= 0.25;
+
+			filteredDatas[gd].weight = w;
+			usedGoalStats.levelWeightsInObjective[o] += w;
+		}
+	}
+
+	usedGoalStats.totalObjectiveWeightTotal = 0;
+	for (var o in usedGoalStats.totalObjectives) {
+		usedGoalStats.totalWeightsInObjective[o] = 0;
+		usedGoalStats.totalObjectiveWeights[o] = 0;
+		var filteredDatas = totalGoalDatas.filter(gd => gd.count == o);
+		if (filteredDatas.length == 0)
+			continue;
+		usedGoalStats.totalObjectiveWeights[o] = 1 / Math.pow(4, usedGoalStats.totalObjectives[o]);
+		usedGoalStats.totalObjectiveWeightTotal += usedGoalStats.totalObjectiveWeights[o];
+
+		for (var gd in filteredDatas) {
+			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 0));
+			if (filteredDatas[gd].character)
+				w *= 0.5;
+
+			filteredDatas[gd].weight = w;
+			usedGoalStats.totalWeightsInObjective[o] += w;
+		}
+	}
+}
+
 function makeLevelGoalDatas(ruleset) {
 	var validGoalDatas = [];
-	var totalDifficulty = 0;
+	var totalWeight = 0;
 
 	for (var l in levels.levels) {
 		if (!ruleset.tutorials && levels.levels[l].hub == "Tutorial")
@@ -85,7 +134,7 @@ function makeLevelGoalDatas(ruleset) {
 		if (!ruleset.difficults && levels.levels[l].hub == "Difficult")
 			continue;
 
-		constants.objectives.forEach(function(o) {
+		constants.levelObjectives.forEach(function(o) {
 
 			if (o == "Beat" && !ruleset.beat)
 				return;
@@ -114,112 +163,275 @@ function makeLevelGoalDatas(ruleset) {
 			var d = (o == "Unload" || o == "OOB") ? 1 : utils.getLevelDifficulty(l, o, ruleset.save);
 			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
-			validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d});
-			totalDifficulty += d;
+			validGoalDatas.push({type: "level", level: l, objective: o, weight: 1});
 
 			if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty && o != "Unload" && o != "OOB") {
 				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 4, character: c});
-					totalDifficulty += d / 4;
+					validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
 				});
 			}
 
 			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
-				validGoalDatas.push({type: "level", level: l, objective: o, difficulty: d / 2, nosuper: true});
-				totalDifficulty += d / 2;
+				validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, weight: 1});
 			}
-
 		});
 
 		levels.levels[l].gimmicks.forEach(function(g) {
 			if (!ruleset[g.type])
 				return;
-			if (g.difficulty < ruleset.difficulty)
+			if (g.difficulty < ruleset.difficulty || g.difficulty > ruleset.maxEasy)
 				return;
-			validGoalDatas.push({type: "level", level: l, objective: g.objective, difficulty: g.difficulty, gimmicks: [g]});
-			totalDifficulty += g.difficulty;
+			validGoalDatas.push({type: "level", level: l, objective: g.objective, gtype: g.type, gimmicks: [g], weight: 1});
 
 			if (ruleset.characters && g.character && levels.levels[l].charselect && g.difficulty / 2 >= ruleset.difficulty) {
 				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, difficulty: g.difficulty / 4, character: c, gimmicks: [g]});
-					totalDifficulty += d / 4;
+					validGoalDatas.push({type: "level", level: l, objective: o, character: c, gtype: g.type, gimmicks: [g], weight: 1});
 				});
 			}
 		});
 	}
 
-	return {data: validGoalDatas, total: totalDifficulty};
+	return validGoalDatas;
 }
 
-function makeTotalGoalData(ruleset) {
-	var goalData = {type: "total"};
-	var r;
+function makeTotalGoalDatas(ruleset) {
+	var validGoalDatas = [];
+	var usedTotalStrings = [];
 
-	while (true) {
-		r = Math.random();
+	var chars = constants.characters.slice();
+	chars.push(undefined);
 
-		if (r < chance[ruleset.save].total.beat.chance) {
-			if (!ruleset.beat)
-				continue;
-			goalData.count = "Beat";
-		} else if (r < chance[ruleset.save].total.ss.chance) {
-			if (!ruleset.ss)
-				continue;
-			goalData.count = "SS";
-		} else if (r < chance[ruleset.save].total.keys.chance) {
-			if (!ruleset.keys)
-				continue;
-			goalData.count = "keys";
-			goalData.keytype = constants.keys[Math.floor(Math.random() * 4)];
-		} else if (r < chance[ruleset.save].total.apples.chance) {
-			if (!ruleset.apples)
-				continue;
-			goalData.count = "apples";
-			r = Math.random();
-			if (r < 0.3)
-				goalData.appleType = "Beat";
-			else if (r < 0.6)
-				goalData.appleType = "SS";
-			else
-				goalData.appleType = "count";
-		}
-		break;
-	}
+	constants.totalObjectives.forEach(function(o) {
+		if (o == "Beat" && !ruleset.beat)
+			return;
+		if (o == "SS" && !ruleset.ss)
+			return;
+		if (o == "keys" && !ruleset.keys)
+			return;
+		if (o == "apples" && !ruleset.apples)
+			return;
 
-	r = Math.random();
-	if (r < chance[ruleset.save].total.hub) {
-		goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
-		while (true) {
-			var hubNeedsKeys = goalData.count == "keys" && !levels.hubs[goalData.hub].keys;
-			var hubNeedsApples = goalData.count == "apples" && !levels.hubs[goalData.hub].apples;
-			var hubTutorial = goalData.hub == "Tutorial" && !ruleset.tutorials;
-			var hubDifficult = goalData.hub == "Difficult" && !ruleset.difficults;
-			var tooHard = goalData.hub == "Difficult" && (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2));
-			if (hubNeedsKeys || hubNeedsApples || hubTutorial || hubDifficult || tooHard)
-				goalData.hub = Object.keys(levels.hubs)[Math.floor(Math.random() * 6)];
-			else
-				break;
-		}
-	}
+		var min = chance[ruleset.save].total[o].minimum;
+		var range = chance[ruleset.save].total[o].range;
+		for (var i = min; i <= min + range; i++) {
+			if (o == "Beat") {
+				// character
+				chars.forEach(function(c) {
+					// hub
+					var hubs = Object.keys(levels.hubs);
+					if (!ruleset.tutorials || c == undefined)
+						hubs.splice(hubs.indexOf("Tutorial"), 1);
+					if (!ruleset.difficults || i > levels.hubs["Difficult"].levels || (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2)))
+						hubs.splice(hubs.indexOf("Difficult"), 1);
+					hubs.push(undefined);
+					hubs.forEach(function(h) {
+						// leveltypes
+						var leveltypes = (h != "Tutorial" && h != "Difficult") ? constants.levelTypes.slice() : [];
+						leveltypes.push(undefined);
+						leveltypes.forEach(function(l) {
 
-	if (goalData.count != "keys" && ruleset.characters && !(goalData.hub && !levels.hubs[goalData.hub].charselect)) {
-		r = Math.random();
-		if (r < chance[ruleset.save].total.character) {
-			goalData.character = constants.characters[Math.floor(Math.random() * constants.characters.length)];
-		}
-	}
+							var currentTotal = i;
+							if (h !== undefined)
+								currentTotal *= levels.hubs[h].levels / 64;
+							if (l !== undefined)
+								currentTotal *= 0.25;
+							currentTotal = Math.ceil(currentTotal);
 
-	if (goalData.count == "Beat" || goalData.count == "SS") {
-		if (!goalData.hub || (goalData.hub && levels.hubs[goalData.hub].keys)) {
-			r = Math.random();
-			if (r < chance[ruleset.save].total.leveltype) {
-				goalData.leveltype = constants.levelTypes[Math.floor(Math.random() * constants.levelTypes.length)];
+							// goalData
+							var gd = {type: "total", count: o, total: currentTotal, hub: h, leveltype: l, character: c, weight: 1};
+
+							if (!utils.checkTotalDifficultyLength(gd, ruleset))
+								return;
+
+							var gds = makeGoalString(gd);
+							if (!usedTotalStrings.includes(gds)) {
+								validGoalDatas.push(gd);
+								usedTotalStrings.push(gds);
+							}
+						});
+					});
+				});
+			} else if (o == "SS") {
+				// character
+				chars.forEach(function(c) {
+					// hub
+					var hubs = Object.keys(levels.hubs);
+					if (!ruleset.tutorials || c == undefined)
+						hubs.splice(hubs.indexOf("Tutorial"), 1);
+					if (!ruleset.difficults || i > levels.hubs["Difficult"].levels - (ruleset.yottass ? 0 : 1) || (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2)))
+						hubs.splice(hubs.indexOf("Difficult"), 1);
+					hubs.push(undefined);
+					hubs.forEach(function(h) {
+						// leveltypes
+						var leveltypes = (h != "Tutorial" && h != "Difficult") ? constants.levelTypes.slice() : [];
+						leveltypes.push(undefined);
+						leveltypes.forEach(function(l) {
+
+							var currentTotal = i;
+							if (h !== undefined)
+								currentTotal *= levels.hubs[h].levels / 64;
+							if (l !== undefined)
+								currentTotal *= 0.25;
+							currentTotal = Math.ceil(currentTotal);
+
+							// goalData
+							var gd = {type: "total", count: o, total: currentTotal, hub: h, leveltype: l, character: c, weight: 1};
+
+							if (!utils.checkTotalDifficultyLength(gd, ruleset))
+								return;
+
+							var gds = makeGoalString(gd);
+							if (!usedTotalStrings.includes(gds)) {
+								validGoalDatas.push(gd);
+								usedTotalStrings.push(gds);
+							}
+						});
+					});
+				});
+			} else if (o == "keys") {
+				// keyType
+				constants.keys.forEach(function(k) {
+					// hub
+					var hubs = Object.keys(levels.hubs);
+					hubs.splice(hubs.indexOf("Tutorial"), 1);
+					hubs.splice(hubs.indexOf("Difficult"), 1);
+					hubs.push(undefined);
+					hubs.forEach(function(h) {
+
+						var currentTotal = i;
+						if (h !== undefined)
+							currentTotal *= 0.25;
+						currentTotal = Math.ceil(currentTotal);
+
+						// goalData
+						var gd = {type: "total", count: o, total: currentTotal, keytype: k, hub: h, weight: 1};
+
+						if (!utils.checkTotalDifficultyLength(gd, ruleset))
+							return;
+
+						var gds = makeGoalString(gd);
+						if (!usedTotalStrings.includes(gds)) {
+							validGoalDatas.push(gd);
+							usedTotalStrings.push(gds);
+						}
+					});
+				});
+			} else if (o == "apples") {
+				// appleType
+				["count", "Beat", "SS"].forEach(function(a) {
+					// character
+					chars.forEach(function(c) {
+						// hub
+						var hubs = Object.keys(levels.hubs);
+						hubs.splice(hubs.indexOf("Tutorial"), 1);
+						hubs.splice(hubs.indexOf("Difficult"), 1);
+						hubs.push(undefined);
+						hubs.forEach(function(h) {
+
+							var currentTotal = i;
+							if (h !== undefined)
+								currentTotal *= 0.25;
+							currentTotal = Math.ceil(currentTotal);
+
+							// goalData
+							var gd = {type: "total", count: o, total: currentTotal, appleType: a, character: c, hub: h, weight: 1};
+
+							if (!utils.checkTotalDifficultyLength(gd, ruleset))
+								return;
+
+							var gds = makeGoalString(gd);
+							if (!usedTotalStrings.includes(gds)) {
+								validGoalDatas.push(gd);
+								usedTotalStrings.push(gds);
+							}
+						});
+					});
+				});
 			}
 		}
+	});
+
+	return validGoalDatas;
+}
+
+function chooseLevelGoalData(levelGoalDatas, usedGoalStats) {
+	var goalData;
+	var r;
+	var count;
+
+	// make available list (some will exist)
+	var availableTypes = Object.keys(usedGoalStats.levelObjectives).filter(o => usedGoalStats.levelWeightsInObjective[o] > 0);
+
+	// choose random objective
+	var o;
+	r = Math.random() * usedGoalStats.levelObjectiveWeightTotal;
+	count = 0;
+	for (var ob in usedGoalStats.levelObjectiveWeights) {
+		count += usedGoalStats.levelObjectiveWeights[ob];
+		if (count > r) {
+			o = ob;
+			break;
+		}
 	}
 
-	goalData.total = utils.generateGoalTotal(goalData, ruleset);
+	// choose goalData within objective
+	var filteredDatas = levelGoalDatas.filter(gd => gd.gtype ? gd.gtype == o : gd.objective == o);
+	r = Math.random() * usedGoalStats.levelWeightsInObjective[o];
+	count = 0;
+	for (var i = 0; i < filteredDatas.length; i++) {
+		count += filteredDatas[i].weight;
+		if (count > r) {
+			goalData = filteredDatas[i];
+			break;
+		}
+	}
 
+	// remove all of same level
+	var sameLevelDatas = levelGoalDatas.filter(gd => gd.level == goalData.level);
+	for (var gd in sameLevelDatas) {
+		levelGoalDatas.splice(levelGoalDatas.indexOf(sameLevelDatas[gd]), 1);
+	}
+
+	updateUsedGoalStats(usedGoalStats, goalData);
+	return goalData;
+}
+
+function chooseTotalGoalData(totalGoalDatas, usedGoalStats) {
+	var goalData;
+	var r;
+	var count;
+
+	// make available list (some will exist)
+	var availableTypes = Object.keys(usedGoalStats.totalObjectives).filter(o => usedGoalStats.totalWeightsInObjective[o] > 0);
+
+	// choose random objective
+	var o;
+	r = Math.random() * usedGoalStats.totalObjectiveWeightTotal;
+	count = 0;
+	for (var ob in usedGoalStats.totalObjectiveWeights) {
+		count += usedGoalStats.totalObjectiveWeights[ob];
+		if (count > r) {
+			o = ob;
+			break;
+		}
+	}
+
+	// choose goalData within objective
+	var filteredDatas = totalGoalDatas.filter(gd => gd.count == o);
+	r = Math.random() * usedGoalStats.totalWeightsInObjective[o];
+	count = 0;
+	for (var i = 0; i < filteredDatas.length; i++) {
+		count += filteredDatas[i].weight;
+		if (count > r) {
+			goalData = filteredDatas[i];
+			break;
+		}
+	}
+
+	// remove goalData
+	totalGoalDatas.splice(totalGoalDatas.indexOf(goalData), 1);
+
+	updateUsedGoalStats(usedGoalStats, goalData);
 	return goalData;
 }
 
@@ -234,7 +446,7 @@ function makeGoalString(goalData) {
 
 		if (goalData.gimmicks) {
 			goalData.gimmicks.forEach(function(g) {
-				str += " with " + levels.gimmicks[g.type].format.replace("{count}", g.count) + (g.count != 1 ? levels.gimmicks[g.type].plural : "");
+				str += " with " + levels.gimmicks[g.type].format.replace("{count}", g.count).replace("{or fewer}", g.count > 0 ? "or fewer" : "") + (g.count != 1 ? levels.gimmicks[g.type].plural : "");
 			});
 		}
 
@@ -350,7 +562,6 @@ var Goal = function(goalData) {
 			}
 
 			// <= low gimmicks (unused)
-
 		}
 
 		return false;

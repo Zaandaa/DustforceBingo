@@ -47,7 +47,10 @@ function build(io) {
 		if(verify(params, req.query)) {
 			var s = session.newSession(req.query);
 			// console.log(s);
-			res.redirect('/bingo/session/' + s.id);
+			if (s.error)
+				res.redirect('/bingo?error=nobingo');
+			else
+				res.redirect('/bingo/session/' + s.id);
 		} else {
 			var err = new Error('Not Found');
 			err.status = 404;

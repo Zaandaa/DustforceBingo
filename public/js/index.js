@@ -3,7 +3,12 @@ function changeCheckImage() {
 	$('#check_' + id).attr('src', '/bingo/img/ready_' + ($(this).prop('checked') ? 'true' : 'false') + '.png');
 }
 
-$(document).on('ready', function() {	
+$(document).on('ready', function() {
+	if (error !== undefined) {
+		$(".alert-danger .alert-text").html("<strong>Bingo error!</strong> Too few parameters!");
+		$(".alert-danger").alert(200, 2000, 100);
+	}
+
 	var $size = $('#size'),
 	    $bingo_count_type = $('#bingo_count_type'),
 		$bingo_count = $("#bingo_count");
