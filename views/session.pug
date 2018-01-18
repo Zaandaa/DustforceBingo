@@ -4,6 +4,7 @@ block js
 	script= "const sessionId = \'" + session.id + "';"
 	script= "const bingoSize = \'" + size + "';"
 	script= "const lockout = '" + lockout + "' == 'on';"
+	script= "var player = undefined"
 	script(src="/bingo/socket/socket.io.min.js")
 	script(src="/bingo/js/board.js")
 	script(src="/bingo/js/session.js")
@@ -47,7 +48,7 @@ block content
 						div#color_align
 							button#color.btn(value="white", style="background-color:var(--white)")
 							div#color_container.collapse
-								each val in ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Gray", "White"]
+								each val in ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "White"]
 									div.btn.colorpicker(value= val.toLowerCase(), style= "background-color:var(--" + val.toLowerCase() + ");")
 
 			div.row

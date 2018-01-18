@@ -464,7 +464,7 @@ input[type=checkbox] {
 }
 
 .checkbox > .tt_question  {
-	margin-left: -30px;
+	margin-left: -45px;
 	z-index: 1;
 }
 
@@ -525,4 +525,19 @@ pre {
     right: 0;
     position: fixed;
     z-index: -1;
+}
+
+.first {
+	padding-right:0px;
+}
+
+.second {
+	padding-left:0px;
+}
+
+@media (max-width: 1199px) {
+	.first, .second {
+		padding-left:15px;
+		padding-right:15px;
+	}
 }

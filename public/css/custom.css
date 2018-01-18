@@ -1,9 +1,6 @@
 :root {
 	--darkblue: #1F355E;
 	--midpurple: #7F63BB;
-	--blue: #819AD3;
-    --indigo: #6610f2;
-    --purple: #A075C9;
 	--linkpurple:#A4A4EE;
 	--darkpurple: #271A30;
     --pink: #DFBFBF;
@@ -11,7 +8,19 @@
     --orange: #FE9666;
     --yellow: #F4D25A;
     --green: #98AC67;
+	--blue: #819AD3;
+    --indigo: #6610f2;
+    --purple: #A075C9;
     --white: #FFFFFF;
+	--cellpink: #6F6C6C;
+	--cellred: #7E6E6E;
+	--cellorange: #7F746F;
+	--cellyellow: #7A766A;
+	--cellgreen: #54564F;
+	--cellblue: #616369;
+	--cellindigo: #6B6279;
+	--cellpurple: #605C64;
+	--cellwhite: #7F7F7F;
     --gray: #7F898A;
     --grayish: #636068;
     --graydark: #505055;
