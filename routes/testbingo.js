@@ -16,7 +16,7 @@ for (var i = 0; i < seedLength; i++) {
 var rules = {
 	seed: seed,
 	save: "New Game",
-	size: 13,
+	size: 5,
 	lockout: true,
 	bingo_count: 2,
 	bingo_count_type: "bingo",

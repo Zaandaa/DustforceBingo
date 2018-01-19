@@ -7,11 +7,15 @@ var utils = require("./utils");
 var constants = require('./constants');
 var chance = require('./chance');
 
-var extern = {}
+var extern = {};
 
-extern.makeGoals = function(ruleset) {
+
+extern.makeGoals = function(ruleset, bingos) {
 	seedrandom();
 	var goals = [];
+	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
+		goals.push(undefined);
+	}
 	var r;
 
 	var levelGoalDatas = makeLevelGoalDatas(ruleset);
@@ -51,17 +55,71 @@ extern.makeGoals = function(ruleset) {
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
 		reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas);
 
+		var g;
 		r = Math.random();
 		if (levelGoalDatas.length > 0 && (r < chance[ruleset.save].level.chance + ruleset.length * chance[ruleset.save].level.length_bonus || totalGoalDatas.length == 0))
-			goals.push(new Goal(chooseLevelGoalData(levelGoalDatas, usedGoalStats)));
+			g = new Goal(chooseLevelGoalData(levelGoalDatas, usedGoalStats));
 		else if (totalGoalDatas.length > 0)
-			goals.push(new Goal(chooseTotalGoalData(totalGoalDatas, usedGoalStats)));
+			g = new Goal(chooseTotalGoalData(totalGoalDatas, usedGoalStats));
 		else
 			break;
+
+		placeGoal(goals, g, ruleset.size, bingos);
 	}
 
-	shuffle.shuffle(goals);
 	return goals;
+}
+
+function placeGoal(goals, g, size, bingos) {
+	var balanceVals = [];
+
+	/*console.log("before")
+	for (var i = 0; i < size; i++) {
+		var row = ""
+		for (var j = 0; j < size; j++) {
+			if (goals[i * size + j])
+				row += goals[i * size + j].goalData.type == "level" ? "| " : "X ";
+			else
+				row += ". "
+		}
+		console.log(row);
+	}*/
+
+	function calcBalance(goals) {
+		var total = 0;
+		for (var b = 0; b < bingos.length; b++) {
+			bTotal = 0;
+			for (var cell = 0; cell < size * size; cell++) {
+				if (goals[bingos[b][cell]])
+					bTotal += goals[bingos[b][cell]].type == "level" ? 1 : -1;
+			}
+			total += Math.abs(bTotal);
+		}
+		return total;
+	}
+
+	for (var p = 0; p < size * size; p++) {
+		if (goals[p] !== undefined) {
+			balanceVals[p] = 100;
+		} else {
+			goals[p] = g;
+			balanceVals[p] = calcBalance(goals);
+			goals[p] = undefined;
+		}
+	}
+
+	var bestBalance = Math.min(...balanceVals);
+	var bestCells = [];
+	for (var i = 0; i < size * size; i++) {
+		if (balanceVals[i] == bestBalance)
+			bestCells.push(i);
+	}
+	var bestCell = bestCells[Math.floor(Math.random() * bestCells.length)];
+	/*console.log(bestBalance);
+	console.log(bestCells);
+	console.log(bestCell);*/
+
+	goals[bestCell] = g;
 }
 
 function updateUsedGoalStats(usedGoalStats, goalData) {
