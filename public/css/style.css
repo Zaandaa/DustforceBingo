@@ -77,6 +77,13 @@ body {
 	.bingo_table {
 		font-size:15px;
 	} 
+	
+	.players_table {
+		font-size:24px !important;
+	}
+	.header_row {
+		font-size:32px !important;
+	} 
 }
 
 @media (max-width: 800px) {
@@ -506,7 +513,7 @@ input[type=checkbox] {
 }
 
 .checkbox > .tt_question  {
-	margin-left: -45px;
+	margin-left: -35px;
 	z-index: 1;
 }
 
