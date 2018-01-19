@@ -152,6 +152,8 @@ extern.meetGoalGimmick = function(replay, gimmick) {
 
 
 extern.pad = function (direction, string, length) {
+	string = "" + string;
+	
 	if(string.length >= length)
 		return string;
 

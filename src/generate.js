@@ -1,244 +1,416 @@
-var getJSON = require('get-json');
+var http = require('http');
 var utils = require('./utils');
 
-function pre(callback) {
-	var records = {}
-	var queries = characters.length;
-	characters.forEach(function(c) {
-		url = "http://dustkid.com/json/records/" + leaderboards["characters"][c];
-		getJSON(url, function(error, response) {
-			if (error) throw new Error(error);
-			records[c == "" ? "Any" : c] = response;
-			queries--;
-			//console.log("Pre:", queries, "queries remain, finished", c);
-			if(queries == 0) {
-				getJSON("http://dustkid.com/json/records/unload/all", function(error, response) {
-					if (error) throw new Error(error);
-					records["unload"] = response;
-					callback(records);
-				});
-			}
-		});
-	});
-}
+var PADDING = new Array(39).join(" ")
 
-function main(levels, records, callback) {
-	var out = {};
-	var queries = levels.length * gimmicks.length * completions.length;
-	var unloads = records["unload"]["Unload%"];
-	var oobs = records["unload"]["OOB%"];
-	levels.forEach(function(level) {
-		var a = level.split('\t'),
-			l = a[0],
-			h = a[1],
-			t = a[2],
-			i = leaderboards["levels"][l];
-			
-		var beatrecord = records["Any"]["Times"][i];
-		var scorerecord = records["Any"]["Scores"][i];
-			
-		var x = {
-			id: i,
-			hub: h,
-			type: t,
-			key: keyfromtype[t],
-			nosuper: {
-				Beat: beatrecord.input_super > 0,
-				SS: scorerecord.input_super > 0
-			},
-			sfinesse: beatrecord.score_finesse != 5,
-			dcomplete: beatrecord.score_completion != 1,
-			genocide: beatrecord.tag.genocide != "1",
-			unload: unloads[i] !== undefined,
-			oob: oobs[i] !== undefined,
-			charselect: t != "Tutorial",
-			gimmicks: []
+/*
+ * Extension methods
+ */
+
+// applies applier to each element to a new array
+Array.prototype.select = function(applier) 
+{
+	var output = new Array();
+	this.forEach(function(n, i) 
+	{
+		output.push(applier(n, i));
+	});
+	return output;
+}	
+
+Array.prototype.syncMap = function(selector, doneCallback, name = "") 
+{
+	var queries = this.length;
+	var funcs   = this.select(function(entity) 
+	{
+		return function(done) 
+		{
+			selector(entity, done);
 		}
-		
-		gimmicks.forEach(function(g) {
-			// characters.forEach(function(c) {
-				getTop50(l, g, function(top50) {
-					completions.forEach(function(o) {
-						var leaderboard = getLeaderboard(top50, o, g);
-						if(leaderboard.length == 0) {
-							queries --;
-							console.log("Main:", queries, "queries remain,", "emtpy", l, g, o);
-						} else {
-							hist = getHist(leaderboard, g);
-							diffs = getDifficulty(hist, g);
-							diffs.forEach(function(d) {
-								x.gimmicks.push({
-									type: g,
-									objective: o,
-									difficulty: d.difficulty,
-									count: d.value,
-									character: g == "apple"
-								});
-							});
-							out[l] = x;	
-							queries --;
-							console.log("Main:", queries, "queries remain,", "finished", l, g, o);
-						}
-						if (queries == 0)
-							callback(out);
-					});
-				});
-			// });
+	})
+	function run(i) 
+	{
+		console.log(PADDING, name, i, "starting");
+		if (i == funcs.length)
+			return doneCallback();
+		funcs[i](function()
+		{
+			console.log(PADDING, name, i, "finished");
+			run(i+1);
 		});
-	});
+	}
+	
+	run(0);
 }
 
-
-const difficultyThresholds = { // total achieved per difficulty tier
-	"apples": [2, 5, 10, 20, 30, 40, 50],
-	"lowdash": [2, 5, 10, 20, 30, 40, 50],
-	"lowjump": [1, 2, 5, 10, 20, 30, 40],
-	"lowdirection": [0, 1, 2, 5, 10, 20, 30],
-	"lowattack": [0, 0, 1, 2, 5, 10, 20],
-}
-const inputMinProbablyIntended = {
-	"apples": 0,
-	"lowdash":1,
-	"lowjump":10,
-	"lowdirection":10,
-	"lowattack":30
+Array.prototype.convertToObject = function() 
+{
+	var newMe = {};
+	for(var i = 0; i < this.length; i++) 
+	{
+		newMe[arguments[i]] = this[i];
+	}
+	return newMe;
 };
 
-function getLastThreshold(g, total) {
-	for (i in difficultyThresholds[g]) {
-		if (difficultyThresholds[g][i] >= total)
-			return parseInt(i);
+Array.prototype.pushAll = function(array) 
+{
+	var self = this;
+	array.forEach(function(obj) {
+		self.push(obj);
+	});
+}
+
+/*
+ * Helpers
+ */
+
+function combine() 
+{
+	output = new Array();
+	arguments[0].forEach(function(x, i) 
+	{
+		output[i] = new Array();
+	})
+	
+	arguments.forEach(function(x) 
+	{
+		x.forEach(function(a, i) 
+		{
+			output[i].push(a);
+		});
+	});
+	
+	return output;
+}
+
+
+
+function getJSONWrapper(url, timeout, callback) 
+{
+	this.url     = url
+	this.request = ++getJSONWrapper.Request;
+	this.attempt = 0;
+	this.done    = false;
+	//console.log("Request", request, url);
+	
+	function retry () {
+		console.log(PADDING, url);
+		if(this.done)
+			return;
+		
+		var currentAttempt = ++this.attempt;
+		
+		http.get(url, function(res) 
+		{
+			const { statusCode } = res;
+			
+			function checkAttempt()
+			{
+				if(currentAttempt != this.attempt)  // timed out by our end
+				{
+					res.destroy();
+					return false;
+				}
+				return true;
+			}
+				
+			if (statusCode !== 200) 
+			{
+				res.destroy()
+				return;
+			}
+			
+			res.setEncoding('utf8');
+			var rawData;
+			
+			res.on('data', (chunk) => 
+			{ 
+				if(!checkAttempt()) 
+					res.destroy();
+				
+				rawData += chunk 
+			});
+			res.on('end', () => 
+			{
+				if(!checkAttempt()) 
+				{
+					res.destroy()
+					return;
+				}
+				
+				try 
+				{
+					if (rawData.substring(0,9) == "undefined")
+					{
+						rawData = rawData.substring(9);
+					}
+					
+					var json = JSON.parse(rawData);
+					callback(json);
+				}
+				catch(e) 
+				{
+					console.log(rawData);
+					throw e;
+				}
+			});
+		}).on('error', (error) =>
+		{		
+			if(error && error.code == 'ECONNRESET') // timed out by their end
+				retry();
+			
+			else                                    // some other error
+				throw error;
+		});
+	} 
+	
+	retry();
+}
+
+getJSONWrapper.Request = 0;
+
+function isSS(replay) 
+{
+	return replay.score_completion == 5 && replay.score_finesse == 5;
+}
+
+function getLastThreshold(gimmick, total) 
+{
+	var thresholds = difficultyThresholds[gimmick]
+	for (var i = 0; i < thresholds.length; i++)
+	{
+		if (thresholds[i] >= total)
+			return i;
 	}
 	return 7;
 }
 
-function getDifficulty(hist, g) {
-	var out = [];
-	
-	previous = hist[0].value;
-	done = false;
-	lastDifficulty = 0;
+/*
+ * Main function
+ */
 
-	hist.forEach(function(h) {
-		d = getLastThreshold(g, h.rank + h.count);
-		if (d > 6 || d == lastDifficulty)
+ 
+function preload(callback) 
+{
+	var records = {}
+	var jobs = characters.select(function(c) 
+	{ 
+		return {
+			token : c,
+			url   : "http://dustkid.com/json/records/" + leaderboards["characters"][c]
+		};
+	});
+	
+	jobs.push(
+	{
+		token : "unload",
+		url   : "http://dustkid.com/json/records/unload/all"
+	});
+	
+	jobs.syncMap(function(job, done) 
+	{
+		getJSONWrapper(job.url, 30000, function(response) 
+		{
+			records[job.token == "" ? "Any" : job.token] = response;
+			done();
+		});
+	},	
+	function() 
+	{
+		callback(records);
+	}, "Preload");
+}
+
+function main(levels, records, callback) 
+{
+	var levelsOutput = {};
+	var unloads = records["unload"]["Unload%"];
+	var oobs    = records["unload"]["OOB%"];
+	levels.syncMap(function(text, levlDone) 
+	{
+		var level = text.split('\t').convertToObject('level', 'hub', 'type')
+		
+		levelsOutput[level.level] = level;
+		
+		level.id = leaderboards["levels"][level.level];
+		level.key = keyfromtype[level.type];
+		
+		var timerecord  = records["Any"]["Times"] [level.id]
+		var scorerecord = records["Any"]["Scores"][level.id]
+		
+		level.nosuper = {
+			Beat : timerecord .input_super > 0 && (level.level != "Tera Difficult" || level.level != "Combat Tutorial"),
+			SS   : scorerecord.input_super > 0
+		},
+		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
+		level.dcomplete  = timerecord.score_completion != 1,
+		level.genocide   = timerecord.tag.genocide != "1",
+		level.unload     = unloads[level.id] !== undefined,
+		level.oob        = oobs[level.id] !== undefined,
+		level.charselect = level.type != "Tutorial",
+		level.gimmicks   = []
+		
+		gimmicks.syncMap(function(gimmick, gimmickDone) 
+		{
+			var url = "http://dustkid.com/json/level/" + level.id + "/" + leaderboards["gimmicks"][gimmick];
+			getJSONWrapper(url, 30000, function(top50)
+			{
+				completions.syncMap(function(objective, completionDone) 
+				{
+					console.log(utils.pad("left", level.level, 17), utils.pad("left", gimmick, 12), utils.pad("left", objective, 4));
+					
+					var leaderboard = getLeaderboard(top50, objective, gimmick);
+					
+					console.log(PADDING, utils.pad("left", leaderboard.length, 2), "replay(s)");
+					
+					if(leaderboard.length == 0) 
+					{
+						completionDone();
+						return;
+					}
+					
+					var histogram = getHist(leaderboard, gimmick);
+			
+					console.log(PADDING, utils.pad("left", histogram.length, 2), "bin(s)");
+					
+					var difficulties = getDifficulty(histogram, gimmick);
+					
+					console.log(PADDING, utils.pad("left", difficulties.length, 2), "gimmick(s)");
+					
+					level.gimmicks.pushAll(
+						difficulties.select(function(diff) 
+						{
+							return {
+								type       : gimmick,
+								objective  : objective,
+								difficulty : diff.difficulty,
+								count      : diff.count,
+								character  : gimmick == "apple"
+							};
+						})
+					);
+					
+					completionDone();
+				}, gimmickDone, "Completion");
+			});
+		}, levlDone, "Gimmick");
+	},
+	function() 
+	{
+		callback(levelsOutput);
+	}, "Level");
+}
+
+function getLeaderboard(top50, objective, gimmick) 
+{
+	var replays = Object.values(top50[leaderboards["completions"][objective]]);
+	
+	replays.forEach(function(replay) 
+	{
+		replay.access = function(gimmick) 
+		{
+			if(gimmick == "lowattack")
+				return this.input_super ? -1 : (3 * this.input_heavies + this.input_lights);
+			return this[gimmickAccessor[gimmick]];
+		}
+	})
+	
+	replays.sort(function(a, b) 
+	{
+		var left  = a.access(gimmick);
+		var right = b.access(gimmick);
+		return gimmick == "apples" ? right - left : left - right;
+	});
+	
+	for(var i = replays.length; i--; i > -1) 
+	{
+		replays[i].rank = i;
+		if(  (objective == "SS" && !isSS(replays[i]))
+		  || (replays[i].time > 180000)
+		  || (replays[i].access(gimmick) >= inputMaxProbablyIntended[gimmick])
+		  || (gimmick == "apples" && replays[i].access("apples") == 0)
+		  || (replays[i].access(gimmick) < 0)
+		)
+			replays.splice(i, 1);
+	}
+	
+	return replays;
+}
+
+function getHist(replays, gimmick) 
+{
+	var output  = []
+	var current = {
+		rank  : replays[0].rank,
+		ties  : 0,
+		count : replays[0].access(gimmick)
+	};
+	replays.forEach(function(replay) {
+		var count = replay.access(gimmick);
+		if (current.count == count) 
+		{
+			current.ties += 1;
+		} 
+		else 
+		{
+			output.push(current);
+			current = {
+				rank: replay.rank,
+				ties: 1,
+				count: count
+			}
+		}
+	});
+	output.push(current);
+	
+	return output;
+}
+
+const difficultyThresholds = { // total achieved per difficulty tier
+	"apples"       : [2,  5, 10, 20, 30, 40, 50],
+	"lowdash"      : [2,  5, 10, 20, 30, 40, 50],
+	"lowjump"      : [1,  2,  5, 10, 20, 30, 40],
+	"lowdirection" : [0,  1,  2,  5, 10, 20, 30],
+	"lowattack"    : [0,  0,  1,  2,  5, 10, 20]
+}
+const inputMaxProbablyIntended = {
+	"apples"       : 100, // all apples are intended, so this is effectivly infinity
+	"lowdash"      : 3,
+	"lowjump"      : 10,
+	"lowdirection" : 10,
+	"lowattack"    : 30
+};
+
+function getDifficulty(histogram, gimmick) 
+{
+	var output         = []	
+	var previous       = histogram[0].count;
+	var done           = false;
+	var lastDifficulty = 0;
+
+	histogram.forEach(function(h) {
+		difficulty = getLastThreshold(gimmick, h.rank + h.ties);
+		if (difficulty > 6 || difficulty == lastDifficulty)
 			done = true;
 
 		if(done)
 			return;
 
-		out.push({
-			difficulty: d + 1,
-			value: h.value
+		lastDifficulty = difficulty;
+		
+		output.push({
+			difficulty : difficulty + 1,
+			count      : h.count
 		});
-		lastDifficulty = d;
 	});
 	
-	return out;
+	return output;
 }
 
-var control = 10;
-var request = 0;
-function getTop50(l, g, x) {
-	url = "http://dustkid.com/json/level/" + leaderboards["levels"][l] + "/" + leaderboards["gimmicks"][g];
-
-	// if(stopper) {
-		// x({
-			// "times":{},
-			// "scores":{}
-		// })
-		// return;
-	// }
-	request++;
-	var rno = request;
-	console.log("Request", request, url);
-	
-	control -= 1;
-	if (control == 0) {
-		wait(250);
-		control = 10;
-		stopper = true;
-	}	
-	
-	function retry () {
-		getJSON(url, function(error, response) {			
-			if ((error && error.code == 'ECONNRESET') || (response === undefined)) {
-				retry();
-			} else if(error) {
-				throw error;
-			} else {
-				x(response);
-			}
-		});
-	} retry();
-}
-
-function wait(ms) {
-    var start = Date.now(),
-        now = start;
-    while (now - start < ms) {
-      now = Date.now();
-    }
-}
-
-function getLeaderboard(top50, o, g) {
-	var rs = Object.values(top50[leaderboards["completions"][o]]);
-	
-	rs.sort(function(a, b) {
-		return access(a, g) - access(b, g);
-	});
-	
-	for(var i = rs.length; i--; i > -1) {
-		rs[i].rank = i;
-		if(o == "SS" && !isSS(rs[i]))
-			rs.splice(i, 1);
-		else if(rs[i].time > 180000)
-			rs.splice(i, 1);
-		else if(g != "apples" && access(rs[i], g) > inputMinProbablyIntended[g])
-			rs.splice(i, 1);
-		else if(g == "apples" && access(rs[i], g) == 0)
-			rs.splice(i, 1);
-		else if(access(rs[i], g) < 0)
-			rs.splice(i, 1);
-	}
-	
-	return rs;
-}
-
-function isSS(r) {
-	return r.score_completion == 5 && r.score_finesse == 5;
-}
-
-function getHist(rs, g) {
-	var out = []
-	var cur = {
-		rank: rs[0].rank,
-		count: 0,
-		value:access(rs[0], g)
-	};
-	rs.forEach(function(r) {
-		var v = access(r, g);
-		if (cur.value == v) {
-			cur.count += 1;
-		} else {
-			out.push(cur);
-			cur = {
-				rank: r.rank,
-				count: 1,
-				value: v
-			}
-		}
-	});
-	
-	out.push(cur);
-	return out;
-}
-
-function access(r, g) {
-	if(g == "lowattack")
-		return r.input_super ? -1 : (3 * r.input_heavies + r.input_lights);
-	return r[gimmickAccessor[g]];
-}
+/*
+ * Data
+ */
 
 var gimmicks = [
 	"apples",
@@ -455,10 +627,12 @@ var gimmickAccessor = {
 	"lowattack":""
 }
 
-pre(function(records) {
+preload(function(records) {
 	main(levels, records, function(output) { 
 		console.log(JSON.stringify(output, null, 4)); 
 	});
 });
 
-wait(1000);
+setTimeout(function() {
+	// head space
+}, 30000)
