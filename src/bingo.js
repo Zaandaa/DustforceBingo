@@ -1,45 +1,11 @@
 var getJSON = require('get-json');
+var board = require('./board');
 var goal = require('./goal');
 var Player = require('./player');
 
 var levels = require('./levels');
 var constants = require('./constants');
 
-function cachePossibleBingos(ruleset) {
-	var sets = [];
-	var cells;
-	for (var i = 0; i < ruleset.size; i++) {
-		// column i
-		cells = [];
-		for (var c = 0; c < ruleset.size; c++) {
-			cells.push(c * ruleset.size + i);
-		}
-		sets.push(cells);
-
-		// row i
-		cells = [];
-		for (var c = 0; c < ruleset.size; c++) {
-			cells.push(i * ruleset.size + c);
-		}
-		sets.push(cells);
-	}
-
-	// diagonals
-	cells = [];
-	for (var i = 0; i < ruleset.size; i++) {
-		cells.push(ruleset.size * i + i);
-	}
-	sets.push(cells);
-
-	// diagonal tr-bl
-	cells = [];
-	for (var i = 0; i < ruleset.size; i++) {
-		cells.push(ruleset.size * (i + 1) - i - 1);
-	}
-	sets.push(cells);
-
-	return sets;
-};
 
 var Bingo = function(session, ruleset) {
 	// console.log("RULES", ruleset);
@@ -77,8 +43,8 @@ var Bingo = function(session, ruleset) {
 	self.error = false;
 
 	self.players = {};
-	self.goals = goal.makeGoals(ruleset);
-	self.possibleBingos = cachePossibleBingos(ruleset);
+	self.possibleBingos = board.cachePossibleBingos(ruleset.size);
+	self.goals = goal.makeGoals(ruleset, self.possibleBingos);
 
 	self.error = self.goals.length < self.ruleset.size * self.ruleset.size;
 	if (self.error)
