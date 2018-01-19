@@ -2,6 +2,9 @@ var request = require("request");
 var socket = require("socket.io");
 var querystring = require('querystring')
 var seedrandom = require('seedrandom');
+var utf8 = require('utf8');
+var windows1252 = require('windows-1252');
+var iconv = require('iconv-lite');
 var Bingo = require("./bingo");
 var replays = require("./replays");
 var util = require("./utils");
@@ -55,10 +58,15 @@ function build(io) {
 	}
 	
 	function requestWrapper(url, lambda, callback) {
-		request(url, function(error, response, body) {
+		request.get({
+			uri:url,
+			encoding:null
+		},function(error, response, body) {
 			if (error || response == undefined ) {
 				return lambda(true, false, '<strong>Hitbox server error</strong> Hitbox appears to be down');
 			}
+			
+			body = iconv.decode(body, 'iso-8859-1');
 			
 			var json;
 			try {
@@ -113,7 +121,50 @@ function build(io) {
 				return lambda(true, false, '<strong>Hitbox server error</strong> Hitbox appears to be down');
 			}	
 			
-			lambda(false, false, user.name, user.id);
+			decodedName = fullDecodeName(user, lambda, function(decodedName) {
+				lambda(false, false, decodedName, user.id);
+			});
+		});
+	}
+	
+	function fullDecodeName(user, lambda, decoded) 
+	{
+		var needsDecoding = false;
+		for(var i = 0; i < user.name.length; i++) 
+		{
+			if(user.name.charCodeAt(i) > 255) 
+			{
+				needsDecoding = true;
+			} 
+		}
+		if(!needsDecoding)
+		{
+			decode(user.name);
+			return;
+		}
+		
+		var url = "http://df.hitboxteam.com/backend6/userScores.php?" + querystring.stringify({
+			id: user.id,
+			max: 1
+		});
+		
+		requestWrapper(url, lambda, function(json) 
+		{
+			var first = Object.keys(json)[0];
+			if(!first) // no replays
+			{
+				decoded(user.name);
+				return;
+			}
+			
+			var meta = json[first]["best_score"] || json[first]["best_time"];
+			if(!meta) // what
+			{
+				decoded(user.name);
+				return;
+			}
+			
+			decoded(meta.name);
 		});
 	}
 	
