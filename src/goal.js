@@ -73,34 +73,38 @@ extern.makeGoals = function(ruleset, bingos) {
 function placeGoal(goals, g, size, bingos) {
 	var balanceVals = [];
 
-	/*console.log("before")
-	for (var i = 0; i < size; i++) {
-		var row = ""
-		for (var j = 0; j < size; j++) {
-			if (goals[i * size + j])
-				row += goals[i * size + j].goalData.type == "level" ? "| " : "X ";
-			else
-				row += ". "
-		}
-		console.log(row);
-	}*/
-
 	function calcBalance(goals) {
 		var total = 0;
 		for (var b = 0; b < bingos.length; b++) {
 			bTotal = 0;
-			for (var cell = 0; cell < size * size; cell++) {
+			for (var cell = 0; cell < size; cell++) {
 				if (goals[bingos[b][cell]])
-					bTotal += goals[bingos[b][cell]].type == "level" ? 1 : -1;
+					bTotal += goals[bingos[b][cell]].goalData.type == "level" ? 1 : -1;
 			}
-			total += Math.abs(bTotal);
+			// console.log(bingos[b], bTotal);
+			total += bTotal * bTotal;
 		}
+		// console.log("total", total)
 		return total;
 	}
 
+	// console.log("before")
+	// for (var i = 0; i < size; i++) {
+		// var row = ""
+		// for (var j = 0; j < size; j++) {
+			// if (goals[i * size + j])
+				// row += goals[i * size + j].goalData.type == "level" ? "| " : "X ";
+			// else
+				// row += ". "
+		// }
+		// console.log(row);
+	// }
+	// console.log("place", g.goalData.type, g.goalData.type == "level" ? "|" : "X");
+	// console.log(calcBalance(goals));
+
 	for (var p = 0; p < size * size; p++) {
 		if (goals[p] !== undefined) {
-			balanceVals[p] = 100;
+			balanceVals[p] = 1000;
 		} else {
 			goals[p] = g;
 			balanceVals[p] = calcBalance(goals);
@@ -115,11 +119,12 @@ function placeGoal(goals, g, size, bingos) {
 			bestCells.push(i);
 	}
 	var bestCell = bestCells[Math.floor(Math.random() * bestCells.length)];
-	/*console.log(bestBalance);
-	console.log(bestCells);
-	console.log(bestCell);*/
-
 	goals[bestCell] = g;
+
+	// console.log(balanceVals);
+	// console.log(bestBalance);
+	// console.log(bestCells);
+	// console.log(bestCell);
 }
 
 function updateUsedGoalStats(usedGoalStats, goalData) {
@@ -220,7 +225,12 @@ function makeLevelGoalDatas(ruleset) {
 			if (l == "Yotta Difficult" && (o == "SS") && !ruleset.yottass)
 				return;
 
-			var d = (o == "Unload" || o == "OOB") ? 1 : utils.getLevelDifficulty(l, o, ruleset.save);
+			var d = utils.getLevelDifficulty(l, o, ruleset.save);
+			// manual difficulty
+			if (o == "Unload" || o == "OOB")
+				d = 1;
+			if (o == "D complete" && (l == "Containment" || l == "Alleyway"))
+				d = 2;
 			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
 			validGoalDatas.push({type: "level", level: l, objective: o, weight: 1});
