@@ -117,6 +117,8 @@ function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
 			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 0));
 			if (filteredDatas[gd].character)
 				w *= 0.5;
+			if (filteredDatas[gd].leveltype)
+				w *= 0.5;
 
 			filteredDatas[gd].weight = w;
 			usedGoalStats.totalWeightsInObjective[o] += w;

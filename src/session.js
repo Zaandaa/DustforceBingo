@@ -229,7 +229,7 @@ function build(io) {
 			sockets.push(socket);
 			
 			socket.on('disconnect', function() {
-				if (isPlayer(socket))
+				if (isPlayer(socket) && !start)
 					bingo.removePlayer(socket.custom.id);
 				sockets.splice(sockets.indexOf(socket), 1);
 				socket.disconnect(0);
