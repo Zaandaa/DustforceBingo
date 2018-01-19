@@ -498,7 +498,6 @@ input[type=checkbox] {
 	padding: 6px;
 	padding-left: 2px;
 	margin-bottom: 4px;
-	min-width: 180px;
 	vertical-align: middle;
 	width:100%;
 }
@@ -577,11 +576,11 @@ pre {
 }
 
 .first {
-	padding-right:0px;
+	padding-right:2px;
 }
 
 .second {
-	padding-left:0px;
+	padding-left:2px;
 }
 
 @media (max-width: 1199px) {
