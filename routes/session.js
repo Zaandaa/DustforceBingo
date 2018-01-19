@@ -20,6 +20,7 @@ var params = [
 	"length_raw", 
 	"beat", 
 	"ss", 
+	"keys", 
 	"characters", 
 	"apples", 
 	"tutorials", 
@@ -46,7 +47,10 @@ function build(io) {
 		if(verify(params, req.query)) {
 			var s = session.newSession(req.query);
 			// console.log(s);
-			res.redirect('/bingo/session/' + s.id);
+			if (s.error)
+				res.redirect('/bingo?error=nobingo');
+			else
+				res.redirect('/bingo/session/' + s.id);
 		} else {
 			var err = new Error('Not Found');
 			err.status = 404;
@@ -91,9 +95,12 @@ function build(io) {
 			return;
 		}
 		var s = session.getSession(req.params.id)
+		var player = req.query.player;
 		res.render('popout', {
 			session: s,
-			size: s.bingo_args.size
+			size: s.bingo_args.size,
+			lockout: s.bingo_args.lockout ? "on" : "off",
+			player: player
 		});
 	});
 	

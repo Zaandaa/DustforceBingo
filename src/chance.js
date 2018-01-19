@@ -1,30 +1,3 @@
-/*
-newgameplus
-newgame
-
-
-level
-total
-
-level values
-beat vs SS
-as char%
-with apple%
-
-total values
-options
-	keys
-	level types
-	apples
-	beat x levels
-	SS x levels
-reasonable x values may vary per type
-
-with character
-hub specific (none or hub)
-
-*/
-
 var chance = {
 	"New Game": {
 		level: {
@@ -33,29 +6,22 @@ var chance = {
 		},
 		total: {
 			chance: 1,
-			beat: {
-				chance: 0.3,
+			Beat: {
 				minimum: 4,
 				range: 60,
 			},
-			ss: {
-				chance: 0.6,
+			SS: {
 				minimum: 4,
 				range: 60,
 			},
 			keys: {
-				chance: 0.8,
 				minimum: 1,
 				range: 15,
 			},
 			apples: {
-				chance: 1,
 				minimum: 2,
-				range: 23,
+				range: 28,
 			},
-			hub: 0.75,
-			character: 0.7,
-			leveltype: 0.5,
 		}
 	},
 	"New Game +": {
@@ -65,29 +31,22 @@ var chance = {
 		},
 		total: {
 			chance: 1,
-			beat: {
-				chance: 0.3,
+			Beat: {
 				minimum: 4,
 				range: 60,
 			},
-			ss: {
-				chance: 0.6,
+			SS: {
 				minimum: 4,
 				range: 60,
 			},
 			keys: {
-				chance: 0.8,
 				minimum: 1,
 				range: 15,
 			},
 			apples: {
-				chance: 1,
 				minimum: 2,
-				range: 23,
+				range: 28,
 			},
-			hub: 0.75,
-			character: 0.7,
-			leveltype: 0.5,
 		}
 	}
 };

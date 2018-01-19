@@ -81,12 +81,12 @@ var Player = function(id, name) {
 		if (replay.levelname in self.allProgress) {
 			// score + keys
 			if (self.allProgress[replay.levelname].completion < replay.score_completion) {
-				if (constants.hubs.includes(levels.levels[replay.levelname].hub))
+				if (levels.hubs[levels.levels[replay.levelname].hub].keys)
 					self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_completion - self.allProgress[replay.levelname].completion;
 				self.allProgress[replay.levelname].completion = replay.score_completion;
 			}
 			if (self.allProgress[replay.levelname].finesse < replay.score_finesse) {
-				if (constants.hubs.includes(levels.levels[replay.levelname].hubs))
+				if (levels.hubs[levels.levels[replay.levelname].hub].keys)
 					self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_finesse - self.allProgress[replay.levelname].finesse;
 				self.allProgress[replay.levelname].finesse = replay.score_finesse;
 			}
@@ -107,7 +107,7 @@ var Player = function(id, name) {
 				gimmicks: {}
 			}
 
-			if (constants.hubs.includes(levels.levels[replay.levelname].hub))
+			if (levels.hubs[levels.levels[replay.levelname].hub].keys)
 				self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_completion + replay.score_finesse;
 
 			for (var g in levels.gimmicks) {

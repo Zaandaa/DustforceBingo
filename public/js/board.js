@@ -1,13 +1,16 @@
 var bingoStarted = false;
 var bingoLabels = [];
 var isPlayer = false;
+var playerHover = undefined;
+var savedBoardData = {};
+var playerFinished = {};
 
-function updateBoardTable(boardJson, target, includeBottom) {
+function updateBoardTable(boardData, target, includeBottom) {
 	bingoStarted = true;
 	$("#temp_board_div").attr("style", "display: none");
 	target.empty();
 
-	boardData = JSON.parse(boardJson);
+	savedBoardData = boardData;
 	isPlayer = boardData.isPlayer;
 
 	var table = $("<div></div>").addClass("bingo_table");
@@ -26,7 +29,7 @@ function updateBoardTable(boardJson, target, includeBottom) {
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
-				if (lockout || player == boardData.players[achiever].name) 
+				if (lockout || player == boardData.players[achiever].id || playerHover == boardData.players[achiever].id) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
 										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 
@@ -66,37 +69,46 @@ function updatePlayersTable(playersJson, target) {
 	target.empty();
 
 	playerData = JSON.parse(playersJson);
+	// savedPlayerData = playerData;
 
-	var table = $("<table></table>").addClass("table").addClass("table-dark");
-	table.attr('id', 'players_table');
+	var table = $("<div class='players_table'></div>");
 
 	// head
-	var thead = $("<thead></thead>");
-	var row = $("<tr></tr>");
-	row.append($("<th style='width: 50%'>Player</th>"));
-	row.append($("<th style='width: 20%'>Color</th>"));
-	row.append($("<th>" + (bingoStarted ? "" : "Ready") + "</th>"));
-	thead.append(row);
-	table.append(thead);
+	var top = $("<div></div>").addClass("row").addClass("player_row").addClass("header_row");
+
+	top.append($("<div class='col col_player'>Player</div>"));
+	top.append($("<div class='col col_color'>Color</div>"));
+	top.append($("<div class='col col_extra'>" + (bingoStarted ? "" : "Ready") + "</div>"));
+	table.append(top);
+
+	var alt = true;
 
 	for (var i = 0; i < playerData.players.length; i++) {
-		var row = $("<tr id='tr_" + playerData.players[i].id + "'></tr>");
+		var row = $("<div id='tr_" + playerData.players[i].id + "'></div>").addClass("row").addClass("player_row");
+		if (alt)
+			row.addClass("player_row_alt");
+		alt = !alt;
 
 		if (playerData.players[i].finishTime > 0)
 			row.addClass('player_finished');
 		if (playerData.players[i].isWinner)
 			row.addClass('player_winner');
 
-		var cell1 = $("<td></td>");
+		if (!playerFinished[playerData.players[i].id] && playerData.players[i].finishTime > 0) {
+			playerFinished[playerData.players[i].id] = true;
+			row.addClass("player_finish_animation");
+		}
+
+		var cell1 = $("<div class='col col_player'></div>");
 		cell1.append(playerData.players[i].name);
 		row.append(cell1);
 
-		var cell2 = $("<td></td>");
+		var cell2 = $("<div class='col col_color'></div>");
 		var inner = $("<div class='color-circle' style='background-color:var(--" + playerData.players[i].color.toString() + ")'></div>")
 		cell2.append(inner);
 		row.append(cell2);
 
-		var cell3 = $("<td></td>");
+		var cell3 = $("<div class='col col_extra'></div>");
 		if (bingoStarted) {
 			if (playerData.players[i].finishTime > 0) {
 				var time = new Date(playerData.players[i].finishTime);
@@ -119,15 +131,32 @@ function updatePlayersTable(playersJson, target) {
 			cell3.append(inner);
 		}
 		row.append(cell3);
-
+		row.mouseover(setPlayerHover);
+		row.mouseout(endPlayerHover);
 		table.append(row);
 	}
 
 	target.append(table);
 }
 
-function playerFinish(data) {
-	$("#tr_" + data.player).addClass('player_finish_animation');
+function playerFinish(id) {
+	$("#tr_" + id).addClass('player_finish_animation');
+}
+
+function setPlayerHover() {
+	var id = $(this).attr("id").substring(3);
+	if (bingoStarted && id != playerHover && id != player) {
+		playerHover = id;
+		updateBoardTable(savedBoardData, $('#board_div'), true);
+	}
+}
+
+function endPlayerHover() {
+	var id = $(this).attr("id").substring(3);
+	if (bingoStarted && playerHover && playerHover == id) {
+		playerHover = undefined;
+		updateBoardTable(savedBoardData, $('#board_div'), true);
+	}
 }
 
 function toggleLabel() {
@@ -169,5 +198,6 @@ function resetBingo() {
 }
 
 function popoutBoard() {
-	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout', '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
+	var addPlayerQuery = "?player=" + player;
+	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout' + (player ? addPlayerQuery : ""), '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
 }

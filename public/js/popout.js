@@ -1,4 +1,6 @@
-var socket = io();
+var socket = io(window.location.origin, {
+	path: '/bingo/socket.io'
+});
 
 $(document).on('ready', function() {
 	socket.emit('init', {session: sessionId});
@@ -6,7 +8,7 @@ $(document).on('ready', function() {
 	socket.on('board', function(data) {
 		$('#temp_board_div').attr("style", "display: none");
 		$('#board_div').attr("style", "");
-		updateBoardTable(data, $('#board_div'), false);
+		updateBoardTable(JSON.parse(data), $('#board_div'), false);
 	});
 
 	socket.on('reset', function(data) {

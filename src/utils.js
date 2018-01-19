@@ -41,53 +41,81 @@ extern.getLevelDifficulty = function(level, objective, save) {
 	return d;
 }
 
-extern.generateGoalTotal = function(goalData, ruleset) {
-	// pick good total number range based on goalData, length, difficulty
-	var multiplier = 1;
-	var maxR = 1;
-	var minR = Math.max(0, 0.6 - ruleset.length * 0.2);
+extern.checkTotalDifficultyLength = function(goalData, ruleset) {
+	// return false if total is too easy/hard/short/long
+	var baseMin, baseRange, baseMax;
 
-	if (goalData.leveltype) {
-		multiplier *= 0.25;
-		var d = Math.min(1, (6 - constants.levelTypes.indexOf(goalData.leveltype) * 0.5 - ruleset.difficulty) * 0.25);
-		var l = Math.min(1, (6 - constants.levelTypes.indexOf(goalData.leveltype) * 0.5 - ruleset.length) * 0.25);
-		multiplier *= d * l;
-		minR = Math.max(minR, d - 0.5, l - 0.5);
-		if (!goalData.hub)
-			multiplier *= Math.min(0.8, (16 - ruleset.difficulty - 2 * ruleset.length) * 0.1);
-	} else if (goalData.keytype) {
-		var d = Math.min(1, (6 - constants.keys.indexOf(goalData.keytype) * 0.5 - ruleset.difficulty) * 0.25);
-		var l = Math.min(1, (6 - constants.keys.indexOf(goalData.keytype) * 0.5 - ruleset.length) * 0.25);
-		multiplier *= d * l;
-		minR = Math.max(minR, d - 0.5, l - 0.5);
-		if (!goalData.hub)
-			multiplier *= Math.min(0.8, (16 - ruleset.difficulty - 2 * ruleset.length) * 0.1);
+	// special hubs
+	if (goalData.hub == "Difficult") {
+		if (ruleset.save == "New Game" && ruleset.length > 1)
+			return false;
+		if (ruleset.difficulty > 2 || ruleset.difficulty == 2 && goalData.count == "SS")
+			return false;
+		return true;
+	} else if (goalData.hub == "Tutorial") {
+		if (ruleset.difficulty < goalData.count == "SS" ? 2 : 3)
+			return false;
+		return true;
+	}
+
+	// keys and leveltypes special ranges
+	if (goalData.keytype || goalData.leveltype) {
+		baseMax = 5 - 0.5 * (ruleset.difficulty + ruleset.length);
+		baseMin = baseMax - 2;
+		if (goalData.count == "keys") {
+			if (constants.keys.indexOf(goalData.keytype) < 2) {
+				baseMax++;
+				baseMin++;
+			}
+			if (!goalData.hub) {
+				baseMax *= 2 + 0.5 * (4 - ruleset.length);
+				baseMin *= 1 + 0.5 * (4 - ruleset.length);
+			}
+		} else {
+			if (constants.levelTypes.indexOf(goalData.leveltype) < 2) {
+				baseMax++;
+				baseMin++;
+			}
+			if (!goalData.hub) {
+				baseMax *= 2 + 0.5 * (4 - ruleset.length);
+				baseMin *= 1 + 0.5 * (4 - ruleset.length);
+			}
+			if (goalData.character) {
+				baseMax *= 0.75;
+				baseMin *= 0.75;
+			}
+		}
+		return baseMin <= goalData.total && goalData.total <= baseMax;
+	}
+
+	// remaining easy types (apples/beat/ss)
+	baseMin = chance[ruleset.save].total[goalData.count].minimum;
+	baseRange = chance[ruleset.save].total[goalData.count].range;
+	baseMax = baseMin + baseRange;
+
+	// up baseMin for long lengths
+	baseMin += baseRange * Math.max(0, 0.375 - ruleset.length * 0.125);
+
+	// don't alter apple numbers because of character as much
+	var charAppleModifier = goalData.count == "apples" ? 0.5 : 1;
+	var noHubMax = (goalData.count == "SS" || goalData.appleType == "SS") ? 0.75 : 0.875;
+
+	if (goalData.hub) {
+		baseMax *= 0.25 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.0075;
+		baseMin *= 0.25 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.0075;
 	} else {
-		// default
-		multiplier *= 1 - (ruleset.length - 1) * (goalData.count != "Beat" || ruleset.save == "New Game" ? 0.25 : 0.2);
-		multiplier *= 1 - (ruleset.difficulty - 1) * (goalData.count != "Beat" || ruleset.save == "New Game" ? 0.2 : 0.15);
-		if (goalData.character)
-			multiplier *= 0.5 + 0.1 * (4 - ruleset.difficulty);
+		baseMax *= noHubMax - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
+		baseMin *= noHubMax - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
+	}
+	if (goalData.character) {
+		baseMax *= 1 - (1.5 * (ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075 * charAppleModifier;
+		baseMin *= 1 - (1.5 * (ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075 * charAppleModifier;
+	} else {
+		baseMax *= 1 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
+		baseMin *= 1 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
 	}
 
-	if (goalData.hub && (goalData.hub != "Difficult" && goalData.hub != "Tutorial")) {
-		multiplier *= 0.25;
-	}
-
-	var rng = Math.random() * 0.5 + (alternateRng ? 0.5 : 0);
-	var r = minR + rng * (maxR - minR);
-
-	var total = 1;
-	if (goalData.hub && (goalData.hub == "Difficult" || goalData.hub == "Tutorial"))
-		total = Math.ceil(multiplier * r * (levels.hubs[goalData.hub].levels - (goalData.hub == "Difficult" && !ruleset.yottass && goalData.count == "SS" ? 1 : 0)));
-	else
-		total = Math.ceil(multiplier * (r * chance[ruleset.save].total[goalData.count.toLowerCase()].range + chance[ruleset.save].total[goalData.count.toLowerCase()].minimum));
-
-	if (total < 1)
-		total = 1;
-
-	alternateRng = !alternateRng;
-	return total;
+	return baseMin <= goalData.total && goalData.total <= baseMax;
 }
 
 extern.getReplayScore = function(replay) {

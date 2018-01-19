@@ -170,6 +170,9 @@ function build(io) {
 		bingo_args.seed = self.id;
 
 		var bingo = new Bingo(self, bingo_args);
+		self.error = bingo.error;
+		if (self.error)
+			return;
 
 		function isPlayer(socket) {
 			return socket !== undefined && socket.custom !== undefined && socket.custom.id !== undefined && socket.custom.id in bingo.players
@@ -226,7 +229,7 @@ function build(io) {
 			sockets.push(socket);
 			
 			socket.on('disconnect', function() {
-				if (isPlayer(socket))
+				if (isPlayer(socket) && !start)
 					bingo.removePlayer(socket.custom.id);
 				sockets.splice(sockets.indexOf(socket), 1);
 				socket.disconnect(0);
@@ -236,6 +239,8 @@ function build(io) {
 			socket.on('join', function(data) {
 				if (!verify(['username', 'session'], data, socket, 'joinResponse'))
 					return;
+				if (data.username == "")
+					return Error(socket,  'joinResponse', 'Username/id required');
 
 				if (bingo.active || bingo.finished)
 					return Error(socket, 'joinResponse', 'Session already started');

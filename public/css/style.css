@@ -75,7 +75,14 @@ body {
 	}
 	
 	.bingo_table {
-		font-size:12px;
+		font-size:15px;
+	} 
+	
+	.players_table {
+		font-size:24px !important;
+	}
+	.header_row {
+		font-size:32px !important;
 	} 
 }
 
@@ -279,41 +286,83 @@ select {
 	margin: 4px;
 }
 
-.players_table th,
-.players_table td {
-	text-align: left;
-	vertical-align: center;
+.players_table .col {
+	padding-left: 4px;
+	padding-right: 4px;
 }
+.col_player {
+	position: relative;
+	min-height: 1px;
+	float: left;
+	flex: 0 0 50%;
+	width: 50%;
+}
+.col_color {
+	position: relative;
+	min-height: 1px;
+	float: left;
+	flex: 0 0 15%;
+	width: 15%;
+}
+.col_extra {
+	position: relative;
+	min-height: 1px;
+	float: left;
+	flex: 0 0 35%;
+	width: 35%;
+}
+
+.players_table {
+	background-color: var(--dark);
+	border-radius: 4px;
+	font-size: 14px;
+}
+.header_row {
+	font-size: 16px;
+}
+.player_row {
+	width: inherit;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 10px;
+	text-align: left;
+	vertical-align: middle;
+}
+.player_row_alt {
+	background-color: var(--graydark);
+}
+
 .player_finished {
 	font-weight: bold;
 }
 .player_winner {
-	/* background-color: var(--black); */
-	font-weight: bold;
+	background-color: var(--gray);
 }
 
 @-webkit-keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 @-moz-keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 @-o-keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 @keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 
 .player_finish_animation {
-	-webkit-animation: fade 2s ease-out; 
-	-moz-animation: fade 2s ease-out; 
-	-o-animation: fade 2s ease-out; 
-	animation: fade 2s ease-out; 
+	-webkit-animation: fade 3s ease-out;
+	-moz-animation: fade 3s ease-out;
+	-o-animation: fade 3s ease-out;
+	animation: fade 3s ease-out;
 }
 
 
@@ -464,7 +513,7 @@ input[type=checkbox] {
 }
 
 .checkbox > .tt_question  {
-	margin-left: -45px;
+	margin-left: -35px;
 	z-index: 1;
 }
 
