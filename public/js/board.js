@@ -3,7 +3,7 @@ var bingoLabels = [];
 var isPlayer = false;
 var playerHover = undefined;
 var savedBoardData = {};
-var savedPlayerData = {};
+var playerFinished = {};
 
 function updateBoardTable(boardData, target, includeBottom) {
 	bingoStarted = true;
@@ -69,7 +69,7 @@ function updatePlayersTable(playersJson, target) {
 	target.empty();
 
 	playerData = JSON.parse(playersJson);
-	savedPlayerData = playerData;
+	// savedPlayerData = playerData;
 
 	var table = $("<div class='players_table'></div>");
 
@@ -93,6 +93,11 @@ function updatePlayersTable(playersJson, target) {
 			row.addClass('player_finished');
 		if (playerData.players[i].isWinner)
 			row.addClass('player_winner');
+
+		if (!playerFinished[playerData.players[i].id] && playerData.players[i].finishTime > 0) {
+			playerFinished[playerData.players[i].id] = true;
+			row.addClass("player_finish_animation");
+		}
 
 		var cell1 = $("<div class='col col_player'></div>");
 		cell1.append(playerData.players[i].name);
@@ -134,8 +139,8 @@ function updatePlayersTable(playersJson, target) {
 	target.append(table);
 }
 
-function playerFinish(data) {
-	$("#tr_" + data.player).addClass('player_finish_animation');
+function playerFinish(id) {
+	$("#tr_" + id).addClass('player_finish_animation');
 }
 
 function setPlayerHover() {

@@ -331,32 +331,31 @@ select {
 	font-weight: bold;
 }
 .player_winner {
-	/* background-color: var(--black); */
-	font-weight: bold;
+	background-color: var(--gray);
 }
 
 @-webkit-keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 @-moz-keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 @-o-keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 @keyframes fade {
-  0%   { background-color: var(--gray); }
-  100% { background-color: inherit; }
+  0%   { background-color: var(--green); }
+  100% { background-color: default; }
 }
 
 .player_finish_animation {
-	-webkit-animation: fade 2s ease-out; 
-	-moz-animation: fade 2s ease-out; 
-	-o-animation: fade 2s ease-out; 
-	animation: fade 2s ease-out; 
+	-webkit-animation: fade 3s ease-out;
+	-moz-animation: fade 3s ease-out;
+	-o-animation: fade 3s ease-out;
+	animation: fade 3s ease-out;
 }
 
 

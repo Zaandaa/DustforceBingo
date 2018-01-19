@@ -231,8 +231,7 @@ $(document).on('ready', function() {
 	});
 	
 	socket.on('playerfinish', function(data) {
-		// console.log("got playerfinish", data);
-		playerFinish(data);
+		// $("#tr_" + JSON.parse(data).player).addClass('player_finish_animation');
 	});
 	
 	socket.on('multiple', function(data) {
