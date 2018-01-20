@@ -65,7 +65,25 @@ var Player = function(id, name) {
 		self.finishTime = t;
 		self.isWinner = w;
 		self.place = p;
-	}
+	};
+
+	self.resetVars = function() {
+		self.voteReset(false);
+		self.setReady(false);
+		self.finishTime = 0;
+		self.isWinner = false;
+		self.place = 0;
+		self.goalsAchieved = [];
+		self.allCompletes = [];
+		self.allProgress = [];
+		self.charProgress = {"Dustman": {}, "Dustgirl": {}, "Dustkid": {}, "Dustworth": {}};
+		self.keyProgress = {
+			"Forest": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
+			"Mansion": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
+			"City": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
+			"Laboratory": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
+		};
+	};
 
 	self.achieveGoal = function(id) {
 		return self.goalsAchieved.push(id);

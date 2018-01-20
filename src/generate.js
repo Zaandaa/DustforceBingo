@@ -240,8 +240,8 @@ function main(levels, records, callback)
 		var scorerecord = records["Any"]["Scores"][level.id]
 		
 		level.nosuper = {
-			Beat : timerecord .input_super > 0 && (level.level != "Tera Difficult" || level.level != "Combat Tutorial"),
-			SS   : scorerecord.input_super > 0
+			Beat : timerecord .input_super > 0 && level.level != "Tera Difficult" && level.level != "Combat Tutorial",
+			SS   : scorerecord.input_super > 0 && level.level != "Tera Difficult" && level.level != "Combat Tutorial"
 		},
 		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
 		level.dcomplete  = timerecord.score_completion != 1,
@@ -286,7 +286,7 @@ function main(levels, records, callback)
 								objective  : objective,
 								difficulty : diff.difficulty,
 								count      : diff.count,
-								character  : gimmick == "apple"
+								character  : gimmick == "apples"
 							};
 						})
 					);

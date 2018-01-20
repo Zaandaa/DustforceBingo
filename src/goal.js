@@ -201,10 +201,10 @@ function makeLevelGoalDatas(ruleset) {
 
 		constants.levelObjectives.forEach(function(o) {
 
-			if (o == "Beat" && !ruleset.beat)
-				return;
-			if (o == "SS" && !ruleset.ss)
-				return;
+			// if (o == "Beat" && !ruleset.beat)
+				// return;
+			// if (o == "SS" && !ruleset.ss)
+				// return;
 			if (o == "S finesse" && (!ruleset.sfinesse || !levels.levels[l].sfinesse))
 				return;
 			if (o == "S complete" && !ruleset.scomplete)
@@ -233,16 +233,25 @@ function makeLevelGoalDatas(ruleset) {
 				d = 2;
 			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
-			validGoalDatas.push({type: "level", level: l, objective: o, weight: 1});
 
-			if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty && o != "Unload" && o != "OOB") {
-				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
-				});
+			if (!(o == "Beat" && !ruleset.beat || o == "SS" && !ruleset.ss)) {
+				validGoalDatas.push({type: "level", level: l, objective: o, weight: 1});
+
+				if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty && o != "Unload" && o != "OOB") {
+					constants.characters.forEach(function(c) {
+						validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
+					});
+				}
 			}
 
-			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
+			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o] && d - 1 >= ruleset.difficulty) {
 				validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, weight: 1});
+
+				if (ruleset.characters && levels.levels[l].charselect) {
+					constants.characters.forEach(function(c) {
+						validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, character: c, weight: 1});
+					});
+				}
 			}
 		});
 
@@ -255,7 +264,7 @@ function makeLevelGoalDatas(ruleset) {
 
 			if (ruleset.characters && g.character && levels.levels[l].charselect && g.difficulty / 2 >= ruleset.difficulty) {
 				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, character: c, gtype: g.type, gimmicks: [g], weight: 1});
+					validGoalDatas.push({type: "level", level: l, objective: g.objective, character: c, gtype: g.type, gimmicks: [g], weight: 1});
 				});
 			}
 		});
@@ -268,7 +277,7 @@ function makeTotalGoalDatas(ruleset) {
 	var validGoalDatas = [];
 	var usedTotalStrings = [];
 
-	var chars = constants.characters.slice();
+	var chars = ruleset.characters ? constants.characters.slice() : [];
 	chars.push(undefined);
 
 	constants.totalObjectives.forEach(function(o) {
@@ -484,7 +493,7 @@ function chooseTotalGoalData(totalGoalDatas, usedGoalStats) {
 
 	// choose goalData within objective
 	var filteredDatas = totalGoalDatas.filter(gd => gd.count == o);
-	r = Math.random() * 0.5 + usedGoalStats.totalAlternate ? 0.5 : 0;
+	r = Math.random() * 0.5 + (usedGoalStats.totalAlternate ? 0.5 : 0);
 	r *= usedGoalStats.totalWeightsInObjective[o];
 	usedGoalStats.totalAlternate = !usedGoalStats.totalAlternate;
 	count = 0; 

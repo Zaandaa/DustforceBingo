@@ -46,7 +46,7 @@ var Bingo = function(session, ruleset) {
 	self.possibleBingos = board.cachePossibleBingos(ruleset.size);
 	self.goals = goal.makeGoals(ruleset, self.possibleBingos);
 
-	self.error = self.goals.length < self.ruleset.size * self.ruleset.size;
+	self.error = self.goals.includes(undefined);
 	if (self.error)
 		return self;
 
@@ -449,8 +449,7 @@ var Bingo = function(session, ruleset) {
 
 		// unready all
 		for (var p in self.players) {
-			self.players[p].voteReset(false);
-			self.players[p].setReady(false);
+			self.players[p].resetVars();
 		}
 
 		// new goals
