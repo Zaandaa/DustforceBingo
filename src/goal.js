@@ -264,7 +264,7 @@ function makeLevelGoalDatas(ruleset) {
 
 			if (ruleset.characters && g.character && levels.levels[l].charselect && g.difficulty / 2 >= ruleset.difficulty) {
 				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, character: c, gtype: g.type, gimmicks: [g], weight: 1});
+					validGoalDatas.push({type: "level", level: l, objective: g.objective, character: c, gtype: g.type, gimmicks: [g], weight: 1});
 				});
 			}
 		});
