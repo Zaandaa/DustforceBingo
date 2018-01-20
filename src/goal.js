@@ -484,7 +484,7 @@ function chooseTotalGoalData(totalGoalDatas, usedGoalStats) {
 
 	// choose goalData within objective
 	var filteredDatas = totalGoalDatas.filter(gd => gd.count == o);
-	r = Math.random() * 0.5 + usedGoalStats.totalAlternate ? 0.5 : 0;
+	r = Math.random() * 0.5 + (usedGoalStats.totalAlternate ? 0.5 : 0);
 	r *= usedGoalStats.totalWeightsInObjective[o];
 	usedGoalStats.totalAlternate = !usedGoalStats.totalAlternate;
 	count = 0; 

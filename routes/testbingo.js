@@ -20,27 +20,27 @@ var rules = {
 	lockout: true,
 	bingo_count: 2,
 	bingo_count_type: "bingo",
-	difficulty: 4, // 4 easy, 1 very hard
-	length: 4, // 4 fast, 1 full game
-	beat: true,
-	ss: true,
-	keys: true,
-	characters: true,
+	difficulty: 2, // 4 easy, 1 very hard
+	length: 1, // 4 fast, 1 full game
+	beat: false,
+	ss: false,
+	keys: false,
+	characters: false,
 	apples: true,
-	tutorials: true,
-	difficults: true,
-	yottass: true,
-	sfinesse: true,
-	scomplete: true,
-	bcomplete: true,
-	dcomplete: true,
-	nosuper: true,
-	genocide: true,
-	unload: true,
-	lowdash: true,
-	lowjump: true,
-	lowattack: true,
-	lowdirection: true
+	tutorials: false,
+	difficults: false,
+	yottass: false,
+	sfinesse: false,
+	scomplete: false,
+	bcomplete: false,
+	dcomplete: false,
+	nosuper: false,
+	genocide: false,
+	unload: false,
+	lowdash: false,
+	lowjump: false,
+	lowattack: false,
+	lowdirection: false
 };
 
 // simplified session for testing
