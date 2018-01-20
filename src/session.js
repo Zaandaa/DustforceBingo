@@ -139,7 +139,7 @@ function build(io) {
 		}
 		if(!needsDecoding)
 		{
-			decode(user.name);
+			decoded(user.name);
 			return;
 		}
 		
