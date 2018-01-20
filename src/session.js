@@ -279,7 +279,19 @@ function build(io) {
 		self.addSocket = function (socket, lambda) {
 			sockets.push(socket);
 			
-			socket.on('disconnect', function() {
+			socket.safeOn = function(signal, func) {
+				socket.on(signal, function(data) {
+					try {
+						func(data)
+					} catch(e) {
+						console.error("Exception thrown on", signal + ":");
+						console.error(e);
+						socket.emit('internalError');
+					}
+				});
+			}
+			
+			socket.safeOn('disconnect', function() {
 				if (isPlayer(socket) && !start)
 					bingo.removePlayer(socket.custom.id);
 				sockets.splice(sockets.indexOf(socket), 1);
@@ -287,7 +299,7 @@ function build(io) {
 				delete socket;
 			});
 
-			socket.on('join', function(data) {
+			socket.safeOn('join', function(data) {
 				if (!verify(['username', 'session'], data, socket, 'joinResponse'))
 					return;
 				if (data.username == "")
@@ -328,7 +340,7 @@ function build(io) {
 				});
 			});
 
-			socket.on('multichoose', function(id) {
+			socket.safeOn('multichoose', function(id) {
 				if(!(id in socket.custom.multiple)) {
 					Error(socket, 'multiResponse', '<strong>Invalid operation!</strong> Ignoring input.');
 				}
@@ -343,41 +355,41 @@ function build(io) {
 				}
 			});
 			
-			socket.on('remove', function() {
+			socket.safeOn('remove', function() {
 				if (isPlayer(socket) && bingo.removePlayer(socket.custom.id))
 					delete socket.custom.id;
 				socket.emit('removed');
 			});
 			
-			socket.on('ready', function() {
+			socket.safeOn('ready', function() {
 				if (!isPlayer(socket))
 					return;
 				bingo.ready(socket.custom.id);
 			})
 			
-			socket.on('unready', function() {
+			socket.safeOn('unready', function() {
 				if (!isPlayer(socket))
 					return;
 				bingo.unready(socket.custom.id);
 			});
 			
-			socket.on('voteReset', function() {
+			socket.safeOn('voteReset', function() {
 				bingo.voteReset(socket.custom.id);
 			});
 			
-			socket.on('color', function(data) {
+			socket.safeOn('color', function(data) {
 				if (!isPlayer(socket))
 					return;
 				bingo.changePlayerColor(socket.custom.id, data.color);
 			})
 			
-			socket.on('start', function() {
+			socket.safeOn('start', function() {
 				if (!isPlayer(socket))
 					return;
 				startTimer(3000);
 			});
 			
-			socket.on('unstart', function() {
+			socket.safeOn('unstart', function() {
 				// start = false;
 			});
 
