@@ -201,10 +201,10 @@ function makeLevelGoalDatas(ruleset) {
 
 		constants.levelObjectives.forEach(function(o) {
 
-			if (o == "Beat" && !ruleset.beat)
-				return;
-			if (o == "SS" && !ruleset.ss)
-				return;
+			// if (o == "Beat" && !ruleset.beat)
+				// return;
+			// if (o == "SS" && !ruleset.ss)
+				// return;
 			if (o == "S finesse" && (!ruleset.sfinesse || !levels.levels[l].sfinesse))
 				return;
 			if (o == "S complete" && !ruleset.scomplete)
@@ -233,16 +233,25 @@ function makeLevelGoalDatas(ruleset) {
 				d = 2;
 			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
-			validGoalDatas.push({type: "level", level: l, objective: o, weight: 1});
 
-			if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty && o != "Unload" && o != "OOB") {
-				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
-				});
+			if (!(o == "Beat" && !ruleset.beat || o == "SS" && !ruleset.ss)) {
+				validGoalDatas.push({type: "level", level: l, objective: o, weight: 1});
+
+				if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty && o != "Unload" && o != "OOB") {
+					constants.characters.forEach(function(c) {
+						validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
+					});
+				}
 			}
 
-			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o]) {
+			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o] && d - 1 >= ruleset.difficulty) {
 				validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, weight: 1});
+
+				if (ruleset.characters && levels.levels[l].charselect) {
+					constants.characters.forEach(function(c) {
+						validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, character: c, weight: 1});
+					});
+				}
 			}
 		});
 
