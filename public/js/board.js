@@ -29,7 +29,10 @@ function updateBoardTable(boardData, target, includeBottom) {
 			var achievers = "";
 			for (var a in boardData.goals[i * boardData.size + j].achieved) {
 				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
-				if (lockout || player == boardData.players[achiever].id || playerHover == boardData.players[achiever].id) 
+				if (playerHover == boardData.players[achiever].id) 
+					innerCell.attr("style", "border-color:var(--" + boardData.players[playerHover].color + ");"
+										  + "background-color:var(--cell" + boardData.players[playerHover].color + ");");
+				else if (lockout || player == boardData.players[achiever].id) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
 										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 
