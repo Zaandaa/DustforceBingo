@@ -277,7 +277,7 @@ function makeTotalGoalDatas(ruleset) {
 	var validGoalDatas = [];
 	var usedTotalStrings = [];
 
-	var chars = constants.characters.slice();
+	var chars = ruleset.characters ? constants.characters.slice() : [];
 	chars.push(undefined);
 
 	constants.totalObjectives.forEach(function(o) {
