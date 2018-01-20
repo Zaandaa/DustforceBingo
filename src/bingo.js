@@ -453,7 +453,7 @@ var Bingo = function(session, ruleset) {
 		}
 
 		// new goals
-		self.goals = goal.makeGoals(ruleset);
+		self.goals = goal.makeGoals(ruleset, self.possibleBingos);
 
 		self.session.resetBingo();
 	};
