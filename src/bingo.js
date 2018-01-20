@@ -449,8 +449,7 @@ var Bingo = function(session, ruleset) {
 
 		// unready all
 		for (var p in self.players) {
-			self.players[p].voteReset(false);
-			self.players[p].setReady(false);
+			self.players[p].resetVars();
 		}
 
 		// new goals
