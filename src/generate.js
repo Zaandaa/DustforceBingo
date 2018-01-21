@@ -30,12 +30,10 @@ Array.prototype.syncMap = function(selector, doneCallback, name = "")
 	})
 	function run(i) 
 	{
-		console.log(PADDING, name, i, "starting");
 		if (i == funcs.length)
 			return doneCallback();
 		funcs[i](function()
 		{
-			console.log(PADDING, name, i, "finished");
 			run(i+1);
 		});
 	}
@@ -227,7 +225,7 @@ function main(levels, records, callback)
 	var levelsOutput = {};
 	var unloads = records["unload"]["Unload%"];
 	var oobs    = records["unload"]["OOB%"];
-	levels.syncMap(function(text, levlDone) 
+	levels.syncMap(function(text, levelDone) 
 	{
 		var level = text.split('\t').convertToObject('level', 'hub', 'type')
 		
@@ -240,12 +238,12 @@ function main(levels, records, callback)
 		var scorerecord = records["Any"]["Scores"][level.id]
 		
 		level.nosuper = {
-			Beat : timerecord .input_super > 0 && level.level != "Tera Difficult" && level.level != "Combat Tutorial",
-			SS   : scorerecord.input_super > 0 && level.level != "Tera Difficult" && level.level != "Combat Tutorial"
+			Beat : timerecord .input_super > 0 && !(level.level in ["Tera Difficult", "Combat Tutorial"]),
+			SS   : scorerecord.input_super > 0 && !(level.level in ["Tera Difficult", "Combat Tutorial"]),
 		},
 		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
 		level.dcomplete  = timerecord.score_completion != 1,
-		level.genocide   = timerecord.tag.genocide != "1",
+		level.genocide   = !(level.level in recordNotGenocide),
 		level.unload     = unloads[level.id] !== undefined,
 		level.oob        = oobs[level.id] !== undefined,
 		level.charselect = level.type != "Tutorial",
@@ -294,7 +292,7 @@ function main(levels, records, callback)
 					completionDone();
 				}, gimmickDone, "Completion");
 			});
-		}, levlDone, "Gimmick");
+		}, levelDone, "Gimmick");
 	},
 	function() 
 	{
@@ -626,6 +624,64 @@ var gimmickAccessor = {
 	"lowdirection":"input_directions",
 	"lowattack":""
 }
+
+var recordNotGenocide = [
+    "Combat Tutorial",
+    "Downhill",
+    "Fields",
+    "Valley",
+    "Firefly Forest",
+    "Dusk Run",
+    "Overgrown Temple",
+    "Summit",
+    "Grass Cave",
+    "Ruins",
+    "Ancient Garden",
+    "Night Temple",
+    "Secret Passage",
+    "Mezzanine",
+    "Caverns",
+    "Cliffside Caves",
+    "Library",
+    "Courtyard",
+    "Archive",
+    "Knight Hall",
+    "Ramparts",
+    "Moon Temple",
+    "Tower",
+    "Vacant Lot",
+    "Landfill",
+    "Abandoned Carpark",
+    "Park",
+    "Construction Site",
+    "Apartments",
+    "Warehouse",
+    "Forgotten Tunnel",
+    "Basement",
+    "Scaffolding",
+    "Rooftops",
+    "Concrete Temple",
+    "Control",
+    "Titan",
+    "Vats",
+    "Server Room",
+    "Security",
+    "Research",
+    "Wiring",
+    "Power Room",
+    "Access",
+    "Backup Shift",
+    "Core Temple",
+    "Abyss",
+    "Dome",
+    "Kilo Difficult",
+    "Mega Difficult",
+    "Giga Difficult",
+    "Tera Difficult",
+    "Exa Difficult",
+    "Zetta Difficult",
+    "Yotta Difficult"
+]
 
 preload(function(records) {
 	main(levels, records, function(output) { 
