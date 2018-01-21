@@ -415,7 +415,7 @@ function build(io) {
 		};
 		
 		self.playerFinish = function(id) {
-			emitAll('playerfinish', JSON.stringify({'player': id}));
+			// emitAll('playerfinish', JSON.stringify({'player': id}));
 		};
 		
 		self.finish = function() {

@@ -368,14 +368,14 @@ function getHist(replays, gimmick)
 }
 
 const difficultyThresholds = { // total achieved per difficulty tier
-	"apples"       : [2,  5, 10, 20, 30, 40, 50],
-	"lowdash"      : [2,  5, 10, 20, 30, 40, 50],
-	"lowjump"      : [1,  2,  5, 10, 20, 30, 40],
-	"lowdirection" : [0,  1,  2,  5, 10, 20, 30],
-	"lowattack"    : [0,  0,  1,  2,  5, 10, 20]
+	"apples"       : [5, 15, 25, 30, 35, 40],
+	"lowdash"      : [5, 15, 25, 30, 35, 40],
+	"lowjump"      : [5, 15, 25, 30, 35, 40],
+	"lowdirection" : [5, 15, 25, 30, 35, 40],
+	"lowattack"    : [5, 15, 25, 30, 35, 40]
 }
 const inputMaxProbablyIntended = {
-	"apples"       : 100, // all apples are intended, so this is effectivly infinity
+	"apples"       : 100, // all apples are intended, so this is effectively infinity
 	"lowdash"      : 3,
 	"lowjump"      : 10,
 	"lowdirection" : 10,
