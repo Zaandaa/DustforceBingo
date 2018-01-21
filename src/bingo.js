@@ -46,7 +46,7 @@ var Bingo = function(session, ruleset) {
 	self.possibleBingos = board.cachePossibleBingos(ruleset.size);
 	self.goals = goal.makeGoals(ruleset, self.possibleBingos);
 
-	self.error = self.goals.includes(undefined);
+	self.error = self.goals.includes(undefined) || (self.ruleset.size != 3 && self.ruleset.size != 5);
 	if (self.error)
 		return self;
 
@@ -246,18 +246,35 @@ var Bingo = function(session, ruleset) {
 
 		if (goalsRemaining == 0) {
 			// force end
+			self.isWon = true;
+			var rankedPlayers = {};
 			for (var p in self.players) {
-				var winner = possibleWinners.includes[p]
-				if (self.players[p].finishTime == 0)
-					self.players[p].finish(Date.now() - self.startTime, winner, self.playersDone + 1);
-				if (winner)
-					self.session.playerFinish(p);
+				if (self.players[p].finishTime > 0)
+					continue;
+				else if (possibleWinners.includes[p]) { // tie win, not already done
+					self.players[p].finish(Date.now() - self.startTime, true, 1);
+					self.playersDone++;
+				} else {
+					var score = self.players[p].goalsAchieved.length + (self.ruleset.bingo_count_type == "bingo" ? self.players[p].bingos * 100 : 0);
+					if (!rankedPlayers[score])
+						rankedPlayers[score] = [];
+					rankedPlayers[score].push(p);
+				}
 			}
+
+			var sortedRanks = Object.keys(rankedPlayers).slice();
+			sortedRanks.sort(function(a,b) { return b-a; });
+			for (var score in sortedRanks) {
+				for (var p in rankedPlayers[sortedRanks[score]]) {
+					self.players[rankedPlayers[sortedRanks[score]][p]].finish(Date.now() - self.startTime, false, self.playersDone + 1);
+				}
+				self.playersDone += rankedPlayers[sortedRanks[score]].length;
+			}
+
 		} else if (possibleWinners.length == 1) {
 			// force win
 			self.isWon = true;
 			self.players[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.playersDone + 1);
-			self.session.playerFinish(possibleWinners[0]);
 			self.playersDone++;
 		}
 	};
@@ -269,14 +286,12 @@ var Bingo = function(session, ruleset) {
 		if (self.ruleset.bingo_count_type == "bingo") {
 			if (self.playerCountBingo(id) >= self.ruleset.bingo_count) {
 				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.playersDone + 1);
-				self.session.playerFinish(id);
 				self.isWon = true;
 				self.playersDone++;
 			}
 		} else { // count player goals
 			if (self.players[id].goalsAchieved.length >= self.ruleset.bingo_count) {
 				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.playersDone + 1);
-				self.session.playerFinish(id);
 				self.isWon = true;
 				self.playersDone++;
 			}
