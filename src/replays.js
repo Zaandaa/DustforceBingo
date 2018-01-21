@@ -1,8 +1,10 @@
+var util = require('./utils');
 var http = require('http');
 
 var seperator = '\u001e';
 
 var lastTimeToken = new Date().getTime().toString().slice(0, -3);
+var timeout = 10200; //ms
 
 // bound by [timeout, 2*timeout)
 function keepAlive(timeout, onTimeout) {
@@ -27,6 +29,7 @@ function keepAlive(timeout, onTimeout) {
 function createParser(lambda, updated) {
 	var data="";
 	return function (chunk) {
+		console.log((new Date().toLocaleString()), "Replay:", "Message from dustkid");
 		updated();
 		data += chunk;
 		var items = data.split(seperator);
@@ -35,19 +38,22 @@ function createParser(lambda, updated) {
 		items.forEach(function(i) {
 			if (i == "") 
 				return;
-			lambda(JSON.parse(i));
+			
+			var r = JSON.parse(i);
+			console.log((new Date().toLocaleString()), "Replay:", util.getReplayScore(r) + util.pad("left", r.levelname, 19) + " " + util.pad("left", r.username, 20));	
+			lambda(r);
 		});
 	}
 }
 	
 function start(lambda) {
 	http.get("http://dustkid.com/backend/events.php?time_token=" 
-			+ lastTimeToken,  
+			+ new Date(lastTimeToken - timeout).getTime().toString().slice(0, -3), // double headroom  
 		function (res) {
-			console.log("Connected to dustkid replays");
+			console.log((new Date().toLocaleString()), "Replay:", "Connected to dustkid replays");
 			res.setEncoding('utf8');
-			var updated = keepAlive(30000, function() {
-				console.log("Dustkid timed out, reconnecting to dustkid");
+			var updated = keepAlive(timeout, function() {
+				console.log((new Date().toLocaleString()), "Replay:", "Reconnecting to dustkid");
 				res.destroy();
 				start(lambda);
 			});

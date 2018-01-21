@@ -22,7 +22,6 @@ function build(io) {
 	extern.rooms = {};
  
 	replays(function(r) {
-		console.log("Replay: " + util.getReplayScore(r) + util.pad("left", r.levelname, 19) + " " + util.pad("left", r.username, 20));
 		for(s in extern.rooms) {
 			extern.rooms[s].receiveReplay(r);
 		}
