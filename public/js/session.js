@@ -180,10 +180,15 @@ $(document).on('ready', function() {
 	
 	// SOCKETS:
 	
+	socket.on('internalError', function() {
+		$(".alert-danger .alert-text").html("<strong>Something went wrong!</strong> Please message TMC or Zaandaa");
+		$(".alert-danger").alert(200, 5000, 100);
+	});
+	
 	socket.on('connectionResponse', function(data) {
 		if(data.err) {
 			$(".alert-danger .alert-text").html(data.message);
-			$(".alert-danger").alert(200, 2000, 100);
+			$(".alert-danger").alert(200, 5000, 100);
 		} else {
 			// console.log(data.message);
 		}
