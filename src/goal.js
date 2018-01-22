@@ -133,6 +133,10 @@ function updateUsedGoalStats(usedGoalStats, goalData) {
 
 	if (goalData.leveltype)
 		usedGoalStats.leveltypes[goalData.leveltype]++;
+	else if (goalData.keytype)
+		usedGoalStats.leveltypes[constants.levelTypes[constants.keys.indexOf(goalData.keytype)]]++;
+	else if (goalData.type == "level")
+		usedGoalStats.leveltypes[levels.levels[goalData.level].type]++;
 
 	o = goalData.gtype || goalData.objective;
 
@@ -157,7 +161,7 @@ function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
 		usedGoalStats.levelObjectiveWeightTotal += usedGoalStats.levelObjectiveWeights[o];
 
 		for (var gd in filteredDatas) {
-			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 0));
+			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + 4 * usedGoalStats.leveltypes[levels.levels[filteredDatas[gd].level].type]);
 			if (filteredDatas[gd].character)
 				w *= 0.25;
 
@@ -177,11 +181,14 @@ function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
 		usedGoalStats.totalObjectiveWeightTotal += usedGoalStats.totalObjectiveWeights[o];
 
 		for (var gd in filteredDatas) {
-			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 0));
+			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + 4 * (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 0));
 			if (filteredDatas[gd].character)
 				w *= 0.5;
-			if (filteredDatas[gd].leveltype)
+			if (filteredDatas[gd].leveltype) { 
 				w *= 0.5;
+				if (filteredDatas[gd].hub)
+					w *= 0.5;
+			}
 
 			filteredDatas[gd].weight = w;
 			usedGoalStats.totalWeightsInObjective[o] += w;
@@ -257,6 +264,8 @@ function makeLevelGoalDatas(ruleset) {
 
 		levels.levels[l].gimmicks.forEach(function(g) {
 			if (!ruleset[g.type])
+				return;
+			if (g.objective == "SS" && !ruleset.ss)
 				return;
 			if (g.difficulty < ruleset.difficulty || g.difficulty > ruleset.maxEasy)
 				return;
@@ -395,6 +404,8 @@ function makeTotalGoalDatas(ruleset) {
 			} else if (o == "apples") {
 				// appleType
 				["count", "Beat", "SS"].forEach(function(a) {
+					if (a == "SS" && !ruleset.ss)
+						return;
 					// character
 					chars.forEach(function(c) {
 						// hub
