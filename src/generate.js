@@ -385,7 +385,7 @@ function getDifficulty(histogram, gimmick)
 	var output         = []	
 	var previous       = histogram[0].count;
 	var done           = false;
-	var lastDifficulty = 0;
+	var lastDifficulty = -1;
 
 	histogram.forEach(function(h) {
 		difficulty = getLastThreshold(gimmick, h.rank + h.ties);

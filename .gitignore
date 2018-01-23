@@ -2,3 +2,4 @@ node_modules/
 private/
 *.log
 *.bat
+src/out.txt
