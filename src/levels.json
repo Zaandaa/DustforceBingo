@@ -77,7 +77,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": false,
+            "genocide": true,
             "unload": true,
             "oob": false,
             "charselect": false,
@@ -159,7 +159,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": false,
@@ -221,15 +221,8 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 2,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 4,
-                    "count": 1,
                     "character": false
                 },
                 {
@@ -277,7 +270,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 4,
                     "character": false
                 },
@@ -302,7 +295,7 @@
             },
             "sfinesse": false,
             "dcomplete": true,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -401,14 +394,14 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 14,
                     "character": false
                 }
@@ -566,7 +559,7 @@
                     "type": "lowjump",
                     "objective": "Beat",
                     "difficulty": 6,
-                    "count": 3,
+                    "count": 1,
                     "character": false
                 },
                 {
@@ -625,7 +618,7 @@
             },
             "sfinesse": false,
             "dcomplete": true,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -728,7 +721,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -824,7 +817,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -1002,7 +995,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -1105,7 +1098,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": true,
             "charselect": true,
@@ -1244,14 +1237,14 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 5,
+                    "difficulty": 6,
                     "count": 12,
                     "character": false
                 },
@@ -1276,7 +1269,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -1378,6 +1371,13 @@
                     "difficulty": 2,
                     "count": 9,
                     "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 12,
+                    "character": false
                 }
             ]
         },
@@ -1393,7 +1393,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -1578,7 +1578,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -1607,14 +1607,14 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 8,
+                    "difficulty": 6,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 6,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -1653,7 +1653,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -1735,7 +1735,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": false,
             "charselect": true,
@@ -1757,7 +1757,7 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -1874,14 +1874,14 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 5,
+                    "difficulty": 6,
                     "count": 10,
                     "character": false
                 }
@@ -1899,7 +1899,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -1965,6 +1965,13 @@
                     "objective": "Beat",
                     "difficulty": 2,
                     "count": 9,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 11,
                     "character": false
                 },
                 {
@@ -2077,7 +2084,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -2173,7 +2180,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -2244,7 +2251,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 9,
                     "character": false
                 }
@@ -2262,7 +2269,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -2351,7 +2358,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -2426,7 +2433,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -2515,7 +2522,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -2597,7 +2604,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -2729,22 +2736,8 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 27,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "Beat",
-                    "difficulty": 4,
-                    "count": 28,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "Beat",
                     "difficulty": 5,
-                    "count": 29,
+                    "count": 27,
                     "character": false
                 },
                 {
@@ -2757,8 +2750,15 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 28,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 5,
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -2775,7 +2775,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -2843,7 +2843,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -2865,7 +2865,14 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 2,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -2873,7 +2880,7 @@
                     "type": "lowdash",
                     "objective": "SS",
                     "difficulty": 3,
-                    "count": 0,
+                    "count": 1,
                     "character": false
                 },
                 {
@@ -2907,21 +2914,21 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 4,
+                    "difficulty": 5,
                     "count": 27,
                     "character": false
                 }
@@ -2981,6 +2988,20 @@
                 },
                 {
                     "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 11,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 6,
+                    "count": 12,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 11,
@@ -2989,7 +3010,7 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 5,
+                    "difficulty": 6,
                     "count": 13,
                     "character": false
                 }
@@ -3057,7 +3078,7 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 5,
                     "character": false
                 }
@@ -3075,7 +3096,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": true,
             "charselect": true,
@@ -3171,7 +3192,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -3274,7 +3295,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -3480,7 +3501,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -3554,6 +3575,27 @@
                     "difficulty": 2,
                     "count": 6,
                     "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 7,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 4,
+                    "count": 8,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 5,
+                    "count": 9,
+                    "character": false
                 }
             ]
         },
@@ -3569,7 +3611,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -3654,29 +3696,15 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 22,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "SS",
-                    "difficulty": 4,
-                    "count": 23,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "SS",
-                    "difficulty": 6,
-                    "count": 24,
                     "character": false
                 }
             ]
@@ -3693,7 +3721,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": true,
             "charselect": true,
@@ -3789,7 +3817,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -3867,7 +3895,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 9,
                     "character": false
                 }
@@ -3885,7 +3913,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -3960,7 +3988,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -4049,7 +4077,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -4109,6 +4137,20 @@
                     "difficulty": 2,
                     "count": 3,
                     "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 4,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 6,
+                    "count": 6,
+                    "character": false
                 }
             ]
         },
@@ -4124,7 +4166,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -4213,7 +4255,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -4270,7 +4312,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 10,
                     "character": false
                 }
@@ -4310,7 +4352,21 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "Beat",
                     "difficulty": 3,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -4318,13 +4374,6 @@
                     "type": "lowdash",
                     "objective": "SS",
                     "difficulty": 3,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 6,
                     "count": 1,
                     "character": false
                 },
@@ -4363,7 +4412,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -4385,27 +4434,6 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 4,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 6,
-                    "count": 2,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
                     "difficulty": 2,
                     "count": 0,
                     "character": false
@@ -4413,8 +4441,8 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 3,
-                    "count": 2,
+                    "difficulty": 2,
+                    "count": 0,
                     "character": false
                 }
             ]
@@ -4535,7 +4563,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 1,
                     "count": 0,
                     "character": false
                 },
@@ -4566,6 +4594,13 @@
                     "difficulty": 2,
                     "count": 12,
                     "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 13,
+                    "character": false
                 }
             ]
         },
@@ -4581,7 +4616,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -4654,6 +4689,20 @@
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 15,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 16,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 4,
+                    "count": 17,
                     "character": false
                 }
             ]
@@ -4741,8 +4790,22 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 3,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 5,
+                    "count": 4,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 6,
+                    "count": 5,
                     "character": false
                 }
             ]
@@ -4759,7 +4822,7 @@
             },
             "sfinesse": false,
             "dcomplete": true,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -4958,7 +5021,7 @@
             },
             "sfinesse": false,
             "dcomplete": true,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -5054,7 +5117,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -5136,7 +5199,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -5218,7 +5281,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -5293,7 +5356,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": false,
             "charselect": true,
@@ -5308,7 +5371,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 8,
+                    "difficulty": 6,
                     "count": 0,
                     "character": false
                 },
@@ -5343,7 +5406,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 6,
                     "character": false
                 }
@@ -5429,7 +5492,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -5525,7 +5588,7 @@
             },
             "sfinesse": false,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -5582,14 +5645,14 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 6,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 5,
+                    "difficulty": 6,
                     "count": 7,
                     "character": false
                 },
@@ -5614,7 +5677,7 @@
             },
             "sfinesse": true,
             "dcomplete": true,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": true,
             "charselect": true,
@@ -5642,23 +5705,9 @@
                 },
                 {
                     "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 2,
-                    "count": 1,
                     "character": false
                 }
             ]
@@ -5675,7 +5724,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -5697,14 +5746,14 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 1,
                     "count": 0,
                     "character": false
                 },
@@ -5736,7 +5785,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -5767,13 +5816,6 @@
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 3,
-                    "count": 1,
                     "character": false
                 },
                 {
@@ -5818,7 +5860,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -5840,7 +5882,7 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -5849,20 +5891,6 @@
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 3,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 5,
-                    "count": 2,
                     "character": false
                 },
                 {
@@ -5914,7 +5942,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": false,
             "charselect": true,
@@ -5922,14 +5950,14 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 1,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 1,
                     "count": 0,
                     "character": false
                 },
@@ -5961,7 +5989,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -6015,7 +6043,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -6023,14 +6051,14 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 1,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 1,
                     "count": 0,
                     "character": false
                 },
@@ -6055,7 +6083,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": false,
             "charselect": true,
@@ -6063,7 +6091,7 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 8,
+                    "difficulty": 6,
                     "count": 0,
                     "character": false
                 },
@@ -6152,7 +6180,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 5,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -6191,7 +6219,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,
@@ -6199,7 +6227,14 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 3,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 1,
                     "count": 0,
                     "character": false
                 },
@@ -6207,7 +6242,7 @@
                     "type": "lowdash",
                     "objective": "SS",
                     "difficulty": 2,
-                    "count": 0,
+                    "count": 2,
                     "character": false
                 },
                 {
@@ -6245,7 +6280,7 @@
             },
             "sfinesse": true,
             "dcomplete": true,
-            "genocide": true,
+            "genocide": false,
             "unload": false,
             "oob": true,
             "charselect": true,
@@ -6306,7 +6341,7 @@
             },
             "sfinesse": true,
             "dcomplete": false,
-            "genocide": true,
+            "genocide": false,
             "unload": true,
             "oob": true,
             "charselect": true,

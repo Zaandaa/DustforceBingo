@@ -247,7 +247,7 @@ function main(levels, records, callback)
 		},
 		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
 		level.dcomplete  = timerecord.score_completion != 1,
-		level.genocide   = !(level.level in recordNotGenocide),
+		level.genocide   = !(forceGenocide.includes(level.level)),
 		level.unload     = unloads[level.id] !== undefined,
 		level.oob        = oobs[level.id] !== undefined,
 		level.charselect = level.type != "Tutorial",
@@ -255,7 +255,8 @@ function main(levels, records, callback)
 		
 		gimmicks.syncMap(function(gimmick, gimmickDone) 
 		{
-			var url = "http://dustkid.com/json/level/" + level.id + "/" + leaderboards["gimmicks"][gimmick];
+			var url = "http://dustkid.com/json/level/" + level.id + "/" 
+				+ leaderboards["gimmicks"][gimmick] + "/0/" + gimmickLeaderboardSize[gimmick];
 			getJSONWrapper(url, 30000, function(top50)
 			{
 				completions.syncMap(function(objective, completionDone) 
@@ -369,21 +370,6 @@ function getHist(replays, gimmick)
 	return output;
 }
 
-const difficultyThresholds = { // total achieved per difficulty tier
-	"apples"       : [5, 15, 25, 30, 35, 40],
-	"lowdash"      : [5, 15, 25, 30, 35, 40],
-	"lowjump"      : [5, 15, 25, 30, 35, 40],
-	"lowdirection" : [5, 15, 25, 30, 35, 40],
-	"lowattack"    : [5, 15, 25, 30, 35, 40]
-}
-const inputMaxProbablyIntended = {
-	"apples"       : 100, // all apples are intended, so this is effectively infinity
-	"lowdash"      : 3,
-	"lowjump"      : 10,
-	"lowdirection" : 10,
-	"lowattack"    : 30
-};
-
 function getDifficulty(histogram, gimmick) 
 {
 	var output         = []	
@@ -414,21 +400,44 @@ function getDifficulty(histogram, gimmick)
 /*
  * Data
  */
-
-var gimmicks = [
+const gimmicks = [
 	"apples",
 	"lowdash",
 	"lowjump",
 	"lowdirection",
 	"lowattack"
 ];
+ 
+const difficultyThresholds = { // total achieved per difficulty tier
+	"apples"       : [ 5, 15, 25, 30, 35, 40],
+	"lowdash"      : [10, 30, 50, 60, 70, 80],
+	"lowjump"      : [ 5, 15, 25, 30, 35, 40],
+	"lowdirection" : [ 5, 15, 25, 30, 35, 40],
+	"lowattack"    : [ 5, 10, 15, 20, 30, 40]
+};
 
-var completions = [
+const inputMaxProbablyIntended = {
+	"apples"       : 100, // all apples are intended, so this is effectively infinity
+	"lowdash"      : 3,
+	"lowjump"      : 10,
+	"lowdirection" : 10,
+	"lowattack"    : 30
+};
+
+const gimmickLeaderboardSize = {
+	"apples"       : 50,
+	"lowdash"      : 100,
+	"lowjump"      : 50,
+	"lowdirection" : 50,
+	"lowattack"    : 50
+}
+
+const completions = [
 	"Beat",
 	"SS"
 ];
 
-var characters = [
+const characters = [
 	"Dustman", 
 	"Dustgirl", 
 	"Dustkid", 
@@ -436,7 +445,7 @@ var characters = [
 	""
 ]
 
-var levels = [
+const levels = [
 	"Beginner Tutorial	Tutorial	Tutorial",
 	"Combat Tutorial	Tutorial	Tutorial",
 	"Advanced Tutorial	Tutorial	Tutorial",
@@ -514,7 +523,7 @@ var levels = [
 	"Yotta Difficult	Difficult	Difficult"
 ]
 
-var leaderboards = {
+const leaderboards = {
 	"gimmicks":{
 		// internal:external
 		"apples": "apple",
@@ -613,7 +622,7 @@ var leaderboards = {
 	}
 }
 
-var keyfromtype = {
+const keyfromtype = {
 	"Tutorial":null,
 	"Open":"Wood",
 	"Wood":"Silver",
@@ -622,7 +631,7 @@ var keyfromtype = {
 	"Difficult":null
 }	
 
-var gimmickAccessor = {
+const gimmickAccessor = {
 	"apples":"apples",
 	"lowdash":"input_dashes",
 	"lowjump":"input_jumps",
@@ -630,8 +639,7 @@ var gimmickAccessor = {
 	"lowattack":""
 }
 
-var recordNotGenocide = [
-	"Beginner Tutorial",
+const forceGenocide = [
     "Combat Tutorial",
     "Downhill",
     "Fields",
