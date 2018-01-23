@@ -9,6 +9,7 @@ extern.optionNames = {
 	"beat": "beat levels",
 	"ss": "SS levels",
 	"keys": "get keys",
+	"multilevel": "multiple levels",
 	"characters": "characters",
 	"apples": "apples",
 	"tutorials": "tutorials",

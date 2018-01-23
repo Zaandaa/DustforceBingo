@@ -1,11 +1,12 @@
 var chance = {
 	"New Game": {
 		level: {
-			chance: 0.3,
+			chance: 0.5,
 			length_bonus: 0.1,
 		},
 		total: {
 			chance: 1,
+			type_bonus: 0.05,
 			Beat: {
 				minimum: 4,
 				range: 60,
@@ -26,11 +27,12 @@ var chance = {
 	},
 	"New Game +": {
 		level: {
-			chance: 0.3,
+			chance: 0.5,
 			length_bonus: 0.1,
 		},
 		total: {
 			chance: 1,
+			type_bonus: 0.05,
 			Beat: {
 				minimum: 4,
 				range: 60,

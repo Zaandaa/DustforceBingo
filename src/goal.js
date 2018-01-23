@@ -19,7 +19,7 @@ extern.makeGoals = function(ruleset, bingos) {
 	var r;
 
 	var levelGoalDatas = makeLevelGoalDatas(ruleset);
-	var totalGoalDatas = makeTotalGoalDatas(ruleset);
+	var totalGoalDatas = ruleset.multilevel ? makeTotalGoalDatas(ruleset) : [];
 
 	var usedGoalStats = {
 		levels: 0,
@@ -52,12 +52,14 @@ extern.makeGoals = function(ruleset, bingos) {
 		usedGoalStats.levelObjectiveWeights[g] = 0;
 	}
 
+	var availableTotalTypes = (ruleset.beat ? 1 : 0) + (ruleset.ss ? 1 : 0) + (ruleset.keys ? 1 : 0) + (ruleset.apples ? 1 : 0);
+
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
 		reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas);
 
 		var g;
 		r = Math.random();
-		if (levelGoalDatas.length > 0 && (r < chance[ruleset.save].level.chance + ruleset.length * chance[ruleset.save].level.length_bonus || totalGoalDatas.length == 0))
+		if (levelGoalDatas.length > 0 && (r < chance[ruleset.save].level.chance + ruleset.length * chance[ruleset.save].level.length_bonus - availableTotalTypes * chance[ruleset.save].total.type_bonus || totalGoalDatas.length == 0))
 			g = new Goal(chooseLevelGoalData(levelGoalDatas, usedGoalStats));
 		else if (totalGoalDatas.length > 0)
 			g = new Goal(chooseTotalGoalData(totalGoalDatas, usedGoalStats));
@@ -445,9 +447,6 @@ function chooseLevelGoalData(levelGoalDatas, usedGoalStats) {
 	var r;
 	var count;
 
-	// make available list (some will exist)
-	var availableTypes = Object.keys(usedGoalStats.levelObjectives).filter(o => usedGoalStats.levelWeightsInObjective[o] > 0);
-
 	// choose random objective
 	var o;
 	r = Math.random() * usedGoalStats.levelObjectiveWeightTotal;
@@ -486,9 +485,6 @@ function chooseTotalGoalData(totalGoalDatas, usedGoalStats) {
 	var goalData;
 	var r;
 	var count;
-
-	// make available list (some will exist)
-	var availableTypes = Object.keys(usedGoalStats.totalObjectives).filter(o => usedGoalStats.totalWeightsInObjective[o] > 0);
 
 	// choose random objective
 	var o;

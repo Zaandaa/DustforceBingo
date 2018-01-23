@@ -154,12 +154,21 @@ block content
 							div.col-xl-6.second
 								div.checkbox
 									label
+										input#multilevel.session(   type="checkbox" checked)
+										<img id="check_multilevel" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										<img class="icon" src="http://dustkid.com/static/iconVacuum.png" />
+										p Multi levels
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Goals can require multiple levels of your choice")
+											div(style="position: relative; top: -1px") ?
+								div.checkbox
+									label
 										input#characters.session(   type="checkbox" checked)
 										<img id="check_characters" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
 										<img class="icon" src="http://dustkid.com/static/iconAll.png" />
 										p Characters
 									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Goals can require you to play a specific character")
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Goals can require a specific character")
 											div(style="position: relative; top: -1px") ?
 								div.checkbox
 									label
