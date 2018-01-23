@@ -221,6 +221,9 @@ var Player = function(id, name) {
 					if (goalData.character && self.allCompletes[level].character != goalData.character)
 						continue;
 
+					if (self.allCompletes[level].apples < 1)
+						continue;
+
 					count++;
 				}
 			} else {
