@@ -473,6 +473,13 @@ select {
 	.alert-text {
 		width:auto;
 	}
+
+	.mainkid {
+		display: none;
+	}
+	#toprow {
+		height: 160px;
+	}
 }
 
 .close:hover {

@@ -114,6 +114,10 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 		baseMax *= 1 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
 		baseMin *= 1 - ((ruleset.difficulty - 1) + 2 * (ruleset.length - 1)) * 0.075;
 	}
+	if (goalData.appleType == "SS") {
+		baseMax *= 1 - (ruleset.difficulty - 1) * 0.25;
+		baseMin *= 1 - (ruleset.difficulty - 1) * 0.25;
+	}
 
 	return baseMin <= goalData.total && goalData.total <= baseMax;
 }

@@ -39,7 +39,7 @@ html
 
 		script= "const sessionId = \'" + session.id + "';"
 		script= "const bingoSize = \'" + size + "';"
-		script= "const lockout = '" + lockout + "' == 'on';"
+		script= "const lockout = '" + lockout + "' == 'true';"
 		script= "var player = \'" + player + "';"
 		script(src="/bingo/socket/socket.io.min.js")
 		script(src="/bingo/js/board.js")

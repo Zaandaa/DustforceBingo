@@ -3,7 +3,8 @@ extends layout
 block js
 	script= "const sessionId = \'" + session.id + "';"
 	script= "const bingoSize = \'" + size + "';"
-	script= "const lockout = '" + lockout + "' == 'on';"
+	script= "const lockout = '" + lockout + "' == 'true';"
+	script= "const hidden = '" + hidden + "' == 'true';"
 	script= "var player = undefined"
 	script(src="/bingo/socket/socket.io.min.js")
 	script(src="/bingo/js/board.js")
@@ -64,10 +65,13 @@ block content
 				ul
 					li #{save}, Length: #{length}, Difficulty: #{difficulty}
 					li #{size} by #{size}, first to #{wincondition}
-					li Lockout: #{lockout}
-					li Goal options: #{options}
+					if lockout == "true"
+						li Lockout: Each goal can only be achieved by one person.
+					if hidden == "true"
+						li Hidden: Start with only the center goal visible. Reveal neighbor goals by getting goals.
 					li Players start at the Nexus door
 					li Level tomes and level editor are banned
+					li Goal options: #{options}
 
 		div.col-xl-8.noselect
 			- var sizeArray = new Array(parseInt(size) || 1)
