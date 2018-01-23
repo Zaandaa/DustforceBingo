@@ -478,7 +478,12 @@ select {
 		display: none;
 	}
 	#toprow {
-		height: 160px;
+		height: 140px;
+		text-align: center;
+	}
+	#toprow a {
+		top: 0px;
+		left: 15px;
 	}
 }
 
