@@ -14,6 +14,7 @@ var params = [
 	"save", 
 	"size", 
 	"lockout", 
+	"hidden", 
 	"bingo_count", 
 	"bingo_count_type", 
 	"difficulty_raw", 
@@ -81,7 +82,8 @@ function build(io) {
 			save: s.bingo_args.save,
 			difficulty: s.bingo_args.difficulty_raw,
 			length: s.bingo_args.length_raw,
-			lockout: s.bingo_args.lockout ? "on" : "off",
+			lockout: s.bingo_args.lockout ? "true" : "false",
+			hidden: s.bingo_args.hidden ? "true" : "false",
 			options: s.getBingoGoalOptions()
 		});
 	});
@@ -99,7 +101,7 @@ function build(io) {
 		res.render('popout', {
 			session: s,
 			size: s.bingo_args.size,
-			lockout: s.bingo_args.lockout ? "on" : "off",
+			lockout: s.bingo_args.lockout ? "true" : "false",
 			player: player
 		});
 	});

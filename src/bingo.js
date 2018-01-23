@@ -14,6 +14,7 @@ var Bingo = function(session, ruleset) {
 	self.ruleset = ruleset;
 
 	// translate ruleset
+	self.ruleset.size = parseInt(self.ruleset.size, 10);
 	for (var r in self.ruleset) {
 		if (self.ruleset[r] == "true")
 			self.ruleset[r] = true;
@@ -43,8 +44,8 @@ var Bingo = function(session, ruleset) {
 	self.error = false;
 
 	self.players = {};
-	self.possibleBingos = board.cachePossibleBingos(ruleset.size);
-	self.goals = goal.makeGoals(ruleset, self.possibleBingos);
+	self.possibleBingos = board.cachePossibleBingos(self.ruleset.size);
+	self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
 
 	self.error = self.goals.includes(undefined) || (self.ruleset.size != 3 && self.ruleset.size != 5);
 	if (self.error)
@@ -298,6 +299,21 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
+	self.revealGoalNeighbors = function(i) {
+		if (i >= self.ruleset.size) { // not top, reveal above
+			self.goals[i - self.ruleset.size].reveal();
+		}
+		if (i < self.ruleset.size * self.ruleset.size - self.ruleset.size) { // not bottom, reveal below
+			self.goals[i + self.ruleset.size].reveal();
+		}
+		if (i % self.ruleset.size > 0) { // not left, reveal left
+			self.goals[i - 1].reveal();
+		}
+		if (i % self.ruleset.size < self.ruleset.size - 1) { // not right, reveal right
+			self.goals[i + 1].reveal();
+		}
+	};
+
 	self.start = function() {
 		var ready = false;
 		for (var p in self.players) {
@@ -328,6 +344,15 @@ var Bingo = function(session, ruleset) {
 			self.session.removedPlayerOnStart(playersToRemove[i]);
 		}
 
+		// reveal if needed
+		if (!ruleset.hidden) {
+			for (var i = 0; i < self.goals.length; i++) {
+				self.goals[i].reveal();
+			}
+		} else { // middle
+			self.goals[Math.floor(self.ruleset.size * self.ruleset.size / 2)].reveal();
+		}
+
 		self.startTime = Date.now();
 
 		self.session.updateBoard();
@@ -355,16 +380,16 @@ var Bingo = function(session, ruleset) {
 		// validate
 		if (replay.validated < 1 && replay.validated != -3) {
 			if (replay.validated == -7) {
-				if (!ruleset.minecraft)
+				if (!self.ruleset.minecraft)
 					return false;
 			} else if (replay.validated == -8) {
-				if (!ruleset.boss)
+				if (!self.ruleset.boss)
 					return false;
 			} else if (replay.validated == -9) {
-				if (!ruleset.unload)
+				if (!self.ruleset.unload)
 					return false;
 			} else if (replay.validated == -10) {
-				if (!ruleset.someplugin)
+				if (!self.ruleset.someplugin)
 					return false;
 			} else
 				return false;
@@ -392,6 +417,8 @@ var Bingo = function(session, ruleset) {
 				self.goals[i].addAchiever(replay.user);
 				self.players[replay.user].achieveGoal(i);
 				success = true;
+				if (self.ruleset.hidden)
+					self.revealGoalNeighbors(i);
 				// console.log("GOAL ACHIEVED", i, replay.username);
 			}
 		}
@@ -468,7 +495,7 @@ var Bingo = function(session, ruleset) {
 		}
 
 		// new goals
-		self.goals = goal.makeGoals(ruleset, self.possibleBingos);
+		self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
 
 		self.session.resetBingo();
 	};

@@ -570,13 +570,14 @@ var Goal = function(goalData) {
 	self.goalData = goalData;
 	self.goalString = makeGoalString(goalData);
 	self.achieved = [];
+	self.revealed = false;
 
 	self.toString = function() {
 		return self.goalString;
 	};
 
 	self.getBoardData = function() {
-		return {title: self.goalString, achieved: self.achieved};
+		return {title: self.revealed ? self.goalString : "", achieved: self.achieved};
 	};
 
 	self.isAchieved = function() {
@@ -585,7 +586,12 @@ var Goal = function(goalData) {
 
 	self.addAchiever = function(a) {
 		self.achieved.push(a);
+		self.reveal();
 	};
+
+	self.reveal = function() {
+		self.revealed = true;
+	}
 
 	self.compareReplay = function(replay, player) {
 		// check if replay meets goalData

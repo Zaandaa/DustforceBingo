@@ -20,13 +20,13 @@ var rules = {
 	lockout: true,
 	bingo_count: 2,
 	bingo_count_type: "bingo",
-	difficulty: 2, // 4 easy, 1 very hard
-	length: 1, // 4 fast, 1 full game
-	beat: false,
-	ss: false,
-	keys: false,
-	characters: false,
-	apples: true,
+	difficulty: 3, // 4 easy, 1 very hard
+	length: 3, // 4 fast, 1 full game
+	beat: true,
+	ss: true,
+	keys: true,
+	characters: true,
+	apples: false,
 	tutorials: false,
 	difficults: false,
 	yottass: false,
