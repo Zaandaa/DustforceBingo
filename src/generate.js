@@ -1,7 +1,10 @@
 var http = require('http');
+var fs = require('fs');
 var utils = require('./utils');
 
 var PADDING = new Array(39).join(" ")
+
+var outputJson = require("./levels.json");
 
 /*
  * Extension methods
@@ -223,6 +226,7 @@ function preload(callback)
 function main(levels, records, callback) 
 {
 	var levelsOutput = {};
+	outputJson.levels = levelsOutput;
 	var unloads = records["unload"]["Unload%"];
 	var oobs    = records["unload"]["OOB%"];
 	levels.syncMap(function(text, levelDone) 
@@ -296,7 +300,7 @@ function main(levels, records, callback)
 	},
 	function() 
 	{
-		callback(levelsOutput);
+		callback();
 	}, "Level");
 }
 
@@ -387,11 +391,12 @@ function getDifficulty(histogram, gimmick)
 	var done           = false;
 	var lastDifficulty = -1;
 
-	histogram.forEach(function(h) {
+	histogram.forEach(function(h) 
+	{
 		difficulty = getLastThreshold(gimmick, h.rank + h.ties);
-		if (difficulty > 6 || difficulty == lastDifficulty)
+		if ((difficulty > 6 && output.length != 0)|| difficulty == lastDifficulty)
 			done = true;
-
+		
 		if(done)
 			return;
 
@@ -626,6 +631,7 @@ var gimmickAccessor = {
 }
 
 var recordNotGenocide = [
+	"Beginner Tutorial",
     "Combat Tutorial",
     "Downhill",
     "Fields",
@@ -684,8 +690,10 @@ var recordNotGenocide = [
 ]
 
 preload(function(records) {
-	main(levels, records, function(output) { 
-		console.log(JSON.stringify(output, null, 4)); 
+	main(levels, records, function() { 
+		fs.writeFile("./levels.json", JSON.stringify(outputJson, null, 4), function() {
+			
+		}); 
 	});
 });
 
