@@ -665,9 +665,7 @@ const forceGenocide = [
     "Tower",
     "Vacant Lot",
     "Landfill",
-    "Abandoned Carpark",
     "Park",
-    "Construction Site",
     "Apartments",
     "Warehouse",
     "Forgotten Tunnel",
@@ -692,6 +690,7 @@ const forceGenocide = [
     "Mega Difficult",
     "Giga Difficult",
     "Tera Difficult",
+    "Peta Difficult",
     "Exa Difficult",
     "Zetta Difficult",
     "Yotta Difficult"
