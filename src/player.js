@@ -70,12 +70,14 @@ var Player = function(id, name) {
 	self.resetVars = function() {
 		self.voteReset(false);
 		self.setReady(false);
+
 		self.finishTime = 0;
 		self.isWinner = false;
 		self.place = 0;
+
 		self.goalsAchieved = [];
 		self.allCompletes = [];
-		self.allProgress = [];
+		self.allProgress = {};
 		self.charProgress = {"Dustman": {}, "Dustgirl": {}, "Dustkid": {}, "Dustworth": {}};
 		self.keyProgress = {
 			"Forest": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
@@ -83,6 +85,11 @@ var Player = function(id, name) {
 			"City": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
 			"Laboratory": {"Wood": 0, "Silver": 0, "Gold": 0, "Red": 0},
 		};
+
+		self.bingos = 0;
+		self.maxBingos = 0;
+		self.maxGoals = 0;
+		self.canWin = true;
 	};
 
 	self.achieveGoal = function(id) {
@@ -209,7 +216,7 @@ var Player = function(id, name) {
 			if (goalData.appleType == "SS") {
 				var levelsUsed = [];
 				for (var level in self.allCompletes) {
-					if (self.allCompletes[level].level in levelsUsed)
+					if (levelsUsed.includes(self.allCompletes[level].level))
 						continue;
 					if (self.allCompletes[level].score != "SS")
 						continue;
