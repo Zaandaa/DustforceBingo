@@ -215,22 +215,23 @@ var Player = function(id, name) {
 			var levelCount = 0;
 			if (goalData.appleType == "SS") {
 				var levelsUsed = [];
-				for (var level in self.allCompletes) {
-					if (levelsUsed.includes(self.allCompletes[level].level))
+				for (var l in self.allCompletes) {
+					if (levelsUsed.includes(self.allCompletes[l].level))
 						continue;
-					if (self.allCompletes[level].score != "SS")
-						continue;
-
-					if (goalData.hub && levels.levels[self.allCompletes[level].level].hub != goalData.hub)
-						continue;
-					if (goalData.leveltype && levels.levels[self.allCompletes[level].level].type != goalData.leveltype)
-						continue;
-					if (goalData.character && self.allCompletes[level].character != goalData.character)
+					if (self.allCompletes[l].score != "SS")
 						continue;
 
-					if (self.allCompletes[level].apples < 1)
+					if (goalData.hub && levels.levels[self.allCompletes[l].level].hub != goalData.hub)
+						continue;
+					if (goalData.leveltype && levels.levels[self.allCompletes[l].level].type != goalData.leveltype)
+						continue;
+					if (goalData.character && self.allCompletes[l].character != goalData.character)
 						continue;
 
+					if (self.allCompletes[l].apples < 1)
+						continue;
+
+					levelsUsed.push(self.allCompletes[l].level);
 					count++;
 				}
 			} else {
