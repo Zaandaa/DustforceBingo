@@ -378,6 +378,20 @@ select {
 	width:32px;
 }
 
+@media (max-width: 1199px) {
+	.icon {
+		height:48px;
+		width:64px;
+		padding-left:8px;
+		padding-right:8px;
+	}
+	
+	.character{
+		height:48px;
+		width:64px;
+	}
+}
+
 .colorpicker {
 	display:block;
 	height: 1rem;
@@ -600,4 +614,8 @@ pre {
 		padding-left:15px;
 		padding-right:15px;
 	}
+}
+
+.goal-option {
+	display:inline-block;
 }

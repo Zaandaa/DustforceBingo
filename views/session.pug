@@ -61,6 +61,26 @@ block content
 				p #[a(href='') Copy this link] to invite more players
 
 			div
+				
+				h4.impact Goal Options
+				- var perline = 5;
+				- var steps = new Array(Math.ceil(enabled.length/perline));
+				- var i = -1;
+				each na, nb in steps
+					div.row.margin_zero
+						each nc, nd in new Array(perline)
+							- i++;
+							if i < enabled.length
+								- var option = options[enabled[i]]
+								div.col-fifth.mb-3
+									div.goal-option(data-toggle="tooltip" data-placement="top" title=option.clean_name)
+										div(style="position: relative; top: -1px")
+											img(src=option.icon class=option.icon_type)
+									if option.tooltip
+										div.tt_question
+											div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title=option.tooltip)
+												div(style="position: relative; top: -1px") ?
+
 				h4.impact Rules
 				ul
 					li #{save}, Length: #{length}, Difficulty: #{difficulty}
@@ -71,7 +91,7 @@ block content
 						li Hidden: Start with only the center goal visible. Reveal neighbor goals by getting goals.
 					li Players start at the Nexus door
 					li Level tomes and level editor are banned
-					li Goal options: #{options}
+				
 
 		div.col-xl-8.noselect
 			- var sizeArray = new Array(parseInt(size) || 1)

@@ -5,7 +5,7 @@ var Player = require('./player');
 
 var levels = require('./levels');
 var constants = require('./constants');
-
+var options = require('./options');
 
 var Bingo = function(session, ruleset) {
 	// console.log("RULES", ruleset);
@@ -469,12 +469,12 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.getGoalOptions = function() {
-		options = []
-		for (var o in constants.optionNames) {
+		enabled = []
+		for (var o in options) {
 			if (self.ruleset[o])
-				options.push(constants.optionNames[o]);
+				enabled.push(o);
 		}
-		return options.join(", ");
+		return enabled;
 	};
 
 	self.resetBingo = function() {

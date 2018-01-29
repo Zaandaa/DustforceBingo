@@ -1,0 +1,128 @@
+{
+	"beat" : {
+	    "icon"       : "http://dustkid.com/static/iconVacuum.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Beat levels"
+	  , "init_state" : true
+	},
+	"ss" : {
+	    "icon"       : "/bingo/img/iconSweep.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "SS levels"
+	  , "init_state" : true
+	},
+	"keys" : {
+	    "icon"       : "/bingo/img/iconKey.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Get keys"
+	  , "init_state" : true
+	},
+	"tutorials" : {
+	    "icon"       : "http://dustkid.com/static/iconDustman.png"
+	  , "icon_type"  : "character"
+	  , "clean_name" : "Tutorials"
+	  , "init_state" : false
+	},
+	"difficults" : {
+	    "icon"       : "/bingo/img/iconDonger.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Difficults"
+	  , "init_state" : false
+	},
+	"yottass" : {
+	    "icon"       : "/bingo/img/iconDonger.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Yotta SS"
+	  , "init_state" : false
+	},
+	"sfinesse" : {
+	    "icon"       : "/bingo/img/iconS.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "S finesse"
+	  , "init_state" : false
+	},
+	"scomplete" : {
+	    "icon"       : "/bingo/img/iconS.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "S completion"
+	  , "init_state" : false
+	},
+	"bcomplete" : {
+	    "icon"       : "http://dustkid.com/static/iconSome.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "B completion"
+	  , "init_state" : false
+	},
+	"dcomplete" : {
+	    "icon"       : "/bingo/img/iconLow.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "D completion"
+	  , "init_state" : false
+	},
+	"multilevel" : {
+	    "icon"       : "http://dustkid.com/static/iconVacuum.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Multi levels"
+	  , "init_state" : true
+	  , "tooltip"    : "Goals can require multiple levels of your choice"
+	},
+	"characters" : {
+	    "icon"       : "http://dustkid.com/static/iconAll.png"
+	  , "icon_type"  : "character"
+	  , "clean_name" : "Characters"
+	  , "init_state" : true
+	  , "tooltip"    : "Goals can require a specific character"
+	},
+	"apples" : {
+	    "icon"       : "http://dustkid.com/static/iconApple.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Apples"
+	  , "init_state" : true
+	}
+	,"nosuper" : {
+	    "icon"       : "http://dustkid.com/static/iconNoAttack.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "No super"
+	  , "init_state" : false
+	  , "tooltip"    : "Some level goals can forbid supers (inputting super voids the attempt regardless of super happening)"
+	},
+	"lowdash" : {
+	    "icon"       : "http://dustkid.com/static/iconNoDash.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Low dash"
+	  , "init_state" : false
+	},
+	"lowjump" : {
+	    "icon"       : "http://dustkid.com/static/iconNoJump.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Low jump"
+	  , "init_state" : false
+	},
+	"lowattack" : {
+	    "icon"       : "http://dustkid.com/static/iconNoAttack.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Low attack"
+	  , "init_state" : false
+	  , "tooltip"    : "Use fewest attacks possible (light: 1, heavy: 3, no supers)"
+	},
+	"lowdirection" : {
+	    "icon"       : "http://dustkid.com/static/iconNoDirection.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Low direction"
+	  , "init_state" : false
+	},
+	"genocide" : {
+	    "icon"       : "http://dustkid.com/static/iconGenocide.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Genocide"
+	  , "init_state" : false
+	  , "tooltip"    : "Kill all enemies on specific levels"
+	},
+	"unload" : {
+	    "icon"       : "http://dustkid.com/static/icon404.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Unload"
+	  , "init_state" : false
+	  , "tooltip"    : "Specific level goals can require unload or out of bounds (Dustmod > Mods > Enable Unload%)"
+	}
+}
