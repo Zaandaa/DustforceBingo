@@ -6,9 +6,11 @@ block js
 	script= "const lockout = '" + lockout + "' == 'true';"
 	script= "const hidden = '" + hidden + "' == 'true';"
 	script= "var player = undefined"
+	script= "var compact = false"
 	script(src="/bingo/socket/socket.io.min.js")
 	script(src="/bingo/js/board.js")
 	script(src="/bingo/js/session.js")
+	script= "setSizes(false);"
 
 block content
 	
@@ -100,6 +102,12 @@ block content
 					a#popout(onclick="popoutBoard()", style="color: var(--blue); cursor: pointer") Popout
 
 			div#board_div
+
+			div#compact_div.checkbox
+				label(style="min-width: 100px")
+					input#compact(type="checkbox" onchange="toggleCompact()")
+					<img id="check_compact" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+					p Compact board
 
 
 	div
