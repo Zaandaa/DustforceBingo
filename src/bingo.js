@@ -426,6 +426,11 @@ var Bingo = function(session, ruleset) {
 		if (success) {
 			self.firstGoal = true;
 			self.checkPlayerFinished(replay.user);
+			if (self.ruleset.hidden && self.playersDone >= Object.keys(self.players).length) {
+				for (var g in self.goals) {
+					self.goals[g].reveal();
+				}
+			}
 			if (self.ruleset.lockout)
 				self.checkLockout();
 			self.session.updateBoard();
