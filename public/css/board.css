@@ -103,11 +103,12 @@
 }
 
 #compact_div {
-	position: absolute;
+	position: relative;
 	top: 100%;
-	right: 15px;
+	right: -47px;
 	width: 150px;
-	margin-top: 4px;
+	margin-top: 26px;
+	float: right;
 }
 
 .compact .bingo_table_inner_cell {

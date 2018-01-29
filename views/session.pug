@@ -99,35 +99,36 @@ block content
 			- var sizeArray = new Array(parseInt(size) || 1)
 			- var colClass = "col-" +  (size == 5 ? "fifth" : "third")
 
-			div#temp_board_div
-				div.bingo_behind
-					each val, i in sizeArray
-						div.row.margin_zero
-							each val, j in sizeArray
-								div(class=colClass)
-									div.bingo_table_cell
-										div.bingo_table_inner_cell
+			div
+				div#temp_board_div
+					div.bingo_behind
+						each val, i in sizeArray
+							div.row.margin_zero
+								each val, j in sizeArray
+									div(class=colClass)
+										div.bingo_table_cell
+											div.bingo_table_inner_cell
 
-				div
-					each val, i in sizeArray
-						div.row.margin_zero
-							div.col
-								div.fake_bingo_cell
-									if i == (size - 1) / 2
-										div#fake_center
-											button#start.btn.btn-lg.btn-block(style="margin: auto") Start
-											h2#starting(style="display: none") Starting...
+					div
+						each val, i in sizeArray
+							div.row.margin_zero
+								div.col
+									div.fake_bingo_cell
+										if i == (size - 1) / 2
+											div#fake_center
+												button#start.btn.btn-lg.btn-block(style="margin: auto") Start
+												h2#starting(style="display: none") Starting...
 
-				div.float-right
-					a#popout(onclick="popoutBoard()", style="color: var(--blue); cursor: pointer") Popout
+					div.float-right
+						a#popout(onclick="popoutBoard()", style="color: var(--blue); cursor: pointer") Popout
 
-			div#board_div
+				div#board_div
 
-			div#compact_div.checkbox
-				label(style="min-width: 100px")
-					input#compact(type="checkbox" onchange="toggleCompact()")
-					<img id="check_compact" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-					p Compact board
+				div#compact_div.checkbox
+					label(style="min-width: 100px")
+						input#compact(type="checkbox" onchange="toggleCompact()")
+						<img id="check_compact" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+						p Compact board
 
 
 	div
