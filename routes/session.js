@@ -101,11 +101,13 @@ function build(io) {
 		}
 		var s = session.getSession(req.params.id)
 		var player = req.query.player;
+		var compact = req.query.compact;
 		res.render('popout', {
 			session: s,
 			size: s.bingo_args.size,
 			lockout: s.bingo_args.lockout ? "true" : "false",
-			player: player
+			player: player,
+			compact: compact
 		});
 	});
 	

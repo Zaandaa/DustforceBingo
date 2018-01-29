@@ -1,0 +1,140 @@
+
+
+.bingo_table {
+	min-width: 700px;
+	margin: 0px;
+}
+.bingo_table_cell {
+	height: 100%;
+	padding-bottom: 4px;
+}
+
+.bingo_table_inner_cell {
+	background-color: var(--dark);
+	color: var(--white);
+	text-align: center;
+	padding: 8px;
+	border: 1px solid var(--gray);
+	border-radius: 4px;
+	margin: 2px;
+	min-height: 120px;
+	height: 100%;
+}
+.bingo_table_inner_cell:hover {
+	background-color: var(--graydark);
+	cursor: default;
+}
+.bingo_label {
+	background-color: var(--grayish);
+	border-color: var(--white);
+}
+.bingo_label .goal_text {
+	font-weight: bold;
+}
+
+@media (max-width: 1199px) {
+	.bingo_table_inner_cell {
+		border: 2px solid var(--gray);
+	}
+	.compact .bingo_table_inner_cell {
+		border: 1px solid var(--gray);
+	}
+}
+
+.goal_text {
+	position: relative;
+	top: 32px;
+	margin: auto;
+	transform: translateY(-50%);
+}
+.goal_achievers_container {
+	position: absolute;
+	left: 0px;
+	bottom: 2px;
+	height: 48px;
+	width: 100%;
+	padding: 4px;
+}
+.goal_achievers {
+	position: relative;
+	top: 18px;
+	margin: auto;
+	transform: translateY(-50%);
+}
+
+.bingo_behind {
+	z-index: -1;
+	position: absolute;
+	width: 100%;
+	min-width: 700px;
+	min-height: inherit;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.fake_bingo_cell {
+	padding: 10px;
+	padding-top: 36px;
+	min-height: 120px;
+	margin: 4px;
+}
+.margin_zero {
+	margin: 0px;
+}
+.popout_container {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+.popout_bingo_behind {
+	z-index: -1;
+	position: absolute;
+	width: inherit;
+	min-width: 700px;
+	min-height: inherit;
+	margin: 0px;
+}
+.popout_fake_bingo_cell {
+	padding: 10px;
+	padding-top: 44px;
+	min-height: 120px;
+	margin: 4px;
+}
+
+#compact_div {
+	position: relative;
+	top: 100%;
+	right: -47px;
+	width: 150px;
+	margin-top: 26px;
+	float: right;
+}
+
+.compact .bingo_table_inner_cell {
+	padding: 2px;
+	min-height: 70px;
+	margin: 0px;
+	border-radius: 0px;
+}
+.compact .bingo_table_cell {
+	padding: 0px;
+}
+.compact .goal_text {
+	top: 50%;
+}
+.compact .goal_achievers {
+	display: none;
+}
+.compact .fake_bingo_cell {
+	padding: 0;
+	padding-top: 12px;
+	min-height: 70px;
+	margin: 0px;
+}
+.compact .popout_fake_bingo_cell {
+	padding: 0;
+	padding-top: 20px;
+	min-height: 70px;
+	margin: 0px;
+}

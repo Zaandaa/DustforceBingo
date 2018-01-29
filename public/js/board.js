@@ -15,6 +15,7 @@ function updateBoardTable(boardData, target, includeBottom) {
 
 	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
+	table.css({"min-width": 140 * bingoSize + "px"});
 
 	var col_width = (boardData.size == 5) ? "fifth" : "third";
 
@@ -201,6 +202,40 @@ function resetBingo() {
 }
 
 function popoutBoard() {
-	var addPlayerQuery = "?player=" + player;
-	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout' + (player ? addPlayerQuery : ""), '_blank', 'width=700,height=' + (bingoSize * 128 + 2));
+	var width = bingoSize * 140;
+	var height = compact ? (71 * bingoSize + (bingoSize == 5 ? 1 : -1)) : (bingoSize * 128 + 2);
+
+	// 5t 71 + 1
+	// 5f 128 + 2
+	// 3t 71 - 3
+	// 3f 128 + 2
+
+	var query = [];
+	if (player)
+		query.push("player=" + player);
+	if (compact)
+		query.push("compact=true");
+	window.open(window.location.href + (window.location.href[window.location.href.length - 1] == '/' ? '' : '/') + 'popout' + (query.length > 0 ? "?" + query.join("&") : ""), '_blank', 'width=' + width + ',height=' + height);
+}
+
+function toggleCompact() {
+	compact = $("#compact:checked").val();
+	if ($("#board_div").hasClass("compact")) {
+		$("#board_div").removeClass("compact");
+		$("#temp_board_div").removeClass("compact");
+	}
+	if (compact) {
+		$("#board_div").addClass("compact");
+		$("#temp_board_div").addClass("compact");
+	}
+}
+
+function setSizes(p) {
+	console.log("set", bingoSize);
+	$(".bingo_table").css({"min-width": 140 * bingoSize + "px"});
+	$(".bingo_behind").css({"min-width": 140 * bingoSize + "px"});
+	$(".popout_bingo_behind").css({"min-width": 140 * bingoSize + "px"});
+	if (p) {
+		$("body").css({"min-width": 140 * bingoSize + "px"});
+	}
 }

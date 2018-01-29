@@ -8,7 +8,14 @@ function resetJoin() {
 	$('#join').text("Join");
 }
 
+function changeCheckImage() {
+	var id = $(this).attr('id');
+	$('#check_' + id).attr('src', '/bingo/img/ready_' + ($(this).prop('checked') ? 'true' : 'false') + '.png');
+}
+
 $(document).on('ready', function() {
+	$('input[type=checkbox]').on('change', changeCheckImage)
+
 	socket.emit('init', {session: sessionId});
 
 	function joinEmitted() {
