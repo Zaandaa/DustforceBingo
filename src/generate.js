@@ -267,6 +267,10 @@ function main(levels, records, callback)
 					
 					console.log(PADDING, utils.pad("left", leaderboard.length, 2), "replay(s)");
 					
+					leaderboard.forEach(function(r) {
+						console.log(PADDING + "  ", utils.getReplayScore(r), "rank:", utils.pad("left", r.rank, 2), "count:", utils.pad("left", r.access(gimmick), 2), "user:", r.user); 
+					});
+					
 					if(leaderboard.length == 0) 
 					{
 						completionDone();
@@ -277,9 +281,17 @@ function main(levels, records, callback)
 			
 					console.log(PADDING, utils.pad("left", histogram.length, 2), "bin(s)");
 					
+					histogram.forEach(function(h) {
+						console.log(PADDING + "  ", "rank:", utils.pad("left", h.rank, 2), "ties:", utils.pad("left", h.ties, 2), "count:", utils.pad("left", h.count, 2));
+					});
+					
 					var difficulties = getDifficulty(histogram, gimmick);
 					
 					console.log(PADDING, utils.pad("left", difficulties.length, 2), "gimmick(s)");
+					
+					difficulties.forEach(function(d) {
+						console.log(PADDING + "  ", "difficulty:", d.difficulty, "count:", utils.pad("left", d.count, 2));
+					});
 					
 					level.gimmicks.pushAll(
 						difficulties.select(function(diff) 
@@ -323,6 +335,7 @@ function getLeaderboard(top50, objective, gimmick)
 	{
 		var left  = a.access(gimmick);
 		var right = b.access(gimmick);
+		if (left == right) return a.time - b.time
 		return gimmick == "apples" ? right - left : left - right;
 	});
 	
