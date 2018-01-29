@@ -1,4 +1,5 @@
 var express = require('express');
+var options = require('../src/options');
 
 function verify(fields, data) {
 	var b = true;
@@ -75,7 +76,7 @@ function build(io) {
 			next(err);
 			return;
 		}
-		var s = session.getSession(req.params.id)
+		var s = session.getSession(req.params.id);
 		res.render('session', {
 			session: s,
 			size: s.bingo_args.size,
@@ -85,7 +86,8 @@ function build(io) {
 			length: s.bingo_args.length_raw,
 			lockout: s.bingo_args.lockout ? "true" : "false",
 			hidden: s.bingo_args.hidden ? "true" : "false",
-			options: s.getBingoGoalOptions()
+			options: options,
+			enabled: s.getBingoGoalOptions()
 		});
 	});
 

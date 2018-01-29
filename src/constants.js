@@ -5,6 +5,7 @@ extern.levelTypes = ["Open", "Wood", "Silver", "Gold"];
 extern.levelObjectives = ["Beat", "SS", "S finesse", "S complete", "B complete", "D complete", "Genocide", "Unload", "OOB"];
 extern.totalObjectives = ["Beat", "SS", "keys", "apples"];
 
+/* moved to options.json
 extern.optionNames = {
 	"beat": "beat levels",
 	"ss": "SS levels",
@@ -26,7 +27,7 @@ extern.optionNames = {
 	"lowjump": "low jump",
 	"lowattack": "low attack",
 	"lowdirection": "low direction"
-}
+}*/
 
 
 module.exports = extern;
