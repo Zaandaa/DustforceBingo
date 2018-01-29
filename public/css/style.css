@@ -378,6 +378,18 @@ select {
 	width:32px;
 }
 
+.icon_large {
+	height:36px;
+	width:48px;
+	padding-left:6px;
+	padding-right:6px;
+}
+
+.character_large {
+	height:36px;
+	width:48px;
+}
+
 @media (max-width: 1199px) {
 	.icon {
 		height:48px;

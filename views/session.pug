@@ -63,7 +63,7 @@ block content
 			div
 				
 				h4.impact Goal Options
-				- var perline = 5;
+				- var perline = 6;
 				- var steps = new Array(Math.ceil(enabled.length/perline));
 				- var i = -1;
 				each na, nb in steps
@@ -72,14 +72,10 @@ block content
 							- i++;
 							if i < enabled.length
 								- var option = options[enabled[i]]
-								div.col-fifth.mb-3
-									div.goal-option(data-toggle="tooltip" data-placement="top" title=option.clean_name)
+								div.col-2.mb-3
+									div.goal-option(data-toggle="tooltip" data-placement="top" title=option.clean_name + (option.tooltip ? " - " + option.tooltip : ""))
 										div(style="position: relative; top: -1px")
-											img(src=option.icon class=option.icon_type)
-									if option.tooltip
-										div.tt_question
-											div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title=option.tooltip)
-												div(style="position: relative; top: -1px") ?
+											img(src=option.icon class=option.icon_type + "_large")
 
 				h4.impact Rules
 				ul
