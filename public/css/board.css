@@ -112,8 +112,9 @@
 }
 
 .compact .bingo_table_inner_cell {
-	padding: 2px;
+	padding: 1px;
 	min-height: 70px;
+	height: 70px;
 	margin: 0px;
 	border-radius: 0px;
 }

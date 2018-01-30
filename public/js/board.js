@@ -203,12 +203,7 @@ function resetBingo() {
 
 function popoutBoard() {
 	var width = bingoSize * 140;
-	var height = compact ? (71 * bingoSize + (bingoSize == 5 ? 1 : -1)) : (bingoSize * 128 + 2);
-
-	// 5t 71 + 1
-	// 5f 128 + 2
-	// 3t 71 - 3
-	// 3f 128 + 2
+	var height = compact ? (70 * bingoSize) : (bingoSize * 128 + 2);
 
 	var query = [];
 	if (player)
@@ -231,7 +226,6 @@ function toggleCompact() {
 }
 
 function setSizes(p) {
-	console.log("set", bingoSize);
 	$(".bingo_table").css({"min-width": 140 * bingoSize + "px"});
 	$(".bingo_behind").css({"min-width": 140 * bingoSize + "px"});
 	$(".popout_bingo_behind").css({"min-width": 140 * bingoSize + "px"});
