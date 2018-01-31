@@ -5,6 +5,7 @@ var utils = require('./utils');
 var PADDING = new Array(39).join(" ")
 
 var outputJson = require("./levels.json");
+var extraData = require("./extraleveldata.json");
 
 /*
  * Extension methods
@@ -258,7 +259,14 @@ function main(levels, records, callback)
 		level.oob        = oobs[level.id] !== undefined,
 		level.charselect = level.type != "Tutorial",
 		level.gimmicks   = []
-		
+
+		if (level.level in extraData) {
+			for (var g in extraData[level.level].gimmicks) {
+				if (gimmicks.includes(extraData[level.level].gimmicks[g].type))
+					level.gimmicks.push(extraData[level.level].gimmicks[g]);
+			}
+		}
+
 		gimmicks.syncMap(function(gimmick, gimmickDone) 
 		{
 			var url = "http://dustkid.com/json/level/" + level.id + "/" 
@@ -359,8 +367,8 @@ function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, geno
 		  || (replays[i].access(gimmick) >= inputMaxProbablyIntended[gimmick])
 		  || (gimmick == "apples" && replays[i].access("apples") == 0)
 		  || (replays[i].access(gimmick) < 0)
-		  || (gimmick == "lowattack" && objective == "SS" && replays[i].access(gimmick) >= utils.accessGimmick(genociderecord, gimmick))
-		  || (gimmick == "lowattack" && objective == "Beat" && replays[i].access(gimmick) >= utils.accessGimmick(timerecord, gimmick))
+		  || (gimmick == "lowattack" && objective == "SS" && replays[i].access(gimmick) >= utils.accessGimmick(genociderecord, gimmick) && utils.accessGimmick(genociderecord, gimmick) > -1)
+		  || (gimmick == "lowattack" && objective == "Beat" && replays[i].access(gimmick) >= utils.accessGimmick(timerecord, gimmick) && utils.accessGimmick(timerecord, gimmick) > -1)
 		)
 			replays.splice(i, 1);
 	}

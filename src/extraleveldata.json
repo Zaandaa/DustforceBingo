@@ -1,0 +1,20 @@
+{
+	"Ramparts": {
+		"gimmicks": [
+			{
+				"type": "apples",
+				"objective": "SA",
+				"difficulty": 1,
+				"count": 1,
+				"character": true
+			},
+			{
+				"type": "apples",
+				"objective": "S complete",
+				"difficulty": 2,
+				"count": 1,
+				"character": true
+			}
+		]
+	}
+}
