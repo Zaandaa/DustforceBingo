@@ -267,7 +267,7 @@ function makeLevelGoalDatas(ruleset) {
 		levels.levels[l].gimmicks.forEach(function(g) {
 			if (!ruleset[g.type])
 				return;
-			if (g.objective == "SS" && !ruleset.ss)
+			if ((g.objective == "SS" || g.objective == "SA") && !ruleset.ss)
 				return;
 			if (g.difficulty < ruleset.difficulty || g.difficulty > ruleset.maxEasy)
 				return;
