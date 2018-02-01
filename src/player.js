@@ -234,9 +234,9 @@ var Player = function(id, name) {
 					levelsUsed.push(self.allCompletes[l].level);
 					count++;
 				}
-			} else {
+			} else { // "Beat" and "count"
 				for (var l in self.allProgress) {
-					if (self.allProgress[l].gimmicks[goalData.count] > -1) {
+					if (self.allProgress[l].gimmicks[goalData.count] > 0) {
 						if (goalData.hub && levels.levels[l].hub != goalData.hub)
 							continue;
 						if (goalData.leveltype && levels.levels[l].type != goalData.leveltype)
