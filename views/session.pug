@@ -97,7 +97,7 @@ block content
 
 		div.col-xl-8.noselect
 			- var sizeArray = new Array(parseInt(size) || 1)
-			- var colClass = "col-" +  (size == 5 ? "fifth" : "third")
+			- var colClass = "col-" + (size == 5 ? "fifth" : (size == 4 ? "fourth" : "third"))
 
 			div
 				div#temp_board_div
@@ -114,7 +114,7 @@ block content
 							div.row.margin_zero
 								div.col
 									div.fake_bingo_cell
-										if i == (size - 1) / 2
+										if i == Math.floor((size - 1) / 2)
 											div#fake_center
 												button#start.btn.btn-lg.btn-block(style="margin: auto") Start
 												h2#starting(style="display: none") Starting...

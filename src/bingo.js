@@ -47,7 +47,7 @@ var Bingo = function(session, ruleset) {
 	self.possibleBingos = board.cachePossibleBingos(self.ruleset.size);
 	self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
 
-	self.error = self.goals.includes(undefined) || (self.ruleset.size != 3 && self.ruleset.size != 5);
+	self.error = self.goals.includes(undefined) || (self.ruleset.size != 3 && self.ruleset.size != 4 && self.ruleset.size != 5);
 	if (self.error)
 		return self;
 

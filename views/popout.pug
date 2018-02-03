@@ -11,7 +11,7 @@ html
 
 	body(style="padding: 0px; margin: 0px")
 		- var sizeArray = new Array(parseInt(size) || 1)
-		- var colClass = "col-" + (size == 5 ? "fifth" : "third")
+		- var colClass = "col-" + (size == 5 ? "fifth" : (size == 4 ? "fourth" : "third"))
 
 		div#temp_board_div.popout_container.noselect
 			div.popout_bingo_behind
@@ -27,7 +27,7 @@ html
 					div.row.margin_zero
 						div.col(style="padding: 0px; margin: auto")
 							div.popout_fake_bingo_cell
-								if i == (size - 1) / 2
+								if i == Math.floor((size - 1) / 2)
 									div#fake_center
 										h4(style="text-align: center; margin: auto") Waiting to receive board...
 

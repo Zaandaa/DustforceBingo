@@ -17,7 +17,7 @@ function updateBoardTable(boardData, target, includeBottom) {
 	table.attr('id', 'bingo_div');
 	table.css({"min-width": 140 * bingoSize + "px"});
 
-	var col_width = (boardData.size == 5) ? "fifth" : "third";
+	var col_width = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
 
 	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<div class='row margin_zero'></div>");

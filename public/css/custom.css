@@ -51,6 +51,12 @@
     width: 20%;
     float: left;
 }
+.col-fourth {
+    position: relative;
+    min-height: 1px;
+    width: 25%;
+    float: left;
+}
 .col-third {
     position: relative;
     min-height: 1px;
