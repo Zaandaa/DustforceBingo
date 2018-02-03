@@ -440,7 +440,7 @@ var Bingo = function(session, ruleset) {
 		return true;
 	};
 
-	self.getBoardData = function() {
+	self.getBoardData = function(player) {
 		var boardData = {};
 
 		if (self.active || self.finished) {
@@ -456,6 +456,8 @@ var Bingo = function(session, ruleset) {
 			boardData.goals = {};
 			for (var i = 0; i < self.goals.length; i++) {
 				boardData.goals[i] = self.goals[i].getBoardData();
+				if (self.goals[i].goalData.type == "total" && player in self.players)
+					boardData.goals[i].progress = Math.min(self.players[player].countObjective(self.goals[i].goalData), self.goals[i].goalData.total);
 			}
 		}
 

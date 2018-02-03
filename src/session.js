@@ -369,9 +369,8 @@ function build(io) {
 		};
 		
 		self.updateBoard = function() {
-			var bd = JSON.parse(self.getBoardData());
 			for (id in sockets) {
-				bd.isPlayer = isPlayer(sockets[id]);
+				var bd = JSON.parse(self.getBoardData(sockets[id]));
 				sockets[id].emit('board', JSON.stringify(bd));
 			}
 		};
@@ -414,8 +413,9 @@ function build(io) {
 		};
 		
 		self.getBoardData = function(socket) {
-			data = bingo.getBoardData();
-			data.isPlayer = isPlayer(socket);
+			var isP = isPlayer(socket)
+			data = bingo.getBoardData(isP ? socket.custom.id : undefined);
+			data.isPlayer = isP;
 			return JSON.stringify(data);
 		};
 		
