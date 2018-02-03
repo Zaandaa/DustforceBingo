@@ -532,7 +532,7 @@ function makeGoalString(goalData) {
 
 		if (goalData.gimmicks) {
 			goalData.gimmicks.forEach(function(g) {
-				str += " with " + levels.gimmicks[g.type].format.replace("{count}", g.count).replace("{or fewer}", g.count > 0 ? "or fewer" : "") + (g.count != 1 ? levels.gimmicks[g.type].plural : "");
+				str += " " + levels.gimmicks[g.type].format.replace("{count}", g.count).replace("{up to}", g.count > 0 ? "up to" : "") + (g.count != 1 ? levels.gimmicks[g.type].plural : "");
 			});
 		}
 
@@ -542,9 +542,9 @@ function makeGoalString(goalData) {
 			case "SS": str = goalData.count + " " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : ""); break;
 			case "apples": {
 				if (goalData.appleType == "Beat")
-					str = "Hit apple and beat " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+					str = "Apple% " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
 				else if (goalData.appleType == "SS")
-					str = "Hit apple and SS " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+					str = "Apple SS " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
 				else // "count"
 					str = "Hit " + goalData.total.toString() + " apple" + (goalData.total > 1 ? "s" : "");
 				break;

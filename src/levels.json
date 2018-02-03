@@ -2,27 +2,27 @@
     "gimmicks": {
         "apples": {
             "accessor": "apples",
-            "format": "{count} apple",
+            "format": "+ {count} apple",
             "plural": "s"
         },
         "lowdash": {
             "accessor": "input_dashes",
-            "format": "{count} {or fewer} dash",
+            "format": "in {up to} {count} dash",
             "plural": "es"
         },
         "lowjump": {
             "accessor": "input_jumps",
-            "format": "{count} {or fewer} jump",
+            "format": "in {up to} {count} jump",
             "plural": "s"
         },
         "lowattack": {
             "accessor": "",
-            "format": "{count} {or fewer} attack",
+            "format": "in {up to} {count} attack",
             "plural": "s"
         },
         "lowdirection": {
             "accessor": "input_directions",
-            "format": "{count} {or fewer} direction",
+            "format": "in {up to} {count} direction",
             "plural": "s"
         }
     },
