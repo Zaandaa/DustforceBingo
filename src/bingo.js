@@ -139,6 +139,8 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.changePlayerColor = function(id, color) {
+		if (self.startTime > 0)
+			return;
 		if (id in self.players) {
 			if (self.players[id].changeColor(color))
 				self.session.updatePlayers();

@@ -197,6 +197,7 @@ function resetBingo() {
 		$("#join").text("Join");
 	} else {
 		$("#ready").enable();
+		$("#color").enable();
 	}
 	isPlayer = false;
 }

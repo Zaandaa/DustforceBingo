@@ -222,6 +222,7 @@ $(document).on('ready', function() {
 	
 	socket.on('startingTimer', function(data) {
 		removeStartButton();
+		$("#color").disable();
 	});
 	
 	socket.on('timerInterrupted', function(data) {
@@ -229,7 +230,8 @@ $(document).on('ready', function() {
 	});
 	
 	socket.on('removed', function(data) {
-
+		$("#color").attr("value", "white");
+		$("#color").attr("style", "background-color:var(--white);");
 	});
 	
 	socket.on('board', function(data) {
