@@ -18,6 +18,9 @@ var rules = {
 	save: "New Game",
 	size: 5,
 	lockout: true,
+	hidden: false,
+	teams: false,
+	antibingo: false,
 	bingo_count: 2,
 	bingo_count_type: "bingo",
 	difficulty: 3, // 4 easy, 1 very hard

@@ -15,7 +15,9 @@ var params = [
 	"save", 
 	"size", 
 	"lockout", 
+	"teams", 
 	"hidden", 
+	"antibingo", 
 	"bingo_count", 
 	"bingo_count_type", 
 	"difficulty_raw", 
@@ -86,6 +88,8 @@ function build(io) {
 			length: s.bingo_args.length_raw,
 			lockout: s.bingo_args.lockout ? "true" : "false",
 			hidden: s.bingo_args.hidden ? "true" : "false",
+			teams: s.bingo_args.teams ? "true" : "false",
+			antibingo: s.bingo_args.antibingo ? "true" : "false",
 			options: options,
 			enabled: s.getBingoGoalOptions()
 		});
@@ -106,6 +110,7 @@ function build(io) {
 			session: s,
 			size: s.bingo_args.size,
 			lockout: s.bingo_args.lockout ? "true" : "false",
+			teams: s.bingo_args.teams ? "true" : "false",
 			player: player,
 			compact: compact
 		});
