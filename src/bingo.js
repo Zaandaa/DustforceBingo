@@ -350,7 +350,10 @@ var Bingo = function(session, ruleset) {
 				self.goals[i].reveal();
 			}
 		} else { // middle
-			self.goals[Math.floor(self.ruleset.size * self.ruleset.size / 2)].reveal();
+			if (self.ruleset.size % 2 == 0)
+				self.goals[self.ruleset.size + self.ruleset.size / 2 - 1].reveal();
+			else
+				self.goals[Math.floor(self.ruleset.size * self.ruleset.size / 2)].reveal();
 		}
 
 		self.startTime = Date.now();
