@@ -38,8 +38,9 @@ $(document).on('ready', function() {
 			$(".option" + (i+1)).hide();
 		}
 		
-		$bingo_count.val("1");
-	}		
+		if ($bingo_count.val() > max)
+			$bingo_count.val("1");
+	}
 	
 	$('input[type=checkbox]').on('change', changeCheckImage)
 	$size.on('change', validateNumber);

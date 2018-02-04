@@ -589,7 +589,7 @@ var Goal = function(goalData) {
 		self.revealed = true;
 	}
 
-	self.compareReplay = function(replay, team) {
+	self.compareReplay = function(replay, team, bingoPlayers) {
 		// check if replay meets goalData
 		if (replay.validated < 1 && replay.validated != -3) {
 			if (replay.validated == -7) {
@@ -647,7 +647,7 @@ var Goal = function(goalData) {
 			// total, check against team.countObjective(kwargs)
 
 			// >= beat, ss, apples, keys
-			if (team.countObjective(self.goalData) >= self.goalData.total) {
+			if (team.countObjective(self.goalData, bingoPlayers) >= self.goalData.total) {
 				return true;
 			}
 

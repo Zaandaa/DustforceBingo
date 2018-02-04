@@ -25,6 +25,7 @@ var Team = function(id, p) {
 	self.maxGoals = 0;
 	self.canWin = true;
 
+	self.antiTeam = id;
 	self.assignedAnti = [];
 	self.goalBingos = [];
 
@@ -34,7 +35,7 @@ var Team = function(id, p) {
 
 	self.addPlayer = function(p) {
 		self.players.push(p);
-	}
+	};
 
 	self.addTeamData = function(pData) {
 		pData.team = self.id;
@@ -43,6 +44,13 @@ var Team = function(id, p) {
 		pData.place = self.place;
 		pData.teamGoals = self.goalsAchieved.length;
 		pData.bingos = self.bingos;
+		pData.antiTeam = self.antiTeam;
+		pData.assignedAnti = self.assignedAnti;
+		pData.goalBingos = self.goalBingos;
+	};
+
+	self.setAntiTeam = function(a) {
+		self.antiTeam = a;
 	};
 
 	self.giveAnti = function(a) {
@@ -70,9 +78,9 @@ var Team = function(id, p) {
 
 		self.allCompletes.push({player: replay.user, level: replay.levelname, score: utils.getReplayScore(replay), character: constants.characters[replay.character], apples: replay.apples});
 
-		// allProgress and keyProgress
+		// allProgress
 		if (replay.levelname in self.allProgress) {
-			// score + keys
+			// score
 			if (self.allProgress[replay.levelname].completion < replay.score_completion) {
 				self.allProgress[replay.levelname].completion = replay.score_completion;
 			}
@@ -95,9 +103,6 @@ var Team = function(id, p) {
 				characters: [constants.characters[replay.character]],
 				gimmicks: {}
 			}
-
-			if (levels.hubs[levels.levels[replay.levelname].hub].keys)
-				self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_completion + replay.score_finesse;
 
 			for (var g in levels.gimmicks) {
 				self.allProgress[replay.levelname].gimmicks[g] = utils.accessGimmick(replay, g);

@@ -380,10 +380,31 @@ var Bingo = function(session, ruleset) {
 		for (var p in self.players) {
 			var team = self.ruleset.teams ? self.players[p].color : p;
 			self.players[p].team = team;
+
 			if (team in self.teams)
 				self.teams[team].addPlayer(p);
 			else
 				self.teams[team] = new Team(team, p);
+		}
+
+		// anti teams
+		if (self.ruleset.antibingo) {
+			if (Object.keys(self.teams).length < 2) // cancel anti if too few teams
+				self.ruleset.antibingo = false;
+			else {
+				var teamKeys = Object.keys(self.teams);
+				var teamKeys2 = teamKeys.slice(1, teamKeys.length);
+				teamKeys2.push(teamKeys[0]);
+
+				var teamAssignments = {}
+				for (var i = 0; i < teamKeys.length; i++) {
+					teamAssignments[teamKeys[i]] = teamKeys2[i]
+				}
+
+				for (var t in self.teams) {
+					self.teams[t].setAntiTeam(teamAssignments[t]);
+				}
+			}
 		}
 
 		// reveal if needed
@@ -459,7 +480,7 @@ var Bingo = function(session, ruleset) {
 		for (var i = 0; i < self.goals.length; i++) {
 			if (self.ruleset.lockout && self.goals[i].isAchieved() || self.players[replay.user].goalsAchieved.includes(i)) {
 				continue;
-			} else if (self.goals[i].compareReplay(replay, self.players[replay.user])) {
+			} else if (self.goals[i].compareReplay(replay, self.players[replay.user], self.players)) {
 				self.goals[i].addAchiever(replay.user);
 				self.teams[self.players[replay.user].team].achieveGoal(i);
 				self.players[replay.user].achieveGoal(i);
@@ -497,7 +518,10 @@ var Bingo = function(session, ruleset) {
 
 			boardData.players = {};
 			for (var id in self.players) {
-				boardData.players[id] = self.players[id].getBoardData();
+				var data = self.players[id].getBoardData();
+				if (self.players[id].team in self.teams)
+					self.teams[self.players[id].team].addTeamData(data);
+				boardData.players[id] = data;
 				boardData.playerTeam = self.players[id].team;
 			}
 
@@ -517,7 +541,10 @@ var Bingo = function(session, ruleset) {
 
 		playerData.players = [];
 		for (var id in self.players) {
-			playerData.players.push(self.players[id].getBoardData());
+			var data = self.players[id].getBoardData();
+			if (self.players[id].team in self.teams)
+				self.teams[self.players[id].team].addTeamData(data);
+			playerData.players.push(data);
 		}
 
 		return playerData;
