@@ -165,9 +165,12 @@ var Bingo = function(session, ruleset) {
 
 	self.countBingo = function(id) {
 		var bingoCount = 0;
+		var antiUnassignedCount = 0;
 		for (var b in self.possibleBingos) {
+			var anti = false;
 			if (self.ruleset.antibingo && !self.teams[id].goalBingos.includes(b))
-				continue;
+				anti = true;
+
 			var hasBingo = true;
 			for (var c in self.possibleBingos[b]) {
 				if (!self.teams[id].goalsAchieved.includes(self.possibleBingos[b][c])) {
@@ -175,9 +178,19 @@ var Bingo = function(session, ruleset) {
 					break;
 				}
 			}
+
 			if (hasBingo)
 				bingoCount++;
+			if (hasBingo && anti)
+				antiUnassignedCount++;
 		}
+
+		if (self.ruleset.antibingo) {
+			bingoCount -= antiUnassignedCount;
+			var maxUnassigned = self.teams[id].goalBingos.filter(function(x) {return x == -1;}).length;
+			bingoCount += Math.min(maxUnassigned, antiUnassignedCount);
+		}
+
 		return bingoCount;
 	};
 
@@ -339,11 +352,13 @@ var Bingo = function(session, ruleset) {
 
 	self.assignAnti = function(p, a) {
 		if (!self.ruleset.antibingo)
-			return;
+			return false;
 		if (self.teams[self.players[p].team].assignedAnti.length < self.ruleset.bingo_count && !self.teams[self.players[p].team].assignedAnti.includes(a)) {
 			self.teams[self.players[p].team].giveAnti(a);
-			// otherteam.receiveAnti(a);
+			self.teams[self.teams[self.players[p].team].antiTeam].receiveAnti(a);
+			return true; // success
 		}
+		return false; // fail
 	};
 
 	self.start = function() {
@@ -492,6 +507,16 @@ var Bingo = function(session, ruleset) {
 		}
 
 		if (success) {
+			if (!self.firstGoal && self.ruleset.antibingo) {
+				for (var t in self.teams) {
+					while (self.teams[t].assignedAnti.length < self.ruleset.bingo_count) {
+						self.teams[t].assignedAnti.push(-1);
+					}
+					while (self.teams[t].goalBingos.length < self.ruleset.bingo_count) {
+						self.teams[t].goalBingos.push(-1);
+					}
+				}
+			}
 			self.firstGoal = true;
 			self.checkFinished(self.players[replay.user].team);
 			if (self.ruleset.hidden && self.teamsDone >= Object.keys(self.players).length) {

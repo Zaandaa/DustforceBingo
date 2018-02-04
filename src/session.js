@@ -337,6 +337,12 @@ function build(io) {
 				bingo.changePlayerColor(socket.custom.id, data.color);
 			})
 			
+			socket.safeOn('assign', function(data) {
+				if (!isPlayer(socket))
+					return;
+				bingo.assignAnti(socket.custom.id, data.id);
+			});
+			
 			socket.safeOn('start', function() {
 				if (!isPlayer(socket))
 					return;

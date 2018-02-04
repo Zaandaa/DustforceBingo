@@ -19,9 +19,9 @@ var rules = {
 	size: 5,
 	lockout: true,
 	hidden: false,
-	teams: true,
+	teams: false,
 	antibingo: false,
-	bingo_count: 2,
+	bingo_count: 1,
 	bingo_count_type: "bingo",
 	difficulty: 3, // 4 easy, 1 very hard
 	length: 3, // 4 fast, 1 full game
@@ -66,7 +66,7 @@ if (consoleLogTest)
 
 // add players
 bingo.addPlayer(10,"--"); bingo.ready(10);
-bingo.addPlayer(11,"OO"); bingo.ready(11);
+// bingo.addPlayer(11,"OO"); bingo.ready(11);
 bingo.addPlayer(1.5,"P1.5"); // not ready, should get removed
 bingo.addPlayer(12,"P2.5"); bingo.removePlayer(12); // remove
 bingo.addPlayer(22,"||"); bingo.changePlayerColor(22, "red"); bingo.ready(22);
@@ -110,6 +110,18 @@ var moves = [ // move "pairs": player, goal
 if (simulatePlay) {
 	if (consoleLogTest)
 		console.log("Test bingo start simulation")
+
+	if (rules.antibingo) {
+		for (var t in bingo.teams) {
+			while (bingo.teams[t].assignedAnti.length < rules.bingo_count) {
+				bingo.teams[t].assignedAnti.push(-1);
+			}
+			while (bingo.teams[t].goalBingos.length < rules.bingo_count) {
+				bingo.teams[t].goalBingos.push(-1);
+			}
+		}
+	}
+
 	while (!bingo.isWon && count != maxCount) {
 		var p = Math.floor(Math.random() * Object.keys(bingo.players).length);
 		var g = Math.floor(Math.random() * rules.size * rules.size);
