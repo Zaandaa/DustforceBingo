@@ -25,6 +25,10 @@ $(document).on('ready', function() {
 			max = 6;
 		if(size == "3" && type == "goal")
 			max = 9;
+		if(size == "4" && type == "bingo")
+			max = 8;
+		if(size == "4" && type == "goal")
+			max = 16;
 		if(size == "5" && type == "bingo")
 			max = 10;
 		if(size == "5" && type == "goal")
