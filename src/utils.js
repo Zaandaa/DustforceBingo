@@ -71,8 +71,6 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 				baseMax *= 4 - 0.25 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.keys.indexOf(goalData.keytype));
 				baseMin *= 2.5 - 0.125 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.keys.indexOf(goalData.keytype));
 			}
-			console.log("keys", baseMin, baseMax, goalData.keytype, goalData.hub);
-			console.log(baseMin <= goalData.total && goalData.total <= baseMax, goalData.total)
 		} else {
 			if (constants.levelTypes.indexOf(goalData.leveltype) < 2) {
 				baseMax++;
