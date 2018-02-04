@@ -542,12 +542,12 @@ var Bingo = function(session, ruleset) {
 			boardData.size = self.ruleset.size;
 
 			boardData.players = {};
+			boardData.playerTeam = player in self.players ? self.players[player].team : undefined;
 			for (var id in self.players) {
 				var data = self.players[id].getBoardData();
 				if (self.players[id].team in self.teams)
 					self.teams[self.players[id].team].addTeamData(data);
 				boardData.players[id] = data;
-				boardData.playerTeam = self.players[id].team;
 			}
 
 			boardData.goals = {};

@@ -4,6 +4,7 @@ var isPlayer = false;
 var playerHover = undefined;
 var savedBoardData = {};
 var playerFinished = {};
+var playerTeam;
 
 function updateBoardTable(boardData, target, includeBottom) {
 	bingoStarted = true;
@@ -12,6 +13,8 @@ function updateBoardTable(boardData, target, includeBottom) {
 
 	savedBoardData = boardData;
 	isPlayer = boardData.isPlayer;
+	if (player in boardData.players)
+		playerTeam = boardData.players[player].team;
 
 	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
@@ -33,7 +36,7 @@ function updateBoardTable(boardData, target, includeBottom) {
 				if (playerHover == boardData.players[achiever].id) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[playerHover].color + ");"
 										  + "background-color:var(--cell" + boardData.players[playerHover].color + ");");
-				else if (lockout || boardData.playerTeam == boardData.players[achiever].team) 
+				else if (lockout || boardData.playerTeam == boardData.players[achiever].team || playerTeam == boardData.players[achiever].team) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
 										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 
