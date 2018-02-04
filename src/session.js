@@ -176,7 +176,7 @@ function build(io) {
 
 		var bingo = new Bingo(self, bingo_args);
 		self.error = bingo.error;
-		if (self.error)
+		if (self.error != "")
 			return;
 
 		function isPlayer(socket) {

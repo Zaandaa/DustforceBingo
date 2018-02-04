@@ -40,15 +40,30 @@ var Bingo = function(session, ruleset) {
 	self.firstGoal = false;
 	self.isWon = false;
 	self.finished = false;
-	self.playersDone = 0;
+	self.teamsDone = 0;
 	self.error = false;
 
+	self.teams = {};
 	self.players = {};
+
 	self.possibleBingos = board.cachePossibleBingos(self.ruleset.size);
 	self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
 
-	self.error = self.goals.includes(undefined) || (self.ruleset.size != 3 && self.ruleset.size != 4 && self.ruleset.size != 5);
-	if (self.error)
+	if (self.ruleset.antibingo) {
+		self.ruleset.lockout = false;
+		self.ruleset.hidden = false;
+		if (self.ruleset.bingo_count_type != "bingo") {
+			self.ruleset.bingo_count_type = "bingo";
+			self.ruleset.bingo_count = 1;
+		}
+	}
+
+	self.error = "";
+	if (self.goals.includes(undefined))
+		self.error = "nobingo";
+	else if (self.ruleset.size != 3 && self.ruleset.size != 4 && self.ruleset.size != 5)
+		self.error = "nobingo";
+	if (self.error != "")
 		return self;
 
 	self.getState = function() {
@@ -150,6 +165,8 @@ var Bingo = function(session, ruleset) {
 	self.playerCountBingo = function(id) {
 		var bingoCount = 0;
 		for (var b in self.possibleBingos) {
+			if (self.ruleset.antibingo && !self.players[id].goalBingos.includes(b))
+				continue;
 			var hasBingo = true;
 			for (var c in self.possibleBingos[b]) {
 				if (!self.players[id].goalsAchieved.includes(self.possibleBingos[b][c])) {
@@ -256,7 +273,7 @@ var Bingo = function(session, ruleset) {
 					continue;
 				else if (possibleWinners.includes[p]) { // tie win, not already done
 					self.players[p].finish(Date.now() - self.startTime, true, 1);
-					self.playersDone++;
+					self.teamsDone++;
 				} else {
 					var score = self.players[p].goalsAchieved.length + (self.ruleset.bingo_count_type == "bingo" ? self.players[p].bingos * 100 : 0);
 					if (!rankedPlayers[score])
@@ -269,35 +286,42 @@ var Bingo = function(session, ruleset) {
 			sortedRanks.sort(function(a,b) { return b-a; });
 			for (var score in sortedRanks) {
 				for (var p in rankedPlayers[sortedRanks[score]]) {
-					self.players[rankedPlayers[sortedRanks[score]][p]].finish(Date.now() - self.startTime, false, self.playersDone + 1);
+					self.players[rankedPlayers[sortedRanks[score]][p]].finish(Date.now() - self.startTime, false, self.teamsDone + 1);
 				}
-				self.playersDone += rankedPlayers[sortedRanks[score]].length;
+				self.teamsDone += rankedPlayers[sortedRanks[score]].length;
 			}
 
 		} else if (possibleWinners.length == 1) {
 			// force win
 			self.isWon = true;
-			self.players[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.playersDone + 1);
-			self.playersDone++;
+			self.players[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.teamsDone + 1);
+			self.teamsDone++;
 		}
 	};
 
-	self.checkPlayerFinished = function(id) {
-		if (self.players[id].finishTime > 0)
+	self.checkFinished = function(id) {
+		if (self.teams[id][0].finishTime > 0)
 			return; // already done
 
 		if (self.ruleset.bingo_count_type == "bingo") {
 			if (self.playerCountBingo(id) >= self.ruleset.bingo_count) {
-				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.playersDone + 1);
+				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
 				self.isWon = true;
-				self.playersDone++;
+				self.teamsDone++;
 			}
 		} else { // count player goals
 			if (self.players[id].goalsAchieved.length >= self.ruleset.bingo_count) {
-				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.playersDone + 1);
+				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
 				self.isWon = true;
-				self.playersDone++;
+				self.teamsDone++;
 			}
+		}
+	};
+
+	self.countProgress = function(goalData, team) {
+		// var progress = ;
+		for (var p in self.teams[team]) {
+			self.players[self.teams[team][t]].allProgress
 		}
 	};
 
@@ -316,6 +340,15 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
+	self.assignAnti = function(p, a) {
+		if (!self.ruleset.antibingo)
+			return;
+		if (self.players[p].assignedAnti.length < self.ruleset.bingo_count && !self.players[p].assignedAnti.includes(a)) {
+			self.players[p].giveAnti(a);
+			// other player.receiveAnti(a);
+		}
+	};
+
 	self.start = function() {
 		var ready = false;
 		for (var p in self.players) {
@@ -331,7 +364,7 @@ var Bingo = function(session, ruleset) {
 		self.firstGoal = false;
 		self.isWon = false;
 		self.finished = false;
-		self.playersDone = 0;
+		self.teamsDone = 0;
 
 		// remove not ready players
 		var playersToRemove = [];
@@ -344,6 +377,16 @@ var Bingo = function(session, ruleset) {
 		for (var i = 0; i < playersToRemove.length; i++) {
 			delete self.players[playersToRemove[i]];
 			self.session.removedPlayerOnStart(playersToRemove[i]);
+		}
+
+		// make teams
+		for (var p in self.players) {
+			var team = self.ruleset.teams ? self.players[p].color : p;
+			self.players[p].team = team;
+			if (team in self.teams)
+				self.teams[team].push(p);
+			else
+				self.teams[team] = [p];
 		}
 
 		// reveal if needed
@@ -430,8 +473,8 @@ var Bingo = function(session, ruleset) {
 
 		if (success) {
 			self.firstGoal = true;
-			self.checkPlayerFinished(replay.user);
-			if (self.ruleset.hidden && self.playersDone >= Object.keys(self.players).length) {
+			self.checkFinished(self.players[replay.user].team);
+			if (self.ruleset.hidden && self.teamsDone >= Object.keys(self.players).length) {
 				for (var g in self.goals) {
 					self.goals[g].reveal();
 				}
@@ -499,12 +542,13 @@ var Bingo = function(session, ruleset) {
 		self.firstGoal = false;
 		self.isWon = false;
 		self.finished = false;
-		self.playersDone = 0;
+		self.teamsDone = 0;
 
 		// unready all
 		for (var p in self.players) {
 			self.players[p].resetVars();
 		}
+		self.teams = {};
 
 		// new goals
 		self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
@@ -526,6 +570,7 @@ var Bingo = function(session, ruleset) {
 			delete self.players[id];
 		}
 		delete self.players;
+		delete self.teams;
 
 		for (var g in self.goals) {
 			delete self.goals[g];

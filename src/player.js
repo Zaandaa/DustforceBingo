@@ -9,6 +9,7 @@ var Player = function(id, name) {
 	self.id = id;
 	self.name = name;
 	self.color = "white";
+	self.team = id;
 	self.ready = false;
 	self.reset = false;
 
@@ -33,12 +34,15 @@ var Player = function(id, name) {
 	self.maxGoals = 0;
 	self.canWin = true;
 
+	self.assignedAnti = [];
+	self.goalBingos = [];
+
 	self.toString = function() {
 		return self.name;
 	};
 
 	self.getBoardData = function() {
-		return {id: self.id, name: self.name, ready: self.ready, reset: self.reset, color: self.color, finishTime: self.finishTime, isWinner: self.isWinner, place: self.place, goals: self.goalsAchieved.length, bingos: self.bingos};
+		return {id: self.id, name: self.name, team: self.team, ready: self.ready, reset: self.reset, color: self.color, finishTime: self.finishTime, isWinner: self.isWinner, place: self.place, goals: self.goalsAchieved.length, bingos: self.bingos};
 	};
 
 	self.getReady = function() {
@@ -51,6 +55,14 @@ var Player = function(id, name) {
 
 	self.voteReset = function(r) {
 		self.reset = self.ready ? r : false;
+	};
+
+	self.giveAnti = function(a) {
+		self.assignedAnti.push(a);
+	};
+
+	self.receiveAnti = function(a) {
+		self.goalBingos.push(a);
 	};
 
 	self.changeColor = function(c) {
@@ -90,6 +102,9 @@ var Player = function(id, name) {
 		self.maxBingos = 0;
 		self.maxGoals = 0;
 		self.canWin = true;
+
+		self.assignedAnti = [];
+		self.goalBingos = [];
 	};
 
 	self.achieveGoal = function(id) {

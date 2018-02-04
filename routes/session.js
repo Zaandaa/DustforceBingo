@@ -52,8 +52,8 @@ function build(io) {
 		if(verify(params, req.query)) {
 			var s = session.newSession(req.query);
 			// console.log(s);
-			if (s.error)
-				res.redirect('/bingo?error=nobingo');
+			if (s.error != "")
+				res.redirect('/bingo?error=' + s.error);
 			else
 				res.redirect('/bingo/session/' + s.id);
 		} else {

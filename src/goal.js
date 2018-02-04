@@ -573,7 +573,7 @@ var Goal = function(goalData) {
 	};
 
 	self.getBoardData = function() {
-		return {title: self.revealed ? self.goalString : "", achieved: self.achieved};
+		return {title: self.revealed ? self.goalString : "", achieved: self.achieved, total: self.goalData.total || 0};
 	};
 
 	self.isAchieved = function() {
