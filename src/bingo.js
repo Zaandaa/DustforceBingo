@@ -162,14 +162,21 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
-	self.playerCountBingo = function(id) {
+	self.countBingo = function(id) {
 		var bingoCount = 0;
 		for (var b in self.possibleBingos) {
-			if (self.ruleset.antibingo && !self.players[id].goalBingos.includes(b))
+			if (self.ruleset.antibingo && !self.teams[id][0].goalBingos.includes(b))
 				continue;
 			var hasBingo = true;
 			for (var c in self.possibleBingos[b]) {
-				if (!self.players[id].goalsAchieved.includes(self.possibleBingos[b][c])) {
+				var teamHasCell = false;
+				for (var p in self.teams[id]) {
+					if (!self.players[self.teams[id][p]].goalsAchieved.includes(self.possibleBingos[b][c])) {
+						teamHasCell = true;
+						break;
+					}
+				}
+				if (!teamHasCell)
 					hasBingo = false;
 					break;
 				}
@@ -180,7 +187,7 @@ var Bingo = function(session, ruleset) {
 		return bingoCount;
 	};
 
-	self.playerMaxBingo = function(id) {
+	self.countMaxBingo = function(id) {
 		if (!self.ruleset.lockout)
 			return self.possibleBingos.length;
 
@@ -188,9 +195,18 @@ var Bingo = function(session, ruleset) {
 		for (var b in self.possibleBingos) {
 			var blocked = false;
 			for (var c in self.possibleBingos[b]) {
-				if (self.goals[self.possibleBingos[b][c]].isAchieved() && !self.players[id].goalsAchieved.includes(self.possibleBingos[b][c])) {
-					blocked = true;
-					break;
+				if (self.goals[self.possibleBingos[b][c]].isAchieved()) {
+					var teamHasCell = false;
+					for (var p in self.teams[id]) {
+						if (self.players[self.teams[id][p]].goalsAchieved.includes(self.possibleBingos[b][c])) {
+							teamHasCell = true;
+							break;
+						}
+					}
+					if (!teamHasCell) {
+						blocked = true;
+						break;
+					}
 				}
 			}
 			if (!blocked)
@@ -208,6 +224,17 @@ var Bingo = function(session, ruleset) {
 		return goalsAchieved;
 	};
 
+	self.countTeamGoals = function(id) {
+		var teamGoals = [];
+		for (var p in self.teams[id]) {
+			self.players[self.teams[id][p]].goalsAchieved.forEach(function(g) {
+				if (!teamGoals.includes(g))
+					teamGoals.push(g);
+			});
+		}
+		return teamGoals.length;
+	};
+
 	self.setPlayersCanWin = function() {
 		if (!self.ruleset.lockout)
 			return;
@@ -218,16 +245,19 @@ var Bingo = function(session, ruleset) {
 		var topBingos = 0;
 		var topBingosGoals = 0;
 		for (var p in self.players) {
-			self.players[p].maxGoals = self.players[p].goalsAchieved.length + goalsRemaining;
-			self.players[p].bingos = self.playerCountBingo(p);
-			self.players[p].maxBingos = self.playerMaxBingo(p);
+			var teamGoals = self.countTeamGoals(self.players[p].team);
+			var teamBingos = self.countBingo(self.players[p].team);
+			var teamMaxBingos = self.countMaxBingo(self.players[p].team);
+			self.players[p].maxGoals = teamGoals + goalsRemaining;
+			self.players[p].bingos = teamBingos;
+			self.players[p].maxBingos = teamMaxBingos;
 
-			if (self.players[p].goalsAchieved.length > topGoals)
-				topGoals = self.players[p].goalsAchieved.length;
-			if (self.players[p].bingos >= topBingos) {
-				topBingos = self.players[p].bingos;
-				if (self.players[p].goalsAchieved.length > topBingosGoals)
-					topBingosGoals = self.players[p].goalsAchieved.length;
+			if (teamGoals > topGoals)
+				topGoals = teamGoals;
+			if (teamBingos >= topBingos) {
+				topBingos = teamBingos;
+				if (teamGoals > topBingosGoals)
+					topBingosGoals = teamGoals;
 			}
 		}
 
@@ -259,42 +289,46 @@ var Bingo = function(session, ruleset) {
 		var possibleWinners = [];
 		if (!self.isWon) {
 			for (var p in self.players) {
-				if (self.players[p].canWin)
-					possibleWinners.push(p);
+				if (self.players[p].canWin && !possibleWinners.includes(self.players[p].team))
+					possibleWinners.push(self.players[p].team);
 			}
 		}
 
 		if (goalsRemaining == 0) {
 			// force end
 			self.isWon = true;
-			var rankedPlayers = {};
+			var rankedTeams = {};
 			for (var p in self.players) {
 				if (self.players[p].finishTime > 0)
 					continue;
-				else if (possibleWinners.includes[p]) { // tie win, not already done
+				else if (possibleWinners.includes[self.players[p].team]) { // tie win, not already done
 					self.players[p].finish(Date.now() - self.startTime, true, 1);
-					self.teamsDone++;
-				} else {
+				} else if (!rankedTeams.includes(self.players[p].team)) {
 					var score = self.players[p].goalsAchieved.length + (self.ruleset.bingo_count_type == "bingo" ? self.players[p].bingos * 100 : 0);
-					if (!rankedPlayers[score])
-						rankedPlayers[score] = [];
-					rankedPlayers[score].push(p);
+					if (!rankedTeams[score])
+						rankedTeams[score] = [];
+					rankedTeams[score].push(self.players[p].team);
 				}
 			}
+			self.teamsDone += possibleWinners.length;
 
 			var sortedRanks = Object.keys(rankedPlayers).slice();
 			sortedRanks.sort(function(a,b) { return b-a; });
 			for (var score in sortedRanks) {
-				for (var p in rankedPlayers[sortedRanks[score]]) {
-					self.players[rankedPlayers[sortedRanks[score]][p]].finish(Date.now() - self.startTime, false, self.teamsDone + 1);
+				for (var t in rankedTeams[sortedRanks[score]]) {
+					self.teams[rankedTeams[sortedRanks[score]]].forEach(function(player) {
+						player.finish(Date.now() - self.startTime, false, self.teamsDone + 1);
+					});
 				}
-				self.teamsDone += rankedPlayers[sortedRanks[score]].length;
+				self.teamsDone += rankedTeams[sortedRanks[score]].length;
 			}
 
 		} else if (possibleWinners.length == 1) {
 			// force win
 			self.isWon = true;
-			self.players[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.teamsDone + 1);
+			self.teams[possibleWinners[0]].forEach(function(player) {
+				player.finish(Date.now() - self.startTime, true, self.teamsDone + 1);
+			});
 			self.teamsDone++;
 		}
 	};
@@ -304,15 +338,19 @@ var Bingo = function(session, ruleset) {
 			return; // already done
 
 		if (self.ruleset.bingo_count_type == "bingo") {
-			if (self.playerCountBingo(id) >= self.ruleset.bingo_count) {
-				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
-				self.isWon = true;
+			if (self.countBingo(id) >= self.ruleset.bingo_count) {
+				for (var p in self.teams[id]) {
+					self.players[self.teams[id][p]].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
+					self.isWon = true;
+				}
 				self.teamsDone++;
 			}
 		} else { // count player goals
-			if (self.players[id].goalsAchieved.length >= self.ruleset.bingo_count) {
-				self.players[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
-				self.isWon = true;
+			if (self.countTeamGoals(id) >= self.ruleset.bingo_count) {
+				for (var p in self.teams[id]) {
+					self.players[self.teams[id][p]].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
+					self.isWon = true;
+				}
 				self.teamsDone++;
 			}
 		}
