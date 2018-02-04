@@ -16,6 +16,7 @@
 	  , "icon_type"  : "icon"
 	  , "clean_name" : "Get keys"
 	  , "init_state" : true
+	  , "tooltip"    : "Key totals are not combined in teams"
 	},
 	"tutorials" : {
 	    "icon"       : "http://dustkid.com/static/iconDustman.png"

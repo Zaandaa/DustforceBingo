@@ -23,8 +23,8 @@ var rules = {
 	antibingo: false,
 	bingo_count: 1,
 	bingo_count_type: "bingo",
-	difficulty: 3, // 4 easy, 1 very hard
-	length: 3, // 4 fast, 1 full game
+	difficulty: 1, // 4 easy, 1 very hard
+	length: 1, // 4 fast, 1 full game
 	beat: true,
 	ss: true,
 	keys: true,

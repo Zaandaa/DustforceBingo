@@ -68,17 +68,19 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 				baseMin++;
 			}
 			if (!goalData.hub) {
-				baseMax *= 2 + 0.5 * (4 - ruleset.length);
-				baseMin *= 1 + 0.5 * (4 - ruleset.length);
+				baseMax *= 4 - 0.25 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.keys.indexOf(goalData.keytype));
+				baseMin *= 2.5 - 0.125 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.keys.indexOf(goalData.keytype));
 			}
+			console.log("keys", baseMin, baseMax, goalData.keytype, goalData.hub);
+			console.log(baseMin <= goalData.total && goalData.total <= baseMax, goalData.total)
 		} else {
 			if (constants.levelTypes.indexOf(goalData.leveltype) < 2) {
 				baseMax++;
 				baseMin++;
 			}
 			if (!goalData.hub) {
-				baseMax *= 2 + 0.5 * (4 - ruleset.length);
-				baseMin *= 1 + 0.5 * (4 - ruleset.length);
+				baseMax *= 4 - 0.25 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.levelTypes.indexOf(goalData.leveltype));
+				baseMin *= 2.5 - 0.125 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.levelTypes.indexOf(goalData.leveltype));
 			}
 			if (goalData.character) {
 				baseMax *= 0.75;
