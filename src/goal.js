@@ -589,7 +589,7 @@ var Goal = function(goalData) {
 		self.revealed = true;
 	}
 
-	self.compareReplay = function(replay, player) {
+	self.compareReplay = function(replay, team) {
 		// check if replay meets goalData
 		if (replay.validated < 1 && replay.validated != -3) {
 			if (replay.validated == -7) {
@@ -644,10 +644,10 @@ var Goal = function(goalData) {
 				return true;
 			}
 		} else {
-			// total, check against player.countObjective(kwargs)
+			// total, check against team.countObjective(kwargs)
 
 			// >= beat, ss, apples, keys
-			if (player.countObjective(self.goalData) >= self.goalData.total) {
+			if (team.countObjective(self.goalData) >= self.goalData.total) {
 				return true;
 			}
 

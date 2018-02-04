@@ -19,7 +19,7 @@ var rules = {
 	size: 5,
 	lockout: true,
 	hidden: false,
-	teams: false,
+	teams: true,
 	antibingo: false,
 	bingo_count: 2,
 	bingo_count_type: "bingo",
@@ -69,7 +69,7 @@ bingo.addPlayer(10,"--"); bingo.ready(10);
 bingo.addPlayer(11,"OO"); bingo.ready(11);
 bingo.addPlayer(1.5,"P1.5"); // not ready, should get removed
 bingo.addPlayer(12,"P2.5"); bingo.removePlayer(12); // remove
-bingo.addPlayer(22,"||"); bingo.ready(22);
+bingo.addPlayer(22,"||"); bingo.changePlayerColor(22, "red"); bingo.ready(22);
 bingo.start();
 // bingo.voteReset(11);
 // bingo.voteReset(22);
@@ -129,17 +129,19 @@ if (simulatePlay) {
 			console.log(p.toString() + " " + g.toString());
 
 		// console.log("achieve");
+		bingo.teams[bingo.players[Object.keys(bingo.players)[p]].team].achieveGoal(g);
 		bingo.players[Object.keys(bingo.players)[p]].achieveGoal(g);
+
 		// console.log("add");
 		bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].toString());
 		// console.log("checkwin");
-		bingo.checkPlayerFinished(Object.keys(bingo.players)[p]);
+		bingo.checkFinished(bingo.players[Object.keys(bingo.players)[p]].team);
 		if (rules.lockout)
 			bingo.checkLockout();
 
 		// console board
 		if (consoleLogTest) {
-			console.log("winner: " + bingo.winner);
+			console.log("winner: " + bingo.isWon);
 			for (var r = 0; r < rules.size; r++) {
 				var line = "";
 				for (var c = 0; c < rules.size; c++) {
