@@ -5,7 +5,6 @@ var utils = require('./utils');
 var PADDING = new Array(39).join(" ")
 
 var outputJson = require("./levels.json");
-var extraData = require("./extraleveldata.json");
 
 /*
  * Extension methods
@@ -209,11 +208,6 @@ function preload(callback)
 		token : "unload",
 		url   : "http://dustkid.com/json/records/unload/all"
 	});
-	jobs.push(
-	{
-		token : "genocide",
-		url   : "http://dustkid.com/json/records/genocide/all"
-	});
 	
 	jobs.syncMap(function(job, done) 
 	{
@@ -246,7 +240,6 @@ function main(levels, records, callback)
 		
 		var timerecord  = records["Any"]["Times"] [level.id]
 		var scorerecord = records["Any"]["Scores"][level.id]
-		var genociderecord = records["genocide"]["Genocide"][level.id]
 		
 		level.nosuper = {
 			Beat : timerecord .input_super > 0 && !(level.level in ["Tera Difficult", "Combat Tutorial"]),
@@ -259,14 +252,7 @@ function main(levels, records, callback)
 		level.oob        = oobs[level.id] !== undefined,
 		level.charselect = level.type != "Tutorial",
 		level.gimmicks   = []
-
-		if (level.level in extraData) {
-			for (var g in extraData[level.level].gimmicks) {
-				if (gimmicks.includes(extraData[level.level].gimmicks[g].type))
-					level.gimmicks.push(extraData[level.level].gimmicks[g]);
-			}
-		}
-
+		
 		gimmicks.syncMap(function(gimmick, gimmickDone) 
 		{
 			var url = "http://dustkid.com/json/level/" + level.id + "/" 
@@ -277,7 +263,7 @@ function main(levels, records, callback)
 				{
 					console.log(utils.pad("left", level.level, 17), utils.pad("left", gimmick, 12), utils.pad("left", objective, 4));
 					
-					var leaderboard = getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, genociderecord);
+					var leaderboard = getLeaderboard(top50, objective, gimmick);
 					
 					console.log(PADDING, utils.pad("left", leaderboard.length, 2), "replay(s)");
 					
@@ -331,7 +317,7 @@ function main(levels, records, callback)
 	}, "Level");
 }
 
-function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, genociderecord) 
+function getLeaderboard(top50, objective, gimmick) 
 {
 	var replays = Object.values(top50[leaderboards["completions"][objective]]);
 	
@@ -345,36 +331,38 @@ function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, geno
 		}
 	})
 	
-	
-	for(var i = replays.length; i--; i > -1) 
-	{
-		if (replays[i].time > 180000)
-			replays.splice(i, 1);
-	}
-
 	replays.sort(function(a, b) 
 	{
-		var left  = a.access(gimmick);
-		var right = b.access(gimmick);
-		if (left == right) return a.time - b.time
-		return gimmick == "apples" ? right - left : left - right;
+		var count  = a.access(gimmick) - b.access(gimmick);
+		if (count != 0) 
+			return gimmick == "apples" ? -count : count;
+		
+		if (objective == "SS") {
+			var completion = b.score_completion - a.score_completion;
+			if (completion != 0) 
+				return completion;
+			
+			var finesse = b.score_finesse - a.score_finesse;
+			if(finesse != 0)  {
+				return finesse;
+			}
+		}
+		return a.time - b.time
+		
 	});
 	
 	for(var i = replays.length; i--; i > -1) 
 	{
 		replays[i].rank = i;
 		if(  (objective == "SS" && !isSS(replays[i]))
+		  || (replays[i].time > 180000)
 		  || (replays[i].access(gimmick) >= inputMaxProbablyIntended[gimmick])
 		  || (gimmick == "apples" && replays[i].access("apples") == 0)
 		  || (replays[i].access(gimmick) < 0)
-		  || (gimmick == "lowattack" && objective == "SS" && replays[i].access(gimmick) >= utils.accessGimmick(genociderecord, gimmick) && utils.accessGimmick(genociderecord, gimmick) > -1)
-		  || (gimmick == "lowattack" && objective == "Beat" && replays[i].access(gimmick) >= utils.accessGimmick(timerecord, gimmick) && utils.accessGimmick(timerecord, gimmick) > -1)
 		)
 			replays.splice(i, 1);
 	}
 	
-
-
 	return replays;
 }
 
@@ -446,7 +434,7 @@ const gimmicks = [
 ];
  
 const difficultyThresholds = { // total achieved per difficulty tier
-	"apples"       : [10, 30, 50, 60, 70, 80],
+	"apples"       : [ 5, 15, 25, 30, 35, 40],
 	"lowdash"      : [10, 30, 50, 60, 70, 80],
 	"lowjump"      : [ 5, 15, 25, 30, 35, 40],
 	"lowdirection" : [ 5, 15, 25, 30, 35, 40],
@@ -458,11 +446,11 @@ const inputMaxProbablyIntended = {
 	"lowdash"      : 3,
 	"lowjump"      : 10,
 	"lowdirection" : 10,
-	"lowattack"    : 20
+	"lowattack"    : 30
 };
 
 const gimmickLeaderboardSize = {
-	"apples"       : 100,
+	"apples"       : 50,
 	"lowdash"      : 100,
 	"lowjump"      : 50,
 	"lowdirection" : 50,
