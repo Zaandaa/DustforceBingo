@@ -423,7 +423,7 @@ var Bingo = function(session, ruleset) {
 		}
 
 		// reveal if needed
-		if (!ruleset.hidden) {
+		if (!self.ruleset.hidden) {
 			for (var i = 0; i < self.goals.length; i++) {
 				self.goals[i].reveal();
 			}
@@ -445,8 +445,8 @@ var Bingo = function(session, ruleset) {
 			if (self.ruleset.lockout) {
 				self.finish();
 			} else {
-				for (var p in self.players) {
-					if (self.players[p].goalsAchieved.length == self.goals.length)
+				for (var t in self.teams) {
+					if (self.teams[t].goalsAchieved.length < self.goals.length)
 						return;
 				}
 				self.finish();
