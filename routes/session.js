@@ -81,15 +81,8 @@ function build(io) {
 		var s = session.getSession(req.params.id);
 		res.render('session', {
 			session: s,
-			size: s.bingo_args.size,
 			wincondition: s.bingo_args.bingo_count + " " + s.bingo_args.bingo_count_type + (s.bingo_args.bingo_count > 1 ? "s" : ""),
-			save: s.bingo_args.save,
-			difficulty: s.bingo_args.difficulty_raw,
-			length: s.bingo_args.length_raw,
-			lockout: s.bingo_args.lockout ? "true" : "false",
-			hidden: s.bingo_args.hidden ? "true" : "false",
-			teams: s.bingo_args.teams ? "true" : "false",
-			antibingo: s.bingo_args.antibingo ? "true" : "false",
+			ruleset: s.bingo_args,
 			options: options,
 			enabled: s.getBingoGoalOptions()
 		});

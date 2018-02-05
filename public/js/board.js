@@ -18,12 +18,21 @@ function updateBoardTable(boardData, target, includeBottom) {
 
 	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
-	table.css({"min-width": 140 * bingoSize + "px"});
+	table.css({"min-width": 140 * ruleset.size + "px"});
 
 	var col_width = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
 
+	var bingo_top = $("<div class='row margin_zero bingo_top'/>");
+	bingo_top.append("<div class='dia_identifier' value='0'/>")
+	for (var i = 0; i < boardData.size; i++) {
+		bingo_top.append("<div class='col-" + col_width + "'><div class='col_identifier' value='" + i + "'/></div>");
+	}
+	
+	table.append(bingo_top);
+	
 	for (var i = 0; i < boardData.size; i++) {
 		var row = $("<div class='row margin_zero'></div>");
+		row.append("<div class='row_identifier' value='" + i + "'/>")
 		for (var j = 0; j < boardData.size; j++) {
 			var col = $("<div></div>").addClass("col-" + col_width);
 			var cell = $("<div></div>").addClass("bingo_table_cell");
@@ -36,7 +45,7 @@ function updateBoardTable(boardData, target, includeBottom) {
 				if (playerHover == boardData.players[achiever].id) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[playerHover].color + ");"
 										  + "background-color:var(--cell" + boardData.players[playerHover].color + ");");
-				else if (lockout || boardData.playerTeam == boardData.players[achiever].team || playerTeam == boardData.players[achiever].team) 
+				else if (ruleset.lockout || boardData.playerTeam == boardData.players[achiever].team || playerTeam == boardData.players[achiever].team) 
 					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
 										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
 				achievers += "<div class='color-circle-small' " + 
@@ -46,8 +55,7 @@ function updateBoardTable(boardData, target, includeBottom) {
 			}
 			innerCell.append("<div class='goal_achievers_container'><div class='goal_achievers'>" + achievers + "</div></div>");
 			innerCell.click(toggleLabel);
-			if (bingoLabels.includes("goal_" + i + "_" + j))
-				innerCell.addClass("bingo_label");
+			
 			cell.append(innerCell);
 			col.append(cell);
 			row.append(col);
@@ -55,8 +63,14 @@ function updateBoardTable(boardData, target, includeBottom) {
 		table.append(row);
 	}
 
+	table.append("<div class='row margin_zero bingo_bottom'><div class='dia_identifier' value='1'/></div>");
+	
 	target.append(table);
 
+	for(var i = 0; i < bingoLabels.length; i++) {
+		$(bingoLabels[i]).addClass('bingo_label');
+	}
+	
 	if (includeBottom) {
 		if (isPlayer && (!boardData.firstGoal || boardData.state == "Complete")) {
 			var resetButton = $("<div style='display: inline-block'></div>").addClass("float-left");
@@ -70,6 +84,136 @@ function updateBoardTable(boardData, target, includeBottom) {
 		popoutButton.click(popoutBoard);
 		target.append(popoutButton);
 	}
+	
+	// IDENTIFIER
+	
+	function idenifierWrapper(lambda) {
+		return function(e) {
+			var target = $(e.target);
+			var v = target.attr('value');
+			if(v === undefined)
+				return;
+			
+			lambda(v, target);
+		}
+	}
+	
+	function colorSet(i, j) {
+		$('#goal_' + i + "_" + j).attr('style', 'background-color: var(--graydark)');
+	}
+	
+	function colorUnset(i, j) {
+		$('#goal_' + i + "_" + j).removeAttr('style');
+	}
+	
+	function addLabel(i, j) {
+		$('#goal_' + i + "_" + j).addClass('bingo_label');
+		bingoLabels.push('#goal_' + i + "_" + j);
+	}
+	
+	function removeLabel(i, j) {
+		$('#goal_' + i + "_" + j).removeClass('bingo_label');
+		bingoLabels.splice(bingoLabels.indexOf('#goal_' + i + "_" + j), 1);
+	}
+	
+	$('.col_identifier').hover(idenifierWrapper(function(v) {		
+		for(var i = 0; i < 5; i++) {
+			colorSet(i, v);
+		}
+	}), idenifierWrapper(function(v) {	
+		for(var i = 0; i < 5; i++) {
+			colorUnset(i, v);
+		}
+	})).click(idenifierWrapper(function(v, target) {
+		if(target.hasClass('bingo_label')) {
+			target.removeClass('bingo_label')
+			bingoLabels.splice(bingoLabels.indexOf(".col_identifier[value='"+v+"']"), 1);
+			for(var i = 0; i < 5; i++) {
+				removeLabel(i, v);
+			}
+		} else {
+			target.addClass('bingo_label')
+			bingoLabels.push(".col_identifier[value='"+v+"']");
+			for(var i = 0; i < 5; i++) {
+				addLabel(i, v);
+			}
+		}
+	}));
+	
+	$('.row_identifier').hover(idenifierWrapper(function(v) {		
+		for(var i = 0; i < 5; i++) {
+			colorSet(v, i);
+		}
+	}), idenifierWrapper(function(v) {	
+		for(var i = 0; i < 5; i++) {
+			colorUnset(v, i);
+		}
+	})).click(idenifierWrapper(function(v, target) {
+		if(target.hasClass('bingo_label')) {
+			target.removeClass('bingo_label');
+			bingoLabels.splice(bingoLabels.indexOf(".row_identifier[value='"+v+"']"), 1);
+			for(var i = 0; i < 5; i++) {
+				removeLabel(v, i);
+			}
+		} else {
+			target.addClass('bingo_label');
+			bingoLabels.push(".row_identifier[value='"+v+"']");
+			for(var i = 0; i < 5; i++) {
+				addLabel(v, i);
+			}
+		}
+	}));
+	
+	$('.dia_identifier').hover(idenifierWrapper(function(v) {	
+		if(v == 0) {
+			for(var i = 0; i < 5; i++) {
+				colorSet(i, i);
+			}
+		} else {
+			for(var i = 0; i < 5; i++) {
+				colorSet(i, 4-i);
+			}
+		}
+	}), idenifierWrapper(function(v) {	
+		if(v == 0) {
+			for(var i = 0; i < 5; i++) {
+				colorUnset(i, i);
+			}
+		} else {
+			for(var i = 0; i < 5; i++) {
+				colorUnset(i, 4-i);
+			}
+		}
+	})).click(idenifierWrapper(function(v, target) {
+		if(target.hasClass('bingo_label')) {
+			target.removeClass('bingo_label')
+			bingoLabels.splice(bingoLabels.indexOf(".dia_identifier[value='"+v+"']"), 1);
+			if(v == 0) {
+				for(var i = 0; i < 5; i++) {
+					removeLabel(i, i);
+				}
+			} else {
+				for(var i = 0; i < 5; i++) {
+					removeLabel(i, 4-i);
+				}
+			}
+		} else {
+			target.addClass('bingo_label')
+			bingoLabels.push(".dia_identifier[value='"+v+"']");
+			if(v == 0) {
+				for(var i = 0; i < 5; i++) {
+					addLabel(i, i);
+				}
+			} else {
+				for(var i = 0; i < 5; i++) {
+					addLabel(i, 4-i);
+				}
+			}
+		}
+	}));
+
+	
+	
 }
 
 function updatePlayersTable(playersJson, target) {
@@ -169,10 +313,10 @@ function endPlayerHover() {
 function toggleLabel() {
 	if ($(this).hasClass("bingo_label")) {
 		$(this).removeClass("bingo_label");
-		bingoLabels.splice(bingoLabels.indexOf($(this).attr("id")), 1);
+		bingoLabels.splice(bingoLabels.indexOf("#" + $(this).attr("id")), 1);
 	} else {
 		$(this).addClass("bingo_label");
-		bingoLabels.push($(this).attr("id"));
+		bingoLabels.push("#" + $(this).attr("id"));
 	}
 }
 
@@ -206,8 +350,8 @@ function resetBingo() {
 }
 
 function popoutBoard() {
-	var width = bingoSize * 140;
-	var height = compact ? (70 * bingoSize) : (bingoSize * 128 + 2);
+	var width = ruleset.size * 140;
+	var height = compact ? (70 * ruleset.size) : (ruleset.size * 128 + 2);
 
 	var query = [];
 	if (player)
@@ -230,10 +374,10 @@ function toggleCompact() {
 }
 
 function setSizes(p) {
-	$(".bingo_table").css({"min-width": 140 * bingoSize + "px"});
-	$(".bingo_behind").css({"min-width": 140 * bingoSize + "px"});
-	$(".popout_bingo_behind").css({"min-width": 140 * bingoSize + "px"});
+	$(".bingo_table").css({"min-width": 140 * ruleset.size + "px"});
+	$(".bingo_behind").css({"min-width": 140 * ruleset.size + "px"});
+	$(".popout_bingo_behind").css({"min-width": 140 * ruleset.size + "px"});
 	if (p) {
-		$("body").css({"min-width": 140 * bingoSize + "px"});
+		$("body").css({"min-width": 140 * ruleset.size + "px"});
 	}
 }

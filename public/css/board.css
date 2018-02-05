@@ -24,12 +24,45 @@
 	background-color: var(--graydark);
 	cursor: default;
 }
+.bingo_label .goal_text {
+	font-weight: bold;
+}
+
+.col_identifier, .dia_identifier, .row_identifier {
+	background-color: var(--dark);
+	color: var(--white);
+	border: 1px solid var(--gray);
+	border-radius: 4px;
+}
+
+.col_identifier:hover, .dia_identifier:hover, .row_identifier:hover {
+	background-color: var(--graydark);
+}
+
+.row_identifier, .dia_identifier {
+	padding-left: 10px;
+	margin: 2px 2px 2px -14px;
+}
+
+.dia_identifier, .col_identifier {
+	display: inline;
+	float:left;
+	padding-top:10px;
+}
+
+.col_identifier {
+	width:calc(100% - 4px);
+	margin:2px;
+}
+
+.bingo_pushdown {
+	display:block;
+	height:16px;
+}
+
 .bingo_label {
 	background-color: var(--grayish);
 	border-color: var(--white);
-}
-.bingo_label .goal_text {
-	font-weight: bold;
 }
 
 @media (max-width: 1199px) {
