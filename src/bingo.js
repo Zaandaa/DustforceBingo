@@ -493,9 +493,9 @@ var Bingo = function(session, ruleset) {
 
 		var success = false;
 		for (var i = 0; i < self.goals.length; i++) {
-			if (self.ruleset.lockout && self.goals[i].isAchieved() || self.players[replay.user].goalsAchieved.includes(i)) {
+			if (self.ruleset.lockout && self.goals[i].isAchieved() || self.teams[self.players[replay.user].team].goalsAchieved.includes(i)) {
 				continue;
-			} else if (self.goals[i].compareReplay(replay, self.players[replay.user], self.players)) {
+			} else if (self.goals[i].compareReplay(replay, self.teams[self.players[replay.user].team], self.players)) {
 				self.goals[i].addAchiever(replay.user);
 				self.teams[self.players[replay.user].team].achieveGoal(i);
 				self.players[replay.user].achieveGoal(i);
