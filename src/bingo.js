@@ -351,6 +351,17 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
+	self.antiForceAssign = function() {
+		for (var t in self.teams) {
+			while (self.teams[t].assignedAnti.length < self.ruleset.bingo_count) {
+				self.teams[t].assignedAnti.push(-1);
+			}
+			while (self.teams[t].goalBingos.length < self.ruleset.bingo_count) {
+				self.teams[t].goalBingos.push(-1);
+			}
+		}
+	};
+
 	self.assignAnti = function(p, a) {
 		if (!self.ruleset.antibingo)
 			return false;
@@ -405,9 +416,10 @@ var Bingo = function(session, ruleset) {
 
 		// anti teams
 		if (self.ruleset.antibingo) {
-			if (Object.keys(self.teams).length < 2) // cancel anti if too few teams
+			if (Object.keys(self.teams).length < 2) { // cancel anti if too few teams
 				self.ruleset.antibingo = false;
-			else {
+				self.antiForceAssign();
+			} else {
 				var teamKeys = Object.keys(self.teams);
 				var teamKeys2 = teamKeys.slice(1, teamKeys.length);
 				teamKeys2.push(teamKeys[0]);
@@ -509,14 +521,7 @@ var Bingo = function(session, ruleset) {
 
 		if (success) {
 			if (!self.firstGoal && self.ruleset.antibingo) {
-				for (var t in self.teams) {
-					while (self.teams[t].assignedAnti.length < self.ruleset.bingo_count) {
-						self.teams[t].assignedAnti.push(-1);
-					}
-					while (self.teams[t].goalBingos.length < self.ruleset.bingo_count) {
-						self.teams[t].goalBingos.push(-1);
-					}
-				}
+				self.antiForceAssign();
 			}
 			self.firstGoal = true;
 			self.checkFinished(self.players[replay.user].team);

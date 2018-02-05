@@ -20,7 +20,7 @@ var rules = {
 	lockout: true,
 	hidden: false,
 	teams: false,
-	antibingo: true,
+	antibingo: false,
 	bingo_count: 2,
 	bingo_count_type: "bingo",
 	difficulty: 1, // 4 easy, 1 very hard
@@ -71,8 +71,8 @@ bingo.addPlayer(1.5,"1"); // not ready, should get removed
 bingo.addPlayer(12,"2"); bingo.removePlayer(12); // remove
 bingo.addPlayer(22,"|"); bingo.changePlayerColor(22, "red"); bingo.ready(22);
 bingo.start();
-bingo.assignAnti(10,1);
-bingo.assignAnti(22,1);
+// bingo.assignAnti(10,1);
+// bingo.assignAnti(22,1);
 // bingo.voteReset(11);
 // bingo.voteReset(22);
 // bingo.resetBingo();
@@ -112,16 +112,8 @@ if (simulatePlay) {
 	if (consoleLogTest)
 		console.log("Test bingo start simulation")
 
-	if (rules.antibingo) {
-		for (var t in bingo.teams) {
-			while (bingo.teams[t].assignedAnti.length < rules.bingo_count) {
-				bingo.teams[t].assignedAnti.push(-1);
-			}
-			while (bingo.teams[t].goalBingos.length < rules.bingo_count) {
-				bingo.teams[t].goalBingos.push(-1);
-			}
-		}
-	}
+	if (rules.antibingo)
+		bingo.antiForceAssign();
 
 	while (!bingo.isWon && count != maxCount && !bingo.finished) {
 		var p = Math.floor(Math.random() * Object.keys(bingo.players).length);
