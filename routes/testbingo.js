@@ -20,8 +20,8 @@ var rules = {
 	lockout: true,
 	hidden: false,
 	teams: false,
-	antibingo: false,
-	bingo_count: 1,
+	antibingo: true,
+	bingo_count: 2,
 	bingo_count_type: "bingo",
 	difficulty: 1, // 4 easy, 1 very hard
 	length: 1, // 4 fast, 1 full game
@@ -65,12 +65,14 @@ if (consoleLogTest)
 	console.log("Done")
 
 // add players
-bingo.addPlayer(10,"--"); bingo.ready(10);
-// bingo.addPlayer(11,"OO"); bingo.ready(11);
-bingo.addPlayer(1.5,"P1.5"); // not ready, should get removed
-bingo.addPlayer(12,"P2.5"); bingo.removePlayer(12); // remove
-bingo.addPlayer(22,"||"); bingo.changePlayerColor(22, "red"); bingo.ready(22);
+bingo.addPlayer(10,"-"); bingo.ready(10);
+// bingo.addPlayer(11,"O"); bingo.ready(11);
+bingo.addPlayer(1.5,"1"); // not ready, should get removed
+bingo.addPlayer(12,"2"); bingo.removePlayer(12); // remove
+bingo.addPlayer(22,"|"); bingo.changePlayerColor(22, "red"); bingo.ready(22);
 bingo.start();
+bingo.assignAnti(10,1);
+bingo.assignAnti(22,1);
 // bingo.voteReset(11);
 // bingo.voteReset(22);
 // bingo.resetBingo();
@@ -79,16 +81,16 @@ var count = 0;
 var maxCount = -1; // -1 infinite
 
 var moves = [ // move "pairs": player, goal
-	// [0,0],
-	// [0,1],
-	// [0,2],
-	// [0,3],
-	// [0,4],
-	// [1,5],
-	// [1,6],
-	// [1,7],
-	// [1,8],
-	// [1,9],
+	[0,0],
+	[0,1],
+	[0,2],
+	[0,3],
+	[0,4],
+	[1,5],
+	[1,6],
+	[1,7],
+	[1,8],
+	[1,9]
 	// [0,10],
 	// [1,11],
 	// [0,12],
@@ -103,8 +105,7 @@ var moves = [ // move "pairs": player, goal
 	// [1,21],
 	// [0,22],
 	// [1,23],
-	// [0,24],
-	null // lazy comma c/p
+	// [0,24]
 ];
 
 if (simulatePlay) {
@@ -122,7 +123,7 @@ if (simulatePlay) {
 		}
 	}
 
-	while (!bingo.isWon && count != maxCount) {
+	while (!bingo.isWon && count != maxCount && !bingo.finished) {
 		var p = Math.floor(Math.random() * Object.keys(bingo.players).length);
 		var g = Math.floor(Math.random() * rules.size * rules.size);
 		if (moves[count]) {
@@ -148,8 +149,9 @@ if (simulatePlay) {
 		bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].toString());
 		// console.log("checkwin");
 		bingo.checkFinished(bingo.players[Object.keys(bingo.players)[p]].team);
-		if (rules.lockout)
+		if (bingo.ruleset.lockout)
 			bingo.checkLockout();
+		bingo.checkAllGoalsComplete();
 
 		// console board
 		if (consoleLogTest) {
@@ -157,15 +159,22 @@ if (simulatePlay) {
 			for (var r = 0; r < rules.size; r++) {
 				var line = "";
 				for (var c = 0; c < rules.size; c++) {
-					line += " " + (bingo.goals[r * rules.size + c].isAchieved() ? bingo.goals[r * rules.size + c].achieved[0] : "  ");
+					line += " " + bingo.goals[r * rules.size + c].achieved.join("");
+					for (var i = bingo.goals[r * rules.size + c].achieved.length; i < 2; i++) {
+						line += " ";
+					}
+					// line += " " + (bingo.goals[r * rules.size + c].isAchieved() ? bingo.goals[r * rules.size + c].achieved.join("") : "  ");
 				}
 				console.log(line);
 			}
 			console.log("");
 		}
 	}
-	if (consoleLogTest)
+	if (consoleLogTest) {
 		console.log("Test bingo completed simulation")
+		console.log("finished:", bingo.finished);
+		console.log("isWon:", bingo.isWon);
+	}
 }
 
 // bingo.resetBingo();

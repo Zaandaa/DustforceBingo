@@ -168,7 +168,7 @@ var Bingo = function(session, ruleset) {
 		var antiUnassignedCount = 0;
 		for (var b in self.possibleBingos) {
 			var anti = false;
-			if (self.ruleset.antibingo && !self.teams[id].goalBingos.includes(b))
+			if (self.ruleset.antibingo && !self.teams[id].goalBingos.includes(parseInt(b, 10)))
 				anti = true;
 
 			var hasBingo = true;
@@ -179,15 +179,16 @@ var Bingo = function(session, ruleset) {
 				}
 			}
 
-			if (hasBingo)
+			if (hasBingo) {
 				bingoCount++;
+			}
 			if (hasBingo && anti)
 				antiUnassignedCount++;
 		}
 
 		if (self.ruleset.antibingo) {
-			bingoCount -= antiUnassignedCount;
 			var maxUnassigned = self.teams[id].goalBingos.filter(function(x) {return x == -1;}).length;
+			bingoCount -= antiUnassignedCount;
 			bingoCount += Math.min(maxUnassigned, antiUnassignedCount);
 		}
 
