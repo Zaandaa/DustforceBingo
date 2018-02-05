@@ -2,9 +2,7 @@ extends layout
 
 block js
 	script= "const sessionId = \'" + session.id + "';"
-	script= "const bingoSize = \'" + size + "';"
-	script= "const lockout = '" + lockout + "' == 'true';"
-	script= "const hidden = '" + hidden + "' == 'true';"
+	script!= "const ruleset = " + JSON.stringify(ruleset) + ";"
 	script= "var player = undefined"
 	script= "var compact = false"
 	script(src="/bingo/socket/socket.io.min.js")
@@ -81,40 +79,48 @@ block content
 
 				h4.impact Rules
 				ul
-					li #{save}, Length: #{length}, Difficulty: #{difficulty}
-					li #{size} by #{size}, first to #{wincondition}
-					if lockout == "true"
+					li #{ruleset.save}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
+					li #{ruleset.size} by #{ruleset.size}, first to #{wincondition}
+					if ruleset.lockout
 						li Lockout: Each goal can only be achieved by one person.
-					if hidden == "true"
+					if ruleset.hidden
 						li Hidden: Start with only the center goal visible. Reveal neighbor goals by getting goals.
-					if teams == "true"
+					if ruleset.teams
 						li Team colors: Players with the same color are on a team.
-					if antibingo == "true"
+					if ruleset.antibingo
 						li Anti-bingo: Assign bingos to your opponent.
 					li Players start at the Nexus door
 					li Level tomes and level editor are banned
 				
 
 		div.col-xl-8.noselect
-			- var sizeArray = new Array(parseInt(size) || 1)
-			- var colClass = "col-" + (size == 5 ? "fifth" : (size == 4 ? "fourth" : "third"))
+			- var sizeArray = new Array(parseInt(ruleset.size) || 1)
+			- var colClass = "col-" + (ruleset.size == 5 ? "fifth" : (ruleset.size == 4 ? "fourth" : "third"))
 
 			div
 				div#temp_board_div
 					div.bingo_behind
+						div.row.margin_zero.bingo_top
+							div.dia_identifier
+							each val, i in sizeArray
+								div(class=colClass)
+									div.col_identifier
 						each val, i in sizeArray
 							div.row.margin_zero
+								div.row_identifier
 								each val, j in sizeArray
 									div(class=colClass)
 										div.bingo_table_cell
 											div.bingo_table_inner_cell
-
+						div.row.margin_zero.bingo_bottom
+							div.dia_identifier
 					div
+						div.bingo_pushdown
 						each val, i in sizeArray
 							div.row.margin_zero
 								div.col
 									div.fake_bingo_cell
-										if i == Math.floor((size - 1) / 2)
+										if i == Math.floor((ruleset.size - 1) / 2)
 											div#fake_center
 												button#start.btn.btn-lg.btn-block(style="margin: auto") Start
 												h2#starting(style="display: none") Starting...
