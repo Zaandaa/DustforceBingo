@@ -236,7 +236,7 @@ $(document).on('ready', function() {
 	
 	socket.on('board', function(data) {
 		// console.log("got board", data);
-		updateBoardTable(JSON.parse(data), $('#board_div'), true);
+		updateBoardTable(JSON.parse(data), $('#board_div'), false);
 	});
 	
 	socket.on('players', function(data) {

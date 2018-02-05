@@ -8,7 +8,7 @@ $(document).on('ready', function() {
 	socket.on('board', function(data) {
 		$('#temp_board_div').attr("style", "display: none");
 		$('#board_div').attr("style", "");
-		updateBoardTable(JSON.parse(data), $('#board_div'), false);
+		updateBoardTable(JSON.parse(data), $('#board_div'), true);
 	});
 
 	socket.on('reset', function(data) {

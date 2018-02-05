@@ -6,7 +6,7 @@ var savedBoardData = {};
 var playerFinished = {};
 var playerTeam;
 
-function updateBoardTable(boardData, target, notPopout) {
+function updateBoardTable(boardData, target, isPopout) {
 	bingoStarted = true;
 	$("#temp_board_div").attr("style", "display: none");
 	target.empty();
@@ -18,22 +18,24 @@ function updateBoardTable(boardData, target, notPopout) {
 
 	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
-	if (!notPopout)
+	if (isPopout)
 		table.css('height', '100%');
 	table.css({"min-width": 140 * ruleset.size + "px"});
 
 	var sizeWord = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
 
-	var bingo_top = $("<div class='row margin_zero bingo_top'/>");
-	bingo_top.append("<div class='dia_identifier' value='0'/>")
-	for (var i = 0; i < boardData.size; i++) {
-		bingo_top.append("<div class='col-" + col_width + "'><div class='col_identifier' value='" + i + "'/></div>");
+	if (!isPopout) {
+		var bingo_top = $("<div class='row margin_zero bingo_top'/>");
+		bingo_top.append("<div class='dia_identifier' value='0'/>")
+		for (var i = 0; i < boardData.size; i++) {
+			bingo_top.append("<div class='col-" + sizeWord + "'><div class='col_identifier' value='" + i + "'/></div>");
+		}
+		
+		table.append(bingo_top);
 	}
 	
-	table.append(bingo_top);
-	
 	for (var i = 0; i < boardData.size; i++) {
-		var row = $("<div class='row margin_zero" + (notPopout ? "" : " popout_row row-" + sizeWord) + "'></div>");
+		var row = $("<div class='row margin_zero" + (isPopout ? " popout_row row-" + sizeWord : "") + "'></div>");
 		row.append("<div class='row_identifier' value='" + i + "'/>")
 		for (var j = 0; j < boardData.size; j++) {
 			var col = $("<div></div>").addClass("col-" + sizeWord);
@@ -72,7 +74,7 @@ function updateBoardTable(boardData, target, notPopout) {
 		$(bingoLabels[i]).addClass('bingo_label');
 	}
 	
-	if (notPopout) {
+	if (!isPopout) {
 		if (isPlayer && (!boardData.firstGoal || boardData.state == "Complete")) {
 			var resetButton = $("<div style='display: inline-block'></div>").addClass("float-left");
 			resetButton.append($("<a id='resettext' style='color: var(--blue); cursor: pointer'>Vote for new board</a>"));
@@ -299,7 +301,7 @@ function setPlayerHover() {
 	var id = $(this).attr("id").substring(3);
 	if (bingoStarted && id != playerHover && id != player) {
 		playerHover = id;
-		updateBoardTable(savedBoardData, $('#board_div'), true);
+		updateBoardTable(savedBoardData, $('#board_div'), false);
 	}
 }
 
@@ -307,7 +309,7 @@ function endPlayerHover() {
 	var id = $(this).attr("id").substring(3);
 	if (bingoStarted && playerHover && playerHover == id) {
 		playerHover = undefined;
-		updateBoardTable(savedBoardData, $('#board_div'), true);
+		updateBoardTable(savedBoardData, $('#board_div'), false);
 	}
 }
 

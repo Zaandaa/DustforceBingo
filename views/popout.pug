@@ -10,8 +10,9 @@ html(style="height: 100%; overflow: hidden")
 
 
 	body(style="padding: 0px; margin: 0px; height: 100%")
-		- var sizeArray = new Array(parseInt(size) || 1)
-		- var sizeWord = (size == 5 ? "fifth" : (size == 4 ? "fourth" : "third"))
+		script!= "const ruleset = " + JSON.stringify(ruleset) + ";"
+		- var sizeArray = new Array(parseInt(ruleset.size) || 1)
+		- var sizeWord = (ruleset.size == 5 ? "fifth" : (ruleset.size == 4 ? "fourth" : "third"))
 		- var colClass = "col-" + sizeWord;
 		- var rowClass = "row-" + sizeWord;
 
@@ -41,8 +42,6 @@ html(style="height: 100%; overflow: hidden")
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
 
 		script= "const sessionId = \'" + session.id + "';"
-		script= "const bingoSize = \'" + size + "';"
-		script= "const lockout = '" + lockout + "' == 'true';"
 		script= "const player = \'" + player + "';"
 		script= "const compact = \'" + compact + "' == 'true';"
 		script(src="/bingo/socket/socket.io.min.js")

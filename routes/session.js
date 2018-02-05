@@ -101,9 +101,7 @@ function build(io) {
 		var compact = req.query.compact;
 		res.render('popout', {
 			session: s,
-			size: s.bingo_args.size,
-			lockout: s.bingo_args.lockout ? "true" : "false",
-			teams: s.bingo_args.teams ? "true" : "false",
+			ruleset: s.bingo_args,
 			player: player,
 			compact: compact
 		});
