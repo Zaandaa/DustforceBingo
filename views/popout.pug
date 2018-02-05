@@ -1,5 +1,5 @@
 doctype html
-html
+html(style="height: 100%; overflow: hidden")
 	head
 		title Dustforce Bingo Popout
 
@@ -9,22 +9,24 @@ html
 		link(rel='stylesheet', href='/bingo/css/custom.css')
 
 
-	body(style="padding: 0px; margin: 0px")
+	body(style="padding: 0px; margin: 0px; height: 100%")
 		- var sizeArray = new Array(parseInt(size) || 1)
-		- var colClass = "col-" + (size == 5 ? "fifth" : (size == 4 ? "fourth" : "third"))
+		- var sizeWord = (size == 5 ? "fifth" : (size == 4 ? "fourth" : "third"))
+		- var colClass = "col-" + sizeWord;
+		- var rowClass = "row-" + sizeWord;
 
 		div#temp_board_div.popout_container.noselect
 			div.popout_bingo_behind
 				each val, i in sizeArray
-					div.row.margin_zero
+					div.row.popout_row.margin_zero(class=rowClass)
 						each val, j in sizeArray
 							div(class=colClass)
 								div.bingo_table_cell
 									div.bingo_table_inner_cell
 
-			div
+			div.popout_bingo_behind
 				each val, i in sizeArray
-					div.row.margin_zero
+					div.row.popout_row.margin_zero(class=rowClass)
 						div.col(style="padding: 0px; margin: auto")
 							div.popout_fake_bingo_cell
 								if i == Math.floor((size - 1) / 2)
@@ -41,7 +43,8 @@ html
 		script= "const sessionId = \'" + session.id + "';"
 		script= "const bingoSize = \'" + size + "';"
 		script= "const lockout = '" + lockout + "' == 'true';"
-		script= "var player = \'" + player + "';"
+		script= "const player = \'" + player + "';"
+		script= "const compact = \'" + compact + "' == 'true';"
 		script(src="/bingo/socket/socket.io.min.js")
 		script(src="/bingo/js/board.js")
 		script(src="/bingo/js/popout.js")

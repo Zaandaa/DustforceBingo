@@ -6,7 +6,7 @@ var savedBoardData = {};
 var playerFinished = {};
 var playerTeam;
 
-function updateBoardTable(boardData, target, includeBottom) {
+function updateBoardTable(boardData, target, notPopout) {
 	bingoStarted = true;
 	$("#temp_board_div").attr("style", "display: none");
 	target.empty();
@@ -18,14 +18,16 @@ function updateBoardTable(boardData, target, includeBottom) {
 
 	var table = $("<div></div>").addClass("bingo_table");
 	table.attr('id', 'bingo_div');
+	if (!notPopout)
+		table.css('height', '100%');
 	table.css({"min-width": 140 * bingoSize + "px"});
 
-	var col_width = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
+	var sizeWord = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
 
 	for (var i = 0; i < boardData.size; i++) {
-		var row = $("<div class='row margin_zero'></div>");
+		var row = $("<div class='row margin_zero" + (notPopout ? "" : " popout_row row-" + sizeWord) + "'></div>");
 		for (var j = 0; j < boardData.size; j++) {
-			var col = $("<div></div>").addClass("col-" + col_width);
+			var col = $("<div></div>").addClass("col-" + sizeWord);
 			var cell = $("<div></div>").addClass("bingo_table_cell");
 			var innerCell = $("<div id='goal_" + i + "_" + j + "'></div>").addClass("bingo_table_inner_cell");
 			innerCell.append("<div class='goal_text'>" + boardData.goals[i * boardData.size + j].title + "</div>");
@@ -57,7 +59,7 @@ function updateBoardTable(boardData, target, includeBottom) {
 
 	target.append(table);
 
-	if (includeBottom) {
+	if (notPopout) {
 		if (isPlayer && (!boardData.firstGoal || boardData.state == "Complete")) {
 			var resetButton = $("<div style='display: inline-block'></div>").addClass("float-left");
 			resetButton.append($("<a id='resettext' style='color: var(--blue); cursor: pointer'>Vote for new board</a>"));
