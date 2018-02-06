@@ -340,7 +340,7 @@ function build(io) {
 			socket.safeOn('assign', function(data) {
 				if (!isPlayer(socket))
 					return;
-				bingo.assignAnti(socket.custom.id, data.id);
+				bingo.assignAnti(socket.custom.id, data);
 			});
 			
 			socket.safeOn('start', function() {

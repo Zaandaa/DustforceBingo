@@ -35,4 +35,14 @@ extern.cachePossibleBingos = function(size) {
 	return sets;
 };
 
+extern.convertFrontId = function(size, frontId) {
+	if (frontId.type == "row")
+		return 2 * frontId.value;
+	if (frontId.type == "col")
+		return 2 * frontId.value + 1;
+	if (frontId.type == "dia")
+		return 2 * size + frontId.value;
+	return -1;
+}
+
 module.exports = extern;

@@ -362,12 +362,13 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
-	self.assignAnti = function(p, a) {
+	self.assignAnti = function(p, frontId) {
 		if (!self.ruleset.antibingo)
 			return false;
-		if (self.teams[self.players[p].team].assignedAnti.length < self.ruleset.bingo_count && !self.teams[self.players[p].team].assignedAnti.includes(a)) {
-			self.teams[self.players[p].team].giveAnti(a);
-			self.teams[self.teams[self.players[p].team].antiTeam].receiveAnti(a);
+		var bingoId = board.convertFrontId(self.ruleset.size, frontId);
+		if (self.teams[self.players[p].team].assignedAnti.length < self.ruleset.bingo_count && !self.teams[self.players[p].team].assignedAnti.includes(bingoId)) {
+			self.teams[self.players[p].team].giveAnti(bingoId);
+			self.teams[self.teams[self.players[p].team].antiTeam].receiveAnti(bingoId);
 			return true; // success
 		}
 		return false; // fail
