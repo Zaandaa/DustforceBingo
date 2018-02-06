@@ -87,11 +87,12 @@ block content
 						li Hidden: Start with only the center goal visible. Reveal neighbor goals by getting goals.
 					if ruleset.teams
 						li Team colors: Players with the same color are on a team.
+					if ruleset.plugins
+						li Plugins: Players are allowed to use plugins.
 					if ruleset.antibingo
 						li Anti-bingo: Assign bingos to your opponent.
-					li Players start at the Nexus door
-					li Level tomes and level editor are banned
-				
+					li Players start at the Nexus door.
+					li Level tomes and level editor are banned.
 
 		div.col-xl-8.noselect
 			- var sizeArray = new Array(parseInt(ruleset.size) || 1)

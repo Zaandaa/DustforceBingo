@@ -20,6 +20,7 @@ var rules = {
 	lockout: true,
 	hidden: false,
 	teams: false,
+	plugins: false,
 	antibingo: false,
 	bingo_count: 2,
 	bingo_count_type: "bingo",

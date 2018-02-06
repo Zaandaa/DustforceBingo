@@ -484,7 +484,7 @@ var Bingo = function(session, ruleset) {
 				if (!self.ruleset.unload)
 					return false;
 			} else if (replay.validated == -10) {
-				if (!self.ruleset.someplugin)
+				if (!self.ruleset.plugins)
 					return false;
 			} else
 				return false;

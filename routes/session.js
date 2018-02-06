@@ -17,7 +17,7 @@ var params = [
 	"lockout", 
 	"teams", 
 	"hidden", 
-	"antibingo", 
+	"plugins", 
 	"bingo_count", 
 	"bingo_count_type", 
 	"difficulty_raw", 
