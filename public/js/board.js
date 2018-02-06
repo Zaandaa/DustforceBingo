@@ -58,7 +58,7 @@ function updateBoardTable(boardData, target, isPopout) {
 					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
 			}
 			innerCell.append("<div class='goal_achievers_container'><div class='goal_achievers'>" + achievers + "</div></div>");
-			innerCell.click(toggleLabel);
+			(function(i,j) {innerCell.click(function() { toggleLabel(i, j) }); })(i,j);
 			
 			cell.append(innerCell);
 			col.append(cell);
@@ -90,7 +90,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	// IDENTIFIER
 	
-	function idenifierWrapper(lambda) {
+	function identifierWrapper(lambda) {
 		return function(e) {
 			var target = $(e.target);
 			var v = target.attr('value');
@@ -112,104 +112,193 @@ function updateBoardTable(boardData, target, isPopout) {
 	function addLabel(i, j) {
 		$('#goal_' + i + "_" + j).addClass('bingo_label');
 		bingoLabels.push('#goal_' + i + "_" + j);
+
+		if(!$('.col_identifier[value=' + j + ']').hasClass('bingo_label')) {
+			add = true;
+			for (var x = 0; x < ruleset.size; x++) {
+				if (!$('#goal_' + x + "_" + j).hasClass('bingo_label')) {
+					add = false;
+					break;
+				}
+			}
+			if (add) {
+				$('.col_identifier[value=' + j + ']').addClass('bingo_label');
+				bingoLabels.push(".col_identifier[value='" + i + "']");
+			}
+		}
+		if(!$('.row_identifier[value=' + i + ']').hasClass('bingo_label')) {
+			add = true;
+			for (var x = 0; x < ruleset.size; x++) {
+				if (!$('#goal_' + i + "_" + x).hasClass('bingo_label')) {
+					add = false;
+					break;
+				}
+			}
+			if (add) {
+				$('.row_identifier[value=' + i + ']').addClass('bingo_label');
+				bingoLabels.push(".row_identifier[value='" + i + "']");
+			}
+		}
+		if (i == j && !$('.dia_identifier[value=0]').hasClass('bingo_label')) {
+			add = true;
+			for (var x = 0; x < ruleset.size; x++) {
+				if (!$('#goal_' + x + "_" + x).hasClass('bingo_label')) {
+					add = false;
+					break;
+				}
+			}
+			if (add) {
+				$('.dia_identifier[value=0]').addClass('bingo_label');
+				bingoLabels.push(".dia_identifier[value='0']");
+			}
+		}
+		if (i == ruleset.size - j - 1 && !$('.dia_identifier[value=1]').hasClass('bingo_label')) {
+			add = true;
+			for (var x = 0; x < ruleset.size; x++) {
+				if (!$('#goal_' + x + "_" + (ruleset.size - x - 1)).hasClass('bingo_label')) {
+					add = false;
+					break;
+				}
+			}
+			if (add) {
+				$('.dia_identifier[value=1]').addClass('bingo_label');
+				bingoLabels.push(".dia_identifier[value='1']");
+			}
+		}
 	}
 	
 	function removeLabel(i, j) {
 		$('#goal_' + i + "_" + j).removeClass('bingo_label');
 		bingoLabels.splice(bingoLabels.indexOf('#goal_' + i + "_" + j), 1);
+
+		if($('.col_identifier[value=' + j + ']').hasClass('bingo_label')) {
+			$('.col_identifier[value=' + j + ']').removeClass('bingo_label');
+			bingoLabels.splice(bingoLabels.indexOf(".col_identifier[value='"+j+"']"), 1);
+		}
+		if($('.row_identifier[value=' + i + ']').hasClass('bingo_label')) {
+			$('.row_identifier[value=' + i + ']').removeClass('bingo_label');
+			bingoLabels.splice(bingoLabels.indexOf(".row_identifier[value='"+i+"']"), 1);
+		}
+		if (i == j) {
+			if($('.dia_identifier[value=0]').hasClass('bingo_label')) {
+				$('.dia_identifier[value=0]').removeClass('bingo_label');
+				bingoLabels.splice(bingoLabels.indexOf(".dia_identifier[value='0']"), 1);
+			}
+		}
+		if (i == ruleset.size - j - 1) {
+			if($('.dia_identifier[value=1]').hasClass('bingo_label')) {
+				$('.dia_identifier[value=1]').removeClass('bingo_label');
+				bingoLabels.splice(bingoLabels.indexOf(".dia_identifier[value='1']"), 1);
+			}
+		}
+	}
+
+	function toggleLabel(i, j) {
+		if ($('#goal_' + i + "_" + j).hasClass("bingo_label"))
+			removeLabel(i, j);
+		else
+			addLabel(i, j);
 	}
 	
-	$('.col_identifier').hover(idenifierWrapper(function(v) {		
-		for(var i = 0; i < 5; i++) {
+	$('.col_identifier').hover(identifierWrapper(function(v) {		
+		for(var i = 0; i < ruleset.size; i++) {
 			colorSet(i, v);
 		}
-	}), idenifierWrapper(function(v) {	
-		for(var i = 0; i < 5; i++) {
+	}), identifierWrapper(function(v) {	
+		for(var i = 0; i < ruleset.size; i++) {
 			colorUnset(i, v);
 		}
-	})).click(idenifierWrapper(function(v, target) {
+	})).click(identifierWrapper(function(v, target) {
 		if(target.hasClass('bingo_label')) {
 			target.removeClass('bingo_label')
 			bingoLabels.splice(bingoLabels.indexOf(".col_identifier[value='"+v+"']"), 1);
-			for(var i = 0; i < 5; i++) {
-				removeLabel(i, v);
+			for(var i = 0; i < ruleset.size; i++) {
+				if ($('#goal_' + i + "_" + v).hasClass('bingo_label'))
+					removeLabel(i, v);
 			}
 		} else {
 			target.addClass('bingo_label')
 			bingoLabels.push(".col_identifier[value='"+v+"']");
-			for(var i = 0; i < 5; i++) {
-				addLabel(i, v);
+			for(var i = 0; i < ruleset.size; i++) {
+				if (!$('#goal_' + i + "_" + v).hasClass('bingo_label'))
+					addLabel(i, v);
 			}
 		}
 	}));
 	
-	$('.row_identifier').hover(idenifierWrapper(function(v) {		
-		for(var i = 0; i < 5; i++) {
+	$('.row_identifier').hover(identifierWrapper(function(v) {		
+		for(var i = 0; i < ruleset.size; i++) {
 			colorSet(v, i);
 		}
-	}), idenifierWrapper(function(v) {	
-		for(var i = 0; i < 5; i++) {
+	}), identifierWrapper(function(v) {	
+		for(var i = 0; i < ruleset.size; i++) {
 			colorUnset(v, i);
 		}
-	})).click(idenifierWrapper(function(v, target) {
+	})).click(identifierWrapper(function(v, target) {
 		if(target.hasClass('bingo_label')) {
 			target.removeClass('bingo_label');
 			bingoLabels.splice(bingoLabels.indexOf(".row_identifier[value='"+v+"']"), 1);
-			for(var i = 0; i < 5; i++) {
-				removeLabel(v, i);
+			for(var i = 0; i < ruleset.size; i++) {
+				if ($('#goal_' + v + "_" + i).hasClass('bingo_label'))
+					removeLabel(v, i);
 			}
 		} else {
 			target.addClass('bingo_label');
 			bingoLabels.push(".row_identifier[value='"+v+"']");
-			for(var i = 0; i < 5; i++) {
-				addLabel(v, i);
+			for(var i = 0; i < ruleset.size; i++) {
+				if (!$('#goal_' + v + "_" + i).hasClass('bingo_label'))
+					addLabel(v, i);
 			}
 		}
 	}));
 	
-	$('.dia_identifier').hover(idenifierWrapper(function(v) {	
+	$('.dia_identifier').hover(identifierWrapper(function(v) {
 		if(v == 0) {
-			for(var i = 0; i < 5; i++) {
+			for(var i = 0; i < ruleset.size; i++) {
 				colorSet(i, i);
 			}
 		} else {
-			for(var i = 0; i < 5; i++) {
-				colorSet(i, 4-i);
+			for(var i = 0; i < ruleset.size; i++) {
+				colorSet(i, ruleset.size - 1 - i);
 			}
 		}
-	}), idenifierWrapper(function(v) {	
+	}), identifierWrapper(function(v) {
 		if(v == 0) {
-			for(var i = 0; i < 5; i++) {
+			for(var i = 0; i < ruleset.size; i++) {
 				colorUnset(i, i);
 			}
 		} else {
-			for(var i = 0; i < 5; i++) {
-				colorUnset(i, 4-i);
+			for(var i = 0; i < ruleset.size; i++) {
+				colorUnset(i, ruleset.size - 1 - i);
 			}
 		}
-	})).click(idenifierWrapper(function(v, target) {
+	})).click(identifierWrapper(function(v, target) {
 		if(target.hasClass('bingo_label')) {
 			target.removeClass('bingo_label')
 			bingoLabels.splice(bingoLabels.indexOf(".dia_identifier[value='"+v+"']"), 1);
 			if(v == 0) {
-				for(var i = 0; i < 5; i++) {
-					removeLabel(i, i);
+				for(var i = 0; i < ruleset.size; i++) {
+					if ($('#goal_' + i + "_" + i).hasClass('bingo_label'))
+						removeLabel(i, i);
 				}
 			} else {
-				for(var i = 0; i < 5; i++) {
-					removeLabel(i, 4-i);
+				for(var i = 0; i < ruleset.size; i++) {
+					if ($('#goal_' + i + "_" + (ruleset.size - 1 - i)).hasClass('bingo_label'))
+						removeLabel(i, ruleset.size - 1 - i);
 				}
 			}
 		} else {
 			target.addClass('bingo_label')
 			bingoLabels.push(".dia_identifier[value='"+v+"']");
 			if(v == 0) {
-				for(var i = 0; i < 5; i++) {
-					addLabel(i, i);
+				for(var i = 0; i < ruleset.size; i++) {
+					if (!$('#goal_' + i + "_" + i).hasClass('bingo_label'))
+						addLabel(i, i);
 				}
 			} else {
-				for(var i = 0; i < 5; i++) {
-					addLabel(i, 4-i);
+				for(var i = 0; i < ruleset.size; i++) {
+					if (!$('#goal_' + i + "_" + (ruleset.size - 1 - i)).hasClass('bingo_label'))
+						addLabel(i, ruleset.size - 1 - i);
 				}
 			}
 		}
@@ -310,16 +399,6 @@ function endPlayerHover() {
 	if (bingoStarted && playerHover && playerHover == id) {
 		playerHover = undefined;
 		updateBoardTable(savedBoardData, $('#board_div'), false);
-	}
-}
-
-function toggleLabel() {
-	if ($(this).hasClass("bingo_label")) {
-		$(this).removeClass("bingo_label");
-		bingoLabels.splice(bingoLabels.indexOf("#" + $(this).attr("id")), 1);
-	} else {
-		$(this).addClass("bingo_label");
-		bingoLabels.push("#" + $(this).attr("id"));
 	}
 }
 
