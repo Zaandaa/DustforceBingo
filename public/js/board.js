@@ -101,12 +101,20 @@ function updateBoardTable(boardData, target, isPopout) {
 		}
 	}
 	
+	var oldStyle = {};
+	
 	function colorSet(i, j) {
-		$('#goal_' + i + "_" + j).attr('style', 'background-color: var(--graydark)');
+		var goal = $('#goal_' + i + "_" + j);
+		var style = goal.attr('style')
+		oldStyle['#goal_' + i + "_" + j] = style !== undefined && style !== "";
+		if(!oldStyle['#goal_' + i + "_" + j]) 
+			$('#goal_' + i + "_" + j).attr('style', 'background-color: var(--graydark)');
 	}
 	
 	function colorUnset(i, j) {
-		$('#goal_' + i + "_" + j).removeAttr('style');
+		if(!oldStyle['#goal_' + i + "_" + j])
+			$('#goal_' + i + "_" + j).attr('style', oldStyle['#goal_' + i + "_" + j] || "");
+		oldStyle['#goal_' + i + "_" + j] = false;
 	}
 	
 	function addLabel(i, j) {

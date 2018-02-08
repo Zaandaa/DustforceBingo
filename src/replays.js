@@ -30,10 +30,12 @@ function createParser(lambda, updated) {
 	var data="";
 	return function (chunk) {
 		console.log((new Date().toLocaleString()), "Replay:", "Message from dustkid");
-		updated();
+		
 		data += chunk;
 		var items = data.split(seperator);
 		data = items.pop();
+		if(items.length != 0)
+			updated();
 		
 		items.forEach(function(i) {
 			if (i == "") 
