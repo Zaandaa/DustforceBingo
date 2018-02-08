@@ -190,6 +190,8 @@ function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
 				w *= 0.5;
 				if (filteredDatas[gd].hub)
 					w *= 0.5;
+				if (filteredDatas[gd].appleType)
+					w *= 0.5;
 			}
 
 			filteredDatas[gd].weight = w;
@@ -416,22 +418,27 @@ function makeTotalGoalDatas(ruleset) {
 						hubs.splice(hubs.indexOf("Difficult"), 1);
 						hubs.push(undefined);
 						hubs.forEach(function(h) {
+							// leveltypes
+							var leveltypes = (h != "Tutorial" && h != "Difficult" && a != "count") ? constants.levelTypes.slice() : [];
+							leveltypes.push(undefined);
+							leveltypes.forEach(function(l) {
 
-							var currentTotal = i;
-							if (h !== undefined)
-								currentTotal *= 0.25;
-							currentTotal = Math.ceil(currentTotal);
+								var currentTotal = i;
+								if (h !== undefined)
+									currentTotal *= 0.25;
+								currentTotal = Math.ceil(currentTotal);
 
-							// goalData
-							var gd = {type: "total", count: o, total: currentTotal, appleType: a, character: c, hub: h, weight: 1};
-							var gds = makeGoalString(gd);
-							if (usedTotalStrings.includes(gds))
-								return;
-							if (!utils.checkTotalDifficultyLength(gd, ruleset))
-								return;
+								// goalData
+								var gd = {type: "total", count: o, total: currentTotal, appleType: a, character: c, hub: h, leveltype: l, weight: 1};
+								var gds = makeGoalString(gd);
+								if (usedTotalStrings.includes(gds))
+									return;
+								if (!utils.checkTotalDifficultyLength(gd, ruleset))
+									return;
 
-							validGoalDatas.push(gd);
-							usedTotalStrings.push(gds);
+								validGoalDatas.push(gd);
+								usedTotalStrings.push(gds);
+							});
 						});
 					});
 				});

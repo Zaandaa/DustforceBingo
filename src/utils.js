@@ -62,6 +62,13 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 	if (goalData.keytype || goalData.leveltype) {
 		baseMax = 5 - 0.5 * (ruleset.difficulty + ruleset.length);
 		baseMin = baseMax - 2;
+
+		// special apple leveltype bases
+		if (goalData.count == "apples") {
+			baseMax *= goalData.appleType == "SS" ? 0.4 : 0.5;
+			baseMin = 0;
+		}
+
 		if (goalData.count == "keys") {
 			if (constants.keys.indexOf(goalData.keytype) < 2) {
 				baseMax++;
@@ -79,12 +86,20 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 			if (!goalData.hub) {
 				baseMax *= 4 - 0.25 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.levelTypes.indexOf(goalData.leveltype));
 				baseMin *= 2.5 - 0.125 * (2 * (ruleset.length - 1) + (ruleset.difficulty - 1) + constants.levelTypes.indexOf(goalData.leveltype));
+				if (goalData.appleType) {
+					baseMax *= goalData.appleType == "SS" ? 0.6 : 0.75;
+					baseMin *= goalData.appleType == "SS" ? 0.6 : 0.75;
+				}
 			}
 			if (goalData.character) {
 				baseMax *= 0.75;
 				baseMin *= 0.75;
 			}
 		}
+
+		// console.log(goalData.appleType, goalData.leveltype, goalData.hub, goalData.character);
+		// console.log(goalData.total, baseMin, baseMax);
+		// console.log(baseMin <= goalData.total, goalData.total <= baseMax);
 		return baseMin <= goalData.total && goalData.total <= baseMax;
 	}
 
