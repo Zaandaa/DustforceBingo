@@ -183,14 +183,12 @@ function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
 		usedGoalStats.totalObjectiveWeightTotal += usedGoalStats.totalObjectiveWeights[o];
 
 		for (var gd in filteredDatas) {
-			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + 4 * (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 0));
+			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + 4 * (filteredDatas[gd].leveltype ? usedGoalStats.leveltypes[filteredDatas[gd].leveltype] : 1));
 			if (filteredDatas[gd].character)
 				w *= 0.5;
 			if (filteredDatas[gd].leveltype) { 
-				w *= 0.5;
+				w *= 0.75;
 				if (filteredDatas[gd].hub)
-					w *= 0.5;
-				if (filteredDatas[gd].appleType)
 					w *= 0.5;
 			}
 
@@ -419,7 +417,7 @@ function makeTotalGoalDatas(ruleset) {
 						hubs.push(undefined);
 						hubs.forEach(function(h) {
 							// leveltypes
-							var leveltypes = (h != "Tutorial" && h != "Difficult" && a != "count") ? constants.levelTypes.slice() : [];
+							var leveltypes = a != "count" ? constants.levelTypes.slice() : [];
 							leveltypes.push(undefined);
 							leveltypes.forEach(function(l) {
 
@@ -549,9 +547,9 @@ function makeGoalString(goalData) {
 			case "SS": str = goalData.count + " " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : ""); break;
 			case "apples": {
 				if (goalData.appleType == "Beat")
-					str = "Apple% " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+					str = "Apple% " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : "");
 				else if (goalData.appleType == "SS")
-					str = "Apple SS " + goalData.total.toString() + " level" + (goalData.total > 1 ? "s" : "");
+					str = "Apple SS " + goalData.total.toString() + (goalData.leveltype ? (" " + goalData.leveltype) : "") + " level" + (goalData.total > 1 ? "s" : "");
 				else // "count"
 					str = "Hit " + goalData.total.toString() + " apple" + (goalData.total > 1 ? "s" : "");
 				break;

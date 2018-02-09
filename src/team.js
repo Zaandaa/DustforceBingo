@@ -170,10 +170,9 @@ var Team = function(id, p) {
 				count++;
 			}
 		} else if (goalData.count == "keys") {
+			count = 0;
 			for (var p in self.players) {
-				var pKeys = bingoPlayers[self.players[p]].countKeys(goalData);
-				if (pKeys > count)
-					count = pKeys;
+				count += Math.floor(bingoPlayers[self.players[p]].countKeys(goalData));
 			}
 		} else if (goalData.count == "apples") {
 			var levelCount = 0;
