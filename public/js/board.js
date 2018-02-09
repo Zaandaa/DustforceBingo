@@ -77,7 +77,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	if (!isPopout) {
 		if (isPlayer && (!boardData.firstGoal || boardData.state == "Complete")) {
 			var resetButton = $("<div style='display: inline-block'></div>").addClass("float-left");
-			resetButton.append($("<a id='resettext' style='color: var(--blue); cursor: pointer'>Vote for new board</a>"));
+			resetButton.append($("<a id='resettext' style='margin-right: 20px; color: var(--blue); cursor: pointer'>Vote for new board</a>"));
 			resetButton.click(function() { $("#reset").click() });
 			target.append(resetButton);
 		}
@@ -86,6 +86,12 @@ function updateBoardTable(boardData, target, isPopout) {
 		popoutButton.append($("<a id='popout' style='color: var(--blue); cursor: pointer'>Popout</a>"));
 		popoutButton.click(popoutBoard);
 		target.append(popoutButton);
+
+		if (bingoStarted) {
+			target.append($("<div class='time_info'>Start time: " + boardData.startDate + "</div>"));
+			var replayText = boardData.lastReplay != "" ? "Last replay: " + boardData.lastReplay  : "";
+			target.append($("<div id='replay' class='time_info'>" + replayText + "</div>"));
+		}
 	}
 	
 	// IDENTIFIER

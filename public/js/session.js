@@ -284,4 +284,8 @@ $(document).on('ready', function() {
 	socket.on('reset', function(data) {
 		resetBingo();
 	});
+	
+	socket.on('replay', function(data) {
+		$("#replay").text("Last replay: " + JSON.parse(data).lastReplay);
+	});
 });
