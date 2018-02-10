@@ -6,6 +6,7 @@ var savedBoardData = {};
 var playerFinished = {};
 var playerTeam;
 
+
 function updateBoardTable(boardData, target, isPopout) {
 	bingoStarted = true;
 	$("#temp_board_div").attr("style", "display: none");
