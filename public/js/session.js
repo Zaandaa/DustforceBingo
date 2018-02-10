@@ -286,6 +286,7 @@ $(document).on('ready', function() {
 	});
 	
 	socket.on('replay', function(data) {
-		$("#replay").text("Last replay: " + JSON.parse(data).lastReplay);
+		var dateString = (new Date(JSON.parse(data).lastReplay)).toLocaleTimeString();
+		$("#replay").text("Last replay: " + dateString);
 	});
 });

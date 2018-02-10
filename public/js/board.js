@@ -88,8 +88,9 @@ function updateBoardTable(boardData, target, isPopout) {
 		target.append(popoutButton);
 
 		if (bingoStarted) {
-			target.append($("<div class='time_info'>Start time: " + boardData.startDate + "</div>"));
-			var replayText = boardData.lastReplay != "" ? "Last replay: " + boardData.lastReplay  : "";
+			var startText = (new Date(boardData.startTime)).toLocaleTimeString();
+			target.append($("<div class='time_info'>Start time: " + startText + "</div>"));
+			var replayText = boardData.lastReplay != 0 ? "Last replay: " + (new Date(boardData.lastReplay)).toLocaleTimeString() : "";
 			target.append($("<div id='replay' class='time_info'>" + replayText + "</div>"));
 		}
 	}
