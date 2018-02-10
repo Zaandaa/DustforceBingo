@@ -218,3 +218,16 @@
 .compact .popout_row {
 	min-height: 70px;
 }
+
+.compact .col_identifier, .compact .dia_identifier, .compact .row_identifier {
+	border-radius: 0px;
+}
+
+.compact .row_identifier, .compact .dia_identifier {
+	padding-left: 10px;
+	margin: 0px 0px 0px -12px;
+}
+.compact .col_identifier {
+	width:100%;
+	margin:0px;
+}
