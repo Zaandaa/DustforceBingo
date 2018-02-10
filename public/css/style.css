@@ -193,6 +193,7 @@ select {
 	padding-right: 4px;
 }
 .col_player {
+	overflow: hidden;
 	position: relative;
 	min-height: 1px;
 	float: left;

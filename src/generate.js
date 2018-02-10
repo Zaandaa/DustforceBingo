@@ -428,7 +428,7 @@ function getDifficulty(histogram, gimmick)
 	histogram.forEach(function(h) 
 	{
 		difficulty = getLastThreshold(gimmick, h.rank + h.ties);
-		if ((difficulty > 6 && output.length != 0)|| difficulty == lastDifficulty)
+		if ((difficulty > 6 && output.length != 0) || (difficulty == lastDifficulty && gimmick != "apples"))
 			done = true;
 		
 		if(done)

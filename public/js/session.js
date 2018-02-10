@@ -284,4 +284,9 @@ $(document).on('ready', function() {
 	socket.on('reset', function(data) {
 		resetBingo();
 	});
+	
+	socket.on('replay', function(data) {
+		var dateString = (new Date(JSON.parse(data).lastReplay)).toLocaleTimeString();
+		$("#replay").text("Last replay: " + dateString);
+	});
 });

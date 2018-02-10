@@ -385,6 +385,10 @@ function build(io) {
 			emitAll('players', self.getPlayerData());
 		};
 		
+		self.updateLastReplay = function(lr) {
+			emitAll('replay', JSON.stringify({lastReplay: lr}));
+		};
+		
 		self.playerFinish = function(id) {
 			// emitAll('playerfinish', JSON.stringify({'player': id}));
 		};

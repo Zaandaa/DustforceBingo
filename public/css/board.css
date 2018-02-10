@@ -126,6 +126,12 @@
 	transform: translateY(-50%);
 }
 
+.time_info {
+	display: inline-block;
+	float: left;
+	margin-right: 20px;
+}
+
 .bingo_behind {
 	z-index: -1;
 	position: absolute;
