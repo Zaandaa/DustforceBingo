@@ -249,8 +249,8 @@ function main(levels, records, callback)
 		var genociderecord = records["genocide"]["Genocide"][level.id]
 		
 		level.nosuper = {
-			Beat : timerecord .input_super > 0 && !(level.level in ["Tera Difficult", "Combat Tutorial"]),
-			SS   : scorerecord.input_super > 0 && !(level.level in ["Tera Difficult", "Combat Tutorial"]),
+			Beat : timerecord .input_super > 0 && !(["Tera Difficult", "Combat Tutorial"].includes(level.level)),
+			SS   : scorerecord.input_super > 0 && !(["Tera Difficult", "Combat Tutorial"].includes(level.level)),
 		},
 		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
 		level.dcomplete  = timerecord.score_completion != 1,

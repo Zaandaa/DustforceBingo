@@ -1,0 +1,67 @@
+[
+	{
+		"difficults": [true],
+		"difficulty": [3, 4],
+		"reason": "Difficults require hard difficulty."
+	},
+
+	{
+		"difficults": [true],
+		"save": ["newgame"],
+		"length": [2, 3, 4],
+		"reason": "Difficults + New Game requires full game length."
+	},
+
+	{
+		"yottass": [true],
+		"difficults": [false],
+		"reason": "Yotta SS requires difficults."
+	},
+
+	{
+		"unload": [true],
+		"difficulty": [2, 3, 4],
+		"reason": "Unload requires very hard difficulty."
+	},
+
+	{
+		"nosuper": [true],
+		"beat": [false],
+		"ss": [false],
+		"reason": "No super requires either beat or SS."
+	},
+
+	{
+		"multilevel": [true],
+		"beat": [false],
+		"ss": [false],
+		"keys": [false],
+		"apples": [false],
+		"reason": "Multi levels requires one of beat, SS, keys or apples."
+	},
+
+	{
+		"bcomplete": [true],
+		"difficulty": [3, 4],
+		"reason": "B complete requires hard difficulty."
+	},
+
+	{
+		"bingo_count_type": ["goal"], 
+		"antibingo": [true],
+		"reason": "Antibingo cannot use goals."
+	},
+
+	{
+		"lockout": [true], 
+		"antibingo": [true],
+		"reason": "Antibingo cannot use lockout."
+	},
+
+	{
+		"hidden": [true], 
+		"antibingo": [true],
+		"reason": "Antibingo cannot use hidden goals."
+	}
+
+]

@@ -2,6 +2,7 @@ extends layout
 
 block js
 	script= "const error = \'" + error + "';"
+	script!= "const invalidsets = " + JSON.stringify(invalidsets) + ";"
 	script(src="/bingo/js/index.js")
 
 block content
