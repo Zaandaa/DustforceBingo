@@ -196,15 +196,22 @@ function updateBoardTable(boardData, target, isPopout) {
 			
 			addGoalText(col, goal.title)
 
-			$.each(goal.achieved, function(achieverId) {
+			var firstAchieverStyled = false;
+			var hoverStyled = false;
+
+			$.each(goal.achieved, function(no, achieverId) {
 				var achieverPlayer = boardData.players[achieverId];
-				
-				if (playerHover == achieverPlayer.id) 
+
+				if (playerHover == achieverPlayer.id) {
 					addAchievedStyle(col, achieverPlayer);
-				else if (ruleset.lockout 
-						|| boardData.playerTeam == achieverPlayer.team 
-						|| playerTeam == achieverPlayer.team) 
+					hoverStyled = true;
+				} else if (!hoverStyled &&
+						(  boardData.playerTeam == achieverPlayer.team 
+						|| playerTeam == achieverPlayer.team))
 					addAchievedStyle(col, achieverPlayer);
+				else if (!firstAchieverStyled)
+					addAchievedStyle(col, achieverPlayer);
+				firstAchieverStyled = true;
 				
 				var achieverCircle = createAchieverCircle(achieverPlayer);
 				$(col).find('.goal_achievers')
