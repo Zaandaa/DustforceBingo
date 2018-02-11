@@ -6,10 +6,172 @@ var savedBoardData = {};
 var playerFinished = {};
 var playerTeam;
 
-
 function updateBoardTable(boardData, target, isPopout) {
+	
+	// CREATE BOARD
+	
+	var sizeWord = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
+	
+	function createEmptyBoard() {
+		var table = $("<div/>")
+			.addClass("bingo_table")
+			.attr('id', 'bingo_div')
+			.css({"min-width": 140 * ruleset.size + "px"});
+			
+		if (isPopout) {
+			table.css('height', '100%');
+		}
+		
+		return table;
+	}
+
+	function createTopIdentifiers() {
+		var bingo_top = $("<div/>")
+			.addClass('row')
+			.addClass('margin_zero')
+			.addClass('bingo_top')
+			.append( $("<div/>")
+				.addClass('dia_identifier') 
+				.attr('value', 0)
+			);
+			
+		for (var i = 0; i < boardData.size; i++) {
+			bingo_top.append( $("<div/>")
+				.addClass(`col-${sizeWord}`)
+				.append( $("<div/>")
+					.addClass('col_identifier')
+					.attr('value', i)
+				)
+			);
+		}
+		
+		return bingo_top;
+	}
+
+	function createBottomIdentifiers() {
+		return $("<div/>")
+			.addClass('row')
+			.addClass('margin_zero')
+			.addClass('bingo_bottom')
+			.append( $("<div/>")
+				.addClass('dia_identifier')
+				.attr('value', 1)
+			);
+	}
+	
+	function createBingoRow(i) {
+		var row = $("<div/>")
+			.addClass('row')
+			.addClass('margin_zero');
+			
+		if(isPopout) {
+			row.addClass('popout_row')
+				.addClass(`row-${sizeWord}`)
+		} else {
+			row.append( $("<div/>")
+				.addClass('row_identifier')
+				.attr('value', i)
+			);
+		}
+
+		return row;
+	}
+
+	function createBingoCell(i, j) {
+		var col = $("<div/>")
+			.addClass(`col-${sizeWord}`)
+			.append( $("<div/>")
+				.addClass("bingo_table_cell")
+				.append( $("<div/>")
+					.attr('id', `goal_${i}_${j}`)
+					.addClass('bingo_table_inner_cell')
+					.append( $("<div/>")
+						.addClass('goal_achievers_container')
+						.append( $("<div/>")
+							.addClass('goal_achievers')
+						)
+					)
+				)
+			);
+		
+		return col;
+	}
+
+	function addGoalText(col, text) {
+		$(col).find('.bingo_table_inner_cell')
+			.append( $("<div/>")
+				.addClass('goal_text')
+				.text(text)
+			);
+	}
+	
+	function addAchievedStyle(col, achiever) {
+		console.log(achiever);
+		$(col).find('.bingo_table_inner_cell')
+			.css({
+				'border-color'     : `var(--${achiever.color})`,
+				'background-color' : `var(--cell${achiever.color})`
+			});
+	}
+	
+	function createAchieverCircle(achiever) {
+		console.log(achiever);
+		var textColor = $.inArray(achiever.color, ["white", "yellow"]) != -1 ? "black" : "white";
+		
+		var circle = $("<div/>")
+			.addClass('color-circle-small')
+			.css({
+				'background-color' : `var(--${achiever.color})`,
+				'color'            : `var(--${textColor})`
+			})
+			.text(achiever.name[0]);
+			
+		console.log(circle.attr('style'));	
+		
+		return circle;
+	}
+	
+	function createResetButton() {
+		var resetButton = $("<div/>")
+			.css({
+				'display': 'inline-block'
+			})
+			.addClass("float-left")
+			.append( $("<a/>")
+				.attr('id','resettext')
+				.css({
+					'margin-right' : '20px',
+					'color'        : 'var(--blue)',
+					'cursor'	   : 'pointer'
+				})
+				.text("Vote for new board")
+			)
+			.click(function() { $("#reset").click() });
+		
+		return resetButton;
+	}
+	
+	function createPopout() {
+		var popoutButton = $("<div/>") 
+			.css({
+				'display': 'inline-block'
+			})
+			.addClass("float-right")
+			.append( $("<a/>")
+				.attr('id','popout')
+				.css({
+					'color'        : 'var(--blue)',
+					'cursor'	   : 'pointer'
+				})
+				.text("Popout")
+			)
+			.click(popoutBoard);
+			
+		return popoutButton;
+	}
+	
 	bingoStarted = true;
-	$("#temp_board_div").attr("style", "display: none");
+	$("#temp_board_div").hide();
 	target.empty();
 
 	savedBoardData = boardData;
@@ -17,58 +179,51 @@ function updateBoardTable(boardData, target, isPopout) {
 	if (player in boardData.players)
 		playerTeam = boardData.players[player].team;
 
-	var table = $("<div></div>").addClass("bingo_table");
-	table.attr('id', 'bingo_div');
-	if (isPopout)
-		table.css('height', '100%');
-	table.css({"min-width": 140 * ruleset.size + "px"});
-
-	var sizeWord = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
+	var table = createEmptyBoard(isPopout);
 
 	if (!isPopout) {
-		var bingo_top = $("<div class='row margin_zero bingo_top'/>");
-		bingo_top.append("<div class='dia_identifier' value='0'/>")
-		for (var i = 0; i < boardData.size; i++) {
-			bingo_top.append("<div class='col-" + sizeWord + "'><div class='col_identifier' value='" + i + "'/></div>");
-		}
-		
-		table.append(bingo_top);
+		table.append(createTopIdentifiers());
 	}
 	
+	var sizeWord = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
+	
 	for (var i = 0; i < boardData.size; i++) {
-		var row = $("<div class='row margin_zero" + (isPopout ? " popout_row row-" + sizeWord : "") + "'></div>");
-		row.append("<div class='row_identifier' value='" + i + "'/>")
+		var row = createBingoRow(i);
+		
 		for (var j = 0; j < boardData.size; j++) {
-			var col = $("<div></div>").addClass("col-" + sizeWord);
-			var cell = $("<div></div>").addClass("bingo_table_cell");
-			var innerCell = $("<div id='goal_" + i + "_" + j + "'></div>").addClass("bingo_table_inner_cell");
-			innerCell.append("<div class='goal_text'>" + boardData.goals[i * boardData.size + j].title + "</div>");
+			var col = createBingoCell(i, j);
+			var goal = boardData.goals[i * boardData.size + j];
 			
-			var achievers = "";
-			for (var a in boardData.goals[i * boardData.size + j].achieved) {
-				var achiever = boardData.goals[i * boardData.size + j].achieved[a];
-				if (playerHover == boardData.players[achiever].id) 
-					innerCell.attr("style", "border-color:var(--" + boardData.players[playerHover].color + ");"
-										  + "background-color:var(--cell" + boardData.players[playerHover].color + ");");
-				else if (ruleset.lockout || boardData.playerTeam == boardData.players[achiever].team || playerTeam == boardData.players[achiever].team) 
-					innerCell.attr("style", "border-color:var(--" + boardData.players[achiever].color + ");"
-										  + "background-color:var(--cell" + boardData.players[achiever].color + ");");
-				achievers += "<div class='color-circle-small' " + 
-					"style='background-color: var(--" + boardData.players[achiever].color 
-					+ ");color:" + ($.inArray(boardData.players[achiever].color, ["white", "yellow"]) != -1 ? "var(--black)" : "var(--white)") 
-					+ ";'>" + boardData.players[achiever].name[0] + "</div> ";
-			}
-			innerCell.append("<div class='goal_achievers_container'><div class='goal_achievers'>" + achievers + "</div></div>");
-			(function(i,j) {innerCell.click(function() { toggleLabel(i, j) }); })(i,j);
+			addGoalText(col, goal.title)
+
+			$.each(goal.achieved, function(achieverId) {
+				var achieverPlayer = boardData.players[achieverId];
+				
+				if (playerHover == achieverPlayer.id) 
+					addAchievedStyle(col, achieverPlayer);
+				else if (ruleset.lockout 
+						|| boardData.playerTeam == achieverPlayer.team 
+						|| playerTeam == achieverPlayer.team) 
+					addAchievedStyle(col, achieverPlayer);
+				
+				var achieverCircle = createAchieverCircle(achieverPlayer);
+				$(col).find('.goal_achievers')
+					.append(achieverCircle);
+			});
 			
-			cell.append(innerCell);
-			col.append(cell);
+			((i_copy, j_copy) =>
+				$(col).find('.bingo_table_inner_cell').click(() => toggleLabel(i_copy, j_copy))
+			)(i, j);
+			
 			row.append(col);
 		}
 		table.append(row);
 	}
 
-	table.append("<div class='row margin_zero bingo_bottom'><div class='dia_identifier' value='1'/></div>");
+	if (!isPopout) {
+		table.append(createBottomIdentifiers());
+	}
+	
 	target.append(table);
 
 	for(var i = 0; i < bingoLabels.length; i++) {
@@ -77,28 +232,131 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	if (!isPopout) {
 		if (isPlayer && (!boardData.firstGoal || boardData.state == "Complete")) {
-			var resetButton = $("<div style='display: inline-block'></div>").addClass("float-left");
-			resetButton.append($("<a id='resettext' style='margin-right: 20px; color: var(--blue); cursor: pointer'>Vote for new board</a>"));
-			resetButton.click(function() { $("#reset").click() });
-			target.append(resetButton);
+			target.append(createResetButton());
 		}
 
-		var popoutButton = $("<div style='display: inline-block'></div>").addClass("float-right");
-		popoutButton.append($("<a id='popout' style='color: var(--blue); cursor: pointer'>Popout</a>"));
-		popoutButton.click(popoutBoard);
-		target.append(popoutButton);
+		target.append(createPopout());
 
 		if (bingoStarted) {
 			var startText = (new Date(boardData.startTime)).toLocaleTimeString();
 			target.append($("<div class='time_info'>Start time: " + startText + "</div>"));
-			var replayText = boardData.lastReplay != 0 ? "Last replay: " + (new Date(boardData.lastReplay)).toLocaleTimeString() : "";
-			target.append($("<div id='replay' class='time_info'>" + replayText + "</div>"));
+			//var replayText = boardData.lastReplay != 0 ? "Last replay: " + (new Date(boardData.lastReplay)).toLocaleTimeString() : "";
+			//target.append($("<div id='replay' class='time_info'>" + replayText + "</div>"));
 		}
 	}
 	
 	// IDENTIFIER
 	
-	function identifierWrapper(lambda) {
+	function createGoal(i, j) {
+		return {
+			name : `#goal_${i}_${j}`,
+			col	 : j,
+			row  : i
+		}
+	}
+	
+	var goals = {
+		"col": (c, it) => createGoal(it,c),
+		"row": (c, it) => createGoal(c,it),
+		"dia": (c, it) => c == 0 ? 
+			createGoal(it,it) : 
+			createGoal(it,ruleset.size-it-1)
+	}
+	
+	var indentifiers = {
+		"col": (v) => `.col_identifier[value='${v}']`,
+		"row": (v) => `.row_identifier[value='${v}']`,
+		"dia": (v) => `.dia_identifier[value='${v}']`
+	}
+	
+	function getIdentifiers(i, j) {
+		return [{
+			name  : indentifiers["col"](j), 
+			type  : "col",
+			val   : j,
+			valid : true
+		},
+		{
+			name  : indentifiers["row"](i), 
+			type  : "row",
+			val   : i,
+			valid : true
+		},
+		{
+			name  : indentifiers["dia"](0), 
+			type  : "dia",
+			val   : 0,
+			valid : i == j
+		},
+		{
+			name  : indentifiers["dia"](1), 
+			type  : "dia",
+			val   : 1,
+			valid : i == ruleset.size - j - 1
+		}]
+	}
+	
+	var hasStyle = {};
+	
+	function colorSet(target) {
+		var goal = $(target);
+		var style = goal.attr('style')
+		hasStyle[target] = style !== undefined && style !== "";
+		if(!hasStyle[target]) {
+			goal.css({
+				'background-color': 'var(--graydark)'
+			});
+		}
+	}
+	
+	function colorUnset(target) {
+		if(!hasStyle[target])
+			$(target).removeAttr('style');
+		hasStyle[target] = false;
+	}
+	
+	function addLabel(i, j) {
+		$(`#goal_${i}_${j}`).addClass('bingo_label');
+		bingoLabels.push(`#goal_${i}_${j}`);
+		
+		function checkAddLabel(type, i) {			
+			for (var x = 0; x < ruleset.size; x++) {
+				if (!$(goals[type](i, x).name).hasClass('bingo_label')) {
+					return;
+				}
+			}
+			
+			$(indentifiers[type](i)).addClass('bingo_label');
+			bingoLabels.push(indentifiers[type](i));
+		}
+		
+		$.each(getIdentifiers(i,j), function(no,id) {
+			if(id.valid && !$(id.name).hasClass('bingo_label')) {
+				checkAddLabel(id.type, id.val);
+			}
+		});
+	}
+	
+	function removeLabel(i, j) {
+		$(`#goal_${i}_${j}`).removeClass('bingo_label');
+		bingoLabels.remove(`#goal_${i}_${j}`);
+
+		$.each(getIdentifiers(i,j), function(no,id) {
+			if(id.valid && $(id.name).hasClass('bingo_label')) {
+				$(id.name).removeClass('bingo_label');
+				bingoLabels.remove(id.name);
+			}	
+		});
+	}
+	
+	function toggleLabel(i, j) {
+		if ($(`#goal_${i}_${j}`).hasClass("bingo_label"))
+			removeLabel(i, j);
+		else
+			addLabel(i, j);
+	}
+	
+	function getValue(lambda) {
 		return function(e) {
 			var target = $(e.target);
 			var v = target.attr('value');
@@ -109,219 +367,44 @@ function updateBoardTable(boardData, target, isPopout) {
 		}
 	}
 	
-	var oldStyle = {};
-	
-	function colorSet(i, j) {
-		var goal = $('#goal_' + i + "_" + j);
-		var style = goal.attr('style')
-		oldStyle['#goal_' + i + "_" + j] = style !== undefined && style !== "";
-		if(!oldStyle['#goal_' + i + "_" + j]) 
-			$('#goal_' + i + "_" + j).attr('style', 'background-color: var(--graydark)');
-	}
-	
-	function colorUnset(i, j) {
-		if(!oldStyle['#goal_' + i + "_" + j])
-			$('#goal_' + i + "_" + j).attr('style', oldStyle['#goal_' + i + "_" + j] || "");
-		oldStyle['#goal_' + i + "_" + j] = false;
-	}
-	
-	function addLabel(i, j) {
-		$('#goal_' + i + "_" + j).addClass('bingo_label');
-		bingoLabels.push('#goal_' + i + "_" + j);
-
-		if(!$('.col_identifier[value=' + j + ']').hasClass('bingo_label')) {
-			add = true;
-			for (var x = 0; x < ruleset.size; x++) {
-				if (!$('#goal_' + x + "_" + j).hasClass('bingo_label')) {
-					add = false;
-					break;
-				}
-			}
-			if (add) {
-				$('.col_identifier[value=' + j + ']').addClass('bingo_label');
-				bingoLabels.push(".col_identifier[value='" + i + "']");
-			}
-		}
-		if(!$('.row_identifier[value=' + i + ']').hasClass('bingo_label')) {
-			add = true;
-			for (var x = 0; x < ruleset.size; x++) {
-				if (!$('#goal_' + i + "_" + x).hasClass('bingo_label')) {
-					add = false;
-					break;
-				}
-			}
-			if (add) {
-				$('.row_identifier[value=' + i + ']').addClass('bingo_label');
-				bingoLabels.push(".row_identifier[value='" + i + "']");
-			}
-		}
-		if (i == j && !$('.dia_identifier[value=0]').hasClass('bingo_label')) {
-			add = true;
-			for (var x = 0; x < ruleset.size; x++) {
-				if (!$('#goal_' + x + "_" + x).hasClass('bingo_label')) {
-					add = false;
-					break;
-				}
-			}
-			if (add) {
-				$('.dia_identifier[value=0]').addClass('bingo_label');
-				bingoLabels.push(".dia_identifier[value='0']");
-			}
-		}
-		if (i == ruleset.size - j - 1 && !$('.dia_identifier[value=1]').hasClass('bingo_label')) {
-			add = true;
-			for (var x = 0; x < ruleset.size; x++) {
-				if (!$('#goal_' + x + "_" + (ruleset.size - x - 1)).hasClass('bingo_label')) {
-					add = false;
-					break;
-				}
-			}
-			if (add) {
-				$('.dia_identifier[value=1]').addClass('bingo_label');
-				bingoLabels.push(".dia_identifier[value='1']");
-			}
-		}
-	}
-	
-	function removeLabel(i, j) {
-		$('#goal_' + i + "_" + j).removeClass('bingo_label');
-		bingoLabels.splice(bingoLabels.indexOf('#goal_' + i + "_" + j), 1);
-
-		if($('.col_identifier[value=' + j + ']').hasClass('bingo_label')) {
-			$('.col_identifier[value=' + j + ']').removeClass('bingo_label');
-			bingoLabels.splice(bingoLabels.indexOf(".col_identifier[value='"+j+"']"), 1);
-		}
-		if($('.row_identifier[value=' + i + ']').hasClass('bingo_label')) {
-			$('.row_identifier[value=' + i + ']').removeClass('bingo_label');
-			bingoLabels.splice(bingoLabels.indexOf(".row_identifier[value='"+i+"']"), 1);
-		}
-		if (i == j) {
-			if($('.dia_identifier[value=0]').hasClass('bingo_label')) {
-				$('.dia_identifier[value=0]').removeClass('bingo_label');
-				bingoLabels.splice(bingoLabels.indexOf(".dia_identifier[value='0']"), 1);
-			}
-		}
-		if (i == ruleset.size - j - 1) {
-			if($('.dia_identifier[value=1]').hasClass('bingo_label')) {
-				$('.dia_identifier[value=1]').removeClass('bingo_label');
-				bingoLabels.splice(bingoLabels.indexOf(".dia_identifier[value='1']"), 1);
-			}
-		}
-	}
-
-	function toggleLabel(i, j) {
-		if ($('#goal_' + i + "_" + j).hasClass("bingo_label"))
-			removeLabel(i, j);
-		else
-			addLabel(i, j);
-	}
-	
-	$('.col_identifier').hover(identifierWrapper(function(v) {		
-		for(var i = 0; i < ruleset.size; i++) {
-			colorSet(i, v);
-		}
-	}), identifierWrapper(function(v) {	
-		for(var i = 0; i < ruleset.size; i++) {
-			colorUnset(i, v);
-		}
-	})).click(identifierWrapper(function(v, target) {
-		if(target.hasClass('bingo_label')) {
-			target.removeClass('bingo_label')
-			bingoLabels.splice(bingoLabels.indexOf(".col_identifier[value='"+v+"']"), 1);
-			for(var i = 0; i < ruleset.size; i++) {
-				if ($('#goal_' + i + "_" + v).hasClass('bingo_label'))
-					removeLabel(i, v);
-			}
-		} else {
-			target.addClass('bingo_label')
-			bingoLabels.push(".col_identifier[value='"+v+"']");
-			for(var i = 0; i < ruleset.size; i++) {
-				if (!$('#goal_' + i + "_" + v).hasClass('bingo_label'))
-					addLabel(i, v);
-			}
-		}
-	}));
-	
-	$('.row_identifier').hover(identifierWrapper(function(v) {		
-		for(var i = 0; i < ruleset.size; i++) {
-			colorSet(v, i);
-		}
-	}), identifierWrapper(function(v) {	
-		for(var i = 0; i < ruleset.size; i++) {
-			colorUnset(v, i);
-		}
-	})).click(identifierWrapper(function(v, target) {
-		if(target.hasClass('bingo_label')) {
-			target.removeClass('bingo_label');
-			bingoLabels.splice(bingoLabels.indexOf(".row_identifier[value='"+v+"']"), 1);
-			for(var i = 0; i < ruleset.size; i++) {
-				if ($('#goal_' + v + "_" + i).hasClass('bingo_label'))
-					removeLabel(v, i);
-			}
-		} else {
-			target.addClass('bingo_label');
-			bingoLabels.push(".row_identifier[value='"+v+"']");
-			for(var i = 0; i < ruleset.size; i++) {
-				if (!$('#goal_' + v + "_" + i).hasClass('bingo_label'))
-					addLabel(v, i);
-			}
-		}
-	}));
-	
-	$('.dia_identifier').hover(identifierWrapper(function(v) {
-		if(v == 0) {
-			for(var i = 0; i < ruleset.size; i++) {
-				colorSet(i, i);
-			}
-		} else {
-			for(var i = 0; i < ruleset.size; i++) {
-				colorSet(i, ruleset.size - 1 - i);
-			}
-		}
-	}), identifierWrapper(function(v) {
-		if(v == 0) {
-			for(var i = 0; i < ruleset.size; i++) {
-				colorUnset(i, i);
-			}
-		} else {
-			for(var i = 0; i < ruleset.size; i++) {
-				colorUnset(i, ruleset.size - 1 - i);
-			}
-		}
-	})).click(identifierWrapper(function(v, target) {
-		if(target.hasClass('bingo_label')) {
-			target.removeClass('bingo_label')
-			bingoLabels.splice(bingoLabels.indexOf(".dia_identifier[value='"+v+"']"), 1);
-			if(v == 0) {
+	function createIdentifierUX(type) {
+		$(`.${type}_identifier`).hover(
+			getValue(function(v) {
 				for(var i = 0; i < ruleset.size; i++) {
-					if ($('#goal_' + i + "_" + i).hasClass('bingo_label'))
-						removeLabel(i, i);
+					colorSet(goals[type](v, i).name);
+				}
+			})
+		, 
+			getValue(function(v) {
+				for(var i = 0; i < ruleset.size; i++) {
+					colorUnset(goals[type](v, i).name);
+				}
+			})
+		)
+		.click(getValue(function(v, target) {
+			if(target.hasClass('bingo_label')) {
+				target.removeClass('bingo_label')
+				bingoLabels.remove(indentifiers[type](v));
+				for(var i = 0; i < ruleset.size; i++) {
+					var goal = goals[type](v, i);
+					if($(goal.name).hasClass('bingo_label'))
+						removeLabel(goal.row, goal.col);
 				}
 			} else {
+				target.addClass('bingo_label')
+				bingoLabels.push(indentifiers[type](v));
 				for(var i = 0; i < ruleset.size; i++) {
-					if ($('#goal_' + i + "_" + (ruleset.size - 1 - i)).hasClass('bingo_label'))
-						removeLabel(i, ruleset.size - 1 - i);
+					var goal = goals[type](v, i);
+					if(!$(goal.name).hasClass('bingo_label'))
+						addLabel(goal.row, goal.col);
 				}
 			}
-		} else {
-			target.addClass('bingo_label')
-			bingoLabels.push(".dia_identifier[value='"+v+"']");
-			if(v == 0) {
-				for(var i = 0; i < ruleset.size; i++) {
-					if (!$('#goal_' + i + "_" + i).hasClass('bingo_label'))
-						addLabel(i, i);
-				}
-			} else {
-				for(var i = 0; i < ruleset.size; i++) {
-					if (!$('#goal_' + i + "_" + (ruleset.size - 1 - i)).hasClass('bingo_label'))
-						addLabel(i, ruleset.size - 1 - i);
-				}
-			}
-		}
-	}));
-
+		}));
+	}
 	
-	
+	createIdentifierUX("col");
+	createIdentifierUX("row");
+	createIdentifierUX("dia");
 }
 
 function updatePlayersTable(playersJson, target) {
