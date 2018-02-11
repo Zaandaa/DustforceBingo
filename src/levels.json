@@ -140,8 +140,8 @@
             "id": "newtutorial2",
             "key": null,
             "nosuper": {
-                "Beat": true,
-                "SS": true
+                "Beat": false,
+                "SS": false
             },
             "sfinesse": false,
             "dcomplete": false,
@@ -5637,7 +5637,7 @@
             "id": "teradifficult",
             "key": null,
             "nosuper": {
-                "Beat": true,
+                "Beat": false,
                 "SS": false
             },
             "sfinesse": true,
