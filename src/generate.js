@@ -188,6 +188,33 @@ function getLastThreshold(gimmick, total)
 	return 7;
 }
 
+function finalEdits(levelsOutput) {
+	function matchGimmick(level, newGimmick, callback) {
+		levelsOutput[level.level].gimmicks.forEach(function(gimmick) {
+			if (gimmick.type == newGimmick.type && gimmick.objective == newGimmick.objective && gimmick.count == newGimmick.count)
+				callback(gimmick);
+		});
+	}
+
+	function editGimmick(oldGimmick, newGimmick) {
+		for (var k in newGimmick) {
+			oldGimmick[k] = newGimmick[k];
+		}
+	}
+
+	extraData.edit.forEach(function(level) {
+		for (var key in level.data) {
+			if (key == "gimmicks")
+				level.data.gimmicks.forEach(function(newGimmick) {
+					matchGimmick(level, newGimmick, (matchedGimmick) => editGimmick(matchedGimmick, newGimmick));
+				});
+			else
+				levelsOutput[level.level][key] = level.data[key];
+		}
+	});
+}
+
+
 /*
  * Main function
  */
@@ -249,8 +276,8 @@ function main(levels, records, callback)
 		var genociderecord = records["genocide"]["Genocide"][level.id]
 		
 		level.nosuper = {
-			Beat : timerecord .input_super > 0 && !(["Tera Difficult", "Combat Tutorial"].includes(level.level)),
-			SS   : scorerecord.input_super > 0 && !(["Tera Difficult", "Combat Tutorial"].includes(level.level)),
+			Beat : timerecord .input_super > 0,
+			SS   : scorerecord.input_super > 0,
 		},
 		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
 		level.dcomplete  = timerecord.score_completion != 1,
@@ -260,10 +287,10 @@ function main(levels, records, callback)
 		level.charselect = level.type != "Tutorial",
 		level.gimmicks   = []
 
-		if (level.level in extraData) {
-			for (var g in extraData[level.level].gimmicks) {
-				if (gimmicks.includes(extraData[level.level].gimmicks[g].type))
-					level.gimmicks.push(extraData[level.level].gimmicks[g]);
+		if (level.level in extraData.add) {
+			for (var g in extraData.add[level.level].gimmicks) {
+				if (gimmicks.includes(extraData.add[level.level].gimmicks[g].type))
+					level.gimmicks.push(extraData.add[level.level].gimmicks[g]);
 			}
 		}
 
@@ -327,6 +354,7 @@ function main(levels, records, callback)
 	},
 	function() 
 	{
+		finalEdits(levelsOutput);
 		callback();
 	}, "Level");
 }

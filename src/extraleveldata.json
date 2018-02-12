@@ -1,20 +1,98 @@
 {
-	"Ramparts": {
-		"gimmicks": [
-			{
-				"type": "apples",
-				"objective": "SA",
-				"difficulty": 1,
-				"count": 1,
-				"character": true
-			},
-			{
-				"type": "apples",
-				"objective": "S complete",
-				"difficulty": 2,
-				"count": 1,
-				"character": true
+	"edit": [
+		{
+			"level": "Combat Tutorial",
+			"data": {
+				"nosuper": {
+					"Beat": false,
+					"SS": false
+				}
 			}
-		]
+		},
+		{
+			"level": "Overgrown Temple",
+			"data": {
+				"gimmicks": [
+					{
+						"type": "apples",
+						"objective": "SS",
+						"count": 1,
+						"character": false
+					}
+				]
+			}
+		},
+		{
+			"level": "Ghost Parapets",
+			"data": {
+				"gimmicks": [
+					{
+						"type": "apples",
+						"objective": "Beat",
+						"count": 1,
+						"character": false
+					},
+					{
+						"type": "apples",
+						"objective": "SS",
+						"count": 1,
+						"character": false
+					}
+				]
+			}
+		},
+		{
+			"level": "Vats",
+			"data": {
+				"gimmicks": [
+					{
+						"type": "apples",
+						"objective": "SS",
+						"count": 1,
+						"character": false
+					}
+				]
+			}
+		},
+		{
+			"level": "Tera Difficult",
+			"data": {
+				"nosuper": {
+					"Beat": false,
+					"SS": false
+				}
+			}
+		}
+	],
+	"add": {
+		"Overgrown Temple": {
+			"gimmicks": [
+				{
+					"type": "apples",
+					"objective": "SA",
+					"difficulty": 1,
+					"count": 1,
+					"character": true
+				}
+			]
+		},
+		"Ramparts": {
+			"gimmicks": [
+				{
+					"type": "apples",
+					"objective": "SA",
+					"difficulty": 1,
+					"count": 1,
+					"character": true
+				},
+				{
+					"type": "apples",
+					"objective": "S complete",
+					"difficulty": 2,
+					"count": 1,
+					"character": true
+				}
+			]
+		}
 	}
 }

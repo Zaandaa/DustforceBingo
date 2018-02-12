@@ -324,7 +324,7 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -1014,6 +1014,13 @@
             "gimmicks": [
                 {
                     "type": "apples",
+                    "objective": "SA",
+                    "difficulty": 1,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "apples",
                     "objective": "Beat",
                     "difficulty": 3,
                     "count": 1,
@@ -1024,7 +1031,7 @@
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 1,
-                    "character": true
+                    "character": false
                 },
                 {
                     "type": "lowdash",
@@ -2863,14 +2870,14 @@
                     "objective": "Beat",
                     "difficulty": 2,
                     "count": 1,
-                    "character": true
+                    "character": false
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 1,
-                    "character": true
+                    "character": false
                 },
                 {
                     "type": "lowdash",
@@ -4646,7 +4653,7 @@
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 1,
-                    "character": true
+                    "character": false
                 },
                 {
                     "type": "lowdash",

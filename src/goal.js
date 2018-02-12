@@ -20,6 +20,9 @@ extern.makeGoals = function(ruleset, bingos) {
 
 	var levelGoalDatas = makeLevelGoalDatas(ruleset);
 	var totalGoalDatas = ruleset.multilevel ? makeTotalGoalDatas(ruleset) : [];
+	// for (var gd in levelGoalDatas) {
+		// console.log(makeGoalString(levelGoalDatas[gd]))
+	// }
 
 	var usedGoalStats = {
 		levels: 0,
