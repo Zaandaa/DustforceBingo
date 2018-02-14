@@ -10,13 +10,21 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	// CREATE BOARD
 	
-	var sizeWord = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
-	
+	var sizeWord;
+	switch (boardData.size) {
+		case 3: sizeWord = "third"; break;
+		case 4: sizeWord = "fourth"; break;
+		case 5: sizeWord = "fifth"; break;
+		case 8: sizeWord = "eighth"; break;
+	}
+
+	var small = ruleset.size == 8;
+
 	function createEmptyBoard() {
 		var table = $("<div/>")
 			.addClass("bingo_table")
 			.attr('id', 'bingo_div')
-			.css({"min-width": 140 * ruleset.size + "px"});
+			.css({"min-width": (small ? 87.5 : 140) * ruleset.size + "px"});
 			
 		if (isPopout) {
 			table.css('height', '100%');
@@ -67,7 +75,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		if(isPopout) {
 			row.addClass('popout_row')
 				.addClass(`row-${sizeWord}`)
-		} else {
+		} else if (!small) {
 			row.append( $("<div/>")
 				.addClass('row_identifier')
 				.attr('value', i)
@@ -181,11 +189,9 @@ function updateBoardTable(boardData, target, isPopout) {
 
 	var table = createEmptyBoard(isPopout);
 
-	if (!isPopout) {
+	if (!isPopout && !small) {
 		table.append(createTopIdentifiers());
 	}
-	
-	var sizeWord = boardData.size == 5 ? "fifth" : (boardData.size == 4 ? "fourth" : "third");
 	
 	for (var i = 0; i < boardData.size; i++) {
 		var row = createBingoRow(i);
@@ -227,7 +233,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		table.append(row);
 	}
 
-	if (!isPopout) {
+	if (!isPopout && !small) {
 		table.append(createBottomIdentifiers());
 	}
 	
@@ -270,7 +276,7 @@ function updateBoardTable(boardData, target, isPopout) {
 			createGoal(it,ruleset.size-it-1)
 	}
 	
-	var indentifiers = {
+	var identifiers = {
 		"col": (v) => `.col_identifier[value='${v}']`,
 		"row": (v) => `.row_identifier[value='${v}']`,
 		"dia": (v) => `.dia_identifier[value='${v}']`
@@ -278,25 +284,25 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	function getIdentifiers(i, j) {
 		return [{
-			name  : indentifiers["col"](j), 
+			name  : identifiers["col"](j), 
 			type  : "col",
 			val   : j,
 			valid : true
 		},
 		{
-			name  : indentifiers["row"](i), 
+			name  : identifiers["row"](i), 
 			type  : "row",
 			val   : i,
 			valid : true
 		},
 		{
-			name  : indentifiers["dia"](0), 
+			name  : identifiers["dia"](0), 
 			type  : "dia",
 			val   : 0,
 			valid : i == j
 		},
 		{
-			name  : indentifiers["dia"](1), 
+			name  : identifiers["dia"](1), 
 			type  : "dia",
 			val   : 1,
 			valid : i == ruleset.size - j - 1
@@ -333,8 +339,8 @@ function updateBoardTable(boardData, target, isPopout) {
 				}
 			}
 			
-			$(indentifiers[type](i)).addClass('bingo_label');
-			bingoLabels.push(indentifiers[type](i));
+			$(identifiers[type](i)).addClass('bingo_label');
+			bingoLabels.push(identifiers[type](i));
 		}
 		
 		$.each(getIdentifiers(i,j), function(no,id) {
@@ -391,7 +397,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		.click(getValue(function(v, target) {
 			if(target.hasClass('bingo_label')) {
 				target.removeClass('bingo_label')
-				bingoLabels.remove(indentifiers[type](v));
+				bingoLabels.remove(identifiers[type](v));
 				for(var i = 0; i < ruleset.size; i++) {
 					var goal = goals[type](v, i);
 					if($(goal.name).hasClass('bingo_label'))
@@ -399,7 +405,7 @@ function updateBoardTable(boardData, target, isPopout) {
 				}
 			} else {
 				target.addClass('bingo_label')
-				bingoLabels.push(indentifiers[type](v));
+				bingoLabels.push(identifiers[type](v));
 				for(var i = 0; i < ruleset.size; i++) {
 					var goal = goals[type](v, i);
 					if(!$(goal.name).hasClass('bingo_label'))
@@ -409,9 +415,11 @@ function updateBoardTable(boardData, target, isPopout) {
 		}));
 	}
 	
-	createIdentifierUX("col");
-	createIdentifierUX("row");
-	createIdentifierUX("dia");
+	if (!small) {
+		createIdentifierUX("col");
+		createIdentifierUX("row");
+		createIdentifierUX("dia");
+	}
 }
 
 function updatePlayersTable(playersJson, target) {
@@ -538,8 +546,10 @@ function resetBingo() {
 }
 
 function popoutBoard() {
-	var width = ruleset.size * 140;
-	var height = compact ? (70 * ruleset.size) : (ruleset.size * 128 + 2);
+	var small = ruleset.size == 8;
+
+	var width = ruleset.size * (ruleset.size == 8 ? 87.5 : 140);
+	var height = small ? 50 * ruleset.size : (compact ? (70 * ruleset.size) : (ruleset.size * 128 + 2));
 
 	var query = [];
 	if (player)
@@ -562,10 +572,17 @@ function toggleCompact() {
 }
 
 function setSizes(p) {
-	$(".bingo_table").css({"min-width": 140 * ruleset.size + "px"});
-	$(".bingo_behind").css({"min-width": 140 * ruleset.size + "px"});
-	$(".popout_bingo_behind").css({"min-width": 140 * ruleset.size + "px"});
-	if (p) {
-		$("body").css({"min-width": 140 * ruleset.size + "px"});
+	var small = ruleset.size == 8;
+	var width = small ? 87.5 : 140;
+	$(".bingo_table").css({"min-width": width * ruleset.size + "px"});
+	$(".bingo_behind").css({"min-width": width * ruleset.size + "px"});
+	$(".popout_bingo_behind").css({"min-width": width * ruleset.size + "px"});
+	if (p)
+		$("body").css({"min-width": width * ruleset.size + "px"});
+	if (small) {
+		$("#board_div").addClass("compact");
+		$("#temp_board_div").addClass("compact");
+		$("#board_div").addClass("small64");
+		$("#temp_board_div").addClass("small64");
 	}
 }

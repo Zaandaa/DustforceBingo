@@ -1,15 +1,22 @@
 
-
-
+.col-eighth {
+    position: relative;
+    min-height: 1px;
+    flex: 0 0 12.5%;
+    max-width: 12.5%;
+    float: left;
+}
 .col-fifth {
     position: relative;
     min-height: 1px;
+    flex: 0 0 20%;
     width: 20%;
     float: left;
 }
 .col-fourth {
     position: relative;
     min-height: 1px;
+    flex: 0 0 25%;
     width: 25%;
     float: left;
 }
@@ -19,6 +26,9 @@
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
     float: left;
+}
+.row-eighth {
+    height: 12.5%;
 }
 .row-fifth {
     height: 20%;
@@ -189,7 +199,6 @@
 .compact .bingo_table_inner_cell {
 	padding: 1px;
 	min-height: 70px;
-	/* height: 70px; */
 	margin: 0px;
 	border-radius: 0px;
 }
@@ -230,4 +239,22 @@
 .compact .col_identifier {
 	width:100%;
 	margin:0px;
+}
+
+.small64 {
+	font-size: 14px !important;
+}
+.small64 .bingo_table_inner_cell {
+	min-height: 50px;
+}
+.small64 .fake_bingo_cell {
+	padding-top: 1px;
+	min-height: 50px;
+}
+.small64 .popout_fake_bingo_cell {
+	padding-top: 10px;
+	min-height: 50px;
+}
+.small64 .popout_row {
+	min-height: 50px;
 }

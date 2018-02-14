@@ -62,25 +62,31 @@ block content
 
 			div
 				
-				h4.impact Goal Options
-				- var perline = 6;
-				- var steps = new Array(Math.ceil(enabled.length/perline));
-				- var i = -1;
-				each na, nb in steps
-					div.row.margin_zero
-						each nc, nd in new Array(perline)
-							- i++;
-							if i < enabled.length
-								- var option = options[enabled[i]]
-								div.col-2.mb-3
-									div.goal-option(data-toggle="tooltip" data-placement="top" title=option.clean_name + (option.tooltip ? " - " + option.tooltip : ""))
-										div(style="position: relative; top: -1px")
-											img(src=option.icon class=option.icon_type + "_large")
+				if ruleset.size != 8
+					h4.impact Goal Options
+					- var perline = 6;
+					- var steps = new Array(Math.ceil(enabled.length/perline));
+					- var i = -1;
+					each na, nb in steps
+						div.row.margin_zero
+							each nc, nd in new Array(perline)
+								- i++;
+								if i < enabled.length
+									- var option = options[enabled[i]]
+									div.col-2.mb-3
+										div.goal-option(data-toggle="tooltip" data-placement="top" title=option.clean_name + (option.tooltip ? " - " + option.tooltip : ""))
+											div(style="position: relative; top: -1px")
+												img(src=option.icon class=option.icon_type + "_large")
 
 				h4.impact Rules
 				ul
-					li #{ruleset.save}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
-					li #{ruleset.size} by #{ruleset.size}, first to #{wincondition}
+					if ruleset.size == 8
+						- var ssWord = ruleset.ss ? "SS" : "Any%"
+						li #{ruleset.save}
+						li #{ssWord} 64 levels, first to #{wincondition}
+					else
+						li #{ruleset.save}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
+						li #{ruleset.size} by #{ruleset.size}, first to #{wincondition}
 					if ruleset.lockout
 						li Lockout: Each goal can only be achieved by one person.
 					if ruleset.hidden
@@ -96,27 +102,31 @@ block content
 
 		div.col-xl-8.noselect
 			- var sizeArray = new Array(parseInt(ruleset.size) || 1)
-			- var colClass = "col-" + (ruleset.size == 5 ? "fifth" : (ruleset.size == 4 ? "fourth" : "third"))
+			- var colClass = "col-" + (ruleset.size == 8 ? "eighth" : (ruleset.size == 5 ? "fifth" : (ruleset.size == 4 ? "fourth" : "third")))
 
 			div
 				div#temp_board_div
 					div.bingo_behind
-						div.row.margin_zero.bingo_top
-							div.dia_identifier
-							each val, i in sizeArray
-								div(class=colClass)
-									div.col_identifier
+						if ruleset.size != 8
+							div.row.margin_zero.bingo_top
+								div.dia_identifier
+								each val, i in sizeArray
+									div(class=colClass)
+										div.col_identifier
 						each val, i in sizeArray
 							div.row.margin_zero
-								div.row_identifier
+								if ruleset.size != 8
+									div.row_identifier
 								each val, j in sizeArray
 									div(class=colClass)
 										div.bingo_table_cell
 											div.bingo_table_inner_cell
-						div.row.margin_zero.bingo_bottom
-							div.dia_identifier
+						if ruleset.size != 8
+							div.row.margin_zero.bingo_bottom
+								div.dia_identifier
 					div
-						div.bingo_pushdown
+						if ruleset.size != 8
+							div.bingo_pushdown
 						each val, i in sizeArray
 							div.row.margin_zero
 								div.col
@@ -131,11 +141,12 @@ block content
 
 				div#board_div
 
-				div#compact_div.checkbox
-					label(style="min-width: 100px")
-						input#compact(type="checkbox" onchange="toggleCompact()")
-						<img id="check_compact" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-						p Compact board
+				if ruleset.size != 8
+					div#compact_div.checkbox
+						label(style="min-width: 100px")
+							input#compact(type="checkbox" onchange="toggleCompact()")
+							<img id="check_compact" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+							p Compact board
 
 
 	div

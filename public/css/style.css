@@ -77,6 +77,9 @@ body {
 	.bingo_table {
 		font-size:15px;
 	} 
+	.small64 .bingo_table {
+		font-size:14px;
+	} 
 	
 	.players_table {
 		font-size:24px !important;

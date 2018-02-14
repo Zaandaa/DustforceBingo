@@ -14,9 +14,10 @@ for (var i = 0; i < seedLength; i++) {
 // seed = "custom";
 
 var rules = {
+	gametype: "bingo",
 	seed: seed,
 	save: "New Game",
-	size: 5,
+	size: 8,
 	lockout: true,
 	hidden: false,
 	teams: false,

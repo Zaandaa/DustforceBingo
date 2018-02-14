@@ -12,7 +12,7 @@ html(style="height: 100%; overflow: hidden")
 	body(style="padding: 0px; margin: 0px; height: 100%")
 		script!= "const ruleset = " + JSON.stringify(ruleset) + ";"
 		- var sizeArray = new Array(parseInt(ruleset.size) || 1)
-		- var sizeWord = (ruleset.size == 5 ? "fifth" : (ruleset.size == 4 ? "fourth" : "third"))
+		- var sizeWord = ruleset.size == 8 ? "eighth" : (ruleset.size == 5 ? "fifth" : (ruleset.size == 4 ? "fourth" : "third"))
 		- var colClass = "col-" + sizeWord;
 		- var rowClass = "row-" + sizeWord;
 
@@ -43,7 +43,7 @@ html(style="height: 100%; overflow: hidden")
 
 		script= "const sessionId = \'" + session.id + "';"
 		script= "const player = \'" + player + "';"
-		script= "const compact = \'" + compact + "' == 'true';"
+		script= "var compact = \'" + compact + "' == 'true';"
 		script(src="/bingo/socket/socket.io.min.js")
 		script(src="/bingo/js/board.js")
 		script(src="/bingo/js/popout.js")

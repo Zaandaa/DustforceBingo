@@ -12,6 +12,31 @@ var extern = {};
 
 extern.makeGoals = function(ruleset, bingos) {
 	seedrandom();
+
+	if (ruleset.gametype == "64")
+		return make64Goals(ruleset);
+	else // bingo
+		return makeBingoGoals(ruleset, bingos);
+}
+
+function make64Goals(ruleset) {
+	var goals = [];
+
+	for (var l in levels.levels) {
+		if (levels.levels[l].hub == "Tutorial" || levels.levels[l].hub == "Difficult")
+			continue;
+		var goalData = {type: "level", level: l, objective: ruleset.ss ? "SS" : "Beat", levelOnly: true}
+		var g = new Goal(goalData);
+		goals.push(g);
+	}
+
+	if (ruleset.shuffle)
+		shuffle.shuffle(goals);
+
+	return goals;
+}
+
+function makeBingoGoals(ruleset, bingos) {
 	var goals = [];
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
 		goals.push(undefined);
@@ -531,7 +556,7 @@ function makeGoalString(goalData) {
 	var str = "";
 
 	if (goalData.type == "level") {
-		str = goalData.objective + " " + goalData.level;
+		str = (goalData.levelOnly ? "" : (goalData.objective + " ")) + goalData.level;
 
 		if (goalData.character)
 			str += " as " + goalData.character;

@@ -14,6 +14,19 @@ var Bingo = function(session, ruleset) {
 	self.session = session;
 	self.ruleset = ruleset;
 
+	self.active = false;
+	self.startTime = 0;
+	self.startDate = "";
+	self.lastReplay = 0;
+	self.firstGoal = false;
+	self.isWon = false;
+	self.finished = false;
+	self.teamsDone = 0;
+	self.error = false;
+
+	self.teams = {};
+	self.players = {};
+
 	// translate ruleset
 	self.ruleset.size = parseInt(self.ruleset.size, 10);
 	for (var r in self.ruleset) {
@@ -36,23 +49,19 @@ var Bingo = function(session, ruleset) {
 	}
 	self.ruleset.maxEasy = self.ruleset.difficulty + 4;
 
-	self.active = false;
-	self.startTime = 0;
-	self.startDate = "";
-	self.lastReplay = 0;
-	self.firstGoal = false;
-	self.isWon = false;
-	self.finished = false;
-	self.teamsDone = 0;
-	self.error = false;
+	// determine gametype
+	self.ruleset.gametype = self.ruleset.size == 8 ? "64" : "bingo";
 
-	self.teams = {};
-	self.players = {};
+	// force certain rules in case it got past front end
+	if (self.ruleset.gametype == "64") {
+		if (self.ruleset.bingo_count_type == "bingo") {
+			self.ruleset.bingo_count_type = "goal";
+			self.ruleset.bingo_count = 32;
+		}
+		self.ruleset.lockout = true;
+		self.ruleset.antibingo = false;
 
-	self.possibleBingos = board.cachePossibleBingos(self.ruleset.size);
-	self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
-
-	if (self.ruleset.antibingo) {
+	} else if (self.ruleset.antibingo) {
 		self.ruleset.lockout = false;
 		self.ruleset.hidden = false;
 		if (self.ruleset.bingo_count_type != "bingo") {
@@ -61,13 +70,19 @@ var Bingo = function(session, ruleset) {
 		}
 	}
 
+	// make goals
+	self.possibleBingos = self.ruleset.gametype == "bingo" ? board.cachePossibleBingos(self.ruleset.size) : [];
+	self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
+
+	// final error check
 	self.error = "";
 	if (self.goals.includes(undefined))
 		self.error = "nobingo";
-	else if (self.ruleset.size != 3 && self.ruleset.size != 4 && self.ruleset.size != 5)
+	else if (self.ruleset.size != 3 && self.ruleset.size != 4 && self.ruleset.size != 5 && self.ruleset.size != 8)
 		self.error = "nobingo";
 	if (self.error != "")
 		return self;
+
 
 	self.getState = function() {
 		var s;
