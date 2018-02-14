@@ -1,9 +1,68 @@
-function changeCheckImage() {
-	var id = $(this).attr('id');
-	$('#check_' + id).attr('src', '/bingo/img/ready_' + ($(this).prop('checked') ? 'true' : 'false') + '.png');
+var stateCache = {}
+
+function validateState(e) {
+	var $target = $(e.target);
+	var prevVal = stateCache[$target.attr('id')];
+	
+	stateCache[$target.attr('id')] = getValue($target);
+	
+	for (var i = 0; i < invalidsets.length; i++) {
+		if(! ($target.attr('id') in invalidsets[i]))
+			continue;
+		
+		var invalid = true;
+		var invalids = {}
+		
+		for (var input in invalidsets[i]) {
+			if (input == "reason")
+				continue;
+			invalid = invalid && invalidsets[i][input].indexOf(stateCache[input]) != -1;
+			
+			invalids[input] = invalidsets[i][input].indexOf(stateCache[input]) != -1;
+		}
+		
+		console.log(invalidsets[i], stateCache, invalids);
+		
+		if (invalid) {
+			$(".alert-danger .alert-text").html("<strong>Input error!</strong> " + invalidsets[i]["reason"]);
+			$(".alert-danger").alert(200, 2000, 100);
+			setValue($target, prevVal);
+			stateCache[$target.attr('id')] = prevVal;
+			return;
+		}
+	}
+	
+	if (isCheckbox($target))
+		changeCheckImage($target);
+}
+
+function getValue($input) {
+	if (isCheckbox($input))
+		return $input.is(':checked');
+	return $input.val();
+}
+
+function setValue($input, val) {
+	if (isCheckbox($input))
+		$input.prop('checked', val)
+	else
+		$input.val(val);
+}
+
+function isCheckbox($target) {
+	return $target.prop("tagName") == "INPUT" && $target.attr("type") == "checkbox";
+}
+
+function changeCheckImage(target) {
+	var id = target.attr('id');
+	$('#check_' + id).attr('src', '/bingo/img/ready_' + (target.prop('checked') ? 'true' : 'false') + '.png');
 }
 
 $(document).on('ready', function() {
+	$('.session').each(function(no,target) {
+		stateCache[$(target).attr('id')] = getValue($(target));
+	})
+	
 	if (error == "nobingo") {
 		$(".alert-danger .alert-text").html("<strong>Bingo error!</strong> Too few parameters!");
 		$(".alert-danger").alert(200, 2000, 100);
@@ -12,6 +71,7 @@ $(document).on('ready', function() {
 	var $size = $('#size'),
 	    $bingo_count_type = $('#bingo_count_type'),
 		$bingo_count = $("#bingo_count");
+		
 	function validateNumber() {
 		var size = $size.val(),
 		    type = $bingo_count_type.val();
@@ -42,7 +102,7 @@ $(document).on('ready', function() {
 			$bingo_count.val("1");
 	}
 	
-	$('input[type=checkbox]').on('change', changeCheckImage)
+	$('.session').on('change', validateState);
 	$size.on('change', validateNumber);
 	$bingo_count_type.on('change', validateNumber);
 	
