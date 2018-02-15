@@ -4,6 +4,7 @@ var goal = require('./goal');
 var Team = require('./team');
 var Player = require('./player');
 
+var utils = require('./utils');
 var levels = require('./levels');
 var constants = require('./constants');
 var options = require('./options');
@@ -26,6 +27,8 @@ var Bingo = function(session, ruleset) {
 
 	self.teams = {};
 	self.players = {};
+
+	self.log = [];
 
 	// translate ruleset
 	self.ruleset.size = parseInt(self.ruleset.size, 10);
@@ -316,6 +319,7 @@ var Bingo = function(session, ruleset) {
 					continue;
 				else if (possibleWinners.includes[t]) { // tie win, not already done
 					self.teams[t].finish(Date.now() - self.startTime, true, 1);
+					self.addLog({team: t, str: "Finished"});
 				} else {
 					var score = self.teams[t].goalsAchieved.length + (self.ruleset.bingo_count_type == "bingo" ? self.teams[t].bingos * 100 : 0);
 					if (!rankedTeams[score])
@@ -330,6 +334,7 @@ var Bingo = function(session, ruleset) {
 			for (var score in sortedRanks) {
 				for (var t in rankedTeams[sortedRanks[score]]) {
 					self.teams[rankedTeams[sortedRanks[score]][t]].finish(Date.now() - self.startTime, false, self.teamsDone + 1);
+					self.addLog({team: rankedTeams[sortedRanks[score]][t], str: "Finished"});
 				}
 				self.teamsDone += rankedTeams[sortedRanks[score]].length;
 			}
@@ -338,6 +343,7 @@ var Bingo = function(session, ruleset) {
 			// force win
 			self.isWon = true;
 			self.teams[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.teamsDone + 1);
+			self.addLog({team: possibleWinners[0], str: "Finished"});
 			self.teamsDone++;
 		}
 	};
@@ -349,12 +355,14 @@ var Bingo = function(session, ruleset) {
 		if (self.ruleset.bingo_count_type == "bingo") {
 			if (self.countBingo(id) >= self.ruleset.bingo_count) {
 				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
+				self.addLog({team: id, str: "Finished"});
 				self.isWon = true;
 				self.teamsDone++;
 			}
 		} else { // count goals
 			if (self.teams[id].goalsAchieved.length >= self.ruleset.bingo_count) {
 				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
+				self.addLog({team: id, str: "Finished"});
 				self.isWon = true;
 				self.teamsDone++;
 			}
@@ -573,6 +581,7 @@ var Bingo = function(session, ruleset) {
 		// console.log("captureRegion", t, region);
 		for (var g in region) {
 			self.goals[region[g]].capture(t);
+			self.addLog({team: t, str: "Goal captured: " + self.goals[region[g]].toString()});
 		}
 	};
 
@@ -644,7 +653,7 @@ var Bingo = function(session, ruleset) {
 			for (var i = 0; i < self.goals.length; i++) {
 				self.goals[i].reveal();
 			}
-		} else if (!self.ruleset.gametype == "64") { // middle
+		} else if (self.ruleset.gametype != "64") { // middle
 			if (self.ruleset.size % 2 == 0)
 				self.goals[self.ruleset.size * self.ruleset.size / 2 - self.ruleset.size / 2 - 1].reveal();
 			else
@@ -708,6 +717,7 @@ var Bingo = function(session, ruleset) {
 		self.lastReplay = Date.now();
 		self.teams[self.players[replay.user].team].addProgress(replay);
 		self.players[replay.user].addProgress(replay);
+		self.addLog({team: self.players[replay.user].team, player: replay.user, str: "Replay: " + utils.getReplayScore(replay) + " " + replay.levelname});
 
 		var success = false;
 		for (var i = 0; i < self.goals.length; i++) {
@@ -719,6 +729,7 @@ var Bingo = function(session, ruleset) {
 				self.players[replay.user].achieveGoal(i);
 				success = true;
 				// // console.log("GOAL ACHIEVED", i, replay.username);
+				self.addLog({team: self.players[replay.user].team, player: replay.user, str: "Goal: " + self.goals[i].toString()});
 				if (self.ruleset.hidden)
 					self.revealGoalNeighbors(i);
 				if (self.ruleset.gametype == "64")
@@ -774,6 +785,7 @@ var Bingo = function(session, ruleset) {
 
 			boardData.startTime = self.startTime;
 			boardData.lastReplay = self.lastReplay;
+			boardData.log = self.log;
 		}
 
 		return boardData;
@@ -802,6 +814,15 @@ var Bingo = function(session, ruleset) {
 		return enabled;
 	};
 
+	self.addLog = function(data) {
+		var delta = new Date(Date.now() - self.startTime);
+		var h = delta.getUTCHours();
+		var m = delta.getMinutes();
+		var s = delta.getSeconds();
+		data.time = (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+		self.log.push(data);
+	};
+
 	self.resetBingo = function() {
 		if (!self.checkReset())
 			return;
@@ -820,6 +841,7 @@ var Bingo = function(session, ruleset) {
 			self.players[p].resetVars();
 		}
 		self.teams = {};
+		self.log = [];
 
 		// new goals
 		self.goals = goal.makeGoals(self.ruleset, self.possibleBingos);
@@ -852,6 +874,7 @@ var Bingo = function(session, ruleset) {
 		}
 		delete self.goals;
 
+		delete self.log;
 		delete self.ruleset;
 		delete self.session;
 
