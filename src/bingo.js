@@ -9,7 +9,7 @@ var constants = require('./constants');
 var options = require('./options');
 
 var Bingo = function(session, ruleset) {
-	// console.log("RULES", ruleset);
+	// // console.log("RULES", ruleset);
 	var self = this;
 	self.session = session;
 	self.ruleset = ruleset;
@@ -60,6 +60,11 @@ var Bingo = function(session, ruleset) {
 		}
 		self.ruleset.lockout = true;
 		self.ruleset.antibingo = false;
+
+		self.ruleset.shuffle = false;
+		self.ruleset.ss = false;
+		self.ruleset.captureblank = true;
+		self.ruleset.captureother = true;
 
 	} else if (self.ruleset.antibingo) {
 		self.ruleset.lockout = false;
@@ -234,7 +239,7 @@ var Bingo = function(session, ruleset) {
 	self.countGoalsAchieved = function() {
 		var goalsAchieved = 0;
 		for (var g in self.goals) {
-			if (self.goals[g].isAchieved())
+			if (self.getGoalTeam(g))
 				goalsAchieved++;
 		}
 		return goalsAchieved;
@@ -284,6 +289,9 @@ var Bingo = function(session, ruleset) {
 	}
 
 	self.checkLockout = function(id) {
+		if (self.ruleset.gametype == "64")
+			return; // temp skip lockout check, needs algorithm adjustments for capture simulation
+
 		self.setTeamsCanWin();
 
 		if (Object.keys(self.teams).length == 1)
@@ -391,6 +399,184 @@ var Bingo = function(session, ruleset) {
 		return false; // fail
 	};
 
+
+	self.getGoalTeam = function(g) {
+		return self.goals[g].captured || (self.goals[g].isAchieved() ? self.players[self.goals[g].achieved[0]].team : undefined);
+	};
+
+	self.getBiggestRegion = function(t) {
+		var region = [];
+		var checked = [];
+		var biggest = 0;
+
+		for (var g in self.goals) {
+			if (checked.includes(g))
+				continue;
+			if (t != self.getGoalTeam(g))
+				continue;
+
+			self.getRegion(g, region, checked, [], t, true);
+			if (region.length > biggest)
+				biggest = region.length;
+			region = [];
+		}
+
+		return biggest;
+	};
+
+	self.checkCapture = function(g) {
+		var region = [];
+		var checked = [g];
+		var verified = [];
+		var gTeam = self.getGoalTeam(g);
+		// console.log("checkCapture", g, gTeam);
+
+		// check table borders
+		var isTop = g < self.ruleset.size;
+		var isBottom = g >= self.ruleset.size * self.ruleset.size - self.ruleset.size;
+		var isLeft = g % self.ruleset.size == 0;
+		var isRight = g % self.ruleset.size == self.ruleset.size - 1;
+		// console.log(isTop, isBottom, isLeft, isRight);
+
+		function failedRegionToVerified() {
+			// console.log("failedRegionToVerified add", region.length);
+			if (region.length > 0) {
+				for (var r in region) {
+					if (!verified.includes(region[r]))
+						verified.push(region[r]);
+				}
+				region = [];
+			}
+			// console.log(verified);
+		};
+
+		// check if g contributes to capturing anything
+		if (!isTop && !self.getRegion(g - self.ruleset.size, region, checked, verified, gTeam, false)) {
+			// console.log("top success", region);
+			if (region.length > 0) {
+				self.captureRegion(gTeam, region);
+				region = [];
+			}
+		}
+		failedRegionToVerified();
+		if (!isBottom && !self.getRegion(g + self.ruleset.size, region, checked, verified, gTeam, false)) {
+			// console.log("bottom success", region);
+			if (region.length > 0) {
+				self.captureRegion(gTeam, region);
+				region = [];
+			}
+		}
+		failedRegionToVerified();
+		if (!isLeft && !self.getRegion(g - 1, region, checked, verified, gTeam, false)) {
+			// console.log("left success", region);
+			if (region.length > 0) {
+				self.captureRegion(gTeam, region);
+				region = [];
+			}
+		}
+		failedRegionToVerified();
+		region = [];
+		if (!isRight && !self.getRegion(g + 1, region, checked, verified, gTeam, false)) {
+			// console.log("right success", region);
+			if (region.length > 0) {
+				self.captureRegion(gTeam, region);
+				region = [];
+			}
+		}
+		failedRegionToVerified();
+
+
+		// check if getting g causes it to be captured
+		if (self.ruleset.captureother) {
+			var captured = true;
+			while (captured) {
+				captured = false;
+				gTeam = self.getGoalTeam(g);
+				for (var t in self.teams) {
+					if (t == gTeam)
+						continue;
+					region = [];
+					if (self.getRegion(g, region, [], [], t, false))
+						continue;
+
+					// console.log("got captured", region);
+					self.captureRegion(t, region);
+					captured = true;
+					break;
+				}
+			}
+		}
+
+	};
+
+	self.getRegion = function(g, region, checked, verified, team, countTeam) {
+		// console.log("getRegion", g, region, checked, team, countTeam);
+		if (verified.includes(g))
+			return true;
+		if (checked.includes(g))
+			return;
+		checked.push(g);
+		// console.log(g, "not in checked")
+
+		// check table borders
+		var isTop = g < self.ruleset.size;
+		var isBottom = g >= self.ruleset.size * self.ruleset.size - self.ruleset.size;
+		var isLeft = g % self.ruleset.size == 0;
+		var isRight = g % self.ruleset.size == self.ruleset.size - 1;
+		// console.log(g, isTop, isBottom, isLeft, isRight);
+
+		// count matches team only
+		if (countTeam) {
+			if (team != self.getGoalTeam(g)) {
+				verified.push(g);
+				return true;
+			}
+		} else { // team is border only
+			var gTeam = self.getGoalTeam(g);
+			if (gTeam) {
+				if (team == gTeam)
+					return; // border
+				if (!self.ruleset.captureother) {
+					verified.push(g);
+					return true; // can't capture others
+				}
+			} else if (!self.ruleset.captureblank) {
+				verified.push(g);
+				return true; // can't capture blanks
+			}
+		}
+		// console.log(g, "team check pass")
+
+		if (!countTeam && (isTop || isBottom || isLeft || isRight)) {
+			verified.push(g);
+			return true;
+		}
+
+		// console.log(g, "add to region")
+		// success add to region
+		region.push(g);
+
+		// recursive calls
+		if (!isTop && self.getRegion(g - self.ruleset.size, region, checked, verified, team, countTeam))
+			return true;
+		if (!isBottom && self.getRegion(g + self.ruleset.size, region, checked, verified, team, countTeam))
+			return true;
+		if (!isLeft && self.getRegion(g - 1, region, checked, verified, team, countTeam))
+			return true;
+		if (!isRight && self.getRegion(g + 1, region, checked, verified, team, countTeam))
+			return true;
+
+		// console.log(g, "recursive success");
+	};
+
+	self.captureRegion = function(t, region) {
+		// console.log("captureRegion", t, region);
+		for (var g in region) {
+			self.goals[region[g]].capture(t);
+		}
+	};
+
+
 	self.start = function() {
 		var ready = false;
 		for (var p in self.players) {
@@ -442,7 +628,7 @@ var Bingo = function(session, ruleset) {
 				var teamKeys2 = teamKeys.slice(1, teamKeys.length);
 				teamKeys2.push(teamKeys[0]);
 
-				var teamAssignments = {}
+				var teamAssignments = {};
 				for (var i = 0; i < teamKeys.length; i++) {
 					teamAssignments[teamKeys[i]] = teamKeys2[i]
 				}
@@ -458,9 +644,9 @@ var Bingo = function(session, ruleset) {
 			for (var i = 0; i < self.goals.length; i++) {
 				self.goals[i].reveal();
 			}
-		} else { // middle
+		} else if (!self.ruleset.gametype == "64") { // middle
 			if (self.ruleset.size % 2 == 0)
-				self.goals[self.ruleset.size + self.ruleset.size / 2 - 1].reveal();
+				self.goals[self.ruleset.size * self.ruleset.size / 2 - self.ruleset.size / 2 - 1].reveal();
 			else
 				self.goals[Math.floor(self.ruleset.size * self.ruleset.size / 2)].reveal();
 		}
@@ -525,16 +711,18 @@ var Bingo = function(session, ruleset) {
 
 		var success = false;
 		for (var i = 0; i < self.goals.length; i++) {
-			if (self.ruleset.lockout && self.goals[i].isAchieved() || self.teams[self.players[replay.user].team].goalsAchieved.includes(i)) {
+			if (self.ruleset.lockout && self.getGoalTeam(i) || self.teams[self.players[replay.user].team].goalsAchieved.includes(i)) {
 				continue;
 			} else if (self.goals[i].compareReplay(replay, self.teams[self.players[replay.user].team], self.players)) {
 				self.goals[i].addAchiever(replay.user);
 				self.teams[self.players[replay.user].team].achieveGoal(i);
 				self.players[replay.user].achieveGoal(i);
 				success = true;
+				// // console.log("GOAL ACHIEVED", i, replay.username);
 				if (self.ruleset.hidden)
 					self.revealGoalNeighbors(i);
-				// console.log("GOAL ACHIEVED", i, replay.username);
+				if (self.ruleset.gametype == "64")
+					self.checkCapture(i);
 			}
 		}
 

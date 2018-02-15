@@ -114,7 +114,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	function addAchievedStyle(col, achiever) {
-		console.log(achiever);
+		// console.log(achiever);
 		$(col).find('.bingo_table_inner_cell')
 			.css({
 				'border-color'     : `var(--${achiever.color})`,
@@ -123,7 +123,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	function createAchieverCircle(achiever) {
-		console.log(achiever);
+		// console.log(achiever);
 		var textColor = $.inArray(achiever.color, ["white", "yellow"]) != -1 ? "black" : "white";
 		
 		var circle = $("<div/>")
@@ -134,7 +134,7 @@ function updateBoardTable(boardData, target, isPopout) {
 			})
 			.text(achiever.name[0]);
 			
-		console.log(circle.attr('style'));	
+		// console.log(circle.attr('style'));	
 		
 		return circle;
 	}
@@ -199,11 +199,26 @@ function updateBoardTable(boardData, target, isPopout) {
 		for (var j = 0; j < boardData.size; j++) {
 			var col = createBingoCell(i, j);
 			var goal = boardData.goals[i * boardData.size + j];
+
+			((i_copy, j_copy) =>
+				$(col).find('.bingo_table_inner_cell').click(() => toggleLabel(i_copy, j_copy))
+			)(i, j);
 			
 			addGoalText(col, goal.title)
 
 			var firstAchieverStyled = false;
 			var hoverStyled = false;
+
+			if (goal.captured) {
+				for (var p in boardData.players) {
+					if (boardData.players[p].team == goal.captured) {
+						addAchievedStyle(col, boardData.players[p]);
+						break;
+					}
+				}
+				row.append(col);
+				continue;
+			}
 
 			$.each(goal.achieved, function(no, achieverId) {
 				var achieverPlayer = boardData.players[achieverId];
@@ -224,9 +239,6 @@ function updateBoardTable(boardData, target, isPopout) {
 					.append(achieverCircle);
 			});
 			
-			((i_copy, j_copy) =>
-				$(col).find('.bingo_table_inner_cell').click(() => toggleLabel(i_copy, j_copy))
-			)(i, j);
 			
 			row.append(col);
 		}

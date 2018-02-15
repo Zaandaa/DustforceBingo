@@ -600,13 +600,19 @@ var Goal = function(goalData) {
 	self.goalString = makeGoalString(goalData);
 	self.achieved = [];
 	self.revealed = false;
+	self.captured;
 
 	self.toString = function() {
 		return self.goalString;
 	};
 
 	self.getBoardData = function() {
-		return {title: self.revealed ? self.goalString : "", achieved: self.achieved, total: self.goalData.total || 0};
+		return {
+			title: self.revealed ? self.goalString : "",
+			achieved: self.achieved,
+			total: self.revealed ? (self.goalData.total || 0) : 0,
+			captured: self.captured || false
+		};
 	};
 
 	self.isAchieved = function() {
@@ -620,7 +626,12 @@ var Goal = function(goalData) {
 
 	self.reveal = function() {
 		self.revealed = true;
-	}
+	};
+
+	self.capture = function(t) {
+		self.captured = t;
+		self.reveal();
+	};
 
 	self.compareReplay = function(replay, team, bingoPlayers) {
 		// check if replay meets goalData
