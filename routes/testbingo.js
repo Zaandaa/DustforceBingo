@@ -16,6 +16,7 @@ for (var i = 0; i < seedLength; i++) {
 
 var rules = {
 	gametype: "bingo",
+	win_type: "region",
 	seed: seed,
 	save: "New Game",
 	size: 8,
@@ -49,7 +50,7 @@ var rules = {
 	lowattack: true,
 	lowdirection: true,
 	shuffle: true,
-	captureblank: true,
+	captureblank: false,
 	captureother: true
 };
 

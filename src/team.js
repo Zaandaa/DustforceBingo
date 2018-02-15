@@ -19,11 +19,12 @@ var Team = function(id, p) {
 	self.allProgress = {}; // dictionary of levels beaten
 	self.charProgress = {"Dustman": {}, "Dustgirl": {}, "Dustkid": {}, "Dustworth": {}}; // dictionary of levels beaten
 
-	// used by bingo for lockout forced win checking
+	// used by bingo for win checking
 	self.bingos = 0;
 	self.maxBingos = 0;
 	self.maxGoals = 0;
 	self.canWin = true;
+	self.biggestRegion = 0;
 
 	self.antiTeam = id;
 	self.assignedAnti = [];
@@ -47,6 +48,7 @@ var Team = function(id, p) {
 		pData.antiTeam = self.antiTeam;
 		pData.assignedAnti = self.assignedAnti;
 		pData.goalBingos = self.goalBingos;
+		pData.biggestRegion = self.biggestRegion;
 	};
 
 	self.setAntiTeam = function(a) {

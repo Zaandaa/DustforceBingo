@@ -248,6 +248,15 @@ var Bingo = function(session, ruleset) {
 		return goalsAchieved;
 	};
 
+	self.countTeamGoals = function(t) {
+		var count = 0;
+		for (var g in self.goals) {
+			if (self.getGoalTeam(g) == t)
+				count++;
+		}
+		return count;
+	};
+
 	self.setTeamsCanWin = function() {
 		if (!self.ruleset.lockout)
 			return;
@@ -348,6 +357,99 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
+	self.compareBiggestRegions = function() {
+		// console.log("compareBiggestRegions");
+		var initialBoardState = [];
+		for (var g in self.goals) {
+			initialBoardState.push(self.goals[g].captured);
+		}
+
+		function findBiggestTeam() {
+			var biggest = -1;
+			var possibleWinners = [];
+			for (var t in self.teams) {
+				tBig = self.getBiggestRegion(t);
+				self.teams[t].biggestRegion = tBig;
+				if (tBig > biggest) {
+					biggest = tBig;
+					possibleWinners = [t];
+				} else if (tBig == biggest)
+					possibleWinners.push(t);
+			}
+			return {possibleWinners: possibleWinners, size: tBig};
+		};
+
+		initialWinState = findBiggestTeam();
+		// console.log(initialWinState);
+
+		if (self.countGoalsAchieved() == self.goals.length) {
+			// force end
+			self.isWon = true;
+			var rankedTeams = {}; // score: [t]
+			for (var t in self.teams) {
+				if (self.teams[t].finishTime > 0)
+					continue;
+				else if (initialWinState.possibleWinners.includes[t]) { // tie win, not already done
+					self.teams[t].finish(Date.now() - self.startTime, true, 1);
+					self.addLog({team: t, str: "Finished"});
+				} else {
+					var score = self.countTeamGoals(t);
+					if (!rankedTeams[score])
+						rankedTeams[score] = [];
+					rankedTeams[score].push(t);
+				}
+			}
+			self.teamsDone += initialWinState.possibleWinners.length;
+
+			var sortedRanks = Object.keys(rankedTeams).slice();
+			sortedRanks.sort(function(a,b) { return b-a; });
+			for (var score in sortedRanks) {
+				for (var t in rankedTeams[sortedRanks[score]]) {
+					self.teams[rankedTeams[sortedRanks[score]][t]].finish(Date.now() - self.startTime, false, self.teamsDone + 1);
+					self.addLog({team: rankedTeams[sortedRanks[score]][t], str: "Finished"});
+				}
+				self.teamsDone += rankedTeams[sortedRanks[score]].length;
+			}
+		}
+
+		/*function resetGoals() {
+			for (var g in self.goals) {
+				self.goals[g].captured = initialBoardState[g];
+			}
+		};
+
+		function simFill(t) {
+			for (var g in self.goals) {
+				if (!self.getGoalTeam(g)) {
+					self.goals[g].captured = t;
+					self.checkCapture(g);
+				}
+			}
+		};
+
+		for (var t in self.teams) {
+			if (initialWinState.possibleWinners.includes(t) || !self.teams[t].canWin)
+				continue;
+
+			self.simFill(t);
+			simWinner = findBiggestTeam();
+
+			if (simWinner.team != t && simWinner.size > self.getBiggestRegion(t)) {
+				t.canWin = false;
+			}
+
+			// this is flawed because fill order matters to maximize capturing
+			// should prioritize moves that don't result in being captured
+			// don't simulate to determine a forced win until this is completed
+
+			resetGoals();
+		}*/
+
+		// after sim, if at least one team canWin, no winner yet
+		// else winning team wins now
+
+	};
+
 	self.checkFinished = function(id) {
 		if (self.teams[id].finishTime > 0)
 			return; // already done
@@ -359,6 +461,8 @@ var Bingo = function(session, ruleset) {
 				self.isWon = true;
 				self.teamsDone++;
 			}
+		} else if (self.ruleset.win_type == "region") { // 64 levels biggest region
+			self.compareBiggestRegions();
 		} else { // count goals
 			if (self.teams[id].goalsAchieved.length >= self.ruleset.bingo_count) {
 				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
@@ -413,6 +517,7 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.getBiggestRegion = function(t) {
+		// console.log("getBiggestRegion", t)
 		var region = [];
 		var checked = [];
 		var biggest = 0;
@@ -423,7 +528,9 @@ var Bingo = function(session, ruleset) {
 			if (t != self.getGoalTeam(g))
 				continue;
 
-			self.getRegion(g, region, checked, [], t, true);
+			// console.log("check size", g, checked.length);
+			self.getRegion(parseInt(g, 10), region, checked, [], t, true);
+			// console.log(g, region.length, region);
 			if (region.length > biggest)
 				biggest = region.length;
 			region = [];
@@ -535,10 +642,8 @@ var Bingo = function(session, ruleset) {
 
 		// count matches team only
 		if (countTeam) {
-			if (team != self.getGoalTeam(g)) {
-				verified.push(g);
-				return true;
-			}
+			if (team != self.getGoalTeam(g))
+				return;
 		} else { // team is border only
 			var gTeam = self.getGoalTeam(g);
 			if (gTeam) {
