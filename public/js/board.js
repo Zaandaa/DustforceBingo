@@ -493,7 +493,7 @@ function updatePlayersTable(playersJson, target) {
 				cell3.append(playerData.players[i].place + placeEnding + " - " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
 			} else {
 				if (ruleset.gametype == "64") {
-					if (ruleset.wintype == "region")
+					if (ruleset.win_type == "region")
 						cell3.append(playerData.players[i].biggestRegion);
 					else
 						cell3.append(playerData.players[i].totalRegion);

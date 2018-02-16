@@ -69,11 +69,11 @@ var Bingo = function(session, ruleset) {
 
 		// manual rules here because no front end
 		// Math.seedrandom(1);
-		self.ruleset.win_type = "region";
-		self.ruleset.shuffle = true;
+		// self.ruleset.win_type = "region";
+		// self.ruleset.shuffle = true;
 		self.ruleset.ss = false;
-		self.ruleset.captureblank = true;
-		self.ruleset.captureother = true;
+		self.ruleset.captureblank = false;
+		self.ruleset.captureother = false;
 
 	} else if (self.ruleset.antibingo) {
 		self.ruleset.lockout = false;
@@ -844,8 +844,12 @@ var Bingo = function(session, ruleset) {
 				self.addLog({team: self.players[replay.user].team, player: replay.user, str: "Goal: " + self.goals[i].toString()});
 				if (self.ruleset.hidden)
 					self.revealGoalNeighbors(i);
-				if (self.ruleset.gametype == "64")
+				if (self.ruleset.gametype == "64") {
 					self.checkCapture(i);
+					for (var t in self.teams) {
+						self.teams[t].totalRegion = self.countTeamGoals(t);
+					}
+				}
 			}
 		}
 
