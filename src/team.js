@@ -24,6 +24,7 @@ var Team = function(id, p) {
 	self.maxBingos = 0;
 	self.maxGoals = 0;
 	self.canWin = true;
+	self.totalRegion = 0;
 	self.biggestRegion = 0;
 
 	self.antiTeam = id;
@@ -48,6 +49,7 @@ var Team = function(id, p) {
 		pData.antiTeam = self.antiTeam;
 		pData.assignedAnti = self.assignedAnti;
 		pData.goalBingos = self.goalBingos;
+		pData.totalRegion = self.totalRegion;
 		pData.biggestRegion = self.biggestRegion;
 	};
 

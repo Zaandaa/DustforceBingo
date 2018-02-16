@@ -58,12 +58,15 @@ var Bingo = function(session, ruleset) {
 	// force certain rules in case it got past front end
 	if (self.ruleset.gametype == "64") {
 		if (self.ruleset.bingo_count_type == "bingo") {
+			self.ruleset.win_type = "goal";
 			self.ruleset.bingo_count_type = "goal";
 			self.ruleset.bingo_count = 32;
 		}
 		self.ruleset.lockout = true;
 		self.ruleset.antibingo = false;
 
+		// manual rules here because no front end
+		self.ruleset.win_type = "region";
 		self.ruleset.shuffle = false;
 		self.ruleset.ss = false;
 		self.ruleset.captureblank = true;
@@ -369,6 +372,7 @@ var Bingo = function(session, ruleset) {
 			var possibleWinners = [];
 			for (var t in self.teams) {
 				tBig = self.getBiggestRegion(t);
+				self.teams[t].totalRegion = self.countTeamGoals(t);
 				self.teams[t].biggestRegion = tBig;
 				if (tBig > biggest) {
 					biggest = tBig;
@@ -822,7 +826,7 @@ var Bingo = function(session, ruleset) {
 		self.lastReplay = Date.now();
 		self.teams[self.players[replay.user].team].addProgress(replay);
 		self.players[replay.user].addProgress(replay);
-		self.addLog({team: self.players[replay.user].team, player: replay.user, str: "Replay: " + utils.getReplayScore(replay) + " " + replay.levelname});
+		self.addLog({team: self.players[replay.user].team, player: replay.user, str: "Replay: " + utils.getReplayScore(replay) + " " + replay.levelname + " " + constants.characters[replay.character]});
 
 		var success = false;
 		for (var i = 0; i < self.goals.length; i++) {
