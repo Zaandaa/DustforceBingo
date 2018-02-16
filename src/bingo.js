@@ -68,7 +68,7 @@ var Bingo = function(session, ruleset) {
 		self.ruleset.antibingo = false;
 
 		// manual rules here because no front end
-		Math.seedrandom(1);
+		// Math.seedrandom(1);
 		self.ruleset.win_type = "region";
 		self.ruleset.shuffle = true;
 		self.ruleset.ss = false;
