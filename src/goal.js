@@ -1,5 +1,4 @@
 var getJSON = require('get-json');
-var seedrandom = require('seedrandom');
 var shuffle = require('./shuffle');
 
 var levels = require("./levels");
@@ -11,8 +10,6 @@ var extern = {};
 
 
 extern.makeGoals = function(ruleset, bingos) {
-	seedrandom();
-
 	if (ruleset.gametype == "64")
 		return make64Goals(ruleset);
 	else // bingo

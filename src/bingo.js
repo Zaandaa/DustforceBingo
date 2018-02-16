@@ -1,4 +1,6 @@
 var getJSON = require('get-json');
+var seedrandom = require('seedrandom');
+
 var board = require('./board');
 var goal = require('./goal');
 var Team = require('./team');
@@ -66,8 +68,9 @@ var Bingo = function(session, ruleset) {
 		self.ruleset.antibingo = false;
 
 		// manual rules here because no front end
+		Math.seedrandom(1);
 		self.ruleset.win_type = "region";
-		self.ruleset.shuffle = false;
+		self.ruleset.shuffle = true;
 		self.ruleset.ss = false;
 		self.ruleset.captureblank = true;
 		self.ruleset.captureother = true;
