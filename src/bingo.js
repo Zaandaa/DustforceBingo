@@ -858,6 +858,11 @@ var Bingo = function(session, ruleset) {
 				self.antiForceAssign();
 			}
 			self.firstGoal = true;
+			if (self.ruleset.bingo_count_type == "bingo") {
+				for (var p in self.players) {
+					self.teams[self.players[p].team].bingos = self.countBingo(self.players[p].team);
+				}
+			}
 			self.checkFinished(self.players[replay.user].team);
 			if (self.ruleset.hidden && self.teamsDone >= Object.keys(self.players).length) {
 				for (var g in self.goals) {
