@@ -445,9 +445,9 @@ function updatePlayersTable(playersJson, target) {
 	// head
 	var top = $("<div></div>").addClass("row").addClass("player_row").addClass("header_row");
 
+	top.append($("<div class='col col_color'></div>"));
 	top.append($("<div class='col col_player'>Player</div>"));
-	top.append($("<div class='col col_color'>Color</div>"));
-	top.append($("<div class='col col_extra'>" + (bingoStarted ? "" : "Ready") + "</div>"));
+	top.append($("<div class='col col_extra'>" + (bingoStarted ? "Score" : "Ready") + "</div>"));
 	table.append(top);
 
 	var alt = true;
@@ -468,17 +468,18 @@ function updatePlayersTable(playersJson, target) {
 			row.addClass("player_finish_animation");
 		}
 
-		var cell1 = $("<div class='col col_player'></div>");
-		cell1.append(playerData.players[i].name);
+		var cell1 = $("<div class='col col_color'></div>");
+		var inner = $("<div class='color-circle' style='margin: auto; display: inherit; background-color:var(--" + playerData.players[i].color.toString() + ")'></div>")
+		cell1.append(inner);
 		row.append(cell1);
 
-		var cell2 = $("<div class='col col_color'></div>");
-		var inner = $("<div class='color-circle' style='background-color:var(--" + playerData.players[i].color.toString() + ")'></div>")
-		cell2.append(inner);
+		var cell2 = $("<div class='col col_player' style='top: 2px'></div>");
+		cell2.append(playerData.players[i].name);
 		row.append(cell2);
 
 		var cell3 = $("<div class='col col_extra'></div>");
 		if (bingoStarted) {
+			cell3.css({"top": "2px"});
 			if (playerData.players[i].finishTime > 0) {
 				var time = new Date(playerData.players[i].finishTime);
 				var h = time.getUTCHours();
@@ -494,14 +495,14 @@ function updatePlayersTable(playersJson, target) {
 			} else {
 				if (ruleset.gametype == "64") {
 					if (ruleset.win_type == "region")
-						cell3.append(playerData.players[i].biggestRegion);
+						cell3.append("Connected Area: " + playerData.players[i].biggestRegion);
 					else
-						cell3.append(playerData.players[i].totalRegion);
+						cell3.append("Area: " + playerData.players[i].totalRegion);
 				} else {
 					if (ruleset.bingo_count_type == "bingo")
-						cell3.append(playerData.players[i].bingos + ", " + playerData.players[i].goals);
+						cell3.append("Bingos: " + playerData.players[i].bingos + ", Goals: " + playerData.players[i].goals);
 					else
-						cell3.append(playerData.players[i].goals);
+						cell3.append("Goals: " + playerData.players[i].goals);
 				}
 			}
 			if (playerData.players[i].reset) {

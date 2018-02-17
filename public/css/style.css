@@ -200,22 +200,24 @@ select {
 	position: relative;
 	min-height: 1px;
 	float: left;
-	flex: 0 0 50%;
-	width: 50%;
+	flex: 0 0 45%;
+	width: 45%;
 }
 .col_color {
 	position: relative;
 	min-height: 1px;
 	float: left;
-	flex: 0 0 15%;
-	width: 15%;
+	flex: 0 0 10%;
+	width: 10%;
+	margin: auto;
+	display: block;
 }
 .col_extra {
 	position: relative;
 	min-height: 1px;
 	float: left;
-	flex: 0 0 35%;
-	width: 35%;
+	flex: 0 0 45%;
+	width: 45%;
 }
 
 .players_table {
