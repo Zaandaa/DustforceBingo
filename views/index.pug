@@ -93,6 +93,14 @@ block content
 							div.col-xl-6.second
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
+										input#newgame.session(type="checkbox" checked)
+										<img id="check_hidden" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p New game
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
 										input#hidden.session(type="checkbox")
 										<img id="check_hidden" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p Hidden goals
@@ -123,8 +131,37 @@ block content
 					div#64_options
 						h4 64 Levels Options
 
-						div.row 
+						div.form-group
+							div Win condition:
+							select#win_type.session.form-control
+								option(value="goal" selected) Most goals
+								option(value="region") Biggest connected area
+								option(value="goal") First to X goals
+
+							p X goals here
+
+						h4 Options
+
+						div.row
 							div.col-xl-6.first
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#shuffle.session(type="checkbox" checked)
+										<img id="check_shuffle" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										p Shuffle levels
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#captureblank.session(type="checkbox" checked)
+										<img id="check_captureblank" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										p Capture blank
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#ss.session(type="checkbox")
+										<img id="check_ss" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p SS levels
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
 										input#teams.session(type="checkbox")
@@ -133,16 +170,24 @@ block content
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players with the same color are on a team")
 											div(style="position: relative; top: -1px") ?
+
+							div.col-xl-6.second
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#captureblank.session(type="checkbox")
-										<img id="check_captureblank" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-										p Capture blank
+										input#newgame.session(type="checkbox" checked)
+										<img id="check_hidden" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										p New game
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#captureother.session(type="checkbox" checked)
+										<img id="check_captureother" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										p Capture other
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="")
 											div(style="position: relative; top: -1px") ?
-
-							div.col-xl-6.second
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
 										input#hidden.session(type="checkbox")
@@ -153,11 +198,11 @@ block content
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#captureother.session(type="checkbox")
-										<img id="check_captureother" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-										p Capture other
+										input#plugins.session(type="checkbox")
+										<img id="check_plugins" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Plugins
 									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="")
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players are allowed to use plugins")
 											div(style="position: relative; top: -1px") ?
 
 				div.col-xl-6
