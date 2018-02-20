@@ -131,3 +131,11 @@ Array.prototype.remove = function() {
     }
     return this;
 }
+
+// Contains 
+//
+// why does this not exist ffs
+//
+Array.prototype.contains = function(arg) {
+    return this.indexOf(arg) != -1;
+}

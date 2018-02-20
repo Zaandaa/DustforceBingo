@@ -44,15 +44,6 @@ function build(io) {
 		});
 		return b;
 	}
-
-	function tryParse(body, lambda) {
-		try {
-			return JSON.parse(body)
-		} catch(e) {
-			lambda(true, false, '<strong>Something went wrong :(</strong> I bet it was TMC\'s fault.');
-			return undefined;
-		}
-	}
 	
 	function requestWrapper(url, lambda, callback) {
 		request.get({
@@ -67,9 +58,9 @@ function build(io) {
 			
 			var json;
 			try {
-				json = JSON.parse(body)
+				json = JSON.parse(body); // replace the BOM (\uFEFF) if it exists
 			} catch(e) {
-				return lambda(true, '<strong>Something went wrong :(</strong> I bet it was TMC\'s fault.');
+				return lambda(true, false, '<strong>Something went wrong :(</strong> I bet it was TMC\'s fault.');
 			}
 			
 			callback(json);
@@ -83,6 +74,8 @@ function build(io) {
 			'q':name,
 			'max':50,
 		});
+		
+		console.log(url);
 		
 		requestWrapper(url, lambda, function(json) {
 			if (json.length == 0) {
