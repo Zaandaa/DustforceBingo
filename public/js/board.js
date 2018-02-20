@@ -345,13 +345,13 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	var hasStyle = {};
 	
-	function colorSet(target) {
+	function colorSet(target, color) {
 		var goal = $(target);
 		var style = goal.attr('style')
 		hasStyle[target] = style !== undefined && style !== "";
 		if(!hasStyle[target]) {
 			goal.css({
-				'background-color': 'var(--graydark)'
+				'background-color': `var(--${color})`
 			});
 		}
 	}
@@ -414,21 +414,25 @@ function updateBoardTable(boardData, target, isPopout) {
 		}
 	}
 	
-	function createIdentifierUX(type) {
+	function addIdentifierHover(type, color) {
 		$(`.${type}_identifier`).hover(
 			getValue(function(v) {
 				for(var i = 0; i < ruleset.size; i++) {
-					colorSet(goals[type](v, i).name);
+					colorSet(goals[type](v, i).name, color);
 				}
 			})
 		, 
 			getValue(function(v) {
 				for(var i = 0; i < ruleset.size; i++) {
-					colorUnset(goals[type](v, i).name);
+					colorUnset(goals[type](v, i).name, color);
 				}
 			})
-		)
-		.click(getValue(function(v, target) {
+		);
+	}
+	
+	function createIdentifierUX(type) {
+		addIdentifierHover(type, "graydark");
+		$(`.${type}_identifier`).click(getValue(function(v, target) {
 			if(target.hasClass('bingo_label')) {
 				target.removeClass('bingo_label')
 				bingoLabels.remove(identifiers[type](v));
@@ -449,13 +453,36 @@ function updateBoardTable(boardData, target, isPopout) {
 		}));
 	}
 	
-	if (!small) {
+	function createIdentifierAssigner(type, teamPlayer) {
+		var color = "cell" + (ruleset.teams ? teamPlayer.antiTeam : boardData.players[teamPlayer.antiTeam].color);
+		addIdentifierHover(type, color);
+		$(`.${type}_identifier`).click(
+			getValue(function(v, target) {
+				socket.emit('assign', { type: type, value: $(target).attr('value') });
+			})
+		);
+	}
+	
+	
+	// ANTI
+	
+	if (small) 
+		return;
+	
+	if (boardData.firstGoal 
+	  || !ruleset.antibingo 
+	  || boardData.playerTeam === undefined
+	  || ruleset.bingo_count == boardData.players[boardData.playerTeam].assignedAnti.length) {
 		createIdentifierUX("col");
 		createIdentifierUX("row");
 		createIdentifierUX("dia");
+	} else {
+		var teamPlayer = boardData.players[boardData.playerTeam];
+		
+		createIdentifierAssigner("col", teamPlayer);
+		createIdentifierAssigner("row", teamPlayer);
+		createIdentifierAssigner("dia", teamPlayer);
 	}
-	
-	// ANTI
 }
 
 function updatePlayersTable(playersJson, target) {
