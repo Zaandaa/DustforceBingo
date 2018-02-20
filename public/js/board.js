@@ -8,6 +8,55 @@ var playerTeam;
 
 function updateBoardTable(boardData, target, isPopout) {
 	
+	function createGoal(i, j) {
+		return {
+			name : `#goal_${i}_${j}`,
+			col	 : j,
+			row  : i
+		}
+	}
+	
+	var goals = {
+		"col": (c, it) => createGoal(it,c),
+		"row": (c, it) => createGoal(c,it),
+		"dia": (c, it) => c == 0 ? 
+			createGoal(it,it) : 
+			createGoal(it,ruleset.size-it-1)
+	}
+	
+	var identifiers = {
+		"col": (v) => `.col_identifier[value='${v}']`,
+		"row": (v) => `.row_identifier[value='${v}']`,
+		"dia": (v) => `.dia_identifier[value='${v}']`
+	}
+	
+	function getIdentifiers(i, j) {
+		return [{
+			name  : identifiers["col"](j), 
+			type  : "col",
+			val   : j,
+			valid : true
+		},
+		{
+			name  : identifiers["row"](i), 
+			type  : "row",
+			val   : i,
+			valid : true
+		},
+		{
+			name  : identifiers["dia"](0), 
+			type  : "dia",
+			val   : 0,
+			valid : i == j
+		},
+		{
+			name  : identifiers["dia"](1), 
+			type  : "dia",
+			val   : 1,
+			valid : i == ruleset.size - j - 1
+		}]
+	}
+	
 	// CREATE BOARD
 	
 	var sizeWord;
@@ -111,6 +160,13 @@ function updateBoardTable(boardData, target, isPopout) {
 				.addClass('goal_text')
 				.text(text)
 			);
+	}
+	
+	function addAntiStyle(col, assignee) {
+		$(col).find('.bingo_table_inner_cell')
+			.css({
+				'border-color'     : `var(--${assignee.color})`,
+			});
 	}
 	
 	function addAchievedStyle(col, achiever) {
@@ -245,6 +301,21 @@ function updateBoardTable(boardData, target, isPopout) {
 		table.append(row);
 	}
 
+	var playerAntiStyled = []
+	
+	$.each(boardData.players, function(id, player) {
+		$.each(player.goalBingos, function(no, goal) {
+			addAntiStyle(identifiers[goal.type][goal.val], player);
+			for(var i = 0; i < boardData.size; i++) {
+				var goalName = goals[goal.type](goal.val, i).name;
+				if (!playerAntiStyled.contains(goalName))
+					addAntiStyle(goalName, player);
+				if (player.team == playerTeam)
+					playerAntiStyled.push(goalName);
+			}
+		});
+	});
+	
 	if (!isPopout && !small) {
 		table.append(createBottomIdentifiers());
 	}
@@ -271,55 +342,6 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	// IDENTIFIER
-	
-	function createGoal(i, j) {
-		return {
-			name : `#goal_${i}_${j}`,
-			col	 : j,
-			row  : i
-		}
-	}
-	
-	var goals = {
-		"col": (c, it) => createGoal(it,c),
-		"row": (c, it) => createGoal(c,it),
-		"dia": (c, it) => c == 0 ? 
-			createGoal(it,it) : 
-			createGoal(it,ruleset.size-it-1)
-	}
-	
-	var identifiers = {
-		"col": (v) => `.col_identifier[value='${v}']`,
-		"row": (v) => `.row_identifier[value='${v}']`,
-		"dia": (v) => `.dia_identifier[value='${v}']`
-	}
-	
-	function getIdentifiers(i, j) {
-		return [{
-			name  : identifiers["col"](j), 
-			type  : "col",
-			val   : j,
-			valid : true
-		},
-		{
-			name  : identifiers["row"](i), 
-			type  : "row",
-			val   : i,
-			valid : true
-		},
-		{
-			name  : identifiers["dia"](0), 
-			type  : "dia",
-			val   : 0,
-			valid : i == j
-		},
-		{
-			name  : identifiers["dia"](1), 
-			type  : "dia",
-			val   : 1,
-			valid : i == ruleset.size - j - 1
-		}]
-	}
 	
 	var hasStyle = {};
 	
@@ -432,6 +454,8 @@ function updateBoardTable(boardData, target, isPopout) {
 		createIdentifierUX("row");
 		createIdentifierUX("dia");
 	}
+	
+	// ANTI
 }
 
 function updatePlayersTable(playersJson, target) {
