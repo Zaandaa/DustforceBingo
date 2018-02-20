@@ -1,5 +1,6 @@
 var getJSON = require('get-json');
 
+var board = require('./board');
 var levels = require('./levels');
 var utils = require('./utils');
 var constants = require('./constants');
@@ -39,7 +40,7 @@ var Team = function(id, p) {
 		self.players.push(p);
 	};
 
-	self.addTeamData = function(pData) {
+	self.addTeamData = function(pData, ruleset) {
 		pData.team = self.id;
 		pData.finishTime = self.finishTime;
 		pData.isWinner = self.isWinner;
@@ -47,8 +48,12 @@ var Team = function(id, p) {
 		pData.teamGoals = self.goalsAchieved.length;
 		pData.bingos = self.bingos;
 		pData.antiTeam = self.antiTeam;
-		pData.assignedAnti = self.assignedAnti;
+		pData.assignedAnti = [];
 		pData.goalBingos = self.goalBingos;
+		for (var gb in self.goalBingos) {
+			if (self.goalBingos[gb] != -1)
+				pData.goalBingos.push(board.convertGoalBingo(gb, ruleset));
+		}
 		pData.totalRegion = self.totalRegion;
 		pData.biggestRegion = self.biggestRegion;
 	};

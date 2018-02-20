@@ -19,12 +19,12 @@ var Bingo = function(session, ruleset) {
 
 	self.active = false;
 	self.startTime = 0;
-	self.startDate = "";
 	self.lastReplay = 0;
 	self.firstGoal = false;
 	self.isWon = false;
 	self.finished = false;
 	self.teamsDone = 0;
+	self.allAntisAssigned = false;
 	self.error = false;
 
 	self.teams = {};
@@ -504,6 +504,18 @@ var Bingo = function(session, ruleset) {
 				self.teams[t].goalBingos.push(-1);
 			}
 		}
+		self.allAntisAssigned = true;
+	};
+
+	self.checkAntisAssigned = function() {
+		var brk = false;
+		for (var t in self.teams) {
+			if (self.teams[t].assignedAnti.length < self.ruleset.bingo_count) {
+				brk = true;
+				break;
+			}
+		}
+		self.allAntisAssigned = brk;
 	};
 
 	self.assignAnti = function(p, frontId) {
@@ -513,6 +525,10 @@ var Bingo = function(session, ruleset) {
 		if (self.teams[self.players[p].team].assignedAnti.length < self.ruleset.bingo_count && !self.teams[self.players[p].team].assignedAnti.includes(bingoId)) {
 			self.teams[self.players[p].team].giveAnti(bingoId);
 			self.teams[self.teams[self.players[p].team].antiTeam].receiveAnti(bingoId);
+			self.checkAntisAssigned();
+
+			self.session.updateBoard();
+			self.session.updatePlayers();
 			return true; // success
 		}
 		return false; // fail
@@ -714,6 +730,7 @@ var Bingo = function(session, ruleset) {
 		self.isWon = false;
 		self.finished = false;
 		self.teamsDone = 0;
+		self.allAntisAssigned = false;
 
 		// remove not ready players
 		var playersToRemove = [];
@@ -887,13 +904,14 @@ var Bingo = function(session, ruleset) {
 			boardData.state = self.getState();
 			boardData.firstGoal = self.firstGoal;
 			boardData.size = self.ruleset.size;
+			boardData.allAntisAssigned = self.allAntisAssigned;
 
 			boardData.players = {};
 			boardData.playerTeam = player in self.players ? self.players[player].team : undefined;
 			for (var id in self.players) {
 				var data = self.players[id].getBoardData();
 				if (self.players[id].team in self.teams)
-					self.teams[self.players[id].team].addTeamData(data);
+					self.teams[self.players[id].team].addTeamData(data, self.ruleset);
 				boardData.players[id] = data;
 			}
 
@@ -919,9 +937,11 @@ var Bingo = function(session, ruleset) {
 		for (var id in self.players) {
 			var data = self.players[id].getBoardData();
 			if (self.players[id].team in self.teams)
-				self.teams[self.players[id].team].addTeamData(data);
+				self.teams[self.players[id].team].addTeamData(data, self.ruleset);
 			playerData.players.push(data);
 		}
+
+		playerData.allAntisAssigned = self.allAntisAssigned;
 
 		return playerData;
 	};
@@ -942,6 +962,7 @@ var Bingo = function(session, ruleset) {
 		var s = delta.getSeconds();
 		data.time = (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
 		self.log.push(data);
+		// self.session.updateLog(self.log);
 	};
 
 	self.resetBingo = function() {
@@ -956,6 +977,7 @@ var Bingo = function(session, ruleset) {
 		self.isWon = false;
 		self.finished = false;
 		self.teamsDone = 0;
+		self.allAntisAssigned = false;
 
 		// unready all
 		for (var p in self.players) {

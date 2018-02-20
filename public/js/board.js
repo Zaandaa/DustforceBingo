@@ -3,6 +3,7 @@ var bingoLabels = [];
 var isPlayer = false;
 var playerHover = undefined;
 var savedBoardData = {};
+var savedPlayerData = {};
 var playerFinished = {};
 var playerTeam;
 
@@ -223,7 +224,7 @@ function updateBoardTable(boardData, target, isPopout) {
 			$.each(goal.achieved, function(no, achieverId) {
 				var achieverPlayer = boardData.players[achieverId];
 
-				if (playerHover == achieverPlayer.id) {
+				if (playerHover == achieverPlayer.team) {
 					addAchievedStyle(col, achieverPlayer);
 					hoverStyled = true;
 				} else if (!hoverStyled &&
@@ -438,7 +439,7 @@ function updatePlayersTable(playersJson, target) {
 	target.empty();
 
 	playerData = JSON.parse(playersJson);
-	// savedPlayerData = playerData;
+	savedPlayerData = playerData;
 
 	var table = $("<div class='players_table'></div>");
 
@@ -498,6 +499,11 @@ function updatePlayersTable(playersJson, target) {
 						cell3.append("Connected Area: " + playerData.players[i].biggestRegion);
 					else
 						cell3.append("Area: " + playerData.players[i].totalRegion);
+				} else if (ruleset.antibingo) {
+					if (!playerData.allAntisAssigned)
+						cell3.append("Bingos to assign: " + (ruleset.bingo_count - playerData.players[i].assignedAntis.length));
+					else
+						cell3.append("Bingos: " + playerData.players[i].bingos + ", Goals: " + playerData.players[i].goals);
 				} else {
 					if (ruleset.bingo_count_type == "bingo")
 						cell3.append("Bingos: " + playerData.players[i].bingos + ", Goals: " + playerData.players[i].goals);
@@ -527,17 +533,27 @@ function playerFinish(id) {
 
 function setPlayerHover() {
 	var id = $(this).attr("id").substring(3);
-	if (bingoStarted && id != playerHover && id != player) {
-		playerHover = id;
-		updateBoardTable(savedBoardData, $('#board_div'), false);
+	if (bingoStarted && savedPlayerData && id != playerHover && id != player) {
+		for (var p in savedPlayerData.players) {
+			if (savedPlayerData.players[p].id == id) {
+				playerHover = savedPlayerData.players[p].team;
+				updateBoardTable(savedBoardData, $('#board_div'), false);
+				break;
+			}
+		}
 	}
 }
 
 function endPlayerHover() {
 	var id = $(this).attr("id").substring(3);
-	if (bingoStarted && playerHover && playerHover == id) {
-		playerHover = undefined;
-		updateBoardTable(savedBoardData, $('#board_div'), false);
+	if (bingoStarted && playerHover && savedPlayerData && playerHover) {
+		for (var p in savedPlayerData.players) {
+			if (savedPlayerData.players[p].id == id && playerHover == savedPlayerData.players[p].team) {
+				playerHover = undefined;
+				updateBoardTable(savedBoardData, $('#board_div'), false);
+				break;
+			}
+		}
 	}
 }
 
