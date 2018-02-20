@@ -289,4 +289,8 @@ $(document).on('ready', function() {
 		var dateString = (new Date(JSON.parse(data).lastReplay)).toLocaleTimeString();
 		$("#replay").text("Last replay: " + dateString);
 	});
+	
+	socket.on('log', function(data) {
+		bingoLog = JSON.parse(data);
+	});
 });

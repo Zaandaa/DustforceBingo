@@ -924,7 +924,7 @@ var Bingo = function(session, ruleset) {
 
 			boardData.startTime = self.startTime;
 			boardData.lastReplay = self.lastReplay;
-			boardData.log = self.log;
+			// boardData.log = self.log;
 		}
 
 		return boardData;
@@ -962,7 +962,7 @@ var Bingo = function(session, ruleset) {
 		var s = delta.getSeconds();
 		data.time = (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
 		self.log.push(data);
-		// self.session.updateLog(self.log);
+		self.session.updateLog(self.log);
 	};
 
 	self.resetBingo = function() {

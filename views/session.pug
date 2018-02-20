@@ -5,6 +5,7 @@ block js
 	script!= "const ruleset = " + JSON.stringify(ruleset) + ";"
 	script= "var player = undefined"
 	script= "var compact = false"
+	script= "var bingoLog = []"
 	script(src="/bingo/socket/socket.io.min.js")
 	script(src="/bingo/js/board.js")
 	script(src="/bingo/js/session.js")

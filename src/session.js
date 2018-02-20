@@ -382,6 +382,11 @@ function build(io) {
 			emitAll('replay', JSON.stringify({lastReplay: lr}));
 		};
 		
+		self.updateLog = function(log) {
+			if (bingo.isWon)
+				emitAll('log', JSON.stringify(log));
+		};
+		
 		self.playerFinish = function(id) {
 			// emitAll('playerfinish', JSON.stringify({'player': id}));
 		};

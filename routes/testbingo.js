@@ -60,6 +60,7 @@ var fakeSession = {
 	removedPlayerOnStart: function(a) {},
 	updateBoard: function(a) {},
 	updatePlayers: function(a) {},
+	updateLog: function(a) {},
 	playerFinish: function(a) {},
 	resetBingo: function() {},
 	finish: function() {}
