@@ -15,17 +15,17 @@ for (var i = 0; i < seedLength; i++) {
 // seed = "custom";
 
 var rules = {
-	gametype: "bingo",
+	gametype: "64",
 	win_type: "region",
 	seed: seed,
 	save: "New Game",
-	size: 8,
+	size: 5,
 	lockout: false,
 	hidden: false,
 	teams: true,
 	plugins: false,
-	antibingo: false,
-	bingo_count: 2,
+	antibingo: true,
+	bingo_count: 1,
 	bingo_count_type: "bingo",
 	difficulty: 1, // 4 easy, 1 very hard
 	length: 1, // 4 fast, 1 full game
@@ -50,7 +50,7 @@ var rules = {
 	lowattack: true,
 	lowdirection: true,
 	shuffle: true,
-	captureblank: false,
+	captureblank: true,
 	captureother: true
 };
 
@@ -79,8 +79,8 @@ bingo.addPlayer(10,"-"); bingo.changePlayerColor(10, "-"); bingo.ready(10);
 // bingo.addPlayer(12,"2"); bingo.removePlayer(12); // remove
 bingo.addPlayer(22,"|"); bingo.changePlayerColor(22, "|"); bingo.ready(22);
 bingo.start();
-// bingo.assignAnti(10,1);
-// bingo.assignAnti(22,1);
+// bingo.assignAnti(10,{type: "row", value: 1});
+// bingo.assignAnti(22,{type: "row", value: 1});
 // bingo.voteReset(11);
 // bingo.voteReset(22);
 // bingo.resetBingo();
