@@ -331,6 +331,7 @@ function build(io) {
 			})
 			
 			socket.safeOn('assign', function(data) {
+				console.log('got assignment', data);
 				if (!isPlayer(socket))
 					return;
 				bingo.assignAnti(socket.custom.id, data);
