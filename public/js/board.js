@@ -234,6 +234,17 @@ function updateBoardTable(boardData, target, isPopout) {
 		return popoutButton;
 	}
 	
+	function checkAntiAchieved(player, row, col) {
+		for(var i = 0; i < player.goalBingos.length; i++) {
+			if ((player.goalBingos[i].type == "row" && player.goalBingos[i].value == row)
+			 || (player.goalBingos[i].type == "col" && player.goalBingos[i].value == col)
+			 || (player.goalBingos[i].type == "dia" && player.goalBingos[i].value == 0 && row == col)
+			 || (player.goalBingos[i].type == "dia" && player.goalBingos[i].value == 1 && row == ruleset.size - col - 1))
+				return true;
+		}
+		return false;
+	}
+	
 	bingoStarted = true;
 	$("#temp_board_div").hide();
 	target.empty();
@@ -263,6 +274,7 @@ function updateBoardTable(boardData, target, isPopout) {
 			addGoalText(col, goal.title)
 
 			var firstAchieverStyled = false;
+			var playerAttributed = false;
 			var hoverStyled = false;
 
 			if (goal.captured) {
@@ -278,21 +290,26 @@ function updateBoardTable(boardData, target, isPopout) {
 
 			$.each(goal.achieved, function(no, achieverId) {
 				var achieverPlayer = boardData.players[achieverId];
-
+				
+				var achieverCircle = createAchieverCircle(achieverPlayer);
+				$(col).find('.goal_achievers')
+					.append(achieverCircle);
+				
+				if (ruleset.antibingo && !checkAntiAchieved(achieverPlayer, i, j))
+					return;
+				
 				if (playerHover == achieverPlayer.team) {
 					addAchievedStyle(col, achieverPlayer);
 					hoverStyled = true;
 				} else if (!hoverStyled &&
 						(  boardData.playerTeam == achieverPlayer.team 
-						|| playerTeam == achieverPlayer.team))
+						|| playerTeam == achieverPlayer.team)) {
 					addAchievedStyle(col, achieverPlayer);
-				else if (!firstAchieverStyled)
+					playerAttributed = true;
+				} else if (!playerAttributed && !firstAchieverStyled) {
 					addAchievedStyle(col, achieverPlayer);
+				} 
 				firstAchieverStyled = true;
-				
-				var achieverCircle = createAchieverCircle(achieverPlayer);
-				$(col).find('.goal_achievers')
-					.append(achieverCircle);
 			});
 			
 			
