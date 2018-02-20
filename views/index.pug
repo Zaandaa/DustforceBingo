@@ -21,132 +21,181 @@ block content
 
 		div.col-xl-8.noselect
 			div.row
+				div#type_row
+					div.form-group
+						div Game type:
+						select#gametype.session.form-control
+							option(value="bingo" selected) Bingo
+							option(value="64") 64 levels
+
+			div.row
 				div.col-xl-6
-					h4 Bingo Options
+					div#bingo_options
+						h4 Bingo Options
 
-					div.form-group
-						div Size:
-						select#size.session.form-control
-							option(value="3") Bingo: 3 by 3
-							option(value="4") Bingo: 4 by 4
-							option(value="5" selected) Bingo: 5 by 5
-							option(value="8") 64 levels: 8 by 8
-					div.form-group
-						div Difficulty:
-						select#difficulty_raw.session.form-control
-							option(value="Easy") Easy
-							option(value="Normal" selected) Normal
-							option(value="Hard") Hard
-							option(value="Very Hard") Very Hard
-					div.form-group
-						div Length:
-						select#length_raw.session.form-control
-							option(value="Fast") Fast
-							option(value="Normal" selected) Normal
-							option(value="Long") Long
-							option(value="Full Game") Full Game
+						div.form-group
+							div Size:
+							select#size.session.form-control
+								option(value="3") 3 by 3
+								option(value="4") 4 by 4
+								option(value="5" selected) 5 by 5
+						div.form-group
+							div Difficulty:
+							select#difficulty_raw.session.form-control
+								option(value="Easy") Easy
+								option(value="Normal" selected) Normal
+								option(value="Hard") Hard
+								option(value="Very Hard") Very Hard
+						div.form-group
+							div Length:
+							select#length_raw.session.form-control
+								option(value="Fast") Fast
+								option(value="Normal" selected) Normal
+								option(value="Long") Long
+								option(value="Full Game") Full Game
 
-					div.form-group
-						div Save file:
-							div.tt_question
-								div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
-									div(style="position: relative; top: -1px") ?
-						select#save.session.form-control
-							option(value="New Game") New Game
-							option(value="New Game +") New Game +
-
-					div.row 
-						div.col-xl-6.first
-							div.form-group.checkbox.margin_zero
-								label(style="min-width: 100px")
-									input#lockout.session(type="checkbox")
-									<img id="check_lockout" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-									p Lockout
+						div.form-group
+							div Save file:
 								div.tt_question
-									div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Each goal can only be achieved by one person")
+									div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
 										div(style="position: relative; top: -1px") ?
-							div.form-group.checkbox.margin_zero
-								label(style="min-width: 100px")
-									input#teams.session(type="checkbox")
-									<img id="check_teams" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-									p Team colors
-								div.tt_question
-									div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players with the same color are on a team")
-										div(style="position: relative; top: -1px") ?
-							div.form-group.checkbox.margin_zero
-								label(style="min-width: 100px")
-									input#antibingo.session(type="checkbox")
-									<img id="check_antibingo" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-									p Antibingo
-								div.tt_question
-									div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Assign bingos to your opponent")
-										div(style="position: relative; top: -1px") ?
+							select#save.session.form-control
+								option(value="New Game") New Game
+								option(value="New Game +") New Game +
 
-						div.col-xl-6.second
-							div.form-group.checkbox.margin_zero
-								label(style="min-width: 100px")
-									input#hidden.session(type="checkbox")
-									<img id="check_hidden" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-									p Hidden goals
-								div.tt_question
-									div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Start with only the center goal visible; reveal neighbors by getting goals")
-										div(style="position: relative; top: -1px") ?
-							div.form-group.checkbox.margin_zero
-								label(style="min-width: 100px")
-									input#plugins.session(type="checkbox")
-									<img id="check_plugins" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-									p Plugins
-								div.tt_question
-									div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players are allowed to use plugins")
-										div(style="position: relative; top: -1px") ?
-
-					div.form-group.row
-						div.col-12
-							div First to:
-						div.col-sm-5
-							select#bingo_count.session.form-control
-								each val, i in Array(25)
-									option(value=i+1 class='option' + (i+1))= i+1
-						div.col-sm-7
-							select#bingo_count_type.session.form-control
-								option(value="bingo") Bingos
-								option(value="goal") Goals
-
-				div.col-xl-6
-					h4 Goal Options
-					
-					div#goals_advanced_div
 						div.row 
-							- var optionKeys = Object.keys(options);
-							- var half = Math.ceil(optionKeys.length / 2);    
-							- var first = optionKeys.splice(0, half);
 							div.col-xl-6.first
-								each option, i in first 
-									div.checkbox
-										label
-											- var checkImg = options[option].init_state ? "/bingo/img/ready_true.png" : "/bingo/img/ready_false.png";
-											input.session(id=option type="checkbox" checked=options[option].init_state)
-											img.checkbox_img.icon(id="check_" + option src=checkImg)
-											img(src=options[option].icon class=options[option].icon_type)
-											p= options[option].clean_name
-										if options[option].tooltip
-											div.tt_question
-												div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title=options[option].tooltip)
-													div(style="position: relative; top: -1px") ?
-											
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#lockout.session(type="checkbox")
+										<img id="check_lockout" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Lockout
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Each goal can only be achieved by one person")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#teams.session(type="checkbox")
+										<img id="check_teams" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Team colors
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players with the same color are on a team")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#antibingo.session(type="checkbox")
+										<img id="check_antibingo" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Antibingo
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Assign bingos to your opponent")
+											div(style="position: relative; top: -1px") ?
+
 							div.col-xl-6.second
-								each option, i in optionKeys 
-									div.checkbox
-										label
-											- var checkImg = options[option].init_state ? "/bingo/img/ready_true.png" : "/bingo/img/ready_false.png";
-											input.session(id=option type="checkbox" checked=options[option].init_state)
-											img.checkbox_img.icon(id="check_" + option src=checkImg)
-											img.icon(src=options[option].icon)
-											p= options[option].clean_name
-										if options[option].tooltip
-											div.tt_question
-												div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title=options[option].tooltip)
-													div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#hidden.session(type="checkbox")
+										<img id="check_hidden" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Hidden goals
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Start with only the center goal visible; reveal neighbors by getting goals")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#plugins.session(type="checkbox")
+										<img id="check_plugins" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Plugins
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players are allowed to use plugins")
+											div(style="position: relative; top: -1px") ?
+
+						div.form-group.row
+							div.col-12
+								div First to:
+							div.col-sm-5
+								select#bingo_count.session.form-control
+									each val, i in Array(25)
+										option(value=i+1 class='option' + (i+1))= i+1
+							div.col-sm-7
+								select#bingo_count_type.session.form-control
+									option(value="bingo") Bingos
+									option(value="goal") Goals
+
+					div#64_options
+						h4 64 Levels Options
+
+						div.row 
+							div.col-xl-6.first
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#teams.session(type="checkbox")
+										<img id="check_teams" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Team colors
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players with the same color are on a team")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#captureblank.session(type="checkbox")
+										<img id="check_captureblank" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Capture blank
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="")
+											div(style="position: relative; top: -1px") ?
+
+							div.col-xl-6.second
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#hidden.session(type="checkbox")
+										<img id="check_hidden" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Hidden goals
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Start with all level goals invisible; reveal neighbors by getting goals")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#captureother.session(type="checkbox")
+										<img id="check_captureother" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Capture other
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="")
+											div(style="position: relative; top: -1px") ?
+
+				div.col-xl-6
+					div#bingo_goals
+						h4 Goal Options
+						
+						div#goals_advanced_div
+							div.row 
+								- var optionKeys = Object.keys(options);
+								- var half = Math.ceil(optionKeys.length / 2);    
+								- var first = optionKeys.splice(0, half);
+								div.col-xl-6.first
+									each option, i in first 
+										div.checkbox
+											label
+												- var checkImg = options[option].init_state ? "/bingo/img/ready_true.png" : "/bingo/img/ready_false.png";
+												input.session(id=option type="checkbox" checked=options[option].init_state)
+												img.checkbox_img.icon(id="check_" + option src=checkImg)
+												img(src=options[option].icon class=options[option].icon_type)
+												p= options[option].clean_name
+											if options[option].tooltip
+												div.tt_question
+													div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title=options[option].tooltip)
+														div(style="position: relative; top: -1px") ?
+												
+								div.col-xl-6.second
+									each option, i in optionKeys 
+										div.checkbox
+											label
+												- var checkImg = options[option].init_state ? "/bingo/img/ready_true.png" : "/bingo/img/ready_false.png";
+												input.session(id=option type="checkbox" checked=options[option].init_state)
+												img.checkbox_img.icon(id="check_" + option src=checkImg)
+												img.icon(src=options[option].icon)
+												p= options[option].clean_name
+											if options[option].tooltip
+												div.tt_question
+													div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title=options[option].tooltip)
+														div(style="position: relative; top: -1px") ?
 
 			div.row
 				div.col-xl-6

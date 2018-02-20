@@ -12,6 +12,7 @@ function verify(fields, data) {
 }
 
 var params = [
+	"gametype", 
 	"save", 
 	"size", 
 	"lockout", 
@@ -41,7 +42,10 @@ var params = [
 	"lowdash", 
 	"lowjump", 
 	"lowattack", 
-	"lowdirection"
+	"lowdirection",
+	"win_type",
+	"captureblank",
+	"captureother"
 ];
 
 function build(io) {

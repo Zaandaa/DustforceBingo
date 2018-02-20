@@ -55,10 +55,11 @@ var Bingo = function(session, ruleset) {
 	self.ruleset.maxEasy = self.ruleset.difficulty + 4;
 
 	// determine gametype
-	self.ruleset.gametype = self.ruleset.size == 8 ? "64" : "bingo";
+	// self.ruleset.gametype = self.ruleset.size == 8 ? "64" : "bingo";
 
 	// force certain rules in case it got past front end
 	if (self.ruleset.gametype == "64") {
+		self.ruleset.size = 8;
 		if (self.ruleset.bingo_count_type == "bingo") {
 			self.ruleset.win_type = "goal";
 			self.ruleset.bingo_count_type = "goal";
