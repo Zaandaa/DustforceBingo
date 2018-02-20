@@ -164,10 +164,9 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	function addAntiStyle(col, assignee) {
-		$(col).find('.bingo_table_inner_cell')
-			.css({
-				'border-color'     : `var(--${assignee.color})`,
-			});
+		$(col).css({
+			'border-color'     : `var(--${assignee.color})`,
+		});
 	}
 	
 	function addAchievedStyle(col, achiever) {
@@ -306,11 +305,13 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	$.each(boardData.players, function(id, player) {
 		$.each(player.goalBingos, function(no, goal) {
-			addAntiStyle(identifiers[goal.type][goal.value], player);
+			addAntiStyle(table.find(identifiers[goal.type](goal.value)), player);
 			for(var i = 0; i < boardData.size; i++) {
 				var goalName = goals[goal.type](goal.value, i).name;
+				var g = table.find(goalName);
+				
 				if (!playerAntiStyled.contains(goalName))
-					addAntiStyle(goalName, player);
+					addAntiStyle(g, player);
 				if (player.team == playerTeam)
 					playerAntiStyled.push(goalName);
 			}
