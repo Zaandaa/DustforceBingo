@@ -48,11 +48,11 @@ var Team = function(id, p) {
 		pData.teamGoals = self.goalsAchieved.length;
 		pData.bingos = self.bingos;
 		pData.antiTeam = self.antiTeam;
-		pData.assignedAnti = [];
-		pData.goalBingos = self.goalBingos;
+		pData.assignedAnti = self.assignedAnti;
+		pData.goalBingos = [];
 		for (var gb in self.goalBingos) {
 			if (self.goalBingos[gb] != -1)
-				pData.goalBingos.push(board.convertGoalBingo(gb, ruleset));
+				pData.goalBingos.push(board.convertGoalBingo(ruleset.size, self.goalBingos[gb]));
 		}
 		pData.totalRegion = self.totalRegion;
 		pData.biggestRegion = self.biggestRegion;

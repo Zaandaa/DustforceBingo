@@ -516,7 +516,7 @@ var Bingo = function(session, ruleset) {
 				break;
 			}
 		}
-		self.allAntisAssigned = brk;
+		self.allAntisAssigned = !brk;
 	};
 
 	self.assignAnti = function(p, frontId) {

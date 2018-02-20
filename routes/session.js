@@ -13,9 +13,10 @@ function verify(fields, data) {
 
 var params = [
 	"gametype", 
-	"save", 
 	"size", 
 	"lockout", 
+	"save",
+	"newgame", 
 	"teams", 
 	"hidden", 
 	"plugins", 
@@ -44,6 +45,7 @@ var params = [
 	"lowattack", 
 	"lowdirection",
 	"win_type",
+	"shuffle",
 	"captureblank",
 	"captureother"
 ];

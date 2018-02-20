@@ -306,9 +306,9 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	$.each(boardData.players, function(id, player) {
 		$.each(player.goalBingos, function(no, goal) {
-			addAntiStyle(identifiers[goal.type][goal.val], player);
+			addAntiStyle(identifiers[goal.type][goal.value], player);
 			for(var i = 0; i < boardData.size; i++) {
-				var goalName = goals[goal.type](goal.val, i).name;
+				var goalName = goals[goal.type](goal.value, i).name;
 				if (!playerAntiStyled.contains(goalName))
 					addAntiStyle(goalName, player);
 				if (player.team == playerTeam)
@@ -380,7 +380,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		
 		$.each(getIdentifiers(i,j), function(no,id) {
 			if(id.valid && !$(id.name).hasClass('bingo_label')) {
-				checkAddLabel(id.type, id.val);
+				checkAddLabel(id.type, id.value);
 			}
 		});
 	}
@@ -552,7 +552,7 @@ function updatePlayersTable(playersJson, target) {
 						cell3.append("Area: " + playerData.players[i].totalRegion);
 				} else if (ruleset.antibingo) {
 					if (!playerData.allAntisAssigned)
-						cell3.append("Bingos to assign: " + (ruleset.bingo_count - playerData.players[i].assignedAntis.length));
+						cell3.append("Bingos to assign: " + (ruleset.bingo_count - playerData.players[i].assignedAnti.length));
 					else
 						cell3.append("Bingos: " + playerData.players[i].bingos + ", Goals: " + playerData.players[i].goals);
 				} else {

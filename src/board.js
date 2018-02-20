@@ -47,14 +47,8 @@ extern.convertFrontId = function(size, frontId) {
 
 extern.convertGoalBingo = function(size, backId) {
 	b = {};
-	b.type = (b < size * 2) ? (b % 2 == 0 ? "row" : "col") : "dia";
-	b.value = (b < size * 2) ? Math.floor(backId / 2) : (backId - size * 2);
-	if (frontId.type == "row")
-		return 2 * frontId.value;
-	if (frontId.type == "col")
-		return 2 * frontId.value + 1;
-	if (frontId.type == "dia")
-		return 2 * size + frontId.value;
+	b.type = (backId < size * 2) ? (b % 2 == 0 ? "row" : "col") : "dia";
+	b.value = (backId < size * 2) ? Math.floor(backId / 2) : (backId - size * 2);
 	return b;
 };
 
