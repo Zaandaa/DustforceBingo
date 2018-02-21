@@ -20,7 +20,7 @@ extern.getLevelType = function(level) {
 	return levels.levels[level].type;
 }
 
-extern.getLevelDifficulty = function(level, objective, save) {
+extern.getLevelDifficulty = function(level, objective, newgame) {
 	var d;
 
 	switch (levels.levels[level].type) {
@@ -35,7 +35,7 @@ extern.getLevelDifficulty = function(level, objective, save) {
 		d--;
 	if (levels.levels[level].type == "Difficult" && objective == "SS")
 		d = 2;
-	if (save == "New Game")
+	if (newgame)
 		d--;
 
 	return d;
@@ -47,7 +47,7 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 
 	// special hubs
 	if (goalData.hub == "Difficult") {
-		if (ruleset.save == "New Game" && ruleset.length > 1)
+		if (ruleset.newgame && ruleset.length > 1)
 			return false;
 		if (ruleset.difficulty > 2 || ruleset.difficulty == 2 && goalData.count == "SS")
 			return false;
@@ -104,8 +104,8 @@ extern.checkTotalDifficultyLength = function(goalData, ruleset) {
 	}
 
 	// remaining easy types (apples/beat/ss)
-	baseMin = chance[ruleset.save].total[goalData.count].minimum;
-	baseRange = chance[ruleset.save].total[goalData.count].range;
+	baseMin = chance[ruleset.newgame].total[goalData.count].minimum;
+	baseRange = chance[ruleset.newgame].total[goalData.count].range;
 	baseMax = baseMin + baseRange;
 
 	// up baseMin for long lengths

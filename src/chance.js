@@ -1,5 +1,5 @@
 var chance = {
-	"New Game": {
+	true: {
 		level: {
 			chance: 0.5,
 			length_bonus: 0.1,
@@ -25,7 +25,7 @@ var chance = {
 			},
 		}
 	},
-	"New Game +": {
+	false: {
 		level: {
 			chance: 0.5,
 			length_bonus: 0.1,

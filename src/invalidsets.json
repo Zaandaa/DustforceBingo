@@ -6,7 +6,7 @@
 	},
 	{
 		"difficults": [true],
-		"save": ["New Game"],
+		"newgame": [true],
 		"length_raw": ["Long", "Normal", "Fast"],
 		"reason": "Difficults + New Game requires full game length."
 	},

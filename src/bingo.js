@@ -59,6 +59,12 @@ var Bingo = function(session, ruleset) {
 
 	// force certain rules in case it got past front end
 	if (self.ruleset.gametype == "64") {
+		self.ruleset.newgame = self.ruleset.newgame2;
+		self.ruleset.hidden = self.ruleset.hidden2;
+		self.ruleset.teams = self.ruleset.teams2;
+		self.ruleset.plugins = self.ruleset.plugins2;
+		self.ruleset.ss = self.ruleset.ss2;
+
 		self.ruleset.size = 8;
 		if (self.ruleset.bingo_count_type == "bingo") {
 			self.ruleset.win_type = "goal";
@@ -68,13 +74,8 @@ var Bingo = function(session, ruleset) {
 		self.ruleset.lockout = true;
 		self.ruleset.antibingo = false;
 
-		// manual rules here because no front end
+		// manual seed for local testing
 		// Math.seedrandom(1);
-		// self.ruleset.win_type = "region";
-		// self.ruleset.shuffle = true;
-		self.ruleset.ss = false;
-		self.ruleset.captureblank = false;
-		self.ruleset.captureother = false;
 
 	} else if (self.ruleset.antibingo) {
 		self.ruleset.lockout = false;

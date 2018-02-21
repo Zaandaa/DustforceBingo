@@ -27,24 +27,11 @@
 	--black: #1F271B;
 }
 
-.table-dark {
-	overflow:hidden;
-    border-radius: 4px;
-	border: 1px solid var(--gray) !important;
-}
-
-.table-dark,
-.table-dark th,
-.table-dark td {
-	background-color: var(--dark);
-	color: var(--white);
-	border:0px;
-}
-
-.table-dark tr {
-}
-
 .alert {
 	position: absolute;
 	z-index: 100;
+}
+
+.no-transition {
+    transition: none !important;
 }

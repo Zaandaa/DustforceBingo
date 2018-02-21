@@ -21,9 +21,8 @@ block content
 
 		div.col-xl-8.noselect
 			div.row
-				div#type_row
-					div.form-group
-						div Game type:
+				div#type_row.col-xl-6
+					div(style="width: 60%; margin: auto; margin-bottom: 15px")
 						select#gametype.session.form-control
 							option(value="bingo" selected) Bingo
 							option(value="64") 64 levels
@@ -54,24 +53,15 @@ block content
 								option(value="Long") Long
 								option(value="Full Game") Full Game
 
-						div.form-group
-							div Save file:
-								div.tt_question
-									div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
-										div(style="position: relative; top: -1px") ?
-							select#save.session.form-control
-								option(value="New Game") New Game
-								option(value="New Game +") New Game +
-
 						div.row 
 							div.col-xl-6.first
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#lockout.session(type="checkbox")
-										<img id="check_lockout" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-										p Lockout
+										input#newgame.session(type="checkbox" checked)
+										<img id="check_newgame" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										p New game
 									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Each goal can only be achieved by one person")
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
@@ -93,11 +83,11 @@ block content
 							div.col-xl-6.second
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#newgame.session(type="checkbox" checked)
-										<img id="check_newgame" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-										p New game
+										input#lockout.session(type="checkbox")
+										<img id="check_lockout" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Lockout
 									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Each goal can only be achieved by one person")
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
@@ -128,7 +118,7 @@ block content
 									option(value="bingo") Bingos
 									option(value="goal") Goals
 
-					div#64_options
+					div#64_options(style="display: none")
 						h4 64 Levels Options
 
 						div.form-group
@@ -146,9 +136,12 @@ block content
 							div.col-xl-6.first
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#shuffle.session(type="checkbox" checked)
-										<img id="check_shuffle" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-										p Shuffle levels
+										input#newgame64.session(type="checkbox" checked)
+										<img id="check_newgame64" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										p New game
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
+											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
 										input#captureblank.session(type="checkbox" checked)
@@ -159,13 +152,13 @@ block content
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#ss.session(type="checkbox")
-										<img id="check_ss" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										input#ss64.session(type="checkbox")
+										<img id="check_ss64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p SS levels
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#teams.session(type="checkbox")
-										<img id="check_teams" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										input#teams64.session(type="checkbox")
+										<img id="check_teams64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p Team colors
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players with the same color are on a team")
@@ -174,12 +167,9 @@ block content
 							div.col-xl-6.second
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#newgame.session(type="checkbox" checked)
-										<img id="check_newgame" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-										p New game
-									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
-											div(style="position: relative; top: -1px") ?
+										input#shuffle.session(type="checkbox" checked)
+										<img id="check_shuffle" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
+										p Shuffle levels
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
 										input#captureother.session(type="checkbox" checked)
@@ -190,23 +180,23 @@ block content
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#hidden.session(type="checkbox")
-										<img id="check_hidden" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										input#hidden64.session(type="checkbox")
+										<img id="check_hidden64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p Hidden goals
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Start with all level goals invisible; reveal neighbors by getting goals")
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#plugins.session(type="checkbox")
-										<img id="check_plugins" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										input#plugins64.session(type="checkbox")
+										<img id="check_plugins64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p Plugins
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players are allowed to use plugins")
 											div(style="position: relative; top: -1px") ?
 
 				div.col-xl-6
-					div#bingo_goals
+					div#goal_options
 						h4 Goal Options
 						
 						div#goals_advanced_div

@@ -21,7 +21,7 @@ function validateState(e) {
 			invalids[input] = invalidsets[i][input].indexOf(stateCache[input]) != -1;
 		}
 		
-		console.log(invalidsets[i], stateCache, invalids);
+		// console.log(invalidsets[i], stateCache, invalids);
 		
 		if (invalid) {
 			$(".alert-danger .alert-text").html("<strong>Input error!</strong> " + invalidsets[i]["reason"]);
@@ -105,6 +105,18 @@ $(document).on('ready', function() {
 	$('.session').on('change', validateState);
 	$size.on('change', validateNumber);
 	$bingo_count_type.on('change', validateNumber);
+
+	$('#gametype').on('change', function() {
+		if ($(this).val() == "bingo") {
+			$('#bingo_options').show();
+			$('#64_options').hide();
+			$('#goal_options').show();
+		} else {
+			$('#bingo_options').hide();
+			$('#64_options').show();
+			$('#goal_options').hide();
+		}
+	});
 	
 	validateNumber();
 	

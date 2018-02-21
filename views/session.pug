@@ -81,12 +81,13 @@ block content
 
 				h4.impact Rules
 				ul
+					- var ssWord = ruleset.ss ? "SS" : "Any%"
+					- var newgameWord = ruleset.newgame ? "New Game" : "New Game +"
 					if ruleset.size == 8
-						- var ssWord = ruleset.ss ? "SS" : "Any%"
-						li #{ruleset.save}
+						li #{newgameWord}
 						li #{ssWord} 64 levels, first to #{wincondition}
 					else
-						li #{ruleset.save}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
+						li #{newgameWord}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
 						li #{ruleset.size} by #{ruleset.size}, first to #{wincondition}
 					if ruleset.lockout
 						li Lockout: Each goal can only be achieved by one person.

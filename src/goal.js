@@ -84,7 +84,7 @@ function makeBingoGoals(ruleset, bingos) {
 
 		var g;
 		r = Math.random();
-		if (levelGoalDatas.length > 0 && (r < chance[ruleset.save].level.chance + ruleset.length * chance[ruleset.save].level.length_bonus - availableTotalTypes * chance[ruleset.save].total.type_bonus || totalGoalDatas.length == 0))
+		if (levelGoalDatas.length > 0 && (r < chance[ruleset.newgame].level.chance + ruleset.length * chance[ruleset.newgame].level.length_bonus - availableTotalTypes * chance[ruleset.newgame].total.type_bonus || totalGoalDatas.length == 0))
 			g = new Goal(chooseLevelGoalData(levelGoalDatas, usedGoalStats));
 		else if (totalGoalDatas.length > 0)
 			g = new Goal(chooseTotalGoalData(totalGoalDatas, usedGoalStats));
@@ -254,12 +254,12 @@ function makeLevelGoalDatas(ruleset) {
 			if (o == "OOB" && (!ruleset.unload || !levels.levels[l].oob))
 				return;
 
-			if (levels.levels[l].type == "Difficult" && ruleset.save == "New Game" && ruleset.length > 1)
+			if (levels.levels[l].type == "Difficult" && ruleset.newgame == "New Game" && ruleset.length > 1)
 				return; // no difficults in new game unless full game length
 			if (l == "Yotta Difficult" && (o == "SS") && !ruleset.yottass)
 				return;
 
-			var d = utils.getLevelDifficulty(l, o, ruleset.save);
+			var d = utils.getLevelDifficulty(l, o, ruleset.newgame);
 			// manual difficulty
 			if (o == "Unload" || o == "OOB")
 				d = 1;
@@ -326,8 +326,8 @@ function makeTotalGoalDatas(ruleset) {
 		if (o == "apples" && !ruleset.apples)
 			return;
 
-		var min = chance[ruleset.save].total[o].minimum;
-		var range = chance[ruleset.save].total[o].range;
+		var min = chance[ruleset.newgame].total[o].minimum;
+		var range = chance[ruleset.newgame].total[o].range;
 		for (var i = min; i <= min + range; i++) {
 			if (o == "Beat") {
 				// character
