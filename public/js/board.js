@@ -564,10 +564,10 @@ function updatePlayersTable(playersJson, target) {
 				cell3.append(playerData.players[i].place + placeEnding + " - " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
 			} else {
 				if (ruleset.gametype == "64") {
-					if (ruleset.win_type == "region")
-						cell3.append("Connected Area: " + playerData.players[i].biggestRegion);
+					if (ruleset.win_type == "area")
+						cell3.append("Biggest: " + playerData.players[i].biggestRegion + ", Safe: " + playerData.players[i].biggestRegionSafe));
 					else
-						cell3.append("Area: " + playerData.players[i].totalRegion);
+						cell3.append("Area: " + playerData.players[i].totalRegion + ", Safe: " + playerData.players[i].totalRegionSafe));
 				} else if (ruleset.antibingo) {
 					if (!playerData.allAntisAssigned)
 						cell3.append("Bingos to assign: " + (ruleset.bingo_count - playerData.players[i].assignedAnti.length));

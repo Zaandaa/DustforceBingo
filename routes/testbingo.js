@@ -16,7 +16,7 @@ for (var i = 0; i < seedLength; i++) {
 
 var rules = {
 	gametype: "64",
-	win_type: "region",
+	win_type: "totalarea",
 	seed: seed,
 	size: 5,
 	newgame: true,
@@ -31,6 +31,7 @@ var rules = {
 	antibingo: true,
 	bingo_count: 1,
 	bingo_count_type: "bingo",
+	goal_count: 33,
 	difficulty: 1, // 4 easy, 1 very hard
 	length: 1, // 4 fast, 1 full game
 	beat: true,
@@ -161,8 +162,10 @@ if (simulatePlay) {
 
 		// console.log("add");
 		bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].id);
-		if (rules.gametype == "64")
+		if (rules.gametype == "64") {
 			bingo.checkCapture(g);
+			bingo.updateTeamRegions();
+		}
 
 		// console.log("checkwin");
 		bingo.checkFinished(bingo.players[Object.keys(bingo.players)[p]].team);
@@ -191,6 +194,10 @@ if (simulatePlay) {
 				console.log(line);
 			}
 			console.log("");
+
+			// for (var t in bingo.teams) {
+				// console.log(t, bingo.teams[t].biggestRegion, bingo.teams[t].biggestRegionSafe, bingo.teams[t].totalRegion, bingo.teams[t].totalRegionSafe);
+			// }
 		}
 	}
 	if (consoleLogTest) {

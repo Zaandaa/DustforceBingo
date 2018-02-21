@@ -26,7 +26,9 @@ var Team = function(id, p) {
 	self.maxGoals = 0;
 	self.canWin = true;
 	self.totalRegion = 0;
+	self.totalRegionSafe = 0;
 	self.biggestRegion = 0;
+	self.biggestRegionSafe = 0;
 
 	self.antiTeam = id;
 	self.assignedAnti = [];
@@ -55,7 +57,9 @@ var Team = function(id, p) {
 				pData.goalBingos.push(board.convertGoalBingo(ruleset.size, self.goalBingos[gb]));
 		}
 		pData.totalRegion = self.totalRegion;
+		pData.totalRegionSafe = self.totalRegionSafe;
 		pData.biggestRegion = self.biggestRegion;
+		pData.biggestRegionSafe = self.biggestRegionSafe;
 	};
 
 	self.setAntiTeam = function(a) {

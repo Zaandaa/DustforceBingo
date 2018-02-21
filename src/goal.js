@@ -598,6 +598,7 @@ var Goal = function(goalData) {
 	self.achieved = [];
 	self.revealed = false;
 	self.captured;
+	self.safe = false;
 
 	self.toString = function() {
 		return self.goalString;
@@ -608,7 +609,8 @@ var Goal = function(goalData) {
 			title: self.revealed ? self.goalString : "",
 			achieved: self.achieved,
 			total: self.revealed ? (self.goalData.total || 0) : 0,
-			captured: self.captured || false
+			captured: self.captured || false,
+			safe: self.safe
 		};
 	};
 
@@ -628,6 +630,10 @@ var Goal = function(goalData) {
 	self.capture = function(t) {
 		self.captured = t;
 		self.reveal();
+	};
+
+	self.setSafe = function() {
+		self.safe = true;
 	};
 
 	self.compareReplay = function(replay, team, bingoPlayers) {
