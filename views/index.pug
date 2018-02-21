@@ -25,7 +25,7 @@ block content
 					div(style="width: 60%; margin: auto; margin-bottom: 15px")
 						select#gametype.session.form-control
 							option(value="bingo" selected) Bingo
-							option(value="64") 64 levels
+							option(value="64") 64 Levels
 
 			div.row
 				div.col-xl-6
@@ -124,11 +124,15 @@ block content
 						div.form-group
 							div Win condition:
 							select#win_type.session.form-control
-								option(value="goal" selected) Most goals
-								option(value="region") Biggest connected area
-								option(value="goal") First to X goals
+								option(value="area" selected) Biggest connected area
+								option(value="totalarea") Total area
+								option(value="goal") First to goal count
 
-							p X goals here
+						div#required_goals.form-group(style="display: none")
+							div Required goals:
+							select#goal_count.session.form-control
+								each val, i in Array(25)
+									option(value=i+1 class='option' + (i+1))= i+1
 
 						h4 Options
 

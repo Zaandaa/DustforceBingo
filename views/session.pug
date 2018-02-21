@@ -85,10 +85,10 @@ block content
 					- var newgameWord = ruleset.newgame ? "New Game" : "New Game +"
 					if ruleset.size == 8
 						li #{newgameWord}
-						li #{ssWord} 64 levels, first to #{wincondition}
+						li #{ssWord} 64 levels, #{wincondition}
 					else
 						li #{newgameWord}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
-						li #{ruleset.size} by #{ruleset.size}, first to #{wincondition}
+						li #{ruleset.size} by #{ruleset.size}, #{wincondition}
 					if ruleset.lockout
 						li Lockout: Each goal can only be achieved by one person.
 					if ruleset.hidden

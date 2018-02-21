@@ -117,6 +117,12 @@ $(document).on('ready', function() {
 			$('#goal_options').hide();
 		}
 	});
+	$('#win_type').on('change', function() {
+		if ($(this).val() == "goal")
+			$('#required_goals').show();
+		else
+			$('#required_goals').hide();
+	});
 	
 	validateNumber();
 	

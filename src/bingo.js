@@ -54,9 +54,6 @@ var Bingo = function(session, ruleset) {
 	}
 	self.ruleset.maxEasy = self.ruleset.difficulty + 4;
 
-	// determine gametype
-	// self.ruleset.gametype = self.ruleset.size == 8 ? "64" : "bingo";
-
 	// force certain rules in case it got past front end
 	if (self.ruleset.gametype == "64") {
 		self.ruleset.newgame = self.ruleset.newgame2;
@@ -66,16 +63,16 @@ var Bingo = function(session, ruleset) {
 		self.ruleset.ss = self.ruleset.ss2;
 
 		self.ruleset.size = 8;
-		if (self.ruleset.bingo_count_type == "bingo") {
-			self.ruleset.win_type = "goal";
-			self.ruleset.bingo_count_type = "goal";
-			self.ruleset.bingo_count = 32;
-		}
 		self.ruleset.lockout = true;
 		self.ruleset.antibingo = false;
 
-		// manual seed for local testing
-		// Math.seedrandom(1);
+		if (self.ruleset.win_type == "goal")
+			self.ruleset.bingo_count = self.ruleset.goal_count;
+		if (self.ruleset.win_type == "totalarea")
+			self.ruleset.bingo_count = 33;
+		if (self.ruleset.win_type == "goal" || self.ruleset.win_type == "totalarea")
+			self.ruleset.bingo_count_type = "goal";
+
 
 	} else if (self.ruleset.antibingo) {
 		self.ruleset.lockout = false;
@@ -85,6 +82,9 @@ var Bingo = function(session, ruleset) {
 			self.ruleset.bingo_count = 1;
 		}
 	}
+
+	// manual seed for sharing local testing
+	// Math.seedrandom(1);
 
 	// make goals
 	self.possibleBingos = self.ruleset.gametype == "bingo" ? board.cachePossibleBingos(self.ruleset.size) : [];
@@ -470,7 +470,7 @@ var Bingo = function(session, ruleset) {
 				self.isWon = true;
 				self.teamsDone++;
 			}
-		} else if (self.ruleset.win_type == "region") { // 64 levels biggest region
+		} else if (self.ruleset.win_type == "area") { // 64 levels biggest area
 			self.compareBiggestRegions();
 		} else { // count goals
 			if (self.teams[id].goalsAchieved.length >= self.ruleset.bingo_count) {

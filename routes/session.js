@@ -26,6 +26,7 @@ var params = [
 	"plugins64", 
 	"bingo_count", 
 	"bingo_count_type", 
+	"goal_count", 
 	"difficulty_raw", 
 	"length_raw", 
 	"beat", 
@@ -90,9 +91,15 @@ function build(io) {
 			return;
 		}
 		var s = session.getSession(req.params.id);
+		var wincondition = (s.bingo_args.gametype == "64")
+			? (	s.bingo_args.win_type == "area" ? "biggest connected area" : (
+				s.bingo_args.win_type == "totalarea" ? "most total area" :
+				"first to " + s.bingo_args.bingo_count + " goal" + (s.bingo_args.bingo_count > 1 ? "s" : "")))
+			: ("first to " + s.bingo_args.bingo_count + " " + s.bingo_args.bingo_count_type + (s.bingo_args.bingo_count > 1 ? "s" : ""));
+
 		res.render('session', {
 			session: s,
-			wincondition: s.bingo_args.bingo_count + " " + s.bingo_args.bingo_count_type + (s.bingo_args.bingo_count > 1 ? "s" : ""),
+			wincondition: wincondition,
 			ruleset: s.bingo_args,
 			options: options,
 			enabled: s.getBingoGoalOptions()
