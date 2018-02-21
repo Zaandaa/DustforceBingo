@@ -163,19 +163,24 @@ function updateBoardTable(boardData, target, isPopout) {
 			);
 	}
 	
-	function addAntiStyle(col, assignee) {
+	function addBorderStyle(col, assignee) {
 		$(col).css({
 			'border-color'     : `var(--${assignee.color})`,
 		});
 	}
 	
+	function addBackgroundStyle(col, assignee) {
+		$(col).css({
+			'background-color' : `var(--cell${assignee.color})`,
+		});
+	}
+	
 	function addAchievedStyle(col, achiever) {
 		// console.log(achiever);
-		$(col).find('.bingo_table_inner_cell')
-			.css({
-				'border-color'     : `var(--${achiever.color})`,
-				'background-color' : `var(--cell${achiever.color})`
-			});
+		$(col).css({
+			'border-color'     : `var(--${achiever.color})`,
+			'background-color' : `var(--cell${achiever.color})`
+		});
 	}
 	
 	function createAchieverCircle(achiever) {
@@ -280,7 +285,9 @@ function updateBoardTable(boardData, target, isPopout) {
 			if (goal.captured) {
 				for (var p in boardData.players) {
 					if (boardData.players[p].team == goal.captured) {
-						addAchievedStyle(col, boardData.players[p]);
+						if (goal.safe)
+							addBorderStyle(col.find('.bingo_table_inner_cell'), boardData.players[p]);
+						addBackgroundStyle(col.find('.bingo_table_inner_cell'), boardData.players[p]);
 						break;
 					}
 				}
@@ -289,6 +296,7 @@ function updateBoardTable(boardData, target, isPopout) {
 			}
 
 			$.each(goal.achieved, function(no, achieverId) {
+				var addStyle = false;
 				var achieverPlayer = boardData.players[achieverId];
 				
 				var achieverCircle = createAchieverCircle(achieverPlayer);
@@ -299,17 +307,27 @@ function updateBoardTable(boardData, target, isPopout) {
 					return;
 				
 				if (playerHover == achieverPlayer.team) {
-					addAchievedStyle(col, achieverPlayer);
+					addStyle = true;
 					hoverStyled = true;
 				} else if (!hoverStyled &&
 						(  boardData.playerTeam == achieverPlayer.team 
 						|| playerTeam == achieverPlayer.team)) {
-					addAchievedStyle(col, achieverPlayer);
+					addStyle = true;
 					playerAttributed = true;
 				} else if (!playerAttributed && !firstAchieverStyled) {
-					addAchievedStyle(col, achieverPlayer);
+					addStyle = true;
 				} 
 				firstAchieverStyled = true;
+
+				if (addStyle) {
+					if (ruleset.gametype == "64") {
+						if (goal.safe)
+							addBorderStyle(col.find('.bingo_table_inner_cell'), achieverPlayer);
+						addBackgroundStyle(col.find('.bingo_table_inner_cell'), achieverPlayer);
+					} else {
+						addAchievedStyle(col.find('.bingo_table_inner_cell'), achieverPlayer);
+					}
+				}
 			});
 			
 			
@@ -322,13 +340,13 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	$.each(boardData.players, function(id, player) {
 		$.each(player.goalBingos, function(no, goal) {
-			addAntiStyle(table.find(identifiers[goal.type](goal.value)), player);
+			addBorderStyle(table.find(identifiers[goal.type](goal.value)), player);
 			for(var i = 0; i < boardData.size; i++) {
 				var goalName = goals[goal.type](goal.value, i).name;
 				var g = table.find(goalName);
 				
 				if (!playerAntiStyled.contains(goalName))
-					addAntiStyle(g, player);
+					addBorderStyle(g, player);
 				if (player.team == playerTeam)
 					playerAntiStyled.push(goalName);
 			}
@@ -565,9 +583,9 @@ function updatePlayersTable(playersJson, target) {
 			} else {
 				if (ruleset.gametype == "64") {
 					if (ruleset.win_type == "area")
-						cell3.append("Biggest: " + playerData.players[i].biggestRegion + ", Safe: " + playerData.players[i].biggestRegionSafe));
+						cell3.append("Biggest: " + playerData.players[i].biggestRegion + ", Safe: " + playerData.players[i].biggestRegionSafe);
 					else
-						cell3.append("Area: " + playerData.players[i].totalRegion + ", Safe: " + playerData.players[i].totalRegionSafe));
+						cell3.append("Area: " + playerData.players[i].totalRegion + ", Safe: " + playerData.players[i].totalRegionSafe);
 				} else if (ruleset.antibingo) {
 					if (!playerData.allAntisAssigned)
 						cell3.append("Bingos to assign: " + (ruleset.bingo_count - playerData.players[i].assignedAnti.length));
