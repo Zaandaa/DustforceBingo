@@ -84,7 +84,7 @@ var Bingo = function(session, ruleset) {
 	}
 
 	// manual seed for sharing local testing
-	Math.seedrandom(11);
+	// Math.seedrandom();
 
 	// make goals
 	self.possibleBingos = self.ruleset.gametype == "bingo" ? board.cachePossibleBingos(self.ruleset.size) : [];
@@ -920,6 +920,7 @@ var Bingo = function(session, ruleset) {
 			level: replay.levelname,
 			score: utils.getReplayScore(replay),
 			character: constants.characters[replay.character],
+			replay_time: replay.time,
 			str: "Replay: " + utils.getReplayScore(replay) + " " + replay.levelname + " " + constants.characters[replay.character]
 		});
 
