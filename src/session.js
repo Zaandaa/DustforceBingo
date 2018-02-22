@@ -375,6 +375,16 @@ function build(io) {
 			}
 		};
 		
+		self.updateTeamBoard = function(t) {
+			for (id in sockets) {
+				var bd = JSON.parse(self.getBoardData(sockets[id]));
+				if (isPlayer(sockets[id])) {
+					if (bingo.players[sockets[id].custom.id].team == t)
+						sockets[id].emit('board', JSON.stringify(bd));
+				}
+			}
+		};
+		
 		self.updatePlayers = function() {
 			emitAll('players', self.getPlayerData());
 		};

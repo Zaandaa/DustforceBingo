@@ -966,6 +966,7 @@ var Bingo = function(session, ruleset) {
 			self.session.updatePlayers();
 			self.checkAllGoalsComplete();
 		} else {
+			self.session.updateTeamBoard(self.players[replay.user].team);
 			self.session.updateLastReplay(self.lastReplay);
 		}
 		return true;
@@ -992,8 +993,9 @@ var Bingo = function(session, ruleset) {
 			boardData.goals = {};
 			for (var i = 0; i < self.goals.length; i++) {
 				boardData.goals[i] = self.goals[i].getBoardData();
-				if (self.goals[i].goalData.type == "total" && player in self.players)
+				if (self.goals[i].goalData.type == "total" && player in self.players) {
 					boardData.goals[i].progress = Math.min(self.teams[self.players[player].team].countObjective(self.goals[i].goalData, self.players), self.goals[i].goalData.total);
+				}
 			}
 
 			boardData.startTime = self.startTime;
