@@ -21,7 +21,7 @@ var rules = {
 	size: 3,
 	newgame: true,
 	newgame64: true,
-	lockout: false,
+	lockout: true,
 	hidden: false,
 	hidden64: false,
 	teams: true,
@@ -29,7 +29,7 @@ var rules = {
 	plugins: false,
 	plugins64: false,
 	antibingo: false,
-	bingo_count: 1,
+	bingo_count: 6,
 	bingo_count_type: "bingo",
 	goal_count: 33,
 	difficulty: 1, // 4 easy, 1 very hard
@@ -112,21 +112,15 @@ var moves = [ // move "pairs": player, goal
 	// [1,7],
 	// [1,8],
 	// [1,9]
-	// [0,10],
-	// [1,11],
-	// [0,12],
-	// [1,13],
-	// [0,14],
-	// [1,15],
-	// [0,16],
-	// [1,17],
-	// [0,18],
-	// [1,19],
-	// [0,20],
-	// [1,21],
-	// [0,22],
-	// [1,23],
-	// [0,24]
+	[0,0],
+	[1,1],
+	[1,2],
+	[1,3],
+	[0,4],
+	[0,5],
+	[1,6],
+	[0,7],
+	[1,8]
 ];
 
 if (simulatePlay) {
@@ -195,9 +189,7 @@ if (simulatePlay) {
 			}
 			console.log("");
 
-			// for (var t in bingo.teams) {
-				// console.log(t, bingo.teams[t].biggestRegion, bingo.teams[t].biggestRegionSafe, bingo.teams[t].totalRegion, bingo.teams[t].totalRegionSafe);
-			// }
+			// console.log(bingo.getPlayerData());
 		}
 	}
 	if (consoleLogTest) {

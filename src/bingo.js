@@ -84,7 +84,7 @@ var Bingo = function(session, ruleset) {
 	}
 
 	// manual seed for sharing local testing
-	// Math.seedrandom(10);
+	Math.seedrandom(11);
 
 	// make goals
 	self.possibleBingos = self.ruleset.gametype == "bingo" ? board.cachePossibleBingos(self.ruleset.size) : [];
@@ -334,7 +334,7 @@ var Bingo = function(session, ruleset) {
 			for (var t in self.teams) {
 				if (self.teams[t].finishTime > 0)
 					continue;
-				else if (possibleWinners.includes[t]) { // tie win, not already done
+				else if (possibleWinners.includes(t)) { // tie win, not already done
 					self.teams[t].finish(Date.now() - self.startTime, true, 1);
 					self.addLog({team: t, str: "Finished"});
 				} else {
@@ -409,7 +409,7 @@ var Bingo = function(session, ruleset) {
 			for (var t in self.teams) {
 				if (self.teams[t].finishTime > 0)
 					continue;
-				else if (possibleWinners.includes[t]) { // tie win, not already done
+				else if (possibleWinners.includes(t)) { // tie win, not already done
 					self.teams[t].finish(Date.now() - self.startTime, true, 1);
 					self.addLog({team: t, str: "Finished"});
 				} else {
