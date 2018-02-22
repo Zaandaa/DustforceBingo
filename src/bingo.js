@@ -84,7 +84,7 @@ var Bingo = function(session, ruleset) {
 	}
 
 	// manual seed for sharing local testing
-	// Math.seedrandom(1);
+	// Math.seedrandom(10);
 
 	// make goals
 	self.possibleBingos = self.ruleset.gametype == "bingo" ? board.cachePossibleBingos(self.ruleset.size) : [];
@@ -482,9 +482,9 @@ var Bingo = function(session, ruleset) {
 		if (self.teams[id].finishTime > 0)
 			return; // already done
 
-		if (self.ruleset.win_type == "totalarea" || self.ruleset.win_type == "area") {
+		if (self.ruleset.gametype == "64" && (self.ruleset.win_type == "totalarea" || self.ruleset.win_type == "area")) {
 			self.checkBiggestRegions();
-		} else if (self.ruleset.bingo_count_type == "bingo") {
+		} else if (self.ruleset.gametype == "bingo" && self.ruleset.bingo_count_type == "bingo") {
 			if (self.countBingo(id) >= self.ruleset.bingo_count) {
 				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
 				self.addLog({team: id, str: "Finished"});

@@ -15,10 +15,10 @@ for (var i = 0; i < seedLength; i++) {
 // seed = "custom";
 
 var rules = {
-	gametype: "64",
+	gametype: "bingo",
 	win_type: "totalarea",
 	seed: seed,
-	size: 5,
+	size: 3,
 	newgame: true,
 	newgame64: true,
 	lockout: false,
@@ -28,7 +28,7 @@ var rules = {
 	teams64: true,
 	plugins: false,
 	plugins64: false,
-	antibingo: true,
+	antibingo: false,
 	bingo_count: 1,
 	bingo_count_type: "bingo",
 	goal_count: 33,
