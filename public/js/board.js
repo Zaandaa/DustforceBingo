@@ -345,7 +345,7 @@ function updateBoardTable(boardData, target, isPopout) {
 				var goalName = goals[goal.type](goal.value, i).name;
 				var g = table.find(goalName);
 				
-				if (!playerAntiStyled.contains(goalName))
+				if (!playerAntiStyled.includes(goalName))
 					addBorderStyle(g, player);
 				if (player.team == playerTeam)
 					playerAntiStyled.push(goalName);
