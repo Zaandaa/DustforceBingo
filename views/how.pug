@@ -3,10 +3,22 @@ div
 	ul
 		li Requires #[a(href='https://dustkidblog.wordpress.com/2016/11/19/dustmod-has-updated/') Dustmod] or #[a(href="https://dustkidblog.wordpress.com/2015/08/11/dustkid-setup/") Dustkid] integration
 		li Goals automatically complete using replays
+		li Access new save file options in the Dustmod menu via Tools > Save > Reset Save.
 
-div
-	h4.impact General info
+div#bingo_info(style="display: none")
+	h4.impact Bingo
 	p Win condition: Bingos consist of achieving all goals in a row, column or diagonal. First to get the specified number of bingos or goals wins.
 	p Ties are broken by bingos (if bingos are the win condition) then goals.
-	p Access New Game and New Game + save file options in the Dustmod menu via Tools > Save > Reset Save.
 	p A default normal bingo can take 5-10 minutes to complete, but bigger boards and requiring more, harder goals can exceed 45-60 minutes.
+
+div#antibingo_info(style="display: none")
+	h4.impact Antibingo
+	p Assign bingos to your opponent by clicking on the row, column and diagonal selectors. 
+	p Bingos assigned to you are outlined on the board.
+	p Once the first goal is achieved, no more bingos can be assigned. If you are not assigned bingos, you may complete any bingos.
+
+div#64_info(style="display: none")
+	h4.impact 64 Levels
+	p All 64 Nexus levels are the goals, and lockout is always on. Beat or SS levels first to establish your board area.
+	p If capturing is on, goals can be captured by surrounding all borders (diagonals don't count). Capture multiple goals by surrounding all borders of that group.
+	p Goals that border walls cannot be captured. Therefore, your area is permanently safe if it connects to a wall.

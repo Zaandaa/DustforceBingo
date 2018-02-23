@@ -13,7 +13,20 @@ function changeCheckImage() {
 	$('#check_' + id).attr('src', '/bingo/img/ready_' + ($(this).prop('checked') ? 'true' : 'false') + '.png');
 }
 
+function showHow() {
+	$("#bingo_info").hide();
+	$("#antibingo_info").hide();
+	$("#64_info").hide();
+	if (ruleset.antibingo)
+		$("#antibingo_info").show();
+	else if (ruleset.gametype == "64")
+		$("#64_info").show();
+	else 
+		$("#bingo_info").show();
+}
+
 $(document).on('ready', function() {
+	showHow();
 	$('input[type=checkbox]').on('change', changeCheckImage)
 
 	socket.emit('init', {session: sessionId});

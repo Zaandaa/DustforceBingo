@@ -58,7 +58,20 @@ function changeCheckImage(target) {
 	$('#check_' + id).attr('src', '/bingo/img/ready_' + (target.prop('checked') ? 'true' : 'false') + '.png');
 }
 
+function showHow() {
+	$("#bingo_info").hide();
+	$("#antibingo_info").hide();
+	$("#64_info").hide();
+	if ($("#gametype").val() == "64")
+		$("#64_info").show();
+	else if ($("#antibingo").is(':checked'))
+		$("#antibingo_info").show();
+	else
+		$("#bingo_info").show();
+}
+
 $(document).on('ready', function() {
+	showHow();
 	$('.session').each(function(no,target) {
 		stateCache[$(target).attr('id')] = getValue($(target));
 	})
@@ -116,12 +129,16 @@ $(document).on('ready', function() {
 			$('#64_options').show();
 			$('#goal_options').hide();
 		}
+		showHow();
 	});
 	$('#win_type').on('change', function() {
 		if ($(this).val() == "goal")
 			$('#required_goals').show();
 		else
 			$('#required_goals').hide();
+	});
+	$('#antibingo').on('change', function() {
+		showHow();
 	});
 	
 	validateNumber();
