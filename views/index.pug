@@ -27,7 +27,7 @@ block content
 			include how.pug
 
 		div.col-xl-8.noselect
-			div.row
+			div.row(style="position: absolute; top: -50px; width: 100%")
 				div#type_row.col-xl-6
 					div(style="width: 60%; margin: auto; margin-bottom: 15px")
 						select#gametype.session.form-control
@@ -35,7 +35,7 @@ block content
 							option(value="64") 64 Levels
 
 			div.row
-				div.col-xl-6
+				div.col-xl-6(style="min-height: 466px")
 					div#bingo_options
 						h4 Bingo Options
 
@@ -66,7 +66,7 @@ block content
 									label(style="min-width: 100px")
 										input#newgame.session(type="checkbox" checked)
 										<img id="check_newgame" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-										p New game
+										p New Game
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
 											div(style="position: relative; top: -1px") ?
@@ -147,7 +147,7 @@ block content
 									label(style="min-width: 100px")
 										input#newgame64.session(type="checkbox" checked)
 										<img id="check_newgame64" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
-										p New game
+										p New Game
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="New Game requires levels to be unlocked with keys")
 											div(style="position: relative; top: -1px") ?
@@ -157,7 +157,7 @@ block content
 										<img id="check_captureblank" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
 										p Capture empty
 									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Unclaimed goals can be captured.")
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Unclaimed goals can be captured")
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
@@ -185,7 +185,7 @@ block content
 										<img id="check_captureother" class="checkbox_img icon" src="/bingo/img/ready_true.png" />
 										p Capture enemy
 									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Enemy-owned goals can be captured.")
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Enemy-owned goals can be captured")
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
