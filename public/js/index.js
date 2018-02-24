@@ -108,7 +108,7 @@ $(document).on('ready', function() {
 			max = 25;
 			
 		for(var i = max; i < 25; i++) {
-			$(".option" + (i+1)).hide();
+			$("#bingo_count").find(".option" + (i+1)).hide();
 		}
 		
 		if ($bingo_count.val() > max)
