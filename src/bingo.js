@@ -397,7 +397,8 @@ var Bingo = function(session, ruleset) {
 			// return {possibleWinners: possibleWinners, size: tBig};
 		};
 
-		findBiggestTeam();
+		if (!self.isWon)
+			findBiggestTeam();
 		// initialWinState = findBiggestTeam();
 		// console.log(initialWinState);
 		// console.log(biggestTeam, possibleWinners);
