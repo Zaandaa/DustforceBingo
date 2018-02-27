@@ -430,7 +430,7 @@ var Bingo = function(session, ruleset) {
 				}
 				self.teamsDone += rankedTeams[sortedRanks[score]].length;
 			}
-		} else if (!self.isWon && biggestTeam > self.ruleset.size * self.ruleset.size / 2 + 1) {
+		} else if (!self.isWon && biggestTeam > self.ruleset.size * self.ruleset.size / 2) {
 			// force win
 			self.isWon = true;
 			self.teams[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.teamsDone + 1);
