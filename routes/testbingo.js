@@ -58,7 +58,7 @@ var rules = {
 	shuffle: true,
 	captureblank: true,
 	captureother: true,
-	hub: "All"
+	hub: "Random"
 };
 
 // simplified session for testing
