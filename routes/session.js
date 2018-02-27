@@ -53,7 +53,8 @@ var params = [
 	"win_type",
 	"shuffle",
 	"captureblank",
-	"captureother"
+	"captureother",
+	"hub"
 ];
 
 function build(io) {

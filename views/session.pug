@@ -43,7 +43,7 @@ block content
 			div#user_div.row
 				div.col
 					form#username_form.form_inline
-						input#username.form-inline(placeholder="Dustkid name/id#")
+						input#username.form-inline(placeholder="Username/id#")
 					button#join.btn.btn-sm Join
 					button#ready.btn.btn-sm Ready
 					button#reset(style="display: none")
@@ -63,7 +63,7 @@ block content
 
 			div
 				
-				if ruleset.size != 8
+				if ruleset.gametype == "64"
 					h4.impact Goal Options
 					- var perline = 6;
 					- var steps = new Array(Math.ceil(enabled.length/perline));
@@ -83,9 +83,10 @@ block content
 				ul
 					- var ssWord = ruleset.ss ? "SS" : "Any%"
 					- var newgameWord = ruleset.newgame ? "New Game" : "New Game +"
-					if ruleset.size == 8
+					if ruleset.gametype == "64"
 						li #{newgameWord}
-						li #{ssWord} 64 levels, #{wincondition}
+						li #{ssWord} Lockout Race, #{wincondition}
+						li Hub: #{ruleset.hub}
 					else
 						li #{newgameWord}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
 						li #{ruleset.size} by #{ruleset.size}, #{wincondition}
@@ -113,7 +114,7 @@ block content
 			div
 				div#temp_board_div
 					div.bingo_behind
-						if ruleset.size != 8
+						if ruleset.gametype != "64"
 							div.row.margin_zero.bingo_top
 								div.dia_identifier
 								each val, i in sizeArray
@@ -121,17 +122,17 @@ block content
 										div.col_identifier
 						each val, i in sizeArray
 							div.row.margin_zero
-								if ruleset.size != 8
+								if ruleset.gametype != "64"
 									div.row_identifier
 								each val, j in sizeArray
 									div(class=colClass)
 										div.bingo_table_cell
 											div.bingo_table_inner_cell
-						if ruleset.size != 8
+						if ruleset.gametype != "64"
 							div.row.margin_zero.bingo_bottom
 								div.dia_identifier
 					div
-						if ruleset.size != 8
+						if ruleset.gametype != "64"
 							div.bingo_pushdown
 						each val, i in sizeArray
 							div.row.margin_zero

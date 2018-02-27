@@ -57,7 +57,8 @@ var rules = {
 	lowdirection: true,
 	shuffle: true,
 	captureblank: true,
-	captureother: true
+	captureother: true,
+	hub: "All"
 };
 
 // simplified session for testing

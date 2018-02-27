@@ -32,7 +32,7 @@ block content
 					div(style="width: 60%; margin: auto; margin-bottom: 15px")
 						select#gametype.session.form-control
 							option(value="bingo" selected) Bingo
-							option(value="64") 64 Levels
+							option(value="64") Lockout Race
 
 			div.row
 				div.col-xl-6(style="min-height: 466px")
@@ -126,7 +126,17 @@ block content
 									option(value="goal") Goals
 
 					div#64_options(style="display: none")
-						h4 64 Levels Options
+						h4 Lockout Race Options
+
+						div.form-group
+							div Hub:
+							select#hub.session.form-control
+								option(value="All" selected) All
+								option(value="Forest") Forest
+								option(value="Mansion") Mansion
+								option(value="City") City
+								option(value="Laboratory") Laboratory
+								option(value="Random") Random
 
 						div.form-group
 							div Win condition:

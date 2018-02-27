@@ -19,10 +19,23 @@ extern.makeGoals = function(ruleset, bingos) {
 function make64Goals(ruleset) {
 	var goals = [];
 
+	var hub = ruleset.hub;
+	if (ruleset.hub == "Random") {
+		switch (Math.floor((Math.random() * 4))) {
+			case 0: hub = "Forest"; break;
+			case 1: hub = "Mansion"; break;
+			case 2: hub = "City"; break;
+			case 3: hub = "Laboratory"; break;
+		}
+	}
+
 	for (var l in levels.levels) {
 		if (levels.levels[l].hub == "Tutorial" || levels.levels[l].hub == "Difficult")
 			continue;
-		var goalData = {type: "level", level: l, objective: ruleset.ss ? "SS" : "Beat", levelOnly: true}
+		if (ruleset.hub != "All" && levels.levels[l].hub != hub)
+			continue;
+		
+		var goalData = {type: "level", level: l, objective: ruleset.ss ? "SS" : "Beat", levelOnly: true};
 		var g = new Goal(goalData);
 		goals.push(g);
 	}

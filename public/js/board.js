@@ -125,7 +125,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		if(isPopout) {
 			row.addClass('popout_row')
 				.addClass(`row-${sizeWord}`)
-		} else if (!small) {
+		} else if (ruleset.gametype != "64") {
 			row.append( $("<div/>")
 				.addClass('row_identifier')
 				.attr('value', i)
@@ -261,7 +261,7 @@ function updateBoardTable(boardData, target, isPopout) {
 
 	var table = createEmptyBoard(isPopout);
 
-	if (!isPopout && !small) {
+	if (!isPopout && ruleset.gametype == "bingo") {
 		table.append(createTopIdentifiers());
 	}
 	
@@ -353,7 +353,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		});
 	});
 	
-	if (!isPopout && !small) {
+	if (!isPopout && ruleset.gametype != "64") {
 		table.append(createBottomIdentifiers());
 	}
 	
@@ -503,7 +503,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	// ANTI
 	
-	if (small) 
+	if (ruleset.gametype == "64")
 		return;
 	
 	if (boardData.firstGoal 

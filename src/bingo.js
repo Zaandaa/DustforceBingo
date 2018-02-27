@@ -62,14 +62,14 @@ var Bingo = function(session, ruleset) {
 		self.ruleset.plugins = self.ruleset.plugins64;
 		self.ruleset.ss = self.ruleset.ss64;
 
-		self.ruleset.size = 8;
+		self.ruleset.size = self.ruleset.hub == "All" ? 8 : 4;
 		self.ruleset.lockout = true;
 		self.ruleset.antibingo = false;
 
 		if (self.ruleset.win_type == "goal")
 			self.ruleset.bingo_count = self.ruleset.goal_count;
 		if (self.ruleset.win_type == "totalarea")
-			self.ruleset.bingo_count = 33;
+			self.ruleset.bingo_count = self.ruleset.hub == "All" ? 33 : 9;
 		if (self.ruleset.win_type == "goal" || self.ruleset.win_type == "totalarea")
 			self.ruleset.bingo_count_type = "goal";
 

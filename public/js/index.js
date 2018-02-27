@@ -83,7 +83,9 @@ $(document).on('ready', function() {
 
 	var $size = $('#size'),
 	    $bingo_count_type = $('#bingo_count_type'),
-		$bingo_count = $("#bingo_count");
+		$bingo_count = $("#bingo_count"),
+		$hub = $("#hub"),
+		$goal_count = $("#goal_count");
 		
 	function validateNumber() {
 		var size = $size.val(),
@@ -114,10 +116,26 @@ $(document).on('ready', function() {
 		if ($bingo_count.val() > max)
 			$bingo_count.val("1");
 	}
+		
+	function validateLockoutNumber() {
+		for(var i = 0; i < 33; i++) {
+			$(".option" + (i+1)).show();
+		}
+
+		var max = $hub.val() == "All" ? 33 : 9;
+			
+		for(var i = max; i < 33; i++) {
+			$("#goal_count").find(".option" + (i+1)).hide();
+		}
+		
+		if ($goal_count.val() > max)
+			$goal_count.val("1");
+	}
 	
 	$('.session').on('change', validateState);
 	$size.on('change', validateNumber);
 	$bingo_count_type.on('change', validateNumber);
+	$hub.on('change', validateLockoutNumber);
 
 	$('#gametype').on('change', function() {
 		if ($(this).val() == "bingo") {
@@ -142,6 +160,7 @@ $(document).on('ready', function() {
 	});
 	
 	validateNumber();
+	validateLockoutNumber();
 	
 	$('#generate').on('click', function() {
 		var payload = {}
