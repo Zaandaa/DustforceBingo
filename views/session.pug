@@ -63,7 +63,7 @@ block content
 
 			div
 				
-				if ruleset.gametype == "64"
+				if ruleset.gametype != "64"
 					h4.impact Goal Options
 					- var perline = 6;
 					- var steps = new Array(Math.ceil(enabled.length/perline));
@@ -87,6 +87,7 @@ block content
 						li #{newgameWord}
 						li #{ssWord} Lockout Race, #{wincondition}
 						li Hub: #{ruleset.hub}
+						li Capture: #{captureText}
 					else
 						li #{newgameWord}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
 						li #{ruleset.size} by #{ruleset.size}, #{wincondition}
