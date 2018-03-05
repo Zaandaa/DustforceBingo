@@ -1,4 +1,3 @@
-var bingoStarted = false;
 var bingoLabels = [];
 var isPlayer = false;
 var playerHover = undefined;
@@ -201,20 +200,13 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	function createResetButton() {
-		var resetButton = $("<div/>")
+		var resetButton = $("<a/>")
+			.attr('id','resettext')
 			.css({
-				'display': 'inline-block'
+				'color'        : 'var(--blue)',
+				'cursor'	   : 'pointer'
 			})
-			.addClass("float-left")
-			.append( $("<a/>")
-				.attr('id','resettext')
-				.css({
-					'margin-right' : '20px',
-					'color'        : 'var(--blue)',
-					'cursor'	   : 'pointer'
-				})
-				.text("Vote for new board")
-			)
+			.text("Vote for new board")
 			.click(function() { $("#reset").click() });
 		
 		return resetButton;
@@ -235,6 +227,26 @@ function updateBoardTable(boardData, target, isPopout) {
 				.text("Popout")
 			)
 			.click(popoutBoard);
+			
+		return popoutButton;
+	}
+	
+	function createLogLink() {
+		var popoutButton = $("<div/>") 
+			.css({
+				'display': 'inline-block'
+			})
+			.addClass("float-left")
+			.append( $("<a/>")
+				.attr('id','log')
+				.attr('href', sessionId + '/log')
+				.css({
+					'margin-right' : '20px',
+					'color'        : 'var(--blue)',
+					'cursor'	   : 'pointer'
+				})
+				.text("View log")
+			)
 			
 		return popoutButton;
 	}
@@ -364,10 +376,12 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	if (!isPopout) {
-		if (isPlayer) {
-			target.append(createResetButton());
-		}
+		$("#under_players").empty();
+		if (isPlayer)
+			$("#under_players").append(createResetButton());
 
+		if (savedBoardData.state == "Complete")
+			target.append(createLogLink());
 		target.append(createPopout());
 
 		if (bingoStarted) {
@@ -676,6 +690,12 @@ function showStartButton() {
 	$('#starting').attr("style", "display: none");
 }
 
+function addCopyUrl() {
+	$("#under_players").empty();
+	if (!bingoStarted)
+		$("#under_players").append("<p><a href=''>Copy this url</a> to invite more players</p>");
+}
+
 function resetBingo() {
 	bingoStarted = false;
 	bingoLabels = [];
@@ -693,6 +713,8 @@ function resetBingo() {
 		$("#color").enable();
 	}
 	isPlayer = false;
+
+	addCopyUrl();
 }
 
 function popoutBoard() {

@@ -3,6 +3,7 @@ extends layout
 block js
 	script= "const sessionId = \'" + session.id + "';"
 	script!= "const ruleset = " + JSON.stringify(ruleset) + ";"
+	script= "var bingoStarted = " + bingoStarted
 	script= "var player = undefined"
 	script= "var compact = false"
 	script= "var bingoLog = []"
@@ -58,8 +59,7 @@ block content
 			div.row
 				div#players_table_div.col
 
-			div
-				p #[a(href='') Copy this link] to invite more players
+			div#under_players(style="margin-bottom: 1rem")
 
 			div
 				

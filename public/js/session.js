@@ -27,6 +27,8 @@ function showHow() {
 
 $(document).on('ready', function() {
 	showHow();
+	if (!bingoStarted)
+		addCopyUrl();
 	$('input[type=checkbox]').on('change', changeCheckImage)
 
 	socket.emit('init', {session: sessionId});
