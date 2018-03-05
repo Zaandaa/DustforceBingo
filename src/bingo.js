@@ -170,7 +170,7 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.voteReset = function(id) {
-		if (((self.active && !self.firstGoal) || self.isWon) && id in self.players) {
+		if ((self.active || self.isWon) && id in self.players) {
 			self.players[id].voteReset(true);
 			self.resetBingo();
 			self.session.updatePlayers();
@@ -178,13 +178,13 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.checkReset = function() {
-		var needToReset = Object.keys(self.players).length == 1 ? 1 : 2;
+		var needToReset = Object.keys(self.players).length / 2;
 		var count = 0;
 		for (var p in self.players) {
 			if (self.players[p].reset)
 				count++;
 		}
-		return count >= needToReset && ((self.active && !self.firstGoal) || self.isWon);
+		return count > needToReset && (self.active || self.isWon);
 	};
 
 	self.changePlayerColor = function(id, color) {

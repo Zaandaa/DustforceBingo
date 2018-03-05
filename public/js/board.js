@@ -364,7 +364,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	if (!isPopout) {
-		if (isPlayer && (!boardData.firstGoal || boardData.state == "Complete")) {
+		if (isPlayer) {
 			target.append(createResetButton());
 		}
 
