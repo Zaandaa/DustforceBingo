@@ -23,6 +23,15 @@
 			}
 		},
 		{
+			"level": "Ancient Garden",
+			"data": {
+				"nosuper": {
+					"Beat": false,
+					"SS": false
+				}
+			}
+		},
+		{
 			"level": "Ghost Parapets",
 			"data": {
 				"gimmicks": [
