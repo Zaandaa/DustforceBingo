@@ -416,7 +416,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		
 		$.each(getIdentifiers(i,j), function(no,id) {
 			if(id.valid && !$(id.name).hasClass('bingo_label')) {
-				checkAddLabel(id.type, id.value);
+				checkAddLabel(id.type, id.val);
 			}
 		});
 	}
