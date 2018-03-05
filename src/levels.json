@@ -1298,7 +1298,7 @@
             "key": "Gold",
             "nosuper": {
                 "Beat": false,
-                "SS": false
+                "SS": true
             },
             "sfinesse": true,
             "dcomplete": false,
@@ -3943,7 +3943,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },

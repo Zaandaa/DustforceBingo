@@ -23,6 +23,15 @@
 			}
 		},
 		{
+			"level": "Grass Cave",
+			"data": {
+				"nosuper": {
+					"Beat": false,
+					"SS": true
+				}
+			}
+		},
+		{
 			"level": "Ancient Garden",
 			"data": {
 				"nosuper": {
