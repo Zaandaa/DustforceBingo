@@ -683,7 +683,7 @@ var Goal = function(goalData) {
 				if (self.goalData.objective == "D complete" && score[0] != "D")
 					return false;
 
-				if (self.goalData.objective == "Genocide" && replay.tag !== undefined && replay.tag.genocide !== undefined && replay.tag.genocide != "1")
+				if (self.goalData.objective == "Genocide" && (!replay.tag || !replay.tag.genocide || replay.tag.genocide != "1"))
 					return false;
 				if (self.goalData.objective == "Unload" && (!replay.tag || !replay.tag.reason || replay.tag.reason != "unload"))
 					return false;
