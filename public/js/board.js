@@ -569,17 +569,39 @@ function updatePlayersTable(playersJson, target) {
 		if (bingoStarted) {
 			cell3.css({"top": "2px"});
 			if (playerData.players[i].finishTime > 0) {
-				var time = new Date(playerData.players[i].finishTime);
-				var h = time.getUTCHours();
-				var m = time.getMinutes();
-				var s = time.getSeconds();
 				var placeEnding = "th";
 				switch (playerData.players[i].place) {
 					case 1: placeEnding = "st"; break;
 					case 2: placeEnding = "nd"; break;
 					case 3: placeEnding = "rd"; break;
 				}
-				cell3.append(playerData.players[i].place + placeEnding + " - " + (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
+				var placeText = playerData.players[i].place + placeEnding;
+
+				var time = new Date(playerData.players[i].finishTime);
+				var h = time.getUTCHours();
+				var m = time.getMinutes();
+				var s = time.getSeconds();
+				var timeText = (h > 0 ? h + ":" : "") + (h > 0 && m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+
+				var useCount = false;
+				var countText = playerData.players[i].goals;
+				if (ruleset.gametype == "64") {
+					useCount = true;
+					if (ruleset.win_type == "area")
+						countText = playerData.players[i].biggestRegion;
+					else
+						countText = playerData.players[i].totalRegion;
+				} else if (!ruleset.antibingo) {
+					useCount = ruleset.lockout;
+					if (ruleset.bingo_count_type == "bingo")
+						countText = playerData.players[i].bingos + ", " + playerData.players[i].goals;
+				}
+				
+				var allText = placeText + " - " + timeText;
+				if (useCount)
+					allText += " (" + countText + ")";
+
+				cell3.append(allText);
 			} else {
 				if (ruleset.gametype == "64") {
 					if (ruleset.win_type == "area")
