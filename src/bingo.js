@@ -336,7 +336,7 @@ var Bingo = function(session, ruleset) {
 					continue;
 				else if (possibleWinners.includes(t)) { // tie win, not already done
 					self.teams[t].finish(Date.now() - self.startTime, true, 1);
-					self.addLog({team: t, str: "Finished"});
+					self.addLog({type: "finish", team: t, str: "Finished"});
 				} else {
 					var score = self.teams[t].goalsAchieved.length + (self.ruleset.bingo_count_type == "bingo" ? self.teams[t].bingos * 100 : 0);
 					if (!rankedTeams[score])
@@ -351,7 +351,7 @@ var Bingo = function(session, ruleset) {
 			for (var score in sortedRanks) {
 				for (var t in rankedTeams[sortedRanks[score]]) {
 					self.teams[rankedTeams[sortedRanks[score]][t]].finish(Date.now() - self.startTime, false, self.teamsDone + 1);
-					self.addLog({team: rankedTeams[sortedRanks[score]][t], str: "Finished"});
+					self.addLog({type: "finish", team: rankedTeams[sortedRanks[score]][t], str: "Finished"});
 				}
 				self.teamsDone += rankedTeams[sortedRanks[score]].length;
 			}
@@ -360,7 +360,7 @@ var Bingo = function(session, ruleset) {
 			// force win
 			self.isWon = true;
 			self.teams[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.teamsDone + 1);
-			self.addLog({team: possibleWinners[0], str: "Finished"});
+			self.addLog({type: "finish", team: possibleWinners[0], str: "Finished"});
 			self.teamsDone++;
 		}
 	};
@@ -412,7 +412,7 @@ var Bingo = function(session, ruleset) {
 					continue;
 				else if (possibleWinners.includes(t)) { // tie win, not already done
 					self.teams[t].finish(Date.now() - self.startTime, true, 1);
-					self.addLog({team: t, str: "Finished"});
+					self.addLog({type: "finish", team: t, str: "Finished"});
 				} else {
 					var score = self.countTeamGoals(t);
 					if (!rankedTeams[score])
@@ -427,7 +427,7 @@ var Bingo = function(session, ruleset) {
 			for (var score in sortedRanks) {
 				for (var t in rankedTeams[sortedRanks[score]]) {
 					self.teams[rankedTeams[sortedRanks[score]][t]].finish(Date.now() - self.startTime, false, self.teamsDone + 1);
-					self.addLog({team: rankedTeams[sortedRanks[score]][t], str: "Finished"});
+					self.addLog({type: "finish", team: rankedTeams[sortedRanks[score]][t], str: "Finished"});
 				}
 				self.teamsDone += rankedTeams[sortedRanks[score]].length;
 			}
@@ -435,7 +435,7 @@ var Bingo = function(session, ruleset) {
 			// force win
 			self.isWon = true;
 			self.teams[possibleWinners[0]].finish(Date.now() - self.startTime, true, self.teamsDone + 1);
-			self.addLog({team: possibleWinners[0], str: "Finished"});
+			self.addLog({type: "finish", team: possibleWinners[0], str: "Finished"});
 			self.teamsDone++;
 		}
 
@@ -488,14 +488,14 @@ var Bingo = function(session, ruleset) {
 		} else if (self.ruleset.gametype == "bingo" && self.ruleset.bingo_count_type == "bingo") {
 			if (self.countBingo(id) >= self.ruleset.bingo_count) {
 				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
-				self.addLog({team: id, str: "Finished"});
+				self.addLog({type: "finish", team: id, str: "Finished"});
 				self.isWon = true;
 				self.teamsDone++;
 			}
 		} else if (self.ruleset.bingo_count_type == "goal" || self.ruleset.win_type == "goal") {
 			if (self.countTeamGoals(id) >= self.ruleset.bingo_count) {
 				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
-				self.addLog({team: id, str: "Finished"});
+				self.addLog({type: "finish", team: id, str: "Finished"});
 				self.isWon = true;
 				self.teamsDone++;
 			}
@@ -777,7 +777,7 @@ var Bingo = function(session, ruleset) {
 		// console.log("captureRegion", t, region);
 		for (var g in region) {
 			self.goals[region[g]].capture(t);
-			self.addLog({team: t, str: "Goal captured: " + self.goals[region[g]].toString()});
+			self.addLog({type: "capture", team: t, str: "Goal captured: " + self.goals[region[g]].toString()});
 		}
 	};
 
@@ -915,6 +915,7 @@ var Bingo = function(session, ruleset) {
 		self.teams[self.players[replay.user].team].addProgress(replay);
 		self.players[replay.user].addProgress(replay);
 		self.addLog({
+			type: "replay",
 			replay_id: replay.replay_id,
 			team: self.players[replay.user].team,
 			player: replay.user,
@@ -935,7 +936,7 @@ var Bingo = function(session, ruleset) {
 				self.players[replay.user].achieveGoal(i);
 				success = true;
 				// // console.log("GOAL ACHIEVED", i, replay.username);
-				self.addLog({team: self.players[replay.user].team, player: replay.user, str: "Goal: " + self.goals[i].toString()});
+				self.addLog({type: "goal", team: self.players[replay.user].team, player: replay.user, str: "Goal: " + self.goals[i].toString()});
 				if (self.ruleset.hidden)
 					self.revealGoalNeighbors(i);
 				if (self.ruleset.gametype == "64") {

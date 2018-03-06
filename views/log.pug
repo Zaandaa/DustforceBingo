@@ -1,0 +1,76 @@
+extends layout
+
+block js
+	script= "var compact = false"
+	script= "var player"
+	script!= "const ruleset = " + JSON.stringify(ruleset) + ";"
+	script!= "const logBoardData = " + JSON.stringify(logBoardData) + ";"
+	script!= "const logPlayerData = " + JSON.stringify(logPlayerData) + ";"
+	script!= "const bingoLog = " + JSON.stringify(bingoLog) + ";"
+	script(src="/bingo/js/board.js")
+	script(src="/bingo/js/log.js")
+	script= "setSizes(false);"
+
+block content
+
+	div#main_div.row
+
+		div.col-xl-4
+			div.row
+				div#players_table_div.col
+
+			div#under_players(style="margin-bottom: 1rem")
+
+			div
+				
+				if ruleset.gametype != "64"
+					h4.impact Goal Options
+					- var perline = 6;
+					- var steps = new Array(Math.ceil(enabled.length/perline));
+					- var i = -1;
+					each na, nb in steps
+						div.row.margin_zero
+							each nc, nd in new Array(perline)
+								- i++;
+								if i < enabled.length
+									- var option = options[enabled[i]]
+									div.col-2.mb-3
+										div.goal-option(data-toggle="tooltip" data-placement="top" title=option.clean_name + (option.tooltip ? " - " + option.tooltip : ""))
+											div(style="position: relative; top: -1px")
+												img(src=option.icon class=option.icon_type + "_large")
+
+				h4.impact Rules
+				ul
+					- var ssWord = ruleset.ss ? "SS" : "Any%"
+					- var newgameWord = ruleset.newgame ? "New Game" : "New Game +"
+					if ruleset.gametype == "64"
+						li #{newgameWord}
+						li #{ssWord} Lockout Race, #{wincondition}
+						li Hub: #{ruleset.hub}
+						li Capture: #{captureText}
+					else
+						li #{newgameWord}, Length: #{ruleset.length_raw}, Difficulty: #{ruleset.difficulty_raw}
+						li #{ruleset.size} by #{ruleset.size}, #{wincondition}
+					if ruleset.lockout
+						li Lockout: Each goal can only be achieved by one person.
+					if ruleset.hidden
+						if ruleset.gametype == "64"
+							li Hidden: Start with all level goals invisible. Reveal neighbor goals by getting goals.
+						else
+							li Hidden: Start with only the center goal visible. Reveal neighbor goals by getting goals.
+					if ruleset.teams
+						li Team colors: Players with the same color are on a team.
+					if ruleset.plugins
+						li Plugins: Players are allowed to use plugins.
+					li Players start at the Nexus door.
+					li Level tomes and level editor are banned.
+
+
+		div.col-xl-8.noselect
+			- var sizeArray = new Array(parseInt(ruleset.size) || 1)
+			- var colClass = "col-" + (ruleset.size == 8 ? "eighth" : (ruleset.size == 5 ? "fifth" : (ruleset.size == 4 ? "fourth" : "third")))
+
+			div
+				div#board_div
+
+	div#log_div.row

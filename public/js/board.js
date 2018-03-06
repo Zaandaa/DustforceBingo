@@ -380,8 +380,8 @@ function updateBoardTable(boardData, target, isPopout) {
 		if (isPlayer)
 			$("#under_players").append(createResetButton());
 
-		if (savedBoardData.state == "Complete")
-			target.append(createLogLink());
+		// if (savedBoardData.state == "Complete")
+			// target.append(createLogLink());
 		target.append(createPopout());
 
 		if (bingoStarted) {
@@ -536,10 +536,9 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 }
 
-function updatePlayersTable(playersJson, target) {
+function updatePlayersTable(playerData, target) {
 	target.empty();
 
-	playerData = JSON.parse(playersJson);
 	savedPlayerData = playerData;
 
 	var table = $("<div class='players_table'></div>");

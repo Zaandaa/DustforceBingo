@@ -256,7 +256,7 @@ $(document).on('ready', function() {
 	
 	socket.on('players', function(data) {
 		// console.log("got players", data);
-		updatePlayersTable(data, $('#players_table_div'));
+		updatePlayersTable(JSON.parse(data), $('#players_table_div'));
 	});
 	
 	socket.on('playerfinish', function(data) {

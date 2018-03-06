@@ -431,6 +431,14 @@ function build(io) {
 			}
 		};
 		
+		self.getBingoStarted = function() {
+			return bingo.active || bingo.isWon;
+		};
+
+		self.getBingoComplete = function() {
+			return bingo.isWon;
+		};
+		
 		self.getBoardData = function(socket) {
 			var isP = isPlayer(socket)
 			data = bingo.getBoardData(isP ? socket.custom.id : undefined);
@@ -440,6 +448,10 @@ function build(io) {
 		
 		self.getPlayerData = function() {
 			return JSON.stringify(bingo.getPlayerData());
+		};
+
+		self.getBingoLog = function() {
+			return JSON.stringify(bingo.log);
 		};
 		
 		self.getBingoGoalOptions = function() {
