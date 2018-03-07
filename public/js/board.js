@@ -261,6 +261,8 @@ function updateBoardTable(boardData, target, isPopout) {
 		}
 		return false;
 	}
+
+	$(".tooltip").remove();
 	
 	bingoStarted = true;
 	$("#temp_board_div").hide();
@@ -305,6 +307,13 @@ function updateBoardTable(boardData, target, isPopout) {
 				}
 				row.append(col);
 				continue;
+			}
+
+			if (isPlayer && goal.total > 0) {
+				col.attr("data-toggle", "tooltip");
+				col.attr("data-placement", "top");
+				col.attr("title", goal.progress + "/" + goal.total);
+				col.tooltip();
 			}
 
 			$.each(goal.achieved, function(no, achieverId) {
