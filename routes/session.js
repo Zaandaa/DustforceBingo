@@ -108,7 +108,7 @@ function build(io) {
 
 		var bingoStarted = s.getBingoStarted();
 
-		var user = cookieParser.JSONCookie("user");
+		var user = req.cookies["user"];
 
 		res.render('session', {
 			session: s,
