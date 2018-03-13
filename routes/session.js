@@ -1,4 +1,5 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var options = require('../src/options');
 
 function verify(fields, data) {
@@ -107,6 +108,8 @@ function build(io) {
 
 		var bingoStarted = s.getBingoStarted();
 
+		var user = cookieParser.JSONCookie("user");
+
 		res.render('session', {
 			session: s,
 			bingoStarted: bingoStarted,
@@ -114,7 +117,8 @@ function build(io) {
 			captureText: captureText,
 			ruleset: s.bingo_args,
 			options: options,
-			enabled: s.getBingoGoalOptions()
+			enabled: s.getBingoGoalOptions(),
+			user: user
 		});
 	});
 

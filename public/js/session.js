@@ -25,10 +25,17 @@ function showHow() {
 		$("#bingo_info").show();
 }
 
+function addCookieUser() {
+	if (user)
+		$('#username').val(user);
+}
+
 $(document).on('ready', function() {
 	showHow();
-	if (!bingoStarted)
+	if (!bingoStarted) {
 		addCopyUrl();
+		addCookieUser();
+	}
 	$('input[type=checkbox]').on('change', changeCheckImage)
 
 	socket.emit('init', {session: sessionId});

@@ -701,7 +701,7 @@ function showStartButton() {
 function addCopyUrl() {
 	$("#under_players").empty();
 	if (!bingoStarted)
-		$("#under_players").append("<p><a href=''>Copy this url</a> to invite more players</p>");
+		$("#under_players").append("<p>Copy <a href=''>this url</a> to invite more players</p>");
 }
 
 function resetBingo() {

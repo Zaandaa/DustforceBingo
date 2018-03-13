@@ -2,6 +2,7 @@ extends layout
 
 block js
 	script= "const sessionId = \'" + session.id + "';"
+	script= "const user = " + user + ";"
 	script!= "const ruleset = " + JSON.stringify(ruleset) + ";"
 	script= "var bingoStarted = " + bingoStarted
 	script= "var player = undefined"
