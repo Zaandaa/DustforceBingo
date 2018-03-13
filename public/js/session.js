@@ -32,9 +32,9 @@ function addCookieUser() {
 
 $(document).on('ready', function() {
 	showHow();
+	addCookieUser();
 	if (!bingoStarted) {
 		addCopyUrl();
-		addCookieUser();
 	}
 	$('input[type=checkbox]').on('change', changeCheckImage)
 

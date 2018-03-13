@@ -309,11 +309,20 @@ function updateBoardTable(boardData, target, isPopout) {
 				continue;
 			}
 
+			// progress tooltip + bar
 			if (isPlayer && goal.total > 0) {
 				col.attr("data-toggle", "tooltip");
 				col.attr("data-placement", "top");
 				col.attr("title", goal.progress + "/" + goal.total);
 				col.tooltip();
+
+				var bar = $("<div/>").addClass("bar");
+				var progBar = $("<div/>").addClass("prog").css({
+					"width": (goal.progress / goal.total * 100) + "%",
+					"background-color": "var(--" + boardData.players[player].color + ")"
+				});
+				bar.append(progBar);
+				col.find(".bingo_table_inner_cell").append(bar);
 			}
 
 			$.each(goal.achieved, function(no, achieverId) {

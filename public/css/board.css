@@ -258,3 +258,17 @@
 .small64 .popout_row {
 	min-height: 50px;
 }
+
+.bar {
+	position: absolute;
+	width: 90%;
+	left: 5%;
+	height: 2px;
+	top: 4px;
+}
+.compact .bar {
+	top: 3px;
+}
+.prog {
+	height: 100%;
+}
