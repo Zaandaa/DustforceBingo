@@ -36,12 +36,13 @@ extern.cachePossibleBingos = function(size) {
 };
 
 extern.convertFrontId = function(size, frontId) {
+	var v = parseInt(frontId.value, 10);
 	if (frontId.type == "col")
-		return 2 * frontId.value;
+		return 2 * v;
 	if (frontId.type == "row")
-		return 2 * frontId.value + 1;
+		return 2 * v + 1;
 	if (frontId.type == "dia")
-		return 2 * size + frontId.value;
+		return 2 * size + v;
 	return -1;
 };
 
