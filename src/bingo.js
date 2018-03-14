@@ -135,28 +135,17 @@ var Bingo = function(session, ruleset) {
 	self.removePlayer = function(id) {
 		if (!self.active && id in self.players) {
 			delete self.players[id];
-			self.checkPlayersReady();
+			self.canStart(false);
 			self.session.updatePlayers();
 			return true;
 		}
 		return false;
 	};
 
-	self.checkPlayersReady = function() {
-		var ready = false;
-		for (var p in self.players) {
-			if (self.players[p].getReady()) {
-				ready = true;
-				break;
-			}
-		}
-		self.session.canStart(ready);
-	};
-
 	self.ready = function(id) {
 		if (!self.active && id in self.players) {
 			self.players[id].setReady(true);
-			self.checkPlayersReady();
+			self.canStart(false);
 			self.session.updatePlayers();
 		}
 	};
@@ -164,7 +153,7 @@ var Bingo = function(session, ruleset) {
 	self.unready = function(id) {
 		if (!self.active && id in self.players) {
 			self.players[id].setReady(false);
-			self.checkPlayersReady();
+			self.canStart(false);
 			self.session.updatePlayers();
 		}
 	};
@@ -191,8 +180,11 @@ var Bingo = function(session, ruleset) {
 		if (self.startTime > 0)
 			return;
 		if (id in self.players) {
-			if (self.players[id].changeColor(color))
+			if (self.players[id].changeColor(color)) {
+				if (self.ruleset.teams)
+					self.canStart(false);
 				self.session.updatePlayers();
+			}
 		}
 	};
 
@@ -781,8 +773,7 @@ var Bingo = function(session, ruleset) {
 		}
 	};
 
-
-	self.start = function() {
+	self.canStart = function(startPressed) {
 		var ready = false;
 		for (var p in self.players) {
 			if (self.players[p].getReady()) {
@@ -790,9 +781,36 @@ var Bingo = function(session, ruleset) {
 				break;
 			}
 		}
-		if (!ready)
-			return;
+		if (!ready) {
+			self.session.canStart(false);
+			return false;
+		}
 
+		// cancel anti if too few teams
+		var readyPlayers = [];
+		var teamsToAdd = [];
+		for (var p in self.players) {
+			if (self.players[p].getReady()) {
+				readyPlayers.push(p);
+			}
+		}
+		for (var i = 0; i < readyPlayers.length; i++) {
+			var team = self.ruleset.teams ? self.players[readyPlayers[i]].color : readyPlayers[i];
+			if (!teamsToAdd.includes(team))
+				teamsToAdd.push(team);
+		}
+
+		if (self.ruleset.antibingo && teamsToAdd.length < 2) {
+			self.session.canStart(false);
+			return false;
+		}
+
+		if (!startPressed)
+			self.session.canStart(true);
+		return true;
+	};
+
+	self.start = function() {
 		self.active = true;
 		self.firstGoal = false;
 		self.isWon = false;
@@ -826,7 +844,7 @@ var Bingo = function(session, ruleset) {
 
 		// anti teams
 		if (self.ruleset.antibingo) {
-			if (Object.keys(self.teams).length < 2) { // cancel anti if too few teams
+			if (Object.keys(self.teams).length < 2) { // old cancel anti if too few teams
 				self.ruleset.antibingo = false;
 				self.antiForceAssign();
 			} else {

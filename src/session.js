@@ -182,10 +182,14 @@ function build(io) {
 			}
 		}
 		
-		function emitPlayers(res, mes) {
+		function emitPlayers(res, mes, readyOnly) {
 			for (id in sockets) {
-				if (isPlayer(sockets[id]))
-					sockets[id].emit(res, mes);
+				if (isPlayer(sockets[id])) {
+					if (!readyOnly || bingo.players[sockets[id].custom.id].getReady())
+						sockets[id].emit(res, mes);
+					else
+						sockets[id].emit(res, false);
+				}
 			}
 		}
 		
@@ -331,7 +335,6 @@ function build(io) {
 			})
 			
 			socket.safeOn('assign', function(data) {
-				console.log('got assignment', data);
 				if (!isPlayer(socket))
 					return;
 				bingo.assignAnti(socket.custom.id, data);
@@ -340,7 +343,8 @@ function build(io) {
 			socket.safeOn('start', function() {
 				if (!isPlayer(socket))
 					return;
-				startTimer(3000);
+				if (bingo.canStart(true))
+					startTimer(3000);
 			});
 			
 			socket.safeOn('unstart', function() {
@@ -356,7 +360,7 @@ function build(io) {
 		
 		self.canStart = function(state) {
 			canStart = state;
-			emitPlayers('updateStart', state);
+			emitPlayers('updateStart', state, state); // elegant
 		};
 		
 		self.removedPlayerOnStart = function(p) {
