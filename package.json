@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "forever start bin/www",
+    "start": "forever start --minUptime 5000 --spinSleepTime 30000 bin/www",
     "test": "set ENVIRONMENT=dev&& nodemon ./bin/www --config nodemon.config",
     "stop": "forever stop bin/www"
   },
