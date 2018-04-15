@@ -636,9 +636,9 @@ function updatePlayersTable(playerData, target) {
 			} else {
 				if (ruleset.gametype == "64") {
 					if (ruleset.win_type == "area")
-						cell3.append("Biggest: " + playerData.players[i].biggestRegion + ", Safe: " + playerData.players[i].biggestRegionSafe);
+						cell3.append("Biggest: " + playerData.players[i].biggestRegion + ((ruleset.captureblank || ruleset.captureother) ? ", Safe: " + playerData.players[i].biggestRegionSafe : ""));
 					else
-						cell3.append("Area: " + playerData.players[i].totalRegion + ", Safe: " + playerData.players[i].totalRegionSafe);
+						cell3.append("Area: " + playerData.players[i].totalRegion + ((ruleset.captureblank || ruleset.captureother) ? ", Safe: " + playerData.players[i].totalRegionSafe : ""));
 				} else if (ruleset.antibingo) {
 					if (!playerData.allAntisAssigned)
 						cell3.append("Bingos to assign: " + (ruleset.bingo_count - playerData.players[i].assignedAnti.length));

@@ -13,7 +13,9 @@ var base = ENVIRONMENT == 'dev' ? '/bingo/' : '/';
 var app = express();
 var server = http.createServer(app);
 var io = socket(server, {
-	path: base + "socket.io"
+	path: base + "socket.io",
+	pingInterval: 5000,
+	pingTimeout: 5000
 });
 
 var index = require('./routes/index');

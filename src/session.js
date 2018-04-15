@@ -175,6 +175,19 @@ function build(io) {
 		function isPlayer(socket) {
 			return socket !== undefined && socket.custom !== undefined && socket.custom.id !== undefined && socket.custom.id in bingo.players
 		}
+
+		function hasDuplicatePlayer(socket) {
+			if (!isPlayer(socket))
+				return false;
+			var sharedId = 0;
+			for (s in sockets) {
+				if (isPlayer(sockets[s])) {
+					if (sockets[s].custom.id == socket.custom.id)
+						sharedId++;
+				}
+			}
+			return sharedId > 1;
+		}
 		
 		function emitAll(res, mes) {
 			for (id in sockets) {
@@ -241,9 +254,9 @@ function build(io) {
 					}
 				});
 			}
-			
+
 			socket.safeOn('disconnect', function() {
-				if (isPlayer(socket) && !start)
+				if (isPlayer(socket) && !start && !hasDuplicatePlayer(socket))
 					bingo.removePlayer(socket.custom.id);
 				sockets.splice(sockets.indexOf(socket), 1);
 				socket.disconnect(0);
@@ -274,20 +287,16 @@ function build(io) {
 						})
 						return;
 					}
-						
-					if (id in bingo.players)
-						return Error(socket,  'joinResponse', 'User already exists in session');
 
-					if (bingo.addPlayer(id, data)) {
-						socket.custom.username = data;
-						socket.custom.id = id;
-						socket.emit('joinResponse', {
-							err: false,
-							message: `Joined ${socket.custom.username}`,
-							username: socket.custom.username,
-							id: socket.custom.id
-						});
-					}
+					bingo.addPlayer(id, data);
+					socket.custom.username = data;
+					socket.custom.id = id;
+					socket.emit('joinResponse', {
+						err: false,
+						message: `Joined ${socket.custom.username}`,
+						username: socket.custom.username,
+						id: socket.custom.id
+					});
 				});
 			});
 
