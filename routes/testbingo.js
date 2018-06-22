@@ -3,7 +3,7 @@ var router = express.Router();
 var Bingo = require('../src/bingo');
 
 var consoleLogTest = false;
-var simulatePlay = true;
+var simulatePlay = false;
 var continueAfterCount = true;
 
 var seedChars = "1234567890qwertyuiopasdfghjklzxcvbnm";
@@ -21,7 +21,7 @@ var rules = {
 	size: 3,
 	newgame: true,
 	newgame64: true,
-	lockout: true,
+	lockout: false,
 	hidden: false,
 	hidden64: false,
 	teams: true,
@@ -29,8 +29,8 @@ var rules = {
 	plugins: false,
 	plugins64: false,
 	antibingo: false,
-	bingo_count: 6,
-	bingo_count_type: "bingo",
+	bingo_count: 9,
+	bingo_count_type: "goal",
 	goal_count: 33,
 	difficulty: 1, // 4 easy, 1 very hard
 	length: 1, // 4 fast, 1 full game
@@ -114,14 +114,22 @@ var moves = [ // move "pairs": player, goal
 	// [1,8],
 	// [1,9]
 	[0,0],
+	[0,1],
+	[0,2],
+	[0,3],
+	[0,4],
+	[0,5],
+	[0,6],
+	[0,7],
+	[1,0],
 	[1,1],
 	[1,2],
 	[1,3],
-	[0,4],
-	[0,5],
+	[1,4],
+	[1,5],
 	[1,6],
-	[0,7],
-	[1,8]
+	[1,7],
+	[0,8]
 ];
 
 if (simulatePlay) {

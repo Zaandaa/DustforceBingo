@@ -92,7 +92,7 @@ $(document).on('ready', function() {
 		    type = $bingo_count_type.val();
 			
 		for(var i = 0; i < 25; i++) {
-			$(".option" + (i+1)).show();
+			$("#bingo_count").find(".option" + (i+1)).show();
 		}
 			
 		var max = 0;
@@ -115,11 +115,12 @@ $(document).on('ready', function() {
 		
 		if ($bingo_count.val() > max)
 			$bingo_count.val("1");
+
 	}
 		
 	function validateLockoutNumber() {
 		for(var i = 0; i < 33; i++) {
-			$(".option" + (i+1)).show();
+			$("#goal_count").find(".option" + (i+1)).show();
 		}
 
 		var max = $hub.val() == "All" ? 33 : 9;
