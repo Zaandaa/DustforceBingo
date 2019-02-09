@@ -10,6 +10,12 @@
 			}
 		},
 		{
+			"level": "Tunnels",
+			"data": {
+				"dcomplete": true
+			}
+		},
+		{
 			"level": "Overgrown Temple",
 			"data": {
 				"gimmicks": [

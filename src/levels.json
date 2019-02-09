@@ -849,7 +849,7 @@
                 "SS": true
             },
             "sfinesse": false,
-            "dcomplete": false,
+            "dcomplete": true,
             "genocide": false,
             "unload": false,
             "oob": false,
