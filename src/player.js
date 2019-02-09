@@ -70,7 +70,7 @@ var Player = function(id, name) {
 	};
 
 	self.addProgress = function(replay) {
-		if (replay.validated < 1 && replay.validated != -3)
+		if (replay.validated == -9)
 			return;
 
 		// allProgress and keyProgress

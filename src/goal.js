@@ -651,20 +651,8 @@ var Goal = function(goalData) {
 
 	self.compareReplay = function(replay, team, bingoPlayers) {
 		// check if replay meets goalData
-		if (replay.validated < 1 && replay.validated != -3 && replay.validated != -10) {
-			if (replay.validated == -7) {
-				if (!self.goalData.minecraft)
-					return false;
-			} else if (replay.validated == -8) {
-				if (!self.goalData.boss)
-					return false;
-			} else if (replay.validated == -9) {
-				if (!(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
-					return false;
-			// } else if (replay.validated == -10) {
-				// if (!self.goalData.someplugin)
-					// return false;
-			} else
+		if (replay.validated == -9) {
+			if (!(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
 				return false;
 		}
 

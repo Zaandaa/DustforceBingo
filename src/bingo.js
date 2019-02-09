@@ -900,20 +900,11 @@ var Bingo = function(session, ruleset) {
 			return false;
 
 		// validate
-		if (replay.validated < 1 && replay.validated != -3) {
-			if (replay.validated == -7) {
-				if (!self.ruleset.minecraft)
-					return false;
-			} else if (replay.validated == -8) {
-				if (!self.ruleset.boss)
-					return false;
-			} else if (replay.validated == -9) {
-				if (!self.ruleset.unload)
-					return false;
-			} else if (replay.validated == -10) {
-				if (!self.ruleset.plugins)
-					return false;
-			} else
+		if (replay.validated == -9) {
+			if (!self.ruleset.unload)
+				return false;
+		} else if (!self.ruleset.plugins) {
+			if (replay.validated < 1 && replay.validated != -3)
 				return false;
 		}
 
