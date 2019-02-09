@@ -21,12 +21,6 @@
 		"reason": "Unload requires very hard difficulty."
 	},
 	{
-		"nosuper": [true],
-		"beat": [false],
-		"ss": [false],
-		"reason": "No super requires either beat or SS."
-	},
-	{
 		"multilevel": [true],
 		"beat": [false],
 		"ss": [false],
@@ -34,7 +28,6 @@
 		"apples": [false],
 		"reason": "Multi levels requires one of beat, SS, keys or apples."
 	},
-
 	{
 		"bcomplete": [true],
 		"difficulty_raw": ["Normal", "Easy"],
