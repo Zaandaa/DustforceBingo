@@ -86,7 +86,7 @@ var Team = function(id, p) {
 	};
 
 	self.addProgress = function(replay) {
-		if (replay.validated < 1 && replay.validated != -3)
+		if (replay.validated == -9)
 			return;
 
 		self.allCompletes.push({player: replay.user, level: replay.levelname, score: utils.getReplayScore(replay), character: constants.characters[replay.character], apples: replay.apples});
