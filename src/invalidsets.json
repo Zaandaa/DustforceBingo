@@ -66,6 +66,7 @@
 		"scomplete": [false],
 		"bcomplete": [false],
 		"dcomplete": [false],
+		"nosuper": [false],
 		"genocide": [false],
 		"unload": [false],
 		"lowdash": [false],
