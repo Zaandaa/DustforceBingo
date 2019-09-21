@@ -907,6 +907,8 @@ var Bingo = function(session, ruleset) {
 			if (replay.validated < 1 && replay.validated != -3)
 				return false;
 		}
+		if (replay.tag && replay.tag.mode && replay.tag.mode == "dbg_0")
+			return false;
 
 		// in players
 		if (!(replay.user in self.players))
