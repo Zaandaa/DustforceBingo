@@ -485,11 +485,11 @@ const gimmicks = [
 ];
  
 const difficultyThresholds = { // total achieved per difficulty tier
-	"apples"       : [10, 30, 50, 60, 70, 80],
-	"lowdash"      : [10, 30, 50, 60, 70, 80],
-	"lowjump"      : [ 5, 15, 25, 30, 35, 40],
-	"lowdirection" : [ 5, 15, 25, 30, 35, 40],
-	"lowattack"    : [ 5, 10, 15, 20, 30, 40]
+	"apples"       : [15, 35, 60, 70, 80, 90],
+	"lowdash"      : [15, 35, 60, 70, 80, 90],
+	"lowjump"      : [10, 20, 30, 35, 40, 45],
+	"lowdirection" : [10, 20, 30, 35, 40, 45],
+	"lowattack"    : [10, 20, 30, 35, 40, 45]
 };
 
 const inputMaxProbablyIntended = {
