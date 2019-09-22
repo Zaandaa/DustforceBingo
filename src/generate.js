@@ -419,13 +419,15 @@ function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, geno
 
 function getHist(replays, gimmick) 
 {
-	var output  = []
+	var output  = [];
+	var total = 0;
 	var current = {
-		rank  : replays[0].rank,
+		rank  : 0,
 		ties  : 0,
 		count : replays[0].access(gimmick)
 	};
 	replays.forEach(function(replay) {
+		total += 1;
 		var count = replay.access(gimmick);
 		if (current.count == count) 
 		{
@@ -435,7 +437,7 @@ function getHist(replays, gimmick)
 		{
 			output.push(current);
 			current = {
-				rank: replay.rank,
+				rank: total,
 				ties: 1,
 				count: count
 			}
