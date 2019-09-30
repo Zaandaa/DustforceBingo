@@ -485,7 +485,7 @@ var Bingo = function(session, ruleset) {
 				self.teamsDone++;
 			}
 		} else if (self.ruleset.bingo_count_type == "goal" || self.ruleset.win_type == "goal") {
-			if (self.countTeamGoals(id) >= self.ruleset.bingo_count) {
+			if (self.teams[id].goalsAchieved.length >= self.ruleset.bingo_count) {
 				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
 				self.addLog({type: "finish", team: id, str: "Finished"});
 				self.isWon = true;
