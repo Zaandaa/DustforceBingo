@@ -475,23 +475,29 @@ var Bingo = function(session, ruleset) {
 		if (self.teams[id].finishTime > 0)
 			return; // already done
 
-		if (self.ruleset.gametype == "64" && (self.ruleset.win_type == "totalarea" || self.ruleset.win_type == "area")) {
-			self.checkBiggestRegions();
-		} else if (self.ruleset.gametype == "bingo" && self.ruleset.bingo_count_type == "bingo") {
-			if (self.countBingo(id) >= self.ruleset.bingo_count) {
-				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
-				self.addLog({type: "finish", team: id, str: "Finished"});
-				self.isWon = true;
-				self.teamsDone++;
+		var teamFinished = false;
+
+		if (self.ruleset.gametype == "64") {
+			if (self.ruleset.win_type == "totalarea" || self.ruleset.win_type == "area") {
+				self.checkBiggestRegions();
+			} else if (self.ruleset.win_type == "goal" && self.countTeamGoals(id) >= self.ruleset.bingo_count) {
+				teamFinished = true;
 			}
-		} else if (self.ruleset.bingo_count_type == "goal" || self.ruleset.win_type == "goal") {
-			if (self.teams[id].goalsAchieved.length >= self.ruleset.bingo_count) {
-				self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
-				self.addLog({type: "finish", team: id, str: "Finished"});
-				self.isWon = true;
-				self.teamsDone++;
+		} else if (self.ruleset.gametype == "bingo") {
+			if (self.ruleset.bingo_count_type == "bingo" && self.countBingo(id) >= self.ruleset.bingo_count) {
+				teamFinished = true;
+			} else if (self.ruleset.bingo_count_type == "goal" && self.teams[id].goalsAchieved.length >= self.ruleset.bingo_count) {
+				teamFinished = true;
 			}
 		}
+
+		if (teamFinished) {
+			self.teams[id].finish(Date.now() - self.startTime, !self.isWon, self.teamsDone + 1);
+			self.addLog({type: "finish", team: id, str: "Finished"});
+			self.isWon = true;
+			self.teamsDone++;
+		}
+
 	};
 
 	self.revealGoalNeighbors = function(i) {
