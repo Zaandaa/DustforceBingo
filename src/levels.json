@@ -1507,6 +1507,13 @@
                     "character": true
                 },
                 {
+                    "type": "apples",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 1,
+                    "character": true
+                },
+                {
                     "type": "lowdash",
                     "objective": "Beat",
                     "difficulty": 6,
@@ -1516,15 +1523,8 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
                     "difficulty": 3,
-                    "count": 1,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -2056,6 +2056,13 @@
                 },
                 {
                     "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 6,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 0,
@@ -2378,7 +2385,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -2666,7 +2673,7 @@
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 6,
+                    "difficulty": 5,
                     "count": 1,
                     "character": false
                 },
@@ -2835,6 +2842,20 @@
                     "character": false
                 },
                 {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 5,
+                    "count": 2,
+                    "character": false
+                },
+                {
                     "type": "lowjump",
                     "objective": "Beat",
                     "difficulty": 1,
@@ -2926,15 +2947,8 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 4,
+                    "difficulty": 8,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 6,
-                    "count": 1,
                     "character": false
                 },
                 {
@@ -3015,15 +3029,8 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 8,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 3,
-                    "count": 1,
                     "character": false
                 },
                 {
@@ -3104,7 +3111,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 4,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -3254,7 +3261,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -3556,7 +3563,7 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 5,
                     "count": 1,
                     "character": true
                 },
@@ -4029,7 +4036,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -4097,7 +4104,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -4266,6 +4273,13 @@
                     "character": false
                 },
                 {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 1,
+                    "character": false
+                },
+                {
                     "type": "lowjump",
                     "objective": "Beat",
                     "difficulty": 1,
@@ -4331,6 +4345,13 @@
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 2,
+                    "count": 2,
                     "character": false
                 }
             ]
@@ -5210,7 +5231,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 4,
+                    "difficulty": 6,
                     "count": 0,
                     "character": false
                 },
@@ -5510,7 +5531,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -5834,6 +5855,13 @@
                     "character": false
                 },
                 {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 3,
+                    "character": false
+                },
+                {
                     "type": "lowdirection",
                     "objective": "Beat",
                     "difficulty": 1,
@@ -5977,7 +6005,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },

@@ -291,7 +291,7 @@ function makeLevelGoalDatas(ruleset) {
 				}
 			}
 
-			if (ruleset.nosuper && (o == "Beat" || o == "SS") && levels.levels[l].nosuper[o] && d - 1 >= ruleset.difficulty) {
+			if (ruleset.nosuper && ((o == "Beat" && (ruleset.beat || !ruleset.ss)) || (o == "SS" && (!ruleset.beat || ruleset.ss))) && levels.levels[l].nosuper[o] && d - 1 >= ruleset.difficulty) {
 				validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, weight: 1});
 
 				if (ruleset.characters && levels.levels[l].charselect) {
