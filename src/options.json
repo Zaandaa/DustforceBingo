@@ -15,7 +15,7 @@
 	    "icon"       : "/bingo/img/iconKey.png"
 	  , "icon_type"  : "icon"
 	  , "clean_name" : "Get keys"
-	  , "init_state" : true
+	  , "init_state" : false
 	},
 	"tutorials" : {
 	    "icon"       : "http://dustkid.com/static/iconDustman.png"

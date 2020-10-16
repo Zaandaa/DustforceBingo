@@ -353,7 +353,7 @@ function build(io) {
 				if (!isPlayer(socket))
 					return;
 				if (bingo.canStart(true))
-					startTimer(3000);
+					startTimer(1000);
 			});
 			
 			socket.safeOn('unstart', function() {
