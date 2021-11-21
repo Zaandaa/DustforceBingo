@@ -52,7 +52,7 @@ var Bingo = function(session, ruleset) {
 		case "Full Game": self.ruleset.length = 1; break;
 	}
 
-	if (self.ruleset.rando) {
+	if (self.ruleset.rando || self.ruleset.rando64) {
 		self.ruleset.rando_type = self.ruleset.rando_json.args.type;
 
 		// force disable some goal types

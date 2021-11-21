@@ -78,7 +78,7 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": true,
+            "unload": false,
             "oob": false,
             "charselect": false,
             "gimmicks": [
@@ -99,15 +99,8 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 4,
-                    "count": 2,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
                     "difficulty": 5,
-                    "count": 3,
+                    "count": 2,
                     "character": false
                 },
                 {
@@ -181,14 +174,14 @@
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 }
@@ -221,7 +214,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -263,7 +256,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 4,
                     "character": false
                 }
@@ -282,21 +275,21 @@
             "sfinesse": false,
             "dcomplete": true,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 2,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 5,
                     "count": 1,
                     "character": true
                 },
@@ -310,7 +303,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 1,
                     "character": true
                 },
@@ -338,7 +331,7 @@
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 6,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -373,14 +366,14 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 6,
                     "count": 13,
                     "character": false
                 }
@@ -395,88 +388,6 @@
             "nosuper": {
                 "Beat": false,
                 "SS": true
-            },
-            "sfinesse": false,
-            "dcomplete": false,
-            "genocide": false,
-            "unload": true,
-            "oob": true,
-            "charselect": true,
-            "gimmicks": [
-                {
-                    "type": "apples",
-                    "objective": "Beat",
-                    "difficulty": 8,
-                    "count": 1,
-                    "character": true
-                },
-                {
-                    "type": "apples",
-                    "objective": "SS",
-                    "difficulty": 3,
-                    "count": 1,
-                    "character": true
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 8,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 8,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 2,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "SS",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "SS",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                }
-            ]
-        },
-        "dahlia": {
-            "level": "Dahlia",
-            "hub": "Forest",
-            "type": "Open",
-            "id": "dahlia",
-            "key": "Wood",
-            "nosuper": {
-                "Beat": false,
-                "SS": false
             },
             "sfinesse": false,
             "dcomplete": false,
@@ -516,82 +427,75 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 8,
-                    "count": 0,
+                    "difficulty": 2,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 2,
                     "character": false
                 },
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 4,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "SS",
-                    "difficulty": 5,
+                    "difficulty": 2,
                     "count": 1,
                     "character": false
                 },
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 6,
+                    "count": 3,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 }
             ]
         },
-        "fields": {
-            "level": "Fields",
+        "dahlia": {
+            "level": "Dahlia",
             "hub": "Forest",
             "type": "Open",
-            "id": "fields",
+            "id": "dahlia",
             "key": "Wood",
             "nosuper": {
                 "Beat": false,
                 "SS": false
             },
             "sfinesse": false,
-            "dcomplete": true,
-            "genocide": true,
-            "unload": true,
-            "oob": true,
+            "dcomplete": false,
+            "genocide": false,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 5,
-                    "character": true
-                },
-                {
-                    "type": "apples",
-                    "objective": "Beat",
-                    "difficulty": 5,
+                    "difficulty": 8,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
-                    "count": 5,
-                    "character": true
-                },
-                {
-                    "type": "apples",
-                    "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -626,8 +530,104 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
+                }
+            ]
+        },
+        "fields": {
+            "level": "Fields",
+            "hub": "Forest",
+            "type": "Open",
+            "id": "fields",
+            "key": "Wood",
+            "nosuper": {
+                "Beat": false,
+                "SS": false
+            },
+            "sfinesse": false,
+            "dcomplete": true,
+            "genocide": true,
+            "unload": false,
+            "oob": false,
+            "charselect": true,
+            "gimmicks": [
+                {
+                    "type": "apples",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 5,
+                    "character": true
+                },
+                {
+                    "type": "apples",
+                    "objective": "Beat",
+                    "difficulty": 6,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "apples",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 5,
+                    "character": true
+                },
+                {
+                    "type": "apples",
+                    "objective": "SS",
+                    "difficulty": 2,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "Beat",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 5,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 6,
+                    "count": 2,
                     "character": false
                 },
                 {
@@ -652,14 +652,14 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 2,
                     "character": true
                 },
@@ -673,14 +673,14 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 2,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 1,
                     "character": true
                 },
@@ -755,7 +755,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -776,7 +776,7 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 0,
                     "character": false
                 },
@@ -837,7 +837,7 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 4,
+                    "difficulty": 8,
                     "count": 1,
                     "character": true
                 },
@@ -879,15 +879,8 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
                     "difficulty": 3,
-                    "count": 4,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -933,14 +926,14 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -968,15 +961,8 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
                     "difficulty": 3,
-                    "count": 2,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -1030,20 +1016,20 @@
             "dcomplete": false,
             "genocide": true,
             "unload": false,
-            "oob": true,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "SA",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -1073,6 +1059,13 @@
                     "objective": "Beat",
                     "difficulty": 3,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 4,
+                    "count": 2,
                     "character": false
                 },
                 {
@@ -1118,8 +1111,8 @@
             "sfinesse": false,
             "dcomplete": true,
             "genocide": false,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1181,7 +1174,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 4,
+                    "difficulty": 6,
                     "count": 9,
                     "character": false
                 },
@@ -1207,8 +1200,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1289,6 +1282,13 @@
                     "character": false
                 },
                 {
+                    "type": "lowdirection",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
+                },
+                {
                     "type": "lowattack",
                     "objective": "Beat",
                     "difficulty": 2,
@@ -1310,14 +1310,14 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 3,
                     "character": true
                 },
@@ -1357,6 +1357,13 @@
                     "character": false
                 },
                 {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 8,
+                    "character": false
+                },
+                {
                     "type": "lowdirection",
                     "objective": "Beat",
                     "difficulty": 2,
@@ -1368,6 +1375,13 @@
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 1,
+                    "count": 4,
                     "character": false
                 }
             ]
@@ -1406,15 +1420,8 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 6,
-                    "count": 1,
                     "character": false
                 },
                 {
@@ -1422,6 +1429,13 @@
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 1,
                     "character": false
                 },
                 {
@@ -1467,21 +1481,21 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 2,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 2,
                     "character": true
                 },
@@ -1495,7 +1509,7 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -1542,14 +1556,14 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 4,
+                    "difficulty": 6,
                     "count": 1,
                     "character": true
                 },
@@ -1598,15 +1612,8 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
                     "difficulty": 2,
-                    "count": 1,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -1638,7 +1645,7 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
+            "unload": false,
             "oob": false,
             "charselect": true,
             "gimmicks": [
@@ -1665,8 +1672,15 @@
                 },
                 {
                     "type": "lowdash",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 2,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -1741,14 +1755,14 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -1795,21 +1809,21 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 1,
                     "character": true
                 },
@@ -1858,15 +1872,8 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 9,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 11,
+                    "difficulty": 1,
+                    "count": 6,
                     "character": false
                 },
                 {
@@ -1980,14 +1987,21 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
-                    "objective": "Beat",
+                    "objective": "SA",
                     "difficulty": 2,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "apples",
+                    "objective": "Beat",
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -2062,8 +2076,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2076,7 +2090,7 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 2,
                     "character": true
                 },
@@ -2169,11 +2183,11 @@
                 "Beat": true,
                 "SS": true
             },
-            "sfinesse": true,
+            "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2200,7 +2214,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -2240,6 +2254,13 @@
                     "character": false
                 },
                 {
+                    "type": "lowdirection",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
+                },
+                {
                     "type": "lowattack",
                     "objective": "Beat",
                     "difficulty": 1,
@@ -2261,8 +2282,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2302,8 +2323,15 @@
                 },
                 {
                     "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -2378,14 +2406,14 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": false
                 },
@@ -2394,6 +2422,13 @@
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 2,
+                    "count": 1,
                     "character": false
                 },
                 {
@@ -2432,14 +2467,14 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -2469,6 +2504,13 @@
                     "objective": "Beat",
                     "difficulty": 3,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 4,
+                    "count": 7,
                     "character": false
                 },
                 {
@@ -2528,7 +2570,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -2565,6 +2607,13 @@
                     "objective": "Beat",
                     "difficulty": 2,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 1,
                     "character": false
                 },
                 {
@@ -2624,15 +2673,8 @@
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "SS",
-                    "difficulty": 5,
-                    "count": 1,
                     "character": false
                 },
                 {
@@ -2660,7 +2702,7 @@
                     "type": "lowattack",
                     "objective": "SS",
                     "difficulty": 1,
-                    "count": 19,
+                    "count": 15,
                     "character": false
                 }
             ]
@@ -2678,8 +2720,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2767,28 +2809,28 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -2952,8 +2994,8 @@
             "sfinesse": true,
             "dcomplete": true,
             "genocide": false,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3015,7 +3057,7 @@
                 {
                     "type": "lowattack",
                     "objective": "SS",
-                    "difficulty": 4,
+                    "difficulty": 8,
                     "count": 5,
                     "character": false
                 }
@@ -3035,13 +3077,13 @@
             "dcomplete": false,
             "genocide": true,
             "unload": false,
-            "oob": true,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -3109,8 +3151,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3144,7 +3186,7 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -3160,6 +3202,20 @@
                     "objective": "Beat",
                     "difficulty": 2,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 2,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 5,
+                    "count": 3,
                     "character": false
                 },
                 {
@@ -3184,8 +3240,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3225,9 +3281,30 @@
                 },
                 {
                     "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 5,
+                    "count": 2,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 5,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 5,
+                    "count": 6,
                     "character": false
                 },
                 {
@@ -3266,14 +3343,14 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -3315,22 +3392,8 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
                     "difficulty": 2,
-                    "count": 4,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
-                    "difficulty": 4,
-                    "count": 5,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -3355,14 +3418,14 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -3399,6 +3462,13 @@
                     "objective": "SS",
                     "difficulty": 2,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 6,
                     "character": false
                 },
                 {
@@ -3444,8 +3514,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3458,15 +3528,8 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 2,
-                    "character": true
-                },
-                {
-                    "type": "apples",
-                    "objective": "Beat",
                     "difficulty": 5,
-                    "count": 1,
+                    "count": 2,
                     "character": true
                 },
                 {
@@ -3562,7 +3625,7 @@
             "dcomplete": false,
             "genocide": false,
             "unload": false,
-            "oob": true,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3575,7 +3638,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -3610,14 +3673,14 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 1,
                     "character": false
                 },
@@ -3643,28 +3706,28 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 3,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 4,
+                    "difficulty": 5,
                     "count": 2,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 3,
                     "character": true
                 },
@@ -3692,7 +3755,7 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -3721,14 +3784,14 @@
                     "type": "lowattack",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": 8,
+                    "count": 7,
                     "character": false
                 },
                 {
                     "type": "lowattack",
                     "objective": "SS",
                     "difficulty": 1,
-                    "count": 16,
+                    "count": 14,
                     "character": false
                 }
             ]
@@ -3746,14 +3809,14 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 4,
+                    "difficulty": 5,
                     "count": 1,
                     "character": true
                 },
@@ -3788,7 +3851,7 @@
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -3797,6 +3860,13 @@
                     "objective": "Beat",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 2,
                     "character": false
                 },
                 {
@@ -3810,7 +3880,7 @@
                     "type": "lowattack",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": 16,
+                    "count": 15,
                     "character": false
                 }
             ]
@@ -3828,21 +3898,21 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 2,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 2,
                     "character": true
                 },
@@ -3917,14 +3987,14 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 5,
+                    "difficulty": 8,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -3945,7 +4015,7 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -3978,14 +4048,14 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -4039,6 +4109,13 @@
                     "character": false
                 },
                 {
+                    "type": "lowdirection",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 1,
+                    "character": false
+                },
+                {
                     "type": "lowattack",
                     "objective": "Beat",
                     "difficulty": 1,
@@ -4067,8 +4144,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4102,15 +4179,8 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
                     "difficulty": 2,
-                    "count": 3,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -4143,13 +4213,13 @@
             "dcomplete": true,
             "genocide": false,
             "unload": false,
-            "oob": true,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -4170,7 +4240,7 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": false
                 },
@@ -4198,6 +4268,13 @@
                 {
                     "type": "lowjump",
                     "objective": "SS",
+                    "difficulty": 1,
+                    "count": 3,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
                     "difficulty": 1,
                     "count": 3,
                     "character": false
@@ -4224,21 +4301,21 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 1,
                     "character": true
                 },
@@ -4252,15 +4329,22 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
                 {
-                    "type": "lowdash",
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 1,
+                    "count": 4,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
                     "objective": "SS",
-                    "difficulty": 2,
-                    "count": 1,
+                    "difficulty": 1,
+                    "count": 4,
                     "character": false
                 }
             ]
@@ -4299,7 +4383,7 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 0,
                     "character": false
                 },
@@ -4313,7 +4397,7 @@
                 {
                     "type": "lowjump",
                     "objective": "SS",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": false
                 },
@@ -4344,16 +4428,16 @@
                 "SS": false
             },
             "sfinesse": true,
-            "dcomplete": false,
+            "dcomplete": true,
             "genocide": false,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 8,
                     "count": 1,
                     "character": true
                 },
@@ -4374,7 +4458,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 0,
                     "character": false
                 },
@@ -4383,6 +4467,13 @@
                     "objective": "Beat",
                     "difficulty": 1,
                     "count": 7,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 1,
+                    "count": 2,
                     "character": false
                 }
             ]
@@ -4399,6 +4490,177 @@
             },
             "sfinesse": false,
             "dcomplete": false,
+            "genocide": true,
+            "unload": false,
+            "oob": false,
+            "charselect": true,
+            "gimmicks": [
+                {
+                    "type": "apples",
+                    "objective": "Beat",
+                    "difficulty": 4,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "apples",
+                    "objective": "SS",
+                    "difficulty": 2,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "Beat",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 2,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 2,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "SS",
+                    "difficulty": 5,
+                    "count": 15,
+                    "character": false
+                }
+            ]
+        },
+        "ferrofluid": {
+            "level": "Ferrofluid",
+            "hub": "Laboratory",
+            "type": "Open",
+            "id": "ferrofluid",
+            "key": "Wood",
+            "nosuper": {
+                "Beat": false,
+                "SS": false
+            },
+            "sfinesse": false,
+            "dcomplete": false,
+            "genocide": false,
+            "unload": false,
+            "oob": false,
+            "charselect": true,
+            "gimmicks": [
+                {
+                    "type": "apples",
+                    "objective": "Beat",
+                    "difficulty": 4,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "apples",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 1,
+                    "character": true
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "Beat",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
+                }
+            ]
+        },
+        "titan": {
+            "level": "Titan",
+            "hub": "Laboratory",
+            "type": "Open",
+            "id": "titan",
+            "key": "Wood",
+            "nosuper": {
+                "Beat": false,
+                "SS": false
+            },
+            "sfinesse": false,
+            "dcomplete": true,
             "genocide": true,
             "unload": false,
             "oob": false,
@@ -4435,193 +4697,8 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 5,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "SS",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "SS",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "SS",
-                    "difficulty": 3,
-                    "count": 15,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "SS",
                     "difficulty": 4,
-                    "count": 16,
-                    "character": false
-                },
-                {
-                    "type": "lowattack",
-                    "objective": "SS",
-                    "difficulty": 5,
-                    "count": 17,
-                    "character": false
-                }
-            ]
-        },
-        "ferrofluid": {
-            "level": "Ferrofluid",
-            "hub": "Laboratory",
-            "type": "Open",
-            "id": "ferrofluid",
-            "key": "Wood",
-            "nosuper": {
-                "Beat": false,
-                "SS": false
-            },
-            "sfinesse": false,
-            "dcomplete": false,
-            "genocide": false,
-            "unload": true,
-            "oob": true,
-            "charselect": true,
-            "gimmicks": [
-                {
-                    "type": "apples",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 1,
-                    "character": true
-                },
-                {
-                    "type": "apples",
-                    "objective": "SS",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": true
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 8,
                     "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 8,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "SS",
-                    "difficulty": 1,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "SS",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                }
-            ]
-        },
-        "titan": {
-            "level": "Titan",
-            "hub": "Laboratory",
-            "type": "Open",
-            "id": "titan",
-            "key": "Wood",
-            "nosuper": {
-                "Beat": false,
-                "SS": false
-            },
-            "sfinesse": false,
-            "dcomplete": true,
-            "genocide": true,
-            "unload": true,
-            "oob": true,
-            "charselect": true,
-            "gimmicks": [
-                {
-                    "type": "apples",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 1,
-                    "character": true
-                },
-                {
-                    "type": "apples",
-                    "objective": "SS",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": true
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 8,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 8,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 5,
-                    "count": 1,
                     "character": false
                 },
                 {
@@ -4641,7 +4718,7 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 5,
                     "count": 0,
                     "character": false
                 },
@@ -4681,14 +4758,14 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -4784,63 +4861,63 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 5,
+                    "difficulty": 8,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
-                    "difficulty": 8,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "SS",
-                    "difficulty": 8,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "SS",
-                    "difficulty": 1,
-                    "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
-                    "difficulty": 2,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
                     "difficulty": 3,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "Beat",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 8,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 4,
+                    "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 5,
                     "count": 1,
                     "character": false
                 },
@@ -4920,9 +4997,16 @@
                     "character": false
                 },
                 {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 1,
+                    "character": false
+                },
+                {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 0,
                     "character": false
                 },
@@ -4936,7 +5020,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 1,
+                    "difficulty": 2,
                     "count": 18,
                     "character": false
                 }
@@ -4962,7 +5046,7 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -4998,7 +5082,7 @@
                     "type": "lowjump",
                     "objective": "SS",
                     "difficulty": 1,
-                    "count": 2,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -5105,7 +5189,7 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
+            "unload": false,
             "oob": false,
             "charselect": true,
             "gimmicks": [
@@ -5119,7 +5203,7 @@
                 {
                     "type": "lowdash",
                     "objective": "SS",
-                    "difficulty": 6,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -5225,6 +5309,13 @@
                     "difficulty": 1,
                     "count": 0,
                     "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "SS",
+                    "difficulty": 1,
+                    "count": 0,
+                    "character": false
                 }
             ]
         },
@@ -5248,7 +5339,7 @@
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": true
                 },
@@ -5276,14 +5367,14 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 1,
                     "character": false
                 },
@@ -5299,6 +5390,13 @@
                     "objective": "Beat",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 9,
                     "character": false
                 },
                 {
@@ -5330,21 +5428,21 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 5,
+                    "difficulty": 8,
                     "count": 1,
                     "character": true
                 },
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 1,
                     "character": true
                 },
@@ -5365,15 +5463,8 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "Beat",
                     "difficulty": 2,
-                    "count": 2,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -5393,7 +5484,7 @@
                 {
                     "type": "lowattack",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 8,
                     "count": 6,
                     "character": false
                 },
@@ -5420,7 +5511,7 @@
             "dcomplete": true,
             "genocide": true,
             "unload": false,
-            "oob": true,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5433,7 +5524,7 @@
                 {
                     "type": "apples",
                     "objective": "SS",
-                    "difficulty": 4,
+                    "difficulty": 5,
                     "count": 1,
                     "character": true
                 },
@@ -5449,6 +5540,13 @@
                     "objective": "SS",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 1,
+                    "count": 5,
                     "character": false
                 }
             ]
@@ -5466,8 +5564,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5534,8 +5632,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5583,15 +5681,8 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 1,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdirection",
-                    "objective": "Beat",
                     "difficulty": 2,
-                    "count": 3,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -5606,6 +5697,13 @@
                     "objective": "Beat",
                     "difficulty": 1,
                     "count": 9,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 12,
                     "character": false
                 }
             ]
@@ -5623,8 +5721,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5644,15 +5742,8 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 3,
-                    "count": 0,
-                    "character": false
-                },
-                {
-                    "type": "lowdash",
-                    "objective": "Beat",
                     "difficulty": 4,
-                    "count": 1,
+                    "count": 0,
                     "character": false
                 },
                 {
@@ -5712,7 +5803,7 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
+            "unload": false,
             "oob": false,
             "charselect": true,
             "gimmicks": [
@@ -5759,8 +5850,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5782,13 +5873,6 @@
                     "objective": "Beat",
                     "difficulty": 8,
                     "count": 1,
-                    "character": false
-                },
-                {
-                    "type": "lowjump",
-                    "objective": "SS",
-                    "difficulty": 1,
-                    "count": 3,
                     "character": false
                 },
                 {
@@ -5874,7 +5958,7 @@
                 {
                     "type": "lowdash",
                     "objective": "Beat",
-                    "difficulty": 6,
+                    "difficulty": 8,
                     "count": 0,
                     "character": false
                 },
@@ -5900,10 +5984,38 @@
                     "character": false
                 },
                 {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 2,
+                    "count": 7,
+                    "character": false
+                },
+                {
+                    "type": "lowjump",
+                    "objective": "SS",
+                    "difficulty": 3,
+                    "count": 8,
+                    "character": false
+                },
+                {
                     "type": "lowdirection",
                     "objective": "Beat",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 2,
+                    "count": 1,
+                    "character": false
+                },
+                {
+                    "type": "lowdirection",
+                    "objective": "Beat",
+                    "difficulty": 3,
+                    "count": 2,
                     "character": false
                 }
             ]
@@ -5921,8 +6033,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5950,7 +6062,7 @@
                     "type": "lowdirection",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": 9,
+                    "count": 6,
                     "character": false
                 },
                 {
@@ -5982,8 +6094,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -6001,9 +6113,16 @@
                     "character": false
                 },
                 {
+                    "type": "lowdash",
+                    "objective": "SS",
+                    "difficulty": 2,
+                    "count": 2,
+                    "character": false
+                },
+                {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 2,
+                    "difficulty": 3,
                     "count": 0,
                     "character": false
                 },
@@ -6037,7 +6156,7 @@
             "dcomplete": true,
             "genocide": true,
             "unload": false,
-            "oob": true,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -6079,7 +6198,7 @@
                     "type": "lowattack",
                     "objective": "SS",
                     "difficulty": 1,
-                    "count": 15,
+                    "count": 14,
                     "character": false
                 }
             ]
@@ -6097,8 +6216,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": true,
-            "oob": true,
+            "unload": false,
+            "oob": false,
             "charselect": true,
             "gimmicks": [
                 {
@@ -6106,6 +6225,13 @@
                     "objective": "Beat",
                     "difficulty": 1,
                     "count": 0,
+                    "character": false
+                },
+                {
+                    "type": "lowattack",
+                    "objective": "Beat",
+                    "difficulty": 1,
+                    "count": 10,
                     "character": false
                 }
             ]

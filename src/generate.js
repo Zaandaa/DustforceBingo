@@ -266,9 +266,9 @@ function main(levels, records, callback)
 	{
 		var level = text.split('\t').convertToObject('level', 'hub', 'type')
 		
-		levelsOutput[level.level] = level;
-		
 		level.id = leaderboards["levels"][level.level];
+		levelsOutput[level.id] = level;
+		
 		level.key = keyfromtype[level.type];
 		
 		var timerecord  = records["Any"]["Times"] [level.id]
@@ -282,15 +282,15 @@ function main(levels, records, callback)
 		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
 		level.dcomplete  = timerecord.score_completion != 1,
 		level.genocide   = forceGenocide.includes(level.level),
-		level.unload     = unloads[level.id] !== undefined,
-		level.oob        = oobs[level.id] !== undefined,
+		level.unload     = unloads[level.level] !== undefined,
+		level.oob        = oobs[level.level] !== undefined,
 		level.charselect = level.type != "Tutorial",
 		level.gimmicks   = []
 
-		if (level.level in extraData.add) {
-			for (var g in extraData.add[level.level].gimmicks) {
-				if (gimmicks.includes(extraData.add[level.level].gimmicks[g].type))
-					level.gimmicks.push(extraData.add[level.level].gimmicks[g]);
+		if (level.id in extraData.add) {
+			for (var g in extraData.add[level.id].gimmicks) {
+				if (gimmicks.includes(extraData.add[level.id].gimmicks[g].type))
+					level.gimmicks.push(extraData.add[level.id].gimmicks[g]);
 			}
 		}
 

@@ -32,7 +32,6 @@ extern.getRandoJson = function(data, rando_link, cb_true, cb_false) {
 	} catch (e) {
 		cb_false();
 	}
-	return {};
 }
 
 module.exports = extern;
