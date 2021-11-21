@@ -5,6 +5,13 @@ extern.levelTypes = ["Open", "Wood", "Silver", "Gold"];
 extern.levelObjectives = ["Beat", "SS", "S finesse", "S complete", "B complete", "D complete", "Genocide", "Unload", "OOB"];
 extern.totalObjectives = ["Beat", "SS", "keys", "apples"];
 
+extern.ltFromKey = {
+	"Wood": "Open",
+	"Silver": "Wood",
+	"Gold": "Silver",
+	"Red": "Gold"
+};
+
 extern.doors = {
 	"Tutorial" : {
 		"Tutorial": 0

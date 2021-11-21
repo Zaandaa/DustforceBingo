@@ -3,7 +3,8 @@
 		"rando": [true],
 		"beat": [false],
 		"ss": [false],
-		"reason": "Randomizer requires at least beat or SS levels."
+		"keys": [false],
+		"reason": "Randomizer requires one of beat, SS or keys."
 	},
 	{
 		"difficults": [true],

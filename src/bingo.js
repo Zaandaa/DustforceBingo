@@ -80,6 +80,7 @@ var Bingo = function(session, ruleset) {
 	} else {
 		self.ruleset.levelset = constants.defaultLevelset;
 	}
+	self.ruleset.keydist = utils.getKeydist(self.ruleset.levelset);
 
 	// console.log("levelset");
 	// console.log(self.ruleset.levelset);

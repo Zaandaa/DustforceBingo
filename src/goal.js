@@ -371,8 +371,12 @@ function makeTotalGoalDatas(ruleset) {
 							var currentTotal = i;
 							if (h !== undefined)
 								currentTotal *= levels.hubs[h].levels / 64;
-							if (l !== undefined)
-								currentTotal *= 0.25;
+							if (l !== undefined) {
+								if (h !== undefined)
+									currentTotal *= ruleset.keydist[h][l] / 16;
+								else
+									currentTotal *= 0.25;
+							}
 							currentTotal = Math.ceil(currentTotal);
 
 							// goalData
@@ -407,8 +411,12 @@ function makeTotalGoalDatas(ruleset) {
 							var currentTotal = i;
 							if (h !== undefined)
 								currentTotal *= levels.hubs[h].levels / 64;
-							if (l !== undefined)
-								currentTotal *= 0.25;
+							if (l !== undefined) {
+								if (h !== undefined)
+									currentTotal *= ruleset.keydist[h][l] / 16;
+								else
+									currentTotal *= 0.25;
+							}
 							currentTotal = Math.ceil(currentTotal);
 
 							// goalData
@@ -436,7 +444,7 @@ function makeTotalGoalDatas(ruleset) {
 
 						var currentTotal = i;
 						if (h !== undefined)
-							currentTotal *= 0.25;
+							currentTotal *= ruleset.keydist[h][constants.ltFromKey[k]] / 16;
 						currentTotal = Math.ceil(currentTotal);
 
 						// goalData

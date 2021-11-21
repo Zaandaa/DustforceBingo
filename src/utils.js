@@ -8,10 +8,6 @@ var extern = {};
 var alternateRng = false;
 
 
-extern.makeRandoLevelset = function(rando_link) {
-	return {};
-}
-
 extern.getHub = function(d) {
 	switch (d) {
 		case 1: case 2: case 3: return "Mansion";
@@ -90,6 +86,42 @@ extern.getLevelName = function(id) {
 	}
 	return n;
 }
+
+extern.getKeydist = function(levelset) {
+	var kd = {
+		"Forest": {
+			"Open": 0,
+			"Wood": 0,
+			"Silver": 0,
+			"Gold": 0,
+		},
+		"Mansion": {
+			"Open": 0,
+			"Wood": 0,
+			"Silver": 0,
+			"Gold": 0,
+		},
+		"City": {
+			"Open": 0,
+			"Wood": 0,
+			"Silver": 0,
+			"Gold": 0,
+		},
+		"Laboratory": {
+			"Open": 0,
+			"Wood": 0,
+			"Silver": 0,
+			"Gold": 0,
+		}
+	};
+	for (var l in levelset) {
+		if (extern.getHub(levelset[l]) in kd)
+			kd[extern.getHub(levelset[l])][extern.getLevelType(levelset[l])]++;
+	}
+	console.log(kd);
+	return kd;
+}
+
 
 extern.getLevelDifficulty = function(lt, objective, newgame) {
 	var d;
