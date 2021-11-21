@@ -282,8 +282,8 @@ function main(levels, records, callback)
 		level.sfinesse   = timerecord.score_finesse != 5 || level.type == "Gold" || level.type == "Difficult",
 		level.dcomplete  = timerecord.score_completion != 1,
 		level.genocide   = forceGenocide.includes(level.level),
-		level.unload     = unloads[level.level] !== undefined,
-		level.oob        = oobs[level.level] !== undefined,
+		level.unload     = unloads[level.id] !== undefined,
+		level.oob        = oobs[level.id] !== undefined,
 		level.charselect = level.type != "Tutorial",
 		level.gimmicks   = []
 

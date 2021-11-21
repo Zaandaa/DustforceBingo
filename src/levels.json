@@ -78,7 +78,7 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": false,
+            "unload": true,
             "oob": false,
             "charselect": false,
             "gimmicks": [
@@ -275,8 +275,8 @@
             "sfinesse": false,
             "dcomplete": true,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -392,8 +392,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -556,8 +556,8 @@
             "sfinesse": false,
             "dcomplete": true,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -652,8 +652,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -926,8 +926,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1016,7 +1016,7 @@
             "dcomplete": false,
             "genocide": true,
             "unload": false,
-            "oob": false,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1111,8 +1111,8 @@
             "sfinesse": false,
             "dcomplete": true,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1200,8 +1200,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1310,8 +1310,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1481,8 +1481,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1556,8 +1556,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1645,7 +1645,7 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
+            "unload": true,
             "oob": false,
             "charselect": true,
             "gimmicks": [
@@ -1809,8 +1809,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -1987,8 +1987,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2076,8 +2076,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2186,8 +2186,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2282,8 +2282,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2467,8 +2467,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2720,8 +2720,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2809,8 +2809,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -2994,8 +2994,8 @@
             "sfinesse": true,
             "dcomplete": true,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3077,13 +3077,13 @@
             "dcomplete": false,
             "genocide": true,
             "unload": false,
-            "oob": false,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
                     "type": "apples",
                     "objective": "Beat",
-                    "difficulty": 4,
+                    "difficulty": 5,
                     "count": 1,
                     "character": true
                 },
@@ -3151,8 +3151,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3240,8 +3240,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3343,8 +3343,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3418,8 +3418,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3514,8 +3514,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3624,8 +3624,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3706,8 +3706,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3809,8 +3809,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -3898,8 +3898,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4048,8 +4048,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4144,8 +4144,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4213,7 +4213,7 @@
             "dcomplete": true,
             "genocide": false,
             "unload": false,
-            "oob": false,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4301,8 +4301,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4430,8 +4430,8 @@
             "sfinesse": true,
             "dcomplete": true,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4580,8 +4580,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4662,8 +4662,8 @@
             "sfinesse": false,
             "dcomplete": true,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -4758,8 +4758,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": false,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5114,7 +5114,7 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
+            "unload": true,
             "oob": false,
             "charselect": true,
             "gimmicks": [
@@ -5189,7 +5189,7 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
+            "unload": true,
             "oob": false,
             "charselect": true,
             "gimmicks": [
@@ -5428,8 +5428,8 @@
             "sfinesse": false,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5511,7 +5511,7 @@
             "dcomplete": true,
             "genocide": true,
             "unload": false,
-            "oob": false,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5564,8 +5564,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5632,8 +5632,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5721,8 +5721,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -5803,7 +5803,7 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
+            "unload": true,
             "oob": false,
             "charselect": true,
             "gimmicks": [
@@ -5850,8 +5850,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -6033,8 +6033,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -6094,8 +6094,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -6156,7 +6156,7 @@
             "dcomplete": true,
             "genocide": true,
             "unload": false,
-            "oob": false,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
@@ -6216,8 +6216,8 @@
             "sfinesse": true,
             "dcomplete": false,
             "genocide": true,
-            "unload": false,
-            "oob": false,
+            "unload": true,
+            "oob": true,
             "charselect": true,
             "gimmicks": [
                 {
