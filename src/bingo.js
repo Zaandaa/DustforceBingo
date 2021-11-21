@@ -12,7 +12,6 @@ var constants = require('./constants');
 var options = require('./options');
 
 var Bingo = function(session, ruleset) {
-	// // console.log("RULES", ruleset);
 	var self = this;
 	self.session = session;
 	self.ruleset = ruleset;
@@ -41,10 +40,10 @@ var Bingo = function(session, ruleset) {
 			self.ruleset[r] = false;
 	}
 	switch (self.ruleset.difficulty_raw) {
-		case "Easy": self.ruleset.difficulty = 4; break;
-		case "Normal": self.ruleset.difficulty = 3; break;
-		case "Hard": self.ruleset.difficulty = 2; break;
-		case "Very Hard": self.ruleset.difficulty = 1; break;
+		case "Easy":      self.ruleset.difficulty = 5; self.ruleset.maxEasy = 8; break;
+		case "Normal":    self.ruleset.difficulty = 3; self.ruleset.maxEasy = 6; break;
+		case "Hard":      self.ruleset.difficulty = 2; self.ruleset.maxEasy = 5; break;
+		case "Very Hard": self.ruleset.difficulty = 1; self.ruleset.maxEasy = 3; break;
 	}
 	switch (self.ruleset.length_raw) {
 		case "Fast": self.ruleset.length = 4; break;
@@ -52,7 +51,39 @@ var Bingo = function(session, ruleset) {
 		case "Long": self.ruleset.length = 2; break;
 		case "Full Game": self.ruleset.length = 1; break;
 	}
-	self.ruleset.maxEasy = self.ruleset.difficulty + 4;
+
+	if (self.ruleset.rando) {
+		self.ruleset.rando_type = self.ruleset.rando_json.args.type;
+
+		// force disable some goal types
+		if (self.ruleset.rando_type == "atlas") {
+			self.ruleset.apples = false;
+			self.ruleset.sfinesse = false;
+			self.ruleset.scomplete = false;
+			self.ruleset.bcomplete = false;
+			self.ruleset.dcomplete = false;
+			self.ruleset.nosuper = false;
+			// self.ruleset.genocide = false;
+			self.ruleset.unload = false;
+			self.ruleset.lowdash = false;
+			self.ruleset.lowjump = false;
+			self.ruleset.lowattack = false;
+			self.ruleset.lowdirection = false;
+		}
+		self.ruleset.tutorials = false;
+		self.ruleset.difficults = false;
+
+		self.ruleset.levelset = {};
+		for (var i = 0; i < self.ruleset.rando_json.levels.length; i++) {
+			self.ruleset.levelset[self.ruleset.rando_json.levels[i]] = utils.resetDoorHub(i, self.ruleset.rando_json.doors[i]);
+		}
+	} else {
+		self.ruleset.levelset = constants.defaultLevelset;
+	}
+
+	// console.log("levelset");
+	// console.log(self.ruleset.levelset);
+
 
 	// force certain rules in case it got past front end
 	if (self.ruleset.gametype == "64") {
@@ -72,7 +103,6 @@ var Bingo = function(session, ruleset) {
 			self.ruleset.bingo_count = self.ruleset.hub == "All" ? 33 : 9;
 		if (self.ruleset.win_type == "goal" || self.ruleset.win_type == "totalarea")
 			self.ruleset.bingo_count_type = "goal";
-
 
 	} else if (self.ruleset.antibingo) {
 		self.ruleset.lockout = false;
@@ -921,16 +951,16 @@ var Bingo = function(session, ruleset) {
 			return false;
 
 		// in levels
-		if (!levels.levels[replay.levelname])
+		if (!self.ruleset.levelset[replay.level])
 			return false;
-		if (levels.levels[replay.levelname].hub == "Tutorial" && !self.ruleset.tutorials)
-			return false;
-		if (levels.levels[replay.levelname].hub == "Difficult" && !self.ruleset.difficults)
-			return false;
+		// if (levels.levels[replay.level].hub == "Tutorial" && !self.ruleset.tutorials)
+			// return false;
+		// if (levels.levels[replay.level].hub == "Difficult" && !self.ruleset.difficults)
+			// return false;
 
 		self.lastReplay = Date.now();
-		self.teams[self.players[replay.user].team].addProgress(replay);
-		self.players[replay.user].addProgress(replay);
+		self.teams[self.players[replay.user].team].addProgress(replay, self.ruleset.levelset[replay.level]);
+		self.players[replay.user].addProgress(replay, self.ruleset.levelset[replay.level]);
 		self.addLog({
 			type: "replay",
 			replay_id: replay.replay_id,
@@ -947,7 +977,7 @@ var Bingo = function(session, ruleset) {
 		for (var i = 0; i < self.goals.length; i++) {
 			if (self.ruleset.lockout && self.getGoalTeam(i) || self.teams[self.players[replay.user].team].goalsAchieved.includes(i)) {
 				continue;
-			} else if (self.goals[i].compareReplay(replay, self.teams[self.players[replay.user].team], self.players)) {
+			} else if (self.goals[i].compareReplay(replay, self.teams[self.players[replay.user].team], self.players, self.ruleset.levelset)) {
 				self.goals[i].addAchiever(replay.user);
 				self.teams[self.players[replay.user].team].achieveGoal(i);
 				self.players[replay.user].achieveGoal(i);
@@ -1013,7 +1043,7 @@ var Bingo = function(session, ruleset) {
 			for (var i = 0; i < self.goals.length; i++) {
 				boardData.goals[i] = self.goals[i].getBoardData();
 				if (self.goals[i].goalData.type == "total" && player in self.players) {
-					boardData.goals[i].progress = Math.min(self.teams[self.players[player].team].countObjective(self.goals[i].goalData, self.players), self.goals[i].goalData.total);
+					boardData.goals[i].progress = Math.min(self.teams[self.players[player].team].countObjective(self.ruleset.levelset, self.goals[i].goalData, self.players), self.goals[i].goalData.total);
 				}
 			}
 

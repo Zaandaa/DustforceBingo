@@ -1,7 +1,7 @@
 {
 	"edit": [
 		{
-			"level": "Combat Tutorial",
+			"level": "newtutorial2",
 			"data": {
 				"nosuper": {
 					"Beat": false,
@@ -10,13 +10,13 @@
 			}
 		},
 		{
-			"level": "Tunnels",
+			"level": "tunnels",
 			"data": {
 				"dcomplete": true
 			}
 		},
 		{
-			"level": "Overgrown Temple",
+			"level": "suntemple",
 			"data": {
 				"gimmicks": [
 					{
@@ -29,7 +29,7 @@
 			}
 		},
 		{
-			"level": "Grass Cave",
+			"level": "grasscave",
 			"data": {
 				"nosuper": {
 					"Beat": false,
@@ -38,7 +38,7 @@
 			}
 		},
 		{
-			"level": "Ancient Garden",
+			"level": "garden",
 			"data": {
 				"nosuper": {
 					"Beat": false,
@@ -47,7 +47,7 @@
 			}
 		},
 		{
-			"level": "Ghost Parapets",
+			"level": "parapets",
 			"data": {
 				"gimmicks": [
 					{
@@ -66,7 +66,7 @@
 			}
 		},
 		{
-			"level": "Vats",
+			"level": "vat",
 			"data": {
 				"gimmicks": [
 					{
@@ -79,7 +79,7 @@
 			}
 		},
 		{
-			"level": "Tera Difficult",
+			"level": "teradifficult",
 			"data": {
 				"nosuper": {
 					"Beat": false,
@@ -89,18 +89,29 @@
 		}
 	],
 	"add": {
-		"Overgrown Temple": {
+		"suntemple": {
 			"gimmicks": [
 				{
 					"type": "apples",
 					"objective": "SA",
-					"difficulty": 1,
+					"difficulty": 2,
 					"count": 1,
 					"character": true
 				}
 			]
 		},
-		"Ramparts": {
+		"mezzanine": {
+			"gimmicks": [
+				{
+					"type": "apples",
+					"objective": "SA",
+					"difficulty": 2,
+					"count": 1,
+					"character": true
+				}
+			]
+		},
+		"ramparts": {
 			"gimmicks": [
 				{
 					"type": "apples",

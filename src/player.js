@@ -69,32 +69,33 @@ var Player = function(id, name) {
 			self.goalsAchieved.push(id);
 	};
 
-	self.addProgress = function(replay) {
+	self.addProgress = function(replay, door) {
 		if (replay.validated == -9)
 			return;
 
 		// allProgress and keyProgress
-		if (replay.levelname in self.allProgress) {
+		if (replay.level in self.allProgress) {
 			// score + keys
-			if (self.allProgress[replay.levelname].completion < replay.score_completion) {
-				if (levels.hubs[levels.levels[replay.levelname].hub].keys)
-					self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_completion - self.allProgress[replay.levelname].completion;
-				self.allProgress[replay.levelname].completion = replay.score_completion;
+			if (self.allProgress[replay.level].completion < replay.score_completion) {
+				if (levels.hubs[utils.getHub(door)].keys)
+					self.keyProgress[utils.getHub(door)][utils.getKey(door)] += replay.score_completion - self.allProgress[replay.level].completion;
+					self.keyProgress[utils.getHub(door)][utils.getKey(door)] += replay.score_completion - self.allProgress[replay.level].completion;
+				self.allProgress[replay.level].completion = replay.score_completion;
 			}
-			if (self.allProgress[replay.levelname].finesse < replay.score_finesse) {
-				if (levels.hubs[levels.levels[replay.levelname].hub].keys)
-					self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_finesse - self.allProgress[replay.levelname].finesse;
-				self.allProgress[replay.levelname].finesse = replay.score_finesse;
+			if (self.allProgress[replay.level].finesse < replay.score_finesse) {
+				if (levels.hubs[utils.getHub(door)].keys)
+					self.keyProgress[utils.getHub(door)][utils.getKey(door)] += replay.score_finesse - self.allProgress[replay.level].finesse;
+				self.allProgress[replay.level].finesse = replay.score_finesse;
 			}
 
 		} else {
-			self.allProgress[replay.levelname] = {
+			self.allProgress[replay.level] = {
 				completion: replay.score_completion,
 				finesse: replay.score_finesse,
 			}
 
-			if (levels.hubs[levels.levels[replay.levelname].hub].keys)
-				self.keyProgress[levels.levels[replay.levelname].hub][levels.levels[replay.levelname].key] += replay.score_completion + replay.score_finesse;
+			if (levels.hubs[utils.getHub(door)].keys)
+				self.keyProgress[utils.getHub(door)][utils.getKey(door)] += replay.score_completion + replay.score_finesse;
 
 		}
 

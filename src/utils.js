@@ -8,22 +8,93 @@ var extern = {};
 var alternateRng = false;
 
 
-extern.getHub = function(level) {
-	return levels.levels[level].hub;
+extern.makeRandoLevelset = function(rando_link) {
+	return {};
 }
 
-extern.getKey = function(level) {
-	return levels.levels[level].key;
+extern.getHub = function(d) {
+	switch (d) {
+		case 1: case 2: case 3: return "Mansion";
+		case 5: case 10: case 11: return "Forest";
+		case 13: case 14: case 15: return "City";
+		case 17: case 18: case 19: return "Laboratory";
+		case 21: return "Difficult";
+		case 22: return "Mansion";
+		case 23: return "Forest";
+		case 24: return "City";
+		case 25: return "Laboratory";
+	}
+	return "Tutorial";
 }
 
-extern.getLevelType = function(level) {
-	return levels.levels[level].type;
+extern.getKey = function(d) {
+	switch (d) {
+		case 1: return "Wood";
+		case 2: return "Gold";
+		case 3: return "Red";
+		case 5: return "Wood";
+		case 10: return "Gold";
+		case 11: return "Red";
+		case 13: return "Wood";
+		case 14: return "Gold";
+		case 15: return "Red";
+		case 17: return "Wood";
+		case 18: return "Gold";
+		case 19: return "Red";
+		case 22: case 23: case 24: case 25: return "Silver";
+	}
+	return null;
 }
 
-extern.getLevelDifficulty = function(level, objective, newgame) {
+extern.getLevelType = function(d) {
+	switch (d) {
+		case 1: return "Open";
+		case 2: return "Silver";
+		case 3: return "Gold";
+		case 5: return "Open";
+		case 10: return "Silver";
+		case 11: return "Gold";
+		case 13: return "Open";
+		case 14: return "Silver";
+		case 15: return "Gold";
+		case 17: return "Open";
+		case 18: return "Silver";
+		case 19: return "Gold";
+		case 21: return "Difficult";
+		case 22: case 23: case 24: case 25: return "Wood";
+	}
+	return "Tutorial";
+}
+
+extern.resetDoorHub = function(i, d) {
+	var h = i % 16;
+	var hub;
+	switch (Math.floor(h / 4)) {
+		case 0: hub = "Mansion"; break;
+		case 1: hub = "Forest"; break;
+		case 2: hub = "City"; break;
+		case 3: hub = "Laboratory"; break;
+	}
+	return constants.doors[hub][extern.getLevelType(d)];
+}
+
+extern.getLevelName = function(id) {
+	if (id in levels.levels)
+		return levels.levels[id].level;
+
+	// atlas name
+	var words = id.split('-');
+	var n = words[0];
+	for (var i = 1; i < words.length - 1; i++) {
+		n = n.concat(" ", words[i]);
+	}
+	return n;
+}
+
+extern.getLevelDifficulty = function(lt, objective, newgame) {
 	var d;
 
-	switch (levels.levels[level].type) {
+	switch (lt) {
 		case "Tutorial":
 		case "Open": d = 8; break;
 		case "Wood": d = 7; break;
@@ -33,7 +104,7 @@ extern.getLevelDifficulty = function(level, objective, newgame) {
 	}
 	if (objective != "Beat")
 		d--;
-	if (levels.levels[level].type == "Difficult" && objective == "SS")
+	if (lt == "Difficult" && objective == "SS")
 		d = 2;
 	if (newgame)
 		d--;

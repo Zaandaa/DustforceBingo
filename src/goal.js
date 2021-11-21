@@ -29,12 +29,12 @@ function make64Goals(ruleset) {
 		}
 	}
 
-	for (var l in levels.levels) {
-		if (levels.levels[l].hub == "Tutorial" || levels.levels[l].hub == "Difficult")
+	for (var l in ruleset.levelset) {
+		if (utils.getHub(ruleset.levelset[l]) == "Tutorial" || utils.getHub(ruleset.levelset[l]) == "Difficult")
 			continue;
-		if (ruleset.hub != "All" && levels.levels[l].hub != hub)
+		if (ruleset.hub != "All" && utils.getHub(ruleset.levelset[l]) != hub)
 			continue;
-		
+
 		var goalData = {type: "level", level: l, objective: ruleset.ss ? "SS" : "Beat", levelOnly: true};
 		var g = new Goal(goalData);
 		goals.push(g);
@@ -93,14 +93,14 @@ function makeBingoGoals(ruleset, bingos) {
 	var availableTotalTypes = (ruleset.beat ? 1 : 0) + (ruleset.ss ? 1 : 0) + (ruleset.keys ? 1 : 0) + (ruleset.apples ? 1 : 0);
 
 	for (var i = 0; i < ruleset.size * ruleset.size; i++) {
-		reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas);
+		reweighGoalDatas(ruleset, usedGoalStats, levelGoalDatas, totalGoalDatas);
 
 		var g;
 		r = Math.random();
 		if (levelGoalDatas.length > 0 && (r < chance[ruleset.newgame].level.chance + ruleset.length * chance[ruleset.newgame].level.length_bonus - availableTotalTypes * chance[ruleset.newgame].total.type_bonus || totalGoalDatas.length == 0))
-			g = new Goal(chooseLevelGoalData(levelGoalDatas, usedGoalStats));
+			g = new Goal(chooseLevelGoalData(ruleset, levelGoalDatas, usedGoalStats));
 		else if (totalGoalDatas.length > 0)
-			g = new Goal(chooseTotalGoalData(totalGoalDatas, usedGoalStats));
+			g = new Goal(chooseTotalGoalData(ruleset, totalGoalDatas, usedGoalStats));
 		else
 			break;
 
@@ -167,7 +167,7 @@ function placeGoal(goals, g, size, bingos) {
 	// console.log(bestCell);
 }
 
-function updateUsedGoalStats(usedGoalStats, goalData) {
+function updateUsedGoalStats(ruleset, usedGoalStats, goalData) {
 	usedGoalStats.characters[goalData.character]++;
 	usedGoalStats.hubs[goalData.hub]++;
 
@@ -176,7 +176,7 @@ function updateUsedGoalStats(usedGoalStats, goalData) {
 	else if (goalData.keytype)
 		usedGoalStats.leveltypes[constants.levelTypes[constants.keys.indexOf(goalData.keytype)]]++;
 	else if (goalData.type == "level")
-		usedGoalStats.leveltypes[levels.levels[goalData.level].type]++;
+		usedGoalStats.leveltypes[utils.getLevelType(ruleset.levelset[goalData.level])]++;
 
 	o = goalData.gtype || goalData.objective;
 
@@ -189,7 +189,7 @@ function updateUsedGoalStats(usedGoalStats, goalData) {
 	}
 }
 
-function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
+function reweighGoalDatas(ruleset, usedGoalStats, levelGoalDatas, totalGoalDatas) {
 	usedGoalStats.levelObjectiveWeightTotal = 0;
 	for (var o in usedGoalStats.levelObjectives) {
 		usedGoalStats.levelWeightsInObjective[o] = 0;
@@ -201,7 +201,7 @@ function reweighGoalDatas(usedGoalStats, levelGoalDatas, totalGoalDatas) {
 		usedGoalStats.levelObjectiveWeightTotal += usedGoalStats.levelObjectiveWeights[o];
 
 		for (var gd in filteredDatas) {
-			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + 4 * usedGoalStats.leveltypes[levels.levels[filteredDatas[gd].level].type]);
+			var w = 1 / (1 + 4 * usedGoalStats.hubs[filteredDatas[gd].hub] + 4 * usedGoalStats.characters[filteredDatas[gd].character] + 4 * usedGoalStats.leveltypes[utils.getLevelType(ruleset.levelset[filteredDatas[gd].level])]);
 			if (filteredDatas[gd].character)
 				w *= 0.25;
 
@@ -240,43 +240,41 @@ function makeLevelGoalDatas(ruleset) {
 	var validGoalDatas = [];
 	var totalWeight = 0;
 
-	for (var l in levels.levels) {
-		if (!ruleset.tutorials && levels.levels[l].hub == "Tutorial")
+	for (var l in ruleset.levelset) {
+		if (!ruleset.tutorials && utils.getHub(ruleset.levelset[l]) == "Tutorial")
 			continue;
-		if (!ruleset.difficults && levels.levels[l].hub == "Difficult")
+		if (!ruleset.difficults && utils.getHub(ruleset.levelset[l]) == "Difficult")
 			continue;
 
 		constants.levelObjectives.forEach(function(o) {
 
-			// if (o == "Beat" && !ruleset.beat)
-				// return;
-			// if (o == "SS" && !ruleset.ss)
-				// return;
-			if (o == "S finesse" && (!ruleset.sfinesse || !levels.levels[l].sfinesse))
-				return;
-			if (o == "S complete" && !ruleset.scomplete)
-				return;
-			if (o == "B complete" && !ruleset.bcomplete)
-				return;
-			if (o == "D complete" && (!ruleset.dcomplete || !levels.levels[l].dcomplete))
-				return;
-			if (o == "Genocide" && (!ruleset.genocide || !levels.levels[l].genocide))
-				return;
-			if (o == "Unload" && (!ruleset.unload || !levels.levels[l].unload))
-				return;
-			if (o == "OOB" && (!ruleset.unload || !levels.levels[l].oob))
-				return;
+			// if (l in levels.levels) {
+				if (o == "S finesse" && (!ruleset.sfinesse || (l in levels.levels && !levels.levels[l].sfinesse)))
+					return;
+				if (o == "S complete" && !ruleset.scomplete)
+					return;
+				if (o == "B complete" && !ruleset.bcomplete)
+					return;
+				if (o == "D complete" && (!ruleset.dcomplete || (l in levels.levels && !levels.levels[l].dcomplete)))
+					return;
+				if (o == "Genocide" && (!ruleset.genocide || (l in levels.levels && !levels.levels[l].genocide)))
+					return;
+				if (o == "Unload" && (!ruleset.unload || (l in levels.levels && !levels.levels[l].unload)))
+					return;
+				if (o == "OOB" && (!ruleset.unload || (l in levels.levels && !levels.levels[l].oob)))
+					return;
 
-			if (levels.levels[l].type == "Difficult" && ruleset.newgame == "New Game" && ruleset.length > 1)
-				return; // no difficults in new game unless full game length
-			if (l == "Yotta Difficult" && (o == "SS") && !ruleset.yottass)
-				return;
+				if (l in levels.levels && levels.levels[l].type == "Difficult" && ruleset.newgame == "New Game" && ruleset.length > 1)
+					return; // no difficults in new game unless full game length
+				if (l == "yottadifficult" && (o == "SS") && !ruleset.yottass)
+					return;
+			// }
 
-			var d = utils.getLevelDifficulty(l, o, ruleset.newgame);
+			var d = utils.getLevelDifficulty(utils.getLevelType(ruleset.levelset[l]), o, ruleset.newgame);
 			// manual difficulty
 			if (o == "Unload" || o == "OOB")
 				d = 1;
-			if (o == "D complete" && (l == "Containment" || l == "Alleyway"))
+			if (o == "D complete" && (l == "containment" || l == "alley"))
 				d = 2;
 			if (d < ruleset.difficulty || d > ruleset.maxEasy)
 				return;
@@ -284,39 +282,51 @@ function makeLevelGoalDatas(ruleset) {
 			if (!(o == "Beat" && !ruleset.beat || o == "SS" && !ruleset.ss)) {
 				validGoalDatas.push({type: "level", level: l, objective: o, weight: 1});
 
-				if (ruleset.characters && levels.levels[l].charselect && d - 1 >= ruleset.difficulty && o != "Unload" && o != "OOB") {
-					constants.characters.forEach(function(c) {
-						validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
-					});
+				if (ruleset.characters && o != "Unload" && o != "OOB" && d - 1 >= ruleset.difficulty) {
+					if (l in levels.levels) {
+						if (levels.levels[l].charselect) {
+							constants.characters.forEach(function(c) {
+								validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
+							});
+						}
+					} else {
+						constants.characters.forEach(function(c) {
+							validGoalDatas.push({type: "level", level: l, objective: o, character: c, weight: 1});
+						});
+					}
 				}
 			}
 
-			if (ruleset.nosuper && ((o == "Beat" && (ruleset.beat || !ruleset.ss)) || (o == "SS" && (!ruleset.beat || ruleset.ss))) && levels.levels[l].nosuper[o] && d - 1 >= ruleset.difficulty) {
-				validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, weight: 1});
+			if (l in levels.levels) {
+				if (ruleset.nosuper && ((o == "Beat" && (ruleset.beat || !ruleset.ss)) || (o == "SS" && (!ruleset.beat || ruleset.ss))) && levels.levels[l].nosuper[o] && d - 1 >= ruleset.difficulty) {
+					validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, weight: 1});
 
-				if (ruleset.characters && levels.levels[l].charselect) {
-					constants.characters.forEach(function(c) {
-						validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, character: c, weight: 1});
-					});
+					if (ruleset.characters && levels.levels[l].charselect) {
+						constants.characters.forEach(function(c) {
+							validGoalDatas.push({type: "level", level: l, objective: o, nosuper: true, character: c, weight: 1});
+						});
+					}
 				}
 			}
 		});
 
-		levels.levels[l].gimmicks.forEach(function(g) {
-			if (!ruleset[g.type])
-				return;
-			if ((g.objective == "SS" || g.objective == "SA") && !(ruleset.ss || ruleset.difficulty < 3))
-				return;
-			if (g.difficulty < ruleset.difficulty || g.difficulty > ruleset.maxEasy)
-				return;
-			validGoalDatas.push({type: "level", level: l, objective: g.objective, gtype: g.type, gimmicks: [g], weight: 1});
+		if (l in levels.levels) {
+			levels.levels[l].gimmicks.forEach(function(g) {
+				if (!ruleset[g.type])
+						return;
+				if ((g.objective == "SS" || g.objective == "SA") && !(ruleset.ss || ruleset.difficulty < 3))
+					return;
+				if (g.difficulty < ruleset.difficulty || g.difficulty > ruleset.maxEasy)
+					return;
+				validGoalDatas.push({type: "level", level: l, objective: g.objective, gtype: g.type, gimmicks: [g], weight: 1});
 
-			if (ruleset.characters && g.character && levels.levels[l].charselect && g.difficulty / 2 >= ruleset.difficulty) {
-				constants.characters.forEach(function(c) {
-					validGoalDatas.push({type: "level", level: l, objective: g.objective, character: c, gtype: g.type, gimmicks: [g], weight: 1});
-				});
-			}
-		});
+				if (ruleset.characters && g.character && levels.levels[l].charselect && g.difficulty / 2 >= ruleset.difficulty) {
+					constants.characters.forEach(function(c) {
+						validGoalDatas.push({type: "level", level: l, objective: g.objective, character: c, gtype: g.type, gimmicks: [g], weight: 1});
+					});
+				}
+			});
+		}
 	}
 
 	return validGoalDatas;
@@ -347,7 +357,7 @@ function makeTotalGoalDatas(ruleset) {
 				chars.forEach(function(c) {
 					// hub
 					var hubs = Object.keys(levels.hubs);
-					if (!ruleset.tutorials || c == undefined)
+					if (!(ruleset.tutorials && c == undefined))
 						hubs.splice(hubs.indexOf("Tutorial"), 1);
 					if (!ruleset.difficults || i > levels.hubs["Difficult"].levels || (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2)))
 						hubs.splice(hubs.indexOf("Difficult"), 1);
@@ -383,7 +393,7 @@ function makeTotalGoalDatas(ruleset) {
 				chars.forEach(function(c) {
 					// hub
 					var hubs = Object.keys(levels.hubs);
-					if (!ruleset.tutorials || c == undefined)
+					if (!(ruleset.tutorials && c == undefined))
 						hubs.splice(hubs.indexOf("Tutorial"), 1);
 					if (!ruleset.difficults || i > levels.hubs["Difficult"].levels - (ruleset.yottass ? 0 : 1) || (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2)))
 						hubs.splice(hubs.indexOf("Difficult"), 1);
@@ -485,7 +495,7 @@ function makeTotalGoalDatas(ruleset) {
 	return validGoalDatas;
 }
 
-function chooseLevelGoalData(levelGoalDatas, usedGoalStats) {
+function chooseLevelGoalData(ruleset, levelGoalDatas, usedGoalStats) {
 	var goalData;
 	var r;
 	var count;
@@ -520,11 +530,11 @@ function chooseLevelGoalData(levelGoalDatas, usedGoalStats) {
 		levelGoalDatas.splice(levelGoalDatas.indexOf(sameLevelDatas[gd]), 1);
 	}
 
-	updateUsedGoalStats(usedGoalStats, goalData);
+	updateUsedGoalStats(ruleset, usedGoalStats, goalData);
 	return goalData;
 }
 
-function chooseTotalGoalData(totalGoalDatas, usedGoalStats) {
+function chooseTotalGoalData(ruleset, totalGoalDatas, usedGoalStats) {
 	var goalData;
 	var r;
 	var count;
@@ -558,7 +568,7 @@ function chooseTotalGoalData(totalGoalDatas, usedGoalStats) {
 	// remove goalData
 	totalGoalDatas.splice(totalGoalDatas.indexOf(goalData), 1);
 
-	updateUsedGoalStats(usedGoalStats, goalData);
+	updateUsedGoalStats(ruleset, usedGoalStats, goalData);
 	return goalData;
 }
 
@@ -566,7 +576,7 @@ function makeGoalString(goalData) {
 	var str = "";
 
 	if (goalData.type == "level") {
-		str = (goalData.levelOnly ? "" : (goalData.objective + " ")) + goalData.level;
+		str = (goalData.levelOnly ? "" : (goalData.objective + " ")) + utils.getLevelName(goalData.level);
 
 		if (goalData.character)
 			str += " as " + goalData.character;
@@ -649,7 +659,7 @@ var Goal = function(goalData) {
 		self.safe = true;
 	};
 
-	self.compareReplay = function(replay, team, bingoPlayers) {
+	self.compareReplay = function(replay, team, bingoPlayers, levelset) {
 		// check if replay meets goalData
 		if (replay.validated == -9) {
 			if (!(self.goalData.objective == "Unload" || self.goalData.objective == "OOB"))
@@ -657,7 +667,7 @@ var Goal = function(goalData) {
 		}
 
 		if (self.goalData.type == "level") {
-			if (self.goalData.level == replay.levelname) {
+			if (self.goalData.level == replay.level) {
 				var score = utils.getReplayScore(replay);
 				if (self.goalData.objective.length == 2 && score != self.goalData.objective)
 					return false;
@@ -695,7 +705,7 @@ var Goal = function(goalData) {
 			// total, check against team.countObjective(kwargs)
 
 			// >= beat, ss, apples, keys
-			if (team.countObjective(self.goalData, bingoPlayers) >= self.goalData.total) {
+			if (team.countObjective(levelset, self.goalData, bingoPlayers) >= self.goalData.total) {
 				return true;
 			}
 

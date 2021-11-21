@@ -1,15 +1,28 @@
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var options = require('../src/options');
+var rando = require('./rando');
 
-function verify(fields, data) {
+function verify(fields, data, cb_true, cb_false) {
 	var b = true;
 	fields.forEach(function(field) {
 		if (!(field in data)) {
 			b = false;
 		}
 	});
-	return b;
+
+	if (!b) {
+		cb_false();
+		return;
+	}
+
+	//if rando
+	if (data.gametype == "bingo" && data.rando == "true")
+		rando.getRandoJson(data, data.rando_link, cb_true, cb_false);
+	else if (data.gametype == "64" && data.rando64 == "true")
+		rando.getRandoJson(data, data.rando_link64, cb_true, cb_false);
+	else
+		cb_true(data);
 }
 
 var params = [
@@ -55,7 +68,11 @@ var params = [
 	"shuffle",
 	"captureblank",
 	"captureother",
-	"hub"
+	"hub",
+	"rando",
+	"rando_link",
+	"rando64",
+	"rando_link64"
 ];
 
 function build(io) {
@@ -63,18 +80,20 @@ function build(io) {
 	var router = express.Router();
 
 	router.get('/', function(req, res, next) {
-		if(verify(params, req.query)) {
-			var s = session.newSession(req.query);
-			// console.log(s);
-			if (s.error != "")
-				res.redirect('/bingo?error=' + s.error);
-			else
-				res.redirect('/bingo/session/' + s.id);
-		} else {
-			var err = new Error('Not Found');
-			err.status = 404;
-			next(err);
-		}
+		verify(params, req.query,
+			function(query) { // verified true callback
+				var s = session.newSession(query);
+				// console.log(s);
+				if (s.error != "")
+					res.redirect('/bingo?error=' + s.error);
+				else
+					res.redirect('/bingo/session/' + s.id);
+			},
+			function() { // false callback
+				var err = new Error('Not Found');
+				err.status = 404;
+				next(err);
+			});
 	});
 
 	router.get('/json', function(req, res, next) {

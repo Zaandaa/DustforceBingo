@@ -79,6 +79,9 @@ $(document).on('ready', function() {
 	if (error == "nobingo") {
 		$(".alert-danger .alert-text").html("<strong>Bingo error!</strong> Too few parameters!");
 		$(".alert-danger").alert(200, 2000, 100);
+	} else if (error == "rando") {
+		$(".alert-danger .alert-text").html("<strong>Bingo error!</strong> Randomizer link invalid!");
+		$(".alert-danger").alert(200, 2000, 100);
 	}
 
 	var $size = $('#size'),
@@ -167,8 +170,10 @@ $(document).on('ready', function() {
 		var payload = {}
 		$('input.session').each(function() {
 			payload[$(this).attr('id')] = $(this).is(':checked');
+		});
+		$('input.form-inline').each(function() {
+			payload[$(this).attr('id')] = $(this).val();
 		});	
-		
 		$('.session').each(function() {
 			if(!($(this).attr('id') in payload))
 				payload[$(this).attr('id')] = $(this).val();

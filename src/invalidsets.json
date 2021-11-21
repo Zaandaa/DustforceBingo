@@ -1,5 +1,11 @@
 [
 	{
+		"rando": [true],
+		"beat": [false],
+		"ss": [false],
+		"reason": "Randomizer requires at least beat or SS levels."
+	},
+	{
 		"difficults": [true],
 		"difficulty_raw": ["Normal", "Easy"],
 		"reason": "Difficults require hard difficulty."

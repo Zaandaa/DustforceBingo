@@ -58,7 +58,10 @@ var rules = {
 	shuffle: true,
 	captureblank: true,
 	captureother: true,
-	hub: "Random"
+	hub: "Random",
+	rando: false,
+	rando64: false,
+	rando_json: {}
 };
 
 // simplified session for testing

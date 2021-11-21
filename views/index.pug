@@ -15,16 +15,20 @@ block content
 	div.row
 		div.col-xl-4
 			div
-				p Challenge yourself and race others with Dustforce bingos! Goals are randomly generated from unique options creating many new ways to play. If you're looking for people to race, join the #[a(href='https://discordapp.com/invite/0SkxtG7ddS6n2BCW') Dustforce Discord] and ask in the #races channel.
+				p Challenge yourself and race others with Dustforce bingo! Goals are randomly generated from unique options creating many new ways to play. If you're looking to race, join the #[a(href='https://discordapp.com/invite/0SkxtG7ddS6n2BCW') Dustforce Discord] and ask in the #races channel.
 
 			div
 				h4.impact How to play
 				ul
 					li Goals automatically complete using replays
-					li #[a(href='http://dustmod.com/') Dustmod] is recommended (only required for Unload)
+					li #[a(href='http://dustmod.com/') Dustmod] is recommended (required for Unload and Randomizer)
 					li Access new save file options in the Dustmod menu via Tools > Save > Reset Save
 
 			include how.pug
+
+			div
+				h4.impact Randomizer
+				p Bingo and Lockout Race can be combined with #[a(href='https://dustkid.com/randomizer/') Randomizer] only with the nexusdx template. If using Atlas levels, only these goal options can be used: Beat, SS, Keys, Multi, Characters. If characters are on, impossible bingo seeds can be created.
 
 		div.col-xl-8.noselect
 			div.row(style="position: absolute; top: -50px; width: 100%")
@@ -86,6 +90,14 @@ block content
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Assign bingos to your opponent")
 											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#rando.session(type="checkbox")
+										<img id="check_rando" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Randomizer
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Include a Randomizer link")
+											div(style="position: relative; top: -1px") ?
 
 							div.col-xl-6.second
 								div.form-group.checkbox.margin_zero
@@ -112,6 +124,8 @@ block content
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players may use any mods and plugins")
 											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									input#rando_link.form-inline(placeholder="Download/share link")
 
 						div.form-group.row
 							div.col-12
@@ -163,6 +177,11 @@ block content
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
+										input#ss64.session(type="checkbox")
+										<img id="check_ss64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Require SS
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
 										input#captureblank.session(type="checkbox")
 										<img id="check_captureblank" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p Capture empty
@@ -171,16 +190,19 @@ block content
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#ss64.session(type="checkbox")
-										<img id="check_ss64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-										p SS levels
-								div.form-group.checkbox.margin_zero
-									label(style="min-width: 100px")
 										input#teams64.session(type="checkbox")
 										<img id="check_teams64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p Team colors
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players with the same color are on a team")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
+										input#rando64.session(type="checkbox")
+										<img id="check_rando64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Randomizer
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Include a Randomizer link")
 											div(style="position: relative; top: -1px") ?
 
 							div.col-xl-6.second
@@ -191,14 +213,6 @@ block content
 										p Shuffle levels
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
-										input#captureother.session(type="checkbox")
-										<img id="check_captureother" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-										p Capture enemy
-									div.tt_question
-										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Enemy-owned goals can be captured")
-											div(style="position: relative; top: -1px") ?
-								div.form-group.checkbox.margin_zero
-									label(style="min-width: 100px")
 										input#hidden64.session(type="checkbox")
 										<img id="check_hidden64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 										p Hidden goals
@@ -207,12 +221,22 @@ block content
 											div(style="position: relative; top: -1px") ?
 								div.form-group.checkbox.margin_zero
 									label(style="min-width: 100px")
+										input#captureother.session(type="checkbox")
+										<img id="check_captureother" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
+										p Capture enemy
+									div.tt_question
+										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Enemy-owned goals can be captured")
+											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									label(style="min-width: 100px")
 										input#plugins64.session(type="checkbox")
 										<img id="check_plugins64" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
-										p Plugins
+										p Allow mods
 									div.tt_question
 										div.color-circle-tooltip(data-toggle="tooltip" data-placement="top" title="Players may use any mods and plugins")
 											div(style="position: relative; top: -1px") ?
+								div.form-group.checkbox.margin_zero
+									input#rando_link64.form-inline(placeholder="Download/share link")
 
 				div.col-xl-6
 					div#goal_options

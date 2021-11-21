@@ -65,7 +65,7 @@
         }
     },
     "levels": {
-        "Beginner Tutorial": {
+        "newtutorial1": {
             "level": "Beginner Tutorial",
             "hub": "Tutorial",
             "type": "Tutorial",
@@ -140,7 +140,7 @@
                 }
             ]
         },
-        "Combat Tutorial": {
+        "newtutorial2": {
             "level": "Combat Tutorial",
             "hub": "Tutorial",
             "type": "Tutorial",
@@ -194,7 +194,7 @@
                 }
             ]
         },
-        "Advanced Tutorial": {
+        "newtutorial3": {
             "level": "Advanced Tutorial",
             "hub": "Tutorial",
             "type": "Tutorial",
@@ -269,7 +269,7 @@
                 }
             ]
         },
-        "Downhill": {
+        "downhill": {
             "level": "Downhill",
             "hub": "Forest",
             "type": "Open",
@@ -386,7 +386,7 @@
                 }
             ]
         },
-        "Shaded Grove": {
+        "shadedgrove": {
             "level": "Shaded Grove",
             "hub": "Forest",
             "type": "Open",
@@ -468,7 +468,7 @@
                 }
             ]
         },
-        "Dahlia": {
+        "dahlia": {
             "level": "Dahlia",
             "hub": "Forest",
             "type": "Open",
@@ -550,7 +550,7 @@
                 }
             ]
         },
-        "Fields": {
+        "fields": {
             "level": "Fields",
             "hub": "Forest",
             "type": "Open",
@@ -639,7 +639,7 @@
                 }
             ]
         },
-        "Valley": {
+        "momentum": {
             "level": "Valley",
             "hub": "Forest",
             "type": "Wood",
@@ -728,7 +728,7 @@
                 }
             ]
         },
-        "Firefly Forest": {
+        "fireflyforest": {
             "level": "Firefly Forest",
             "hub": "Forest",
             "type": "Wood",
@@ -817,7 +817,7 @@
                 }
             ]
         },
-        "Tunnels": {
+        "tunnels": {
             "level": "Tunnels",
             "hub": "Forest",
             "type": "Wood",
@@ -920,7 +920,7 @@
                 }
             ]
         },
-        "Dusk Run": {
+        "momentum2": {
             "level": "Dusk Run",
             "hub": "Forest",
             "type": "Wood",
@@ -1016,7 +1016,7 @@
                 }
             ]
         },
-        "Overgrown Temple": {
+        "suntemple": {
             "level": "Overgrown Temple",
             "hub": "Forest",
             "type": "Silver",
@@ -1105,7 +1105,7 @@
                 }
             ]
         },
-        "Ascent": {
+        "ascent": {
             "level": "Ascent",
             "hub": "Forest",
             "type": "Silver",
@@ -1194,7 +1194,7 @@
                 }
             ]
         },
-        "Summit": {
+        "summit": {
             "level": "Summit",
             "hub": "Forest",
             "type": "Silver",
@@ -1297,7 +1297,7 @@
                 }
             ]
         },
-        "Grass Cave": {
+        "grasscave": {
             "level": "Grass Cave",
             "hub": "Forest",
             "type": "Silver",
@@ -1372,7 +1372,7 @@
                 }
             ]
         },
-        "Wild Den": {
+        "den": {
             "level": "Wild Den",
             "hub": "Forest",
             "type": "Gold",
@@ -1454,7 +1454,7 @@
                 }
             ]
         },
-        "Ruins": {
+        "autumnforest": {
             "level": "Ruins",
             "hub": "Forest",
             "type": "Gold",
@@ -1529,7 +1529,7 @@
                 }
             ]
         },
-        "Ancient Garden": {
+        "garden": {
             "level": "Ancient Garden",
             "hub": "Forest",
             "type": "Gold",
@@ -1625,7 +1625,7 @@
                 }
             ]
         },
-        "Night Temple": {
+        "hyperdifficult": {
             "level": "Night Temple",
             "hub": "Forest",
             "type": "Gold",
@@ -1693,7 +1693,7 @@
                 }
             ]
         },
-        "Atrium": {
+        "atrium": {
             "level": "Atrium",
             "hub": "Mansion",
             "type": "Open",
@@ -1782,7 +1782,7 @@
                 }
             ]
         },
-        "Secret Passage": {
+        "secretpassage": {
             "level": "Secret Passage",
             "hub": "Mansion",
             "type": "Open",
@@ -1878,7 +1878,7 @@
                 }
             ]
         },
-        "Alcoves": {
+        "alcoves": {
             "level": "Alcoves",
             "hub": "Mansion",
             "type": "Open",
@@ -1967,7 +1967,7 @@
                 }
             ]
         },
-        "Mezzanine": {
+        "mezzanine": {
             "level": "Mezzanine",
             "hub": "Mansion",
             "type": "Open",
@@ -2049,7 +2049,7 @@
                 }
             ]
         },
-        "Caverns": {
+        "cave": {
             "level": "Caverns",
             "hub": "Mansion",
             "type": "Wood",
@@ -2159,7 +2159,7 @@
                 }
             ]
         },
-        "Cliffside Caves": {
+        "cliffsidecaves": {
             "level": "Cliffside Caves",
             "hub": "Mansion",
             "type": "Wood",
@@ -2248,7 +2248,7 @@
                 }
             ]
         },
-        "Library": {
+        "library": {
             "level": "Library",
             "hub": "Mansion",
             "type": "Wood",
@@ -2330,7 +2330,7 @@
                 }
             ]
         },
-        "Courtyard": {
+        "courtyard": {
             "level": "Courtyard",
             "hub": "Mansion",
             "type": "Wood",
@@ -2419,7 +2419,7 @@
                 }
             ]
         },
-        "Archive": {
+        "precarious": {
             "level": "Archive",
             "hub": "Mansion",
             "type": "Silver",
@@ -2501,7 +2501,7 @@
                 }
             ]
         },
-        "Knight Hall": {
+        "treasureroom": {
             "level": "Knight Hall",
             "hub": "Mansion",
             "type": "Silver",
@@ -2583,7 +2583,7 @@
                 }
             ]
         },
-        "Store Room": {
+        "arena": {
             "level": "Store Room",
             "hub": "Mansion",
             "type": "Silver",
@@ -2665,7 +2665,7 @@
                 }
             ]
         },
-        "Ramparts": {
+        "ramparts": {
             "level": "Ramparts",
             "hub": "Mansion",
             "type": "Silver",
@@ -2754,7 +2754,7 @@
                 }
             ]
         },
-        "Moon Temple": {
+        "moontemple": {
             "level": "Moon Temple",
             "hub": "Mansion",
             "type": "Gold",
@@ -2871,7 +2871,7 @@
                 }
             ]
         },
-        "Observatory": {
+        "observatory": {
             "level": "Observatory",
             "hub": "Mansion",
             "type": "Gold",
@@ -2939,7 +2939,7 @@
                 }
             ]
         },
-        "Ghost Parapets": {
+        "parapets": {
             "level": "Ghost Parapets",
             "hub": "Mansion",
             "type": "Gold",
@@ -3021,7 +3021,7 @@
                 }
             ]
         },
-        "Tower": {
+        "brimstone": {
             "level": "Tower",
             "hub": "Mansion",
             "type": "Gold",
@@ -3096,7 +3096,7 @@
                 }
             ]
         },
-        "Vacant Lot": {
+        "vacantlot": {
             "level": "Vacant Lot",
             "hub": "City",
             "type": "Open",
@@ -3171,7 +3171,7 @@
                 }
             ]
         },
-        "Landfill": {
+        "sprawl": {
             "level": "Landfill",
             "hub": "City",
             "type": "Open",
@@ -3253,7 +3253,7 @@
                 }
             ]
         },
-        "Development": {
+        "development": {
             "level": "Development",
             "hub": "City",
             "type": "Open",
@@ -3342,7 +3342,7 @@
                 }
             ]
         },
-        "Abandoned Carpark": {
+        "abandoned": {
             "level": "Abandoned Carpark",
             "hub": "City",
             "type": "Open",
@@ -3431,7 +3431,7 @@
                 }
             ]
         },
-        "Park": {
+        "park": {
             "level": "Park",
             "hub": "City",
             "type": "Wood",
@@ -3548,7 +3548,7 @@
                 }
             ]
         },
-        "Construction Site": {
+        "boxes": {
             "level": "Construction Site",
             "hub": "City",
             "type": "Wood",
@@ -3630,7 +3630,7 @@
                 }
             ]
         },
-        "Apartments": {
+        "chemworld": {
             "level": "Apartments",
             "hub": "City",
             "type": "Wood",
@@ -3733,7 +3733,7 @@
                 }
             ]
         },
-        "Warehouse": {
+        "factory": {
             "level": "Warehouse",
             "hub": "City",
             "type": "Wood",
@@ -3815,7 +3815,7 @@
                 }
             ]
         },
-        "Forgotten Tunnel": {
+        "tunnel": {
             "level": "Forgotten Tunnel",
             "hub": "City",
             "type": "Silver",
@@ -3897,7 +3897,7 @@
                 }
             ]
         },
-        "Basement": {
+        "basement": {
             "level": "Basement",
             "hub": "City",
             "type": "Silver",
@@ -3965,7 +3965,7 @@
                 }
             ]
         },
-        "Scaffolding": {
+        "scaffold": {
             "level": "Scaffolding",
             "hub": "City",
             "type": "Silver",
@@ -4054,7 +4054,7 @@
                 }
             ]
         },
-        "Rooftops": {
+        "cityrun": {
             "level": "Rooftops",
             "hub": "City",
             "type": "Silver",
@@ -4129,7 +4129,7 @@
                 }
             ]
         },
-        "Clocktower": {
+        "clocktower": {
             "level": "Clocktower",
             "hub": "City",
             "type": "Gold",
@@ -4211,7 +4211,7 @@
                 }
             ]
         },
-        "Concrete Temple": {
+        "concretetemple": {
             "level": "Concrete Temple",
             "hub": "City",
             "type": "Gold",
@@ -4265,7 +4265,7 @@
                 }
             ]
         },
-        "Alleyway": {
+        "alley": {
             "level": "Alleyway",
             "hub": "City",
             "type": "Gold",
@@ -4333,7 +4333,7 @@
                 }
             ]
         },
-        "Hideout": {
+        "hideout": {
             "level": "Hideout",
             "hub": "City",
             "type": "Gold",
@@ -4387,7 +4387,7 @@
                 }
             ]
         },
-        "Control": {
+        "control": {
             "level": "Control",
             "hub": "Laboratory",
             "type": "Open",
@@ -4490,7 +4490,7 @@
                 }
             ]
         },
-        "Ferrofluid": {
+        "ferrofluid": {
             "level": "Ferrofluid",
             "hub": "Laboratory",
             "type": "Open",
@@ -4565,7 +4565,7 @@
                 }
             ]
         },
-        "Titan": {
+        "titan": {
             "level": "Titan",
             "hub": "Laboratory",
             "type": "Open",
@@ -4668,7 +4668,7 @@
                 }
             ]
         },
-        "Satellite Debris": {
+        "satellite": {
             "level": "Satellite Debris",
             "hub": "Laboratory",
             "type": "Open",
@@ -4764,7 +4764,7 @@
                 }
             ]
         },
-        "Vats": {
+        "vat": {
             "level": "Vats",
             "hub": "Laboratory",
             "type": "Wood",
@@ -4860,7 +4860,7 @@
                 }
             ]
         },
-        "Server Room": {
+        "venom": {
             "level": "Server Room",
             "hub": "Laboratory",
             "type": "Wood",
@@ -4942,7 +4942,7 @@
                 }
             ]
         },
-        "Security": {
+        "security": {
             "level": "Security",
             "hub": "Laboratory",
             "type": "Wood",
@@ -5017,7 +5017,7 @@
                 }
             ]
         },
-        "Research": {
+        "mary": {
             "level": "Research",
             "hub": "Laboratory",
             "type": "Wood",
@@ -5092,7 +5092,7 @@
                 }
             ]
         },
-        "Wiring": {
+        "wiringfixed": {
             "level": "Wiring",
             "hub": "Laboratory",
             "type": "Silver",
@@ -5160,7 +5160,7 @@
                 }
             ]
         },
-        "Containment": {
+        "containment": {
             "level": "Containment",
             "hub": "Laboratory",
             "type": "Silver",
@@ -5228,7 +5228,7 @@
                 }
             ]
         },
-        "Power Room": {
+        "orb": {
             "level": "Power Room",
             "hub": "Laboratory",
             "type": "Silver",
@@ -5317,7 +5317,7 @@
                 }
             ]
         },
-        "Access": {
+        "pod": {
             "level": "Access",
             "hub": "Laboratory",
             "type": "Silver",
@@ -5406,7 +5406,7 @@
                 }
             ]
         },
-        "Backup Shift": {
+        "mary2": {
             "level": "Backup Shift",
             "hub": "Laboratory",
             "type": "Gold",
@@ -5453,7 +5453,7 @@
                 }
             ]
         },
-        "Core Temple": {
+        "coretemple": {
             "level": "Core Temple",
             "hub": "Laboratory",
             "type": "Gold",
@@ -5521,7 +5521,7 @@
                 }
             ]
         },
-        "Abyss": {
+        "abyss": {
             "level": "Abyss",
             "hub": "Laboratory",
             "type": "Gold",
@@ -5610,7 +5610,7 @@
                 }
             ]
         },
-        "Dome": {
+        "dome": {
             "level": "Dome",
             "hub": "Laboratory",
             "type": "Gold",
@@ -5699,7 +5699,7 @@
                 }
             ]
         },
-        "Kilo Difficult": {
+        "kilodifficult": {
             "level": "Kilo Difficult",
             "hub": "Difficult",
             "type": "Difficult",
@@ -5746,7 +5746,7 @@
                 }
             ]
         },
-        "Mega Difficult": {
+        "megadifficult": {
             "level": "Mega Difficult",
             "hub": "Difficult",
             "type": "Difficult",
@@ -5807,7 +5807,7 @@
                 }
             ]
         },
-        "Giga Difficult": {
+        "gigadifficult": {
             "level": "Giga Difficult",
             "hub": "Difficult",
             "type": "Difficult",
@@ -5854,7 +5854,7 @@
                 }
             ]
         },
-        "Tera Difficult": {
+        "teradifficult": {
             "level": "Tera Difficult",
             "hub": "Difficult",
             "type": "Difficult",
@@ -5908,7 +5908,7 @@
                 }
             ]
         },
-        "Peta Difficult": {
+        "petadifficult": {
             "level": "Peta Difficult",
             "hub": "Difficult",
             "type": "Difficult",
@@ -5969,7 +5969,7 @@
                 }
             ]
         },
-        "Exa Difficult": {
+        "exadifficult": {
             "level": "Exa Difficult",
             "hub": "Difficult",
             "type": "Difficult",
@@ -6023,7 +6023,7 @@
                 }
             ]
         },
-        "Zetta Difficult": {
+        "zettadifficult": {
             "level": "Zetta Difficult",
             "hub": "Difficult",
             "type": "Difficult",
@@ -6084,7 +6084,7 @@
                 }
             ]
         },
-        "Yotta Difficult": {
+        "yottadifficult": {
             "level": "Yotta Difficult",
             "hub": "Difficult",
             "type": "Difficult",
