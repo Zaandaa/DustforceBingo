@@ -118,7 +118,6 @@ extern.getKeydist = function(levelset) {
 		if (extern.getHub(levelset[l]) in kd)
 			kd[extern.getHub(levelset[l])][extern.getLevelType(levelset[l])]++;
 	}
-	console.log(kd);
 	return kd;
 }
 
