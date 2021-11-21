@@ -711,6 +711,10 @@ function addCopyUrl() {
 	$("#under_players").empty();
 	if (!bingoStarted)
 		$("#under_players").append("<p>Copy <a href=''>this url</a> to invite more players</p>");
+	if (ruleset.gametype == "bingo" && ruleset.rando)
+		$("#under_players").append("<p><a href='" + ruleset.rando_link + "'>Randomizer link</a></p>");
+	else if (ruleset.gametype == "64" && ruleset.rando64)
+		$("#under_players").append("<p><a href='" + ruleset.rando_link64 + "'>Randomizer link</a></p>");
 }
 
 function resetBingo() {
