@@ -33,9 +33,7 @@ function addCookieUser() {
 $(document).on('ready', function() {
 	showHow();
 	addCookieUser();
-	if (!bingoStarted) {
-		addCopyUrl();
-	}
+	addCopyUrl();
 	$('input[type=checkbox]').on('change', changeCheckImage)
 
 	socket.emit('init', {session: sessionId});
