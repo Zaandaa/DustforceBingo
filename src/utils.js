@@ -121,6 +121,13 @@ extern.getKeydist = function(levelset) {
 	return kd;
 }
 
+extern.reorderLevels64 = function(ruleset) {
+	var reorder = {};
+	for (var i = 0; i < 64; i++) {
+		reorder[Object.keys(ruleset.levelset)[constants.reorder64[i]]] = ruleset.levelset[Object.keys(ruleset.levelset)[constants.reorder64[i]]];
+	}
+	return reorder;
+}
 
 extern.getLevelDifficulty = function(lt, objective, newgame) {
 	var d;

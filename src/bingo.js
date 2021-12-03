@@ -82,10 +82,6 @@ var Bingo = function(session, ruleset) {
 	}
 	self.ruleset.keydist = utils.getKeydist(self.ruleset.levelset);
 
-	// console.log("levelset");
-	// console.log(self.ruleset.levelset);
-
-
 	// force certain rules in case it got past front end
 	if (self.ruleset.gametype == "64") {
 		self.ruleset.newgame = self.ruleset.newgame64;
@@ -104,6 +100,9 @@ var Bingo = function(session, ruleset) {
 			self.ruleset.bingo_count = self.ruleset.hub == "All" ? 33 : 9;
 		if (self.ruleset.win_type == "goal" || self.ruleset.win_type == "totalarea")
 			self.ruleset.bingo_count_type = "goal";
+
+		if (!self.ruleset.shuffle)
+			self.ruleset.levelset = utils.reorderLevels64(self.ruleset);
 
 	} else if (self.ruleset.antibingo) {
 		self.ruleset.lockout = false;
