@@ -184,7 +184,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	
 	function createAchieverCircle(achiever) {
 		// console.log(achiever);
-		var textColor = $.inArray(achiever.color, ["white", "yellow", "cottoncandy"]) != -1 ? "black" : "white";
+		var textColor = $.inArray(achiever.color, ["white", "yellow", "cottoncandy", "silver"]) != -1 ? "black" : "white";
 		
 		var circle = $("<div/>")
 			.addClass('color-circle-small')

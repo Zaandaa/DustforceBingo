@@ -1,21 +1,25 @@
 :root {
-	--darkblue: #1F355E;
 	--midpurple: #7F63BB;
 	--linkpurple:#A4A4EE;
 	--darkpurple: #271A30;
-    --red: #FD625E;
-    --orange: #FE9666;
-    --yellow: #F4D25A;
-    --green: #98AC67;
+	--red: #FD625E;
+	--orange: #FE9666;
+	--yellow: #F4D25A;
+	--green: #98AC67;
 	--blue: #819AD3;
-    --indigo: #6610F2;
-    --purple: #A075C9;
-    --charcoal: #424242;
-    --coffee: #8F7056;
-    --cottoncandy: #F889B0;
-    --turquoise: #8ADBA7;
-    --cellcharcoal: #212121;
-    --cellcoffee: #494543;
+	--indigo: #6610F2;
+	--purple: #A075C9;
+	--charcoal: #424242;
+	--coffee: #8F7056;
+	--cottoncandy: #F889B0;
+	--turquoise: #8ADBA7;
+	--silver: #C0C0C0;
+	--maroon: #6F100F;
+	--gold: #BA9810;
+	--darkgreen: #023020;
+	--midnight: #191970;
+	--cellcharcoal: #212121;
+	--cellcoffee: #494543;
 	--cellcottoncandy: #7D6E73;
 	--cellturquoise: #656E68;
 	--cellred: #7E6E6E;
@@ -26,9 +30,14 @@
 	--cellindigo: #6B6279;
 	--cellpurple: #605C64;
 	--cellwhite: #7F7F7F;
-    --gray: #7F898A;
-    --grayish: #636068;
-    --graydark: #505055;
+	--cellsilver: #606060;
+	--cellmaroon: #378807;
+	--cellgold: #5D4C08;
+	--celldarkgreen: #011810;
+	--cellmidnight: #0C8CB8;
+	--gray: #7F898A;
+	--grayish: #636068;
+	--graydark: #505055;
 	--black: #1F271B;
 }
 

@@ -272,8 +272,8 @@ function build(io) {
 				if (bingo.active || bingo.finished)
 					return Error(socket, 'joinResponse', 'Session already started');
 
-				if (Object.keys(bingo.players).length >= 10)
-					return Error(socket,  'joinResponse', 'Cannot accept more than 10 players');
+				if (Object.keys(bingo.players).length >= 16)
+					return Error(socket,  'joinResponse', 'Cannot accept more than 16 players');
 
 				getUserInfo(data.username, function(err, multi, data, id) {
 					if (err) 
@@ -490,7 +490,7 @@ function build(io) {
 
 		console.log("new Session", self.id);
 		extern.rooms[self.id] = self;
-		setTimeout(self.endSession, 86400000);
+		setTimeout(self.endSession, 604800000); // one week
 		return self;
 	}
 
