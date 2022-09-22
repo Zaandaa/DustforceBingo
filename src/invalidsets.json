@@ -80,6 +80,7 @@
 		"lowjump": [false],
 		"lowattack": [false],
 		"lowdirection": [false],
+		"lowdust": [false],
 		"reason": "At least one Goal Option must be selected."
 	}
 ]

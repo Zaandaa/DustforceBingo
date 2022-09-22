@@ -68,6 +68,7 @@ var params = [
 	"lowjump", 
 	"lowattack", 
 	"lowdirection",
+	"lowdust",
 	"win_type",
 	"shuffle",
 	"captureblank",

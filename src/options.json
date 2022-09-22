@@ -59,6 +59,12 @@
 	  , "clean_name" : "D completion"
 	  , "init_state" : false
 	},
+	"secret" : {
+	    "icon"       : "/bingo/img/iconDonger.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Secret"
+	  , "init_state" : false
+	},
 	"multilevel" : {
 	    "icon"       : "http://dustkid.com/static/iconVacuum.png"
 	  , "icon_type"  : "icon"
@@ -78,8 +84,15 @@
 	  , "icon_type"  : "icon"
 	  , "clean_name" : "Apples"
 	  , "init_state" : true
-	}
-	,"nosuper" : {
+	},
+	"genocide" : {
+	    "icon"       : "http://dustkid.com/static/iconGenocide.png"
+	  , "icon_type"  : "icon"
+	  , "clean_name" : "Genocide"
+	  , "init_state" : false
+	  , "tooltip"    : "Kill all enemies on specific levels"
+	},
+	"nosuper" : {
 	    "icon"       : "http://dustkid.com/static/iconNoAttack.png"
 	  , "icon_type"  : "icon"
 	  , "clean_name" : "No super"
@@ -111,12 +124,11 @@
 	  , "clean_name" : "Low direction"
 	  , "init_state" : false
 	},
-	"genocide" : {
-	    "icon"       : "http://dustkid.com/static/iconGenocide.png"
+	"lowdust" : {
+	    "icon"       : "http://dustkid.com/static/iconLowperc.png"
 	  , "icon_type"  : "icon"
-	  , "clean_name" : "Genocide"
+	  , "clean_name" : "Low percent"
 	  , "init_state" : false
-	  , "tooltip"    : "Kill all enemies on specific levels"
 	},
 	"unload" : {
 	    "icon"       : "http://dustkid.com/static/icon404.png"

@@ -272,6 +272,8 @@ extern.accessGimmick = function(replay, gimmick) {
 		} else {
 			return replay.input_lights + 3 * replay.input_heavies;
 		}
+	} else if (gimmick == "lowdust") {
+		return replay.tag.collected;
 	} else {
 		return replay[levels.gimmicks[gimmick].accessor];
 	}

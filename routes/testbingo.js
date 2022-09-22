@@ -60,6 +60,7 @@ var rules = {
 	lowjump: true,
 	lowattack: true,
 	lowdirection: true,
+	lowdust: true,
 	shuffle: true,
 	captureblank: true,
 	captureother: true,

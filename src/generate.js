@@ -339,7 +339,7 @@ function main(levels, records, callback)
 						{
 							return {
 								type       : gimmick,
-								objective  : objective,
+								objective  : gimmick == "lowdust" ? "Beat" : objective,
 								difficulty : diff.difficulty,
 								count      : diff.count,
 								character  : gimmick == "apples"
@@ -367,8 +367,10 @@ function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, geno
 	{
 		replay.access = function(gimmick) 
 		{
-			if(gimmick == "lowattack")
+			if (gimmick == "lowattack")
 				return this.input_super ? -1 : (3 * this.input_heavies + this.input_lights);
+			if (gimmick == "lowdust")
+				return this.tag.collected;
 			return this[gimmickAccessor[gimmick]];
 		}
 	})
@@ -386,7 +388,7 @@ function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, geno
 		if (count != 0) 
 			return gimmick == "apples" ? -count : count;
 		
-		if (objective == "SS") {
+		if (objective == "SS" && gimmick != "lowdust") {
 			var completion = b.score_completion - a.score_completion;
 			if (completion != 0) 
 				return completion;
@@ -402,7 +404,7 @@ function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, geno
 	for(var i = replays.length; i--; i > -1) 
 	{
 		replays[i].rank = i;
-		if(  (objective == "SS" && !isSS(replays[i]))
+		if(  (objective == "SS" && !isSS(replays[i]) && gimmick != "lowdust")
 		  || (replays[i].access(gimmick) >= inputMaxProbablyIntended[gimmick])
 		  || (gimmick == "apples" && replays[i].access("apples") == 0)
 		  || (replays[i].access(gimmick) < 0)
@@ -458,7 +460,8 @@ function getDifficulty(histogram, gimmick)
 	histogram.forEach(function(h) 
 	{
 		difficulty = getLastThreshold(gimmick, h.rank + h.ties);
-		if ((difficulty > 6 && output.length != 0) || (difficulty == lastDifficulty && gimmick != "apples"))
+		if (difficulty > 6 && output.length != 0) // allows duplicate difficulties
+		// old || (difficulty == lastDifficulty && gimmick != "apples"))
 			done = true;
 		
 		if(done)
@@ -483,7 +486,8 @@ const gimmicks = [
 	"lowdash",
 	"lowjump",
 	"lowdirection",
-	"lowattack"
+	"lowattack",
+	"lowdust"
 ];
  
 const difficultyThresholds = { // total achieved per difficulty tier
@@ -491,7 +495,8 @@ const difficultyThresholds = { // total achieved per difficulty tier
 	"lowdash"      : [15, 35, 60, 70, 80, 90],
 	"lowjump"      : [10, 20, 30, 35, 40, 45],
 	"lowdirection" : [10, 20, 30, 35, 40, 45],
-	"lowattack"    : [10, 20, 30, 35, 40, 45]
+	"lowattack"    : [10, 20, 30, 35, 40, 45],
+	"lowdust"      : [10, 20, 30, 35, 40, 45]
 };
 
 const inputMaxProbablyIntended = {
@@ -499,7 +504,8 @@ const inputMaxProbablyIntended = {
 	"lowdash"      : 3,
 	"lowjump"      : 10,
 	"lowdirection" : 10,
-	"lowattack"    : 20
+	"lowattack"    : 20,
+	"lowdust"      : 30
 };
 
 const gimmickLeaderboardSize = {
@@ -507,7 +513,8 @@ const gimmickLeaderboardSize = {
 	"lowdash"      : 100,
 	"lowjump"      : 50,
 	"lowdirection" : 50,
-	"lowattack"    : 50
+	"lowattack"    : 50,
+	"lowdust"      : 50
 }
 
 const completions = [
@@ -608,7 +615,8 @@ const leaderboards = {
 		"lowdash":"nodash",
 		"lowjump":"nojump",
 		"lowdirection":"nodirection",
-		"lowattack":"noattack"
+		"lowattack":"noattack",
+		"lowdust":"low"
 	},
 	"completions":{
 		"Beat":"times",
@@ -714,7 +722,8 @@ const gimmickAccessor = {
 	"lowdash":"input_dashes",
 	"lowjump":"input_jumps",
 	"lowdirection":"input_directions",
-	"lowattack":""
+	"lowattack":"",
+	"lowdust":"collected"
 }
 
 const forceGenocide = [
