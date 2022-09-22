@@ -36,7 +36,7 @@ function make64Goals(ruleset) {
 			continue;
 
 		var goalData = {type: "level", level: l, objective: ruleset.ss ? "SS" : "Beat", levelOnly: true};
-		var g = new Goal(goalData);
+		var g = new Goal(goalData, ruleset);
 		goals.push(g);
 	}
 
@@ -98,9 +98,9 @@ function makeBingoGoals(ruleset, bingos) {
 		var g;
 		r = Math.random();
 		if (levelGoalDatas.length > 0 && (r < chance[ruleset.newgame].level.chance + ruleset.length * chance[ruleset.newgame].level.length_bonus - availableTotalTypes * chance[ruleset.newgame].total.type_bonus || totalGoalDatas.length == 0))
-			g = new Goal(chooseLevelGoalData(ruleset, levelGoalDatas, usedGoalStats));
+			g = new Goal(chooseLevelGoalData(ruleset, levelGoalDatas, usedGoalStats), ruleset);
 		else if (totalGoalDatas.length > 0)
-			g = new Goal(chooseTotalGoalData(ruleset, totalGoalDatas, usedGoalStats));
+			g = new Goal(chooseTotalGoalData(ruleset, totalGoalDatas, usedGoalStats), ruleset);
 		else
 			break;
 
@@ -622,12 +622,12 @@ function makeGoalString(goalData) {
 	return str;
 }
 
-var Goal = function(goalData) {
+var Goal = function(goalData, ruleset) {
 	var self = this;
 	self.goalData = goalData;
 	self.goalString = makeGoalString(goalData);
 	self.achieved = [];
-	self.revealed = false;
+	self.revealed = !ruleset.hidden;
 	self.captured;
 	self.safe = false;
 
@@ -635,11 +635,11 @@ var Goal = function(goalData) {
 		return self.goalString;
 	};
 
-	self.getBoardData = function() {
+	self.getBoardData = function(r) {
 		return {
-			title: self.revealed ? self.goalString : "",
+			title: (self.revealed || r) ? self.goalString : "",
 			achieved: self.achieved,
-			total: self.revealed ? (self.goalData.total || 0) : 0,
+			total: (self.revealed || r) ? (self.goalData.total || 0) : 0,
 			captured: self.captured || false,
 			safe: self.safe
 		};
@@ -649,9 +649,9 @@ var Goal = function(goalData) {
 		return self.achieved.length > 0;
 	};
 
-	self.addAchiever = function(a) {
+	self.addAchiever = function(a, t) {
 		self.achieved.push(a);
-		self.reveal();
+		// self.reveal();
 	};
 
 	self.reveal = function() {
@@ -660,7 +660,7 @@ var Goal = function(goalData) {
 
 	self.capture = function(t) {
 		self.captured = t;
-		self.reveal();
+		// self.reveal();
 	};
 
 	self.setSafe = function() {

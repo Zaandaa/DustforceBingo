@@ -16,6 +16,7 @@ var Team = function(id, p) {
 	self.place = 0;
 
 	self.goalsAchieved = []; // list of ids of goals achieved
+	self.goalsRevealed = [];
 	self.allCompletes = []; // all completes {user id, level, completion, finesse, character}
 	self.allProgress = {}; // dictionary of levels beaten
 	self.charProgress = {"Dustman": {}, "Dustgirl": {}, "Dustkid": {}, "Dustworth": {}}; // dictionary of levels beaten
@@ -83,6 +84,15 @@ var Team = function(id, p) {
 	self.achieveGoal = function(id) {
 		if (!self.goalsAchieved.includes(id))
 			self.goalsAchieved.push(id);
+	};
+
+	self.revealGoal = function(id) {
+		if (!self.goalsRevealed.includes(id))
+			self.goalsRevealed.push(id);
+	};
+
+	self.hasRevealed = function(id) {
+		return self.finishTime > 0 || self.goalsRevealed.includes(id);
 	};
 
 	self.addProgress = function(replay, door) {

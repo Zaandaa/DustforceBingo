@@ -24,6 +24,10 @@ var rules = {
 	lockout: false,
 	hidden: false,
 	hidden64: false,
+	hiddenlocal: false,
+	hidden64local: false,
+	hiddensame: false,
+	hidden64same: false,
 	teams: true,
 	teams64: true,
 	plugins: false,
@@ -40,6 +44,7 @@ var rules = {
 	keys: true,
 	multilevel: true,
 	characters: true,
+	characters64: true,
 	apples: true,
 	tutorials: true,
 	difficults: true,
@@ -167,7 +172,7 @@ if (simulatePlay) {
 		bingo.players[Object.keys(bingo.players)[p]].achieveGoal(g);
 
 		// console.log("add");
-		bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].id);
+		bingo.goals[g].addAchiever(bingo.players[Object.keys(bingo.players)[p]].id, bingo.players[Object.keys(bingo.players)[p]].team);
 		if (rules.gametype == "64") {
 			bingo.checkCapture(g);
 			bingo.updateTeamRegions();

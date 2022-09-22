@@ -86,9 +86,12 @@ var Bingo = function(session, ruleset) {
 	if (self.ruleset.gametype == "64") {
 		self.ruleset.newgame = self.ruleset.newgame64;
 		self.ruleset.hidden = self.ruleset.hidden64;
+		self.ruleset.hiddenlocal = self.ruleset.hidden64local;
+		self.ruleset.hiddensame = self.ruleset.hidden64same;
 		self.ruleset.teams = self.ruleset.teams64;
 		self.ruleset.plugins = self.ruleset.plugins64;
 		self.ruleset.ss = self.ruleset.ss64;
+		// self.ruleset.characters = self.ruleset.characters64;
 
 		self.ruleset.size = self.ruleset.hub == "All" ? 8 : 4;
 		self.ruleset.lockout = true;
@@ -530,18 +533,30 @@ var Bingo = function(session, ruleset) {
 
 	};
 
-	self.revealGoalNeighbors = function(i) {
+	self.revealGoalNeighbors = function(i, t) {
 		if (i >= self.ruleset.size) { // not top, reveal above
-			self.goals[i - self.ruleset.size].reveal();
+			if (!self.ruleset.hiddenlocal)
+				self.teams[t].revealGoal(i - self.ruleset.size);
+			else
+				self.goals[i - self.ruleset.size].reveal();
 		}
 		if (i < self.ruleset.size * self.ruleset.size - self.ruleset.size) { // not bottom, reveal below
-			self.goals[i + self.ruleset.size].reveal();
+			if (!self.ruleset.hiddenlocal)
+				self.teams[t].revealGoal(i + self.ruleset.size);
+			else
+				self.goals[i + self.ruleset.size].reveal();
 		}
 		if (i % self.ruleset.size > 0) { // not left, reveal left
-			self.goals[i - 1].reveal();
+			if (!self.ruleset.hiddenlocal)
+				self.teams[t].revealGoal(i - 1);
+			else
+				self.goals[i - 1].reveal();
 		}
 		if (i % self.ruleset.size < self.ruleset.size - 1) { // not right, reveal right
-			self.goals[i + 1].reveal();
+			if (!self.ruleset.hiddenlocal)
+				self.teams[t].revealGoal(i + 1);
+			else
+				self.goals[i + 1].reveal();
 		}
 	};
 
@@ -899,16 +914,56 @@ var Bingo = function(session, ruleset) {
 			}
 		}
 
-		// reveal if needed
-		if (!self.ruleset.hidden) {
-			for (var i = 0; i < self.goals.length; i++) {
-				self.goals[i].reveal();
+		// reveal middle if needed
+		if (self.ruleset.hidden && self.ruleset.gametype != "64") {
+			// same spawn point
+			
+			// if (self)
+
+			var allSpawnsPlaced = false;
+			var s = 0; // 
+			while (!allSpawnsPlaced) {
+				var r = Math.floor(Math.random() * self.ruleset.size);
+				var c = Math.floor(Math.random() * self.ruleset.size);
+				var i = r * self.ruleset.size + c;
+				if (self.ruleset.size == 3) {
+					if (i % 2 == 0) // no corner/middle
+						continue;
+				} else { // no border
+					if (r == 0 || r == self.ruleset.size - 1)
+						continue;
+					if (c == 0 || c == self.ruleset.size - 1)
+						continue;
+				}
+
+				if (self.ruleset.hiddensame) {
+					for (var t in self.teams) {
+						self.teams[t].revealGoal(i);
+					}
+					allSpawnsPlaced = true;
+
+				} else {
+					var t_index = 0;
+					var placedSpawn = false;
+					for (var t in self.teams) {
+						if (t_index == s) {
+							self.teams[t].revealGoal(i);
+							placedSpawn = true;
+							break;
+						}
+						t_index++;
+					}
+					s++;
+					if (!placedSpawn) // attempted one more than limit
+						allSpawnsPlaced = true;
+				}
 			}
-		} else if (self.ruleset.gametype != "64") { // middle
-			if (self.ruleset.size % 2 == 0)
-				self.goals[self.ruleset.size * self.ruleset.size / 2 - self.ruleset.size / 2 - 1].reveal();
-			else
-				self.goals[Math.floor(self.ruleset.size * self.ruleset.size / 2)].reveal();
+
+			// old choose middle
+			// if (self.ruleset.size % 2 == 0)
+				// self.goals[self.ruleset.size * self.ruleset.size / 2 - self.ruleset.size / 2 - 1].reveal();
+			// else
+				// self.goals[Math.floor(self.ruleset.size * self.ruleset.size / 2)].reveal();
 		}
 
 		self.startTime = Date.now();
@@ -978,14 +1033,15 @@ var Bingo = function(session, ruleset) {
 			if (self.ruleset.lockout && self.getGoalTeam(i) || self.teams[self.players[replay.user].team].goalsAchieved.includes(i)) {
 				continue;
 			} else if (self.goals[i].compareReplay(replay, self.teams[self.players[replay.user].team], self.players, self.ruleset.levelset)) {
-				self.goals[i].addAchiever(replay.user);
+				self.goals[i].addAchiever(replay.user, self.players[replay.user].team);
 				self.teams[self.players[replay.user].team].achieveGoal(i);
+				self.teams[self.players[replay.user].team].revealGoal(i);
 				self.players[replay.user].achieveGoal(i);
 				success = true;
 				// // console.log("GOAL ACHIEVED", i, replay.username);
 				self.addLog({type: "goal", team: self.players[replay.user].team, player: replay.user, str: "Goal: " + self.goals[i].toString()});
 				if (self.ruleset.hidden)
-					self.revealGoalNeighbors(i);
+					self.revealGoalNeighbors(i, self.players[replay.user].team);
 				if (self.ruleset.gametype == "64") {
 					self.checkCapture(i);
 					self.updateTeamRegions();
@@ -1006,7 +1062,7 @@ var Bingo = function(session, ruleset) {
 			self.checkFinished(self.players[replay.user].team);
 			if (self.ruleset.hidden && self.teamsDone >= Object.keys(self.players).length) {
 				for (var g in self.goals) {
-					self.goals[g].reveal();
+					self.goals[g].reveal(); // old reveal when all teams done
 				}
 			}
 			if (self.ruleset.lockout)
@@ -1023,6 +1079,7 @@ var Bingo = function(session, ruleset) {
 
 	self.getBoardData = function(player) {
 		var boardData = {};
+		var isPlayer = player in self.players;
 
 		if (self.active || self.finished) {
 			boardData.state = self.getState();
@@ -1031,7 +1088,7 @@ var Bingo = function(session, ruleset) {
 			boardData.allAntisAssigned = self.allAntisAssigned;
 
 			boardData.players = {};
-			boardData.playerTeam = player in self.players ? self.players[player].team : undefined;
+			boardData.playerTeam = isPlayer ? self.players[player].team : undefined;
 			for (var id in self.players) {
 				var data = self.players[id].getBoardData();
 				if (self.players[id].team in self.teams)
@@ -1041,9 +1098,10 @@ var Bingo = function(session, ruleset) {
 
 			boardData.goals = {};
 			for (var i = 0; i < self.goals.length; i++) {
-				boardData.goals[i] = self.goals[i].getBoardData();
-				if (self.goals[i].goalData.type == "total" && player in self.players) {
-					boardData.goals[i].progress = Math.min(self.teams[self.players[player].team].countObjective(self.ruleset.levelset, self.goals[i].goalData, self.players), self.goals[i].goalData.total);
+				boardData.goals[i] = self.goals[i].getBoardData(self.teams[boardData.playerTeam].hasRevealed(i));
+
+				if (self.goals[i].goalData.type == "total" && isPlayer) {
+					boardData.goals[i].progress = Math.min(self.teams[boardData.playerTeam].countObjective(self.ruleset.levelset, self.goals[i].goalData, self.players), self.goals[i].goalData.total);
 				}
 			}
 
