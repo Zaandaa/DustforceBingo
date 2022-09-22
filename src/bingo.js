@@ -534,6 +534,12 @@ var Bingo = function(session, ruleset) {
 	};
 
 	self.revealGoalNeighbors = function(i, t) {
+		// original goal
+		if (!self.ruleset.hiddenlocal)
+			self.teams[t].revealGoal(i);
+		else
+			self.goals[i].reveal();
+
 		if (i >= self.ruleset.size) { // not top, reveal above
 			if (!self.ruleset.hiddenlocal)
 				self.teams[t].revealGoal(i - self.ruleset.size);
@@ -1035,7 +1041,6 @@ var Bingo = function(session, ruleset) {
 			} else if (self.goals[i].compareReplay(replay, self.teams[self.players[replay.user].team], self.players, self.ruleset.levelset)) {
 				self.goals[i].addAchiever(replay.user, self.players[replay.user].team);
 				self.teams[self.players[replay.user].team].achieveGoal(i);
-				self.teams[self.players[replay.user].team].revealGoal(i);
 				self.players[replay.user].achieveGoal(i);
 				success = true;
 				// // console.log("GOAL ACHIEVED", i, replay.username);
@@ -1098,7 +1103,7 @@ var Bingo = function(session, ruleset) {
 
 			boardData.goals = {};
 			for (var i = 0; i < self.goals.length; i++) {
-				boardData.goals[i] = self.goals[i].getBoardData(self.teams[boardData.playerTeam].hasRevealed(i));
+				boardData.goals[i] = self.goals[i].getBoardData(isPlayer ? self.teams[boardData.playerTeam].hasRevealed(i) : self.goals[i].isAchieved(), isPlayer);
 
 				if (self.goals[i].goalData.type == "total" && isPlayer) {
 					boardData.goals[i].progress = Math.min(self.teams[boardData.playerTeam].countObjective(self.ruleset.levelset, self.goals[i].goalData, self.players), self.goals[i].goalData.total);
