@@ -26,7 +26,7 @@
             "plural": "s"
         },
         "lowdust": {
-            "accessor": "tag.collected",
+            "accessor": "",
             "format": "with {up to} {count} dust",
             "plural": ""
         }
@@ -182,105 +182,105 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "2",
+                    "count": 2,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "3",
+                    "count": 3,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "6",
+                    "count": 6,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "7",
+                    "count": 7,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "8",
+                    "count": 8,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "10",
+                    "count": 10,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "11",
+                    "count": 11,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 }
             ]
@@ -390,35 +390,35 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 }
             ]
@@ -521,70 +521,70 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "6",
+                    "count": 6,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "7",
+                    "count": 7,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "8",
+                    "count": 8,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "11",
+                    "count": 11,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 }
             ]
@@ -694,7 +694,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 8,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 }
             ]
@@ -860,70 +860,63 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "25",
-                    "character": false
-                },
-                {
-                    "type": "lowdust",
-                    "objective": "Beat",
-                    "difficulty": 3,
-                    "count": "27",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -1033,14 +1026,14 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 }
             ]
@@ -1178,35 +1171,35 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 5,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 6,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 6,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 6,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 }
             ]
@@ -1351,77 +1344,77 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 }
             ]
@@ -1816,49 +1809,49 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -1982,49 +1975,49 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -2300,91 +2293,91 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "11",
+                    "count": 11,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 }
             ]
@@ -2599,42 +2592,42 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "10",
+                    "count": 10,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "11",
+                    "count": 11,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 }
             ]
@@ -2744,49 +2737,49 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 }
             ]
@@ -2980,56 +2973,56 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "10",
+                    "count": 10,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -3181,14 +3174,14 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 }
             ]
@@ -3347,28 +3340,28 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "3",
+                    "count": 3,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "4",
+                    "count": 4,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "5",
+                    "count": 5,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 6,
-                    "count": "6",
+                    "count": 6,
                     "character": false
                 }
             ]
@@ -3464,7 +3457,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "5",
+                    "count": 5,
                     "character": false
                 }
             ]
@@ -3566,7 +3559,7 @@
                 {
                     "type": "lowdirection",
                     "objective": "Beat",
-                    "difficulty": 4,
+                    "difficulty": 5,
                     "count": 5,
                     "character": false
                 },
@@ -3616,7 +3609,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 8,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 }
             ]
@@ -3761,84 +3754,84 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -3976,63 +3969,63 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -4205,49 +4198,49 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "11",
+                    "count": 11,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "14",
+                    "count": 14,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 }
             ]
@@ -4392,7 +4385,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 8,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 }
             ]
@@ -4738,14 +4731,14 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 }
             ]
@@ -4855,98 +4848,98 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "3",
+                    "count": 3,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "4",
+                    "count": 4,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "7",
+                    "count": 7,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "8",
+                    "count": 8,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -5084,7 +5077,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 }
             ]
@@ -5547,14 +5540,14 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "8",
+                    "count": 8,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 }
             ]
@@ -5748,21 +5741,21 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 }
             ]
@@ -5879,7 +5872,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 }
             ]
@@ -6113,28 +6106,28 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -6279,7 +6272,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 8,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 }
             ]
@@ -6548,14 +6541,14 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "3",
+                    "count": 3,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 5,
-                    "count": "5",
+                    "count": 5,
                     "character": false
                 }
             ]
@@ -6608,7 +6601,7 @@
                 {
                     "type": "lowjump",
                     "objective": "Beat",
-                    "difficulty": 3,
+                    "difficulty": 4,
                     "count": 0,
                     "character": false
                 },
@@ -6714,21 +6707,21 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -6880,63 +6873,63 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "3",
+                    "count": 3,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "4",
+                    "count": 4,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "10",
+                    "count": 10,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -7039,7 +7032,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 8,
-                    "count": "7",
+                    "count": 7,
                     "character": false
                 }
             ]
@@ -7509,14 +7502,14 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 }
             ]
@@ -7598,49 +7591,49 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -7895,7 +7888,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 }
             ]
@@ -8272,7 +8265,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 }
             ]
@@ -8431,63 +8424,63 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "3",
+                    "count": 3,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "4",
+                    "count": 4,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "5",
+                    "count": 5,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "6",
+                    "count": 6,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "8",
+                    "count": 8,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "10",
+                    "count": 10,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 }
             ]
@@ -8653,28 +8646,28 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 }
             ]
@@ -8833,77 +8826,77 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 }
             ]
@@ -9055,84 +9048,84 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "6",
+                    "count": 6,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "7",
+                    "count": 7,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "10",
+                    "count": 10,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "11",
+                    "count": 11,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "13",
+                    "count": 13,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 }
             ]
@@ -9815,70 +9808,70 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -10105,63 +10098,63 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "11",
+                    "count": 11,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "23",
+                    "count": 23,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "24",
+                    "count": 24,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -10313,28 +10306,28 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "6",
+                    "count": 6,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "9",
+                    "count": 9,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "26",
+                    "count": 26,
                     "character": false
                 }
             ]
@@ -10699,21 +10692,21 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "27",
+                    "count": 27,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -10940,28 +10933,28 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "25",
+                    "count": 25,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 }
             ]
@@ -11036,7 +11029,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 8,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 }
             ]
@@ -11111,21 +11104,21 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "28",
+                    "count": 28,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "29",
+                    "count": 29,
                     "character": false
                 }
             ]
@@ -11296,63 +11289,63 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 1,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "15",
+                    "count": 15,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "16",
+                    "count": 16,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 2,
-                    "count": "17",
+                    "count": 17,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "18",
+                    "count": 18,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 3,
-                    "count": "19",
+                    "count": 19,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 4,
-                    "count": "20",
+                    "count": 20,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 5,
-                    "count": "21",
+                    "count": 21,
                     "character": false
                 },
                 {
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 6,
-                    "count": "22",
+                    "count": 22,
                     "character": false
                 }
             ]
@@ -11427,7 +11420,7 @@
                     "type": "lowdust",
                     "objective": "Beat",
                     "difficulty": 8,
-                    "count": "12",
+                    "count": 12,
                     "character": false
                 }
             ]

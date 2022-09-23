@@ -370,7 +370,7 @@ function getLeaderboard(top50, objective, gimmick, timerecord, scorerecord, geno
 			if (gimmick == "lowattack")
 				return this.input_super ? -1 : (3 * this.input_heavies + this.input_lights);
 			if (gimmick == "lowdust")
-				return this.tag.collected;
+				return parseInt(this.tag.collected);
 			return this[gimmickAccessor[gimmick]];
 		}
 	})
