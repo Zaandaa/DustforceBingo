@@ -39,7 +39,6 @@ var params = [
 	"hiddenlocal", 
 	"hidden64local", 
 	"hiddensame", 
-	"hidden64same", 
 	"plugins", 
 	"plugins64", 
 	"bingo_count", 

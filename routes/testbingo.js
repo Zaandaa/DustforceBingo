@@ -27,7 +27,6 @@ var rules = {
 	hiddenlocal: false,
 	hidden64local: false,
 	hiddensame: false,
-	hidden64same: false,
 	teams: true,
 	teams64: true,
 	plugins: false,

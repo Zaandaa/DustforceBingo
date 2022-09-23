@@ -87,7 +87,6 @@ var Bingo = function(session, ruleset) {
 		self.ruleset.newgame = self.ruleset.newgame64;
 		self.ruleset.hidden = self.ruleset.hidden64;
 		self.ruleset.hiddenlocal = self.ruleset.hidden64local;
-		self.ruleset.hiddensame = self.ruleset.hidden64same;
 		self.ruleset.teams = self.ruleset.teams64;
 		self.ruleset.plugins = self.ruleset.plugins64;
 		self.ruleset.ss = self.ruleset.ss64;

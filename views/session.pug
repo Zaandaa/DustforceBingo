@@ -98,7 +98,15 @@ block content
 						if ruleset.gametype == "64"
 							li Hidden: Start with all level goals invisible. Reveal neighbor goals by getting goals.
 						else
-							li Hidden: Start with only the center goal visible. Reveal neighbor goals by getting goals.
+							li Hidden: Start with only one goal visible. Reveal neighbor goals by getting goals.
+						if ruleset.hiddenlocal
+							li Share vision: When a goal is revealed, it reveals to all players.
+						else
+							li Private vision: When a goal is revealed, it reveals to only you.
+						if ruleset.hiddensame
+							li Share first goal: Players start at the same first goal.
+						else if ruleset.gametype != "64"
+							li Random first goal: Players start at random first goals.
 					if ruleset.teams
 						li Team colors: Players with the same color are on a team.
 					if ruleset.plugins
