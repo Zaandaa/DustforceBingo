@@ -36,7 +36,8 @@ $(document).on('ready', function() {
 	addCopyUrl();
 	$('input[type=checkbox]').on('change', changeCheckImage)
 
-	socket.emit('init', {session: sessionId, player: user});
+	player = user;
+	socket.emit('init', {session: sessionId, player: player});
 
 	function joinEmitted() {
 		$('#username').disable();
