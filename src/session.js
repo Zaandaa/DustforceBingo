@@ -123,6 +123,7 @@ function build(io) {
 			if (!(data.session in extern.rooms)) 
 				return Error(socket, 'connectionResponse', `Session ${data.session} does not exist`);
 
+			socket.custom.id = data.player;
 			extern.rooms[data.session].addSocket(socket, function(err, message) {
 				socket.emit('connectionResponse', {
 					err: err,

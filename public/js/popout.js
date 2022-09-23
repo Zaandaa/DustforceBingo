@@ -3,7 +3,7 @@ var socket = io(window.location.origin, {
 });
 
 $(document).on('ready', function() {
-	socket.emit('init', {session: sessionId});
+	socket.emit('init', {session: sessionId, player: player});
 
 	socket.on('board', function(data) {
 		$('#temp_board_div').attr("style", "display: none");

@@ -36,7 +36,7 @@ $(document).on('ready', function() {
 	addCopyUrl();
 	$('input[type=checkbox]').on('change', changeCheckImage)
 
-	socket.emit('init', {session: sessionId});
+	socket.emit('init', {session: sessionId, player: user});
 
 	function joinEmitted() {
 		$('#username').disable();
@@ -312,5 +312,11 @@ $(document).on('ready', function() {
 	
 	socket.on('log', function(data) {
 		bingoLog = JSON.parse(data);
+		/*
+		add entry to top of log_div
+		list of objects with something.str
+		most recent at top
+		clear/empty on start/reset
+		*/
 	});
 });
