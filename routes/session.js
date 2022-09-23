@@ -52,6 +52,7 @@ var params = [
 	"keys", 
 	"multilevel", 
 	"characters", 
+	"characters64", 
 	"apples", 
 	"tutorials", 
 	"difficults", 

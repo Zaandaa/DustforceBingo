@@ -48,6 +48,12 @@ $(document).on('ready', function() {
 		if (new Date().getTime() - lastPing > 12000) {
 			socket.emit('init', {session: sessionId, player: player});
 			setTimeout(checkReconnect, 5000);
+			if ($('#username').is(":disabled")) {
+				socket.emit('join', {
+					username: $('#username').val(),
+					session: sessionId
+				});
+			}
 		}
 	}
 

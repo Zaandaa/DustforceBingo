@@ -85,12 +85,12 @@ var Bingo = function(session, ruleset) {
 	// force certain rules in case it got past front end
 	if (self.ruleset.gametype == "64") {
 		self.ruleset.newgame = self.ruleset.newgame64;
+		// self.ruleset.characters = self.ruleset.characters64;
 		self.ruleset.hidden = self.ruleset.hidden64;
 		self.ruleset.hiddenlocal = self.ruleset.hidden64local;
 		self.ruleset.teams = self.ruleset.teams64;
 		self.ruleset.plugins = self.ruleset.plugins64;
 		self.ruleset.ss = self.ruleset.ss64;
-		// self.ruleset.characters = self.ruleset.characters64;
 
 		self.ruleset.size = self.ruleset.hub == "All" ? 8 : 4;
 		self.ruleset.lockout = true;

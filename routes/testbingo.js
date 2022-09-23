@@ -43,7 +43,7 @@ var rules = {
 	keys: true,
 	multilevel: true,
 	characters: true,
-	characters64: true,
+	characters64: "random",
 	apples: true,
 	tutorials: true,
 	difficults: true,
