@@ -485,13 +485,19 @@ function build(io) {
 		self.endSession = function() {
 			console.log("endSession", self.id);
 			cleanup();
-		}
-		
+		};
+
+		self.ping = function() {
+			emitAll('ping');
+			setTimeout(self.ping, 5000);
+		};
+
 // CTOR:
 
 		console.log("new Session", self.id);
 		extern.rooms[self.id] = self;
-		setTimeout(self.endSession, 604800000); // one week
+		setTimeout(self.endSession, 86400000); // one day
+		setTimeout(self.ping, 5000);
 		return self;
 	}
 

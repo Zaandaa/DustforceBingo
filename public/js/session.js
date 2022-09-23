@@ -39,6 +39,18 @@ $(document).on('ready', function() {
 	player = user;
 	socket.emit('init', {session: sessionId, player: player});
 
+	var lastPing = 0;
+	function gotPing() {
+		lastPing = new Date().getTime();
+	}
+
+	function checkReconnect() {
+		if (new Date().getTime() - lastPing > 12000) {
+			socket.emit('init', {session: sessionId, player: player});
+			setTimeout(checkReconnect, 5000);
+		}
+	}
+
 	function joinEmitted() {
 		$('#username').disable();
 		$('#join').disable();
@@ -257,6 +269,7 @@ $(document).on('ready', function() {
 	
 	socket.on('board', function(data) {
 		// console.log("got board", data);
+		gotPing();
 		updateBoardTable(JSON.parse(data), $('#board_div'), false);
 	});
 	
@@ -302,11 +315,17 @@ $(document).on('ready', function() {
 		
 	});
 	
+	socket.on('ping', function(data) {
+		gotPing();
+		setTimeout(checkReconnect, 12500);
+	});
+	
 	socket.on('reset', function(data) {
 		resetBingo();
 	});
 	
 	socket.on('replay', function(data) {
+		gotPing();
 		var dateString = (new Date(JSON.parse(data).lastReplay)).toLocaleTimeString();
 		$("#replay").text("Last replay: " + dateString);
 	});
