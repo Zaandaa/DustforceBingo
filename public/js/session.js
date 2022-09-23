@@ -54,6 +54,9 @@ $(document).on('ready', function() {
 					session: sessionId
 				});
 			}
+			if ($('#ready').text() == "Unready")) {
+				$('#ready').text("Ready");
+			}
 		}
 	}
 
@@ -244,10 +247,12 @@ $(document).on('ready', function() {
 	socket.on('joinResponse', function(data) {
 		$("#join").enable();
 		if(data.err) {
-			$(".alert-danger .alert-text").html(data.message);
-			$(".alert-danger").alert(200, 5000, 100);
-			$("#join").text("Join");
-			$("#username").enable();
+			if (data.message != "Session already started") {
+				$(".alert-danger .alert-text").html(data.message);
+				$(".alert-danger").alert(200, 5000, 100);
+				$("#join").text("Join");
+				$("#username").enable();
+			}
 		} else {
 			player = data.id;
 			$(".alert-success").alert(200, 1000, 100);
