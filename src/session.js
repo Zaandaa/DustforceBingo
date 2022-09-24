@@ -408,8 +408,7 @@ function build(io) {
 		};
 		
 		self.updateLog = function(log) {
-			if (bingo.isWon)
-				emitAll('log', JSON.stringify(log));
+			emitAll('log', JSON.stringify(log));
 		};
 		
 		self.playerFinish = function(id) {

@@ -1026,11 +1026,12 @@ var Bingo = function(session, ruleset) {
 			replay_id: replay.replay_id,
 			team: self.players[replay.user].team,
 			player: replay.user,
+			username: replay.username,
 			level: replay.levelname,
 			score: utils.getReplayScore(replay),
 			character: constants.characters[replay.character],
 			replay_time: replay.time,
-			str: "Replay: " + utils.getReplayScore(replay) + " " + replay.levelname + " " + constants.characters[replay.character]
+			str: "Replay: " + replay.username + " " + utils.getReplayScore(replay) + " " + replay.levelname + " " + constants.characters[replay.character]
 		});
 
 		var success = false;
@@ -1043,7 +1044,7 @@ var Bingo = function(session, ruleset) {
 				self.players[replay.user].achieveGoal(i);
 				success = true;
 				// // console.log("GOAL ACHIEVED", i, replay.username);
-				self.addLog({type: "goal", team: self.players[replay.user].team, player: replay.user, str: "Goal: " + self.goals[i].toString()});
+				self.addLog({type: "goal", team: self.players[replay.user].team, player: replay.user, str: "Goal: " + self.goals[i].toString() + " by " + replay.username});
 				if (self.ruleset.hidden)
 					self.revealGoalNeighbors(i, self.players[replay.user].team);
 				if (self.ruleset.gametype == "64") {

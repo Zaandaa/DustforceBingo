@@ -10,6 +10,7 @@ block js
 	script= "var bingoLog = []"
 	script(src="/bingo/socket/socket.io.min.js")
 	script(src="/bingo/js/board.js")
+	script(src="/bingo/js/log.js")
 	script(src="/bingo/js/session.js")
 	script= "setSizes(false);"
 
@@ -165,4 +166,4 @@ block content
 							<img id="check_compact" class="checkbox_img icon" src="/bingo/img/ready_false.png" />
 							p Compact board
 
-				div#log_div
+				div#log_div(style="display: none")

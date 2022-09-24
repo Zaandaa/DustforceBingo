@@ -332,6 +332,7 @@ $(document).on('ready', function() {
 	});
 	
 	socket.on('reset', function(data) {
+		emptyLog();
 		resetBingo();
 	});
 	
@@ -343,11 +344,7 @@ $(document).on('ready', function() {
 	
 	socket.on('log', function(data) {
 		bingoLog = JSON.parse(data);
-		/*
-		add entry to top of log_div
-		list of objects with something.str
-		most recent at top
-		clear/empty on start/reset
-		*/
+		emptyLog();
+		showBingoLog(bingoLog);
 	});
 });

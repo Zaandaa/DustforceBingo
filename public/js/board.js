@@ -409,13 +409,13 @@ function updateBoardTable(boardData, target, isPopout) {
 	if (!isPopout && ruleset.gametype != "64") {
 		table.append(createBottomIdentifiers());
 	}
-	
-	target.append(table);
-	characterIconReplace();
 
 	for(var i = 0; i < bingoLabels.length; i++) {
 		$(bingoLabels[i]).addClass('bingo_label');
 	}
+	
+	target.append(table);
+	characterIconReplace();
 	
 	if (!isPopout) {
 		$("#under_players").empty();
