@@ -54,7 +54,7 @@ $(document).on('ready', function() {
 					session: sessionId
 				});
 			}
-			if ($('#ready').text() == "Unready")) {
+			if ($('#ready').text() == "Unready") {
 				$('#ready').text("Ready");
 			}
 		}

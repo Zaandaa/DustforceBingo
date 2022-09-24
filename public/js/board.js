@@ -6,6 +6,25 @@ var savedPlayerData = {};
 var playerFinished = {};
 var playerTeam;
 
+function characterIconReplace() {
+	$('.goal_text:contains("Dustman")').html(function (_, html) {
+		if ($(this).text().endsWith("Dustman"))
+			return html.replace("Dustman", "<br/><img src='https://dustkid.com/static/iconDustman.png'/>");
+	});
+	$('.goal_text:contains("Dustgirl")').html(function (_, html) {
+		if ($(this).text().endsWith("Dustgirl"))
+			return html.replace("Dustgirl", "<br/><img src='https://dustkid.com/static/iconDustgirl.png'/>");
+	});
+	$('.goal_text:contains("Dustkid")').html(function (_, html) {
+		if ($(this).text().endsWith("Dustkid"))
+			return html.replace("Dustkid", "<br/><img src='https://dustkid.com/static/iconDustkid.png'/>");
+	});
+	$('.goal_text:contains("Dustworth")').html(function (_, html) {
+		if ($(this).text().endsWith("Dustworth"))
+			return html.replace("Dustworth", "<br/><img src='https://dustkid.com/static/iconDustworth.png'/>");
+	});
+}
+
 function updateBoardTable(boardData, target, isPopout) {
 	
 	function createGoal(i, j) {
@@ -160,7 +179,10 @@ function updateBoardTable(boardData, target, isPopout) {
 				.addClass('goal_text')
 				.text(text)
 			);
+		
 	}
+
+
 	
 	function addBorderStyle(col, assignee) {
 		$(col).css({
@@ -366,6 +388,7 @@ function updateBoardTable(boardData, target, isPopout) {
 		table.append(row);
 	}
 
+
 	var playerAntiStyled = []
 	
 	$.each(boardData.players, function(id, player) {
@@ -388,6 +411,7 @@ function updateBoardTable(boardData, target, isPopout) {
 	}
 	
 	target.append(table);
+	characterIconReplace();
 
 	for(var i = 0; i < bingoLabels.length; i++) {
 		$(bingoLabels[i]).addClass('bingo_label');
@@ -742,7 +766,7 @@ function popoutBoard() {
 	var small = ruleset.size == 8;
 
 	var width = ruleset.size * (ruleset.size == 8 ? 87.5 : 140);
-	var height = small ? 50 * ruleset.size : (compact ? (70 * ruleset.size) : (ruleset.size * 128 + 2));
+	var height = small ? 75 * ruleset.size : (compact ? (75 * ruleset.size) : (ruleset.size * 128 + 2));
 
 	var query = [];
 	if (player)

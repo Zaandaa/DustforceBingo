@@ -34,8 +34,20 @@ function make64Goals(ruleset) {
 			continue;
 		if (ruleset.hub != "All" && utils.getHub(ruleset.levelset[l]) != hub)
 			continue;
-
+		
 		var goalData = {type: "level", level: l, objective: ruleset.ss ? "SS" : "Beat", levelOnly: true};
+
+		if (ruleset.characters64 == "random") {
+			switch (Math.floor((Math.random() * 4))) {
+				case 0: goalData.character = "Dustman"; break;
+				case 1: goalData.character = "Dustgirl"; break;
+				case 2: goalData.character = "Dustkid"; break;
+				case 3: goalData.character = "Dustworth"; break;
+			}
+		} else if (ruleset.characters64 != "any") {
+			goalData.character = ruleset.characters64;
+		}
+
 		var g = new Goal(goalData, ruleset);
 		goals.push(g);
 	}
@@ -381,7 +393,7 @@ function makeTotalGoalDatas(ruleset) {
 
 							// goalData
 							var gd = {type: "total", count: o, total: currentTotal, hub: h, leveltype: l, character: c, weight: 1};
-							var gds = makeGoalString(gd);
+							var gds = makeGoalString(gd, ruleset);
 							if (usedTotalStrings.includes(gds))
 								return;
 							if (!utils.checkTotalDifficultyLength(gd, ruleset))
@@ -421,7 +433,7 @@ function makeTotalGoalDatas(ruleset) {
 
 							// goalData
 							var gd = {type: "total", count: o, total: currentTotal, hub: h, leveltype: l, character: c, weight: 1};
-							var gds = makeGoalString(gd);
+							var gds = makeGoalString(gd, ruleset);
 							if (usedTotalStrings.includes(gds))
 								return;
 							if (!utils.checkTotalDifficultyLength(gd, ruleset))
@@ -449,7 +461,7 @@ function makeTotalGoalDatas(ruleset) {
 
 						// goalData
 						var gd = {type: "total", count: o, total: currentTotal, keytype: k, hub: h, weight: 1};
-						var gds = makeGoalString(gd);
+						var gds = makeGoalString(gd, ruleset);
 						if (usedTotalStrings.includes(gds))
 							return;
 						if (!utils.checkTotalDifficultyLength(gd, ruleset))
@@ -484,7 +496,7 @@ function makeTotalGoalDatas(ruleset) {
 
 								// goalData
 								var gd = {type: "total", count: o, total: currentTotal, appleType: a, character: c, hub: h, leveltype: l, weight: 1};
-								var gds = makeGoalString(gd);
+								var gds = makeGoalString(gd, ruleset);
 								if (usedTotalStrings.includes(gds))
 									return;
 								if (!utils.checkTotalDifficultyLength(gd, ruleset))
@@ -580,14 +592,12 @@ function chooseTotalGoalData(ruleset, totalGoalDatas, usedGoalStats) {
 	return goalData;
 }
 
-function makeGoalString(goalData) {
+function makeGoalString(goalData, ruleset) {
 	var str = "";
 
 	if (goalData.type == "level") {
 		str = (goalData.levelOnly ? "" : (goalData.objective + " ")) + utils.getLevelName(goalData.level);
 
-		if (goalData.character)
-			str += " as " + goalData.character;
 		if (goalData.nosuper)
 			str += " without super";
 
@@ -595,6 +605,12 @@ function makeGoalString(goalData) {
 			goalData.gimmicks.forEach(function(g) {
 				str += " " + levels.gimmicks[g.type].format.replace("{count}", g.count).replace("{up to}", g.count > 0 ? "up to" : "") + (g.count != 1 ? levels.gimmicks[g.type].plural : "");
 			});
+		}
+
+		if (goalData.character) {
+			str += " " + goalData.character;
+		} else {
+			str += " "; // prevents some rando level name from ending with a char name
 		}
 
 	} else if (goalData.type == "total") {
@@ -615,8 +631,9 @@ function makeGoalString(goalData) {
 
 		if (goalData.hub)
 			str += " in " + goalData.hub;
-		if (goalData.character)
-			str += " as " + goalData.character;
+		if (goalData.character) {
+			str += " " + goalData.character;
+		}
 	}
 
 	return str;
@@ -625,7 +642,7 @@ function makeGoalString(goalData) {
 var Goal = function(goalData, ruleset) {
 	var self = this;
 	self.goalData = goalData;
-	self.goalString = makeGoalString(goalData);
+	self.goalString = makeGoalString(goalData, ruleset);
 	self.achieved = [];
 	self.revealed = !ruleset.hidden;
 	self.captured;
