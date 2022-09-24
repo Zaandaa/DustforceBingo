@@ -47,7 +47,7 @@ var rules = {
 	apples: true,
 	tutorials: true,
 	difficults: true,
-	yottass: true,
+	// yottass: true,
 	sfinesse: true,
 	scomplete: true,
 	bcomplete: true,

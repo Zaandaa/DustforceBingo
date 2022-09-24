@@ -278,8 +278,8 @@ function makeLevelGoalDatas(ruleset) {
 
 				if (l in levels.levels && levels.levels[l].type == "Difficult" && ruleset.newgame == "New Game" && ruleset.length > 1)
 					return; // no difficults in new game unless full game length
-				if (l == "yottadifficult" && (o == "SS") && !ruleset.yottass)
-					return;
+				// if (l == "yottadifficult" && (o == "SS") && !ruleset.yottass)
+					// return;
 			// }
 
 			var d = utils.getLevelDifficulty(utils.getLevelType(ruleset.levelset[l]), o, ruleset.newgame);
@@ -411,7 +411,7 @@ function makeTotalGoalDatas(ruleset) {
 					var hubs = Object.keys(levels.hubs);
 					if (!(ruleset.tutorials && c == undefined))
 						hubs.splice(hubs.indexOf("Tutorial"), 1);
-					if (!ruleset.difficults || i > levels.hubs["Difficult"].levels - (ruleset.yottass ? 0 : 1) || (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2)))
+					if (!ruleset.difficults || i > levels.hubs["Difficult"].levels || (ruleset.difficulty == 4 || !(ruleset.mode == "New Game" && ruleset.length == 1 && ruleset.difficulty <= 2)))
 						hubs.splice(hubs.indexOf("Difficult"), 1);
 					hubs.push(undefined);
 					hubs.forEach(function(h) {

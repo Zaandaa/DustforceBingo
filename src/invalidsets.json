@@ -18,11 +18,6 @@
 		"reason": "Difficults + New Game requires full game length."
 	},
 	{
-		"yottass": [true],
-		"difficults": [false],
-		"reason": "Yotta SS requires difficults."
-	},
-	{
 		"unload": [true],
 		"difficulty_raw": ["Hard", "Normal", "Easy"],
 		"reason": "Unload requires very hard difficulty."
@@ -68,7 +63,6 @@
 		"apples": [false],
 		"tutorials": [false],
 		"difficults": [false],
-		"yottass": [false],
 		"sfinesse": [false],
 		"scomplete": [false],
 		"bcomplete": [false],

@@ -29,12 +29,6 @@
 	  , "clean_name" : "Difficults"
 	  , "init_state" : false
 	},
-	"yottass" : {
-	    "icon"       : "/bingo/img/iconDonger.png"
-	  , "icon_type"  : "icon"
-	  , "clean_name" : "Yotta SS"
-	  , "init_state" : false
-	},
 	"sfinesse" : {
 	    "icon"       : "/bingo/img/iconS.png"
 	  , "icon_type"  : "icon"
@@ -59,11 +53,12 @@
 	  , "clean_name" : "D completion"
 	  , "init_state" : false
 	},
-	"secret" : {
-	    "icon"       : "/bingo/img/iconDonger.png"
+	"unload" : {
+	    "icon"       : "http://dustkid.com/static/icon404.png"
 	  , "icon_type"  : "icon"
-	  , "clean_name" : "Secret"
+	  , "clean_name" : "Unload"
 	  , "init_state" : false
+	  , "tooltip"    : "Specific level goals can require unload or out of bounds (Dustmod > Mods > Enable Unload%)"
 	},
 	"multilevel" : {
 	    "icon"       : "http://dustkid.com/static/iconVacuum.png"
@@ -129,12 +124,5 @@
 	  , "icon_type"  : "icon"
 	  , "clean_name" : "Low percent"
 	  , "init_state" : false
-	},
-	"unload" : {
-	    "icon"       : "http://dustkid.com/static/icon404.png"
-	  , "icon_type"  : "icon"
-	  , "clean_name" : "Unload"
-	  , "init_state" : false
-	  , "tooltip"    : "Specific level goals can require unload or out of bounds (Dustmod > Mods > Enable Unload%)"
 	}
 }

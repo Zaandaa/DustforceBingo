@@ -56,7 +56,7 @@ var params = [
 	"apples", 
 	"tutorials", 
 	"difficults", 
-	"yottass", 
+	// "yottass", 
 	"sfinesse", 
 	"scomplete",
 	"bcomplete",
