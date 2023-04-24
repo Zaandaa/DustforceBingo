@@ -3,7 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var http = require("http");
+var https = require("https");
 var socket = require("socket.io");
 var bodyParser = require('body-parser');
 
@@ -11,7 +11,7 @@ var ENVIRONMENT = process.env.ENVIRONMENT || 'prod';
 var base = ENVIRONMENT == 'dev' ? '/bingo/' : '/';
 
 var app = express();
-var server = http.createServer(app);
+var server = https.createServer(app);
 var io = socket(server, {
 	path: base + "socket.io",
 	pingInterval: 5000,

@@ -1,4 +1,4 @@
-var http = require('http');
+var https = require('https');
 var fs = require('fs');
 var utils = require('./utils');
 
@@ -103,7 +103,7 @@ function getJSONWrapper(url, timeout, callback)
 		
 		var currentAttempt = ++this.attempt;
 		
-		http.get(url, function(res) 
+		https.get(url, function(res) 
 		{
 			const { statusCode } = res;
 			
@@ -227,19 +227,19 @@ function preload(callback)
 	{ 
 		return {
 			token : c,
-			url   : "http://dustkid.com/json/records/" + leaderboards["characters"][c]
+			url   : "https://dustkid.com/json/records/" + leaderboards["characters"][c]
 		};
 	});
 	
 	jobs.push(
 	{
 		token : "unload",
-		url   : "http://dustkid.com/json/records/unload/all"
+		url   : "https://dustkid.com/json/records/unload/all"
 	});
 	jobs.push(
 	{
 		token : "genocide",
-		url   : "http://dustkid.com/json/records/genocide/all"
+		url   : "https://dustkid.com/json/records/genocide/all"
 	});
 	
 	jobs.syncMap(function(job, done) 
@@ -296,7 +296,7 @@ function main(levels, records, callback)
 
 		gimmicks.syncMap(function(gimmick, gimmickDone) 
 		{
-			var url = "http://dustkid.com/json/level/" + level.id + "/" 
+			var url = "https://dustkid.com/json/level/" + level.id + "/" 
 				+ leaderboards["gimmicks"][gimmick] + "/0/" + gimmickLeaderboardSize[gimmick];
 			getJSONWrapper(url, 30000, function(top50)
 			{

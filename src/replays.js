@@ -1,5 +1,5 @@
 var util = require('./utils');
-var http = require('http');
+var https = require('https');
 
 var seperator = '\u001e';
 
@@ -49,7 +49,7 @@ function createParser(lambda, updated) {
 }
 	
 function start(lambda) {
-	http.get("http://dustkid.com/backend/events.php?time_token=" 
+	https.get("https://dustkid.com/backend/events.php?time_token=" 
 			+ new Date(lastTimeToken - timeout).getTime().toString().slice(0, -3), // double headroom  
 		function (res) {
 			console.log((new Date().toLocaleString()), "Replay:", "Connected to dustkid replays");

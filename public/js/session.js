@@ -305,7 +305,7 @@ $(document).on('ready', function() {
 			var me = $("<div class='col-3'/>");
 			var button = $("<button class='btn btn-sm' type='button' aria-label='Close'>This is me!</button>")
 			
-			ref.html("<a href='http://dustkid.com/profile/" + player.id + "/" + player.name 
+			ref.html("<a href='https://dustkid.com/profile/" + player.id + "/" + player.name 
 				+ "' target='_blank'>ID: " + player.id + "</a>");
 				
 			me.append(button);

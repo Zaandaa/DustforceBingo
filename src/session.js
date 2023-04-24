@@ -70,7 +70,7 @@ function build(io) {
 	function getUserJson(name, lambda, success) {
 		var number = parseInt(name) 
 		
-		var url = 'http://proxy.dustkid.com/backend6/userSearch.php?' + querystring.stringify({
+		var url = 'https://proxy.dustkid.com/backend6/userSearch.php?' + querystring.stringify({
 			'q':name,
 			'max':50,
 		});
@@ -81,7 +81,7 @@ function build(io) {
 			if (json.length == 0) {
 				if (isNaN(number)) 
 					return lambda(true, false, `<strong>User ${name} not found!</strong>`);
-				var url = 'http://proxy.dustkid.com/backend6/userSearch.php?' + querystring.stringify({
+				var url = 'https://proxy.dustkid.com/backend6/userSearch.php?' + querystring.stringify({
 					'userid':name
 				});
 				requestWrapper(url, lambda, function(json) {
