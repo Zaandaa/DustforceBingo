@@ -1011,7 +1011,7 @@ var Bingo = function(session, ruleset) {
 			return false;
 
 		// in levels
-		if (!self.ruleset.levelset[replay.level])
+		if (!(self.ruleset.levelset[replay.level] >= 0))
 			return false;
 		// if (levels.levels[replay.level].hub == "Tutorial" && !self.ruleset.tutorials)
 			// return false;
